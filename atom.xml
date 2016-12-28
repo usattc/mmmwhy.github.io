@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mmmxcc.cn/"/>
-  <updated>2016-12-28T07:36:47.171Z</updated>
+  <updated>2016-12-28T08:08:28.071Z</updated>
   <id>http://mmmxcc.cn/</id>
   
   <author>
@@ -20,12 +20,13 @@
     <link href="http://mmmxcc.cn/2016/12/28/LaTex-%E7%BC%96%E8%BE%91%E5%85%AC%E5%BC%8F/"/>
     <id>http://mmmxcc.cn/2016/12/28/LaTex-编辑公式/</id>
     <published>2016-12-28T07:21:21.000Z</published>
-    <updated>2016-12-28T07:36:47.171Z</updated>
+    <updated>2016-12-28T08:08:28.071Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p> 在计算机直接输入数学公式是一件棘手的事情，我一般是用一个专业的数学工具MathType，但最近在使用Markdown写作，遂产生念头用LaTex输入公式。发现目前网上的语法介绍往往不够全面，于是自己写了一份。</p>
 </blockquote>
 <hr>
+<a id="more"></a>
 <h1 id="LaTex-公式"><a href="#LaTex-公式" class="headerlink" title="LaTex 公式"></a>LaTex 公式</h1><h2 id="通用语法"><a href="#通用语法" class="headerlink" title="通用语法"></a>通用语法</h2><ul>
 <li>使用单 <strong>$</strong> 围住表达式，居左展示。</li>
 <li>使用双 <strong>$$</strong> 围住表达式，可以居中显示。</li>
@@ -99,7 +100,7 @@
       &lt;blockquote&gt;
 &lt;p&gt; 在计算机直接输入数学公式是一件棘手的事情，我一般是用一个专业的数学工具MathType，但最近在使用Markdown写作，遂产生念头用LaTex输入公式。发现目前网上的语法介绍往往不够全面，于是自己写了一份。&lt;/p&gt;
 &lt;/blockquote&gt;
-
+&lt;hr&gt;
     
     </summary>
     
@@ -784,11 +785,11 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     </summary>
     
     
-      <category term="GFW" scheme="http://mmmxcc.cn/tags/GFW/"/>
-    
       <category term="SSR" scheme="http://mmmxcc.cn/tags/SSR/"/>
     
       <category term="Linux" scheme="http://mmmxcc.cn/tags/Linux/"/>
+    
+      <category term="GFW" scheme="http://mmmxcc.cn/tags/GFW/"/>
     
   </entry>
   
