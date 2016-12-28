@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Nginx环境下配置HTTPS | 李飞阳 | PM、Coder、Data mining</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="VPS,Nginx,HTTPS">
+  <meta name="description" content="现在，你应该能在访问https://mmmxcc.cn 的时候，在地址栏里看到一个漂亮的小绿锁作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx环境下配置HTTPS">
+<meta property="og:url" content="http://mmmxcc.cn/2016/12/18/Nginx环境下配置HTTPS/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="现在，你应该能在访问https://mmmxcc.cn 的时候，在地址栏里看到一个漂亮的小绿锁作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3326314-02f3a084e6a6a776.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20161218/162129508.png?imageMogr2/thumbnail/!80p">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3326314-f86b2f0ec2e121b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3326314-47e83ff91ca63910.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3326314-f690fba71ee4240b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-12-18T08:48:40.487Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx环境下配置HTTPS">
+<meta name="twitter:description" content="现在，你应该能在访问https://mmmxcc.cn 的时候，在地址栏里看到一个漂亮的小绿锁作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  <meta name="summary" content="&lt;blockquote&gt;
+&lt;p&gt;现在，你应该能在访问&lt;a href=&quot;https://mmmxcc.cn&quot;&gt;https://mmmxcc.cn&lt;/a&gt; 的时候，在地址栏里看到一个漂亮的小绿锁&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">Wing Lee</h5>
+        <a href="mailto:i@mmmxcc.cn" title="i@mmmxcc.cn" class="mail">i@mmmxcc.cn</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              归档
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/mmmwhy" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/2016/01/18/resume/"  >
+              <i class="icon icon-lg icon-link"></i>
+              关于我
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>访问时间:2016/12/28 03:52:00</p>
+  <p>愿每个人都能被这个世界温柔对待 </p>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Nginx环境下配置HTTPS</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">Nginx环境下配置HTTPS</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2016-12-18T08:47:29.000Z" itemprop="datePublished" class="page-time">
+  2016-12-18
+</time>
+
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-Nginx环境下配置HTTPS" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/">VPS</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+            <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#申请免费SSL证书"><span class="post-toc-number">1.</span> <span class="post-toc-text">申请免费SSL证书</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#VPS上安装SSL证书"><span class="post-toc-number">2.</span> <span class="post-toc-text">VPS上安装SSL证书</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获取证书"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">获取证书</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#上传和部署SSL证书"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">上传和部署SSL证书</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#重启Nginx"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">重启Nginx</span></a></li></ol></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>现在，你应该能在访问<a href="https://mmmxcc.cn">https://mmmxcc.cn</a> 的时候，在地址栏里看到一个漂亮的小绿锁<img src="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="申请免费SSL证书"><a href="#申请免费SSL证书" class="headerlink" title="申请免费SSL证书"></a>申请免费SSL证书</h1><p>普通的SSL证书动辄好几千，简直令人发指。不过别担心，我找到了3个免费申请HTTPS证书的方式。<br><img src="http://upload-images.jianshu.io/upload_images/3326314-02f3a084e6a6a776.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ul>
+<li><strong>StartSSL也免费提供了一个证书（纯英文）</strong><br>申请地址：<a href="https://www.startssl.com/Account?r=L1ZhbGlkYXRl" target="_blank" rel="external">https://www.startssl.com/Account?r=L1ZhbGlkYXRl</a></li>
+<li>阿里云免费提供的证书<br><a href="https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy" target="_blank" rel="external">https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy</a><br><img src="http://mmmxcc.08tk.cn/blog/20161218/162129508.png?imageMogr2/thumbnail/!80p" alt=""></li>
+<li>腾讯云免费申请<br><a href="https://console.qcloud.com/ssl" target="_blank" rel="external">https://console.qcloud.com/ssl</a><br><img src="http://upload-images.jianshu.io/upload_images/3326314-f86b2f0ec2e121b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+<p>获得证书之后，下载至本地。</p>
+<h1 id="VPS上安装SSL证书"><a href="#VPS上安装SSL证书" class="headerlink" title="VPS上安装SSL证书"></a>VPS上安装SSL证书</h1><p><strong>以Nginx 为例</strong></p>
+<h2 id="获取证书"><a href="#获取证书" class="headerlink" title="获取证书"></a>获取证书</h2><p>Nginx文件夹内获得SSL证书文件 1_www.domain.com_bundle.crt 和私钥文件 2_www.domain.com.key,</p>
+<p>1_www.domain.com_bundle.crt 文件包括两段证书代码 “—–BEGIN CERTIFICATE—–”和“—–END CERTIFICATE—–”,<br>2_www.domain.com.key 文件包括一段私钥代码“—–BEGIN RSA PRIVATE KEY—–”和“—–END RSA PRIVATE KEY—–”。<br><img src="http://upload-images.jianshu.io/upload_images/3326314-47e83ff91ca63910.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="上传和部署SSL证书"><a href="#上传和部署SSL证书" class="headerlink" title="上传和部署SSL证书"></a>上传和部署SSL证书</h2><p>将域名 www.domain.com 的证书文件1_www.domain.com_bundle.crt 、私钥文件2_www.domain.com.key保存到同一个目录，例如/usr/local/nginx/conf目录下。更新Nginx根目录下 conf/nginx.conf 文件如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen 443;</div><div class="line">        server_name www.domain.com; #填写绑定证书的域名</div><div class="line">        ssl on;</div><div class="line">        ssl_certificate 1_www.domain.com_bundle.crt;</div><div class="line">        ssl_certificate_key 2_www.domain.com.key;</div><div class="line">        ssl_session_timeout 5m;</div><div class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置</div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置</div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line">        location / &#123;</div><div class="line">            root   html; #站点目录</div><div class="line">            index  index.html index.htm;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">配置文件参数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">listen 443</td>
+<td style="text-align:left">SSL访问端口号为443</td>
+</tr>
+<tr>
+<td style="text-align:left">ssl on</td>
+<td style="text-align:left">启用SSL功能</td>
+</tr>
+<tr>
+<td style="text-align:left">ssl_certificate</td>
+<td style="text-align:left">证书文件</td>
+</tr>
+<tr>
+<td style="text-align:left">ssl_certificate_key</td>
+<td style="text-align:left">私钥文件</td>
+</tr>
+<tr>
+<td style="text-align:left">ssl_protocols</td>
+<td style="text-align:left">使用的协议</td>
+</tr>
+<tr>
+<td style="text-align:left">ssl_ciphers</td>
+<td style="text-align:left">配置加密套件，写法遵循openssl标准</td>
+</tr>
+</tbody>
+</table>
+<h2 id="重启Nginx"><a href="#重启Nginx" class="headerlink" title="重启Nginx"></a>重启Nginx</h2><p>输入 <code>nginx -s reload</code>  ：修改配置后重新加载生效<br>可以看到SSL证书生效，且HTTPS可以访问站点。<br><img src="http://upload-images.jianshu.io/upload_images/3326314-f690fba71ee4240b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://mmmxcc.cn/2016/12/18/Nginx环境下配置HTTPS/" target="_blank" rel="external">http://mmmxcc.cn/2016/12/18/Nginx环境下配置HTTPS/</a>
+                </p>
+                <footer><cite><a href="http://mmmxcc.cn">@李飞阳</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2016/12/28/LaTex-编辑公式/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">LaTex 编辑公式</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2016/12/16/第一题：Python图片添加水印/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">第一题：Python图片添加水印</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Nginx环境下配置HTTPS" data-title="Nginx环境下配置HTTPS" data-url="http://mmmxcc.cn/2016/12/18/Nginx环境下配置HTTPS/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"mmmxcc"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "Nginx环境下配置HTTPS",
+    pic: "/img/logo.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "http://mmmxcc.cn/2016/12/18/Nginx环境下配置HTTPS/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script src="//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502"></script>
+
+
+
+
+
+</body>
+</html>

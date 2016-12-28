@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android正则表达式及Pattern Matcher使用 | 李飞阳 | PM、Coder、Data mining</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="Android,Pattern">
+  <meta name="description" content="Pattern Matcher使用众所周知，在程序开发中，难免会遇到需要匹配、查找、替换、判断字符串的情况发生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android正则表达式及Pattern Matcher使用">
+<meta property="og:url" content="http://mmmxcc.cn/2016/10/19/Android正则表达式及Pattern Matcher使用/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="Pattern Matcher使用众所周知，在程序开发中，难免会遇到需要匹配、查找、替换、判断字符串的情况发生">
+<meta property="og:updated_time" content="2016-10-20T07:14:18.936Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android正则表达式及Pattern Matcher使用">
+<meta name="twitter:description" content="Pattern Matcher使用众所周知，在程序开发中，难免会遇到需要匹配、查找、替换、判断字符串的情况发生">
+  
+    <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  <meta name="summary" content="&lt;h1 id=&quot;Pattern-Matcher使用&quot;&gt;&lt;a href=&quot;#Pattern-Matcher使用&quot; class=&quot;headerlink&quot; title=&quot;Pattern Matcher使用&quot;&gt;&lt;/a&gt;Pattern Matcher使用&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;众所周知，在程序开发中，难免会遇到需要匹配、查找、替换、判断字符串的情况发生
+&lt;/code&gt;&lt;/pre&gt;">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">Wing Lee</h5>
+        <a href="mailto:i@mmmxcc.cn" title="i@mmmxcc.cn" class="mail">i@mmmxcc.cn</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              归档
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/mmmwhy" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/2016/01/18/resume/"  >
+              <i class="icon icon-lg icon-link"></i>
+              关于我
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>访问时间:2016/12/28 03:52:00</p>
+  <p>愿每个人都能被这个世界温柔对待 </p>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android正则表达式及Pattern Matcher使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">Android正则表达式及Pattern Matcher使用</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2016-10-19T13:25:57.000Z" itemprop="datePublished" class="page-time">
+  2016-10-19
+</time>
+
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-Android正则表达式及Pattern Matcher使用" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pattern/">Pattern</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+            <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Pattern-Matcher使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">Pattern Matcher使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#加入特定限制条件「-」"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">加入特定限制条件「[]」</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#中加入-后加再次限制条件「-」"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">[]中加入^后加再次限制条件「[^]」</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在限制条件为特定字符出现0次以上时，可以使用「-」"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">在限制条件为特定字符出现0次以上时，可以使用「*」</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在限制条件为特定字符出现1次以上时，可以使用「-」"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">在限制条件为特定字符出现1次以上时，可以使用「+」</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Pattern-Matcher的例子"><span class="post-toc-number">2.</span> <span class="post-toc-text">Pattern Matcher的例子</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查找以Java开头-任意结尾的字符串"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">查找以Java开头,任意结尾的字符串</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#以多条件分割字符串时"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">以多条件分割字符串时</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文字替换（首次出现字符）"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">文字替换（首次出现字符）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文字替换（全部）"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">文字替换（全部）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文字替换（置换字符）"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">文字替换（置换字符）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#验证是否为邮箱地址"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">验证是否为邮箱地址</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查找html中对应条件字符串"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">查找html中对应条件字符串</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#截取http-地址"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">截取http://地址</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#替换指定-中文字"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">替换指定{}中文字</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#以正则条件查询指定目录下文件"><span class="post-toc-number">2.10.</span> <span class="post-toc-text">以正则条件查询指定目录下文件</span></a></li></ol></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Pattern-Matcher使用"><a href="#Pattern-Matcher使用" class="headerlink" title="Pattern Matcher使用"></a>Pattern Matcher使用</h1><pre><code>众所周知，在程序开发中，难免会遇到需要匹配、查找、替换、判断字符串的情况发生
+</code></pre><a id="more"></a>
+<p>而这些情况有时又比较复杂，如果用纯编码方式解决，往往会浪费程序员的时间及精力。因此，学习及使用正则表达式，便成了解决这一矛盾的主要手段。 一个正则表达式就是由普通的字符（例如字符a到z）以及特殊字符（元字符）组成的文字模式，它用以描述在查找文字主体时待匹配的一个或多个字符串。</p>
+<hr>
+<h2 id="加入特定限制条件「-」"><a href="#加入特定限制条件「-」" class="headerlink" title="加入特定限制条件「[]」"></a>加入特定限制条件「[]」</h2><ul>
+<li>[a-z]     条件限制在小写a to z范围中一个字符</li>
+<li>[A-Z]     条件限制在大写A to Z范围中一个字符</li>
+<li>[a-zA-Z] 条件限制在小写a to z或大写A to Z范围中一个字符</li>
+<li>[0-9]     条件限制在小写0 to 9范围中一个字符</li>
+<li>[0-9a-z] 条件限制在小写0 to 9或a to z范围中一个字符</li>
+<li>[0-9[a-z]] 条件限制在小写0 to 9或a to z范围中一个字符(交集)</li>
+</ul>
+<h2 id="中加入-后加再次限制条件「-」"><a href="#中加入-后加再次限制条件「-」" class="headerlink" title="[]中加入^后加再次限制条件「[^]」"></a>[]中加入^后加再次限制条件「[^]」</h2><ul>
+<li>[^a-z]     条件限制在非小写a to z范围中一个字符</li>
+<li>[^A-Z]     条件限制在非大写A to Z范围中一个字符</li>
+<li>[^a-zA-Z] 条件限制在非小写a to z或大写A to Z范围中一个字符</li>
+<li>[^0-9]     条件限制在非小写0 to 9范围中一个字符</li>
+<li>[^0-9a-z] 条件限制在非小写0 to 9或a to z范围中一个字符</li>
+<li>[^0-9[a-z]] 条件限制在非小写0 to 9或a to z范围中一个字符(交集)</li>
+</ul>
+<h2 id="在限制条件为特定字符出现0次以上时，可以使用「-」"><a href="#在限制条件为特定字符出现0次以上时，可以使用「-」" class="headerlink" title="在限制条件为特定字符出现0次以上时，可以使用「*」"></a>在限制条件为特定字符出现0次以上时，可以使用「*」</h2><ul>
+<li>J*     0个以上J</li>
+<li>.*     0个以上任意字符</li>
+<li>J.*D     J与D之间0个以上任意字符</li>
+</ul>
+<h2 id="在限制条件为特定字符出现1次以上时，可以使用「-」"><a href="#在限制条件为特定字符出现1次以上时，可以使用「-」" class="headerlink" title="在限制条件为特定字符出现1次以上时，可以使用「+」"></a>在限制条件为特定字符出现1次以上时，可以使用「+」</h2><ul>
+<li>J+     1个以上J</li>
+<li>.+     1个以上任意字符</li>
+<li>J.+D     J与D之间1个以上任意字符</li>
+</ul>
+<hr>
+<h1 id="Pattern-Matcher的例子"><a href="#Pattern-Matcher的例子" class="headerlink" title="Pattern Matcher的例子"></a>Pattern Matcher的例子</h1><h2 id="查找以Java开头-任意结尾的字符串"><a href="#查找以Java开头-任意结尾的字符串" class="headerlink" title="查找以Java开头,任意结尾的字符串"></a>查找以Java开头,任意结尾的字符串</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"^Java.*"</span>);  </div><div class="line">Matcher matcher = pattern.matcher(<span class="string">"Java不是人"</span>);  </div><div class="line"><span class="keyword">boolean</span> b= matcher.matches();  <span class="comment">//当条件满足时，将返回true，否则返回false  </span></div><div class="line">System.out.println(b);</div></pre></td></tr></table></figure>
+<h2 id="以多条件分割字符串时"><a href="#以多条件分割字符串时" class="headerlink" title="以多条件分割字符串时"></a>以多条件分割字符串时</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"[, |]+"</span>);  </div><div class="line">String[] strs = pattern.split(<span class="string">"Java Hello World  Java,Hello,,World|Sun"</span>);  </div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;strs.length;i++) &#123;  </div><div class="line">    System.out.println(strs[i]);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="文字替换（首次出现字符）"><a href="#文字替换（首次出现字符）" class="headerlink" title="文字替换（首次出现字符）"></a>文字替换（首次出现字符）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"正则表达式"</span>);  </div><div class="line">Matcher matcher = pattern.matcher(<span class="string">"正则表达式 Hello World,正则表达式 Hello World"</span>);  </div><div class="line"><span class="comment">//替换第一个符合正则的数据  </span></div><div class="line">System.out.println(matcher.replaceFirst(<span class="string">"Java"</span>));  </div><div class="line">`</div></pre></td></tr></table></figure>
+<h2 id="文字替换（全部）"><a href="#文字替换（全部）" class="headerlink" title="文字替换（全部）"></a>文字替换（全部）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"正则表达式"</span>);  </div><div class="line">Matcher matcher = pattern.matcher(<span class="string">"正则表达式 Hello World,正则表达式 Hello World"</span>);  </div><div class="line"><span class="comment">//替换第一个符合正则的数据  </span></div><div class="line">System.out.println(matcher.replaceAll(<span class="string">"Java"</span>));  </div><div class="line">`</div></pre></td></tr></table></figure>
+<h2 id="文字替换（置换字符）"><a href="#文字替换（置换字符）" class="headerlink" title="文字替换（置换字符）"></a>文字替换（置换字符）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"正则表达式"</span>);  </div><div class="line">Matcher matcher = pattern.matcher(<span class="string">"正则表达式 Hello World,正则表达式 Hello World "</span>);  </div><div class="line">StringBuffer sbr = <span class="keyword">new</span> StringBuffer();  </div><div class="line"><span class="keyword">while</span> (matcher.find()) &#123;  </div><div class="line">    matcher.appendReplacement(sbr, <span class="string">"Java"</span>);  </div><div class="line">&#125;  </div><div class="line">matcher.appendTail(sbr);  </div><div class="line">System.out.println(sbr.toString());</div></pre></td></tr></table></figure>
+<h2 id="验证是否为邮箱地址"><a href="#验证是否为邮箱地址" class="headerlink" title="验证是否为邮箱地址"></a>验证是否为邮箱地址</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String str=<span class="string">"ceponline@yahoo.com.cn"</span>;  </div><div class="line">Pattern pattern = Pattern.compile(<span class="string">"[//w//.//-]+@([//w//-]+//.)+[//w//-]+"</span>,Pattern.CASE_INSENSITIVE);  </div><div class="line">Matcher matcher = pattern.matcher(str);  </div><div class="line">System.out.println(matcher.matches());</div></pre></td></tr></table></figure>
+<h2 id="查找html中对应条件字符串"><a href="#查找html中对应条件字符串" class="headerlink" title="查找html中对应条件字符串"></a>查找html中对应条件字符串</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"href=/"</span>(.+?)/<span class="string">""</span>);  </div><div class="line">Matcher matcher = pattern.matcher(<span class="string">"&lt;a href=/"</span>index.html/<span class="string">"&gt;主页&lt;/a&gt;"</span>);  </div><div class="line"><span class="keyword">if</span>(matcher.find())  </div><div class="line">  System.out.println(matcher.group(<span class="number">1</span>));  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="截取http-地址"><a href="#截取http-地址" class="headerlink" title="截取http://地址"></a>截取<a href="http://地址" target="_blank" rel="external">http://地址</a></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"(http://|https://)&#123;1&#125;[//w//.//-/:]+"</span>);  </div><div class="line">Matcher matcher = pattern.matcher(<span class="string">"dsdsds&lt;http://dsds//gfgffdfd&gt;fdf"</span>);  </div><div class="line">StringBuffer buffer = <span class="keyword">new</span> StringBuffer();  </div><div class="line"><span class="keyword">while</span>(matcher.find())&#123;                </div><div class="line">    buffer.append(matcher.group());          </div><div class="line">    buffer.append(<span class="string">"/r/n"</span>);                </div><div class="line">System.out.println(buffer.toString());  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="替换指定-中文字"><a href="#替换指定-中文字" class="headerlink" title="替换指定{}中文字"></a>替换指定{}中文字</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">replace</span><span class="params">(<span class="keyword">final</span> String sourceString,Object[] object)</span> </span>&#123;  </div><div class="line">            String temp=sourceString;      </div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;object.length;i++)&#123;  </div><div class="line">                      String[] result=(String[])object[i];  </div><div class="line">               Pattern    pattern = Pattern.compile(result[<span class="number">0</span>]);  </div><div class="line">               Matcher matcher = pattern.matcher(temp);  </div><div class="line">               temp=matcher.replaceAll(result[<span class="number">1</span>]);  </div><div class="line">            &#125;  </div><div class="line">            <span class="keyword">return</span> temp;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="以正则条件查询指定目录下文件"><a href="#以正则条件查询指定目录下文件" class="headerlink" title="以正则条件查询指定目录下文件"></a>以正则条件查询指定目录下文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//用于缓存文件列表  </span></div><div class="line">       <span class="keyword">private</span> ArrayList files = <span class="keyword">new</span> ArrayList();  </div><div class="line">       <span class="comment">//用于承载文件路径  </span></div><div class="line">       <span class="keyword">private</span> String _path;  </div><div class="line">       <span class="comment">//用于承载未合并的正则公式  </span></div><div class="line">       <span class="keyword">private</span> String _regexp;  </div><div class="line">         </div><div class="line">       <span class="class"><span class="keyword">class</span> <span class="title">MyFileFilter</span> <span class="keyword">implements</span> <span class="title">FileFilter</span> </span>&#123;  </div><div class="line">  </div><div class="line">             <span class="comment">/** </span></div><div class="line">              * 匹配文件名称 </div><div class="line">              */  </div><div class="line">             <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">accept</span><span class="params">(File file)</span> </span>&#123;  </div><div class="line">               <span class="keyword">try</span> &#123;  </div><div class="line">                 Pattern pattern = Pattern.compile(_regexp);  </div><div class="line">                 Matcher match = pattern.matcher(file.getName());                  </div><div class="line">                 <span class="keyword">return</span> match.matches();  </div><div class="line">               &#125; <span class="keyword">catch</span> (Exception e) &#123;  </div><div class="line">                 <span class="keyword">return</span> <span class="keyword">true</span>;  </div><div class="line">               &#125;  </div><div class="line">             &#125;  </div><div class="line">           &#125;  </div><div class="line">         </div><div class="line">       <span class="comment">/** </span></div><div class="line">        * 解析输入流 </div><div class="line">        * <span class="doctag">@param</span> inputs </div><div class="line">        */  </div><div class="line">       FilesAnalyze (String path,String regexp)&#123;  </div><div class="line">           getFileName(path,regexp);  </div><div class="line">       &#125;  </div><div class="line">         </div><div class="line">       <span class="comment">/** </span></div><div class="line">        * 分析文件名并加入files </div><div class="line">        * <span class="doctag">@param</span> input </div><div class="line">        */  </div><div class="line">       <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">getFileName</span><span class="params">(String path,String regexp)</span> </span>&#123;  </div><div class="line">           <span class="comment">//目录  </span></div><div class="line">             _path=path;  </div><div class="line">             _regexp=regexp;  </div><div class="line">             File directory = <span class="keyword">new</span> File(_path);  </div><div class="line">             File[] filesFile = directory.listFiles(<span class="keyword">new</span> MyFileFilter());  </div><div class="line">             <span class="keyword">if</span> (filesFile == <span class="keyword">null</span>) <span class="keyword">return</span>;  </div><div class="line">             <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; filesFile.length; j++) &#123;  </div><div class="line">               files.add(filesFile[j]);  </div><div class="line">             &#125;  </div><div class="line">             <span class="keyword">return</span>;  </div><div class="line">           &#125;  </div><div class="line">     </div><div class="line">       <span class="comment">/** </span></div><div class="line">        * 显示输出信息 </div><div class="line">        * <span class="doctag">@param</span> out </div><div class="line">        */  </div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span> <span class="params">(PrintStream out)</span> </span>&#123;  </div><div class="line">           Iterator elements = files.iterator();  </div><div class="line">           <span class="keyword">while</span> (elements.hasNext()) &#123;  </div><div class="line">               File file=(File) elements.next();  </div><div class="line">                   out.println(file.getPath());      </div><div class="line">           &#125;  </div><div class="line">       &#125;  </div><div class="line">  </div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">output</span><span class="params">(String path,String regexp)</span> </span>&#123;  </div><div class="line">  </div><div class="line">           FilesAnalyze fileGroup1 = <span class="keyword">new</span> FilesAnalyze(path,regexp);  </div><div class="line">           fileGroup1.print(System.out);  </div><div class="line">       &#125;  </div><div class="line">     </div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">           output(<span class="string">"C://"</span>,<span class="string">"[A-z|.]*"</span>);  </div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<hr>
+<pre><code>Java正则的功用还有很多，事实上只要是字符处理，就没有正则做不到的事情存在。（正则解释时较耗时间就是了|||……）
+</code></pre>
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://mmmxcc.cn/2016/10/19/Android正则表达式及Pattern Matcher使用/" target="_blank" rel="external">http://mmmxcc.cn/2016/10/19/Android正则表达式及Pattern Matcher使用/</a>
+                </p>
+                <footer><cite><a href="http://mmmxcc.cn">@李飞阳</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2016/10/27/Python基础/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Python基础</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2016/10/19/VelocityTracker滑动屏幕切换Activity/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">VelocityTracker滑动屏幕切换Activity</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android正则表达式及Pattern Matcher使用" data-title="Android正则表达式及Pattern Matcher使用" data-url="http://mmmxcc.cn/2016/10/19/Android正则表达式及Pattern Matcher使用/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"mmmxcc"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "Android正则表达式及Pattern Matcher使用",
+    pic: "/img/logo.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "http://mmmxcc.cn/2016/10/19/Android正则表达式及Pattern Matcher使用/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script src="//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502"></script>
+
+
+
+
+
+</body>
+</html>

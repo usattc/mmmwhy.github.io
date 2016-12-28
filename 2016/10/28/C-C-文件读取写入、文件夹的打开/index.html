@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>C / C++ 文件读取写入、文件夹的打开 | 李飞阳 | PM、Coder、Data mining</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="C++">
+  <meta name="description" content="使用C++做文件处理时常用的几个函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C / C++ 文件读取写入、文件夹的打开">
+<meta property="og:url" content="http://mmmxcc.cn/2016/10/28/C-C-文件读取写入、文件夹的打开/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="使用C++做文件处理时常用的几个函数">
+<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20161028/190446344.png">
+<meta property="og:updated_time" content="2016-10-28T11:10:49.465Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C / C++ 文件读取写入、文件夹的打开">
+<meta name="twitter:description" content="使用C++做文件处理时常用的几个函数">
+<meta name="twitter:image" content="http://mmmxcc.08tk.cn/blog/20161028/190446344.png">
+  
+    <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  <meta name="summary" content="&lt;blockquote&gt;
+&lt;p&gt;使用C++做文件处理时常用的几个函数&lt;/p&gt;
+&lt;/blockquote&gt;">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">Wing Lee</h5>
+        <a href="mailto:i@mmmxcc.cn" title="i@mmmxcc.cn" class="mail">i@mmmxcc.cn</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              归档
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/mmmwhy" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/2016/01/18/resume/"  >
+              <i class="icon icon-lg icon-link"></i>
+              关于我
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>访问时间:2016/12/28 03:52:00</p>
+  <p>愿每个人都能被这个世界温柔对待 </p>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">C / C++ 文件读取写入、文件夹的打开</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">C / C++ 文件读取写入、文件夹的打开</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2016-10-28T11:09:24.000Z" itemprop="datePublished" class="page-time">
+  2016-10-28
+</time>
+
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-C-C-文件读取写入、文件夹的打开" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+            <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#文件的打开与关闭-open和close函数"><span class="post-toc-number">1.</span> <span class="post-toc-text">文件的打开与关闭 (open和close函数)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#文件读取与写入-infile-gt-gt-income-outfile-lt-lt-“income-”"><span class="post-toc-number">2.</span> <span class="post-toc-text">文件读取与写入(infile >> income,outfile <<  “income:”)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#文件夹-文件的打开"><span class="post-toc-number">3.</span> <span class="post-toc-text">文件夹/文件的打开</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#运行程序demo"><span class="post-toc-number">4.</span> <span class="post-toc-text">运行程序demo</span></a></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>使用C++做文件处理时常用的几个函数</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="文件的打开与关闭-open和close函数"><a href="#文件的打开与关闭-open和close函数" class="headerlink" title="文件的打开与关闭 (open和close函数)"></a>文件的打开与关闭 (open和close函数)</h1><p>文件读取之前，使用open函数进行打开。文件使用完毕后，使用close命令关闭。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">infile.open(<span class="string">"E:\\hello.txt"</span>);</div><div class="line">infile.close();</div></pre></td></tr></table></figure>
+<h1 id="文件读取与写入-infile-gt-gt-income-outfile-lt-lt-“income-”"><a href="#文件读取与写入-infile-gt-gt-income-outfile-lt-lt-“income-”" class="headerlink" title="文件读取与写入(infile &gt;&gt; income,outfile &lt;&lt;  “income:”)"></a>文件读取与写入(infile &gt;&gt; income,outfile &lt;&lt;  “income:”)</h1><p>C++中可以调用库 </p>
+<pre><code>#include&lt;fstream&gt;
+</code></pre><p>之后可以使用，”&gt;&gt;”和”&lt;&lt;”输入输出流的形式进行文件的读取</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> (infile &gt;&gt; income)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (income &lt; cutoff)</div><div class="line">				tax = rate1*income;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				tax = rate2*income;</div><div class="line">			outfile &lt;&lt;  <span class="string">"income:"</span>&lt;&lt;left&lt;&lt;setw(<span class="number">6</span>) &lt;&lt; income &lt;&lt; right&lt;&lt;setw(<span class="number">8</span>) &lt;&lt; <span class="string">"Tax:"</span> &lt;&lt;tax&lt;&lt; <span class="built_in">endl</span>;</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<h1 id="文件夹-文件的打开"><a href="#文件夹-文件的打开" class="headerlink" title="文件夹/文件的打开"></a>文件夹/文件的打开</h1><p>在程序运行完之后，你可能会希望自动将输出的结果文件打开。调 <strong>Windows Exploler </strong>打开一个文件夹，</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">system(<span class="string">"start E:\\tax.out"</span>);</div></pre></td></tr></table></figure>
+<p>E:\tax.out 就是你文件的地址</p>
+<h1 id="运行程序demo"><a href="#运行程序demo" class="headerlink" title="运行程序demo"></a>运行程序demo</h1><p>读取hello.txt文件内的收入数据，计算税金，并输出到tax.txt中</p>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161028/190446344.png" alt="demo"></p>
+<p><a href="http://mmmxcc.08tk.cn/blog/20161028/190626684.txt" target="_blank" rel="external">hello.txt</a>，直接 Ctrl+S 保存到E盘即可</p>
+<p>C++代码如下<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> cutoff = <span class="number">6000</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">float</span> rate1 = <span class="number">0.3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">float</span> rate2 = <span class="number">0.6</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	ifstream infile;</div><div class="line">	ofstream outfile;</div><div class="line">	<span class="keyword">int</span> income, tax;</div><div class="line">	infile.open(<span class="string">"E:\\hello.txt"</span>);</div><div class="line">	outfile.open(<span class="string">"E:\\tax.txt"</span>);</div><div class="line">		<span class="keyword">while</span> (infile &gt;&gt; income)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (income &lt; cutoff)</div><div class="line">				tax = rate1*income;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				tax = rate2*income;</div><div class="line">			outfile &lt;&lt;  <span class="string">"income:"</span>&lt;&lt;left&lt;&lt;setw(<span class="number">6</span>) &lt;&lt; income &lt;&lt; right&lt;&lt;setw(<span class="number">8</span>) &lt;&lt; <span class="string">"Tax:"</span> &lt;&lt;tax&lt;&lt; <span class="built_in">endl</span>;</div><div class="line">		&#125;</div><div class="line">		infile.close();</div><div class="line">		outfile.close();</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"done"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">		system(<span class="string">"start E:\\tax.txt"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://mmmxcc.cn/2016/10/28/C-C-文件读取写入、文件夹的打开/" target="_blank" rel="external">http://mmmxcc.cn/2016/10/28/C-C-文件读取写入、文件夹的打开/</a>
+                </p>
+                <footer><cite><a href="http://mmmxcc.cn">@李飞阳</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2016/10/28/永远的7012/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">永远的7012</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2016/10/28/解忧杂货店/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">解忧杂货店</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="C-C-文件读取写入、文件夹的打开" data-title="C / C++ 文件读取写入、文件夹的打开" data-url="http://mmmxcc.cn/2016/10/28/C-C-文件读取写入、文件夹的打开/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"mmmxcc"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "C / C++ 文件读取写入、文件夹的打开",
+    pic: "/img/logo.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "http://mmmxcc.cn/2016/10/28/C-C-文件读取写入、文件夹的打开/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script src="//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502"></script>
+
+
+
+
+
+</body>
+</html>

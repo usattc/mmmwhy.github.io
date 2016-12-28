@@ -1,0 +1,997 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>李飞阳</title>
+  <subtitle>PM、Coder、Data mining</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://mmmxcc.cn/"/>
+  <updated>2016-12-28T07:36:47.171Z</updated>
+  <id>http://mmmxcc.cn/</id>
+  
+  <author>
+    <name>Wing Lee</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LaTex 编辑公式</title>
+    <link href="http://mmmxcc.cn/2016/12/28/LaTex-%E7%BC%96%E8%BE%91%E5%85%AC%E5%BC%8F/"/>
+    <id>http://mmmxcc.cn/2016/12/28/LaTex-编辑公式/</id>
+    <published>2016-12-28T07:21:21.000Z</published>
+    <updated>2016-12-28T07:36:47.171Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p> 在计算机直接输入数学公式是一件棘手的事情，我一般是用一个专业的数学工具MathType，但最近在使用Markdown写作，遂产生念头用LaTex输入公式。发现目前网上的语法介绍往往不够全面，于是自己写了一份。</p>
+</blockquote>
+<hr>
+<h1 id="LaTex-公式"><a href="#LaTex-公式" class="headerlink" title="LaTex 公式"></a>LaTex 公式</h1><h2 id="通用语法"><a href="#通用语法" class="headerlink" title="通用语法"></a>通用语法</h2><ul>
+<li>使用单 <strong>$</strong> 围住表达式，居左展示。</li>
+<li>使用双 <strong>$$</strong> 围住表达式，可以居中显示。</li>
+</ul>
+<h2 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h2><p>当前环境标准字体宽度为 M</p>
+<ul>
+<li>两个quad空格    <strong>a \qquad b</strong> 两个m的宽度<br><code>$$ C_1 \qquad C_2 $$</code><br>$$ C_1 \qquad C_2 $$</li>
+<li>quad空格    <strong>a \quad b</strong>    一个m的宽度<br><code>$$ C_1 \quad C_2 $$</code><br>$$ C_1 \quad C_2 $$</li>
+<li>大空格    <strong>a\ b</strong>        1/3m宽度<br><code>$$ C_1 \ C_2 $$</code><br>$$ C_1 \ C_2 $$</li>
+<li>中等空格    <strong>C_1\;C_2</strong> 2/7m宽度<br><code>$$C_1\;C_2$$</code><br>$$C_1\;C_2$$</li>
+<li>小空格    <strong>C_1\,C_2</strong> 1/6m宽度<br><code>$$C_1\,C_2$$</code><br>$$C_1\,C_2$$</li>
+<li>没有空格    <strong>C_1C_2</strong><br><code>$$C_1C_2$$</code><br>$$C_1C_2$$</li>
+<li>紧贴    <strong>C_1!C_2</strong>        缩进1/6m宽度<br><code>$$C_1\!C_2$$</code><br><img src="http://mmmxcc.08tk.cn/blog/20161228/153631309.png" alt=""></li>
+</ul>
+<h2 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h2><ul>
+<li>上标符号 <strong>^</strong><br><code>$$ c_{1}^{2}=a^{2}+b^{2} $$</code><br>$$ c_{1}^{2}=a^{2}+b^{2} $$</li>
+<li>下标符号<strong>_</strong><br><code>$$C_{m,n}$$</code><br>$$C_{m,n}$$</li>
+</ul>
+<h2 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h2><p><code>$$\lambda,\xi,\pi,\mu,\Phi,\Omega,\alpha, \beta, \gamma,\Gamma, \Delta $$</code><br>$$\lambda,\xi,\pi,\mu,\Phi,\Omega,\alpha, \beta, \gamma,\Gamma, \Delta $$</p>
+<h2 id="值比较符"><a href="#值比较符" class="headerlink" title="值比较符"></a>值比较符</h2><ul>
+<li>大于等于小于，使用正常<strong>&gt;,&lt;,=</strong>即可</li>
+<li>大于等于使用 <strong>\geq</strong><br><code>$$e^{x^2} \geq {e^x}^2$$</code><br>$$e^{x^2} \geq {e^x}^2$$</li>
+<li>小于等于使用<strong>\leq</strong><br><code>$$e^{x^2} \leq {e^x}^2$$</code><br>$$e^{x^2} \leq {e^x}^2$$</li>
+<li>不等于使用<strong>neq</strong><br><code>$$e^{x^2} \neq {e^x}^2$$</code><br>$$e^{x^2} \neq {e^x}^2$$</li>
+</ul>
+<h2 id="平方根"><a href="#平方根" class="headerlink" title="平方根"></a>平方根</h2><p>使用<strong>\sqrt</strong>或 <strong>\surd</strong><br><code>$$\sqrt{x+y}$$</code><br>$$\sqrt{x+y}$$</p>
+<h2 id="水平线"><a href="#水平线" class="headerlink" title="水平线"></a>水平线</h2><p>使用 <strong>\overline,\underline</strong><br><code>$$\overline{m+n} \quad \underline{m+n}$$</code><br>$$\overline{m+n} \quad \underline{m+n}$$</p>
+<h2 id="水平括号"><a href="#水平括号" class="headerlink" title="水平括号"></a>水平括号</h2><p>使用<strong>\overbrace 和 \underbrace</strong><br><code>$$ \underbrace{a+b+\cdots+z}_{26}$$</code><br>$$ \underbrace{a+b+\cdots+z}_{26}$$</p>
+<h2 id="重音号"><a href="#重音号" class="headerlink" title="重音号"></a>重音号</h2><p>使用<strong>\widetilde 和 \widehat</strong><br>$$y’=3\widetilde a+4\widehat b$$</p>
+<h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h2><p>使用<strong>\overrightarrow 和 \overleftarrow</strong><br><code>$$\overrightarrow {AC} = \overrightarrow {AB} +\overrightarrow {BC} $$</code><br>$$\overrightarrow {AC} = \overleftarrow {AB} +\overrightarrow {BC} $$ </p>
+<h2 id="圆点"><a href="#圆点" class="headerlink" title="圆点"></a>圆点</h2><p>使用<strong>\cdot, \cdots,\vdots,\ddot</strong><br><code>$$ a \vdots =b \cdot c \cdots d  \ddot  e$$</code><br>$$ a \vdots =b \cdot c \cdots d  \ddot  e$$ </p>
+<h2 id="函数名"><a href="#函数名" class="headerlink" title="函数名"></a>函数名</h2><p>\arccos \cos \csc \arcsin \cosh \deg \arctan \cot \det \arg \coth \dim \sinh \sup \tan</p>
+<p>[\lim_{x \rightarrow 0} \frac{\sin x}{x}=1]</p>
+<p>\exp \ker \limsup \min \gcd \lg \ln \Pr \hom \lim \log \sec \inf \liminf \max \sin </p>
+<p>\tanh</p>
+<p><code>$$lim_{x \rightarrow 0} \frac{\sin x}{x}=1$$</code><br>$$lim_{x \rightarrow 0} \frac{\sin x}{x}=1$$</p>
+<h2 id="数学符"><a href="#数学符" class="headerlink" title="数学符"></a>数学符</h2><p><strong>\mathbf</strong><br><code>$$ x^{2} \geq 0\qquad \textrm{for all }x\in\mathbf{R} $$</code><br>$$ x^{2} \geq 0\qquad \textrm{for all }x\in\mathbf{R} $$</p>
+<h2 id="分数"><a href="#分数" class="headerlink" title="分数"></a>分数</h2><p><strong>直接输入或者\frac{}{} </strong></p>
+<ul>
+<li><code>$$\sin \alpha = \frac{a}{c} $$</code><br>$$\sin \alpha = \frac{a}{c} $$</li>
+<li><code>$$x^{1/2} $$</code><br>$$x^{1/2} $$</li>
+</ul>
+<h2 id="二项系数"><a href="#二项系数" class="headerlink" title="二项系数"></a>二项系数</h2><p><strong>{… \choose …} 或 {… \atop …}。第二个命令与第一个命令的输出相同,只是没有括号。</strong><br><code>$${n\choose m} \qquad {x\atop y+2}$$</code><br>$${n\choose m} \qquad {x\atop y+2}$$</p>
+<h2 id="前缀符号"><a href="#前缀符号" class="headerlink" title="前缀符号"></a>前缀符号</h2><p><strong>\int,\sum,\prod</strong></p>
+<ul>
+<li><p><code>$$ {\int_{0}^{\frac{\pi}{2}}} $$</code><br>$$ {\int_{0}^{\frac{\pi}{2}}} $$</p>
+</li>
+<li><p><code>$$ \sum_{i=1}^{n}$$</code><br>$$ \sum_{i=1}^{n}$$</p>
+</li>
+<li><p><code>$$\prod_\epsilon$$</code><br>$$\prod_\epsilon$$</p>
+</li>
+</ul>
+<h2 id="转义符号"><a href="#转义符号" class="headerlink" title="转义符号"></a>转义符号</h2><p><strong>有时保留字需要加入\来进行转义</strong><br><code>$${a,b,c}\neq\{a,b,c\}$$</code><br>$${a,b,c}\neq{a,b,c}$$</p>
+<h2 id="括号层次"><a href="#括号层次" class="headerlink" title="括号层次"></a>括号层次</h2><ul>
+<li>正确的括号大小\left和\right。如果将命令 \left 放在开分隔符前,TEX会自动决定分隔符的正确大 小。注意必须用对应的右分隔符 \right 来关闭每一个左分隔符 \left,并 且只有当这两个分隔符排在同一行时大小才会被正确确定。<strong>我们可以看到右式没有采用\left形式，不能正确确定括号大小</strong><br><code>$$ 1+\left(\frac {1}{1-x^2}\right) ^3 \qquad 1+(\frac {1}{1-x^2}) ^3$$</code><br>$$ 1+\left(\frac {1}{1-x^2}\right) ^3 \qquad 1+(\frac {1}{1-x^2}) ^3$$ </li>
+</ul>
+<p>另外也可以手工指出括号大小，使用\big,\Big,\bigg,\Bigg。</p>
+<ul>
+<li><code>$$ \Big( (x+y) (x-y) \Big)^{2} $$</code><br>$$ \Big( (x+y) (x-y) \Big)^{2} $$</li>
+<li><code>$$\big(\Big(\bigg(\Bigg($$</code><br>$$\big(\Big(\bigg(\Bigg($$</li>
+<li><code>$$\big\}\Big\}\bigg\}\Bigg\} $$</code><br>$$\big}\Big}\bigg}\Bigg} $$</li>
+<li><code>$$\big\|\Big\|\bigg\|\Bigg\| $$</code><br>$$\big|\Big|\bigg|\Bigg| $$</li>
+</ul>
+<h2 id="垂直对齐"><a href="#垂直对齐" class="headerlink" title="垂直对齐"></a>垂直对齐</h2><p>使用array命令，并\命令来分行。注意转义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$$\mathbf&#123;X&#125; =</div><div class="line">	\left( \begin&#123;array&#125;&#123;ccc&#125;</div><div class="line">	x_&#123;11&#125; &amp; x_&#123;12&#125; &amp; \ldots \\\</div><div class="line">	x_&#123;21&#125; &amp; x_&#123;22&#125; &amp; \ldots \\\</div><div class="line">	\vdots &amp; \vdots &amp; \ddots</div><div class="line">	\end&#123;array&#125; \right) $$</div></pre></td></tr></table></figure>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161228/153602468.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt; 在计算机直接输入数学公式是一件棘手的事情，我一般是用一个专业的数学工具MathType，但最近在使用Markdown写作，遂产生念头用LaTex输入公式。发现目前网上的语法介绍往往不够全面，于是自己写了一份。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+    
+    </summary>
+    
+    
+      <category term="LaTex" scheme="http://mmmxcc.cn/tags/LaTex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx环境下配置HTTPS</title>
+    <link href="http://mmmxcc.cn/2016/12/18/Nginx%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%85%8D%E7%BD%AEHTTPS/"/>
+    <id>http://mmmxcc.cn/2016/12/18/Nginx环境下配置HTTPS/</id>
+    <published>2016-12-18T08:47:29.000Z</published>
+    <updated>2016-12-18T08:48:40.487Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>现在，你应该能在访问<a href="https://mmmxcc.cn">https://mmmxcc.cn</a> 的时候，在地址栏里看到一个漂亮的小绿锁<img src="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="申请免费SSL证书"><a href="#申请免费SSL证书" class="headerlink" title="申请免费SSL证书"></a>申请免费SSL证书</h1><p>普通的SSL证书动辄好几千，简直令人发指。不过别担心，我找到了3个免费申请HTTPS证书的方式。<br><img src="http://upload-images.jianshu.io/upload_images/3326314-02f3a084e6a6a776.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ul>
+<li><strong>StartSSL也免费提供了一个证书（纯英文）</strong><br>申请地址：<a href="https://www.startssl.com/Account?r=L1ZhbGlkYXRl" target="_blank" rel="external">https://www.startssl.com/Account?r=L1ZhbGlkYXRl</a></li>
+<li>阿里云免费提供的证书<br><a href="https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy" target="_blank" rel="external">https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy</a><br><img src="http://mmmxcc.08tk.cn/blog/20161218/162129508.png?imageMogr2/thumbnail/!80p" alt=""></li>
+<li>腾讯云免费申请<br><a href="https://console.qcloud.com/ssl" target="_blank" rel="external">https://console.qcloud.com/ssl</a><br><img src="http://upload-images.jianshu.io/upload_images/3326314-f86b2f0ec2e121b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+<p>获得证书之后，下载至本地。</p>
+<h1 id="VPS上安装SSL证书"><a href="#VPS上安装SSL证书" class="headerlink" title="VPS上安装SSL证书"></a>VPS上安装SSL证书</h1><p><strong>以Nginx 为例</strong></p>
+<h2 id="获取证书"><a href="#获取证书" class="headerlink" title="获取证书"></a>获取证书</h2><p>Nginx文件夹内获得SSL证书文件 1_www.domain.com_bundle.crt 和私钥文件 2_www.domain.com.key,</p>
+<p>1_www.domain.com_bundle.crt 文件包括两段证书代码 “—–BEGIN CERTIFICATE—–”和“—–END CERTIFICATE—–”,<br>2_www.domain.com.key 文件包括一段私钥代码“—–BEGIN RSA PRIVATE KEY—–”和“—–END RSA PRIVATE KEY—–”。<br><img src="http://upload-images.jianshu.io/upload_images/3326314-47e83ff91ca63910.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="上传和部署SSL证书"><a href="#上传和部署SSL证书" class="headerlink" title="上传和部署SSL证书"></a>上传和部署SSL证书</h2><p>将域名 www.domain.com 的证书文件1_www.domain.com_bundle.crt 、私钥文件2_www.domain.com.key保存到同一个目录，例如/usr/local/nginx/conf目录下。更新Nginx根目录下 conf/nginx.conf 文件如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen 443;</div><div class="line">        server_name www.domain.com; #填写绑定证书的域名</div><div class="line">        ssl on;</div><div class="line">        ssl_certificate 1_www.domain.com_bundle.crt;</div><div class="line">        ssl_certificate_key 2_www.domain.com.key;</div><div class="line">        ssl_session_timeout 5m;</div><div class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置</div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置</div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line">        location / &#123;</div><div class="line">            root   html; #站点目录</div><div class="line">            index  index.html index.htm;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">配置文件参数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">listen 443</td>
+<td style="text-align:left">SSL访问端口号为443</td>
+</tr>
+<tr>
+<td style="text-align:left">ssl on</td>
+<td style="text-align:left">启用SSL功能</td>
+</tr>
+<tr>
+<td style="text-align:left">ssl_certificate</td>
+<td style="text-align:left">证书文件</td>
+</tr>
+<tr>
+<td style="text-align:left">ssl_certificate_key</td>
+<td style="text-align:left">私钥文件</td>
+</tr>
+<tr>
+<td style="text-align:left">ssl_protocols</td>
+<td style="text-align:left">使用的协议</td>
+</tr>
+<tr>
+<td style="text-align:left">ssl_ciphers</td>
+<td style="text-align:left">配置加密套件，写法遵循openssl标准</td>
+</tr>
+</tbody>
+</table>
+<h2 id="重启Nginx"><a href="#重启Nginx" class="headerlink" title="重启Nginx"></a>重启Nginx</h2><p>输入 <code>nginx -s reload</code>  ：修改配置后重新加载生效<br>可以看到SSL证书生效，且HTTPS可以访问站点。<br><img src="http://upload-images.jianshu.io/upload_images/3326314-f690fba71ee4240b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;现在，你应该能在访问&lt;a href=&quot;https://mmmxcc.cn&quot;&gt;https://mmmxcc.cn&lt;/a&gt; 的时候，在地址栏里看到一个漂亮的小绿锁&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="VPS" scheme="http://mmmxcc.cn/tags/VPS/"/>
+    
+      <category term="Nginx" scheme="http://mmmxcc.cn/tags/Nginx/"/>
+    
+      <category term="HTTPS" scheme="http://mmmxcc.cn/tags/HTTPS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第一题：Python图片添加水印</title>
+    <link href="http://mmmxcc.cn/2016/12/16/%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%9APython%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/"/>
+    <id>http://mmmxcc.cn/2016/12/16/第一题：Python图片添加水印/</id>
+    <published>2016-12-16T04:16:16.000Z</published>
+    <updated>2016-12-16T04:22:06.693Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>题目来自：<a href="https://github.com/Yixiaohan/show-me-the-code" target="_blank" rel="external">Python 练习册，每天一个小程序</a>，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 </p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="添加文字水印"><a href="#添加文字水印" class="headerlink" title="添加文字水印"></a>添加文字水印</h1><p>初始图像<br><img src="http://mmmxcc.08tk.cn/blog/20161216/122038769.png?imageMogr2/thumbnail/!80p" alt="我的头像"></p>
+<h2 id="Python代码"><a href="#Python代码" class="headerlink" title="Python代码"></a>Python代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_num</span><span class="params">(img)</span>:</span></div><div class="line">    draw = ImageDraw.Draw(img)</div><div class="line">    myfont = ImageFont.truetype(<span class="string">'C:/windows/fonts/Arial.ttf'</span>, size=<span class="number">40</span>)</div><div class="line">    fillcolor = <span class="string">"#ff0000"</span></div><div class="line">    width, height = img.size</div><div class="line">    draw.text((width<span class="number">-50</span>, <span class="number">5</span>), <span class="string">'99'</span>, font=myfont, fill=fillcolor)</div><div class="line">    img.save(<span class="string">'result.jpg'</span>,<span class="string">'jpeg'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    image = Image.open(<span class="string">'F:/Picture/touxiang.jpg'</span>)</div><div class="line">    add_num(image)</div><div class="line">    image.show()</div></pre></td></tr></table></figure>
+<h2 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h2><ul>
+<li><code>from PIL import Image, ImageDraw, ImageFont</code> 导入PIL图像处理库</li>
+<li><code>draw = ImageDraw.Draw(img)</code>，查了一下ImageDraw作用：</li>
+</ul>
+<p><strong>创建绘画对象</strong> ImageDraw module creates drawing surface for image<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import Image, ImageDraw</div><div class="line">im = Image.open(“vacation.jpeg") </div><div class="line">drawSurface = ImageDraw.Draw(im)</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>draw.text((width-50, 5), &#39;99&#39;, font=myfont, fill=fillcolor)</code> 第一个括号填写的是位置，表示在x轴在width-50，y轴在5的位置加入文字，也就是右上角的意思。</li>
+</ul>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="http://mmmxcc.08tk.cn/blog/20161216/115246388.jpg?imageMogr2/thumbnail/!80p" alt="文字水印"></p>
+<h1 id="添加图片水印"><a href="#添加图片水印" class="headerlink" title="添加图片水印"></a>添加图片水印</h1><h2 id="Python代码-1"><a href="#Python代码-1" class="headerlink" title="Python代码"></a>Python代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_num</span><span class="params">(im,mark)</span>:</span></div><div class="line">    layer = Image.new(<span class="string">'RGBA'</span>, im.size, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>))</div><div class="line">    layer.paste(mark, (im.size[<span class="number">0</span>] - <span class="number">150</span>, im.size[<span class="number">1</span>] - <span class="number">150</span>))</div><div class="line">    out = Image.composite(layer, im, layer)</div><div class="line">    out.save(<span class="string">'result.jpg'</span>,<span class="string">'jpeg'</span>)</div><div class="line">    out.show()</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    image = Image.open(<span class="string">'F:/Picture/touxiang.jpg'</span>)</div><div class="line">    mark = Image.open(<span class="string">'F:/Picture/1022.png'</span>)</div><div class="line">    add_num(image,mark)</div></pre></td></tr></table></figure>
+<h2 id="代码解释-1"><a href="#代码解释-1" class="headerlink" title="代码解释"></a>代码解释</h2><ul>
+<li><code>Image.composite(layer, im, layer)</code> 解释一下<code>Image.composite()</code>的意思<br>使用案例<br><code>Image.composite(image1, image2, mask) =&gt; image</code><br>使用遮罩（mask）作为alpha，通过在两个图像之间进行插值来创建一个新图像。遮罩图像的模式可以是“1”，“L”，或者“RGBA”。所有的图像的大小必须有相同。 </li>
+<li><code>out.save(&#39;result.jpg&#39;,&#39;jpeg&#39;)</code>，对图片进行保存，设置文件名和文件格式。</li>
+</ul>
+<h2 id="效果展示-1"><a href="#效果展示-1" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="http://mmmxcc.08tk.cn/blog/20161216/115917853.jpg?imageMogr2/thumbnail/!80p" alt="图片水印"><br>参考文章<a href="http://www.cnblogs.com/wei-li/archive/2012/04/19/2456725.html" target="_blank" rel="external"><a href="http://www.cnblogs.com/wei-li/archive/2012/04/19/2456725.html" target="_blank" rel="external">Python图像处理库：PIL中Image,ImageDraw等基本模块介绍</a></a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/Yixiaohan/show-me-the-code&quot;&gt;Python 练习册，每天一个小程序&lt;/a&gt;，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://mmmxcc.cn/tags/Python/"/>
+    
+      <category term="Python练习题" scheme="http://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Python插入排序</title>
+    <link href="http://mmmxcc.cn/2016/12/15/%E4%BD%BF%E7%94%A8Python%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"/>
+    <id>http://mmmxcc.cn/2016/12/15/使用Python插入排序/</id>
+    <published>2016-12-15T13:44:51.000Z</published>
+    <updated>2016-12-15T13:46:45.496Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>使用Python进行数据结构操作比较少见，但为了更深入的理解Python的操作原理，提升自己的算法能力。我决定认真过一遍 <strong>普林斯顿大学教授Robert Sedgewick主讲的《Algorithms》</strong></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p><a href="http://download.csdn.net/detail/mmmwhy/9712719" target="_blank" rel="external">【普林斯顿算法下载链接】普林斯顿大学教授Robert Sedgewick主讲的《Algorithms》</a></p>
+<h1 id="使用C-插入排序"><a href="#使用C-插入排序" class="headerlink" title="使用C++插入排序"></a>使用C++插入排序</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> a[] = &#123; <span class="number">4</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span> &#125;;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">		<span class="keyword">int</span> key = a[i];</div><div class="line">		<span class="keyword">int</span> j = i - <span class="number">1</span>;</div><div class="line">		<span class="keyword">while</span> (j &gt;= <span class="number">0</span>&amp;&amp;a[j] &gt; key) &#123;</div><div class="line">			a[j + <span class="number">1</span>] = a[j];  </div><div class="line">			j--;</div><div class="line">		&#125;</div><div class="line">		a[j + <span class="number">1</span>] = key;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i];</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这一段比较简单，我也就不多说了。</p>
+<h1 id="使用Python进行排序"><a href="#使用Python进行排序" class="headerlink" title="使用Python进行排序"></a>使用Python进行排序</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">data = [<span class="number">4</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">0</span>,<span class="number">1</span>]</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(data)):</div><div class="line">    key = data[i]</div><div class="line">    j = i - <span class="number">1</span></div><div class="line">    <span class="keyword">while</span> j &gt;= <span class="number">0</span> <span class="keyword">and</span> data[j] &gt; key:</div><div class="line">            data[j+<span class="number">1</span>]=data[j]</div><div class="line">            j = j - <span class="number">1</span></div><div class="line">    data[j+<span class="number">1</span>] = key</div><div class="line">print(data)</div></pre></td></tr></table></figure>
+<p>总结：</p>
+<ul>
+<li>Python的确比CPP简洁得多；</li>
+<li>while循环体中条件部分可以使用 and ，不能用&amp;&amp;</li>
+<li>python没有{}，需要对齐，输入Tab或者敲空格。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;使用Python进行数据结构操作比较少见，但为了更深入的理解Python的操作原理，提升自己的算法能力。我决定认真过一遍 &lt;strong&gt;普林斯顿大学教授Robert Sedgewick主讲的《Algorithms》&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://mmmxcc.cn/tags/Python/"/>
+    
+      <category term="Algorithms" scheme="http://mmmxcc.cn/tags/Algorithms/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python爬取图片（使用urllib2）</title>
+    <link href="http://mmmxcc.cn/2016/12/15/Python%E7%88%AC%E5%8F%96%E5%9B%BE%E7%89%87%EF%BC%88%E4%BD%BF%E7%94%A8urllib2%EF%BC%89/"/>
+    <id>http://mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/</id>
+    <published>2016-12-15T11:14:24.000Z</published>
+    <updated>2016-12-15T13:22:17.834Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>上篇文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="urllib2-简介"><a href="#urllib2-简介" class="headerlink" title="urllib2 简介"></a>urllib2 简介</h1><p>urllib2提供一个基础函数urlopen，通过向指定的URL发出请求来获取数据。最简单的形式就是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2 </div><div class="line">response = urllib2.urlopen(<span class="string">'http://mmmxcc.cn/'</span>) </div><div class="line">html = response.read()</div></pre></td></tr></table></figure>
+<p>可以将上述代码看作两个步骤，我们指定一个域名并发送请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request=urllib2.request(&apos;http://mmmxcc.cn/&apos;)</div></pre></td></tr></table></figure></p>
+<p>接着服务端响应来自客户端的请求 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">response=urllib2.urlopen(request)</div></pre></td></tr></table></figure>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p" alt="运行结果"></p>
+<p>我们可以发现title这个地方本来应该是中文的，但因为编码的原因，导致出现乱码。通过将html页面重新用”utf-8”编码，可以解决这个问题。</p>
+<hr>
+<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/">http://mmmxcc.cn/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
+<p>这里需要导入lxml，代码格式如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = requests.get(<span class="string">"http://jandan.net/ooxx"</span>)</div><div class="line">html.encoding = <span class="string">'utf-8'</span></div><div class="line">selector = etree.HTML(html.text)</div><div class="line">content = selector.xpath(<span class="string">'//ol[@class = "commentlist"]//@src'</span>)</div></pre></td></tr></table></figure>
+<p>单独运行 以上代码可以获得<br><img src="http://mmmxcc.08tk.cn/blog/20161215/182806800.png" alt="Xpath运行结果"></p>
+<h2 id="设置保存的位置"><a href="#设置保存的位置" class="headerlink" title="设置保存的位置"></a>设置保存的位置</h2><p>需要使用到os库中的 <em>os.chdir(r””)</em>函数，””中间插入地址。<strong>注意</strong>这个位置必须是<strong>存在</strong>的，如果位置不存在，函数会报错。因为该函数的意义是：将工作空间从python代码所在位置，改为指定的这个位置。</p>
+<h2 id="模拟正常浏览器下载图片（如果Python下载的图片不显示-）"><a href="#模拟正常浏览器下载图片（如果Python下载的图片不显示-）" class="headerlink" title="模拟正常浏览器下载图片（如果Python下载的图片不显示 ）"></a>模拟正常浏览器下载图片（如果Python下载的图片不显示 ）</h2><p>有时你会碰到，程序也对，但是服务器拒绝你的访问。这是为什么呢?</p>
+<p>问题出在请求中的头信息(header)。 有的服务端有洁癖，不喜欢程序来触摸它。</p>
+<p>这个时候你需要将你的程序伪装成浏览器来发出请求。请求的方式就包含在header中。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">header = &#123;</div><div class="line">        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36'</span>,</div><div class="line">        <span class="string">'Cookie'</span>: <span class="string">'AspxAutoDetectCookieSupport=1'</span>,</div><div class="line">    &#125;</div><div class="line">    request = urllib2.Request(imgurl, <span class="keyword">None</span>, header)  </div><div class="line">    response = urllib2.urlopen(request)</div></pre></td></tr></table></figure>
+<p>可以看到<em>urllib2.Request()</em>里边加入了一个header，用于模拟浏览器访问，第二个位置<strong>None</strong>表示data，用<a href="https://docs.python.org/2/howto/urllib2.html" target="_blank" rel="external">Python官方文档</a>的说法：<em>Sometimes you want to send data to a URL (often the URL will refer to a CGI (Common Gateway Interface) script <a href="https://docs.python.org/2/howto/urllib2.html#id9" target="_blank" rel="external">[1]</a> or other web application). With HTTP, this is often done using what’s known as a POST request. </em><br>暂时我们用不着，所以不深究，等我碰到这个问题了再说。</p>
+<h2 id="为图片命名（下载图片只有一张）"><a href="#为图片命名（下载图片只有一张）" class="headerlink" title="为图片命名（下载图片只有一张）"></a>为图片命名（下载图片只有一张）</h2><p>在获得response之后，将图片直接保存为某个特定名字的话。会导致之后抓取到的图片顶替掉之前的图片，导致图片看起来只有一张。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">"%s.jpg"</span> %name, <span class="string">"wb"</span>) <span class="keyword">as</span> f:</div><div class="line">        f.write(response.read())</div><div class="line">    print(imgurl)</div><div class="line">    name += <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>使用with as语句，将文件名保存为%s.jpg，类似于C语言的输出。循环结束的时候name++，保证文件名不重复。</p>
+<h2 id="使用with-as-函数"><a href="#使用with-as-函数" class="headerlink" title="使用with as 函数"></a>使用with as 函数</h2><p><em>Python’s with statement provides a very convenient way of dealing with the situation where you have to do a setup and teardown to make something happen. A very good example for this is the situation where you want to gain a handler to a file, read data from the file and the close the file handler.</em><br>有一些任务，可能事先需要设置，事后做清理工作。对于这种场景，Python的with语句提供了一种非常方便的处理方式。一个很好的例子是文件处理，你需要获取一个文件句柄，从文件中读取数据，然后关闭文件句柄。</p>
+<p><strong>Without the with statement, one would write something along the lines of:<br>如果不用with语句，代码如下：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">file = open(<span class="string">"/tmp/foo.txt"</span>)</div><div class="line">data = file.read()</div><div class="line">file.close()</div></pre></td></tr></table></figure></p>
+<p>使用with as之后代码为：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">"%s.jpg"</span> %name, <span class="string">"wb"</span>) <span class="keyword">as</span> f:</div><div class="line">       f.write(response.read())</div></pre></td></tr></table></figure></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文通过XPath表达式提取页面图片链接，使用urllib2下载，其中使用header模仿浏览器访问。解决了以下问题：</p>
+<ul>
+<li>Python下载的图片不显示 </li>
+<li>下载图片只有一张</li>
+<li>设置保存的位置</li>
+<li>使用with f函数</li>
+</ul>
+<p><strong>效果如下：</strong><br><img src="http://mmmxcc.08tk.cn/blog/20161215/191015695.png" alt="抓取到的图片"></p>
+<p><strong>完整代码</strong></p>
+<pre><code class="python"><span class="comment"># coding=utf-8</span>
+<span class="keyword">import</span> requests
+<span class="keyword">import</span> urllib2
+<span class="keyword">import</span> os
+
+<span class="keyword">from</span> lxml <span class="keyword">import</span> etree
+html = requests.get(<span class="string">"http://cl.d5j.biz/htm_mob/7/1612/2172569.html"</span>)
+html.encoding = <span class="string">'utf-8'</span>
+selector = etree.HTML(html.text)
+content = selector.xpath(<span class="string">'//table//img/@src'</span>)
+<span class="keyword">for</span> imgurl <span class="keyword">in</span> content:
+    name = imgurl[<span class="number">-9</span>:];
+    os.chdir(<span class="string">r"D:"</span>)
+    header = {
+        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36'</span>,
+        <span class="string">'Cookie'</span>: <span class="string">'AspxAutoDetectCookieSupport=1'</span>,
+    }
+    request = urllib2.Request(imgurl, <span class="keyword">None</span>, header)  <span class="comment">#刻意增加头部header，否则本行与下一行可以写为：response = urllib2.urlopen(imgurl)</span>
+    response = urllib2.urlopen(request)
+    f = open(name , <span class="string">'wb'</span>)
+    f.write(response.read())
+    f.close()
+    print(imgurl)
+</code></pre>
+<p>代码重新修改了一下，上手运行会发现D盘有惊喜哦~<br>加入print(imgurl)，运行起来更洋气~<br><img src="http://mmmxcc.08tk.cn/blog/20161215/191141723.png" alt="输入下载来源"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;上篇文章 &lt;a href=&quot;http://mmmxcc.cn/2016/12/13/提取网页信息/&quot;&gt;使用 XPath 提取网页信息&lt;/a&gt; 之后，将链接中的内容下载至本地，需要使用到 urllib2 。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://mmmxcc.cn/tags/Python/"/>
+    
+      <category term="爬虫" scheme="http://mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="urllib2" scheme="http://mmmxcc.cn/tags/urllib2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 XPath 提取网页信息</title>
+    <link href="http://mmmxcc.cn/2016/12/13/%E6%8F%90%E5%8F%96%E7%BD%91%E9%A1%B5%E4%BF%A1%E6%81%AF/"/>
+    <id>http://mmmxcc.cn/2016/12/13/提取网页信息/</id>
+    <published>2016-12-13T08:24:34.000Z</published>
+    <updated>2016-12-15T11:18:23.533Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p> 以1024举例，使用XPath提取图片链接以及磁力链接地址。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="学习XPath的基本知识"><a href="#学习XPath的基本知识" class="headerlink" title="学习XPath的基本知识"></a>学习XPath的基本知识</h1><p>推荐 <a href="http://www.w3school.com.cn/xpath/index.asp" target="_blank" rel="external">Xpath教程</a>  很容易理解。<br>推荐可以将常用的语法记下来，不常用的可以等用的时候再查。</p>
+<h2 id="推荐使用Chrome浏览器中的XPath-Helper，良心之作"><a href="#推荐使用Chrome浏览器中的XPath-Helper，良心之作" class="headerlink" title="推荐使用Chrome浏览器中的XPath Helper，良心之作."></a>推荐使用Chrome浏览器中的<a href="https://chrome.google.com/webstore/detail/hgimnogjllphhhkhlmebbmlgjoejdpjl" target="_blank" rel="external">XPath Helper</a>，<strong>良心之作</strong>.</h2><ul>
+<li><p>左边输入XPath表达式，右侧会自动展示结果。</p>
+</li>
+<li><p>选择元素之后按下<em>ctral + shift + x</em>，可以自动提取该元素的XPath表达式。</p>
+</li>
+</ul>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161213/154603126.png?imageMogr2/thumbnail/!80p" alt="使用Xpath Helper自带提取功能"></p>
+<h2 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h2><ul>
+<li>/    从根节点选取。</li>
+<li>//    从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。</li>
+<li>@    选取属性，常见使用方法为[@class = “title”]</li>
+</ul>
+<p>举例，比如在<a href="https://s.taobao.com/search?q=%E5%8F%8C%E9%9D%A2%E8%83%B6&amp;refpid=430266_1006&amp;source=tbsy&amp;style=grid&amp;tab=all&amp;pvid=b644f95644f7acd22cbc011dd2b4335f&amp;clk1=e2a07cd1788da47d4c393b5b8bbbcc27&amp;spm=a21bo.50862.201856-sline.1.o2a4b1" target="_blank" rel="external">双面胶-淘宝搜索</a> 页面</p>
+<p>输入: <strong>//*[@class=”m-itemlist”]//a[@trace-price&lt;20]/@href</strong>，用来提取出class为itemlist内a标签里所有price 小于20的产品，并将其href(即超链接)输出<br><img src="http://mmmxcc.08tk.cn/blog/20161213/155438640.png?imageMogr2/thumbnail/!80p" alt="结果展示"></p>
+<p>需要结合Chrome浏览器的F12一起使用，先选定大致的框架，比如itemlist这个class，然后逐渐加上更多的要求，具体见文首给出的链接学习。</p>
+<p><code>知道这些就可以抓取1024上的图片和磁力链接了，目测是不是很简单</code></p>
+<hr>
+<h1 id="挑选网页实验一下"><a href="#挑选网页实验一下" class="headerlink" title="挑选网页实验一下"></a>挑选网页实验一下</h1><blockquote>
+<p>作为一名1024资深游客，首先在技术讨论区选择一篇好文，这里用的是<a href="http://www.t66y.com/htm_mob/7/1612/2172569.html" target="_blank" rel="external">[榴民资讯]11月精品主题推荐（49期）</a></p>
+</blockquote>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161213/160946786.png?imageMogr2/thumbnail/!80p" alt="还是熟悉的味道"></p>
+<h2 id="使用F12查看网页的结构"><a href="#使用F12查看网页的结构" class="headerlink" title="使用F12查看网页的结构"></a>使用F12查看网页的结构</h2><p>有两个主要标签 header 和 main ，鼠标移动到main上，可以看到内容页面都被包含起来，所以第一个节点应该选main。<br><img src="http://mmmxcc.08tk.cn/blog/20161213/161454868.png?imageMogr2/thumbnail/!80p" alt="main标签"></p>
+<h2 id="使用XPath表达式筛选图片链接"><a href="#使用XPath表达式筛选图片链接" class="headerlink" title="使用XPath表达式筛选图片链接"></a>使用XPath表达式筛选图片链接</h2><p>我们看到图片前边都有一个属性src，这个src后边就是我们所需的图片链接。</p>
+<p>综上，使用XPath表达式: <strong>//*[@id=”main”]//@src</strong><br><img src="http://mmmxcc.08tk.cn/blog/20161213/161747115.png?imageMogr2/thumbnail/!80p" alt="mark"><br>输入XPath代码，获得图片链接。<br><img src="http://mmmxcc.08tk.cn/blog/20161213/161335310.png?imageMogr2/thumbnail/!80p" alt="mark"></p>
+<h2 id="使用XPath表达式筛选磁力链接"><a href="#使用XPath表达式筛选磁力链接" class="headerlink" title="使用XPath表达式筛选磁力链接"></a>使用XPath表达式筛选磁力链接</h2><p>同理，我们可以发现，磁力链接前边都有一个blockquote，与上一条处理方式类似，使用XPath表达式: <strong>//*[@id=”main”]//blockquote</strong></p>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161213/162129381.png?imageMogr2/thumbnail/!80p" alt="磁力链接"></p>
+<p><strong>以上</strong> </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt; 以1024举例，使用XPath提取图片链接以及磁力链接地址。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://mmmxcc.cn/tags/Python/"/>
+    
+      <category term="爬虫" scheme="http://mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="Xpath" scheme="http://mmmxcc.cn/tags/Xpath/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>永远的7012</title>
+    <link href="http://mmmxcc.cn/2016/10/28/%E6%B0%B8%E8%BF%9C%E7%9A%847012/"/>
+    <id>http://mmmxcc.cn/2016/10/28/永远的7012/</id>
+    <published>2016-10-28T13:33:08.000Z</published>
+    <updated>2016-12-15T11:18:26.559Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>Gary要从Running man下车了，这真是10月以来最悲伤的一件事了。</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h1 id="慌张"><a href="#慌张" class="headerlink" title="慌张"></a>慌张</h1><p>在这件事情还没有成为热搜之前，室友私下给我发了这个消息。</p>
+<p>当时我第一反应就觉得是假的，“怎么可能嘛，Gary之前说过七个人要永远在一起的啊。”</p>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161028/215708622.png?imageMogr2/thumbnail/!100p" alt=""></p>
+<p>就算我信誓旦旦的否认了，可还是忍不住又把这个消息多看了好几遍，想找到这是个假消息的依据。</p>
+<p><strong>可到后来我越看越慌，直到过了两个小时以后，热搜出现Gary的名字，我才被迫相信，但还是不愿接受。</strong></p>
+<hr>
+<h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>其实我并没有认识他们太长时间，但却在最短的时间内被他们所吸引。</p>
+<p>因为他们七个人，让我爱上了一个国家。</p>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161028/215804845.png?imageMogr2/thumbnail/!100p" alt=""></p>
+<p>我觉得这就是韩国跑男的魅力吧，<strong>他们永远谦逊，努力，敬业，总是希望把最好的一面呈献给观众。</strong>他们七个人的感情好到让我嫉妒，多少不经意间的小动作让我们觉得这就是<strong>一家人的感觉</strong>，这种感情，绝对不是靠”We are family“就能喊出来的。</p>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161028/215846791.png?imageMogr2/thumbnail/!100p" alt=""></p>
+<hr>
+<h1 id="七年"><a href="#七年" class="headerlink" title="七年"></a>七年</h1><p>Running man在一起跑了七年了，每个周一都准时准点的出现在我们面前，风雨无阻，真的不是所有的综艺都可以坚持那么久的。</p>
+<ul>
+<li>王鼻子大叔已经50岁了，体力明显跟不上了。</li>
+<li>金钟国浑身是伤，根本无法再扮演能力者的角色。</li>
+<li>其他的成员也是或多或少身体状况都不佳，不可能再回到大规模撕名牌的环节中。</li>
+</ul>
+<p>我们看得出来现在的running man确实不如以前好看了，可是看到<strong>他们七个人在一起，就是最开心的事。</strong></p>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161028/215947619.png" alt=""></p>
+<p>我知道我们总有一天要和Runningman告别，我也曾想过很多次他们会以怎样的方式跟我们说再见。可这种方式是我最不愿意见到的。</p>
+<p> <strong>与其Gary一人离开，不如节目就到此为止吧。 因为在我心里，他们就是一个整体，谁也不能替代，谁也无法分割。</strong></p>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161028/220012151.png?imageMogr2/thumbnail/!80p" alt=""></p>
+<p>不知道RM以后会怎么发展下去，但我知道<strong>所有深爱过这个节目的人，都不会责怪他们。</strong></p>
+<p> 就算不舍，也会把最真的祝福送给每一位成员。并且要告诉他们：谢谢他们七年的陪伴，谢谢他们为我们所做的努力，谢谢他们给我们带来那么多的快乐。</p>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161028/220138915.png?imageMogr2/thumbnail/!80p" alt=""></p>
+<p><strong>综艺人姜Gary，我们有缘再见！音乐人姜Gary，我们敬请期待！</strong></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Gary要从Running man下车了，这真是10月以来最悲伤的一件事了。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Running man" scheme="http://mmmxcc.cn/tags/Running-man/"/>
+    
+      <category term="臭臭" scheme="http://mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C / C++ 文件读取写入、文件夹的打开</title>
+    <link href="http://mmmxcc.cn/2016/10/28/C-C-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%86%99%E5%85%A5%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%89%93%E5%BC%80/"/>
+    <id>http://mmmxcc.cn/2016/10/28/C-C-文件读取写入、文件夹的打开/</id>
+    <published>2016-10-28T11:09:24.000Z</published>
+    <updated>2016-10-28T11:10:49.465Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>使用C++做文件处理时常用的几个函数</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="文件的打开与关闭-open和close函数"><a href="#文件的打开与关闭-open和close函数" class="headerlink" title="文件的打开与关闭 (open和close函数)"></a>文件的打开与关闭 (open和close函数)</h1><p>文件读取之前，使用open函数进行打开。文件使用完毕后，使用close命令关闭。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">infile.open(<span class="string">"E:\\hello.txt"</span>);</div><div class="line">infile.close();</div></pre></td></tr></table></figure>
+<h1 id="文件读取与写入-infile-gt-gt-income-outfile-lt-lt-“income-”"><a href="#文件读取与写入-infile-gt-gt-income-outfile-lt-lt-“income-”" class="headerlink" title="文件读取与写入(infile &gt;&gt; income,outfile &lt;&lt;  “income:”)"></a>文件读取与写入(infile &gt;&gt; income,outfile &lt;&lt;  “income:”)</h1><p>C++中可以调用库 </p>
+<pre><code>#include&lt;fstream&gt;
+</code></pre><p>之后可以使用，”&gt;&gt;”和”&lt;&lt;”输入输出流的形式进行文件的读取</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> (infile &gt;&gt; income)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (income &lt; cutoff)</div><div class="line">				tax = rate1*income;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				tax = rate2*income;</div><div class="line">			outfile &lt;&lt;  <span class="string">"income:"</span>&lt;&lt;left&lt;&lt;setw(<span class="number">6</span>) &lt;&lt; income &lt;&lt; right&lt;&lt;setw(<span class="number">8</span>) &lt;&lt; <span class="string">"Tax:"</span> &lt;&lt;tax&lt;&lt; <span class="built_in">endl</span>;</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<h1 id="文件夹-文件的打开"><a href="#文件夹-文件的打开" class="headerlink" title="文件夹/文件的打开"></a>文件夹/文件的打开</h1><p>在程序运行完之后，你可能会希望自动将输出的结果文件打开。调 <strong>Windows Exploler </strong>打开一个文件夹，</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">system(<span class="string">"start E:\\tax.out"</span>);</div></pre></td></tr></table></figure>
+<p>E:\tax.out 就是你文件的地址</p>
+<h1 id="运行程序demo"><a href="#运行程序demo" class="headerlink" title="运行程序demo"></a>运行程序demo</h1><p>读取hello.txt文件内的收入数据，计算税金，并输出到tax.txt中</p>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161028/190446344.png" alt="demo"></p>
+<p><a href="http://mmmxcc.08tk.cn/blog/20161028/190626684.txt" target="_blank" rel="external">hello.txt</a>，直接 Ctrl+S 保存到E盘即可</p>
+<p>C++代码如下<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> cutoff = <span class="number">6000</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">float</span> rate1 = <span class="number">0.3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">float</span> rate2 = <span class="number">0.6</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	ifstream infile;</div><div class="line">	ofstream outfile;</div><div class="line">	<span class="keyword">int</span> income, tax;</div><div class="line">	infile.open(<span class="string">"E:\\hello.txt"</span>);</div><div class="line">	outfile.open(<span class="string">"E:\\tax.txt"</span>);</div><div class="line">		<span class="keyword">while</span> (infile &gt;&gt; income)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (income &lt; cutoff)</div><div class="line">				tax = rate1*income;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				tax = rate2*income;</div><div class="line">			outfile &lt;&lt;  <span class="string">"income:"</span>&lt;&lt;left&lt;&lt;setw(<span class="number">6</span>) &lt;&lt; income &lt;&lt; right&lt;&lt;setw(<span class="number">8</span>) &lt;&lt; <span class="string">"Tax:"</span> &lt;&lt;tax&lt;&lt; <span class="built_in">endl</span>;</div><div class="line">		&#125;</div><div class="line">		infile.close();</div><div class="line">		outfile.close();</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"done"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">		system(<span class="string">"start E:\\tax.txt"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;使用C++做文件处理时常用的几个函数&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="http://mmmxcc.cn/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解忧杂货店</title>
+    <link href="http://mmmxcc.cn/2016/10/28/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7%E5%BA%97/"/>
+    <id>http://mmmxcc.cn/2016/10/28/解忧杂货店/</id>
+    <published>2016-10-28T04:30:59.000Z</published>
+    <updated>2016-10-28T04:34:43.428Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>我一直很努力去当一个善良的人，却总是在现实中受到各种打击。</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<p>以至于让我觉得根本不需要总是对别人那么好，或者说其实我希望可以一直对别人保持一颗有爱的心，只不过我需要力量支撑而已。</p>
+<pre><code>而解忧杂货店就给了我这种力量。
+</code></pre><p><img src="http://mmmxcc.08tk.cn/blog/20161028/122006987.png?imageMogr2/thumbnail/!100p" alt="解忧杂货店"></p>
+<ul>
+<li><p>浪矢爷爷说，<strong>人的心声</strong>是最不能被忽视的。所以不管是什么内容的信，玩笑的或是严肃的，甚至是一张白纸，他都会认认真真的回复。</p>
+</li>
+<li><p>因为人与人之间本来就是相互影响的，你的一举一动，一句在你看来是无所谓的话，却可能对别人造成很大的影响。</p>
+</li>
+<li><p>不要总想着设身处地，我们永远不是别人，总是很难站在别人角度考虑问题，稍不留神就以己度人了。</p>
+</li>
+</ul>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161028/122134157.png" alt=""></p>
+<p>所以，<strong>子所不欲勿施于人，己所欲也勿施于人。</strong></p>
+<p> 收到那么多封烦恼咨询信后，我慢慢发现其实很多人在写信的时候心里就已经有<strong>自己的答案</strong>了，他们写信的目的就是为了让别人可以支持<strong>他们的想法</strong>。</p>
+<p>但他们读过回信之后会再写信过来，就说明双方观点不太一样。所以才会反反复复进行那么多次通信，就为了说服别人同意自己的想法。</p>
+<p>我就想到每次我想买啥东西又不好意思买的时候，就会<strong>假装向阳询问</strong>，而阳就会 <strong><em>二话不说</em></strong> 立马给我买了。他竟然那么早就懂了这个道理，<strong>真是好棒呀！</strong> </p>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161028/122234749.png" alt=""></p>
+<p>我不知道别人判断一本好书的标准是什么，我不认识东野圭吾，不知道kindle里边他的排名，就只是很喜欢这种故事，<strong>有爱情，有亲情，有事业，有梦想。</strong></p>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161028/122722215.jpg" alt=""></p>
+<p>很平凡，平凡到感觉里边的人物就是生活中的你和我。但文学总是高于生活的，时空的交错，<strong>奇妙的构思让我觉得善良的人在冥冥之中总会受到保佑。</strong></p>
+<p>文章中的最后一段话好像是这样的，敦也从信纸上抬起头，正好对上了另两个人的视线，他发现他俩的眼里闪着光芒，他想他的眼里也一定是这样的。而我想说，读完这本书以后，我也是这样的感觉。</p>
+<p><img src="http://mmmxcc.08tk.cn/blog/20161028/122838719.jpeg?imageMogr2/thumbnail/!50p" alt="mark"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;我一直很努力去当一个善良的人，却总是在现实中受到各种打击。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="臭臭" scheme="http://mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
+    
+      <category term="读书笔记" scheme="http://mmmxcc.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python基础</title>
+    <link href="http://mmmxcc.cn/2016/10/27/Python%E5%9F%BA%E7%A1%80/"/>
+    <id>http://mmmxcc.cn/2016/10/27/Python基础/</id>
+    <published>2016-10-27T03:38:32.000Z</published>
+    <updated>2016-10-27T13:32:08.651Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="脚本运行"><a href="#脚本运行" class="headerlink" title="脚本运行"></a>脚本运行</h1><ul>
+<li>Windows 下需将python加入的系统变量中；</li>
+<li><p>Linux 下需添加头部</p>
+<a id="more"></a>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#! /usr/bin/enc python</span></div><div class="line">    print(<span class="string">'Hello World!'</span>)</div></pre></td></tr></table></figure>
+<h1 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h1><ul>
+<li>for 循环<pre><code>for 元素 in 序列:
+    statement
+</code></pre></li>
+</ul>
+<ul>
+<li>while 循环<pre><code>while 条件:
+    statement
+</code></pre></li>
+</ul>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">square_sum</span><span class="params">(a,b)</span>:</span> </div><div class="line">    c = a**<span class="number">2</span> + b**<span class="number">2</span> </div><div class="line">    <span class="keyword">return</span> c</div></pre></td></tr></table></figure>
+<p>def，这个关键字通知python：我在定义一个函数。square_sum是函数名。括号中的a, b是函数的<strong>参数</strong>，是对函数的<strong>输入</strong>。</p>
+<h2 id="函数调用和参数传递"><a href="#函数调用和参数传递" class="headerlink" title="函数调用和参数传递"></a>函数调用和参数传递</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">a = <span class="number">1</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_integer</span><span class="params">(a)</span>:</span></div><div class="line">    a = a + <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> a</div><div class="line"></div><div class="line"><span class="keyword">print</span> (change_integer(a))      <span class="comment">#注意观察结果</span></div><div class="line"><span class="keyword">print</span> (a)      <span class="comment">#注意观察结果</span></div><div class="line"></div><div class="line"><span class="comment">#===(Python中 "#" 后面跟的内容是注释，不执行 )</span></div><div class="line"></div><div class="line">b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_list</span><span class="params">(b)</span>:</span></div><div class="line">    b[<span class="number">0</span>] = b[<span class="number">0</span>] + <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> b</div><div class="line"></div><div class="line"><span class="keyword">print</span> (change_list(b))      <span class="comment">#注意观察结果</span></div><div class="line"><span class="keyword">print</span> (b)      <span class="comment">#注意观察结果</span></div></pre></td></tr></table></figure>
+<p><img src="http://mmmxcc.08tk.cn/python/1.jpg" alt="运行结果"></p>
+<p>第一个例子，我们将一个<strong>整数变量传递给函数</strong>，函数对它进行操作，但<strong>原整数变量a不发生变化</strong>。<br>第二个例子，我们将一个<strong>表传递给函数</strong>，函数进行操作，<strong>原来的表b发生变化</strong>。<br>对于基本数据类型的变量，变量传递给函数后，函数会在内存中复制一个新的变量，从而不影响原来的变量。（我们称此为<strong>值传递</strong>）<br>但是对于表来说，表传递给函数的是一个指针，指针指向序列在内存中的位置，在函数中对表的操作将在原有内存中进行，从而影响原有变量。 （我们称此为<strong>指针传递</strong>）。</p>
+<h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><p>我们定义一个类“鸟”，鸟有羽毛，鸟的方法是下蛋，定义一个函数fly()。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bird</span><span class="params">(object)</span>:</span></div><div class="line">    feather = <span class="keyword">True</span></div><div class="line">    way = <span class="string">'egg'</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fly</span><span class="params">(self, dx, dy)</span>:</span></div><div class="line">        position = [<span class="number">0</span>,<span class="number">0</span>]</div><div class="line">        position[<span class="number">0</span>] = position[<span class="number">0</span>] + dx</div><div class="line">        position[<span class="number">1</span>] = position[<span class="number">1</span>] + dy</div><div class="line">        <span class="keyword">return</span> position</div><div class="line"></div><div class="line">summer = Bird()</div><div class="line"><span class="keyword">print</span> (after move:<span class="string">',summer.fly(5,8))</span></div></pre></td></tr></table></figure></p>
+<p><strong>方法的第一个参数必须是self，无论是否用到。</strong></p>
+<p>我的summer可以飞了。</p>
+<hr>
+<h1 id="常见python-os-命令"><a href="#常见python-os-命令" class="headerlink" title="常见python os 命令"></a>常见python os 命令</h1><ul>
+<li>os.getcwd() 函数得到当前工作目录，即当前Python脚本工作的目录路径。</li>
+<li>os.listdir() 返回指定目录下的所有文件和目录名。</li>
+<li>os.remove() 删除一个文件。</li>
+<li>os.chdir(dirname) 改变工作目录到dirname</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;脚本运行&quot;&gt;&lt;a href=&quot;#脚本运行&quot; class=&quot;headerlink&quot; title=&quot;脚本运行&quot;&gt;&lt;/a&gt;脚本运行&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Windows 下需将python加入的系统变量中；&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Linux 下需添加头部&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://mmmxcc.cn/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android正则表达式及Pattern Matcher使用</title>
+    <link href="http://mmmxcc.cn/2016/10/19/Android%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8APattern%20Matcher%E4%BD%BF%E7%94%A8/"/>
+    <id>http://mmmxcc.cn/2016/10/19/Android正则表达式及Pattern Matcher使用/</id>
+    <published>2016-10-19T13:25:57.000Z</published>
+    <updated>2016-10-20T07:14:18.936Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Pattern-Matcher使用"><a href="#Pattern-Matcher使用" class="headerlink" title="Pattern Matcher使用"></a>Pattern Matcher使用</h1><pre><code>众所周知，在程序开发中，难免会遇到需要匹配、查找、替换、判断字符串的情况发生
+</code></pre><a id="more"></a>
+<p>而这些情况有时又比较复杂，如果用纯编码方式解决，往往会浪费程序员的时间及精力。因此，学习及使用正则表达式，便成了解决这一矛盾的主要手段。 一个正则表达式就是由普通的字符（例如字符a到z）以及特殊字符（元字符）组成的文字模式，它用以描述在查找文字主体时待匹配的一个或多个字符串。</p>
+<hr>
+<h2 id="加入特定限制条件「-」"><a href="#加入特定限制条件「-」" class="headerlink" title="加入特定限制条件「[]」"></a>加入特定限制条件「[]」</h2><ul>
+<li>[a-z]     条件限制在小写a to z范围中一个字符</li>
+<li>[A-Z]     条件限制在大写A to Z范围中一个字符</li>
+<li>[a-zA-Z] 条件限制在小写a to z或大写A to Z范围中一个字符</li>
+<li>[0-9]     条件限制在小写0 to 9范围中一个字符</li>
+<li>[0-9a-z] 条件限制在小写0 to 9或a to z范围中一个字符</li>
+<li>[0-9[a-z]] 条件限制在小写0 to 9或a to z范围中一个字符(交集)</li>
+</ul>
+<h2 id="中加入-后加再次限制条件「-」"><a href="#中加入-后加再次限制条件「-」" class="headerlink" title="[]中加入^后加再次限制条件「[^]」"></a>[]中加入^后加再次限制条件「[^]」</h2><ul>
+<li>[^a-z]     条件限制在非小写a to z范围中一个字符</li>
+<li>[^A-Z]     条件限制在非大写A to Z范围中一个字符</li>
+<li>[^a-zA-Z] 条件限制在非小写a to z或大写A to Z范围中一个字符</li>
+<li>[^0-9]     条件限制在非小写0 to 9范围中一个字符</li>
+<li>[^0-9a-z] 条件限制在非小写0 to 9或a to z范围中一个字符</li>
+<li>[^0-9[a-z]] 条件限制在非小写0 to 9或a to z范围中一个字符(交集)</li>
+</ul>
+<h2 id="在限制条件为特定字符出现0次以上时，可以使用「-」"><a href="#在限制条件为特定字符出现0次以上时，可以使用「-」" class="headerlink" title="在限制条件为特定字符出现0次以上时，可以使用「*」"></a>在限制条件为特定字符出现0次以上时，可以使用「*」</h2><ul>
+<li>J*     0个以上J</li>
+<li>.*     0个以上任意字符</li>
+<li>J.*D     J与D之间0个以上任意字符</li>
+</ul>
+<h2 id="在限制条件为特定字符出现1次以上时，可以使用「-」"><a href="#在限制条件为特定字符出现1次以上时，可以使用「-」" class="headerlink" title="在限制条件为特定字符出现1次以上时，可以使用「+」"></a>在限制条件为特定字符出现1次以上时，可以使用「+」</h2><ul>
+<li>J+     1个以上J</li>
+<li>.+     1个以上任意字符</li>
+<li>J.+D     J与D之间1个以上任意字符</li>
+</ul>
+<hr>
+<h1 id="Pattern-Matcher的例子"><a href="#Pattern-Matcher的例子" class="headerlink" title="Pattern Matcher的例子"></a>Pattern Matcher的例子</h1><h2 id="查找以Java开头-任意结尾的字符串"><a href="#查找以Java开头-任意结尾的字符串" class="headerlink" title="查找以Java开头,任意结尾的字符串"></a>查找以Java开头,任意结尾的字符串</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"^Java.*"</span>);  </div><div class="line">Matcher matcher = pattern.matcher(<span class="string">"Java不是人"</span>);  </div><div class="line"><span class="keyword">boolean</span> b= matcher.matches();  <span class="comment">//当条件满足时，将返回true，否则返回false  </span></div><div class="line">System.out.println(b);</div></pre></td></tr></table></figure>
+<h2 id="以多条件分割字符串时"><a href="#以多条件分割字符串时" class="headerlink" title="以多条件分割字符串时"></a>以多条件分割字符串时</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"[, |]+"</span>);  </div><div class="line">String[] strs = pattern.split(<span class="string">"Java Hello World  Java,Hello,,World|Sun"</span>);  </div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;strs.length;i++) &#123;  </div><div class="line">    System.out.println(strs[i]);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="文字替换（首次出现字符）"><a href="#文字替换（首次出现字符）" class="headerlink" title="文字替换（首次出现字符）"></a>文字替换（首次出现字符）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"正则表达式"</span>);  </div><div class="line">Matcher matcher = pattern.matcher(<span class="string">"正则表达式 Hello World,正则表达式 Hello World"</span>);  </div><div class="line"><span class="comment">//替换第一个符合正则的数据  </span></div><div class="line">System.out.println(matcher.replaceFirst(<span class="string">"Java"</span>));  </div><div class="line">`</div></pre></td></tr></table></figure>
+<h2 id="文字替换（全部）"><a href="#文字替换（全部）" class="headerlink" title="文字替换（全部）"></a>文字替换（全部）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"正则表达式"</span>);  </div><div class="line">Matcher matcher = pattern.matcher(<span class="string">"正则表达式 Hello World,正则表达式 Hello World"</span>);  </div><div class="line"><span class="comment">//替换第一个符合正则的数据  </span></div><div class="line">System.out.println(matcher.replaceAll(<span class="string">"Java"</span>));  </div><div class="line">`</div></pre></td></tr></table></figure>
+<h2 id="文字替换（置换字符）"><a href="#文字替换（置换字符）" class="headerlink" title="文字替换（置换字符）"></a>文字替换（置换字符）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"正则表达式"</span>);  </div><div class="line">Matcher matcher = pattern.matcher(<span class="string">"正则表达式 Hello World,正则表达式 Hello World "</span>);  </div><div class="line">StringBuffer sbr = <span class="keyword">new</span> StringBuffer();  </div><div class="line"><span class="keyword">while</span> (matcher.find()) &#123;  </div><div class="line">    matcher.appendReplacement(sbr, <span class="string">"Java"</span>);  </div><div class="line">&#125;  </div><div class="line">matcher.appendTail(sbr);  </div><div class="line">System.out.println(sbr.toString());</div></pre></td></tr></table></figure>
+<h2 id="验证是否为邮箱地址"><a href="#验证是否为邮箱地址" class="headerlink" title="验证是否为邮箱地址"></a>验证是否为邮箱地址</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String str=<span class="string">"ceponline@yahoo.com.cn"</span>;  </div><div class="line">Pattern pattern = Pattern.compile(<span class="string">"[//w//.//-]+@([//w//-]+//.)+[//w//-]+"</span>,Pattern.CASE_INSENSITIVE);  </div><div class="line">Matcher matcher = pattern.matcher(str);  </div><div class="line">System.out.println(matcher.matches());</div></pre></td></tr></table></figure>
+<h2 id="查找html中对应条件字符串"><a href="#查找html中对应条件字符串" class="headerlink" title="查找html中对应条件字符串"></a>查找html中对应条件字符串</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"href=/"</span>(.+?)/<span class="string">""</span>);  </div><div class="line">Matcher matcher = pattern.matcher(<span class="string">"&lt;a href=/"</span>index.html/<span class="string">"&gt;主页&lt;/a&gt;"</span>);  </div><div class="line"><span class="keyword">if</span>(matcher.find())  </div><div class="line">  System.out.println(matcher.group(<span class="number">1</span>));  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="截取http-地址"><a href="#截取http-地址" class="headerlink" title="截取http://地址"></a>截取<a href="http://地址" target="_blank" rel="external">http://地址</a></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Pattern pattern = Pattern.compile(<span class="string">"(http://|https://)&#123;1&#125;[//w//.//-/:]+"</span>);  </div><div class="line">Matcher matcher = pattern.matcher(<span class="string">"dsdsds&lt;http://dsds//gfgffdfd&gt;fdf"</span>);  </div><div class="line">StringBuffer buffer = <span class="keyword">new</span> StringBuffer();  </div><div class="line"><span class="keyword">while</span>(matcher.find())&#123;                </div><div class="line">    buffer.append(matcher.group());          </div><div class="line">    buffer.append(<span class="string">"/r/n"</span>);                </div><div class="line">System.out.println(buffer.toString());  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="替换指定-中文字"><a href="#替换指定-中文字" class="headerlink" title="替换指定{}中文字"></a>替换指定{}中文字</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">replace</span><span class="params">(<span class="keyword">final</span> String sourceString,Object[] object)</span> </span>&#123;  </div><div class="line">            String temp=sourceString;      </div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;object.length;i++)&#123;  </div><div class="line">                      String[] result=(String[])object[i];  </div><div class="line">               Pattern    pattern = Pattern.compile(result[<span class="number">0</span>]);  </div><div class="line">               Matcher matcher = pattern.matcher(temp);  </div><div class="line">               temp=matcher.replaceAll(result[<span class="number">1</span>]);  </div><div class="line">            &#125;  </div><div class="line">            <span class="keyword">return</span> temp;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="以正则条件查询指定目录下文件"><a href="#以正则条件查询指定目录下文件" class="headerlink" title="以正则条件查询指定目录下文件"></a>以正则条件查询指定目录下文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//用于缓存文件列表  </span></div><div class="line">       <span class="keyword">private</span> ArrayList files = <span class="keyword">new</span> ArrayList();  </div><div class="line">       <span class="comment">//用于承载文件路径  </span></div><div class="line">       <span class="keyword">private</span> String _path;  </div><div class="line">       <span class="comment">//用于承载未合并的正则公式  </span></div><div class="line">       <span class="keyword">private</span> String _regexp;  </div><div class="line">         </div><div class="line">       <span class="class"><span class="keyword">class</span> <span class="title">MyFileFilter</span> <span class="keyword">implements</span> <span class="title">FileFilter</span> </span>&#123;  </div><div class="line">  </div><div class="line">             <span class="comment">/** </span></div><div class="line">              * 匹配文件名称 </div><div class="line">              */  </div><div class="line">             <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">accept</span><span class="params">(File file)</span> </span>&#123;  </div><div class="line">               <span class="keyword">try</span> &#123;  </div><div class="line">                 Pattern pattern = Pattern.compile(_regexp);  </div><div class="line">                 Matcher match = pattern.matcher(file.getName());                  </div><div class="line">                 <span class="keyword">return</span> match.matches();  </div><div class="line">               &#125; <span class="keyword">catch</span> (Exception e) &#123;  </div><div class="line">                 <span class="keyword">return</span> <span class="keyword">true</span>;  </div><div class="line">               &#125;  </div><div class="line">             &#125;  </div><div class="line">           &#125;  </div><div class="line">         </div><div class="line">       <span class="comment">/** </span></div><div class="line">        * 解析输入流 </div><div class="line">        * <span class="doctag">@param</span> inputs </div><div class="line">        */  </div><div class="line">       FilesAnalyze (String path,String regexp)&#123;  </div><div class="line">           getFileName(path,regexp);  </div><div class="line">       &#125;  </div><div class="line">         </div><div class="line">       <span class="comment">/** </span></div><div class="line">        * 分析文件名并加入files </div><div class="line">        * <span class="doctag">@param</span> input </div><div class="line">        */  </div><div class="line">       <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">getFileName</span><span class="params">(String path,String regexp)</span> </span>&#123;  </div><div class="line">           <span class="comment">//目录  </span></div><div class="line">             _path=path;  </div><div class="line">             _regexp=regexp;  </div><div class="line">             File directory = <span class="keyword">new</span> File(_path);  </div><div class="line">             File[] filesFile = directory.listFiles(<span class="keyword">new</span> MyFileFilter());  </div><div class="line">             <span class="keyword">if</span> (filesFile == <span class="keyword">null</span>) <span class="keyword">return</span>;  </div><div class="line">             <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; filesFile.length; j++) &#123;  </div><div class="line">               files.add(filesFile[j]);  </div><div class="line">             &#125;  </div><div class="line">             <span class="keyword">return</span>;  </div><div class="line">           &#125;  </div><div class="line">     </div><div class="line">       <span class="comment">/** </span></div><div class="line">        * 显示输出信息 </div><div class="line">        * <span class="doctag">@param</span> out </div><div class="line">        */  </div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span> <span class="params">(PrintStream out)</span> </span>&#123;  </div><div class="line">           Iterator elements = files.iterator();  </div><div class="line">           <span class="keyword">while</span> (elements.hasNext()) &#123;  </div><div class="line">               File file=(File) elements.next();  </div><div class="line">                   out.println(file.getPath());      </div><div class="line">           &#125;  </div><div class="line">       &#125;  </div><div class="line">  </div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">output</span><span class="params">(String path,String regexp)</span> </span>&#123;  </div><div class="line">  </div><div class="line">           FilesAnalyze fileGroup1 = <span class="keyword">new</span> FilesAnalyze(path,regexp);  </div><div class="line">           fileGroup1.print(System.out);  </div><div class="line">       &#125;  </div><div class="line">     </div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;  </div><div class="line">           output(<span class="string">"C://"</span>,<span class="string">"[A-z|.]*"</span>);  </div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<hr>
+<pre><code>Java正则的功用还有很多，事实上只要是字符处理，就没有正则做不到的事情存在。（正则解释时较耗时间就是了|||……）
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Pattern-Matcher使用&quot;&gt;&lt;a href=&quot;#Pattern-Matcher使用&quot; class=&quot;headerlink&quot; title=&quot;Pattern Matcher使用&quot;&gt;&lt;/a&gt;Pattern Matcher使用&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;众所周知，在程序开发中，难免会遇到需要匹配、查找、替换、判断字符串的情况发生
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="http://mmmxcc.cn/tags/Android/"/>
+    
+      <category term="Pattern" scheme="http://mmmxcc.cn/tags/Pattern/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VelocityTracker滑动屏幕切换Activity</title>
+    <link href="http://mmmxcc.cn/2016/10/19/VelocityTracker%E6%BB%91%E5%8A%A8%E5%B1%8F%E5%B9%95%E5%88%87%E6%8D%A2Activity/"/>
+    <id>http://mmmxcc.cn/2016/10/19/VelocityTracker滑动屏幕切换Activity/</id>
+    <published>2016-10-19T09:11:28.000Z</published>
+    <updated>2016-10-20T07:13:10.520Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>我现在非常恨自己手贱选了安卓这门课，作业多的令人发指。不过自己选的课，哭着也要上完。本文主要讲解如何实现 滑动屏幕时切换Activity</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="VelocityTracker简介"><a href="#VelocityTracker简介" class="headerlink" title="VelocityTracker简介"></a>VelocityTracker简介</h2><ul>
+<li>android.view.VelocityTracker主要用跟踪触摸屏事件（flinging事件和其他gestures手势事件）的速率。</li>
+<li>用addMovement(MotionEvent)函数将Motion event加入到VelocityTracker类实例中。</li>
+<li>使用getXVelocity() 或getXVelocity()获得横向和竖向的速率到速率时，<strong>但是使用它们之前请先调用computeCurrentVelocity(int)来初始化速率的单位 。</strong></li>
+<li><p>使用recycleVelocityTracker()释放空间，循环使用。</p>
+<p>  当你需要跟踪触摸屏事件的速度的时候</p>
+</li>
+</ul>
+<p>使用<em>obtain()</em> 方法来获得 <em>VelocityTracker</em> 类的一个实例对象在<em>onTouchEvent</em>回调函数中，使用<em>addMovement(MotionEvent)</em>函数将当前的移动事件传递给<em>VelocityTracker</em>对象使用<em>computeCurrentVelocity (int units)</em>函数来计算当前的速度，使用 <em>getXVelocity ()、 getYVelocity ()</em>函数来获得当前的速度。</p>
+<h2 id="使用VelocityTracker"><a href="#使用VelocityTracker" class="headerlink" title="使用VelocityTracker"></a>使用VelocityTracker</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span></span>&#123;</div><div class="line">        entryLayout = (RelativeLayout)<span class="keyword">super</span>.findViewById(R.id.entry);</div><div class="line">        entryLayout.setOnTouchListener(<span class="keyword">new</span> View.OnTouchListener() &#123;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</div><div class="line">                createVelocityTracker(event); <span class="comment">//获取实例对象</span></div><div class="line">                <span class="keyword">switch</span>(event.getAction())&#123;</div><div class="line">                    <span class="keyword">case</span> MotionEvent.ACTION_DOWN: <span class="comment">//</span></div><div class="line">                        xDown=event.getX();</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</div><div class="line">                        <span class="keyword">int</span> xSpeed = getScrollVelocity();</div><div class="line">                        xMove = event.getRawX();</div><div class="line">                        <span class="keyword">int</span> distanceX1 = (<span class="keyword">int</span>) (xMove - xDown);</div><div class="line">                        <span class="keyword">int</span> distanceX2 = (<span class="keyword">int</span>) (xDown-xMove);</div><div class="line">                        <span class="keyword">if</span> ((distanceX1 &gt; XDISTANCE_MIN||distanceX2&gt;XDISTANCE_MIN )&amp;&amp;(xSpeed&gt;XSPEED_MIN)) &#123;</div><div class="line">                            openNew();</div><div class="line">                        &#125;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">case</span> MotionEvent.ACTION_UP:</div><div class="line">                        recycleVelocityTracker();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="对于-MotionEvent"><a href="#对于-MotionEvent" class="headerlink" title="对于 MotionEvent"></a>对于 MotionEvent</h2><pre><code>ACTION_DOWN: 表示用户开始触摸.
+ACTION_MOVE: 表示用户在移动(手指或者其他)
+ACTION_UP:表示用户抬起了手指
+ACTION_CANCEL:表示手势被取消了
+ACTION_OUTSIDE: 表示用户触碰超出了正常的UI边界.
+ACTION_POINTER_DOWN:有一个非主要的手指按下了.
+ACTION_POINTER_UP:一个非主要的手指抬起来了
+</code></pre><h2 id="其余部分代码"><a href="#其余部分代码" class="headerlink" title="其余部分代码"></a>其余部分代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getScrollVelocity</span><span class="params">()</span> </span>&#123;<span class="comment">//计算移动距离</span></div><div class="line">        mVelocityTracker.computeCurrentVelocity(<span class="number">1000</span>);</div><div class="line">        <span class="keyword">int</span> velocity = (<span class="keyword">int</span>) mVelocityTracker.getXVelocity();</div><div class="line">        <span class="keyword">return</span> Math.abs(velocity);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span>  <span class="keyword">void</span> <span class="title">createVelocityTracker</span><span class="params">(MotionEvent event)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(mVelocityTracker == <span class="keyword">null</span>)&#123;</div><div class="line">            mVelocityTracker = VelocityTracker.obtain(); <span class="comment">//获得VelocityTracker类实例</span></div><div class="line">        &#125;</div><div class="line">        mVelocityTracker.addMovement(event);<span class="comment">//将事件加入到VelocityTracker类实例中</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">recycleVelocityTracker</span><span class="params">()</span></span>&#123;</div><div class="line">        mVelocityTracker.recycle();</div><div class="line">        mVelocityTracker = <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">openNew</span><span class="params">()</span></span>&#123;</div><div class="line">        Intent intent = <span class="keyword">new</span> Intent(SCOSEntry.<span class="keyword">this</span>,MainScreen.class);</div><div class="line">        Bundle bundle = <span class="keyword">new</span> Bundle();</div><div class="line">        bundle.putString(<span class="string">"message"</span>,<span class="string">"FromEntry"</span>);</div><div class="line">        intent.putExtras(bundle);</div><div class="line">        startActivity(intent);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;我现在非常恨自己手贱选了安卓这门课，作业多的令人发指。不过自己选的课，哭着也要上完。本文主要讲解如何实现 滑动屏幕时切换Activity&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="http://mmmxcc.cn/tags/Android/"/>
+    
+      <category term="VelocityTracker" scheme="http://mmmxcc.cn/tags/VelocityTracker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建个人SSR翻墙帐号及私人分享</title>
+    <link href="http://mmmxcc.cn/2016/10/19/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BASSR%E7%BF%BB%E5%A2%99%E5%B8%90%E5%8F%B7%E5%8F%8A%E7%A7%81%E4%BA%BA%E5%88%86%E4%BA%AB/"/>
+    <id>http://mmmxcc.cn/2016/10/19/搭建个人SSR翻墙帐号及私人分享/</id>
+    <published>2016-10-19T06:13:18.000Z</published>
+    <updated>2016-10-20T10:39:42.756Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>本文转自<a href="http://t66y.com/htm_data/7/1608/2036792.html" target="_blank" rel="external">1024社区</a>，讲了一下SSR的搭建流程，并分享自己的SSR服务器。</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><h4 id="安装SSR"><a href="#安装SSR" class="headerlink" title="安装SSR"></a>安装SSR</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/shadowsocks_install/master/shadowsocksR.sh &amp;&amp; bash shadowsocksR.sh</div></pre></td></tr></table></figure>
+<p><img src="http://mmmxcc.08tk.cn/ssr/1.png" alt=""><br><img src="http://mmmxcc.08tk.cn/ssr/2.png" alt=""></p>
+<h4 id="锐速一键包"><a href="#锐速一键包" class="headerlink" title="锐速一键包"></a>锐速一键包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh &amp;&amp; bash serverspeeder-all.sh</div></pre></td></tr></table></figure>
+<h4 id="finalspeed-一键包"><a href="#finalspeed-一键包" class="headerlink" title="finalspeed 一键包"></a>finalspeed 一键包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/finalspeed/master/install_fs.sh &amp;&amp; bash install_fs.sh</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="finalspeed客户端配置"><a href="#finalspeed客户端配置" class="headerlink" title="finalspeed客户端配置"></a>finalspeed客户端配置</h4><p>假设服务器 IP 为 10.10.10.10,finalspeed 端口为默认 150,ss 端口为 8989.</p>
+<p>加速前提 ss 服务端运行正常, ss 客户端也能正常登录,运行FinalSpeed客户端,填写服务器地址 10.10.10.10 .</p>
+<hr>
+<h3 id="搭建个人SSR翻墙帐号及私人分享"><a href="#搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="搭建个人SSR翻墙帐号及私人分享"></a>搭建个人SSR翻墙帐号及私人分享</h3><ol>
+<li>点击添加,增加加速端口,加速端口为ss端口8989,如果为其他端口,请相应修改,本地端口任意,这里是2000搭建个人SSR翻墙帐号及私人分享</li>
+<li>打开ss客户端,添加服务器,服务器IP为127.0.0.1,服务器端口为加速端口对应的本地端口,这里是2000,然后设置你的ss密码,加密方式.搭建个人SSR翻墙帐号及私人分享</li>
+<li>确定保存,选择使用刚添加的服务器,并设置浏览器代理,成功连接后,FinalSpeed状态栏会出现”连接服务器成功”提示.<br>SSR 客户端、Xshell5和finalspeed客户端自己百度下载吧，我就不分享主要是不知用什么网盘分享，度盘不安全，免得被请去喝茶。</li>
+</ol>
+<hr>
+<h3 id="下面分享多个楼主个人搭建的SSR帐号"><a href="#下面分享多个楼主个人搭建的SSR帐号" class="headerlink" title="下面分享多个楼主个人搭建的SSR帐号"></a>下面分享多个楼主个人搭建的SSR帐号</h3><h4 id="德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享"><a href="#德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享"></a>德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://mmmxcc.08tk.cn/ssr/3.jpg" alt=""></p>
+<h4 id="搭建个人SSR翻墙帐号及私人分享-1"><a href="#搭建个人SSR翻墙帐号及私人分享-1" class="headerlink" title="搭建个人SSR翻墙帐号及私人分享"></a>搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://mmmxcc.08tk.cn/ssr/4.jpg" alt=""></p>
+<h4 id="日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享"><a href="#日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享"></a>日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://mmmxcc.08tk.cn/ssr/5.jpg" alt=""></p>
+<h4 id="容器SSR搭建个人SSR翻墙帐号及私人分享"><a href="#容器SSR搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="容器SSR搭建个人SSR翻墙帐号及私人分享"></a>容器SSR搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://mmmxcc.08tk.cn/ssr/6.jpg" alt=""></p>
+<h4 id="CentOS6-7搭建个人SSR翻墙帐号及私人分享"><a href="#CentOS6-7搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="CentOS6.7搭建个人SSR翻墙帐号及私人分享"></a>CentOS6.7搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://mmmxcc.08tk.cn/ssr/7.jpg" alt=""></p>
+<h4 id="CentOS6搭建个人SSR翻墙帐号及私人分享"><a href="#CentOS6搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="CentOS6搭建个人SSR翻墙帐号及私人分享"></a>CentOS6搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://mmmxcc.08tk.cn/ssr/8.jpg" alt=""></p>
+<h4 id="centos7搭建个人SSR翻墙帐号及私人分享"><a href="#centos7搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="centos7搭建个人SSR翻墙帐号及私人分享"></a>centos7搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://mmmxcc.08tk.cn/ssr/9.jpg" alt=""></p>
+<h4 id="Ubuntu搭建个人SSR翻墙帐号及私人分享"><a href="#Ubuntu搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="Ubuntu搭建个人SSR翻墙帐号及私人分享"></a>Ubuntu搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://mmmxcc.08tk.cn/ssr/10.jpg" alt=""></p>
+<h3 id="安卓版SSR下载地址"><a href="#安卓版SSR下载地址" class="headerlink" title="安卓版SSR下载地址"></a>安卓版SSR下载地址</h3><p>下载地址：<a href="http://mmmxcc.08tk.cn/ssr_3.0.2.2.apk" target="_blank" rel="external">http://mmmxcc.08tk.cn/ssr_3.0.2.2.apk</a></p>
+<hr>
+<p><img src="http://mmmxcc.08tk.cn/ssr/11.jpg" alt=""><br><img src="http://mmmxcc.08tk.cn/ssr/12.jpg" alt=""><br>右键使用扫描二维码添加，不用填写参数，之所以我上的是截图。<br><img src="http://mmmxcc.08tk.cn/ssr/13.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文转自&lt;a href=&quot;http://t66y.com/htm_data/7/1608/2036792.html&quot;&gt;1024社区&lt;/a&gt;，讲了一下SSR的搭建流程，并分享自己的SSR服务器。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="GFW" scheme="http://mmmxcc.cn/tags/GFW/"/>
+    
+      <category term="SSR" scheme="http://mmmxcc.cn/tags/SSR/"/>
+    
+      <category term="Linux" scheme="http://mmmxcc.cn/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用运营商计费漏洞获取无限流量</title>
+    <link href="http://mmmxcc.cn/2016/10/19/%E5%88%A9%E7%94%A8%E8%BF%90%E8%90%A5%E5%95%86%E8%AE%A1%E8%B4%B9%E6%BC%8F%E6%B4%9E%E8%8E%B7%E5%8F%96%E6%97%A0%E9%99%90%E6%B5%81%E9%87%8F/"/>
+    <id>http://mmmxcc.cn/2016/10/19/利用运营商计费漏洞获取无限流量/</id>
+    <published>2016-10-19T06:08:42.000Z</published>
+    <updated>2016-10-27T13:31:32.904Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>大家都听说过定向流量包，比如最常见的qq音乐，9元一个月随便听什么的，还有微信定向流量，问题就出在这里。（把你的普通上网流量请求都伪装成定向流量，伪装http请求，欺骗运营商的计费系统。定向流量在内部是不计费的，批价规则会忽略这部分话单。done。<a id="more"></a><strong>注：本文系转载，侵删</strong></p>
+</blockquote>
+<p>这个漏洞可以被我们利用，在 <a href="https://www.zhihu.com/question/39161593" target="_blank" rel="external">知乎</a> 上有很多关于此问题的讨论.</p>
+<hr>
+<h1 id="找到一款能够免流量费用的软件"><a href="#找到一款能够免流量费用的软件" class="headerlink" title="找到一款能够免流量费用的软件"></a>找到一款能够免流量费用的软件</h1><p>(直接使用即可免流量或者开通指定套餐免流量均可),或者网址.我这里找到的是咪咕音乐介绍中写了有免流量,实际测试发现确实是免流量的.<img src="http://mmmxcc.08tk.cn/loudong/1.jpg" alt=""></p>
+<h1 id="抓取数据包"><a href="#抓取数据包" class="headerlink" title="抓取数据包"></a>抓取数据包</h1><p>打开咪咕音乐,播放音乐,使用wi.cap进行抓包,结果如图所示.<img src="http://mmmxcc.08tk.cn/loudong/2.jpg" alt=""><br>可以看到有Host、Accept、User-Agent、Connection、imei、imsi等header.</p>
+<h1 id="使用可以手工构造HTTP-header的"><a href="#使用可以手工构造HTTP-header的" class="headerlink" title="使用可以手工构造HTTP header的"></a>使用可以手工构造HTTP header的</h1><p>类似于HTTP/HTTPS协议的vpn软件,如openvpn、ssr等,<br>这里我使用的是ssr.搭建ssr服务器,搭建时注意ss服务器端口和咪咕音乐服务器端口一致,这里是80端口,协议选择auth_sha1,混淆方式使用http_simple.这里我使用了一段网上搭建ssr的脚本,可以直接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://vpn.ximcx.cn/SSR/SSR &amp; bash SSR</div></pre></td></tr></table></figure></p>
+<p>使用的脚本内容为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div></pre></td><td class="code"><pre><div class="line">#! /bin/bash</div><div class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin</div><div class="line">export PATH</div><div class="line">#=================================================================#</div><div class="line">#   System Required:  CentOS 6,7, Debian, Ubuntu                   #</div><div class="line">#   Description: One click Install ShadowsocksR Server              #</div><div class="line">#   Author: 91yun                                                              #</div><div class="line">#   Thanks: @breakwa11 &lt;https://twitter.com/breakwa11&gt;       #</div><div class="line">#   Thanks: @Teddysun &lt;i@teddysun.com&gt;                            #</div><div class="line">#   Intro:  https://shadowsocks.be/9.html                              #</div><div class="line">#=================================================================#</div><div class="line">rm -f SSR</div><div class="line">clear</div><div class="line">yum -y install git</div><div class="line">echo -e &quot;\033[34m================================================================\033[0m</div><div class="line"></div><div class="line">\033[31m                欢迎使用SSR免流Or翻墙一键脚本                         \033[0m</div><div class="line"></div><div class="line">\033[31m         妖火网论坛：http://yaohuo.me，I&apos;M 西门吹雪             \033[0m</div><div class="line"></div><div class="line">\033[31m           即将开始搭建...   非妖火论坛妖友使用死全家                  \033[0m</div><div class="line">\033[34m================================================================\033[0m&quot;;</div><div class="line">echo</div><div class="line"></div><div class="line">echo</div><div class="line"></div><div class="line">#Current folder</div><div class="line">cur_dir=`pwd`</div><div class="line"># Get public IP address</div><div class="line">IP=$(ip addr | egrep -o &apos;[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;\.[0-9]&#123;1,3&#125;&apos; | egrep -v &quot;^192\.168|^172\.1[6-9]\.|^172\.2[0-9]\.|^172\.3[0-2]\.|^10\.|^127\.|^255\.|^0\.&quot; | head -n 1)</div><div class="line">if [[ &quot;$IP&quot; = &quot;&quot; ]]; then</div><div class="line">    IP=$(wget -qO- -t1 -T2 ipv4.icanhazip.com)</div><div class="line">fi</div><div class="line"></div><div class="line"># Make sure only root can run our script</div><div class="line">function rootness()&#123;</div><div class="line">    if [[ $EUID -ne 0 ]]; then</div><div class="line">       echo &quot;Error:This script must be run as root!&quot; 1&gt;&amp;2</div><div class="line">       exit 1</div><div class="line">    fi</div><div class="line">&#125;</div><div class="line"></div><div class="line"># Check OS</div><div class="line">function checkos()&#123;</div><div class="line">    if [ -f /etc/redhat-release ];then</div><div class="line">        OS=&apos;CentOS&apos;</div><div class="line">    elif [ ! -z &quot;`cat /etc/issue | grep bian`&quot; ];then</div><div class="line">        OS=&apos;Debian&apos;</div><div class="line">    elif [ ! -z &quot;`cat /etc/issue | grep Ubuntu`&quot; ];then</div><div class="line">        OS=&apos;Ubuntu&apos;</div><div class="line">    else</div><div class="line">        echo &quot;Not support OS, Please reinstall OS and retry!&quot;</div><div class="line">        exit 1</div><div class="line">    fi</div><div class="line">&#125;</div><div class="line"></div><div class="line"># Get version</div><div class="line">function getversion()&#123;</div><div class="line">    if [[ -s /etc/redhat-release ]];then</div><div class="line">        grep -oE  &quot;[0-9.]+&quot; /etc/redhat-release</div><div class="line">    else    </div><div class="line">        grep -oE  &quot;[0-9.]+&quot; /etc/issue</div><div class="line">    fi    </div><div class="line">&#125;</div><div class="line"></div><div class="line"># CentOS version</div><div class="line">function centosversion()&#123;</div><div class="line">    local code=$1</div><div class="line">    local version=&quot;`getversion`&quot;</div><div class="line">    local main_ver=$&#123;version%%.*&#125;</div><div class="line">    if [ $main_ver == $code ];then</div><div class="line">        return 0</div><div class="line">    else</div><div class="line">        return 1</div><div class="line">    fi        </div><div class="line">&#125;</div><div class="line"></div><div class="line"># Disable selinux</div><div class="line">function disable_selinux()&#123;</div><div class="line">if [ -s /etc/selinux/config ] &amp;&amp; grep &apos;SELINUX=enforcing&apos; /etc/selinux/config; then</div><div class="line">    sed -i &apos;s/SELINUX=enforcing/SELINUX=disabled/g&apos; /etc/selinux/config</div><div class="line">    setenforce 0</div><div class="line">fi</div><div class="line">&#125;</div><div class="line"></div><div class="line"># Pre-installation settings</div><div class="line">function pre_install()&#123;</div><div class="line">    # Not support CentOS 5</div><div class="line">    if centosversion 5; then</div><div class="line">        echo &quot;Not support CentOS 5, please change OS to CentOS 6+/Debian 7+/Ubuntu 12+ and retry.&quot;</div><div class="line">        exit 1</div><div class="line">    fi</div><div class="line">    # Set ShadowsocksR config password</div><div class="line">    echo &quot;请输入SSR连接密码:&quot;</div><div class="line">    read -p &quot;(默认密码: yaohuo520):&quot; shadowsockspwd</div><div class="line">    [ -z &quot;$shadowsockspwd&quot; ] &amp;&amp; shadowsockspwd=&quot;yaohuo520&quot;</div><div class="line">    echo</div><div class="line">    echo &quot;---------------------------&quot;</div><div class="line">    echo &quot;password = $shadowsockspwd&quot;</div><div class="line">    echo &quot;---------------------------&quot;</div><div class="line">    echo</div><div class="line">    # Set ShadowsocksR config port</div><div class="line">    while true</div><div class="line">    do</div><div class="line">    echo -e &quot;请输入SSR连接端口,不设置将默认138端口:&quot;</div><div class="line">    read -p &quot;(默认自动设置SS免流端口为138):&quot; shadowsocksport</div><div class="line">    [ -z &quot;$shadowsocksport&quot; ] &amp;&amp; shadowsocksport=&quot;138&quot;</div><div class="line">    expr $shadowsocksport + 0 &amp;&gt;/dev/null</div><div class="line">    if [ $? -eq 0 ]; then</div><div class="line">        if [ $shadowsocksport -ge 1 ] &amp;&amp; [ $shadowsocksport -le 65535 ]; then</div><div class="line">            echo</div><div class="line">            echo &quot;---------------------------&quot;</div><div class="line">            echo &quot;port = $shadowsocksport&quot;</div><div class="line">            echo &quot;---------------------------&quot;</div><div class="line">            echo</div><div class="line">            break</div><div class="line">        else</div><div class="line">            echo &quot;输入错误，请输入1-65535之间的数字！&quot;</div><div class="line">        fi</div><div class="line">    else</div><div class="line">        echo &quot;输入错误，请输入1-65535之间的数字！&quot;</div><div class="line">    fi</div><div class="line">    done</div><div class="line">    get_char()&#123;</div><div class="line">        SAVEDSTTY=`stty -g`</div><div class="line">        stty -echo</div><div class="line">        stty cbreak</div><div class="line">        dd if=/dev/tty bs=1 count=1 2&gt; /dev/null</div><div class="line">        stty -raw</div><div class="line">        stty echo</div><div class="line">        stty $SAVEDSTTY</div><div class="line">    &#125;</div><div class="line">    echo</div><div class="line">    echo &quot;Press any key to start...or Press Ctrl+C to cancel&quot;</div><div class="line">    char=`get_char`</div><div class="line">    # Install necessary dependencies</div><div class="line">    if [ &quot;$OS&quot; == &apos;CentOS&apos; ]; then</div><div class="line">        yum install -y wget unzip openssl-devel gcc swig python python-devel python-setuptools autoconf libtool libevent git ntpdate</div><div class="line">        yum install -y m2crypto automake make curl curl-devel zlib-devel perl perl-devel cpio expat-devel gettext-devel</div><div class="line">    else</div><div class="line">        apt-get -y update</div><div class="line">        apt-get -y install python python-dev python-pip python-m2crypto curl wget unzip gcc swig automake make perl cpio build-essential git ntpdate</div><div class="line">    fi</div><div class="line">    cd $cur_dir</div><div class="line">&#125;</div><div class="line"></div><div class="line"># Download files</div><div class="line">function download_files()&#123;</div><div class="line">    # Download libsodium file</div><div class="line">    if ! wget --no-check-certificate -O libsodium-1.0.10.tar.gz https://github.com/jedisct1/libsodium/releases/download/1.0.10/libsodium-1.0.10.tar.gz; then</div><div class="line">        echo &quot;Failed to download libsodium file!&quot;</div><div class="line">        exit 1</div><div class="line">    fi</div><div class="line">    # Download ShadowsocksR file</div><div class="line">    # if ! wget --no-check-certificate -O manyuser.zip https://github.com/breakwa11/shadowsocks/archive/manyuser.zip; then</div><div class="line">        # echo &quot;Failed to download ShadowsocksR file!&quot;</div><div class="line">        # exit 1</div><div class="line">    # fi</div><div class="line">    # Download ShadowsocksR chkconfig file</div><div class="line">    if [ &quot;$OS&quot; == &apos;CentOS&apos; ]; then</div><div class="line">        if ! wget --no-check-certificate https://raw.githubusercontent.com/91yun/shadowsocks_install/master/shadowsocksR -O /etc/init.d/shadowsocks; then</div><div class="line">            echo &quot;Failed to download ShadowsocksR chkconfig file!&quot;</div><div class="line">            exit 1</div><div class="line">        fi</div><div class="line">    else</div><div class="line">        if ! wget --no-check-certificate https://raw.githubusercontent.com/91yun/shadowsocks_install/master/shadowsocksR-debian -O /etc/init.d/shadowsocks; then</div><div class="line">            echo &quot;Failed to download ShadowsocksR chkconfig file!&quot;</div><div class="line">            exit 1</div><div class="line">        fi</div><div class="line">    fi</div><div class="line">&#125;</div><div class="line"></div><div class="line"># firewall set</div><div class="line">function firewall_set()&#123;</div><div class="line">    echo &quot;firewall set start...&quot;</div><div class="line">    if centosversion 6; then</div><div class="line">        /etc/init.d/iptables status &gt; /dev/null 2&gt;&amp;1</div><div class="line">        if [ $? -eq 0 ]; then</div><div class="line">            iptables -L -n | grep &apos;$&#123;shadowsocksport&#125;&apos; | grep &apos;ACCEPT&apos; &gt; /dev/null 2&gt;&amp;1</div><div class="line">            if [ $? -ne 0 ]; then</div><div class="line">                iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport $&#123;shadowsocksport&#125; -j ACCEPT</div><div class="line">                iptables -I INPUT -m state --state NEW -m udp -p udp --dport $&#123;shadowsocksport&#125; -j ACCEPT</div><div class="line">                /etc/init.d/iptables save</div><div class="line">                /etc/init.d/iptables restart</div><div class="line">            else</div><div class="line">                echo &quot;port $&#123;shadowsocksport&#125; has been set up.&quot;</div><div class="line">            fi</div><div class="line">        else</div><div class="line">            echo &quot;WARNING: iptables looks like shutdown or not installed, please manually set it if necessary.&quot;</div><div class="line">        fi</div><div class="line">    elif centosversion 7; then</div><div class="line">        systemctl status firewalld &gt; /dev/null 2&gt;&amp;1</div><div class="line">        if [ $? -eq 0 ];then</div><div class="line">            firewall-cmd --permanent --zone=public --add-port=$&#123;shadowsocksport&#125;/tcp</div><div class="line">            firewall-cmd --permanent --zone=public --add-port=$&#123;shadowsocksport&#125;/udp</div><div class="line">            firewall-cmd --reload</div><div class="line">        else</div><div class="line">            echo &quot;Firewalld looks like not running, try to start...&quot;</div><div class="line">            systemctl start firewalld</div><div class="line">            if [ $? -eq 0 ];then</div><div class="line">                firewall-cmd --permanent --zone=public --add-port=$&#123;shadowsocksport&#125;/tcp</div><div class="line">                firewall-cmd --permanent --zone=public --add-port=$&#123;shadowsocksport&#125;/udp</div><div class="line">                firewall-cmd --reload</div><div class="line">            else</div><div class="line">                echo &quot;WARNING: Try to start firewalld failed. please enable port $&#123;shadowsocksport&#125; manually if necessary.&quot;</div><div class="line">            fi</div><div class="line">        fi</div><div class="line">    fi</div><div class="line">    echo &quot;firewall set completed...&quot;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># Config ShadowsocksR</div><div class="line">function config_shadowsocks()&#123;</div><div class="line">    cat &gt; /etc/shadowsocks.json&lt;&lt;-EOF</div><div class="line">&#123;</div><div class="line">    &quot;server&quot;: &quot;0.0.0.0&quot;,</div><div class="line">    &quot;server_ipv6&quot;: &quot;::&quot;,</div><div class="line">    &quot;server_port&quot;: $&#123;shadowsocksport&#125;,</div><div class="line">    &quot;local_address&quot;: &quot;127.0.0.1&quot;,</div><div class="line">    &quot;local_port&quot;: 1081,</div><div class="line">    &quot;password&quot;: &quot;$&#123;shadowsockspwd&#125;&quot;,</div><div class="line">    &quot;timeout&quot;: 120,</div><div class="line">    &quot;udp_timeout&quot;: 60,</div><div class="line">    &quot;method&quot;: &quot;chacha20&quot;,</div><div class="line">    &quot;protocol&quot;: &quot;auth_sha1_compatible&quot;,</div><div class="line">    &quot;protocol_param&quot;: &quot;&quot;,</div><div class="line">    &quot;obfs&quot;: &quot;http_simple_compatible&quot;,</div><div class="line">    &quot;obfs_param&quot;: &quot;&quot;,</div><div class="line">    &quot;dns_ipv6&quot;: false,</div><div class="line">    &quot;connect_verbose_info&quot;: 0,</div><div class="line">    &quot;redirect&quot;: &quot;&quot;,</div><div class="line">    &quot;fast_open&quot;: false,</div><div class="line">    &quot;workers&quot;: 1</div><div class="line"></div><div class="line">&#125;</div><div class="line">EOF</div><div class="line">&#125;</div><div class="line"></div><div class="line"># Install ShadowsocksR</div><div class="line">function install_ss()&#123;</div><div class="line">    # Install libsodium</div><div class="line">    tar zxf libsodium-1.0.10.tar.gz</div><div class="line">    cd $cur_dir/libsodium-1.0.10</div><div class="line">    ./configure &amp;&amp; make &amp;&amp; make install</div><div class="line">    echo &quot;/usr/local/lib&quot; &gt; /etc/ld.so.conf.d/local.conf</div><div class="line">    ldconfig</div><div class="line">    # Install ShadowsocksR</div><div class="line">    cd $cur_dir</div><div class="line">    # unzip -q manyuser.zip</div><div class="line">    # mv shadowsocks-manyuser/shadowsocks /usr/local/</div><div class="line">    git clone -b manyuser https://github.com/breakwa11/shadowsocks.git /usr/local/shadowsocks</div><div class="line">    if [ -f /usr/local/shadowsocks/server.py ]; then</div><div class="line">        chmod +x /etc/init.d/shadowsocks</div><div class="line">        # Add run on system start up</div><div class="line">        if [ &quot;$OS&quot; == &apos;CentOS&apos; ]; then</div><div class="line">            chkconfig --add shadowsocks</div><div class="line">            chkconfig shadowsocks on</div><div class="line">        else</div><div class="line">            update-rc.d -f shadowsocks defaults</div><div class="line">        fi</div><div class="line">        # Run ShadowsocksR in the background</div><div class="line">        /etc/init.d/shadowsocks start</div><div class="line">        clear</div><div class="line">        echo</div><div class="line">        echo &quot;恭喜你，shadowsocksr安装完成！&quot;</div><div class="line">        echo -e &quot;服务器IP: \033[41;37m $&#123;IP&#125; \033[0m&quot;</div><div class="line">        echo -e &quot;远程连接端口: \033[41;37m $&#123;shadowsocksport&#125; \033[0m&quot;</div><div class="line">        echo -e &quot;远程连接密码: \033[41;37m $&#123;shadowsockspwd&#125; \033[0m&quot;</div><div class="line">        echo -e &quot;本地监听IP: \033[41;37m 127.0.0.1 \033[0m&quot;</div><div class="line">        echo -e &quot;本地监听端口: \033[41;37m 1080 \033[0m&quot;</div><div class="line">        echo -e &quot;认证方式: \033[41;37m auth_sha1 \033[0m&quot;</div><div class="line">        echo -e &quot;协议: \033[41;37m http_simple \033[0m&quot;</div><div class="line">        echo -e &quot;加密方式: \033[41;37m chacha20 \033[0m&quot;</div><div class="line">        echo</div><div class="line">        echo &quot;欢迎来访妖火论坛:http://yaohuo.me Or https://yaohw.com&quot;</div><div class="line">        echo &quot;如果你想改变认证方式和协议，请参考网址&quot;</div><div class="line">        echo &quot;https://github.com/breakwa11/shadowsocks-rss/wiki/Server-Setup&quot;</div><div class="line">        echo</div><div class="line">        echo &quot;安装完毕！去享受这种愉悦感把！I&apos;m your old friend 西门吹雪&quot;</div><div class="line">        echo</div><div class="line">    else</div><div class="line">        echo &quot;Shadowsocks安装失败!&quot;</div><div class="line">        install_cleanup</div><div class="line">        exit 1</div><div class="line">    fi</div><div class="line">&#125;</div><div class="line"></div><div class="line">#改成北京时间</div><div class="line">function check_datetime()&#123;</div><div class="line">    rm -rf /etc/localtime</div><div class="line">    ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</div><div class="line">    ntpdate 1.cn.pool.ntp.org</div><div class="line">&#125;</div><div class="line"></div><div class="line"># Install cleanup</div><div class="line">function install_cleanup()&#123;</div><div class="line">    cd $cur_dir</div><div class="line">    rm -f manyuser.zip</div><div class="line">    rm -rf shadowsocks-manyuser</div><div class="line">    rm -f libsodium-1.0.10.tar.gz</div><div class="line">    rm -rf libsodium-1.0.10</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"># Uninstall ShadowsocksR</div><div class="line">function uninstall_shadowsocks()&#123;</div><div class="line">    printf &quot;你确定卸载shadowsocksr？ (y/n) &quot;</div><div class="line">    printf &quot;\n&quot;</div><div class="line">    read -p &quot;(Default: n):&quot; answer</div><div class="line">    if [ -z $answer ]; then</div><div class="line">        answer=&quot;n&quot;</div><div class="line">    fi</div><div class="line">    if [ &quot;$answer&quot; = &quot;y&quot; ]; then</div><div class="line">        /etc/init.d/shadowsocks status &gt; /dev/null 2&gt;&amp;1</div><div class="line">        if [ $? -eq 0 ]; then</div><div class="line">            /etc/init.d/shadowsocks stop</div><div class="line">        fi</div><div class="line">        checkos</div><div class="line">        if [ &quot;$OS&quot; == &apos;CentOS&apos; ]; then</div><div class="line">            chkconfig --del shadowsocks</div><div class="line">        else</div><div class="line">            update-rc.d -f shadowsocks remove</div><div class="line">        fi</div><div class="line">        rm -f /etc/shadowsocks.json</div><div class="line">        rm -f /etc/init.d/shadowsocks</div><div class="line">        rm -rf /usr/local/shadowsocks</div><div class="line">        echo &quot;ShadowsocksR uninstall success!&quot;</div><div class="line">    else</div><div class="line">        echo &quot;uninstall cancelled, Nothing to do&quot;</div><div class="line">    fi</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"># Install ShadowsocksR</div><div class="line">function install_shadowsocks()&#123;</div><div class="line">    checkos</div><div class="line">    rootness</div><div class="line">    disable_selinux</div><div class="line">    pre_install</div><div class="line">    download_files</div><div class="line">    config_shadowsocks</div><div class="line">    install_ss</div><div class="line">    if [ &quot;$OS&quot; == &apos;CentOS&apos; ]; then</div><div class="line">        firewall_set &gt; /dev/null 2&gt;&amp;1</div><div class="line">    fi</div><div class="line">    check_datetime</div><div class="line">    install_cleanup</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"># Initialization step</div><div class="line">action=$1</div><div class="line">[ -z $1 ] &amp;&amp; action=install</div><div class="line">case &quot;$action&quot; in</div><div class="line">install)</div><div class="line">    install_shadowsocks</div><div class="line">    ;;</div><div class="line">uninstall)</div><div class="line">    uninstall_shadowsocks</div><div class="line">    ;;</div><div class="line">*)</div><div class="line">    echo &quot;Arguments error! [$&#123;action&#125; ]&quot;</div><div class="line">    echo &quot;Usage: `basename $0` &#123;install|uninstall&#125;&quot;</div><div class="line">    ;;</div><div class="line">esac</div></pre></td></tr></table></figure>
+<h1 id="搭建好后在手机端进行设置-如图"><a href="#搭建好后在手机端进行设置-如图" class="headerlink" title="搭建好后在手机端进行设置.如图:"></a>搭建好后在手机端进行设置.如图:</h1><p><img src="http://mmmxcc.08tk.cn/loudong/3.jpg" alt="ssr客户端"><br><img src="http://mmmxcc.08tk.cn/loudong/4.jpg" alt="ssr客户端"><br>使用的混淆代码如下freetyst.mll.migu.cn\r\nAccept: <em>/</em>\r\nUser-Agent: migumusic\r\nC<br>(已手工马赛克)<br>使用openvpn的话，免流代码如下<br>http-proxy-option EXT1 “GET <a href="http://migumovie.lovev.com&quot;http-proxy-option" target="_blank" rel="external">http://migumovie.lovev.com&quot;http-proxy-option</a> EXT1 “Host: freetyst.mll.migu.cn”http-proxy-option EXT1 “Accept: <em>/</em>“http-proxy-option EXT1 “User-Agent: migumusic”http-proxy-option EXT1 “Connection: close”http-proxy 10.0.0.172 80</p>
+<p>最后的10.0.0.172 80是移动的HTTP代理服务器,也可以自己搭建HTTP代理服务器,然后修改10.0.0.172为自己的代理服务器</p>
+<h1 id="手机上开启ss，抓包查看"><a href="#手机上开启ss，抓包查看" class="headerlink" title="手机上开启ss，抓包查看"></a>手机上开启ss，抓包查看</h1><p><img src="http://mmmxcc.08tk.cn/loudong/5.jpg" alt=" "></p>
+<h1 id="移动网上营业厅截图"><a href="#移动网上营业厅截图" class="headerlink" title="移动网上营业厅截图"></a>移动网上营业厅截图</h1><p><img src="http://mmmxcc.08tk.cn/loudong/6.jpg" alt=" "></p>
+<hr>
+<p><strong>总结</strong><br>这里免流的核心<strong>其实就是找到一个移动运营商允许的可以免流量使用的软件而手机流量通过移动运行商时,移动运行商会检查数据包中有没有不收取流量的数据包</strong>，检查方法基本是使用的HTTP header中的关键字因此,只需要找到检测的关键字,把手机上发出的每一个数据包都带上这个关键字,就可以免流了同理,如果需要手机开热点出来给电脑用,也是一样的,只要发出的数据包带有这个关键字,就能免流以上方法为HTTP协议的免流,如果发现某个软件使用的tcp等协议,也可以分析包里的特征,实现免流如果使用的免流服务器为国外的服务器，当流量太大时,可能会被gfw干掉,另外据说有人使用国外服务器免流,被运营商发现过,真伪未知。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;大家都听说过定向流量包，比如最常见的qq音乐，9元一个月随便听什么的，还有微信定向流量，问题就出在这里。（把你的普通上网流量请求都伪装成定向流量，伪装http请求，欺骗运营商的计费系统。定向流量在内部是不计费的，批价规则会忽略这部分话单。done。
+    
+    </summary>
+    
+    
+      <category term="VPS" scheme="http://mmmxcc.cn/tags/VPS/"/>
+    
+      <category term="SSR" scheme="http://mmmxcc.cn/tags/SSR/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无公网IP服务器搭建Web站点</title>
+    <link href="http://mmmxcc.cn/2016/10/19/%E6%97%A0%E5%85%AC%E7%BD%91IP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAWeb%E7%AB%99%E7%82%B9/"/>
+    <id>http://mmmxcc.cn/2016/10/19/无公网IP服务器搭建Web站点/</id>
+    <published>2016-10-19T05:25:29.000Z</published>
+    <updated>2016-10-19T08:05:01.969Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>很多时候我们都会碰到 <code>无公网IP</code> ，比如家用电脑，或者在阿里云上贪便宜买的服务器等。对于科大学生，就更容易出现这种情况了，科大学生可以从<a href="http://cloud.ustc.edu.cn/" target="_blank" rel="external">http://cloud.ustc.edu.cn/</a> 申请校内云主机，配置高，网速快，免流量，简直就是学生狗的福音啊。唯一的问题就是，提供的地址是校内IP，使用起来很不方便，搭建Web站点的时候就会遇到很多问题。<br><a id="more"></a><br>    本文介绍一种免费内网穿透方案，ngrok 。<br>    该方案与花生壳差不多，只不过花生壳变坏了，现在开始要钱，每个月还限制流量1g。对于网站来说，1个g能干什么，卖萌么。<br><img src="http://mmmxcc.08tk.cn//withoutip1.png" alt=""></p>
+<hr>
+<h2 id="在vps中下载对应版本的客户端"><a href="#在vps中下载对应版本的客户端" class="headerlink" title="在vps中下载对应版本的客户端"></a>在vps中下载对应版本的客户端</h2><p><img src="http://mmmxcc.08tk.cn/4.png" alt="选择对应的客户端"><br>本文以中国科大云的ubuntu系统为例，首先输入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -s</div></pre></td></tr></table></figure></p>
+<p>本命令的作用是提升权限，否则之后会不停的要求输入密码的，然后下载客户端。<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://hls.ctopus.com/sunny/linux_amd64.zip</div></pre></td></tr></table></figure></p>
+<hr>
+<p>下载完毕之后，就要安装ngrok了。</p>
+<h2 id="注册端口获得隧道ID"><a href="#注册端口获得隧道ID" class="headerlink" title="注册端口获得隧道ID"></a>注册端口获得隧道ID</h2><p>在安装之后，需要进入网站注册，注册的目的就是告诉服务器，你希望将服务器的哪个端口和自己的系统的哪个端口相映射，比如这个样子。<br><img src="http://mmmxcc.08tk.cn//withoutip2.png" alt="选择映射端口"></p>
+<p>本地端口注意，需要填写本机在局域网内的<strong>IP地址和服务端口</strong>，我这里写的tcp：22，为了SSH连接使用的，当然也可以像下边这个样子。<br><img src="http://mmmxcc.08tk.cn//withoutip3.png" alt="SSH连接端口"></p>
+<p>这里可以使用前缀域名，也可以使用自己的域名，如果使用自己域名的话，需要将<strong><em>域名的CNAME</em></strong>指向到  server.ngrok.cc 。提醒一下，自定义域名会比前缀域名速度慢很多。复制一下，自动生成的隧道ID，一会儿有用哦~</p>
+<hr>
+<h2 id="配置服务器参数"><a href="#配置服务器参数" class="headerlink" title="配置服务器参数"></a>配置服务器参数</h2><p>服务器端配置完毕之后，回到自己的VPS控制台，输入<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> linux_amd64/</div><div class="line">nohup ./sunny clientid <span class="number">9328</span>c9d3f12326e9</div></pre></td></tr></table></figure></p>
+<p>后边那一串9328c9d3f12326e9 就是隧道ID，用自己的ID进行替换就好。解释一下nohup的作用，因为SSH连接断掉，或者退出该页面的话，会导致该ngrok关闭，使用nohup可以让本命令在后台运行，直接关毕SSH不会影响ngrok的运行。</p>
+<p><strong>切记，这可是一个晚上的深刻教训 啊。。。</strong></p>
+<p>这个时候应该就可以看到成功页面了，打开自己的网址就可以看到自己Web服务器里边的东西了~~</p>
+<blockquote>
+<p>这种内网穿透也就是所谓的TCP转发其实一点也不靠谱，速度巨慢。但是很多人为了调试微信小程序不得不使用这种方法，真心建议各位去闲鱼上，找个学生买个腾讯云服务器，一个月1块钱，而且还有公网IP。用起来不知道比这种方法快到哪里去了。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;很多时候我们都会碰到 &lt;code&gt;无公网IP&lt;/code&gt; ，比如家用电脑，或者在阿里云上贪便宜买的服务器等。对于科大学生，就更容易出现这种情况了，科大学生可以从&lt;a href=&quot;http://cloud.ustc.edu.cn/&quot;&gt;http://cloud.ustc.edu.cn/&lt;/a&gt; 申请校内云主机，配置高，网速快，免流量，简直就是学生狗的福音啊。唯一的问题就是，提供的地址是校内IP，使用起来很不方便，搭建Web站点的时候就会遇到很多问题。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="VPS" scheme="http://mmmxcc.cn/tags/VPS/"/>
+    
+      <category term="Linux" scheme="http://mmmxcc.cn/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>回到了苏州</title>
+    <link href="http://mmmxcc.cn/2016/10/08/%E5%9B%9E%E5%88%B0%E4%BA%86%E8%8B%8F%E5%B7%9E/"/>
+    <id>http://mmmxcc.cn/2016/10/08/回到了苏州/</id>
+    <published>2016-10-08T12:28:44.000Z</published>
+    <updated>2016-10-18T13:41:53.913Z</updated>
+    
+    <content type="html"><![CDATA[<h6 id="又回到了苏州"><a href="#又回到了苏州" class="headerlink" title="又回到了苏州"></a>又回到了苏州</h6><hr>
+<p>今天我回到了苏州，想想昨天还在北京，和臭臭在一起吃KFC，就觉得好梦幻。<br> <a id="more"></a><br>臭臭，你是我见到过最棒最好的女孩子了。我特别怕我让你失望，我一定会好好努力的。</p>
+<p>以前我给你写的那些纸，都跟流水账一样的。因为我的确不会写日记，以前写日记就是早上干了什么晚上干了什么的，一通记录了事。我以后会好好写的，我做了好多事情，都对不起你。</p>
+<h6 id="我会努力的"><a href="#我会努力的" class="headerlink" title="我会努力的"></a>我会努力的</h6><hr>
+<p>我真觉得自己配不上你，但是我会努力的。我想和你一起留在北京，我想让你离妈妈爸爸近一些，我想看着孩子长大。</p>
+<div align="center">臭臭，谢谢你。</div>
+
+<p><img src="http://mmmxcc.08tk.cn/IMG20150528170333%20%281%29.jpg?imageMogr2/thumbnail/!50p" alt="我和臭臭"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h6 id=&quot;又回到了苏州&quot;&gt;&lt;a href=&quot;#又回到了苏州&quot; class=&quot;headerlink&quot; title=&quot;又回到了苏州&quot;&gt;&lt;/a&gt;又回到了苏州&lt;/h6&gt;&lt;hr&gt;
+&lt;p&gt;今天我回到了苏州，想想昨天还在北京，和臭臭在一起吃KFC，就觉得好梦幻。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="love" scheme="http://mmmxcc.cn/tags/love/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>今天我要去北京见臭臭啦</title>
+    <link href="http://mmmxcc.cn/2016/09/29/%E4%BB%8A%E5%A4%A9%E6%88%91%E8%A6%81%E5%8E%BB%E5%8C%97%E4%BA%AC%E8%A7%81%E8%87%AD%E8%87%AD%E5%95%A6/"/>
+    <id>http://mmmxcc.cn/2016/09/29/今天我要去北京见臭臭啦/</id>
+    <published>2016-09-29T12:28:44.000Z</published>
+    <updated>2016-10-19T11:46:07.497Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="又可以见面了"><a href="#又可以见面了" class="headerlink" title="又可以见面了"></a>又可以见面了</h1><hr>
+<p>现在是中午12点，我还在收拾东西，下午就要“坐”火车去北京了。</p>
+<p>我真的很想臭臭。</p>
+<p><img src="http://mmmxcc.08tk.cn/QQ%E6%88%AA%E5%9B%BE20160929115511.png" alt="chou)"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;又可以见面了&quot;&gt;&lt;a href=&quot;#又可以见面了&quot; class=&quot;headerlink&quot; title=&quot;又可以见面了&quot;&gt;&lt;/a&gt;又可以见面了&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;现在是中午12点，我还在收拾东西，下午就要“坐”火车去北京了。&lt;/p&gt;
+&lt;p&gt;我真的很想臭臭。&lt;/
+    
+    </summary>
+    
+    
+      <category term="love" scheme="http://mmmxcc.cn/tags/love/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于我</title>
+    <link href="http://mmmxcc.cn/2016/01/18/resume/"/>
+    <id>http://mmmxcc.cn/2016/01/18/resume/</id>
+    <published>2016-01-18T12:02:28.000Z</published>
+    <updated>2016-10-22T11:27:18.791Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h3><ul>
+<li>李飞阳/男/1994 </li>
+<li>本科/华中科技大学 </li>
+<li>硕士/中国科学技术大学<a id="more"></a></li>
+<li>Github：<a href="http://github.com/mmmwhy" target="_blank" rel="external">http://github.com/mmmwhy</a></li>
+</ul>
+<hr>
+<h3 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h3><h4 id="360-产品经理-2016-03-2016-08"><a href="#360-产品经理-2016-03-2016-08" class="headerlink" title="360 产品经理  2016.03-2016.08"></a>360 产品经理  2016.03-2016.08</h4><h5 id="360好药-需求设计"><a href="#360好药-需求设计" class="headerlink" title="360好药 需求设计"></a><a href="http://www.360haoyao.com/" target="_blank" rel="external">360好药</a> 需求设计</h5><ul>
+<li>使用 <a href="https://www.mockplus.cn/" target="_blank" rel="external">Mockplus</a> 完成 <a href="https://itunes.apple.com/us/app/you-yi-quan-wei-da-yi-jiu/id1042869384?l=zh&amp;ls=1&amp;mt=8" target="_blank" rel="external">APP</a> 1.6、1.7、1.8 产品需求分析和原型设计；</li>
+<li>推进疾病症状搜索功能上线，提高用户搜索体验；</li>
+</ul>
+<h5 id="360电商云-前端原型设计"><a href="#360电商云-前端原型设计" class="headerlink" title="360电商云 前端原型设计"></a><a href="http://www.360dsy.com/" target="_blank" rel="external">360电商云</a> 前端原型设计</h5><ul>
+<li>与运营人员沟通确认需求范围，整理需求优先级并提交技术排期开发；</li>
+</ul>
+<h5 id="360全球药-（国内最大赴印丙肝服务机构）前端后端需求"><a href="#360全球药-（国内最大赴印丙肝服务机构）前端后端需求" class="headerlink" title="360全球药 （国内最大赴印丙肝服务机构）前端后端需求"></a><a href="http://g.360haoyao.com/" target="_blank" rel="external">360全球药</a> （国内最大赴印丙肝服务机构）前端后端需求</h5><ul>
+<li>使用Axure设计360全球药前端页面原型；</li>
+<li>设计全球药后台系统，完成多次活动策划方案的原型与后台设计；</li>
+</ul>
+<h4 id="OPPO-产品经理-2014-07-2014-08"><a href="#OPPO-产品经理-2014-07-2014-08" class="headerlink" title="OPPO 产品经理 2014.07-2014.08"></a>OPPO 产品经理 2014.07-2014.08</h4><h5 id="产品服务质量提升"><a href="#产品服务质量提升" class="headerlink" title="产品服务质量提升"></a>产品服务质量提升</h5><ul>
+<li>项目背景：微信客服好评率一直非常高，但在调研中发现该产品口碑却偏低。 </li>
+<li>项目目标：解释弹窗评价与调研反馈的差异，找出产品改进的方向，扭转差口碑的局面。 </li>
+<li>所做工作：使用 R 统计后台数据，发现微信后台 Bug，通过用户访谈确定问题。重新分析规划服务流程，确立新的 KPI，制作产品报告提供优化建议，进行 A/B 测试并推动实施。 </li>
+<li>项目成果：通过修补 Bug，改进服务流程，推广 Q&amp;A 系统。一个月后的调研中，微信服务评分上升约 30 个点。</li>
+</ul>
+<h5 id="OPPO官方论坛改版"><a href="#OPPO官方论坛改版" class="headerlink" title="OPPO官方论坛改版"></a><a href="http://www.oppo.cn/" target="_blank" rel="external">OPPO官方论坛</a>改版</h5><ul>
+<li>项目目标：由满足功能性为主转化为满足娱乐性需求，提高论坛的可玩性；</li>
+<li>推广策划：使用 SWOT 和 3W 分析市场状况，根据 OPPO 服务理念设计朋友圈/微博营销方案，进行实施和效果评估。</li>
+</ul>
+<hr>
+<h3 id="学生工作"><a href="#学生工作" class="headerlink" title="学生工作"></a>学生工作</h3><h4 id="亚太学生领导人会议（APSLC）-2015-08"><a href="#亚太学生领导人会议（APSLC）-2015-08" class="headerlink" title="亚太学生领导人会议（APSLC） 2015.08"></a><a href="http://studentcentral.taylors.edu.my/enquiry/_layouts/aq/enquiry/apslc2015/index.html" target="_blank" rel="external">亚太学生领导人会议（APSLC）</a> 2015.08</h4><ul>
+<li>从 1800+申请者中脱颖而出，选拔成为中国大陆代表队的成员，公费参加于吉隆坡举行的亚太学生领导人会议。 </li>
+<li>做关于“How to improve community services（Peer pressure）”的英文报告展示，获与会人员高度认可。</li>
+</ul>
+<h4 id="华中科技大学社区之家副主席-2013-08-2015-11"><a href="#华中科技大学社区之家副主席-2013-08-2015-11" class="headerlink" title="华中科技大学社区之家副主席  2013.08-2015.11"></a>华中科技大学社区之家副主席  2013.08-2015.11</h4><ul>
+<li>负责 2014 年“社区讲堂”，联系百家讲坛主讲清华大学彭林教授授课。前期负责赞助事宜，以及与学校方面的协商。 </li>
+<li>管理 2013~2014 校社区文化建设项目，每年均有 16+学院参加。负责确定主题，并监督执行，有管理 30+团队经验。 </li>
+</ul>
+<h3 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单"></a>技能清单</h3><ul>
+<li>英语水平：CET-6； </li>
+<li>计算机等级考试三级网络技术证书，二级 JAVA 证书； </li>
+<li>熟悉 R 软件，擅长数学建模（93 分），抽样调查（87 分）；  </li>
+<li>熟练使用 C、JAVA，具有较强的编程能力； </li>
+<li>熟练使用 PS、Axure、PPT，具有较好的产品模型展示能力；</li>
+</ul>
+<hr>
+<h3 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h3><p>唯厨房和远方不可辜负也~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;个人信息&quot;&gt;&lt;a href=&quot;#个人信息&quot; class=&quot;headerlink&quot; title=&quot;个人信息&quot;&gt;&lt;/a&gt;个人信息&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;李飞阳/男/1994 &lt;/li&gt;
+&lt;li&gt;本科/华中科技大学 &lt;/li&gt;
+&lt;li&gt;硕士/中国科学技术大学
+    
+    </summary>
+    
+    
+      <category term="resume" scheme="http://mmmxcc.cn/tags/resume/"/>
+    
+  </entry>
+  
+</feed>
