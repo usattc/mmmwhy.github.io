@@ -4,9 +4,9 @@
   <subtitle>PM、Coder、Data mining</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://mmmxcc.cn/"/>
-  <updated>2016-12-28T08:08:28.071Z</updated>
-  <id>http://mmmxcc.cn/</id>
+  <link href="https://www.mmmxcc.cn/"/>
+  <updated>2016-12-28T08:45:29.184Z</updated>
+  <id>https://www.mmmxcc.cn/</id>
   
   <author>
     <name>Wing Lee</name>
@@ -16,9 +16,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>牛顿迭代法计算平方根(Java,Python实现)</title>
+    <link href="https://www.mmmxcc.cn/2016/12/28/%E7%89%9B%E9%A1%BF%E8%BF%AD%E4%BB%A3%E6%B3%95%E8%AE%A1%E7%AE%97%E5%B9%B3%E6%96%B9%E6%A0%B9-Java-Python%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://www.mmmxcc.cn/2016/12/28/牛顿迭代法计算平方根-Java-Python实现/</id>
+    <published>2016-12-28T08:33:55.000Z</published>
+    <updated>2016-12-28T08:45:29.184Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。"><a href="#牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。" class="headerlink" title="牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。"></a>牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。</h2><a id="more"></a>
+<h1 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h1><p>假设c为原数，t为c的根数。</p>
+<p>$$ t^2 \quad = \quad c$$<br>$$2t^2 \quad = \quad c + \quad t^2$$<br>$$2t \quad = \quad \frac{c}{t}+  \quad t$$<br>$$t  \quad  =  \quad \frac{\frac{c}{t}  +  t}{2.0}$$</p>
+<h1 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> test;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.util.Scanner;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickFindUF</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">sqrt</span> <span class="params">(<span class="keyword">double</span> c)</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(c&lt;<span class="number">0</span>)</div><div class="line">			<span class="keyword">return</span> Double.NaN;</div><div class="line">		<span class="keyword">double</span> err = <span class="number">1e-15</span>;</div><div class="line">		<span class="keyword">double</span> t = c;</div><div class="line">		<span class="keyword">while</span>(Math.abs(t-c/t)&gt;err)</div><div class="line">			t = (c/t+t)/<span class="number">2.0</span>;</div><div class="line">		<span class="keyword">return</span> t;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> IOException</span>&#123;</div><div class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</div><div class="line">		<span class="keyword">double</span> a = sqrt(sc.nextDouble());		</div><div class="line">		System.out.println(a);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">c = input()</div><div class="line">err = <span class="number">1e-15</span></div><div class="line">t = c</div><div class="line"><span class="keyword">while</span> abs(t - c/t)&gt;err:</div><div class="line">    t = (c/t+t)/<span class="number">2.0</span></div><div class="line">print(t)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Python代码真心简洁啊</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。&quot;&gt;&lt;a href=&quot;#牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。&quot; class=&quot;headerlink&quot; title=&quot;牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。&quot;&gt;&lt;/a&gt;牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。&lt;/h2&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>LaTex 编辑公式</title>
-    <link href="http://mmmxcc.cn/2016/12/28/LaTex-%E7%BC%96%E8%BE%91%E5%85%AC%E5%BC%8F/"/>
-    <id>http://mmmxcc.cn/2016/12/28/LaTex-编辑公式/</id>
+    <link href="https://www.mmmxcc.cn/2016/12/28/LaTex-%E7%BC%96%E8%BE%91%E5%85%AC%E5%BC%8F/"/>
+    <id>https://www.mmmxcc.cn/2016/12/28/LaTex-编辑公式/</id>
     <published>2016-12-28T07:21:21.000Z</published>
     <updated>2016-12-28T08:08:28.071Z</updated>
     
@@ -105,19 +131,19 @@
     </summary>
     
     
-      <category term="LaTex" scheme="http://mmmxcc.cn/tags/LaTex/"/>
+      <category term="LaTex" scheme="https://www.mmmxcc.cn/tags/LaTex/"/>
     
   </entry>
   
   <entry>
     <title>Nginx环境下配置HTTPS</title>
-    <link href="http://mmmxcc.cn/2016/12/18/Nginx%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%85%8D%E7%BD%AEHTTPS/"/>
-    <id>http://mmmxcc.cn/2016/12/18/Nginx环境下配置HTTPS/</id>
+    <link href="https://www.mmmxcc.cn/2016/12/18/Nginx%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%85%8D%E7%BD%AEHTTPS/"/>
+    <id>https://www.mmmxcc.cn/2016/12/18/Nginx环境下配置HTTPS/</id>
     <published>2016-12-18T08:47:29.000Z</published>
     <updated>2016-12-18T08:48:40.487Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>现在，你应该能在访问<a href="https://mmmxcc.cn">https://mmmxcc.cn</a> 的时候，在地址栏里看到一个漂亮的小绿锁<img src="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~</p>
+<p>现在，你应该能在访问<a href="https://mmmxcc.cn" target="_blank" rel="external">https://mmmxcc.cn</a> 的时候，在地址栏里看到一个漂亮的小绿锁<img src="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~</p>
 </blockquote>
 <hr>
 <a id="more"></a>
@@ -179,18 +205,18 @@
     </summary>
     
     
-      <category term="VPS" scheme="http://mmmxcc.cn/tags/VPS/"/>
+      <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
     
-      <category term="Nginx" scheme="http://mmmxcc.cn/tags/Nginx/"/>
+      <category term="Nginx" scheme="https://www.mmmxcc.cn/tags/Nginx/"/>
     
-      <category term="HTTPS" scheme="http://mmmxcc.cn/tags/HTTPS/"/>
+      <category term="HTTPS" scheme="https://www.mmmxcc.cn/tags/HTTPS/"/>
     
   </entry>
   
   <entry>
     <title>第一题：Python图片添加水印</title>
-    <link href="http://mmmxcc.cn/2016/12/16/%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%9APython%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/"/>
-    <id>http://mmmxcc.cn/2016/12/16/第一题：Python图片添加水印/</id>
+    <link href="https://www.mmmxcc.cn/2016/12/16/%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%9APython%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/"/>
+    <id>https://www.mmmxcc.cn/2016/12/16/第一题：Python图片添加水印/</id>
     <published>2016-12-16T04:16:16.000Z</published>
     <updated>2016-12-16T04:22:06.693Z</updated>
     
@@ -228,16 +254,16 @@
     </summary>
     
     
-      <category term="Python" scheme="http://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
     
-      <category term="Python练习题" scheme="http://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
+      <category term="Python练习题" scheme="https://www.mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>使用Python插入排序</title>
-    <link href="http://mmmxcc.cn/2016/12/15/%E4%BD%BF%E7%94%A8Python%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"/>
-    <id>http://mmmxcc.cn/2016/12/15/使用Python插入排序/</id>
+    <link href="https://www.mmmxcc.cn/2016/12/15/%E4%BD%BF%E7%94%A8Python%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"/>
+    <id>https://www.mmmxcc.cn/2016/12/15/使用Python插入排序/</id>
     <published>2016-12-15T13:44:51.000Z</published>
     <updated>2016-12-15T13:46:45.496Z</updated>
     
@@ -268,21 +294,21 @@
     </summary>
     
     
-      <category term="Python" scheme="http://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
     
-      <category term="Algorithms" scheme="http://mmmxcc.cn/tags/Algorithms/"/>
+      <category term="Algorithms" scheme="https://www.mmmxcc.cn/tags/Algorithms/"/>
     
   </entry>
   
   <entry>
     <title>Python爬取图片（使用urllib2）</title>
-    <link href="http://mmmxcc.cn/2016/12/15/Python%E7%88%AC%E5%8F%96%E5%9B%BE%E7%89%87%EF%BC%88%E4%BD%BF%E7%94%A8urllib2%EF%BC%89/"/>
-    <id>http://mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/</id>
+    <link href="https://www.mmmxcc.cn/2016/12/15/Python%E7%88%AC%E5%8F%96%E5%9B%BE%E7%89%87%EF%BC%88%E4%BD%BF%E7%94%A8urllib2%EF%BC%89/"/>
+    <id>https://www.mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/</id>
     <published>2016-12-15T11:14:24.000Z</published>
     <updated>2016-12-15T13:22:17.834Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>上篇文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
+<p>上篇文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/" target="_blank" rel="external">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
@@ -294,7 +320,7 @@
 <p><img src="http://mmmxcc.08tk.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p" alt="运行结果"></p>
 <p>我们可以发现title这个地方本来应该是中文的，但因为编码的原因，导致出现乱码。通过将html页面重新用”utf-8”编码，可以解决这个问题。</p>
 <hr>
-<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/">http://mmmxcc.cn/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
+<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/" target="_blank" rel="external">http://mmmxcc.cn/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
 <p>这里需要导入lxml，代码格式如下。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = requests.get(<span class="string">"http://jandan.net/ooxx"</span>)</div><div class="line">html.encoding = <span class="string">'utf-8'</span></div><div class="line">selector = etree.HTML(html.text)</div><div class="line">content = selector.xpath(<span class="string">'//ol[@class = "commentlist"]//@src'</span>)</div></pre></td></tr></table></figure>
 <p>单独运行 以上代码可以获得<br><img src="http://mmmxcc.08tk.cn/blog/20161215/182806800.png" alt="Xpath运行结果"></p>
@@ -356,18 +382,18 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Python" scheme="http://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
     
-      <category term="爬虫" scheme="http://mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
+      <category term="爬虫" scheme="https://www.mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
     
-      <category term="urllib2" scheme="http://mmmxcc.cn/tags/urllib2/"/>
+      <category term="urllib2" scheme="https://www.mmmxcc.cn/tags/urllib2/"/>
     
   </entry>
   
   <entry>
     <title>使用 XPath 提取网页信息</title>
-    <link href="http://mmmxcc.cn/2016/12/13/%E6%8F%90%E5%8F%96%E7%BD%91%E9%A1%B5%E4%BF%A1%E6%81%AF/"/>
-    <id>http://mmmxcc.cn/2016/12/13/提取网页信息/</id>
+    <link href="https://www.mmmxcc.cn/2016/12/13/%E6%8F%90%E5%8F%96%E7%BD%91%E9%A1%B5%E4%BF%A1%E6%81%AF/"/>
+    <id>https://www.mmmxcc.cn/2016/12/13/提取网页信息/</id>
     <published>2016-12-13T08:24:34.000Z</published>
     <updated>2016-12-15T11:18:23.533Z</updated>
     
@@ -416,18 +442,18 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Python" scheme="http://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
     
-      <category term="爬虫" scheme="http://mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
+      <category term="爬虫" scheme="https://www.mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
     
-      <category term="Xpath" scheme="http://mmmxcc.cn/tags/Xpath/"/>
+      <category term="Xpath" scheme="https://www.mmmxcc.cn/tags/Xpath/"/>
     
   </entry>
   
   <entry>
     <title>永远的7012</title>
-    <link href="http://mmmxcc.cn/2016/10/28/%E6%B0%B8%E8%BF%9C%E7%9A%847012/"/>
-    <id>http://mmmxcc.cn/2016/10/28/永远的7012/</id>
+    <link href="https://www.mmmxcc.cn/2016/10/28/%E6%B0%B8%E8%BF%9C%E7%9A%847012/"/>
+    <id>https://www.mmmxcc.cn/2016/10/28/永远的7012/</id>
     <published>2016-10-28T13:33:08.000Z</published>
     <updated>2016-12-15T11:18:26.559Z</updated>
     
@@ -474,16 +500,16 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Running man" scheme="http://mmmxcc.cn/tags/Running-man/"/>
+      <category term="Running man" scheme="https://www.mmmxcc.cn/tags/Running-man/"/>
     
-      <category term="臭臭" scheme="http://mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
+      <category term="臭臭" scheme="https://www.mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
     
   </entry>
   
   <entry>
     <title>C / C++ 文件读取写入、文件夹的打开</title>
-    <link href="http://mmmxcc.cn/2016/10/28/C-C-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%86%99%E5%85%A5%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%89%93%E5%BC%80/"/>
-    <id>http://mmmxcc.cn/2016/10/28/C-C-文件读取写入、文件夹的打开/</id>
+    <link href="https://www.mmmxcc.cn/2016/10/28/C-C-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%86%99%E5%85%A5%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%89%93%E5%BC%80/"/>
+    <id>https://www.mmmxcc.cn/2016/10/28/C-C-文件读取写入、文件夹的打开/</id>
     <published>2016-10-28T11:09:24.000Z</published>
     <updated>2016-10-28T11:10:49.465Z</updated>
     
@@ -515,14 +541,14 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="C++" scheme="http://mmmxcc.cn/tags/C/"/>
+      <category term="C++" scheme="https://www.mmmxcc.cn/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>解忧杂货店</title>
-    <link href="http://mmmxcc.cn/2016/10/28/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7%E5%BA%97/"/>
-    <id>http://mmmxcc.cn/2016/10/28/解忧杂货店/</id>
+    <link href="https://www.mmmxcc.cn/2016/10/28/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7%E5%BA%97/"/>
+    <id>https://www.mmmxcc.cn/2016/10/28/解忧杂货店/</id>
     <published>2016-10-28T04:30:59.000Z</published>
     <updated>2016-10-28T04:34:43.428Z</updated>
     
@@ -564,16 +590,16 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="臭臭" scheme="http://mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
+      <category term="臭臭" scheme="https://www.mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
     
-      <category term="读书笔记" scheme="http://mmmxcc.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="https://www.mmmxcc.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>Python基础</title>
-    <link href="http://mmmxcc.cn/2016/10/27/Python%E5%9F%BA%E7%A1%80/"/>
-    <id>http://mmmxcc.cn/2016/10/27/Python基础/</id>
+    <link href="https://www.mmmxcc.cn/2016/10/27/Python%E5%9F%BA%E7%A1%80/"/>
+    <id>https://www.mmmxcc.cn/2016/10/27/Python基础/</id>
     <published>2016-10-27T03:38:32.000Z</published>
     <updated>2016-10-27T13:32:08.651Z</updated>
     
@@ -620,14 +646,14 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Python" scheme="http://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>Android正则表达式及Pattern Matcher使用</title>
-    <link href="http://mmmxcc.cn/2016/10/19/Android%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8APattern%20Matcher%E4%BD%BF%E7%94%A8/"/>
-    <id>http://mmmxcc.cn/2016/10/19/Android正则表达式及Pattern Matcher使用/</id>
+    <link href="https://www.mmmxcc.cn/2016/10/19/Android%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8APattern%20Matcher%E4%BD%BF%E7%94%A8/"/>
+    <id>https://www.mmmxcc.cn/2016/10/19/Android正则表达式及Pattern Matcher使用/</id>
     <published>2016-10-19T13:25:57.000Z</published>
     <updated>2016-10-20T07:14:18.936Z</updated>
     
@@ -684,16 +710,16 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Android" scheme="http://mmmxcc.cn/tags/Android/"/>
+      <category term="Android" scheme="https://www.mmmxcc.cn/tags/Android/"/>
     
-      <category term="Pattern" scheme="http://mmmxcc.cn/tags/Pattern/"/>
+      <category term="Pattern" scheme="https://www.mmmxcc.cn/tags/Pattern/"/>
     
   </entry>
   
   <entry>
     <title>VelocityTracker滑动屏幕切换Activity</title>
-    <link href="http://mmmxcc.cn/2016/10/19/VelocityTracker%E6%BB%91%E5%8A%A8%E5%B1%8F%E5%B9%95%E5%88%87%E6%8D%A2Activity/"/>
-    <id>http://mmmxcc.cn/2016/10/19/VelocityTracker滑动屏幕切换Activity/</id>
+    <link href="https://www.mmmxcc.cn/2016/10/19/VelocityTracker%E6%BB%91%E5%8A%A8%E5%B1%8F%E5%B9%95%E5%88%87%E6%8D%A2Activity/"/>
+    <id>https://www.mmmxcc.cn/2016/10/19/VelocityTracker滑动屏幕切换Activity/</id>
     <published>2016-10-19T09:11:28.000Z</published>
     <updated>2016-10-20T07:13:10.520Z</updated>
     
@@ -731,16 +757,16 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     </summary>
     
     
-      <category term="Android" scheme="http://mmmxcc.cn/tags/Android/"/>
+      <category term="Android" scheme="https://www.mmmxcc.cn/tags/Android/"/>
     
-      <category term="VelocityTracker" scheme="http://mmmxcc.cn/tags/VelocityTracker/"/>
+      <category term="VelocityTracker" scheme="https://www.mmmxcc.cn/tags/VelocityTracker/"/>
     
   </entry>
   
   <entry>
     <title>搭建个人SSR翻墙帐号及私人分享</title>
-    <link href="http://mmmxcc.cn/2016/10/19/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BASSR%E7%BF%BB%E5%A2%99%E5%B8%90%E5%8F%B7%E5%8F%8A%E7%A7%81%E4%BA%BA%E5%88%86%E4%BA%AB/"/>
-    <id>http://mmmxcc.cn/2016/10/19/搭建个人SSR翻墙帐号及私人分享/</id>
+    <link href="https://www.mmmxcc.cn/2016/10/19/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BASSR%E7%BF%BB%E5%A2%99%E5%B8%90%E5%8F%B7%E5%8F%8A%E7%A7%81%E4%BA%BA%E5%88%86%E4%BA%AB/"/>
+    <id>https://www.mmmxcc.cn/2016/10/19/搭建个人SSR翻墙帐号及私人分享/</id>
     <published>2016-10-19T06:13:18.000Z</published>
     <updated>2016-10-20T10:39:42.756Z</updated>
     
@@ -785,18 +811,18 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     </summary>
     
     
-      <category term="SSR" scheme="http://mmmxcc.cn/tags/SSR/"/>
+      <category term="SSR" scheme="https://www.mmmxcc.cn/tags/SSR/"/>
     
-      <category term="Linux" scheme="http://mmmxcc.cn/tags/Linux/"/>
+      <category term="GFW" scheme="https://www.mmmxcc.cn/tags/GFW/"/>
     
-      <category term="GFW" scheme="http://mmmxcc.cn/tags/GFW/"/>
+      <category term="Linux" scheme="https://www.mmmxcc.cn/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>利用运营商计费漏洞获取无限流量</title>
-    <link href="http://mmmxcc.cn/2016/10/19/%E5%88%A9%E7%94%A8%E8%BF%90%E8%90%A5%E5%95%86%E8%AE%A1%E8%B4%B9%E6%BC%8F%E6%B4%9E%E8%8E%B7%E5%8F%96%E6%97%A0%E9%99%90%E6%B5%81%E9%87%8F/"/>
-    <id>http://mmmxcc.cn/2016/10/19/利用运营商计费漏洞获取无限流量/</id>
+    <link href="https://www.mmmxcc.cn/2016/10/19/%E5%88%A9%E7%94%A8%E8%BF%90%E8%90%A5%E5%95%86%E8%AE%A1%E8%B4%B9%E6%BC%8F%E6%B4%9E%E8%8E%B7%E5%8F%96%E6%97%A0%E9%99%90%E6%B5%81%E9%87%8F/"/>
+    <id>https://www.mmmxcc.cn/2016/10/19/利用运营商计费漏洞获取无限流量/</id>
     <published>2016-10-19T06:08:42.000Z</published>
     <updated>2016-10-27T13:31:32.904Z</updated>
     
@@ -826,16 +852,16 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     </summary>
     
     
-      <category term="VPS" scheme="http://mmmxcc.cn/tags/VPS/"/>
+      <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
     
-      <category term="SSR" scheme="http://mmmxcc.cn/tags/SSR/"/>
+      <category term="SSR" scheme="https://www.mmmxcc.cn/tags/SSR/"/>
     
   </entry>
   
   <entry>
     <title>无公网IP服务器搭建Web站点</title>
-    <link href="http://mmmxcc.cn/2016/10/19/%E6%97%A0%E5%85%AC%E7%BD%91IP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAWeb%E7%AB%99%E7%82%B9/"/>
-    <id>http://mmmxcc.cn/2016/10/19/无公网IP服务器搭建Web站点/</id>
+    <link href="https://www.mmmxcc.cn/2016/10/19/%E6%97%A0%E5%85%AC%E7%BD%91IP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAWeb%E7%AB%99%E7%82%B9/"/>
+    <id>https://www.mmmxcc.cn/2016/10/19/无公网IP服务器搭建Web站点/</id>
     <published>2016-10-19T05:25:29.000Z</published>
     <updated>2016-10-19T08:05:01.969Z</updated>
     
@@ -865,16 +891,16 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     </summary>
     
     
-      <category term="VPS" scheme="http://mmmxcc.cn/tags/VPS/"/>
+      <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
     
-      <category term="Linux" scheme="http://mmmxcc.cn/tags/Linux/"/>
+      <category term="Linux" scheme="https://www.mmmxcc.cn/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>回到了苏州</title>
-    <link href="http://mmmxcc.cn/2016/10/08/%E5%9B%9E%E5%88%B0%E4%BA%86%E8%8B%8F%E5%B7%9E/"/>
-    <id>http://mmmxcc.cn/2016/10/08/回到了苏州/</id>
+    <link href="https://www.mmmxcc.cn/2016/10/08/%E5%9B%9E%E5%88%B0%E4%BA%86%E8%8B%8F%E5%B7%9E/"/>
+    <id>https://www.mmmxcc.cn/2016/10/08/回到了苏州/</id>
     <published>2016-10-08T12:28:44.000Z</published>
     <updated>2016-10-18T13:41:53.913Z</updated>
     
@@ -896,14 +922,14 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     </summary>
     
     
-      <category term="love" scheme="http://mmmxcc.cn/tags/love/"/>
+      <category term="love" scheme="https://www.mmmxcc.cn/tags/love/"/>
     
   </entry>
   
   <entry>
     <title>今天我要去北京见臭臭啦</title>
-    <link href="http://mmmxcc.cn/2016/09/29/%E4%BB%8A%E5%A4%A9%E6%88%91%E8%A6%81%E5%8E%BB%E5%8C%97%E4%BA%AC%E8%A7%81%E8%87%AD%E8%87%AD%E5%95%A6/"/>
-    <id>http://mmmxcc.cn/2016/09/29/今天我要去北京见臭臭啦/</id>
+    <link href="https://www.mmmxcc.cn/2016/09/29/%E4%BB%8A%E5%A4%A9%E6%88%91%E8%A6%81%E5%8E%BB%E5%8C%97%E4%BA%AC%E8%A7%81%E8%87%AD%E8%87%AD%E5%95%A6/"/>
+    <id>https://www.mmmxcc.cn/2016/09/29/今天我要去北京见臭臭啦/</id>
     <published>2016-09-29T12:28:44.000Z</published>
     <updated>2016-10-19T11:46:07.497Z</updated>
     
@@ -922,14 +948,14 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     </summary>
     
     
-      <category term="love" scheme="http://mmmxcc.cn/tags/love/"/>
+      <category term="love" scheme="https://www.mmmxcc.cn/tags/love/"/>
     
   </entry>
   
   <entry>
     <title>关于我</title>
-    <link href="http://mmmxcc.cn/2016/01/18/resume/"/>
-    <id>http://mmmxcc.cn/2016/01/18/resume/</id>
+    <link href="https://www.mmmxcc.cn/2016/01/18/resume/"/>
+    <id>https://www.mmmxcc.cn/2016/01/18/resume/</id>
     <published>2016-01-18T12:02:28.000Z</published>
     <updated>2016-10-22T11:27:18.791Z</updated>
     
@@ -991,7 +1017,7 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     </summary>
     
     
-      <category term="resume" scheme="http://mmmxcc.cn/tags/resume/"/>
+      <category term="resume" scheme="https://www.mmmxcc.cn/tags/resume/"/>
     
   </entry>
   

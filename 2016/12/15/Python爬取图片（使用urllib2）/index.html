@@ -13,7 +13,7 @@
   <meta name="description" content="上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python爬取图片（使用urllib2）">
-<meta property="og:url" content="http://mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/index.html">
+<meta property="og:url" content="https://www.mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/index.html">
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。">
 <meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p">
@@ -95,7 +95,7 @@
 
     <footer class="footer">
   <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
-  <p>访问时间:2016/12/28 04:08:43</p>
+  <p>访问时间:2016/12/29 11:00:19</p>
   <p>愿每个人都能被这个世界温柔对待 </p>
 </footer>
 
@@ -204,7 +204,7 @@
 
             <div class="post-content" id="post-content" itemprop="postContent">
             <blockquote>
-<p>上篇文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
+<p>上篇文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/" target="_blank" rel="external">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
@@ -216,7 +216,7 @@
 <p><img src="http://mmmxcc.08tk.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p" alt="运行结果"></p>
 <p>我们可以发现title这个地方本来应该是中文的，但因为编码的原因，导致出现乱码。通过将html页面重新用”utf-8”编码，可以解决这个问题。</p>
 <hr>
-<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/">http://mmmxcc.cn/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
+<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/" target="_blank" rel="external">http://mmmxcc.cn/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
 <p>这里需要导入lxml，代码格式如下。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = requests.get(<span class="string">"http://jandan.net/ooxx"</span>)</div><div class="line">html.encoding = <span class="string">'utf-8'</span></div><div class="line">selector = etree.HTML(html.text)</div><div class="line">content = selector.xpath(<span class="string">'//ol[@class = "commentlist"]//@src'</span>)</div></pre></td></tr></table></figure>
 <p>单独运行 以上代码可以获得<br><img src="http://mmmxcc.08tk.cn/blog/20161215/182806800.png" alt="Xpath运行结果"></p>
@@ -277,9 +277,9 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
             <blockquote>
                 <p>
                 本文地址：
-                <a href="http://mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/" target="_blank" rel="external">http://mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/</a>
+                <a href="https://www.mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/" target="_blank" rel="external">https://www.mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/</a>
                 </p>
-                <footer><cite><a href="http://mmmxcc.cn">@李飞阳</a></cite></footer>
+                <footer><cite><a href="https://www.mmmxcc.cn">@李飞阳</a></cite></footer>
             </blockquote>
             </div>
             
@@ -308,7 +308,7 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
             
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Python爬取图片（使用urllib2）" data-title="Python爬取图片（使用urllib2）" data-url="http://mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/index.html"></div>
+	<div class="ds-thread" data-thread-key="Python爬取图片（使用urllib2）" data-title="Python爬取图片（使用urllib2）" data-url="https://www.mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/index.html"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -342,7 +342,7 @@ var BLOG_SHARE = {
     title: "Python爬取图片（使用urllib2）",
     pic: "/img/logo.jpg",
     summary: document.getElementsByName('summary')[0].content,
-    url: "http://mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/index.html"
+    url: "https://www.mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/index.html"
 };
 </script>
 <div class="global-share" id="global-share">
