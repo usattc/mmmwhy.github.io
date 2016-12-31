@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.mmmxcc.cn/"/>
-  <updated>2016-12-31T14:56:47.646Z</updated>
+  <updated>2016-12-31T14:59:16.726Z</updated>
   <id>https://www.mmmxcc.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://www.mmmxcc.cn/2016/12/31/%E9%83%A8%E7%BD%B2%E5%9C%A8%E7%BA%BFIPyhton-notebook-%E5%9C%A8%E7%BA%BFpython%E7%BC%96%E8%AF%91%E5%99%A8/"/>
     <id>https://www.mmmxcc.cn/2016/12/31/部署在线IPyhton-notebook-在线python编译器/</id>
     <published>2016-12-31T14:52:39.000Z</published>
-    <updated>2016-12-31T14:56:47.646Z</updated>
+    <updated>2016-12-31T14:59:16.726Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>jupyter notebook在数据分析时使用非常的方便，特别那优美的页面，简直让我着迷。</p>
@@ -63,9 +63,9 @@
     
       <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
     
-      <category term="Jupyter" scheme="https://www.mmmxcc.cn/tags/Jupyter/"/>
+      <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
     
-      <category term="vps" scheme="https://www.mmmxcc.cn/tags/vps/"/>
+      <category term="Jupyter" scheme="https://www.mmmxcc.cn/tags/Jupyter/"/>
     
   </entry>
   
@@ -74,7 +74,7 @@
     <link href="https://www.mmmxcc.cn/2016/12/29/%E4%BD%BF%E7%94%A8Python-selenium%E5%A4%84%E7%90%86%E9%A1%B5%E9%9D%A2%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E9%97%AE%E9%A2%98/"/>
     <id>https://www.mmmxcc.cn/2016/12/29/使用Python-selenium处理页面延迟加载问题/</id>
     <published>2016-12-29T08:06:43.000Z</published>
-    <updated>2016-12-31T12:20:17.559Z</updated>
+    <updated>2016-12-31T14:59:24.823Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>使用python爬取数据的时候，碰到了一个非常无语的问题。有个网站，在输入url进入页面之后，会强制加载一段动画，之后才显示正确内容。后来发现了selenium这个神器，不过还是折腾了我好久。</p>
@@ -116,9 +116,9 @@
     </summary>
     
     
-      <category term="爬虫" scheme="https://www.mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
+      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
     
-      <category term="python" scheme="https://www.mmmxcc.cn/tags/python/"/>
+      <category term="爬虫" scheme="https://www.mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
     
       <category term="Xpath" scheme="https://www.mmmxcc.cn/tags/Xpath/"/>
     
