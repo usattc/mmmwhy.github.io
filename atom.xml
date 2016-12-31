@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.mmmxcc.cn/"/>
-  <updated>2016-12-29T10:37:33.406Z</updated>
+  <updated>2016-12-31T12:20:17.559Z</updated>
   <id>https://www.mmmxcc.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://www.mmmxcc.cn/2016/12/29/%E4%BD%BF%E7%94%A8Python-selenium%E5%A4%84%E7%90%86%E9%A1%B5%E9%9D%A2%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E9%97%AE%E9%A2%98/"/>
     <id>https://www.mmmxcc.cn/2016/12/29/使用Python-selenium处理页面延迟加载问题/</id>
     <published>2016-12-29T08:06:43.000Z</published>
-    <updated>2016-12-29T10:37:33.406Z</updated>
+    <updated>2016-12-31T12:20:17.559Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>使用python爬取数据的时候，碰到了一个非常无语的问题。有个网站，在输入url进入页面之后，会强制加载一段动画，之后才显示正确内容。后来发现了selenium这个神器，不过还是折腾了我好久。</p>
@@ -29,7 +29,7 @@
 <a id="more"></a>
 <h1 id="用selenium-设置浏览器等待时间"><a href="#用selenium-设置浏览器等待时间" class="headerlink" title="用selenium 设置浏览器等待时间"></a>用selenium 设置浏览器等待时间</h1><p>很多人问，这个下拉框定位不到、那个弹出框定位不到…各种定位不到，其实大多数情况下就是两种问题：1 有frame，2 没有加等待。殊不知，你的代码运行速度是什么量级的，而浏览器加载渲染速度又是什么量级的，就好比闪电侠和奥特曼约好去打怪兽，然后闪电侠打完回来之后问奥特曼你为啥还在穿鞋没出门？奥特曼分分中内心一万只羊驼飞过，欺负哥速度慢，哥不跟<br>运行需要两个前提，每个都不好搞。。</p>
 <ul>
-<li>首先需要安装<strong>selenium </strong>，<br>推荐使用pip安装,<code>pip install selenium</code><br>或者直接下载selenium包:<a href="https://pypi.python.org/pypi/selenium，解压，cmd进入目录:`python" target="_blank" rel="external">https://pypi.python.org/pypi/selenium，解压，cmd进入目录:`python</a> setup.py install`</li>
+<li>首先需要安装<strong>selenium </strong>，<br>推荐使用pip安装,<code>pip install selenium</code><br>或者直接下载selenium包:<a href="https://pypi.python.org/pypi/selenium" target="_blank" rel="external">https://pypi.python.org/pypi/selenium</a>  解压，cmd进入目录:<code>python setup.py install</code></li>
 <li>接下来安装<strong> ChromeDriver</strong><br>推荐在这里 <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads" target="_blank" rel="external">https://sites.google.com/a/chromium.org/chromedriver/downloads</a> 下载，然后放在Chrome浏览器目录内，配置Path环境变量为形如 <em>XXGoogle\Chrome\Application</em>的形式<br>你玩了，抛个异常撂挑子了。</li>
 </ul>
 <p>最简单粗暴的一种办法就是强制等待sleep(xx)，强制让闪电侠等xx时间，不管凹凸曼能不能跟上速度，还是已经提前到了，都必须等xx时间。</p>
@@ -62,9 +62,9 @@
     </summary>
     
     
-      <category term="爬虫" scheme="https://www.mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
-    
       <category term="python" scheme="https://www.mmmxcc.cn/tags/python/"/>
+    
+      <category term="爬虫" scheme="https://www.mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
     
       <category term="Xpath" scheme="https://www.mmmxcc.cn/tags/Xpath/"/>
     
@@ -445,9 +445,9 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
-    
       <category term="爬虫" scheme="https://www.mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
     
       <category term="urllib2" scheme="https://www.mmmxcc.cn/tags/urllib2/"/>
     
@@ -505,11 +505,11 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
-    
       <category term="爬虫" scheme="https://www.mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
     
       <category term="Xpath" scheme="https://www.mmmxcc.cn/tags/Xpath/"/>
+    
+      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
     
   </entry>
   
@@ -563,9 +563,9 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Running man" scheme="https://www.mmmxcc.cn/tags/Running-man/"/>
-    
       <category term="臭臭" scheme="https://www.mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
+    
+      <category term="Running man" scheme="https://www.mmmxcc.cn/tags/Running-man/"/>
     
   </entry>
   
@@ -653,9 +653,9 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="臭臭" scheme="https://www.mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
-    
       <category term="读书笔记" scheme="https://www.mmmxcc.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="臭臭" scheme="https://www.mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
     
   </entry>
   
@@ -876,9 +876,9 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     
       <category term="SSR" scheme="https://www.mmmxcc.cn/tags/SSR/"/>
     
-      <category term="GFW" scheme="https://www.mmmxcc.cn/tags/GFW/"/>
-    
       <category term="Linux" scheme="https://www.mmmxcc.cn/tags/Linux/"/>
+    
+      <category term="GFW" scheme="https://www.mmmxcc.cn/tags/GFW/"/>
     
   </entry>
   
