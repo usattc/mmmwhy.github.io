@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.mmmxcc.cn/"/>
-  <updated>2016-12-31T14:59:16.726Z</updated>
+  <updated>2017-01-01T09:36:06.626Z</updated>
   <id>https://www.mmmxcc.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://www.mmmxcc.cn/2016/12/31/%E9%83%A8%E7%BD%B2%E5%9C%A8%E7%BA%BFIPyhton-notebook-%E5%9C%A8%E7%BA%BFpython%E7%BC%96%E8%AF%91%E5%99%A8/"/>
     <id>https://www.mmmxcc.cn/2016/12/31/部署在线IPyhton-notebook-在线python编译器/</id>
     <published>2016-12-31T14:52:39.000Z</published>
-    <updated>2016-12-31T14:59:16.726Z</updated>
+    <updated>2017-01-01T09:36:06.626Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>jupyter notebook在数据分析时使用非常的方便，特别那优美的页面，简直让我着迷。</p>
@@ -31,7 +31,7 @@
 <ul>
 <li>支持的格式很多，Markdown，Latex等都支持，还有很方便的快捷键。</li>
 <li>可以将代码可视化分享给其他人，<a href="https://www.continuum.io/blog/developer/jupyter-and-conda-r" target="_blank" rel="external">From notebook to slides</a></li>
-<li>像一张草稿纸，可以一边通过它来进行你的思考探索过程，交互式的进行，每一步都能看到结果，也很方便查看之前的结果。<br>#####可以到<a href="https://mmmxcc.cn/" target="_blank" rel="external">我的博客</a>，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333#####<h1 id="本地安装Jupyter"><a href="#本地安装Jupyter" class="headerlink" title="本地安装Jupyter"></a>本地安装Jupyter</h1>推荐先安装<a href="https://www.continuum.io/downloads" target="_blank" rel="external">python科学计算包ANACONDA</a>点击进入官网下载，按要求下载安装完成之后。期间会有一步提示是否加入Path，勾选加入环境变量。如果但是没有勾选，对于win事后可以手动添加环境变量。对于linux，使用<code>export PATH=~/anaconda2/bin:$PATH</code>进行添加。<br>anaconda安装完后，对于win10用户，可以看到已经成功安装Jupyter Notebook，点击即可打开食用~<br><img src="http://mmmxcc.08tk.cn/blog/20161231/212802868.png" alt=""><br>点击之后，默认直接打开浏览器localhost:8888<br><img src="http://mmmxcc.08tk.cn/blog/20161231/213001998.png?imageMogr2/thumbnail/!100p" alt=""><br>用命令行也可以打开此页面，并且在打开的页面会形成<strong>.ipynb</strong>文件<br><img src="http://mmmxcc.08tk.cn/blog/20161231/213247968.png" alt=""></li>
+<li>像一张草稿纸，可以一边通过它来进行你的思考探索过程，交互式的进行，每一步都能看到结果，也很方便查看之前的结果。<h5 id="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"><a href="#可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333" class="headerlink" title="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"></a>可以到<a href="https://mmmxcc.cn/" target="_blank" rel="external">我的博客</a>，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333</h5><h1 id="本地安装Jupyter"><a href="#本地安装Jupyter" class="headerlink" title="本地安装Jupyter"></a>本地安装Jupyter</h1>推荐先安装<a href="https://www.continuum.io/downloads" target="_blank" rel="external">python科学计算包ANACONDA</a>点击进入官网下载，按要求下载安装完成之后。期间会有一步提示是否加入Path，勾选加入环境变量。如果但是没有勾选，对于win事后可以手动添加环境变量。对于linux，使用<code>export PATH=~/anaconda2/bin:$PATH</code>进行添加。<br>anaconda安装完后，对于win10用户，可以看到已经成功安装Jupyter Notebook，点击即可打开食用~<br><img src="http://mmmxcc.08tk.cn/blog/20161231/212802868.png" alt=""><br>点击之后，默认直接打开浏览器localhost:8888<br><img src="http://mmmxcc.08tk.cn/blog/20161231/213001998.png?imageMogr2/thumbnail/!100p" alt=""><br>用命令行也可以打开此页面，并且在打开的页面会形成<strong>.ipynb</strong>文件<br><img src="http://mmmxcc.08tk.cn/blog/20161231/213247968.png" alt=""></li>
 </ul>
 <h1 id="线上部署-Jupyter-Notebook"><a href="#线上部署-Jupyter-Notebook" class="headerlink" title="线上部署 Jupyter Notebook"></a>线上部署 Jupyter Notebook</h1><p>在本地部署好了之后，其实给了我一些灵感，既然可以在浏览器运行。那么其实部署在服务器上也是可以的，大家如果看过我看过我之前的文章，就知道我对vps很感兴趣。其实在本地看到的那个localhost:8888，完全可以在外网也可以访问，只需要稍微加以设置即可。</p>
 <h2 id="首先要申请虚拟机"><a href="#首先要申请虚拟机" class="headerlink" title="首先要申请虚拟机"></a>首先要申请虚拟机</h2><p>这里推荐腾讯云或者<a href="https://m.do.co/c/990a117f5061" target="_blank" rel="external">DO</a>，通过本链接注册送$10。然后再加上github的学生优惠包，可以很便宜哦。设置好之后，使用SSH连接上服务器。</p>
