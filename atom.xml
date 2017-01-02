@@ -61,9 +61,9 @@
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
-    
       <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
+    
+      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
     
       <category term="Jupyter" scheme="https://www.mmmxcc.cn/tags/Jupyter/"/>
     
@@ -930,9 +930,9 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     
       <category term="SSR" scheme="https://www.mmmxcc.cn/tags/SSR/"/>
     
-      <category term="GFW" scheme="https://www.mmmxcc.cn/tags/GFW/"/>
-    
       <category term="Linux" scheme="https://www.mmmxcc.cn/tags/Linux/"/>
+    
+      <category term="GFW" scheme="https://www.mmmxcc.cn/tags/GFW/"/>
     
   </entry>
   
