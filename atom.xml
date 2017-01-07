@@ -61,9 +61,9 @@
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
-    
       <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
+    
+      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
     
       <category term="Jupyter" scheme="https://www.mmmxcc.cn/tags/Jupyter/"/>
     
@@ -131,9 +131,11 @@
     <link href="https://www.mmmxcc.cn/2016/12/28/%E7%89%9B%E9%A1%BF%E8%BF%AD%E4%BB%A3%E6%B3%95%E8%AE%A1%E7%AE%97%E5%B9%B3%E6%96%B9%E6%A0%B9-Java-Python%E5%AE%9E%E7%8E%B0/"/>
     <id>https://www.mmmxcc.cn/2016/12/28/牛顿迭代法计算平方根-Java-Python实现/</id>
     <published>2016-12-28T08:33:55.000Z</published>
-    <updated>2016-12-29T10:25:29.771Z</updated>
+    <updated>2017-01-07T11:13:30.933Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。"><a href="#牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。" class="headerlink" title="牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。"></a>牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。</h2><a id="more"></a>
+    <content type="html"><![CDATA[<p>牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。</p>
+<hr>
+<a id="more"></a>
 <h1 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h1><p>假设c为原数，t为c的根数。</p>
 <p>$$ t^2 \quad = \quad c$$<br>$$2t^2 \quad = \quad c + \quad t^2$$<br>$$2t \quad = \quad \frac{c}{t}+  \quad t$$<br>$$t  \quad  =  \quad \frac{\frac{c}{t}  +  t}{2.0}$$</p>
 <h1 id="Java代码实现"><a href="#Java代码实现" class="headerlink" title="Java代码实现"></a>Java代码实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> test;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.util.Scanner;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickFindUF</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">sqrt</span> <span class="params">(<span class="keyword">double</span> c)</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(c&lt;<span class="number">0</span>)</div><div class="line">			<span class="keyword">return</span> Double.NaN;</div><div class="line">		<span class="keyword">double</span> err = <span class="number">1e-15</span>;</div><div class="line">		<span class="keyword">double</span> t = c;</div><div class="line">		<span class="keyword">while</span>(Math.abs(t-c/t)&gt;err)</div><div class="line">			t = (c/t+t)/<span class="number">2.0</span>;</div><div class="line">		<span class="keyword">return</span> t;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> IOException</span>&#123;</div><div class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</div><div class="line">		<span class="keyword">double</span> a = sqrt(sc.nextDouble());		</div><div class="line">		System.out.println(a);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -145,7 +147,8 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。&quot;&gt;&lt;a href=&quot;#牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。&quot; class=&quot;headerlink&quot; title=&quot;牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。&quot;&gt;&lt;/a&gt;牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。&lt;/h2&gt;
+      &lt;p&gt;牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。&lt;/p&gt;
+&lt;hr&gt;
     
     </summary>
     
@@ -617,9 +620,9 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="臭臭" scheme="https://www.mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
-    
       <category term="Running man" scheme="https://www.mmmxcc.cn/tags/Running-man/"/>
+    
+      <category term="臭臭" scheme="https://www.mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
     
   </entry>
   
@@ -707,9 +710,9 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="读书笔记" scheme="https://www.mmmxcc.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="臭臭" scheme="https://www.mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
+    
+      <category term="读书笔记" scheme="https://www.mmmxcc.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -928,11 +931,11 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     </summary>
     
     
+      <category term="Linux" scheme="https://www.mmmxcc.cn/tags/Linux/"/>
+    
       <category term="GFW" scheme="https://www.mmmxcc.cn/tags/GFW/"/>
     
       <category term="SSR" scheme="https://www.mmmxcc.cn/tags/SSR/"/>
-    
-      <category term="Linux" scheme="https://www.mmmxcc.cn/tags/Linux/"/>
     
   </entry>
   
