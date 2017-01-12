@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jupyter notebook使用帮助 | 李飞阳 | PM、Coder、Data mining</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="Jupyer,Python">
+  <meta name="description" content="jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jupyter notebook使用帮助">
+<meta property="og:url" content="https://www.mmmxcc.cn/2017/01/12/jupyter-notebook使用帮助/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。">
+<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p">
+<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20170112/204418862.png?imageMogr2/thumbnail/!100p">
+<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20170112/204526634.png?imageMogr2/thumbnail/!100p">
+<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20170112/204842314.png?imageMogr2/thumbnail/!100p">
+<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20170112/204957560.png?imageMogr2/thumbnail/!60p">
+<meta property="og:updated_time" content="2017-01-12T12:51:49.061Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jupyter notebook使用帮助">
+<meta name="twitter:description" content="jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。">
+<meta name="twitter:image" content="http://mmmxcc.08tk.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p">
+  
+    <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  <meta name="summary" content="&lt;blockquote&gt;
+&lt;p&gt;jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+   <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      <hgroup class="introduce">
+        <h5 class="nickname">Wing Lee</h5>
+        <a href="mailto:i@mmmxcc.cn" title="i@mmmxcc.cn" class="mail">i@mmmxcc.cn</a>
+      </hgroup>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              归档
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/mmmwhy" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="http://115.159.102.118:6666" target="_blank" >
+              <i class="icon icon-lg icon-rocket"></i>
+              R/Python在线编译
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/2016/01/18/resume/"  >
+              <i class="icon icon-lg icon-link"></i>
+              关于我
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>愿每个人都能被这个世界温柔对待 </p>
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">jupyter notebook使用帮助</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">jupyter notebook使用帮助</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2017-01-12T12:50:52.000Z" itemprop="datePublished" class="page-time">
+  2017-01-12
+</time>
+
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-jupyter-notebook使用帮助" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jupyer/">Jupyer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+            <div class="post-share" id="post-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#"><span class="post-toc-number">1.</span> <span class="post-toc-text"></span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#jupyter-notebook-换字体换颜色换主题"><span class="post-toc-number"></span> <span class="post-toc-text">jupyter notebook 换字体换颜色换主题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装-jupyterthemes"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装 jupyterthemes</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命令行格式"><span class="post-toc-number">2.</span> <span class="post-toc-text">命令行格式</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#jupyter-notebook换工作空间"><span class="post-toc-number"></span> <span class="post-toc-text">jupyter notebook换工作空间</span></a>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。</p>
+</blockquote>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h1 id="jupyter-notebook-换字体换颜色换主题"><a href="#jupyter-notebook-换字体换颜色换主题" class="headerlink" title="jupyter notebook 换字体换颜色换主题"></a>jupyter notebook 换字体换颜色换主题</h1><p>jupyter notebook自带的默认颜色实在是太阳春白雪，看的多了眼睛有点累。页面的相关定义都是在CSS内完成的，我们可以通过修改CSS来达到目标。<br>但是这样实在是太累了，在<a href="https://github.com/mmmwhy/jupyter-themes" target="_blank" rel="external">GIthub</a>有一个<strong><a href="https://github.com/mmmwhy/jupyter-themes" target="_blank" rel="external">jupyter-themes</a></strong>工具，真的很好用，通过pip进行安装，分分钟更换成自己喜欢的主题。</p>
+<h2 id="安装-jupyterthemes"><a href="#安装-jupyterthemes" class="headerlink" title="安装 jupyterthemes"></a>安装 jupyterthemes</h2><p><code>pip install jupyterthemes</code><br>通过pip安装省时省力，如果你当前pip安装速度很慢，可以考虑使用清华源，代码如下：<br><code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple jupyterthemes</code></p>
+<h2 id="命令行格式"><a href="#命令行格式" class="headerlink" title="命令行格式"></a>命令行格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">usage: jt [-h] [-l] [-t THEME] [-f MONOFONT] [-fs MONOSIZE] [-nf NBFONT]</div><div class="line">          [-nfs NBFONTSIZE] [-tf TCFONT] [-tfs TCFONTSIZE] [-m MARGINS]</div><div class="line">          [-cursw CURSORWIDTH] [-cursc CURSORCOLOR] [-cellw CELLWIDTH]</div><div class="line">          [-lineh LINEHEIGHT] [-alt] [-vim] [-T] [-N] [-r]</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">options</th>
+<th style="text-align:center">arg</th>
+<th style="text-align:center">default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Usage help</td>
+<td style="text-align:center">-h</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">List Themes</td>
+<td style="text-align:center">-l</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Theme Name to Install</td>
+<td style="text-align:center">-t</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Code Font</td>
+<td style="text-align:center">-f</td>
+<td style="text-align:center">droidmono</td>
+</tr>
+<tr>
+<td style="text-align:left">Code Font-Size</td>
+<td style="text-align:center">-fs</td>
+<td style="text-align:center">11</td>
+</tr>
+<tr>
+<td style="text-align:left">Notebook Font</td>
+<td style="text-align:center">-nf</td>
+<td style="text-align:center">exosans</td>
+</tr>
+<tr>
+<td style="text-align:left">Notebook Font Size</td>
+<td style="text-align:center">-nfs</td>
+<td style="text-align:center">13</td>
+</tr>
+<tr>
+<td style="text-align:left">Text/MD Cell Font</td>
+<td style="text-align:center">-tf</td>
+<td style="text-align:center">loraserif</td>
+</tr>
+<tr>
+<td style="text-align:left">Text/MD Cell Fontsize</td>
+<td style="text-align:center">-tfs</td>
+<td style="text-align:center">13</td>
+</tr>
+<tr>
+<td style="text-align:left">Intro Page Margins</td>
+<td style="text-align:center">-m</td>
+<td style="text-align:center">auto</td>
+</tr>
+<tr>
+<td style="text-align:left">Cell Width</td>
+<td style="text-align:center">-cellw</td>
+<td style="text-align:center">980</td>
+</tr>
+<tr>
+<td style="text-align:left">Line Height</td>
+<td style="text-align:center">-lineh</td>
+<td style="text-align:center">170</td>
+</tr>
+<tr>
+<td style="text-align:left">Cursor Width</td>
+<td style="text-align:center">-cursw</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:left">Cursor Color</td>
+<td style="text-align:center">-cursc</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Alt Text/MD Layout</td>
+<td style="text-align:center">-alt</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Alt Prompt Layout</td>
+<td style="text-align:center">-altp</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Style Vim NBExt*</td>
+<td style="text-align:center">-vim</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Toolbar Visible</td>
+<td style="text-align:center">-T</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Name &amp; Logo Visible</td>
+<td style="text-align:center">-N</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Restore Default</td>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">–</td>
+</tr>
+</tbody>
+</table>
+<p>举个例子<br><code>jt -t oceans16 -f roboto -fs 15</code><br>意味着选择oceans16主题，roboto字体，大小为15，效果如下。<br><img src="http://mmmxcc.08tk.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p" alt=""><br>恢复原始主题，重新启动Jupyter notebook，如果主题没有改变，Ctrl+F5刷新即可。<br><code># restore default themejt -r</code></p>
+<h1 id="jupyter-notebook换工作空间"><a href="#jupyter-notebook换工作空间" class="headerlink" title="jupyter notebook换工作空间"></a>jupyter notebook换工作空间</h1><ul>
+<li>打开 cmd 输入命令<br><code>jupyter notebook --generate-config</code><br><img src="http://mmmxcc.08tk.cn/blog/20170112/204418862.png?imageMogr2/thumbnail/!100p" alt=""></li>
+<li>进入自己工作目录，<strong>.jupyter</strong>，打开<strong>jupyter_notebook_config.py</strong><br><img src="http://mmmxcc.08tk.cn/blog/20170112/204526634.png?imageMogr2/thumbnail/!100p" alt=""></li>
+<li>ctrl+f查到<strong>c.NotebookApp.notebook_dir</strong>，<br>将这一行改为<strong>c.NotebookApp.notebook_dir = ‘自己的位置’</strong><br><img src="http://mmmxcc.08tk.cn/blog/20170112/204842314.png?imageMogr2/thumbnail/!100p" alt=""></li>
+<li>启动 jupyter notebook<br><img src="http://mmmxcc.08tk.cn/blog/20170112/204957560.png?imageMogr2/thumbnail/!60p" alt=""></li>
+</ul>
+
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="https://www.mmmxcc.cn/2017/01/12/jupyter-notebook使用帮助/" target="_blank" rel="external">https://www.mmmxcc.cn/2017/01/12/jupyter-notebook使用帮助/</a>
+                </p>
+                <footer><cite><a href="https://www.mmmxcc.cn">@李飞阳</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2016/12/31/部署在线IPyhton-notebook-在线python编译器/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">部署在线IPyhton notebook(在线python编译器)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="jupyter-notebook使用帮助" data-title="jupyter notebook使用帮助" data-url="https://www.mmmxcc.cn/2017/01/12/jupyter-notebook使用帮助/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"mmmxcc"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+<script>
+var BLOG_SHARE = {
+    title: "jupyter notebook使用帮助",
+    pic: "/img/logo.jpg",
+    summary: document.getElementsByName('summary')[0].content,
+    url: "https://www.mmmxcc.cn/2017/01/12/jupyter-notebook使用帮助/index.html"
+};
+</script>
+<div class="global-share" id="global-share">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
+          豆
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script src="//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502"></script>
+
+
+
+
+
+   </body>
+</html>

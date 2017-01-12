@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.mmmxcc.cn/"/>
-  <updated>2017-01-03T02:15:51.535Z</updated>
+  <updated>2017-01-12T12:51:49.061Z</updated>
   <id>https://www.mmmxcc.cn/</id>
   
   <author>
@@ -14,6 +14,155 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jupyter notebook使用帮助</title>
+    <link href="https://www.mmmxcc.cn/2017/01/12/jupyter-notebook%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/"/>
+    <id>https://www.mmmxcc.cn/2017/01/12/jupyter-notebook使用帮助/</id>
+    <published>2017-01-12T12:50:52.000Z</published>
+    <updated>2017-01-12T12:51:49.061Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。</p>
+</blockquote>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h1 id="jupyter-notebook-换字体换颜色换主题"><a href="#jupyter-notebook-换字体换颜色换主题" class="headerlink" title="jupyter notebook 换字体换颜色换主题"></a>jupyter notebook 换字体换颜色换主题</h1><p>jupyter notebook自带的默认颜色实在是太阳春白雪，看的多了眼睛有点累。页面的相关定义都是在CSS内完成的，我们可以通过修改CSS来达到目标。<br>但是这样实在是太累了，在<a href="https://github.com/mmmwhy/jupyter-themes" target="_blank" rel="external">GIthub</a>有一个<strong><a href="https://github.com/mmmwhy/jupyter-themes" target="_blank" rel="external">jupyter-themes</a></strong>工具，真的很好用，通过pip进行安装，分分钟更换成自己喜欢的主题。</p>
+<h2 id="安装-jupyterthemes"><a href="#安装-jupyterthemes" class="headerlink" title="安装 jupyterthemes"></a>安装 jupyterthemes</h2><p><code>pip install jupyterthemes</code><br>通过pip安装省时省力，如果你当前pip安装速度很慢，可以考虑使用清华源，代码如下：<br><code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple jupyterthemes</code></p>
+<h2 id="命令行格式"><a href="#命令行格式" class="headerlink" title="命令行格式"></a>命令行格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">usage: jt [-h] [-l] [-t THEME] [-f MONOFONT] [-fs MONOSIZE] [-nf NBFONT]</div><div class="line">          [-nfs NBFONTSIZE] [-tf TCFONT] [-tfs TCFONTSIZE] [-m MARGINS]</div><div class="line">          [-cursw CURSORWIDTH] [-cursc CURSORCOLOR] [-cellw CELLWIDTH]</div><div class="line">          [-lineh LINEHEIGHT] [-alt] [-vim] [-T] [-N] [-r]</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">options</th>
+<th style="text-align:center">arg</th>
+<th style="text-align:center">default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Usage help</td>
+<td style="text-align:center">-h</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">List Themes</td>
+<td style="text-align:center">-l</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Theme Name to Install</td>
+<td style="text-align:center">-t</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Code Font</td>
+<td style="text-align:center">-f</td>
+<td style="text-align:center">droidmono</td>
+</tr>
+<tr>
+<td style="text-align:left">Code Font-Size</td>
+<td style="text-align:center">-fs</td>
+<td style="text-align:center">11</td>
+</tr>
+<tr>
+<td style="text-align:left">Notebook Font</td>
+<td style="text-align:center">-nf</td>
+<td style="text-align:center">exosans</td>
+</tr>
+<tr>
+<td style="text-align:left">Notebook Font Size</td>
+<td style="text-align:center">-nfs</td>
+<td style="text-align:center">13</td>
+</tr>
+<tr>
+<td style="text-align:left">Text/MD Cell Font</td>
+<td style="text-align:center">-tf</td>
+<td style="text-align:center">loraserif</td>
+</tr>
+<tr>
+<td style="text-align:left">Text/MD Cell Fontsize</td>
+<td style="text-align:center">-tfs</td>
+<td style="text-align:center">13</td>
+</tr>
+<tr>
+<td style="text-align:left">Intro Page Margins</td>
+<td style="text-align:center">-m</td>
+<td style="text-align:center">auto</td>
+</tr>
+<tr>
+<td style="text-align:left">Cell Width</td>
+<td style="text-align:center">-cellw</td>
+<td style="text-align:center">980</td>
+</tr>
+<tr>
+<td style="text-align:left">Line Height</td>
+<td style="text-align:center">-lineh</td>
+<td style="text-align:center">170</td>
+</tr>
+<tr>
+<td style="text-align:left">Cursor Width</td>
+<td style="text-align:center">-cursw</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:left">Cursor Color</td>
+<td style="text-align:center">-cursc</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Alt Text/MD Layout</td>
+<td style="text-align:center">-alt</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Alt Prompt Layout</td>
+<td style="text-align:center">-altp</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Style Vim NBExt*</td>
+<td style="text-align:center">-vim</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Toolbar Visible</td>
+<td style="text-align:center">-T</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Name &amp; Logo Visible</td>
+<td style="text-align:center">-N</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Restore Default</td>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">–</td>
+</tr>
+</tbody>
+</table>
+<p>举个例子<br><code>jt -t oceans16 -f roboto -fs 15</code><br>意味着选择oceans16主题，roboto字体，大小为15，效果如下。<br><img src="http://mmmxcc.08tk.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p" alt=""><br>恢复原始主题，重新启动Jupyter notebook，如果主题没有改变，Ctrl+F5刷新即可。<br><code># restore default themejt -r</code></p>
+<h1 id="jupyter-notebook换工作空间"><a href="#jupyter-notebook换工作空间" class="headerlink" title="jupyter notebook换工作空间"></a>jupyter notebook换工作空间</h1><ul>
+<li>打开 cmd 输入命令<br><code>jupyter notebook --generate-config</code><br><img src="http://mmmxcc.08tk.cn/blog/20170112/204418862.png?imageMogr2/thumbnail/!100p" alt=""></li>
+<li>进入自己工作目录，<strong>.jupyter</strong>，打开<strong>jupyter_notebook_config.py</strong><br><img src="http://mmmxcc.08tk.cn/blog/20170112/204526634.png?imageMogr2/thumbnail/!100p" alt=""></li>
+<li>ctrl+f查到<strong>c.NotebookApp.notebook_dir</strong>，<br>将这一行改为<strong>c.NotebookApp.notebook_dir = ‘自己的位置’</strong><br><img src="http://mmmxcc.08tk.cn/blog/20170112/204842314.png?imageMogr2/thumbnail/!100p" alt=""></li>
+<li>启动 jupyter notebook<br><img src="http://mmmxcc.08tk.cn/blog/20170112/204957560.png?imageMogr2/thumbnail/!60p" alt=""></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
+    
+    </summary>
+    
+    
+      <category term="Jupyer" scheme="https://www.mmmxcc.cn/tags/Jupyer/"/>
+    
+      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>部署在线IPyhton notebook(在线python编译器)</title>
@@ -931,11 +1080,11 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     </summary>
     
     
+      <category term="Linux" scheme="https://www.mmmxcc.cn/tags/Linux/"/>
+    
       <category term="GFW" scheme="https://www.mmmxcc.cn/tags/GFW/"/>
     
       <category term="SSR" scheme="https://www.mmmxcc.cn/tags/SSR/"/>
-    
-      <category term="Linux" scheme="https://www.mmmxcc.cn/tags/Linux/"/>
     
   </entry>
   
@@ -1030,59 +1179,6 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     
     
       <category term="love" scheme="https://www.mmmxcc.cn/tags/love/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于我</title>
-    <link href="https://www.mmmxcc.cn/2016/01/18/resume/"/>
-    <id>https://www.mmmxcc.cn/2016/01/18/resume/</id>
-    <published>2016-01-18T12:02:28.000Z</published>
-    <updated>2017-01-11T04:41:37.121Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h3><ul>
-<li>李飞阳/男/1994 </li>
-<li>本科/华中科技大学 </li>
-<li>硕士/中国科学技术大学<a id="more"></a></li>
-<li>Github：<a href="http://github.com/mmmwhy" target="_blank" rel="external">http://github.com/mmmwhy</a></li>
-</ul>
-<hr>
-<h3 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h3><h4 id="360-产品经理-2016-03-2016-08"><a href="#360-产品经理-2016-03-2016-08" class="headerlink" title="360 产品经理  2016.03-2016.08"></a>360 产品经理  2016.03-2016.08</h4><h5 id="360好药-需求设计"><a href="#360好药-需求设计" class="headerlink" title="360好药 需求设计"></a><a href="http://www.360haoyao.com/" target="_blank" rel="external">360好药</a> 需求设计</h5><ul>
-<li>使用 <a href="https://www.mockplus.cn/" target="_blank" rel="external">Mockplus</a> 完成 <a href="https://itunes.apple.com/us/app/you-yi-quan-wei-da-yi-jiu/id1042869384?l=zh&amp;ls=1&amp;mt=8" target="_blank" rel="external">APP</a> 1.6、1.7、1.8 产品需求分析和原型设计；</li>
-<li>推进疾病症状搜索功能上线，提高用户搜索体验；</li>
-</ul>
-<h5 id="360电商云-前端原型设计"><a href="#360电商云-前端原型设计" class="headerlink" title="360电商云 前端原型设计"></a><a href="http://www.360dsy.com/" target="_blank" rel="external">360电商云</a> 前端原型设计</h5><ul>
-<li>与运营人员沟通确认需求范围，整理需求优先级并提交技术排期开发；</li>
-</ul>
-<h5 id="360全球药-（国内最大赴印丙肝服务机构）前端后端需求"><a href="#360全球药-（国内最大赴印丙肝服务机构）前端后端需求" class="headerlink" title="360全球药 （国内最大赴印丙肝服务机构）前端后端需求"></a><a href="http://g.360haoyao.com/" target="_blank" rel="external">360全球药</a> （国内最大赴印丙肝服务机构）前端后端需求</h5><ul>
-<li>使用Axure设计360全球药前端页面原型；</li>
-<li>设计全球药后台系统，完成多次活动策划方案的原型与后台设计；</li>
-</ul>
-<h4 id="OPPO-产品经理-2014-07-2014-08"><a href="#OPPO-产品经理-2014-07-2014-08" class="headerlink" title="OPPO 产品经理 2014.07-2014.08"></a>OPPO 产品经理 2014.07-2014.08</h4><h5 id="产品服务质量提升"><a href="#产品服务质量提升" class="headerlink" title="产品服务质量提升"></a>产品服务质量提升</h5><ul>
-<li>项目背景：微信客服好评率一直非常高，但在调研中发现该产品口碑却偏低。 </li>
-<li>项目目标：解释弹窗评价与调研反馈的差异，找出产品改进的方向，扭转差口碑的局面。 </li>
-<li>所做工作：使用 R 统计后台数据，发现微信后台 Bug，通过用户访谈确定问题。重新分析规划服务流程，确立新的 KPI，制作产品报告提供优化建议，进行 A/B 测试并推动实施。 </li>
-<li>项目成果：通过修补 Bug，改进服务流程，推广 Q&amp;A 系统。一个月后的调研中，微信服务评分上升约 30 个点。</li>
-</ul>
-<h5 id="OPPO官方论坛改版"><a href="#OPPO官方论坛改版" class="headerlink" title="OPPO官方论坛改版"></a><a href="http://www.oppo.cn/" target="_blank" rel="external">OPPO官方论坛</a>改版</h5><ul>
-<li>项目目标：由满足功能性为主转化为满足娱乐性需求，提高论坛的可玩性；</li>
-<li>推广策划：使用 SWOT 和 3W 分析市场状况，根据 OPPO 服务理念设计朋友圈/微博营销方案，进行实施和效果评估。</li>
-</ul>
-<hr>
-<h3 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h3><p>唯厨房和远方不可辜负也~</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;个人信息&quot;&gt;&lt;a href=&quot;#个人信息&quot; class=&quot;headerlink&quot; title=&quot;个人信息&quot;&gt;&lt;/a&gt;个人信息&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;李飞阳/男/1994 &lt;/li&gt;
-&lt;li&gt;本科/华中科技大学 &lt;/li&gt;
-&lt;li&gt;硕士/中国科学技术大学
-    
-    </summary>
-    
-    
-      <category term="resume" scheme="https://www.mmmxcc.cn/tags/resume/"/>
     
   </entry>
   
