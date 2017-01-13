@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.mmmxcc.cn/"/>
-  <updated>2017-01-12T12:51:49.061Z</updated>
+  <updated>2017-01-13T00:33:31.055Z</updated>
   <id>https://www.mmmxcc.cn/</id>
   
   <author>
@@ -20,12 +20,14 @@
     <link href="https://www.mmmxcc.cn/2017/01/12/jupyter-notebook%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/"/>
     <id>https://www.mmmxcc.cn/2017/01/12/jupyter-notebook使用帮助/</id>
     <published>2017-01-12T12:50:52.000Z</published>
-    <updated>2017-01-12T12:51:49.061Z</updated>
+    <updated>2017-01-13T00:33:31.055Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。</p>
 </blockquote>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h1 id="jupyter-notebook-换字体换颜色换主题"><a href="#jupyter-notebook-换字体换颜色换主题" class="headerlink" title="jupyter notebook 换字体换颜色换主题"></a>jupyter notebook 换字体换颜色换主题</h1><p>jupyter notebook自带的默认颜色实在是太阳春白雪，看的多了眼睛有点累。页面的相关定义都是在CSS内完成的，我们可以通过修改CSS来达到目标。<br>但是这样实在是太累了，在<a href="https://github.com/mmmwhy/jupyter-themes" target="_blank" rel="external">GIthub</a>有一个<strong><a href="https://github.com/mmmwhy/jupyter-themes" target="_blank" rel="external">jupyter-themes</a></strong>工具，真的很好用，通过pip进行安装，分分钟更换成自己喜欢的主题。</p>
+<a id="more"></a>
+<hr>
+<h1 id="jupyter-notebook-换字体换颜色换主题"><a href="#jupyter-notebook-换字体换颜色换主题" class="headerlink" title="jupyter notebook 换字体换颜色换主题"></a>jupyter notebook 换字体换颜色换主题</h1><p>jupyter notebook自带的默认颜色实在是阳春白雪，看的多了眼睛有点累。页面的相关定义都是在CSS内完成的，我们可以通过修改CSS来达到目标。<br>但是这样实在是太累了，在<a href="https://github.com/mmmwhy/jupyter-themes" target="_blank" rel="external">Github</a>有一个<strong><a href="https://github.com/mmmwhy/jupyter-themes" target="_blank" rel="external">jupyter-themes</a></strong>工具，真的很好用，通过pip进行安装，分分钟更换成自己喜欢的主题。</p>
 <h2 id="安装-jupyterthemes"><a href="#安装-jupyterthemes" class="headerlink" title="安装 jupyterthemes"></a>安装 jupyterthemes</h2><p><code>pip install jupyterthemes</code><br>通过pip安装省时省力，如果你当前pip安装速度很慢，可以考虑使用清华源，代码如下：<br><code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple jupyterthemes</code></p>
 <h2 id="命令行格式"><a href="#命令行格式" class="headerlink" title="命令行格式"></a>命令行格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">usage: jt [-h] [-l] [-t THEME] [-f MONOFONT] [-fs MONOSIZE] [-nf NBFONT]</div><div class="line">          [-nfs NBFONTSIZE] [-tf TCFONT] [-tfs TCFONTSIZE] [-m MARGINS]</div><div class="line">          [-cursw CURSORWIDTH] [-cursc CURSORCOLOR] [-cellw CELLWIDTH]</div><div class="line">          [-lineh LINEHEIGHT] [-alt] [-vim] [-T] [-N] [-r]</div></pre></td></tr></table></figure>
 <table>
@@ -153,14 +155,13 @@
       &lt;blockquote&gt;
 &lt;p&gt;jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
     
     </summary>
     
     
-      <category term="Jupyer" scheme="https://www.mmmxcc.cn/tags/Jupyer/"/>
-    
       <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
+    
+      <category term="Jupyer" scheme="https://www.mmmxcc.cn/tags/Jupyer/"/>
     
   </entry>
   
@@ -210,9 +211,9 @@
     </summary>
     
     
-      <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
-    
       <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
+    
+      <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
     
       <category term="Jupyter" scheme="https://www.mmmxcc.cn/tags/Jupyter/"/>
     
@@ -1080,11 +1081,11 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     </summary>
     
     
-      <category term="Linux" scheme="https://www.mmmxcc.cn/tags/Linux/"/>
-    
       <category term="GFW" scheme="https://www.mmmxcc.cn/tags/GFW/"/>
     
       <category term="SSR" scheme="https://www.mmmxcc.cn/tags/SSR/"/>
+    
+      <category term="Linux" scheme="https://www.mmmxcc.cn/tags/Linux/"/>
     
   </entry>
   
