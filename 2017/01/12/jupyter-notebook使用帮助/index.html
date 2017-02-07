@@ -16,16 +16,16 @@
 <meta property="og:url" content="https://www.mmmxcc.cn/2017/01/12/jupyter-notebook使用帮助/index.html">
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。">
-<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p">
-<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20170112/204418862.png?imageMogr2/thumbnail/!100p">
-<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20170112/204526634.png?imageMogr2/thumbnail/!100p">
-<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20170112/204842314.png?imageMogr2/thumbnail/!100p">
-<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20170112/204957560.png?imageMogr2/thumbnail/!60p">
-<meta property="og:updated_time" content="2017-01-13T00:33:31.055Z">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204418862.png?imageMogr2/thumbnail/!100p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204526634.png?imageMogr2/thumbnail/!100p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204842314.png?imageMogr2/thumbnail/!100p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204957560.png?imageMogr2/thumbnail/!60p">
+<meta property="og:updated_time" content="2017-02-07T05:50:12.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jupyter notebook使用帮助">
 <meta name="twitter:description" content="jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。">
-<meta name="twitter:image" content="http://mmmxcc.08tk.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p">
   
     <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
   
@@ -104,6 +104,7 @@
     <footer class="footer">
   <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
   <p>愿每个人都能被这个世界温柔对待 </p>
+  <p>陕ICP备17001447号</p>
 </footer>
 
   </div>
@@ -329,12 +330,12 @@
 </tr>
 </tbody>
 </table>
-<p>举个例子<br><code>jt -t oceans16 -f roboto -fs 15</code><br>意味着选择oceans16主题，roboto字体，大小为15，效果如下。<br><img src="http://mmmxcc.08tk.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p" alt=""><br>恢复原始主题，重新启动Jupyter notebook，如果主题没有改变，Ctrl+F5刷新即可。<br><code># restore default themejt -r</code></p>
+<p>举个例子<br><code>jt -t oceans16 -f roboto -fs 15</code><br>意味着选择oceans16主题，roboto字体，大小为15，效果如下。<br><img src="http://cdn.mmmxcc.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p" alt=""><br>恢复原始主题，重新启动Jupyter notebook，如果主题没有改变，Ctrl+F5刷新即可。<br><code># restore default themejt -r</code></p>
 <h1 id="jupyter-notebook换工作空间"><a href="#jupyter-notebook换工作空间" class="headerlink" title="jupyter notebook换工作空间"></a>jupyter notebook换工作空间</h1><ul>
-<li>打开 cmd 输入命令<br><code>jupyter notebook --generate-config</code><br><img src="http://mmmxcc.08tk.cn/blog/20170112/204418862.png?imageMogr2/thumbnail/!100p" alt=""></li>
-<li>进入自己工作目录，<strong>.jupyter</strong>，打开<strong>jupyter_notebook_config.py</strong><br><img src="http://mmmxcc.08tk.cn/blog/20170112/204526634.png?imageMogr2/thumbnail/!100p" alt=""></li>
-<li>ctrl+f查到<strong>c.NotebookApp.notebook_dir</strong>，<br>将这一行改为<strong>c.NotebookApp.notebook_dir = ‘自己的位置’</strong><br><img src="http://mmmxcc.08tk.cn/blog/20170112/204842314.png?imageMogr2/thumbnail/!100p" alt=""></li>
-<li>启动 jupyter notebook<br><img src="http://mmmxcc.08tk.cn/blog/20170112/204957560.png?imageMogr2/thumbnail/!60p" alt=""></li>
+<li>打开 cmd 输入命令<br><code>jupyter notebook --generate-config</code><br><img src="http://cdn.mmmxcc.cn/blog/20170112/204418862.png?imageMogr2/thumbnail/!100p" alt=""></li>
+<li>进入自己工作目录，<strong>.jupyter</strong>，打开<strong>jupyter_notebook_config.py</strong><br><img src="http://cdn.mmmxcc.cn/blog/20170112/204526634.png?imageMogr2/thumbnail/!100p" alt=""></li>
+<li>ctrl+f查到<strong>c.NotebookApp.notebook_dir</strong>，<br>将这一行改为<strong>c.NotebookApp.notebook_dir = ‘自己的位置’</strong><br><img src="http://cdn.mmmxcc.cn/blog/20170112/204842314.png?imageMogr2/thumbnail/!100p" alt=""></li>
+<li>启动 jupyter notebook<br><img src="http://cdn.mmmxcc.cn/blog/20170112/204957560.png?imageMogr2/thumbnail/!60p" alt=""></li>
 </ul>
 
 
@@ -354,6 +355,13 @@
             </div>
             
 <nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2017/02/07/Github-Pages-CDN全站加速/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Github Pages + CDN全站加速</h4>
+      </a>
+    </div>
   
 
   

@@ -16,13 +16,13 @@
 <meta property="og:url" content="https://www.mmmxcc.cn/2016/12/28/LaTex-编辑公式/index.html">
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="在计算机直接输入数学公式是一件棘手的事情，我一般是用一个专业的数学工具MathType，但最近在使用Markdown写作，遂产生念头用LaTex输入公式。发现目前网上的语法介绍往往不够全面，于是自己写了一份。">
-<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20161228/153631309.png">
-<meta property="og:image" content="http://mmmxcc.08tk.cn/blog/20161228/153602468.png">
-<meta property="og:updated_time" content="2016-12-28T08:08:28.071Z">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161228/153631309.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161228/153602468.png">
+<meta property="og:updated_time" content="2017-02-07T05:49:24.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LaTex 编辑公式">
 <meta name="twitter:description" content="在计算机直接输入数学公式是一件棘手的事情，我一般是用一个专业的数学工具MathType，但最近在使用Markdown写作，遂产生念头用LaTex输入公式。发现目前网上的语法介绍往往不够全面，于是自己写了一份。">
-<meta name="twitter:image" content="http://mmmxcc.08tk.cn/blog/20161228/153631309.png">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20161228/153631309.png">
   
     <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
   
@@ -102,6 +102,7 @@
     <footer class="footer">
   <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
   <p>愿每个人都能被这个世界温柔对待 </p>
+  <p>陕ICP备17001447号</p>
 </footer>
 
   </div>
@@ -225,7 +226,7 @@
 <li>中等空格    <strong>C_1\;C_2</strong> 2/7m宽度<br><code>$$C_1\;C_2$$</code><br>$$C_1\;C_2$$</li>
 <li>小空格    <strong>C_1\,C_2</strong> 1/6m宽度<br><code>$$C_1\,C_2$$</code><br>$$C_1\,C_2$$</li>
 <li>没有空格    <strong>C_1C_2</strong><br><code>$$C_1C_2$$</code><br>$$C_1C_2$$</li>
-<li>紧贴    <strong>C_1!C_2</strong>        缩进1/6m宽度<br><code>$$C_1\!C_2$$</code><br><img src="http://mmmxcc.08tk.cn/blog/20161228/153631309.png" alt=""></li>
+<li>紧贴    <strong>C_1!C_2</strong>        缩进1/6m宽度<br><code>$$C_1\!C_2$$</code><br><img src="http://cdn.mmmxcc.cn/blog/20161228/153631309.png" alt=""></li>
 </ul>
 <h2 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h2><ul>
 <li>上标符号 <strong>^</strong><br><code>$$ c_{1}^{2}=a^{2}+b^{2} $$</code><br>$$ c_{1}^{2}=a^{2}+b^{2} $$</li>
@@ -278,7 +279,7 @@
 </ul>
 <h2 id="垂直对齐"><a href="#垂直对齐" class="headerlink" title="垂直对齐"></a>垂直对齐</h2><p>使用array命令，并\命令来分行。注意转义</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$$\mathbf&#123;X&#125; =</div><div class="line">	\left( \begin&#123;array&#125;&#123;ccc&#125;</div><div class="line">	x_&#123;11&#125; &amp; x_&#123;12&#125; &amp; \ldots \\\</div><div class="line">	x_&#123;21&#125; &amp; x_&#123;22&#125; &amp; \ldots \\\</div><div class="line">	\vdots &amp; \vdots &amp; \ddots</div><div class="line">	\end&#123;array&#125; \right) $$</div></pre></td></tr></table></figure>
-<p><img src="http://mmmxcc.08tk.cn/blog/20161228/153602468.png" alt=""></p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20161228/153602468.png" alt=""></p>
 
 
             
