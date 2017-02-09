@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.mmmxcc.cn/"/>
-  <updated>2017-02-07T11:51:55.432Z</updated>
+  <updated>2017-02-09T02:57:39.454Z</updated>
   <id>https://www.mmmxcc.cn/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>frp内网穿透</title>
+    <link href="https://www.mmmxcc.cn/2017/02/09/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    <id>https://www.mmmxcc.cn/2017/02/09/frp内网穿透/</id>
+    <published>2017-02-09T02:56:15.000Z</published>
+    <updated>2017-02-09T02:57:39.454Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>我之前写过一篇文章是用Ngrok方式进行内网穿透，该方法需要借助到别人的服务器，非常麻烦。后来发现了Frp这个神器，只需要有一台公网的主机，就可以进行端口穿透，同时还可以转发tcp，udp，dns查询。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>这里仅使用的到最简单的端口映射，需要一台有公网的vps，以及一台本地主机。</p>
+<h1 id="ssh登录公网vps"><a href="#ssh登录公网vps" class="headerlink" title="ssh登录公网vps"></a>ssh登录公网vps</h1><h2 id="下载frp安装包"><a href="#下载frp安装包" class="headerlink" title="下载frp安装包"></a>下载frp安装包</h2><p>这里下载的是64位安装包<br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_amd64.tar.gz</code><br>如果你的系统版本是32位，那么建议使用如下命令：<strong>(如果不知道自己系统版本的，也用这个)</strong><br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_386.tar.gz</code><br><img src="http://cdn.mmmxcc.cn/blog/20170209/100609833.png" alt="frp"></p>
+<h2 id="解压安装包"><a href="#解压安装包" class="headerlink" title="解压安装包"></a>解压安装包</h2><p><code>tar -xzvf frp_0.9.3_linux_386.tar.gz</code><br><img src="http://cdn.mmmxcc.cn/blog/20170209/100924889.png" alt="frp"></p>
+<h2 id="修改-frps-ini-文件，配置一个名为-ssh-的反向代理："><a href="#修改-frps-ini-文件，配置一个名为-ssh-的反向代理：" class="headerlink" title="修改 frps.ini 文件，配置一个名为 ssh 的反向代理："></a>修改 <strong>frps.ini</strong> 文件，配置一个名为 ssh 的反向代理：</h2><p><code>cd frp_0.9.3_linux_386/ &amp;&amp; vi frps.ini</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># frps.ini</div><div class="line">[common]</div><div class="line">bind_port = 7000</div><div class="line"></div><div class="line">[ssh]</div><div class="line">listen_port = 6000</div><div class="line">auth_token = 123</div></pre></td></tr></table></figure></p>
+<p>[ssh]后边写vps自己的端口。<br><img src="http://cdn.mmmxcc.cn/blog/20170209/104436103.png" alt="公网端口"><br><img src="http://cdn.mmmxcc.cn/blog/20170209/102426087.png" alt="ssh端口号"></p>
+<h2 id="启动-frps："><a href="#启动-frps：" class="headerlink" title="启动 frps："></a>启动 frps：</h2><p>./frps -c ./frps.ini</p>
+<h1 id="登录无公网主机"><a href="#登录无公网主机" class="headerlink" title="登录无公网主机"></a>登录无公网主机</h1><p>下载frp安装包与 解压安装包，与上部相同，在此不赘述。<br><img src="http://cdn.mmmxcc.cn/blog/20170209/102821860.png" alt=""></p>
+<h2 id="修改-frpc-ini-文件，配置一个名为-ssh-的反向代理："><a href="#修改-frpc-ini-文件，配置一个名为-ssh-的反向代理：" class="headerlink" title="修改 frpc.ini 文件，配置一个名为 ssh 的反向代理："></a>修改 <strong>frpc.ini</strong> 文件，配置一个名为 ssh 的反向代理：</h2><p><code>cd frp_0.9.3_linux_386/ &amp;&amp; vi frpc.ini</code><br>如果希望转发到本地8888端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[common]</div><div class="line">server_addr = 115.159.102.118</div><div class="line">server_port = 7000</div><div class="line">auth_token = 123</div><div class="line"></div><div class="line">[ssh]</div><div class="line">local_ip = 127.0.0.1</div><div class="line">local_port = 8888</div></pre></td></tr></table></figure></p>
+<h2 id="启动-frpc："><a href="#启动-frpc：" class="headerlink" title="启动 frpc："></a>启动 frpc：</h2><p>./frpc -c ./frpc.ini</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;我之前写过一篇文章是用Ngrok方式进行内网穿透，该方法需要借助到别人的服务器，非常麻烦。后来发现了Frp这个神器，只需要有一台公网的主机，就可以进行端口穿透，同时还可以转发tcp，udp，dns查询。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
+    
+      <category term="frp" scheme="https://www.mmmxcc.cn/tags/frp/"/>
+    
+  </entry>
   
   <entry>
     <title>第二题：使用 Python 如何生成 200 个激活码</title>
@@ -346,9 +385,9 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
-    
       <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
+    
+      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
     
       <category term="Jupyter" scheme="https://www.mmmxcc.cn/tags/Jupyter/"/>
     
@@ -1219,45 +1258,6 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
       <category term="GFW" scheme="https://www.mmmxcc.cn/tags/GFW/"/>
     
       <category term="SSR" scheme="https://www.mmmxcc.cn/tags/SSR/"/>
-    
-      <category term="Linux" scheme="https://www.mmmxcc.cn/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>无公网IP服务器搭建Web站点</title>
-    <link href="https://www.mmmxcc.cn/2016/10/19/%E6%97%A0%E5%85%AC%E7%BD%91IP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAWeb%E7%AB%99%E7%82%B9/"/>
-    <id>https://www.mmmxcc.cn/2016/10/19/无公网IP服务器搭建Web站点/</id>
-    <published>2016-10-19T05:25:29.000Z</published>
-    <updated>2017-02-07T05:43:45.857Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>很多时候我们都会碰到 <code>无公网IP</code> ，比如家用电脑，或者在阿里云上贪便宜买的服务器等。对于科大学生，就更容易出现这种情况了，科大学生可以从<a href="http://cloud.ustc.edu.cn/" target="_blank" rel="external">http://cloud.ustc.edu.cn/</a> 申请校内云主机，配置高，网速快，免流量，简直就是学生狗的福音啊。唯一的问题就是，提供的地址是校内IP，使用起来很不方便，搭建Web站点的时候就会遇到很多问题。<br><a id="more"></a><br>    本文介绍一种免费内网穿透方案，ngrok 。<br>    该方案与花生壳差不多，只不过花生壳变坏了，现在开始要钱，每个月还限制流量1g。对于网站来说，1个g能干什么，卖萌么。<br><img src="http://cdn.mmmxcc.cn//withoutip1.png" alt=""></p>
-<hr>
-<h2 id="在vps中下载对应版本的客户端"><a href="#在vps中下载对应版本的客户端" class="headerlink" title="在vps中下载对应版本的客户端"></a>在vps中下载对应版本的客户端</h2><p><img src="http://cdn.mmmxcc.cn/4.png" alt="选择对应的客户端"><br>本文以中国科大云的ubuntu系统为例，首先输入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -s</div></pre></td></tr></table></figure></p>
-<p>本命令的作用是提升权限，否则之后会不停的要求输入密码的，然后下载客户端。<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://hls.ctopus.com/sunny/linux_amd64.zip</div></pre></td></tr></table></figure></p>
-<hr>
-<p>下载完毕之后，就要安装ngrok了。</p>
-<h2 id="注册端口获得隧道ID"><a href="#注册端口获得隧道ID" class="headerlink" title="注册端口获得隧道ID"></a>注册端口获得隧道ID</h2><p>在安装之后，需要进入网站注册，注册的目的就是告诉服务器，你希望将服务器的哪个端口和自己的系统的哪个端口相映射，比如这个样子。<br><img src="http://cdn.mmmxcc.cn//withoutip2.png" alt="选择映射端口"></p>
-<p>本地端口注意，需要填写本机在局域网内的<strong>IP地址和服务端口</strong>，我这里写的tcp：22，为了SSH连接使用的，当然也可以像下边这个样子。<br><img src="http://cdn.mmmxcc.cn//withoutip3.png" alt="SSH连接端口"></p>
-<p>这里可以使用前缀域名，也可以使用自己的域名，如果使用自己域名的话，需要将<strong><em>域名的CNAME</em></strong>指向到  server.ngrok.cc 。提醒一下，自定义域名会比前缀域名速度慢很多。复制一下，自动生成的隧道ID，一会儿有用哦~</p>
-<hr>
-<h2 id="配置服务器参数"><a href="#配置服务器参数" class="headerlink" title="配置服务器参数"></a>配置服务器参数</h2><p>服务器端配置完毕之后，回到自己的VPS控制台，输入<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> linux_amd64/</div><div class="line">nohup ./sunny clientid <span class="number">9328</span>c9d3f12326e9</div></pre></td></tr></table></figure></p>
-<p>后边那一串9328c9d3f12326e9 就是隧道ID，用自己的ID进行替换就好。解释一下nohup的作用，因为SSH连接断掉，或者退出该页面的话，会导致该ngrok关闭，使用nohup可以让本命令在后台运行，直接关毕SSH不会影响ngrok的运行。</p>
-<p><strong>切记，这可是一个晚上的深刻教训 啊。。。</strong></p>
-<p>这个时候应该就可以看到成功页面了，打开自己的网址就可以看到自己Web服务器里边的东西了~~</p>
-<blockquote>
-<p>这种内网穿透也就是所谓的TCP转发其实一点也不靠谱，速度巨慢。但是很多人为了调试微信小程序不得不使用这种方法，真心建议各位去闲鱼上，找个学生买个腾讯云服务器，一个月1块钱，而且还有公网IP。用起来不知道比这种方法快到哪里去了。</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;很多时候我们都会碰到 &lt;code&gt;无公网IP&lt;/code&gt; ，比如家用电脑，或者在阿里云上贪便宜买的服务器等。对于科大学生，就更容易出现这种情况了，科大学生可以从&lt;a href=&quot;http://cloud.ustc.edu.cn/&quot;&gt;http://cloud.ustc.edu.cn/&lt;/a&gt; 申请校内云主机，配置高，网速快，免流量，简直就是学生狗的福音啊。唯一的问题就是，提供的地址是校内IP，使用起来很不方便，搭建Web站点的时候就会遇到很多问题。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
     
       <category term="Linux" scheme="https://www.mmmxcc.cn/tags/Linux/"/>
     
