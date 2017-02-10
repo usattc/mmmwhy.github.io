@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>使用 XPath 提取网页信息 | 李飞阳 | PM、Coder、Data mining</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  <meta name="theme-color" content="#3F51B5">
-  
-  
-  <meta name="keywords" content="Python,爬虫,Xpath">
-  <meta name="description" content="以1024举例，使用XPath提取图片链接以及磁力链接地址。">
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=60691835"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="https://mmmxcc.cn//2016/12/13/提取网页信息/">
+    
+    
+    <title>使用 XPath 提取网页信息 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Python,爬虫,Xpath">
+    <meta name="description" content="以1024举例，使用XPath提取图片链接以及磁力链接地址。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 XPath 提取网页信息">
 <meta property="og:url" content="https://mmmxcc.cn/2016/12/13/提取网页信息/index.html">
@@ -28,94 +47,85 @@
 <meta name="twitter:title" content="使用 XPath 提取网页信息">
 <meta name="twitter:description" content="以1024举例，使用XPath提取图片链接以及磁力链接地址。">
 <meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20161213/154603126.png?imageMogr2/thumbnail/!80p">
-  
-    <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
-  
-  <meta name="summary" content="&lt;blockquote&gt;
-&lt;p&gt; 以1024举例，使用XPath提取图片链接以及磁力链接地址。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/style.css">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
 </head>
 
 <body>
+    <div id="loading" class="active"></div>
 
-   <div id="loading" class="active"></div>
-
-  <nav id="menu" class="hide" >
-   <div class="inner flex-row-vertical">
-  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-      <i class="icon icon-lg icon-close"></i>
-  </a>
-  <div class="brand-wrap">
-    <div class="brand">
-      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
-      <hgroup class="introduce">
-        <h5 class="nickname">Wing Lee</h5>
-        <a href="mailto:i@mmmxcc.cn" title="i@mmmxcc.cn" class="mail">i@mmmxcc.cn</a>
-      </hgroup>
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:i@mmmxcc.com" title="i@mmmxcc.com" class="mail">i@mmmxcc.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy/python-camp" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                Python练习册
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
     </div>
   </div>
-  <div class="scroll-wrap flex-col">
-    <ul class="nav">
-      
-          <li class="waves-block waves-effect">
-            <a href="/"  >
-              <i class="icon icon-lg icon-home"></i>
-              主页
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/archives"  >
-              <i class="icon icon-lg icon-archives"></i>
-              归档
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/tags"  >
-              <i class="icon icon-lg icon-tags"></i>
-              标签
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="https://github.com/mmmwhy/python-camp" target="_blank" >
-              <i class="icon icon-lg icon-github"></i>
-              Github
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"  >
-              <i class="icon icon-lg icon-rocket"></i>
-              Python练习册
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/2016/01/18/resume/"  >
-              <i class="icon icon-lg icon-link"></i>
-              关于我
-            </a>
-          </li>
-      
-    </ul>
+</aside>
 
-    <footer class="footer">
-  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
-  <p>愿每个人都能被这个世界温柔对待 </p>
-  <p>陕ICP备17001447号</p>
-</footer>
-
-  </div>
-</div>
-
-  </nav>
-  <main id="main">
-    <header class="top-header" id="header">
+    <main id="main">
+        <header class="top-header" id="header">
     <div class="flex-row">
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
@@ -126,94 +136,69 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
         </div>
         
         
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
             <i class="icon icon-lg icon-share-alt"></i>
         </a>
         
     </div>
 </header>
-<header class="content-header">
-  <div class="container">
-    <h1 class="author">使用 XPath 提取网页信息</h1>
-    <h5 class="subtitle">
-        
-            <time datetime="2016-12-13T08:24:34.000Z" itemprop="datePublished" class="page-time">
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">使用 XPath 提取网页信息</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-12-13T08:24:34.000Z" itemprop="datePublished" class="page-time">
   2016-12-13
 </time>
 
 
-        
-    </h5>
-  </div>
+            
+        </h5>
+    </div>
+
+    
+
 </header>
 
-    <div class="container body-wrap">
-      <article id="post-提取网页信息" 
-  class="article article-type-post" itemprop="blogPost">
-    <div class="post-meta flex-row">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xpath/">Xpath</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
 
-    </div>
-    <div class="post-body">
-        <aside class="post-widget" id="post-widget">
-
-            
-            <div class="post-share" id="post-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
-
-            
-
-            
-            <nav class="post-toc-wrap" id="post-toc">
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
             <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#学习XPath的基本知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">学习XPath的基本知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#推荐使用Chrome浏览器中的XPath-Helper，良心之作"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">推荐使用Chrome浏览器中的XPath Helper，良心之作.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用语法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">常用语法</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#挑选网页实验一下"><span class="post-toc-number">2.</span> <span class="post-toc-text">挑选网页实验一下</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用F12查看网页的结构"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">使用F12查看网页的结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用XPath表达式筛选图片链接"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">使用XPath表达式筛选图片链接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用XPath表达式筛选磁力链接"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">使用XPath表达式筛选磁力链接</span></a></li></ol></li></ol>
-            </nav>
+        </nav>
+    </aside>
+    
+<article id="post-提取网页信息"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">使用 XPath 提取网页信息</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年12月13日 16:24" datetime="2016-12-13T08:24:34.000Z"  itemprop="datePublished">2016-12-13</time>
+
             
-        </aside>
 
-        <div class="post-main">
 
-            <div class="post-content" id="post-content" itemprop="postContent">
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
             <blockquote>
 <p> 以1024举例，使用XPath提取图片链接以及磁力链接地址。</p>
 </blockquote>
@@ -226,14 +211,26 @@
 <li><p>选择元素之后按下<em>ctral + shift + x</em>，可以自动提取该元素的XPath表达式。</p>
 </li>
 </ul>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161213/154603126.png?imageMogr2/thumbnail/!80p" alt="使用Xpath Helper自带提取功能"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161213/154603126.png?imageMogr2/thumbnail/!80p" alt="使用Xpath" title="">
+                </div>
+                <div class="image-caption">使用Xpath</div>
+            </figure>
 <h2 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h2><ul>
 <li>/    从根节点选取。</li>
 <li>//    从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。</li>
 <li>@    选取属性，常见使用方法为[@class = “title”]</li>
 </ul>
 <p>举例，比如在<a href="https://s.taobao.com/search?q=%E5%8F%8C%E9%9D%A2%E8%83%B6&amp;refpid=430266_1006&amp;source=tbsy&amp;style=grid&amp;tab=all&amp;pvid=b644f95644f7acd22cbc011dd2b4335f&amp;clk1=e2a07cd1788da47d4c393b5b8bbbcc27&amp;spm=a21bo.50862.201856-sline.1.o2a4b1" target="_blank" rel="external">双面胶-淘宝搜索</a> 页面</p>
-<p>输入: <strong>//*[@class=”m-itemlist”]//a[@trace-price&lt;20]/@href</strong>，用来提取出class为itemlist内a标签里所有price 小于20的产品，并将其href(即超链接)输出<br><img src="http://cdn.mmmxcc.cn/blog/20161213/155438640.png?imageMogr2/thumbnail/!80p" alt="结果展示"></p>
+<p>输入: <strong>//*[@class=”m-itemlist”]//a[@trace-price&lt;20]/@href</strong>，用来提取出class为itemlist内a标签里所有price 小于20的产品，并将其href(即超链接)输出<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161213/155438640.png?imageMogr2/thumbnail/!80p" alt="结果展示" title="">
+                </div>
+                <div class="image-caption">结果展示</div>
+            </figure></p>
 <p>需要结合Chrome浏览器的F12一起使用，先选定大致的框架，比如itemlist这个class，然后逐渐加上更多的要求，具体见文首给出的链接学习。</p>
 <p><code>知道这些就可以抓取1024上的图片和磁力链接了，目测是不是很简单</code></p>
 <hr>
@@ -241,32 +238,127 @@
 <p>作为一名1024资深游客，首先在技术讨论区选择一篇好文，这里用的是<a href="http://www.t66y.com/htm_mob/7/1612/2172569.html" target="_blank" rel="external">[榴民资讯]11月精品主题推荐（49期）</a></p>
 </blockquote>
 <p><img src="http://cdn.mmmxcc.cn/blog/20161213/160946786.png?imageMogr2/thumbnail/!80p" alt="还是熟悉的味道"></p>
-<h2 id="使用F12查看网页的结构"><a href="#使用F12查看网页的结构" class="headerlink" title="使用F12查看网页的结构"></a>使用F12查看网页的结构</h2><p>有两个主要标签 header 和 main ，鼠标移动到main上，可以看到内容页面都被包含起来，所以第一个节点应该选main。<br><img src="http://cdn.mmmxcc.cn/blog/20161213/161454868.png?imageMogr2/thumbnail/!80p" alt="main标签"></p>
+<h2 id="使用F12查看网页的结构"><a href="#使用F12查看网页的结构" class="headerlink" title="使用F12查看网页的结构"></a>使用F12查看网页的结构</h2><p>有两个主要标签 header 和 main ，鼠标移动到main上，可以看到内容页面都被包含起来，所以第一个节点应该选main。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161213/161454868.png?imageMogr2/thumbnail/!80p" alt="main标签" title="">
+                </div>
+                <div class="image-caption">main标签</div>
+            </figure></p>
 <h2 id="使用XPath表达式筛选图片链接"><a href="#使用XPath表达式筛选图片链接" class="headerlink" title="使用XPath表达式筛选图片链接"></a>使用XPath表达式筛选图片链接</h2><p>我们看到图片前边都有一个属性src，这个src后边就是我们所需的图片链接。</p>
-<p>综上，使用XPath表达式: <strong>//*[@id=”main”]//@src</strong><br><img src="http://cdn.mmmxcc.cn/blog/20161213/161747115.png?imageMogr2/thumbnail/!80p" alt="mark"><br>输入XPath代码，获得图片链接。<br><img src="http://cdn.mmmxcc.cn/blog/20161213/161335310.png?imageMogr2/thumbnail/!80p" alt="mark"></p>
+<p>综上，使用XPath表达式: <strong>//*[@id=”main”]//@src</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161213/161747115.png?imageMogr2/thumbnail/!80p" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure><br>输入XPath代码，获得图片链接。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161213/161335310.png?imageMogr2/thumbnail/!80p" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></p>
 <h2 id="使用XPath表达式筛选磁力链接"><a href="#使用XPath表达式筛选磁力链接" class="headerlink" title="使用XPath表达式筛选磁力链接"></a>使用XPath表达式筛选磁力链接</h2><p>同理，我们可以发现，磁力链接前边都有一个blockquote，与上一条处理方式类似，使用XPath表达式: <strong>//*[@id=”main”]//blockquote</strong></p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161213/162129381.png?imageMogr2/thumbnail/!80p" alt="磁力链接"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161213/162129381.png?imageMogr2/thumbnail/!80p" alt="磁力链接" title="">
+                </div>
+                <div class="image-caption">磁力链接</div>
+            </figure>
 <p><strong>以上</strong> </p>
 
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-07T05:47:51.672Z" itemprop="dateUpdated">2017年2月7日 13:47</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2016/12/13/提取网页信息/" target="_blank" rel="external">https://mmmxcc.cn/2016/12/13/提取网页信息/</a>
+    </div>
+    <footer>
+        <a href="https://mmmxcc.cn">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xpath/">Xpath</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+
 
             
-            <div class="post-reward">
-                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
-            </div>
-            
-            
-            <blockquote>
-                <p>
-                本文地址：
-                <a href="https://mmmxcc.cn/2016/12/13/提取网页信息/" target="_blank" rel="external">https://mmmxcc.cn/2016/12/13/提取网页信息/</a>
-                </p>
-                <footer><cite><a href="https://mmmxcc.cn">@李飞阳</a></cite></footer>
-            </blockquote>
-            </div>
-            
-<nav class="post-nav">
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mmmxcc.cn/2016/12/13/提取网页信息/&title=《使用 XPath 提取网页信息》 — 李飞阳&pic=https://mmmxcc.cn/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mmmxcc.cn/2016/12/13/提取网页信息/&title=《使用 XPath 提取网页信息》 — 李飞阳&source=
+ 以1024举例，使用XPath提取图片链接以及磁力链接地址。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mmmxcc.cn/2016/12/13/提取网页信息/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用 XPath 提取网页信息》 — 李飞阳&url=https://mmmxcc.cn/2016/12/13/提取网页信息/&via=https://mmmxcc.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mmmxcc.cn/2016/12/13/提取网页信息/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
-    <div class="waves-block waves-effect prev fl">
+    <div class="waves-block waves-effect prev">
       <a href="/2016/12/15/Python爬取图片（使用urllib2）/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">Python爬取图片（使用urllib2）</h4>
@@ -275,7 +367,7 @@
   
 
   
-    <div class="waves-block waves-effect next fr">
+    <div class="waves-block waves-effect next">
       <a href="/2016/10/28/永远的7012/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">永远的7012</h4>
@@ -285,88 +377,31 @@
 </nav>
 
 
-            
-            
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="提取网页信息" data-title="使用 XPath 提取网页信息" data-url="https://mmmxcc.cn/2016/12/13/提取网页信息/index.html"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"mmmxcc"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="提取网页信息" data-title="使用 XPath 提取网页信息" data-url="https://mmmxcc.cn/2016/12/13/提取网页信息/"></div>
 </div>
-
-
-
-
-
-        </div>
-    </div>
-</article>
-    </div>
-  </main>
-<div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
 <script>
-var BLOG_SHARE = {
-    title: "使用 XPath 提取网页信息",
-    pic: "/img/logo.jpg",
-    summary: document.getElementsByName('summary')[0].content,
-    url: "https://mmmxcc.cn/2016/12/13/提取网页信息/index.html"
-};
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'mmmxcc', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
 </script>
-<div class="global-share" id="global-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
 
 
 
 
-<div id="reward" class="reward-lay">
-    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <h3 class="reward-title">
         <i class="icon icon-quote-left"></i>
         谢谢大爷~
@@ -389,18 +424,102 @@ var BLOG_SHARE = {
     </ul>
 </div>
 
-<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 
-<script src="/js/main.js"></script>
 
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span>陕ICP备17001447号</span> 
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mmmxcc.cn/2016/12/13/提取网页信息/&title=《使用 XPath 提取网页信息》 — 李飞阳&pic=https://mmmxcc.cn/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mmmxcc.cn/2016/12/13/提取网页信息/&title=《使用 XPath 提取网页信息》 — 李飞阳&source=
+ 以1024举例，使用XPath提取图片链接以及磁力链接地址。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mmmxcc.cn/2016/12/13/提取网页信息/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用 XPath 提取网页信息》 — 李飞阳&url=https://mmmxcc.cn/2016/12/13/提取网页信息/&via=https://mmmxcc.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mmmxcc.cn/2016/12/13/提取网页信息/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3ay27jMAwF0Pz/T6fbAaax76WcApaPVkX80umCoEi+XvF6/7M+XT2+8/978mcvWxgYGLdlvA9Xfs+nTX/a4vH76+9iYGA8gJGE0fyp5Gobmk++joGBgXGYrs2Caf4sBgYGxrWM40NpDsbAwMCYHWKj15VBOf/lsrM4BgbGDRn5Jv7+76/0NzAwMG7FeJcrTwfzkJocek92hYGBsTUjD3BtizFpJ7Rp6En7AQMDY2vGDDCby5qNhSXtBAwMjF0ZuXKlELbeKjg56GJgYGzNmA1DtJubNR7yEI+BgbE3I0nL2jbnjJe3RX/BY2BgbM1YKeWvjI61oTxCYmBgbM2Ylb1myeJ6dTA6ymJgYGzEmB1f11PGNmTXMyMYGBhbM4oIXbYHTmp+o0Tz1U58YGBg3JAxw7QNznYgLE8ZMTAwnsZIPpAU0dok8qqGAQYGxhMYKyWwtojfltWifx8GBsamjDxc5pvIr141roGBgbE3IymZtWX92S+vchVncQwMjE0ZyeE2/3xbvJuVAjEwMJ7AGE6TlcW7ldZClBpiYGA8gPG90Jm8YaW1gIGBsSvjXa724DprWOZtVAwMjCcw2vJW++FZkE3unxXpMDAw7suYBdl2pKxNQOv2KgYGxgMYeeDLR8TyEDw7SGNgYGBclV3OAvHXAy4GBsbWjPVN5I3MPAHFwMB4AiMvqOVDFUmAbr+IgYHxTMYs70oOrknAnRX1llqYGBgYd2L8AD+FYL7eyl9JAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
 
 
 <div class="search-panel" id="search-panel">
     <ul class="search-result" id="search-result"></ul>
 </div>
-<script type="text/template" id="search-tpl">
+<template id="search-tpl">
 <li class="item">
-    <a href="/{path}" class="waves-block waves-effect">
+    <a href="{path}" class="waves-block waves-effect">
         <div class="title ellipsis" title="{title}">{title}</div>
         <div class="flex-row flex-middle">
             <div class="tags ellipsis">
@@ -410,41 +529,17 @@ var BLOG_SHARE = {
         </div>
     </a>
 </li>
-</script>
+</template>
 
-<script src="/js/search.js"></script>
-
-
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-
-
-
-<script src="//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502"></script>
+<script src="/js/search.min.js?v=1.4.7" async></script>
 
 
 
 
 
-   </body>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
 </html>

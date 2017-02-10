@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>第二题：使用 Python 如何生成 200 个激活码 | 李飞阳 | PM、Coder、Data mining</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  <meta name="theme-color" content="#3F51B5">
-  
-  
-  <meta name="keywords" content="Python,Python练习题">
-  <meta name="description" content="题目来自：Python 练习册，今天做的是第二题，使用 Python 如何生成 200 个激活码。">
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=60691835"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="https://mmmxcc.cn//2017/02/07/第二题：使用-Python-如何生成-200-个激活码/">
+    
+    
+    <title>第二题：使用 Python 如何生成 200 个激活码 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Python,Python练习题">
+    <meta name="description" content="题目来自：Python 练习册，今天做的是第二题，使用 Python 如何生成 200 个激活码。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第二题：使用 Python 如何生成 200 个激活码">
 <meta property="og:url" content="https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/index.html">
@@ -20,94 +39,85 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第二题：使用 Python 如何生成 200 个激活码">
 <meta name="twitter:description" content="题目来自：Python 练习册，今天做的是第二题，使用 Python 如何生成 200 个激活码。">
-  
-    <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
-  
-  <meta name="summary" content="&lt;blockquote&gt;
-&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;，今天做的是第二题，使用 Python 如何生成 200 个激活码。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/style.css">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
 </head>
 
 <body>
+    <div id="loading" class="active"></div>
 
-   <div id="loading" class="active"></div>
-
-  <nav id="menu" class="hide" >
-   <div class="inner flex-row-vertical">
-  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-      <i class="icon icon-lg icon-close"></i>
-  </a>
-  <div class="brand-wrap">
-    <div class="brand">
-      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
-      <hgroup class="introduce">
-        <h5 class="nickname">Wing Lee</h5>
-        <a href="mailto:i@mmmxcc.cn" title="i@mmmxcc.cn" class="mail">i@mmmxcc.cn</a>
-      </hgroup>
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:i@mmmxcc.com" title="i@mmmxcc.com" class="mail">i@mmmxcc.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy/python-camp" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                Python练习册
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
     </div>
   </div>
-  <div class="scroll-wrap flex-col">
-    <ul class="nav">
-      
-          <li class="waves-block waves-effect">
-            <a href="/"  >
-              <i class="icon icon-lg icon-home"></i>
-              主页
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/archives"  >
-              <i class="icon icon-lg icon-archives"></i>
-              归档
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/tags"  >
-              <i class="icon icon-lg icon-tags"></i>
-              标签
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="https://github.com/mmmwhy/python-camp" target="_blank" >
-              <i class="icon icon-lg icon-github"></i>
-              Github
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"  >
-              <i class="icon icon-lg icon-rocket"></i>
-              Python练习册
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/2016/01/18/resume/"  >
-              <i class="icon icon-lg icon-link"></i>
-              关于我
-            </a>
-          </li>
-      
-    </ul>
+</aside>
 
-    <footer class="footer">
-  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
-  <p>愿每个人都能被这个世界温柔对待 </p>
-  <p>陕ICP备17001447号</p>
-</footer>
-
-  </div>
-</div>
-
-  </nav>
-  <main id="main">
-    <header class="top-header" id="header">
+    <main id="main">
+        <header class="top-header" id="header">
     <div class="flex-row">
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
@@ -118,94 +128,69 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
         </div>
         
         
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
             <i class="icon icon-lg icon-share-alt"></i>
         </a>
         
     </div>
 </header>
-<header class="content-header">
-  <div class="container">
-    <h1 class="author">第二题：使用 Python 如何生成 200 个激活码</h1>
-    <h5 class="subtitle">
-        
-            <time datetime="2017-02-07T11:50:11.000Z" itemprop="datePublished" class="page-time">
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">第二题：使用 Python 如何生成 200 个激活码</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-07T11:50:11.000Z" itemprop="datePublished" class="page-time">
   2017-02-07
 </time>
 
 
-        
-    </h5>
-  </div>
+            
+        </h5>
+    </div>
+
+    
+
 </header>
 
-    <div class="container body-wrap">
-      <article id="post-第二题：使用-Python-如何生成-200-个激活码" 
-  class="article article-type-post" itemprop="blogPost">
-    <div class="post-meta flex-row">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python练习题/">Python练习题</a></li></ul>
 
-    </div>
-    <div class="post-body">
-        <aside class="post-widget" id="post-widget">
-
-            
-            <div class="post-share" id="post-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
-
-            
-
-            
-            <nav class="post-toc-wrap" id="post-toc">
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
             <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#random模块介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">random模块介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#random模块五个函数"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">random模块五个函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#random模块方法说明"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">random模块方法说明</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用random直接随机抽取"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用random直接随机抽取</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设定字符串内容"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">设定字符串内容</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从给定内容中随机选取"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">从给定内容中随机选取</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用UUID"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用UUID</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#UUID的五种实现方法"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">UUID的五种实现方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用UUID生成激活码"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">使用UUID生成激活码</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#写入文件代码示例"><span class="post-toc-number">4.</span> <span class="post-toc-text">写入文件代码示例</span></a></li></ol>
-            </nav>
+        </nav>
+    </aside>
+    
+<article id="post-第二题：使用-Python-如何生成-200-个激活码"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">第二题：使用 Python 如何生成 200 个激活码</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年02月07日 19:50" datetime="2017-02-07T11:50:11.000Z"  itemprop="datePublished">2017-02-07</time>
+
             
-        </aside>
 
-        <div class="post-main">
 
-            <div class="post-content" id="post-content" itemprop="postContent">
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
             <blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第二题，使用 Python 如何生成 200 个激活码。</p>
 </blockquote>
@@ -264,25 +249,96 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 <h1 id="写入文件代码示例"><a href="#写入文件代码示例" class="headerlink" title="写入文件代码示例"></a>写入文件代码示例</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="keyword">import</span> string</div><div class="line">FIELD = string.digits + string.letters</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate</span><span class="params">(n, many=<span class="number">1</span>, where=None)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getCode</span><span class="params">(n)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="string">""</span>.join(random.sample(FIELD, n))</div><div class="line">    gene = [getCode(n) <span class="keyword">for</span> i <span class="keyword">in</span> range(many)]</div><div class="line">    <span class="keyword">return</span> gene</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">writeIn</span><span class="params">(n, many, where)</span>:</span></div><div class="line">    count = <span class="number">1</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> generate(n, many):</div><div class="line">        <span class="keyword">with</span> open(where, <span class="string">"a"</span>) <span class="keyword">as</span> boom:</div><div class="line">            boom.write(str(count).rjust(<span class="number">3</span>)+<span class="string">"  "</span>+i+<span class="string">"\n"</span>)</div><div class="line">        count += <span class="number">1</span></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    writeIn(<span class="number">20</span>, <span class="number">200</span>, <span class="string">"coupon.txt"</span>)</div></pre></td></tr></table></figure>
 <p>以上</p>
 
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-10T08:36:01.474Z" itemprop="dateUpdated">2017年2月10日 16:36</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/" target="_blank" rel="external">https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/</a>
+    </div>
+    <footer>
+        <a href="https://mmmxcc.cn">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python练习题/">Python练习题</a></li></ul>
+
 
             
-            <div class="post-reward">
-                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
-            </div>
-            
-            
-            <blockquote>
-                <p>
-                本文地址：
-                <a href="https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/" target="_blank" rel="external">https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/</a>
-                </p>
-                <footer><cite><a href="https://mmmxcc.cn">@李飞阳</a></cite></footer>
-            </blockquote>
-            </div>
-            
-<nav class="post-nav">
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/&title=《第二题：使用 Python 如何生成 200 个激活码》 — 李飞阳&pic=https://mmmxcc.cn/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/&title=《第二题：使用 Python 如何生成 200 个激活码》 — 李飞阳&source=
+题目来自：Python 练习册，今天做的是第二题，使用 Python 如何生成 200 个激活码。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第二题：使用 Python 如何生成 200 个激活码》 — 李飞阳&url=https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/&via=https://mmmxcc.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
-    <div class="waves-block waves-effect prev fl">
+    <div class="waves-block waves-effect prev">
       <a href="/2017/02/09/frp内网穿透/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">frp内网穿透</h4>
@@ -291,7 +347,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
   
 
   
-    <div class="waves-block waves-effect next fr">
+    <div class="waves-block waves-effect next">
       <a href="/2017/02/07/Github-Pages-CDN全站加速/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">Github Pages + CDN全站加速</h4>
@@ -301,88 +357,31 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 </nav>
 
 
-            
-            
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="第二题：使用-Python-如何生成-200-个激活码" data-title="第二题：使用 Python 如何生成 200 个激活码" data-url="https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/index.html"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"mmmxcc"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="第二题：使用-Python-如何生成-200-个激活码" data-title="第二题：使用 Python 如何生成 200 个激活码" data-url="https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/"></div>
 </div>
-
-
-
-
-
-        </div>
-    </div>
-</article>
-    </div>
-  </main>
-<div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
 <script>
-var BLOG_SHARE = {
-    title: "第二题：使用 Python 如何生成 200 个激活码",
-    pic: "/img/logo.jpg",
-    summary: document.getElementsByName('summary')[0].content,
-    url: "https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/index.html"
-};
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'mmmxcc', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
 </script>
-<div class="global-share" id="global-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
 
 
 
 
-<div id="reward" class="reward-lay">
-    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <h3 class="reward-title">
         <i class="icon icon-quote-left"></i>
         谢谢大爷~
@@ -405,18 +404,102 @@ var BLOG_SHARE = {
     </ul>
 </div>
 
-<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 
-<script src="/js/main.js"></script>
 
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span>陕ICP备17001447号</span> 
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/&title=《第二题：使用 Python 如何生成 200 个激活码》 — 李飞阳&pic=https://mmmxcc.cn/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/&title=《第二题：使用 Python 如何生成 200 个激活码》 — 李飞阳&source=
+题目来自：Python 练习册，今天做的是第二题，使用 Python 如何生成 200 个激活码。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第二题：使用 Python 如何生成 200 个激活码》 — 李飞阳&url=https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/&via=https://mmmxcc.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADM0lEQVR42u3aUW4iQQwE0Nz/0uwBCKTKHiSm981XREjTr5G21nb//MTP4+l5fv3V+59ff/751Sv5Hn4+8WBjY2PfhP14+7zabr6J5LftCu3efjkabGxs7OPYr/6F3wTSJjtycLIHbGxsbOyXMVAeQV605J+CjY2NjZ2z3zd32tjLyx5sbGxs7ISdbCXZXAt4/1n5wX2wl4aNjY399exZAfCdP39kvo2NjY39xezH4tlcrGnbVdcqsLGxsU9ityGxafdcNSSYlSW//C02Njb2EezZFcbN9Z12YJCPJYqyBBsbG/sgdhIMbUhsDnEfTvkXg42NjX0Gu42ETYzlgZSHWV6c/FJ7YWNjYx/BnhUnSYHRbjQfM+RfTLEONjY29m3ZOWZzHO2Fm9mRFSMHbGxs7IPY7ZvaI9i0fq4aS0SJjY2NjX1z9ixOPt3Kz5tEyf6LqgsbGxv7Vux8ubwMaA9l31pqvwBsbGzsk9izBlA+iM1DazZ+aK8W1fMQbGxs7K9n58PX+hJMUgMFpGtH0djY2NjnsTcRNZtC5Nd6NgVJtFtsbGzsg9ib//rPImfWzLp2PIyNjY19Brv9gOS6zD7w2lZUHXjY2NjYx7H3w9S8kdQe4mZIPLyyg42NjX0r9lVRNHt/fsXnqmJpOCTAxsbG/mL2rD2UN3fqOCkjMLmmU1Rg2NjY2Ldlt63/TdjkW2zHAEVrCRsbG/todh4nSZs+bw+1LaT3x/THIWJjY2Mfx95c3GkPLh/0tk2rYjCMjY2NfRx7MwxoS5o86mYhGl3rwcbGxj6OvW8AzcqVaIvr9YuFsLGxsW/IzkeqbVxt4icvafIWFTY2Nvap7FmBsWnl58e3GUL/8bfY2NjYB7FnAdY25ZNnP2ZoxxvY2NjYZ7Af5XPV1Zn2yGYh+nJNbGxs7IPYs4DZb33W3E/aRkkYY2NjY5/Hng13P1GozEqafGVsbGzss9ntoLcdGLflxGyc/MFeGjY2NvYR7Dbe8ii6agycj36xsbGx/092XsDUmyhLmv1q2NjY2Oex24i6YOZQFhXt6PePdbCxsbEPYrcf/D6WZkPctqU1HAlszhsbGxv7G9n/AMyI3nKl3Oa9AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
 
 
 <div class="search-panel" id="search-panel">
     <ul class="search-result" id="search-result"></ul>
 </div>
-<script type="text/template" id="search-tpl">
+<template id="search-tpl">
 <li class="item">
-    <a href="/{path}" class="waves-block waves-effect">
+    <a href="{path}" class="waves-block waves-effect">
         <div class="title ellipsis" title="{title}">{title}</div>
         <div class="flex-row flex-middle">
             <div class="tags ellipsis">
@@ -426,41 +509,17 @@ var BLOG_SHARE = {
         </div>
     </a>
 </li>
-</script>
+</template>
 
-<script src="/js/search.js"></script>
-
-
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-
-
-
-<script src="//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502"></script>
+<script src="/js/search.min.js?v=1.4.7" async></script>
 
 
 
 
 
-   </body>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
 </html>

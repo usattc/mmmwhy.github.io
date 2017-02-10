@@ -37,7 +37,13 @@
 <p>下载MySQL-python-1.2.5.zip 文件之后直接解压。进入MySQL-python-1.2.5目录:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python setup.py install</div></pre></td></tr></table></figure>
 <p>可能会提示缺少<strong>“error: Microsoft Visual C++ 9.0 is required (Unable to find vcvarsall.bat). Get it from <a href="http://aka.ms/vcpython27" target="_blank" rel="external">http://aka.ms/vcpython27</a>”</strong><br>这个地方查找了很多资料，有的说要修改注册表，有的说要改VS2015的配置。简直一派胡言，I am angry。直接按照要求，在这个<em><a href="http://aka.ms/vcpython27" target="_blank" rel="external">http://aka.ms/vcpython27</a></em>下载安装就可以了。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://cdn.mmmxcc.cn/blog/20170209/192148401.png" alt="Microsoft Visual C++ Compiler for Python 2.7"></h2><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import MySQLdb</div></pre></td></tr></table></figure></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/192148401.png" alt="Microsoft" title="">
+                </div>
+                <div class="image-caption">Microsoft</div>
+            </figure></h2><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import MySQLdb</div></pre></td></tr></table></figure></p>
 <p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import mysql</div></pre></td></tr></table></figure></p>
 <p>如果不报错，那么就安装成功了。</p>
 <hr>
@@ -73,7 +79,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show processlist;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170210/103558354.png" alt="卡死"><br>发现多个线程数据处理间出现了死锁，也没什么好的办法，kill掉就可以了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kill 65;</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170210/103558354.png" alt="卡死" title="">
+                </div>
+                <div class="image-caption">卡死</div>
+            </figure>
+<p>发现多个线程数据处理间出现了死锁，也没什么好的办法，kill掉就可以了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kill 65;</div></pre></td></tr></table></figure></p>
 <h2 id="然后就可以继续使用了。"><a href="#然后就可以继续使用了。" class="headerlink" title="然后就可以继续使用了。"></a>然后就可以继续使用了。</h2><h2 id="python-操作mysql基本语法"><a href="#python-操作mysql基本语法" class="headerlink" title="python 操作mysql基本语法"></a>python 操作mysql基本语法</h2><ul>
 <li>建立数据库连接<br>注意，这个地方的test表要存在，否则无法连接<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> MySQLdb</div><div class="line">conn=MySQLdb.connect(</div><div class="line">        host=<span class="string">'localhost'</span>,</div><div class="line">        port = <span class="number">3306</span>, <span class="comment">#默认3306端口，不写也可以</span></div><div class="line">        user=<span class="string">'root'</span>,</div><div class="line">        passwd=<span class="string">'123456'</span>,</div><div class="line">        db =<span class="string">'test'</span>,</div><div class="line">)</div><div class="line">cur = conn.cursor()</div></pre></td></tr></table></figure>
 </li>
@@ -143,12 +156,42 @@
 <hr>
 <a id="more"></a>
 <p>这里仅使用的到最简单的端口映射，需要一台有公网的vps，以及一台本地主机。</p>
-<h1 id="ssh登录公网vps"><a href="#ssh登录公网vps" class="headerlink" title="ssh登录公网vps"></a>ssh登录公网vps</h1><h2 id="下载frp安装包"><a href="#下载frp安装包" class="headerlink" title="下载frp安装包"></a>下载frp安装包</h2><p>这里下载的是64位安装包<br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_amd64.tar.gz</code><br>如果你的系统版本是32位，那么建议使用如下命令：<strong>(如果不知道自己系统版本的，也用这个)</strong><br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_386.tar.gz</code><br><img src="http://cdn.mmmxcc.cn/blog/20170209/100609833.png" alt="frp"></p>
-<h2 id="解压安装包"><a href="#解压安装包" class="headerlink" title="解压安装包"></a>解压安装包</h2><p><code>tar -xzvf frp_0.9.3_linux_386.tar.gz</code><br><img src="http://cdn.mmmxcc.cn/blog/20170209/100924889.png" alt="frp"></p>
+<h1 id="ssh登录公网vps"><a href="#ssh登录公网vps" class="headerlink" title="ssh登录公网vps"></a>ssh登录公网vps</h1><h2 id="下载frp安装包"><a href="#下载frp安装包" class="headerlink" title="下载frp安装包"></a>下载frp安装包</h2><p>这里下载的是64位安装包<br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_amd64.tar.gz</code><br>如果你的系统版本是32位，那么建议使用如下命令：<strong>(如果不知道自己系统版本的，也用这个)</strong><br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_386.tar.gz</code><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/100609833.png" alt="frp" title="">
+                </div>
+                <div class="image-caption">frp</div>
+            </figure></p>
+<h2 id="解压安装包"><a href="#解压安装包" class="headerlink" title="解压安装包"></a>解压安装包</h2><p><code>tar -xzvf frp_0.9.3_linux_386.tar.gz</code><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/100924889.png" alt="frp" title="">
+                </div>
+                <div class="image-caption">frp</div>
+            </figure></p>
 <h2 id="修改-frps-ini-文件，配置一个名为-ssh-的反向代理："><a href="#修改-frps-ini-文件，配置一个名为-ssh-的反向代理：" class="headerlink" title="修改 frps.ini 文件，配置一个名为 ssh 的反向代理："></a>修改 <strong>frps.ini</strong> 文件，配置一个名为 ssh 的反向代理：</h2><p><code>cd frp_0.9.3_linux_386/ &amp;&amp; vi frps.ini</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># frps.ini</div><div class="line">[common]</div><div class="line">bind_port = 7000</div><div class="line"></div><div class="line">[ssh]</div><div class="line">listen_port = 6000</div><div class="line">auth_token = 123</div></pre></td></tr></table></figure></p>
-<p>[ssh]后边写vps自己的端口。<br><img src="http://cdn.mmmxcc.cn/blog/20170209/104436103.png" alt="公网端口"><br><img src="http://cdn.mmmxcc.cn/blog/20170209/102426087.png" alt="ssh端口号"></p>
+<p>[ssh]后边写vps自己的端口。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/104436103.png" alt="公网端口" title="">
+                </div>
+                <div class="image-caption">公网端口</div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/102426087.png" alt="ssh端口号" title="">
+                </div>
+                <div class="image-caption">ssh端口号</div>
+            </figure></p>
 <h2 id="启动-frps："><a href="#启动-frps：" class="headerlink" title="启动 frps："></a>启动 frps：</h2><p>./frps -c ./frps.ini</p>
-<h1 id="登录无公网主机"><a href="#登录无公网主机" class="headerlink" title="登录无公网主机"></a>登录无公网主机</h1><p>下载frp安装包与 解压安装包，与上部相同，在此不赘述。<br><img src="http://cdn.mmmxcc.cn/blog/20170209/102821860.png" alt=""></p>
+<h1 id="登录无公网主机"><a href="#登录无公网主机" class="headerlink" title="登录无公网主机"></a>登录无公网主机</h1><p>下载frp安装包与 解压安装包，与上部相同，在此不赘述。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/102821860.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <h2 id="修改-frpc-ini-文件，配置一个名为-ssh-的反向代理："><a href="#修改-frpc-ini-文件，配置一个名为-ssh-的反向代理：" class="headerlink" title="修改 frpc.ini 文件，配置一个名为 ssh 的反向代理："></a>修改 <strong>frpc.ini</strong> 文件，配置一个名为 ssh 的反向代理：</h2><p><code>cd frp_0.9.3_linux_386/ &amp;&amp; vi frpc.ini</code><br>如果希望转发到本地8888端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[common]</div><div class="line">server_addr = 115.159.102.118</div><div class="line">server_port = 7000</div><div class="line">auth_token = 123</div><div class="line"></div><div class="line">[ssh]</div><div class="line">local_ip = 127.0.0.1</div><div class="line">local_port = 8888</div></pre></td></tr></table></figure></p>
 <h2 id="启动-frpc："><a href="#启动-frpc：" class="headerlink" title="启动 frpc："></a>启动 frpc：</h2><p>./frpc -c ./frpc.ini</p>
 ]]></content>
@@ -270,19 +313,76 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 <li>利用 CDN 解决百度爬虫被 Github Pages 拒绝的问题；</li>
 </ul>
 <hr>
-<h1 id="加速效果展示"><a href="#加速效果展示" class="headerlink" title="加速效果展示"></a>加速效果展示</h1><h2 id="不使用CDN加速"><a href="#不使用CDN加速" class="headerlink" title="不使用CDN加速"></a>不使用CDN加速</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170126/123752053.png" alt="不使用CDN"><br>平均响应时间130ms，比我想象中要好。可能因为现在是上午11点上网的人少（?），之前我在学校测得时候动辄200ms。</p>
-<h2 id="使用CDN加速"><a href="#使用CDN加速" class="headerlink" title="使用CDN加速"></a>使用CDN加速</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170126/123341114.png?imageMogr2/thumbnail/!60p" alt="CDN加速后"><br>可以看到平均响应时间大约24.2ms，祖国山河一片绿。多环保~</p>
+<h1 id="加速效果展示"><a href="#加速效果展示" class="headerlink" title="加速效果展示"></a>加速效果展示</h1><h2 id="不使用CDN加速"><a href="#不使用CDN加速" class="headerlink" title="不使用CDN加速"></a>不使用CDN加速</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/123752053.png" alt="不使用CDN" title="">
+                </div>
+                <div class="image-caption">不使用CDN</div>
+            </figure>
+<p>平均响应时间130ms，比我想象中要好。可能因为现在是上午11点上网的人少（?），之前我在学校测得时候动辄200ms。</p>
+<h2 id="使用CDN加速"><a href="#使用CDN加速" class="headerlink" title="使用CDN加速"></a>使用CDN加速</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/123341114.png?imageMogr2/thumbnail/!60p" alt="CDN加速后" title="">
+                </div>
+                <div class="image-caption">CDN加速后</div>
+            </figure>
+<p>可以看到平均响应时间大约24.2ms，祖国山河一片绿。多环保~</p>
 <h1 id="利用Pages搭建个人网站"><a href="#利用Pages搭建个人网站" class="headerlink" title="利用Pages搭建个人网站"></a>利用Pages搭建个人网站</h1><p>这一步在网上搜一下，有很多教程，在此不赘述。</p>
 <h1 id="使用CDN为Pages加速"><a href="#使用CDN为Pages加速" class="headerlink" title="使用CDN为Pages加速"></a>使用CDN为Pages加速</h1><p>推荐腾讯云CDN，<a href="https://www.qcloud.com/product/cdn" target="_blank" rel="external">https://www.qcloud.com/product/cdn</a> 目前可以免费送300G流量。<br>根据服务商的要求，如Coding要求为：</p>
 <blockquote>
 <p><strong>在您的域名管理面板中添加 CNAME 记录指向到 pages.coding.me</strong>。</p>
 </blockquote>
-<h2 id="获得CNAME的IP地址"><a href="#获得CNAME的IP地址" class="headerlink" title="获得CNAME的IP地址"></a>获得CNAME的IP地址</h2><p>ping 一下 <strong>pages.coding.me</strong>，获得IP地址： 23.248.162.138，源站设置为该IP。<br><img src="http://cdn.mmmxcc.cn/blog/20170126/140625255.png?imageMogr2/thumbnail/!80p" alt="设置源站"></p>
-<p>接下来，加速服务配置，默认时长都是30天。明显这个时间忒长了，我们可以设置为1天或者几个小时。<br><img src="http://cdn.mmmxcc.cn/blog/20170126/141205144.png" alt="设置缓存逻辑"><br><strong> 点击提交 </strong>，过约5分钟会返回提示成功。点击管理进一步设置；</p>
-<h2 id="配置回源host"><a href="#配置回源host" class="headerlink" title="配置回源host"></a>配置回源host</h2><p>我们可以把回源host理解为，访问<em>23.248.162.138</em>这个IP地址的服务器时，向服务器发出的url访问请求，服务器根据host头部里边的url地址，映射到内部相应访问空间去。<strong>回源host是用于CDN回源到源站时的访问域名，即http请求包包头的host字段内容。</strong><br><img src="http://cdn.mmmxcc.cn/blog/20170126/151918753.png?imageMogr2/thumbnail/!80p" alt="回源host"></p>
-<h2 id="配置域名CNAME"><a href="#配置域名CNAME" class="headerlink" title="配置域名CNAME"></a>配置域名CNAME</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170126/152322828.png?imageMogr2/thumbnail/!80p" alt="CNAME"><br>为域名配置相应的CNAME，常见的是<strong>@</strong>和<strong>www</strong><br><img src="http://cdn.mmmxcc.cn/blog/20170126/152658278.png?imageMogr2/thumbnail/!80p" alt=""></p>
-<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><p>ping 一下自己的域名，如果PING到后缀为cdntip.com或后缀为tcdn.qq.com表示域名CNAME已生效。<br><img src="http://cdn.mmmxcc.cn/blog/20170126/153033720.png?imageMogr2/thumbnail/!80p" alt=""><br>使用CDN为Pages加速，到这一步已经算结束了。但是由于使用国内CDN，使得网站在国外加载速度会慢的令人发指。</p>
-<h1 id="分地区DNS"><a href="#分地区DNS" class="headerlink" title="分地区DNS"></a>分地区DNS</h1><p>国内国外设置不同CANME，国外指向 <strong>mmmwhy.github.io</strong>或者<strong>pages.coding.me</strong>（设置自己的），国内的指向刚才CDN给出的地址。<br><img src="http://cdn.mmmxcc.cn/blog/20170126/153601063.png?imageMogr2/thumbnail/!80p" alt=""></p>
+<h2 id="获得CNAME的IP地址"><a href="#获得CNAME的IP地址" class="headerlink" title="获得CNAME的IP地址"></a>获得CNAME的IP地址</h2><p>ping 一下 <strong>pages.coding.me</strong>，获得IP地址： 23.248.162.138，源站设置为该IP。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/140625255.png?imageMogr2/thumbnail/!80p" alt="设置源站" title="">
+                </div>
+                <div class="image-caption">设置源站</div>
+            </figure></p>
+<p>接下来，加速服务配置，默认时长都是30天。明显这个时间忒长了，我们可以设置为1天或者几个小时。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/141205144.png" alt="设置缓存逻辑" title="">
+                </div>
+                <div class="image-caption">设置缓存逻辑</div>
+            </figure><br><strong> 点击提交 </strong>，过约5分钟会返回提示成功。点击管理进一步设置；</p>
+<h2 id="配置回源host"><a href="#配置回源host" class="headerlink" title="配置回源host"></a>配置回源host</h2><p>我们可以把回源host理解为，访问<em>23.248.162.138</em>这个IP地址的服务器时，向服务器发出的url访问请求，服务器根据host头部里边的url地址，映射到内部相应访问空间去。<strong>回源host是用于CDN回源到源站时的访问域名，即http请求包包头的host字段内容。</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/151918753.png?imageMogr2/thumbnail/!80p" alt="回源host" title="">
+                </div>
+                <div class="image-caption">回源host</div>
+            </figure></p>
+<h2 id="配置域名CNAME"><a href="#配置域名CNAME" class="headerlink" title="配置域名CNAME"></a>配置域名CNAME</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/152322828.png?imageMogr2/thumbnail/!80p" alt="CNAME" title="">
+                </div>
+                <div class="image-caption">CNAME</div>
+            </figure>
+<p>为域名配置相应的CNAME，常见的是<strong>@</strong>和<strong>www</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/152658278.png?imageMogr2/thumbnail/!80p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><p>ping 一下自己的域名，如果PING到后缀为cdntip.com或后缀为tcdn.qq.com表示域名CNAME已生效。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/153033720.png?imageMogr2/thumbnail/!80p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>使用CDN为Pages加速，到这一步已经算结束了。但是由于使用国内CDN，使得网站在国外加载速度会慢的令人发指。</p>
+<h1 id="分地区DNS"><a href="#分地区DNS" class="headerlink" title="分地区DNS"></a>分地区DNS</h1><p>国内国外设置不同CANME，国外指向 <strong>mmmwhy.github.io</strong>或者<strong>pages.coding.me</strong>（设置自己的），国内的指向刚才CDN给出的地址。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/153601063.png?imageMogr2/thumbnail/!80p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <hr>
 <p>以上</p>
 <p>通过此方法可以将pages或者国外的免费空间，速度快到令人发指的地步~<br>祝新年快乐~</p>
@@ -430,12 +530,42 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 </tr>
 </tbody>
 </table>
-<p>举个例子<br><code>jt -t oceans16 -f roboto -fs 15</code><br>意味着选择oceans16主题，roboto字体，大小为15，效果如下。<br><img src="http://cdn.mmmxcc.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p" alt=""><br>恢复原始主题，重新启动Jupyter notebook，如果主题没有改变，Ctrl+F5刷新即可。<br><code># restore default themejt -r</code></p>
+<p>举个例子<br><code>jt -t oceans16 -f roboto -fs 15</code><br>意味着选择oceans16主题，roboto字体，大小为15，效果如下。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>恢复原始主题，重新启动Jupyter notebook，如果主题没有改变，Ctrl+F5刷新即可。<br><code># restore default themejt -r</code></p>
 <h1 id="jupyter-notebook换工作空间"><a href="#jupyter-notebook换工作空间" class="headerlink" title="jupyter notebook换工作空间"></a>jupyter notebook换工作空间</h1><ul>
-<li>打开 cmd 输入命令<br><code>jupyter notebook --generate-config</code><br><img src="http://cdn.mmmxcc.cn/blog/20170112/204418862.png?imageMogr2/thumbnail/!100p" alt=""></li>
-<li>进入自己工作目录，<strong>.jupyter</strong>，打开<strong>jupyter_notebook_config.py</strong><br><img src="http://cdn.mmmxcc.cn/blog/20170112/204526634.png?imageMogr2/thumbnail/!100p" alt=""></li>
-<li>ctrl+f查到<strong>c.NotebookApp.notebook_dir</strong>，<br>将这一行改为<strong>c.NotebookApp.notebook_dir = ‘自己的位置’</strong><br><img src="http://cdn.mmmxcc.cn/blog/20170112/204842314.png?imageMogr2/thumbnail/!100p" alt=""></li>
-<li>启动 jupyter notebook<br><img src="http://cdn.mmmxcc.cn/blog/20170112/204957560.png?imageMogr2/thumbnail/!60p" alt=""></li>
+<li>打开 cmd 输入命令<br><code>jupyter notebook --generate-config</code><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170112/204418862.png?imageMogr2/thumbnail/!100p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>进入自己工作目录，<strong>.jupyter</strong>，打开<strong>jupyter_notebook_config.py</strong><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170112/204526634.png?imageMogr2/thumbnail/!100p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>ctrl+f查到<strong>c.NotebookApp.notebook_dir</strong>，<br>将这一行改为<strong>c.NotebookApp.notebook_dir = ‘自己的位置’</strong><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170112/204842314.png?imageMogr2/thumbnail/!100p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>启动 jupyter notebook<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170112/204957560.png?imageMogr2/thumbnail/!60p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
 </ul>
 ]]></content>
     
@@ -470,7 +600,28 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 <ul>
 <li>支持的格式很多，Markdown，Latex等都支持，还有很方便的快捷键。</li>
 <li>可以将代码可视化分享给其他人，<a href="https://www.continuum.io/blog/developer/jupyter-and-conda-r" target="_blank" rel="external">From notebook to slides</a></li>
-<li>像一张草稿纸，可以一边通过它来进行你的思考探索过程，交互式的进行，每一步都能看到结果，也很方便查看之前的结果。<h5 id="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"><a href="#可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333" class="headerlink" title="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"></a>可以到<a href="https://mmmxcc.cn/">我的博客</a>，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333</h5><h1 id="本地安装Jupyter"><a href="#本地安装Jupyter" class="headerlink" title="本地安装Jupyter"></a>本地安装Jupyter</h1>推荐先安装<a href="https://www.continuum.io/downloads" target="_blank" rel="external">python科学计算包ANACONDA</a>点击进入官网下载，按要求下载安装完成之后。期间会有一步提示是否加入Path，勾选加入环境变量。如果但是没有勾选，对于win事后可以手动添加环境变量。对于linux，使用<code>export PATH=~/anaconda2/bin:$PATH</code>进行添加。<br>anaconda安装完后，对于win10用户，可以看到已经成功安装Jupyter Notebook，点击即可打开食用~<br><img src="http://cdn.mmmxcc.cn/blog/20161231/212802868.png" alt=""><br>点击之后，默认直接打开浏览器localhost:8888<br><img src="http://cdn.mmmxcc.cn/blog/20161231/213001998.png?imageMogr2/thumbnail/!100p" alt=""><br>用命令行也可以打开此页面，并且在打开的页面会形成<strong>.ipynb</strong>文件<br><img src="http://cdn.mmmxcc.cn/blog/20161231/213247968.png" alt=""></li>
+<li>像一张草稿纸，可以一边通过它来进行你的思考探索过程，交互式的进行，每一步都能看到结果，也很方便查看之前的结果。<h5 id="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"><a href="#可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333" class="headerlink" title="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"></a>可以到<a href="https://mmmxcc.cn/">我的博客</a>，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333</h5><h1 id="本地安装Jupyter"><a href="#本地安装Jupyter" class="headerlink" title="本地安装Jupyter"></a>本地安装Jupyter</h1>推荐先安装<a href="https://www.continuum.io/downloads" target="_blank" rel="external">python科学计算包ANACONDA</a>点击进入官网下载，按要求下载安装完成之后。期间会有一步提示是否加入Path，勾选加入环境变量。如果但是没有勾选，对于win事后可以手动添加环境变量。对于linux，使用<code>export PATH=~/anaconda2/bin:$PATH</code>进行添加。<br>anaconda安装完后，对于win10用户，可以看到已经成功安装Jupyter Notebook，点击即可打开食用~<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161231/212802868.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+点击之后，默认直接打开浏览器localhost:8888<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161231/213001998.png?imageMogr2/thumbnail/!100p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+用命令行也可以打开此页面，并且在打开的页面会形成<strong>.ipynb</strong>文件<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161231/213247968.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
 </ul>
 <h1 id="线上部署-Jupyter-Notebook"><a href="#线上部署-Jupyter-Notebook" class="headerlink" title="线上部署 Jupyter Notebook"></a>线上部署 Jupyter Notebook</h1><p>在本地部署好了之后，其实给了我一些灵感，既然可以在浏览器运行。那么其实部署在服务器上也是可以的，大家如果看过我看过我之前的文章，就知道我对vps很感兴趣。其实在本地看到的那个localhost:8888，在外网也可以访问，只需要稍微加以设置即可。</p>
 <h2 id="首先要申请虚拟机"><a href="#首先要申请虚拟机" class="headerlink" title="首先要申请虚拟机"></a>首先要申请虚拟机</h2><p>这里推荐腾讯云或者<a href="https://m.do.co/c/990a117f5061" target="_blank" rel="external">DO</a>，通过本链接注册送$10。然后再加上github的学生优惠包，可以很便宜哦。设置好之后，使用SSH连接上服务器。</p>
@@ -479,14 +630,32 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 <li>如果选择国外服务器，使用代码<code>wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh</code><br>本来想推荐科大源的，但是科大源实在是烂泥扶不上墙，目前清华源是国内比较好的了。</li>
 </ul>
 <h2 id="安装Anaconda"><a href="#安装Anaconda" class="headerlink" title="安装Anaconda"></a>安装Anaconda</h2><p><code>sudo bash Miniconda-latest-Linux-x86_64.sh</code><br><em>Miniconda-latest-Linux-x86_64.sh</em>这个地方，输入自己下载的文件名称，其实只要写前几个字母，然后敲Tab，就可以自动补全了。<br>安装好时候输入<code>conda --v</code>检查一下，如果输出为conda的版本则正常。<br>如果输出<strong>conda: command not found</strong>，出现这种情况的原因是conda没有在path添加，使用<code>export PATH=~/anaconda2/bin:$PATH</code> 添加即可。</p>
-<h2 id="打开Ipython-设置密码"><a href="#打开Ipython-设置密码" class="headerlink" title="打开Ipython ,设置密码"></a>打开Ipython ,设置密码</h2><p>设置过程中要设置用于远程登录的密码，把生成的密文‘sha:ce…’复制下来<br><img src="http://cdn.mmmxcc.cn/blog/20161231/223937327.png" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">In [1]: from IPython.lib import passwd</div><div class="line">In [2]: passwd()</div><div class="line">Enter password:</div><div class="line">Verify password: </div><div class="line">Out[2]: &apos;sha1:7467b73*************************3003b****&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="打开Ipython-设置密码"><a href="#打开Ipython-设置密码" class="headerlink" title="打开Ipython ,设置密码"></a>打开Ipython ,设置密码</h2><p>设置过程中要设置用于远程登录的密码，把生成的密文‘sha:ce…’复制下来<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161231/223937327.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">In [1]: from IPython.lib import passwd</div><div class="line">In [2]: passwd()</div><div class="line">Enter password:</div><div class="line">Verify password: </div><div class="line">Out[2]: &apos;sha1:7467b73*************************3003b****&apos;</div></pre></td></tr></table></figure></p>
 <h2 id="生成配置文件"><a href="#生成配置文件" class="headerlink" title="生成配置文件"></a>生成配置文件</h2><p>终端输入：<br><code>jupyter notebook --generate-config</code><br>这个时候在当前目录会生成一个<strong>.jupyter</strong>的隐藏文件夹，修改文件内的jupyter_notebook_config.py<br><code>vim ~/.jupyter/jupyter_notebook_config.py</code></p>
 <blockquote>
 <p>关于vim的常用功能：按a在光标所在位置插入内容（进入编辑模式），Esc退出编辑模式，连续按两下z，保存并退出。</p>
 </blockquote>
 <p>jupyter_notebook_config.py内包含以下内容，稍作修改即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">c.NotebookApp.ip=&apos;*&apos; # 就是设置所有ip皆可访问</div><div class="line">c.NotebookApp.password = u&apos;sha:ce...刚才复制的那个密文&apos;</div><div class="line">c.NotebookApp.open_browser = False # 禁止自动打开浏览器</div><div class="line">c.NotebookApp.port =8888 #随便指定一个端口</div></pre></td></tr></table></figure></p>
-<h2 id="启动jupyter-notebook"><a href="#启动jupyter-notebook" class="headerlink" title="启动jupyter notebook"></a>启动jupyter notebook</h2><p><code>jupyter notebook</code><br><img src="http://cdn.mmmxcc.cn/blog/20161231/225106541.png" alt=""></p>
-<p>此时应该可以直接从本地浏览器直接访问<em><a href="http://address_of_remote:8888" target="_blank" rel="external">http://address_of_remote:8888</a></em>就可以看到jupyter的登陆界面。<br><img src="http://cdn.mmmxcc.cn/blog/20161231/224810212.png?imageMogr2/thumbnail/!80p" alt=""></p>
+<h2 id="启动jupyter-notebook"><a href="#启动jupyter-notebook" class="headerlink" title="启动jupyter notebook"></a>启动jupyter notebook</h2><p><code>jupyter notebook</code><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161231/225106541.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>此时应该可以直接从本地浏览器直接访问<em><a href="http://address_of_remote:8888" target="_blank" rel="external">http://address_of_remote:8888</a></em>就可以看到jupyter的登陆界面。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161231/224810212.png?imageMogr2/thumbnail/!80p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <p>如果希望不要在退出SSH命令行的时候，同时也停止jupyter notebook服务，推荐<strong>nohup </strong>，之前写过篇博客解释过<a href="https://mmmxcc.cn/2016/10/19/%E6%97%A0%E5%85%AC%E7%BD%91IP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAWeb%E7%AB%99%E7%82%B9/">nohup的作用</a><br>在线python编译器就搭建好了，是不是很洋气~</p>
 ]]></content>
     
@@ -520,7 +689,13 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 </blockquote>
 <hr>
 <a id="more"></a>
-<h1 id="添加文字水印"><a href="#添加文字水印" class="headerlink" title="添加文字水印"></a>添加文字水印</h1><p>初始图像<br><img src="http://cdn.mmmxcc.cn/blog/20161216/122038769.png?imageMogr2/thumbnail/!80p" alt="我的头像"></p>
+<h1 id="添加文字水印"><a href="#添加文字水印" class="headerlink" title="添加文字水印"></a>添加文字水印</h1><p>初始图像<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161216/122038769.png?imageMogr2/thumbnail/!80p" alt="我的头像" title="">
+                </div>
+                <div class="image-caption">我的头像</div>
+            </figure></p>
 <h2 id="Python代码"><a href="#Python代码" class="headerlink" title="Python代码"></a>Python代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_num</span><span class="params">(img)</span>:</span></div><div class="line">    draw = ImageDraw.Draw(img)</div><div class="line">    myfont = ImageFont.truetype(<span class="string">'C:/windows/fonts/Arial.ttf'</span>, size=<span class="number">40</span>)</div><div class="line">    fillcolor = <span class="string">"#ff0000"</span></div><div class="line">    width, height = img.size</div><div class="line">    draw.text((width<span class="number">-50</span>, <span class="number">5</span>), <span class="string">'99'</span>, font=myfont, fill=fillcolor)</div><div class="line">    img.save(<span class="string">'result.jpg'</span>,<span class="string">'jpeg'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    image = Image.open(<span class="string">'F:/Picture/touxiang.jpg'</span>)</div><div class="line">    add_num(image)</div><div class="line">    image.show()</div></pre></td></tr></table></figure>
 <h2 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h2><ul>
 <li><code>from PIL import Image, ImageDraw, ImageFont</code> 导入PIL图像处理库</li>
@@ -530,13 +705,26 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 <ul>
 <li><code>draw.text((width-50, 5), &#39;99&#39;, font=myfont, fill=fillcolor)</code> 第一个括号填写的是位置，表示在x轴在width-50，y轴在5的位置加入文字，也就是右上角的意思。</li>
 </ul>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="http://cdn.mmmxcc.cn/blog/20161216/115246388.jpg?imageMogr2/thumbnail/!80p" alt="文字水印"></p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161216/115246388.jpg?imageMogr2/thumbnail/!80p" alt="文字水印" title="">
+                </div>
+                <div class="image-caption">文字水印</div>
+            </figure>
 <h1 id="添加图片水印"><a href="#添加图片水印" class="headerlink" title="添加图片水印"></a>添加图片水印</h1><h2 id="Python代码-1"><a href="#Python代码-1" class="headerlink" title="Python代码"></a>Python代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_num</span><span class="params">(im,mark)</span>:</span></div><div class="line">    layer = Image.new(<span class="string">'RGBA'</span>, im.size, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>))</div><div class="line">    layer.paste(mark, (im.size[<span class="number">0</span>] - <span class="number">150</span>, im.size[<span class="number">1</span>] - <span class="number">150</span>))</div><div class="line">    out = Image.composite(layer, im, layer)</div><div class="line">    out.save(<span class="string">'result.jpg'</span>,<span class="string">'jpeg'</span>)</div><div class="line">    out.show()</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    image = Image.open(<span class="string">'F:/Picture/touxiang.jpg'</span>)</div><div class="line">    mark = Image.open(<span class="string">'F:/Picture/1022.png'</span>)</div><div class="line">    add_num(image,mark)</div></pre></td></tr></table></figure>
 <h2 id="代码解释-1"><a href="#代码解释-1" class="headerlink" title="代码解释"></a>代码解释</h2><ul>
 <li><code>Image.composite(layer, im, layer)</code> 解释一下<code>Image.composite()</code>的意思<br>使用案例<br><code>Image.composite(image1, image2, mask) =&gt; image</code><br>使用遮罩（mask）作为alpha，通过在两个图像之间进行插值来创建一个新图像。遮罩图像的模式可以是“1”，“L”，或者“RGBA”。所有的图像的大小必须有相同。 </li>
 <li><code>out.save(&#39;result.jpg&#39;,&#39;jpeg&#39;)</code>，对图片进行保存，设置文件名和文件格式。</li>
 </ul>
-<h2 id="效果展示-1"><a href="#效果展示-1" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="http://cdn.mmmxcc.cn/blog/20161216/115917853.jpg?imageMogr2/thumbnail/!80p" alt="图片水印"><br>参考文章<a href="http://www.cnblogs.com/wei-li/archive/2012/04/19/2456725.html" target="_blank" rel="external"><a href="http://www.cnblogs.com/wei-li/archive/2012/04/19/2456725.html" target="_blank" rel="external">Python图像处理库：PIL中Image,ImageDraw等基本模块介绍</a></a></p>
+<h2 id="效果展示-1"><a href="#效果展示-1" class="headerlink" title="效果展示"></a>效果展示</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161216/115917853.jpg?imageMogr2/thumbnail/!80p" alt="图片水印" title="">
+                </div>
+                <div class="image-caption">图片水印</div>
+            </figure>
+<p>参考文章<a href="http://www.cnblogs.com/wei-li/archive/2012/04/19/2456725.html" target="_blank" rel="external"><a href="http://www.cnblogs.com/wei-li/archive/2012/04/19/2456725.html" target="_blank" rel="external">Python图像处理库：PIL中Image,ImageDraw等基本模块介绍</a></a></p>
 ]]></content>
     
     <summary type="html">
@@ -568,13 +756,25 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 <hr>
 <a id="more"></a>
 <h1 id="一、基础问题"><a href="#一、基础问题" class="headerlink" title="一、基础问题"></a>一、基础问题</h1><p><strong>题目1.1：</strong><a href="https://mmmxcc.cn/2016/12/16/%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%9APython%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/">图片加水印</a>，类似于微信未读信息数量那种提示效果</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161216/115246388.jpg?imageMogr2/thumbnail/!80p" alt="头像"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161216/115246388.jpg?imageMogr2/thumbnail/!80p" alt="头像" title="">
+                </div>
+                <div class="image-caption">头像</div>
+            </figure>
 <p><strong>题目1.2：</strong><a href="https://mmmxcc.cn/2017/02/07/%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%9A%E4%BD%BF%E7%94%A8-Python-%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90-200-%E4%B8%AA%E6%BF%80%E6%B4%BB%E7%A0%81/">使用 Python 如何生成 200 个激活码（或者优惠券）</a></p>
 <p><strong>题目1.3</strong>：<a href="https://mmmxcc.cn/2017/02/10/%E7%AC%AC%E4%B8%89%E9%A2%98%EF%BC%9A%E5%B0%86200%E4%B8%AA%E6%BF%80%E6%B4%BB%E7%A0%81%E4%BF%9D%E5%AD%98%E5%88%B0-MySQL/">将 0002 题生成的 200 个激活码（或者优惠券）保存到 <strong>MySQL</strong> 关系型数据库中。 </a></p>
 <p><strong>题目1.4：</strong>任一个英文的纯文本文件，统计其中的单词出现的个数。</p>
 <p><strong>题目1.5：</strong>你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。</p>
 <p><strong>题目1.6：</strong>使用 Python 生成类似于下图中的<strong>字母验证码图片</strong></p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170210/164221438.png" alt="验证码"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164221438.png" alt="验证码" title="">
+                </div>
+                <div class="image-caption">验证码</div>
+            </figure>
 <ul>
 <li><a href="http://stackoverflow.com/questions/2823316/generate-a-random-letter-in-python" target="_blank" rel="external">阅读资料</a> </li>
 </ul>
@@ -597,7 +797,13 @@ jiangge
     &quot;3&quot;:[&quot;王五&quot;,60,66,68]
 }
 </code></pre><p>请将上述内容写到 student.xls 文件中，如下图所示：</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170210/164341562.png" alt="student.xls"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164341562.png" alt="student.xls" title="">
+                </div>
+                <div class="image-caption">student.xls</div>
+            </figure>
 <ul>
 <li><a href="http://www.cnblogs.com/skynet/archive/2013/05/06/3063245.html" target="_blank" rel="external">阅读资料</a> 腾讯游戏开发 XML 和 Excel 内容相互转换</li>
 </ul>
@@ -622,11 +828,25 @@ jiangge
 <h1 id="四、Web问题"><a href="#四、Web问题" class="headerlink" title="四、Web问题"></a>四、Web问题</h1><p><strong>题目4.1：</strong> 使用 Python 的 Web 框架，做一个 Web 版本 留言簿 应用。</p>
 <p><a href="http://v2ex.com/t/151643#reply53" target="_blank" rel="external">阅读资料：Python 有哪些 Web 框架</a></p>
 <ul>
-<li><img src="http://cdn.mmmxcc.cn/blog/20170210/164432170.png" alt="留言簿参考"></li>
+<li><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164432170.png" alt="留言簿参考" title="">
+                </div>
+                <div class="image-caption">留言簿参考</div>
+            </figure>
+</li>
 </ul>
 <p><strong>题目4.2：</strong> 使用 Python 的 Web 框架，做一个 Web 版本 TodoList 应用。</p>
 <ul>
-<li><img src="http://cdn.mmmxcc.cn/blog/20170210/164451954.png" alt="SpringSide 版TodoList"></li>
+<li><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164451954.png" alt="SpringSide" title="">
+                </div>
+                <div class="image-caption">SpringSide</div>
+            </figure>
+</li>
 </ul>
 <p><strong>题目来自 <a href="https://github.com/Yixiaohan" target="_blank" rel="external">易枭寒的Github</a></strong></p>
 ]]></content>
@@ -668,7 +888,13 @@ jiangge
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding: utf-8</span></div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</div><div class="line">driver = webdriver.Chrome()</div><div class="line">driver.get(<span class="string">'https://mmmxcc.cn'</span>)</div><div class="line">sleep(<span class="number">3</span>) <span class="comment"># 强制等待3秒再执行下一步</span></div><div class="line"><span class="keyword">print</span> driver.title</div><div class="line">driver.quit()</div></pre></td></tr></table></figure>
 <h1 id="结合selenium使用Xpath获得所需信息"><a href="#结合selenium使用Xpath获得所需信息" class="headerlink" title="结合selenium使用Xpath获得所需信息"></a>结合selenium使用Xpath获得所需信息</h1><ul>
 <li>需要注意的是，selenium内find_elements的方法有很多种，xpath表达式的要求很严格，所以可以试试<strong>find_elements_id</strong>等方法。</li>
-<li>Xpath表达式可以检测文字中是否包含某文字，以此为标准过滤。<br><img src="http://cdn.mmmxcc.cn/blog/20161229/170825303.png" alt="mark"></li>
+<li>Xpath表达式可以检测文字中是否包含某文字，以此为标准过滤。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161229/170825303.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></li>
 <li>Xpath表达式支持and 和 or。</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_from</span><span class="params">(browser)</span>:</span></div><div class="line">    links = browser.find_elements_by_xpath(<span class="string">"//p[contains(text(), '出处') or contains(text(), '组成') or contains(text(), '组成') or contains(text(), '主治') or contains(text(), '用法')] "</span>)</div><div class="line">    print(browser.title)</div><div class="line">    <span class="keyword">return</span> [link.text <span class="keyword">for</span> link <span class="keyword">in</span> links]</div></pre></td></tr></table></figure>
@@ -677,7 +903,13 @@ jiangge
 <li>不能正确的输出中文，<code>print (&#39;\n&#39;.join(extract_from(browser)))</code><br>以上两个问题都跟python2的特性有关，升级至3之后应当不会出现此类问题。</li>
 </ul>
 <p>写了一个小demo，解释中文输入输出问题<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(key)</span>:</span></div><div class="line">    elem = browser.find_element_by_xpath(<span class="string">"//input[@id='kw']"</span>)</div><div class="line">    elem.send_keys(key)</div><div class="line">    elem.send_keys(Keys.RETURN)</div><div class="line">    time.sleep(<span class="number">1</span>)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_from</span><span class="params">(browser)</span>:</span></div><div class="line">    links = browser.find_elements_by_xpath(<span class="string">"//div[contains(text(),'李银河')]"</span>)</div><div class="line">    <span class="keyword">return</span> [link.text <span class="keyword">for</span> link <span class="keyword">in</span> links]</div><div class="line">key = <span class="string">u"你好哇"</span></div><div class="line">browser = webdriver.Chrome()</div><div class="line">browser.get(<span class="string">'http://www.baidu.com'</span>)</div><div class="line">search(key)</div><div class="line"><span class="keyword">print</span> (<span class="string">'\n'</span>.join(extract_from(browser)))</div><div class="line">browser.close()</div></pre></td></tr></table></figure></p>
-<p>运行结果见下，可以抽取出对应文字。<br><img src="http://cdn.mmmxcc.cn/blog/20161229/171126089.png" alt="运行结果"></p>
+<p>运行结果见下，可以抽取出对应文字。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161229/171126089.png" alt="运行结果" title="">
+                </div>
+                <div class="image-caption">运行结果</div>
+            </figure></p>
 <h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(key)</span>:</span></div><div class="line">    elem = browser.find_element_by_xpath(<span class="string">"//input[@id='simple_search_filed']"</span>)</div><div class="line">    elem.send_keys(key)</div><div class="line">    elem.send_keys(Keys.RETURN)</div><div class="line">    time.sleep(<span class="number">3</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_from</span><span class="params">(browser)</span>:</span></div><div class="line">    links = browser.find_elements_by_xpath(<span class="string">"//p[contains(text(), '出处') or contains(text(), '组成') or contains(text(), '组成') or contains(text(), '主治') or contains(text(), '用法')] "</span>)</div><div class="line">    print(browser.title)</div><div class="line">    <span class="keyword">return</span> [link.text <span class="keyword">for</span> link <span class="keyword">in</span> links]</div><div class="line"></div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = requests.get(<span class="string">"http://www.zk120.com/fang/"</span>)</div><div class="line">html.encoding = <span class="string">'utf-8'</span></div><div class="line">selector = etree.HTML(html.text)</div><div class="line">content = selector.xpath(<span class="string">"//ul/li/a/span[@class='free_icon_r']/../@href"</span>)</div><div class="line"><span class="keyword">for</span> imgurl <span class="keyword">in</span> content:</div><div class="line">    imgurl = <span class="string">"http://www.zk120.com"</span> +imgurl</div><div class="line">    browser = webdriver.Chrome()</div><div class="line">    browser.get(imgurl)</div><div class="line">    time.sleep(<span class="number">2</span>)</div><div class="line">    <span class="keyword">print</span> (<span class="string">'\n'</span>.join(extract_from(browser)))</div><div class="line">    print(<span class="string">"------------"</span>)</div><div class="line">    browser.close()</div></pre></td></tr></table></figure>
 <h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p>在搜索资料的时候，同时发现了一个非常好的示例代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</div><div class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</div><div class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_data</span><span class="params">(browser)</span>:</span></div><div class="line">    links = browser.find_elements_by_xpath(<span class="string">'//i[@class="RecordStats"]/a'</span>)</div><div class="line">    <span class="keyword">return</span> [link.get_attribute(<span class="string">'href'</span>) <span class="keyword">for</span> link <span class="keyword">in</span> links]</div><div class="line"></div><div class="line"></div><div class="line">browser = webdriver.Firefox()</div><div class="line">browser.get(<span class="string">"http://www.scba.gov.ar/jurisprudencia/Navbar.asp?Busca=Fallos+Completos&amp;SearchString=Inconstitucionalidad"</span>)</div><div class="line"></div><div class="line"><span class="comment"># get max pages</span></div><div class="line">element = WebDriverWait(browser, <span class="number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="string">"//p[@class='c'][last()]"</span>)))</div><div class="line">max_pages = int(re.search(<span class="string">r'\d+ de (\d+)'</span>, element.text).group(<span class="number">1</span>), re.UNICODE)</div><div class="line"></div><div class="line"><span class="comment"># extract from the current (1) page</span></div><div class="line"><span class="keyword">print</span> <span class="string">"Page 1"</span></div><div class="line"><span class="keyword">print</span> extract_data(browser)</div><div class="line"></div><div class="line"><span class="comment"># loop over the rest of the pages</span></div><div class="line"><span class="keyword">for</span> page <span class="keyword">in</span> xrange(<span class="number">2</span>, max_pages + <span class="number">1</span>):</div><div class="line">    <span class="keyword">print</span> <span class="string">"Page %d"</span> % page</div><div class="line"></div><div class="line">    next_page = browser.find_element_by_xpath(<span class="string">"//table[last()]//td[last()]/a"</span>).click()</div><div class="line"></div><div class="line">    <span class="keyword">print</span> extract_data(browser)</div><div class="line">    <span class="keyword">print</span> <span class="string">"-----"</span></div></pre></td></tr></table></figure>
@@ -763,7 +995,14 @@ jiangge
 <li>中等空格    <strong>C_1\;C_2</strong> 2/7m宽度<br><code>$$C_1\;C_2$$</code><br>$$C_1\;C_2$$</li>
 <li>小空格    <strong>C_1\,C_2</strong> 1/6m宽度<br><code>$$C_1\,C_2$$</code><br>$$C_1\,C_2$$</li>
 <li>没有空格    <strong>C_1C_2</strong><br><code>$$C_1C_2$$</code><br>$$C_1C_2$$</li>
-<li>紧贴    <strong>C_1!C_2</strong>        缩进1/6m宽度<br><code>$$C_1\!C_2$$</code><br><img src="http://cdn.mmmxcc.cn/blog/20161228/153631309.png" alt=""></li>
+<li>紧贴    <strong>C_1!C_2</strong>        缩进1/6m宽度<br><code>$$C_1\!C_2$$</code><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161228/153631309.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
 </ul>
 <h2 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h2><ul>
 <li>上标符号 <strong>^</strong><br><code>$$ c_{1}^{2}=a^{2}+b^{2} $$</code><br>$$ c_{1}^{2}=a^{2}+b^{2} $$</li>
@@ -816,8 +1055,13 @@ jiangge
 </ul>
 <h2 id="垂直对齐"><a href="#垂直对齐" class="headerlink" title="垂直对齐"></a>垂直对齐</h2><p>使用array命令，并\命令来分行。注意转义</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$$\mathbf&#123;X&#125; =</div><div class="line">	\left( \begin&#123;array&#125;&#123;ccc&#125;</div><div class="line">	x_&#123;11&#125; &amp; x_&#123;12&#125; &amp; \ldots \\\</div><div class="line">	x_&#123;21&#125; &amp; x_&#123;22&#125; &amp; \ldots \\\</div><div class="line">	\vdots &amp; \vdots &amp; \ddots</div><div class="line">	\end&#123;array&#125; \right) $$</div></pre></td></tr></table></figure>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161228/153602468.png" alt=""></p>
-]]></content>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161228/153602468.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>]]></content>
     
     <summary type="html">
     
@@ -841,20 +1085,51 @@ jiangge
     <updated>2017-02-07T05:49:29.639Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>现在，你应该能在访问<a href="https://mmmxcc.cn">https://mmmxcc.cn</a> 的时候，在地址栏里看到一个漂亮的小绿锁<img src="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~</p>
+<p>现在，你应该能在访问<a href="https://mmmxcc.cn">https://mmmxcc.cn</a> 的时候，在地址栏里看到一个漂亮的小绿锁<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~</p>
 </blockquote>
 <hr>
 <a id="more"></a>
-<h1 id="申请免费SSL证书"><a href="#申请免费SSL证书" class="headerlink" title="申请免费SSL证书"></a>申请免费SSL证书</h1><p>普通的SSL证书动辄好几千，简直令人发指。不过别担心，我找到了3个免费申请HTTPS证书的方式。<br><img src="http://cdn.mmmxcc.cn/blog/20161218/161515528.png?imageMogr2/thumbnail/!80p" alt=""></p>
+<h1 id="申请免费SSL证书"><a href="#申请免费SSL证书" class="headerlink" title="申请免费SSL证书"></a>申请免费SSL证书</h1><p>普通的SSL证书动辄好几千，简直令人发指。不过别担心，我找到了3个免费申请HTTPS证书的方式。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161218/161515528.png?imageMogr2/thumbnail/!80p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <ul>
 <li><strong>StartSSL也免费提供了一个证书（纯英文）</strong><br>申请地址：<a href="https://www.startssl.com/Account?r=L1ZhbGlkYXRl" target="_blank" rel="external">https://www.startssl.com/Account?r=L1ZhbGlkYXRl</a></li>
-<li>阿里云免费提供的证书<br><a href="https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy" target="_blank" rel="external">https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy</a><br><img src="http://cdn.mmmxcc.cn/blog/20161218/162129508.png?imageMogr2/thumbnail/!80p" alt=""></li>
-<li>腾讯云免费申请<br><a href="https://console.qcloud.com/ssl" target="_blank" rel="external">https://console.qcloud.com/ssl</a><br><img src="http://upload-images.jianshu.io/upload_images/3326314-f86b2f0ec2e121b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li>阿里云免费提供的证书<br><a href="https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy" target="_blank" rel="external">https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy</a><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161218/162129508.png?imageMogr2/thumbnail/!80p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>腾讯云免费申请<br><a href="https://console.qcloud.com/ssl" target="_blank" rel="external">https://console.qcloud.com/ssl</a><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3326314-f86b2f0ec2e121b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
 </ul>
 <p>获得证书之后，下载至本地。</p>
 <h1 id="VPS上安装SSL证书"><a href="#VPS上安装SSL证书" class="headerlink" title="VPS上安装SSL证书"></a>VPS上安装SSL证书</h1><p><strong>以Nginx 为例</strong></p>
 <h2 id="获取证书"><a href="#获取证书" class="headerlink" title="获取证书"></a>获取证书</h2><p>Nginx文件夹内获得SSL证书文件 1_www.domain.com_bundle.crt 和私钥文件 2_www.domain.com.key,</p>
-<p>1_www.domain.com_bundle.crt 文件包括两段证书代码 “—–BEGIN CERTIFICATE—–”和“—–END CERTIFICATE—–”,<br>2_www.domain.com.key 文件包括一段私钥代码“—–BEGIN RSA PRIVATE KEY—–”和“—–END RSA PRIVATE KEY—–”。<br><img src="http://upload-images.jianshu.io/upload_images/3326314-47e83ff91ca63910.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>1_www.domain.com_bundle.crt 文件包括两段证书代码 “—–BEGIN CERTIFICATE—–”和“—–END CERTIFICATE—–”,<br>2_www.domain.com.key 文件包括一段私钥代码“—–BEGIN RSA PRIVATE KEY—–”和“—–END RSA PRIVATE KEY—–”。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3326314-47e83ff91ca63910.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <h2 id="上传和部署SSL证书"><a href="#上传和部署SSL证书" class="headerlink" title="上传和部署SSL证书"></a>上传和部署SSL证书</h2><p>将域名 www.domain.com 的证书文件1_www.domain.com_bundle.crt 、私钥文件2_www.domain.com.key保存到同一个目录，例如/usr/local/nginx/conf目录下。更新Nginx根目录下 conf/nginx.conf 文件如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen 443;</div><div class="line">        server_name www.domain.com; #填写绑定证书的域名</div><div class="line">        ssl on;</div><div class="line">        ssl_certificate 1_www.domain.com_bundle.crt;</div><div class="line">        ssl_certificate_key 2_www.domain.com.key;</div><div class="line">        ssl_session_timeout 5m;</div><div class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置</div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置</div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line">        location / &#123;</div><div class="line">            root   html; #站点目录</div><div class="line">            index  index.html index.htm;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
 <table>
 <thead>
@@ -890,13 +1165,25 @@ jiangge
 </tr>
 </tbody>
 </table>
-<h2 id="重启Nginx"><a href="#重启Nginx" class="headerlink" title="重启Nginx"></a>重启Nginx</h2><p>输入 <code>nginx -s reload</code>  ：修改配置后重新加载生效<br>可以看到SSL证书生效，且HTTPS可以访问站点。<br><img src="http://upload-images.jianshu.io/upload_images/3326314-f690fba71ee4240b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="重启Nginx"><a href="#重启Nginx" class="headerlink" title="重启Nginx"></a>重启Nginx</h2><p>输入 <code>nginx -s reload</code>  ：修改配置后重新加载生效<br>可以看到SSL证书生效，且HTTPS可以访问站点。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://upload-images.jianshu.io/upload_images/3326314-f690fba71ee4240b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 ]]></content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;现在，你应该能在访问&lt;a href=&quot;https://mmmxcc.cn&quot;&gt;https://mmmxcc.cn&lt;/a&gt; 的时候，在地址栏里看到一个漂亮的小绿锁&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot;&gt;&lt;br&gt;作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~&lt;/p&gt;
+&lt;p&gt;现在，你应该能在访问&lt;a href=&quot;https://mmmxcc.cn&quot;&gt;https://mmmxcc.cn&lt;/a&gt; 的时候，在地址栏里看到一个漂亮的小绿锁&lt;figure class=&quot;image-bubble&quot;&gt;
+                &lt;div class=&quot;img-lightbox&quot;&gt;
+                    &lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;
+                    &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; title=&quot;&quot;&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;image-caption&quot;&gt;&lt;/div&gt;
+            &lt;/figure&gt;&lt;br&gt;作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
     
@@ -968,13 +1255,25 @@ jiangge
 <p>可以将上述代码看作两个步骤，我们指定一个域名并发送请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request=urllib2.request(&apos;http://mmmxcc.cn/&apos;)</div></pre></td></tr></table></figure></p>
 <p>接着服务端响应来自客户端的请求 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">response=urllib2.urlopen(request)</div></pre></td></tr></table></figure>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p" alt="运行结果"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p" alt="运行结果" title="">
+                </div>
+                <div class="image-caption">运行结果</div>
+            </figure>
 <p>我们可以发现title这个地方本来应该是中文的，但因为编码的原因，导致出现乱码。通过将html页面重新用”utf-8”编码，可以解决这个问题。</p>
 <hr>
 <h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/">http://mmmxcc.cn/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
 <p>这里需要导入lxml，代码格式如下。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = requests.get(<span class="string">"http://jandan.net/ooxx"</span>)</div><div class="line">html.encoding = <span class="string">'utf-8'</span></div><div class="line">selector = etree.HTML(html.text)</div><div class="line">content = selector.xpath(<span class="string">'//ol[@class = "commentlist"]//@src'</span>)</div></pre></td></tr></table></figure>
-<p>单独运行 以上代码可以获得<br><img src="http://cdn.mmmxcc.cn/blog/20161215/182806800.png" alt="Xpath运行结果"></p>
+<p>单独运行 以上代码可以获得<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161215/182806800.png" alt="Xpath运行结果" title="">
+                </div>
+                <div class="image-caption">Xpath运行结果</div>
+            </figure></p>
 <h2 id="设置保存的位置"><a href="#设置保存的位置" class="headerlink" title="设置保存的位置"></a>设置保存的位置</h2><p>需要使用到os库中的 <em>os.chdir(r””)</em>函数，””中间插入地址。<strong>注意</strong>这个位置必须是<strong>存在</strong>的，如果位置不存在，函数会报错。因为该函数的意义是：将工作空间从python代码所在位置，改为指定的这个位置。</p>
 <h2 id="模拟正常浏览器下载图片（如果Python下载的图片不显示-）"><a href="#模拟正常浏览器下载图片（如果Python下载的图片不显示-）" class="headerlink" title="模拟正常浏览器下载图片（如果Python下载的图片不显示 ）"></a>模拟正常浏览器下载图片（如果Python下载的图片不显示 ）</h2><p>有时你会碰到，程序也对，但是服务器拒绝你的访问。这是为什么呢?</p>
 <p>问题出在请求中的头信息(header)。 有的服务端有洁癖，不喜欢程序来触摸它。</p>
@@ -994,7 +1293,13 @@ jiangge
 <li>设置保存的位置</li>
 <li>使用with f函数</li>
 </ul>
-<p><strong>效果如下：</strong><br><img src="http://cdn.mmmxcc.cn/blog/20161215/191015695.png" alt="抓取到的图片"></p>
+<p><strong>效果如下：</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161215/191015695.png" alt="抓取到的图片" title="">
+                </div>
+                <div class="image-caption">抓取到的图片</div>
+            </figure></p>
 <p><strong>完整代码</strong></p>
 <pre><code class="python"><span class="comment"># coding=utf-8</span>
 <span class="keyword">import</span> requests
@@ -1020,7 +1325,13 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     f.close()
     print(imgurl)
 </code></pre>
-<p>代码重新修改了一下，上手运行会发现D盘有惊喜哦~<br>加入print(imgurl)，运行起来更洋气~<br><img src="http://cdn.mmmxcc.cn/blog/20161215/191141723.png" alt="输入下载来源"></p>
+<p>代码重新修改了一下，上手运行会发现D盘有惊喜哦~<br>加入print(imgurl)，运行起来更洋气~<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161215/191141723.png" alt="输入下载来源" title="">
+                </div>
+                <div class="image-caption">输入下载来源</div>
+            </figure></p>
 ]]></content>
     
     <summary type="html">
@@ -1060,14 +1371,26 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
 <li><p>选择元素之后按下<em>ctral + shift + x</em>，可以自动提取该元素的XPath表达式。</p>
 </li>
 </ul>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161213/154603126.png?imageMogr2/thumbnail/!80p" alt="使用Xpath Helper自带提取功能"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161213/154603126.png?imageMogr2/thumbnail/!80p" alt="使用Xpath" title="">
+                </div>
+                <div class="image-caption">使用Xpath</div>
+            </figure>
 <h2 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h2><ul>
 <li>/    从根节点选取。</li>
 <li>//    从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。</li>
 <li>@    选取属性，常见使用方法为[@class = “title”]</li>
 </ul>
 <p>举例，比如在<a href="https://s.taobao.com/search?q=%E5%8F%8C%E9%9D%A2%E8%83%B6&amp;refpid=430266_1006&amp;source=tbsy&amp;style=grid&amp;tab=all&amp;pvid=b644f95644f7acd22cbc011dd2b4335f&amp;clk1=e2a07cd1788da47d4c393b5b8bbbcc27&amp;spm=a21bo.50862.201856-sline.1.o2a4b1" target="_blank" rel="external">双面胶-淘宝搜索</a> 页面</p>
-<p>输入: <strong>//*[@class=”m-itemlist”]//a[@trace-price&lt;20]/@href</strong>，用来提取出class为itemlist内a标签里所有price 小于20的产品，并将其href(即超链接)输出<br><img src="http://cdn.mmmxcc.cn/blog/20161213/155438640.png?imageMogr2/thumbnail/!80p" alt="结果展示"></p>
+<p>输入: <strong>//*[@class=”m-itemlist”]//a[@trace-price&lt;20]/@href</strong>，用来提取出class为itemlist内a标签里所有price 小于20的产品，并将其href(即超链接)输出<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161213/155438640.png?imageMogr2/thumbnail/!80p" alt="结果展示" title="">
+                </div>
+                <div class="image-caption">结果展示</div>
+            </figure></p>
 <p>需要结合Chrome浏览器的F12一起使用，先选定大致的框架，比如itemlist这个class，然后逐渐加上更多的要求，具体见文首给出的链接学习。</p>
 <p><code>知道这些就可以抓取1024上的图片和磁力链接了，目测是不是很简单</code></p>
 <hr>
@@ -1075,11 +1398,35 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
 <p>作为一名1024资深游客，首先在技术讨论区选择一篇好文，这里用的是<a href="http://www.t66y.com/htm_mob/7/1612/2172569.html" target="_blank" rel="external">[榴民资讯]11月精品主题推荐（49期）</a></p>
 </blockquote>
 <p><img src="http://cdn.mmmxcc.cn/blog/20161213/160946786.png?imageMogr2/thumbnail/!80p" alt="还是熟悉的味道"></p>
-<h2 id="使用F12查看网页的结构"><a href="#使用F12查看网页的结构" class="headerlink" title="使用F12查看网页的结构"></a>使用F12查看网页的结构</h2><p>有两个主要标签 header 和 main ，鼠标移动到main上，可以看到内容页面都被包含起来，所以第一个节点应该选main。<br><img src="http://cdn.mmmxcc.cn/blog/20161213/161454868.png?imageMogr2/thumbnail/!80p" alt="main标签"></p>
+<h2 id="使用F12查看网页的结构"><a href="#使用F12查看网页的结构" class="headerlink" title="使用F12查看网页的结构"></a>使用F12查看网页的结构</h2><p>有两个主要标签 header 和 main ，鼠标移动到main上，可以看到内容页面都被包含起来，所以第一个节点应该选main。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161213/161454868.png?imageMogr2/thumbnail/!80p" alt="main标签" title="">
+                </div>
+                <div class="image-caption">main标签</div>
+            </figure></p>
 <h2 id="使用XPath表达式筛选图片链接"><a href="#使用XPath表达式筛选图片链接" class="headerlink" title="使用XPath表达式筛选图片链接"></a>使用XPath表达式筛选图片链接</h2><p>我们看到图片前边都有一个属性src，这个src后边就是我们所需的图片链接。</p>
-<p>综上，使用XPath表达式: <strong>//*[@id=”main”]//@src</strong><br><img src="http://cdn.mmmxcc.cn/blog/20161213/161747115.png?imageMogr2/thumbnail/!80p" alt="mark"><br>输入XPath代码，获得图片链接。<br><img src="http://cdn.mmmxcc.cn/blog/20161213/161335310.png?imageMogr2/thumbnail/!80p" alt="mark"></p>
+<p>综上，使用XPath表达式: <strong>//*[@id=”main”]//@src</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161213/161747115.png?imageMogr2/thumbnail/!80p" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure><br>输入XPath代码，获得图片链接。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161213/161335310.png?imageMogr2/thumbnail/!80p" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></p>
 <h2 id="使用XPath表达式筛选磁力链接"><a href="#使用XPath表达式筛选磁力链接" class="headerlink" title="使用XPath表达式筛选磁力链接"></a>使用XPath表达式筛选磁力链接</h2><p>同理，我们可以发现，磁力链接前边都有一个blockquote，与上一条处理方式类似，使用XPath表达式: <strong>//*[@id=”main”]//blockquote</strong></p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161213/162129381.png?imageMogr2/thumbnail/!80p" alt="磁力链接"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161213/162129381.png?imageMogr2/thumbnail/!80p" alt="磁力链接" title="">
+                </div>
+                <div class="image-caption">磁力链接</div>
+            </figure>
 <p><strong>以上</strong> </p>
 ]]></content>
     
@@ -1115,7 +1462,13 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
 <hr>
 <h1 id="慌张"><a href="#慌张" class="headerlink" title="慌张"></a>慌张</h1><p>在这件事情还没有成为热搜之前，室友私下给我发了这个消息。</p>
 <p>当时我第一反应就觉得是假的，“怎么可能嘛，Gary之前说过七个人要永远在一起的啊。”</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161028/215708622.png?imageMogr2/thumbnail/!100p" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161028/215708622.png?imageMogr2/thumbnail/!100p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>就算我信誓旦旦的否认了，可还是忍不住又把这个消息多看了好几遍，想找到这是个假消息的依据。</p>
 <p><strong>可到后来我越看越慌，直到过了两个小时以后，热搜出现Gary的名字，我才被迫相信，但还是不愿接受。</strong></p>
 <hr>
@@ -1132,7 +1485,13 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
 <li>其他的成员也是或多或少身体状况都不佳，不可能再回到大规模撕名牌的环节中。</li>
 </ul>
 <p>我们看得出来现在的running man确实不如以前好看了，可是看到<strong>他们七个人在一起，就是最开心的事。</strong></p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161028/215947619.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161028/215947619.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>我知道我们总有一天要和Runningman告别，我也曾想过很多次他们会以怎样的方式跟我们说再见。可这种方式是我最不愿意见到的。</p>
 <p> <strong>与其Gary一人离开，不如节目就到此为止吧。 因为在我心里，他们就是一个整体，谁也不能替代，谁也无法分割。</strong></p>
 <p><img src="http://cdn.mmmxcc.cn/blog/20161028/220012151.png?imageMogr2/thumbnail/!80p" alt=""></p>
@@ -1178,7 +1537,13 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">system(<span class="string">"start E:\\tax.out"</span>);</div></pre></td></tr></table></figure>
 <p>E:\tax.out 就是你文件的地址</p>
 <h1 id="运行程序demo"><a href="#运行程序demo" class="headerlink" title="运行程序demo"></a>运行程序demo</h1><p>读取hello.txt文件内的收入数据，计算税金，并输出到tax.txt中</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161028/190446344.png" alt="demo"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161028/190446344.png" alt="demo" title="">
+                </div>
+                <div class="image-caption">demo</div>
+            </figure>
 <p><a href="http://cdn.mmmxcc.cn/blog/20161028/190626684.txt" target="_blank" rel="external">hello.txt</a>，直接 Ctrl+S 保存到E盘即可</p>
 <p>C++代码如下<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> cutoff = <span class="number">6000</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">float</span> rate1 = <span class="number">0.3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">float</span> rate2 = <span class="number">0.6</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	ifstream infile;</div><div class="line">	ofstream outfile;</div><div class="line">	<span class="keyword">int</span> income, tax;</div><div class="line">	infile.open(<span class="string">"E:\\hello.txt"</span>);</div><div class="line">	outfile.open(<span class="string">"E:\\tax.txt"</span>);</div><div class="line">		<span class="keyword">while</span> (infile &gt;&gt; income)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (income &lt; cutoff)</div><div class="line">				tax = rate1*income;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				tax = rate2*income;</div><div class="line">			outfile &lt;&lt;  <span class="string">"income:"</span>&lt;&lt;left&lt;&lt;setw(<span class="number">6</span>) &lt;&lt; income &lt;&lt; right&lt;&lt;setw(<span class="number">8</span>) &lt;&lt; <span class="string">"Tax:"</span> &lt;&lt;tax&lt;&lt; <span class="built_in">endl</span>;</div><div class="line">		&#125;</div><div class="line">		infile.close();</div><div class="line">		outfile.close();</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"done"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">		system(<span class="string">"start E:\\tax.txt"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 ]]></content>
@@ -1210,7 +1575,13 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
 <hr>
 <p>以至于让我觉得根本不需要总是对别人那么好，或者说其实我希望可以一直对别人保持一颗有爱的心，只不过我需要力量支撑而已。</p>
 <pre><code>而解忧杂货店就给了我这种力量。
-</code></pre><p><img src="http://cdn.mmmxcc.cn/blog/20161028/122006987.png?imageMogr2/thumbnail/!100p" alt="解忧杂货店"></p>
+</code></pre><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161028/122006987.png?imageMogr2/thumbnail/!100p" alt="解忧杂货店" title="">
+                </div>
+                <div class="image-caption">解忧杂货店</div>
+            </figure>
 <ul>
 <li><p>浪矢爷爷说，<strong>人的心声</strong>是最不能被忽视的。所以不管是什么内容的信，玩笑的或是严肃的，甚至是一张白纸，他都会认认真真的回复。</p>
 </li>
@@ -1219,17 +1590,35 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
 <li><p>不要总想着设身处地，我们永远不是别人，总是很难站在别人角度考虑问题，稍不留神就以己度人了。</p>
 </li>
 </ul>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161028/122134157.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161028/122134157.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>所以，<strong>子所不欲勿施于人，己所欲也勿施于人。</strong></p>
 <p> 收到那么多封烦恼咨询信后，我慢慢发现其实很多人在写信的时候心里就已经有<strong>自己的答案</strong>了，他们写信的目的就是为了让别人可以支持<strong>他们的想法</strong>。</p>
 <p>但他们读过回信之后会再写信过来，就说明双方观点不太一样。所以才会反反复复进行那么多次通信，就为了说服别人同意自己的想法。</p>
 <p>我就想到每次我想买啥东西又不好意思买的时候，就会<strong>假装向阳询问</strong>，而阳就会 <strong><em>二话不说</em></strong> 立马给我买了。他竟然那么早就懂了这个道理，<strong>真是好棒呀！</strong> </p>
 <p><img src="http://cdn.mmmxcc.cn/blog/20161028/122234749.png" alt=""></p>
 <p>我不知道别人判断一本好书的标准是什么，我不认识东野圭吾，不知道kindle里边他的排名，就只是很喜欢这种故事，<strong>有爱情，有亲情，有事业，有梦想。</strong></p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161028/122722215.jpg" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161028/122722215.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>很平凡，平凡到感觉里边的人物就是生活中的你和我。但文学总是高于生活的，时空的交错，<strong>奇妙的构思让我觉得善良的人在冥冥之中总会受到保佑。</strong></p>
 <p>文章中的最后一段话好像是这样的，敦也从信纸上抬起头，正好对上了另两个人的视线，他发现他俩的眼里闪着光芒，他想他的眼里也一定是这样的。而我想说，读完这本书以后，我也是这样的感觉。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161028/122838719.jpeg?imageMogr2/thumbnail/!50p" alt="mark"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161028/122838719.jpeg?imageMogr2/thumbnail/!50p" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
 ]]></content>
     
     <summary type="html">
@@ -1274,7 +1663,13 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
 <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">square_sum</span><span class="params">(a,b)</span>:</span> </div><div class="line">    c = a**<span class="number">2</span> + b**<span class="number">2</span> </div><div class="line">    <span class="keyword">return</span> c</div></pre></td></tr></table></figure>
 <p>def，这个关键字通知python：我在定义一个函数。square_sum是函数名。括号中的a, b是函数的<strong>参数</strong>，是对函数的<strong>输入</strong>。</p>
 <h2 id="函数调用和参数传递"><a href="#函数调用和参数传递" class="headerlink" title="函数调用和参数传递"></a>函数调用和参数传递</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">a = <span class="number">1</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_integer</span><span class="params">(a)</span>:</span></div><div class="line">    a = a + <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> a</div><div class="line"></div><div class="line"><span class="keyword">print</span> (change_integer(a))      <span class="comment">#注意观察结果</span></div><div class="line"><span class="keyword">print</span> (a)      <span class="comment">#注意观察结果</span></div><div class="line"></div><div class="line"><span class="comment">#===(Python中 "#" 后面跟的内容是注释，不执行 )</span></div><div class="line"></div><div class="line">b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_list</span><span class="params">(b)</span>:</span></div><div class="line">    b[<span class="number">0</span>] = b[<span class="number">0</span>] + <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> b</div><div class="line"></div><div class="line"><span class="keyword">print</span> (change_list(b))      <span class="comment">#注意观察结果</span></div><div class="line"><span class="keyword">print</span> (b)      <span class="comment">#注意观察结果</span></div></pre></td></tr></table></figure>
-<p><img src="http://cdn.mmmxcc.cn/python/1.jpg" alt="运行结果"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/python/1.jpg" alt="运行结果" title="">
+                </div>
+                <div class="image-caption">运行结果</div>
+            </figure>
 <p>第一个例子，我们将一个<strong>整数变量传递给函数</strong>，函数对它进行操作，但<strong>原整数变量a不发生变化</strong>。<br>第二个例子，我们将一个<strong>表传递给函数</strong>，函数进行操作，<strong>原来的表b发生变化</strong>。<br>对于基本数据类型的变量，变量传递给函数后，函数会在内存中复制一个新的变量，从而不影响原来的变量。（我们称此为<strong>值传递</strong>）<br>但是对于表来说，表传递给函数的是一个指针，指针指向序列在内存中的位置，在函数中对表的操作将在原有内存中进行，从而影响原有变量。 （我们称此为<strong>指针传递</strong>）。</p>
 <h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><p>我们定义一个类“鸟”，鸟有羽毛，鸟的方法是下蛋，定义一个函数fly()。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bird</span><span class="params">(object)</span>:</span></div><div class="line">    feather = <span class="keyword">True</span></div><div class="line">    way = <span class="string">'egg'</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fly</span><span class="params">(self, dx, dy)</span>:</span></div><div class="line">        position = [<span class="number">0</span>,<span class="number">0</span>]</div><div class="line">        position[<span class="number">0</span>] = position[<span class="number">0</span>] + dx</div><div class="line">        position[<span class="number">1</span>] = position[<span class="number">1</span>] + dy</div><div class="line">        <span class="keyword">return</span> position</div><div class="line"></div><div class="line">summer = Bird()</div><div class="line"><span class="keyword">print</span> (after move:<span class="string">',summer.fly(5,8))</span></div></pre></td></tr></table></figure></p>
 <p><strong>方法的第一个参数必须是self，无论是否用到。</strong></p>

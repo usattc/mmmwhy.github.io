@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  <title>搭建个人SSR帐号及私人分享 | 李飞阳 | PM、Coder、Data mining</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  <meta name="theme-color" content="#3F51B5">
-  
-  
-  <meta name="keywords" content="GFW,SSR,Linux">
-  <meta name="description" content="本文转自1024社区，讲了一下SSR的搭建流程，并分享自己的SSR服务器。">
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=60691835"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="https://mmmxcc.cn//2016/10/19/搭建个人SSR帐号及私人分享/">
+    
+    
+    <title>搭建个人SSR帐号及私人分享 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="GFW,SSR,Linux">
+    <meta name="description" content="本文转自1024社区，讲了一下SSR的搭建流程，并分享自己的SSR服务器。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建个人SSR帐号及私人分享">
 <meta property="og:url" content="https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/index.html">
@@ -34,93 +53,85 @@
 <meta name="twitter:title" content="搭建个人SSR帐号及私人分享">
 <meta name="twitter:description" content="本文转自1024社区，讲了一下SSR的搭建流程，并分享自己的SSR服务器。">
 <meta name="twitter:image" content="http://cdn.mmmxcc.cn/ssr/1.png">
-  
-    <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
-  
-  <meta name="summary" content="&lt;blockquote&gt;
-&lt;p&gt;本文转自&lt;a href=&quot;http://t66y.com/htm_data/7/1608/2036792.html&quot;&gt;1024社区&lt;/a&gt;，讲了一下SSR的搭建流程，并分享自己的SSR服务器。&lt;/p&gt;
-&lt;/blockquote&gt;">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/style.css">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
 </head>
 
 <body>
+    <div id="loading" class="active"></div>
 
-   <div id="loading" class="active"></div>
-
-  <nav id="menu" class="hide" >
-   <div class="inner flex-row-vertical">
-  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-      <i class="icon icon-lg icon-close"></i>
-  </a>
-  <div class="brand-wrap">
-    <div class="brand">
-      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
-      <hgroup class="introduce">
-        <h5 class="nickname">Wing Lee</h5>
-        <a href="mailto:i@mmmxcc.cn" title="i@mmmxcc.cn" class="mail">i@mmmxcc.cn</a>
-      </hgroup>
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:i@mmmxcc.com" title="i@mmmxcc.com" class="mail">i@mmmxcc.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy/python-camp" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                Python练习册
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于我
+              </a>
+            </li>
+        
+      </ul>
     </div>
   </div>
-  <div class="scroll-wrap flex-col">
-    <ul class="nav">
-      
-          <li class="waves-block waves-effect">
-            <a href="/"  >
-              <i class="icon icon-lg icon-home"></i>
-              主页
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/archives"  >
-              <i class="icon icon-lg icon-archives"></i>
-              归档
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/tags"  >
-              <i class="icon icon-lg icon-tags"></i>
-              标签
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="https://github.com/mmmwhy/python-camp" target="_blank" >
-              <i class="icon icon-lg icon-github"></i>
-              Github
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"  >
-              <i class="icon icon-lg icon-rocket"></i>
-              Python练习册
-            </a>
-          </li>
-      
-          <li class="waves-block waves-effect">
-            <a href="/2016/01/18/resume/"  >
-              <i class="icon icon-lg icon-link"></i>
-              关于我
-            </a>
-          </li>
-      
-    </ul>
+</aside>
 
-    <footer class="footer">
-  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
-  <p>愿每个人都能被这个世界温柔对待 </p>
-  <p>陕ICP备17001447号</p>
-</footer>
-
-  </div>
-</div>
-
-  </nav>
-  <main id="main">
-    <header class="top-header" id="header">
+    <main id="main">
+        <header class="top-header" id="header">
     <div class="flex-row">
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
@@ -131,101 +142,89 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
         </div>
         
         
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-share">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
             <i class="icon icon-lg icon-share-alt"></i>
         </a>
         
     </div>
 </header>
-<header class="content-header">
-  <div class="container">
-    <h1 class="author">搭建个人SSR帐号及私人分享</h1>
-    <h5 class="subtitle">
-        
-            <time datetime="2016-10-19T06:13:18.000Z" itemprop="datePublished" class="page-time">
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">搭建个人SSR帐号及私人分享</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-10-19T06:13:18.000Z" itemprop="datePublished" class="page-time">
   2016-10-19
 </time>
 
 
-        
-    </h5>
-  </div>
+            
+        </h5>
+    </div>
+
+    
+
 </header>
 
-    <div class="container body-wrap">
-      <article id="post-搭建个人SSR帐号及私人分享" 
-  class="article article-type-post" itemprop="blogPost">
-    <div class="post-meta flex-row">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GFW/">GFW</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSR/">SSR</a></li></ul>
 
-    </div>
-    <div class="post-body">
-        <aside class="post-widget" id="post-widget">
-
-            
-            <div class="post-share" id="post-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
-
-            
-
-            
-            <nav class="post-toc-wrap" id="post-toc">
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
             <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务器配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">服务器配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装SSR"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">安装SSR</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#锐速一键包"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">锐速一键包</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#finalspeed-一键包"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">finalspeed 一键包</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#finalspeed客户端配置"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">finalspeed客户端配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#搭建个人SSR翻墙帐号及私人分享"><span class="post-toc-number">2.</span> <span class="post-toc-text">搭建个人SSR翻墙帐号及私人分享</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下面分享多个楼主个人搭建的SSR帐号"><span class="post-toc-number">3.</span> <span class="post-toc-text">下面分享多个楼主个人搭建的SSR帐号</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#搭建个人SSR翻墙帐号及私人分享-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">搭建个人SSR翻墙帐号及私人分享</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#容器SSR搭建个人SSR翻墙帐号及私人分享"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">容器SSR搭建个人SSR翻墙帐号及私人分享</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#CentOS6-7搭建个人SSR翻墙帐号及私人分享"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">CentOS6.7搭建个人SSR翻墙帐号及私人分享</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#CentOS6搭建个人SSR翻墙帐号及私人分享"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">CentOS6搭建个人SSR翻墙帐号及私人分享</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#centos7搭建个人SSR翻墙帐号及私人分享"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">centos7搭建个人SSR翻墙帐号及私人分享</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Ubuntu搭建个人SSR翻墙帐号及私人分享"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">Ubuntu搭建个人SSR翻墙帐号及私人分享</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安卓版SSR下载地址"><span class="post-toc-number">4.</span> <span class="post-toc-text">安卓版SSR下载地址</span></a></li></ol>
-            </nav>
+        </nav>
+    </aside>
+    
+<article id="post-搭建个人SSR帐号及私人分享"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">搭建个人SSR帐号及私人分享</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年10月19日 14:13" datetime="2016-10-19T06:13:18.000Z"  itemprop="datePublished">2016-10-19</time>
+
             
-        </aside>
 
-        <div class="post-main">
 
-            <div class="post-content" id="post-content" itemprop="postContent">
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
             <blockquote>
 <p>本文转自<a href="http://t66y.com/htm_data/7/1608/2036792.html" target="_blank" rel="external">1024社区</a>，讲了一下SSR的搭建流程，并分享自己的SSR服务器。</p>
 </blockquote>
 <a id="more"></a>
 <hr>
 <h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><h4 id="安装SSR"><a href="#安装SSR" class="headerlink" title="安装SSR"></a>安装SSR</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/shadowsocks_install/master/shadowsocksR.sh &amp;&amp; bash shadowsocksR.sh</div></pre></td></tr></table></figure>
-<p><img src="http://cdn.mmmxcc.cn/ssr/1.png" alt=""><br><img src="http://cdn.mmmxcc.cn/ssr/2.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/ssr/1.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/ssr/2.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h4 id="锐速一键包"><a href="#锐速一键包" class="headerlink" title="锐速一键包"></a>锐速一键包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh &amp;&amp; bash serverspeeder-all.sh</div></pre></td></tr></table></figure>
 <h4 id="finalspeed-一键包"><a href="#finalspeed-一键包" class="headerlink" title="finalspeed 一键包"></a>finalspeed 一键包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/finalspeed/master/install_fs.sh &amp;&amp; bash install_fs.sh</div></pre></td></tr></table></figure>
 <hr>
@@ -238,37 +237,175 @@
 <li>确定保存,选择使用刚添加的服务器,并设置浏览器代理,成功连接后,FinalSpeed状态栏会出现”连接服务器成功”提示.<br>SSR 客户端、Xshell5和finalspeed客户端自己百度下载吧，我就不分享主要是不知用什么网盘分享，度盘不安全，免得被请去喝茶。</li>
 </ol>
 <hr>
-<h3 id="下面分享多个楼主个人搭建的SSR帐号"><a href="#下面分享多个楼主个人搭建的SSR帐号" class="headerlink" title="下面分享多个楼主个人搭建的SSR帐号"></a>下面分享多个楼主个人搭建的SSR帐号</h3><h4 id="德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享"><a href="#德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享"></a>德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/3.jpg" alt=""></p>
-<h4 id="搭建个人SSR翻墙帐号及私人分享-1"><a href="#搭建个人SSR翻墙帐号及私人分享-1" class="headerlink" title="搭建个人SSR翻墙帐号及私人分享"></a>搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/4.jpg" alt=""></p>
-<h4 id="日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享"><a href="#日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享"></a>日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/5.jpg" alt=""></p>
-<h4 id="容器SSR搭建个人SSR翻墙帐号及私人分享"><a href="#容器SSR搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="容器SSR搭建个人SSR翻墙帐号及私人分享"></a>容器SSR搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/6.jpg" alt=""></p>
-<h4 id="CentOS6-7搭建个人SSR翻墙帐号及私人分享"><a href="#CentOS6-7搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="CentOS6.7搭建个人SSR翻墙帐号及私人分享"></a>CentOS6.7搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/7.jpg" alt=""></p>
-<h4 id="CentOS6搭建个人SSR翻墙帐号及私人分享"><a href="#CentOS6搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="CentOS6搭建个人SSR翻墙帐号及私人分享"></a>CentOS6搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/8.jpg" alt=""></p>
-<h4 id="centos7搭建个人SSR翻墙帐号及私人分享"><a href="#centos7搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="centos7搭建个人SSR翻墙帐号及私人分享"></a>centos7搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/9.jpg" alt=""></p>
-<h4 id="Ubuntu搭建个人SSR翻墙帐号及私人分享"><a href="#Ubuntu搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="Ubuntu搭建个人SSR翻墙帐号及私人分享"></a>Ubuntu搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/10.jpg" alt=""></p>
+<h3 id="下面分享多个楼主个人搭建的SSR帐号"><a href="#下面分享多个楼主个人搭建的SSR帐号" class="headerlink" title="下面分享多个楼主个人搭建的SSR帐号"></a>下面分享多个楼主个人搭建的SSR帐号</h3><h4 id="德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享"><a href="#德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享"></a>德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/ssr/3.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="搭建个人SSR翻墙帐号及私人分享-1"><a href="#搭建个人SSR翻墙帐号及私人分享-1" class="headerlink" title="搭建个人SSR翻墙帐号及私人分享"></a>搭建个人SSR翻墙帐号及私人分享</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/ssr/4.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享"><a href="#日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享"></a>日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/ssr/5.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="容器SSR搭建个人SSR翻墙帐号及私人分享"><a href="#容器SSR搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="容器SSR搭建个人SSR翻墙帐号及私人分享"></a>容器SSR搭建个人SSR翻墙帐号及私人分享</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/ssr/6.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="CentOS6-7搭建个人SSR翻墙帐号及私人分享"><a href="#CentOS6-7搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="CentOS6.7搭建个人SSR翻墙帐号及私人分享"></a>CentOS6.7搭建个人SSR翻墙帐号及私人分享</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/ssr/7.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="CentOS6搭建个人SSR翻墙帐号及私人分享"><a href="#CentOS6搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="CentOS6搭建个人SSR翻墙帐号及私人分享"></a>CentOS6搭建个人SSR翻墙帐号及私人分享</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/ssr/8.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="centos7搭建个人SSR翻墙帐号及私人分享"><a href="#centos7搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="centos7搭建个人SSR翻墙帐号及私人分享"></a>centos7搭建个人SSR翻墙帐号及私人分享</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/ssr/9.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h4 id="Ubuntu搭建个人SSR翻墙帐号及私人分享"><a href="#Ubuntu搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="Ubuntu搭建个人SSR翻墙帐号及私人分享"></a>Ubuntu搭建个人SSR翻墙帐号及私人分享</h4><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/ssr/10.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h3 id="安卓版SSR下载地址"><a href="#安卓版SSR下载地址" class="headerlink" title="安卓版SSR下载地址"></a>安卓版SSR下载地址</h3><p>下载地址：<a href="http://cdn.mmmxcc.cn/ssr_3.0.2.2.apk" target="_blank" rel="external">http://cdn.mmmxcc.cn/ssr_3.0.2.2.apk</a></p>
 <hr>
-<p><img src="http://cdn.mmmxcc.cn/ssr/11.jpg" alt=""><br><img src="http://cdn.mmmxcc.cn/ssr/12.jpg" alt=""><br>右键使用扫描二维码添加，不用填写参数，之所以我上的是截图。<br><img src="http://cdn.mmmxcc.cn/ssr/13.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/ssr/11.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/ssr/12.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>右键使用扫描二维码添加，不用填写参数，之所以我上的是截图。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/ssr/13.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-07T05:49:51.432Z" itemprop="dateUpdated">2017年2月7日 13:49</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2016/10/19/搭建个人SSR帐号及私人分享/" target="_blank" rel="external">https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/</a>
+    </div>
+    <footer>
+        <a href="https://mmmxcc.cn">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GFW/">GFW</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSR/">SSR</a></li></ul>
 
 
             
-            <div class="post-reward">
-                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
-            </div>
-            
-            
-            <blockquote>
-                <p>
-                本文地址：
-                <a href="https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/" target="_blank" rel="external">https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/</a>
-                </p>
-                <footer><cite><a href="https://mmmxcc.cn">@李飞阳</a></cite></footer>
-            </blockquote>
-            </div>
-            
-<nav class="post-nav">
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/&title=《搭建个人SSR帐号及私人分享》 — 李飞阳&pic=https://mmmxcc.cn/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/&title=《搭建个人SSR帐号及私人分享》 — 李飞阳&source=
+本文转自1024社区，讲了一下SSR的搭建流程，并分享自己的SSR服务器。
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《搭建个人SSR帐号及私人分享》 — 李飞阳&url=https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/&via=https://mmmxcc.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
-    <div class="waves-block waves-effect prev fl">
+    <div class="waves-block waves-effect prev">
       <a href="/2016/10/19/VelocityTracker滑动屏幕切换Activity/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">VelocityTracker滑动屏幕切换Activity</h4>
@@ -277,7 +414,7 @@
   
 
   
-    <div class="waves-block waves-effect next fr">
+    <div class="waves-block waves-effect next">
       <a href="/2016/10/19/无公网IP服务器搭建Web站点/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">无公网IP服务器搭建Web站点</h4>
@@ -287,88 +424,31 @@
 </nav>
 
 
-            
-            
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="搭建个人SSR帐号及私人分享" data-title="搭建个人SSR帐号及私人分享" data-url="https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/index.html"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"mmmxcc"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="搭建个人SSR帐号及私人分享" data-title="搭建个人SSR帐号及私人分享" data-url="https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/"></div>
 </div>
-
-
-
-
-
-        </div>
-    </div>
-</article>
-    </div>
-  </main>
-<div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
 <script>
-var BLOG_SHARE = {
-    title: "搭建个人SSR帐号及私人分享",
-    pic: "/img/logo.jpg",
-    summary: document.getElementsByName('summary')[0].content,
-    url: "https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/index.html"
-};
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'mmmxcc', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
 </script>
-<div class="global-share" id="global-share">
-    <div class="tit">分享到：</div>
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" href="javascript:;" data-title="微博" data-service="tsina">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns" href="javascript:;" data-title="微信" data-service="weixin">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" href="javascript:;" data-title=" QQ" data-service="cqq">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" href="javascript:;" data-title=" Facebook" data-service="fb">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" href="javascript:;" data-title=" Twitter" data-service="twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="douban share-sns" href="javascript:;" data-title="豆瓣" data-service="douban">
-          豆
-        </a>
-      </li>
-    </ul>
- </div>
 
 
 
 
-<div id="reward" class="reward-lay">
-    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <h3 class="reward-title">
         <i class="icon icon-quote-left"></i>
         谢谢大爷~
@@ -391,18 +471,101 @@ var BLOG_SHARE = {
     </ul>
 </div>
 
-<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 
-<script src="/js/main.js"></script>
 
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span>陕ICP备17001447号</span> 
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/&title=《搭建个人SSR帐号及私人分享》 — 李飞阳&pic=https://mmmxcc.cn/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/&title=《搭建个人SSR帐号及私人分享》 — 李飞阳&source=
+本文转自1024社区，讲了一下SSR的搭建流程，并分享自己的SSR服务器。
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《搭建个人SSR帐号及私人分享》 — 李飞阳&url=https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/&via=https://mmmxcc.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACwUlEQVR42u3awW7jMAwE0Pz/T3eBvS7izJASmgWeT0Wb2nouILFDvl7x9fP3evedn3+u/A7vfvfd/V83Ljw8PLzR0pOHPTOS7ySv4/lF5GvGw8PDu8173spnG/fzsp6flX/9wYKHh4f3q7x8c08+2S4XDw8P7//lJcdAciTkJTUeHh7ed/LyULVdbvKUPAS5mLXg4eHhxby2AfYNX1/s7+Hh4eEtuupJm+rUZ5JxhHq1eHh4eBd4ecw624Hb8GIzYlX8x4CHh4e34CW3aOOJPJiYNduKQh8PDw/vAm8TTCThaRvObsYXNocKHh4eXs7LW/ub5lP703Yl0bmHh4eHd4i3L6DzB+Rl8aY0r880PDw8vEO8vPretLXOFvFRmY6Hh4e35s023LyYTqLb51fTvpSoAYaHh4e35s3ihmSDzmPZ9vPRHwMPDw/vMm/fjG8bVLPBhXx8AQ8PD+8GL1/cbEGzIyQ/JIo74OHh4R3lnWpW3WhZ7V8uHh4e3j3eZkPPg4w8+DiWLeDh4eFd5rWRaxIQzCKMWSj84WDAw8PDW/OSeHRfXrcvYhZevM1X8PDw8I7yZoMCbeDbBrWbwyYKI/Dw8PAWvNnQQBJb5HHDcLsPSn88PDy8G7w8JG3HAtpSuI1u27EDPDw8vLO8ttGV3PTUAMGseVak1Hh4eHglrz498q7a0TK9La/x8PDwfpfXDkXlJXU7pLXq7+Hh4eEd4s2u5GBow4XNCNesVYaHh4e3aYC123E+FpCHvJsAt5gpw8PDw1vzNofBLNjNW1/tcEMbW+Dh4eFtePlhkEcDbRycl9d1IIKHh4d3jTfblNvX1La72hMMDw8P79t4m2bYbAArf8qHxAUPDw/vV3lJgdvGr3lBX0e6eHh4eNd4mzBi8/lNwX1ggAAPDw/vTL76mh0SswijHd6aNdLw8PDwDvH+AMYk2k+J/TOvAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
 
 
 <div class="search-panel" id="search-panel">
     <ul class="search-result" id="search-result"></ul>
 </div>
-<script type="text/template" id="search-tpl">
+<template id="search-tpl">
 <li class="item">
-    <a href="/{path}" class="waves-block waves-effect">
+    <a href="{path}" class="waves-block waves-effect">
         <div class="title ellipsis" title="{title}">{title}</div>
         <div class="flex-row flex-middle">
             <div class="tags ellipsis">
@@ -412,41 +575,17 @@ var BLOG_SHARE = {
         </div>
     </a>
 </li>
-</script>
+</template>
 
-<script src="/js/search.js"></script>
-
-
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-
-
-
-<script src="//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502"></script>
+<script src="/js/search.min.js?v=1.4.7" async></script>
 
 
 
 
 
-   </body>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
 </html>
