@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mmmxcc.cn/"/>
-  <updated>2017-02-09T02:57:39.454Z</updated>
+  <updated>2017-02-10T07:47:56.395Z</updated>
   <id>https://mmmxcc.cn/</id>
   
   <author>
@@ -14,6 +14,121 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第三题：将  200 个激活码保存到 MySQL</title>
+    <link href="https://mmmxcc.cn/2017/02/10/%E7%AC%AC%E4%B8%89%E9%A2%98%EF%BC%9A%E5%B0%86200%E4%B8%AA%E6%BF%80%E6%B4%BB%E7%A0%81%E4%BF%9D%E5%AD%98%E5%88%B0-MySQL/"/>
+    <id>https://mmmxcc.cn/2017/02/10/第三题：将200个激活码保存到-MySQL/</id>
+    <published>2017-02-10T07:16:52.000Z</published>
+    <updated>2017-02-10T07:47:56.395Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第三题，使用 Python 将激活码保存到 MySQL。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="准备姿势"><a href="#准备姿势" class="headerlink" title="准备姿势"></a>准备姿势</h1><h2 id="安装Mysql"><a href="#安装Mysql" class="headerlink" title="安装Mysql"></a>安装Mysql</h2><p>如果是windows 用户，mysql 的安装非常简单，直接下载安装文件，双击安装文件一步一步进行操作即可。</p>
+<p>Linux 下的安装可能会更加简单，除了下载安装包进行安装外，一般的linux 仓库中都会有mysql ，我们只需要通过一个命令就可以下载安装：</p>
+<p>Ubuntu\deepin<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install mysql-server </div><div class="line">sudo apt-get install  mysql-client</div></pre></td></tr></table></figure></p>
+<p>centOS/redhat<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install mysql</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="安装MySQL-python"><a href="#安装MySQL-python" class="headerlink" title="安装MySQL-python"></a>安装MySQL-python</h2><p>要想使python可以操作mysql 就需要MySQL-python驱动，它是python 操作mysql必不可少的模块。</p>
+<p>下载地址：<a href="https://pypi.python.org/pypi/MySQL-python/" target="_blank" rel="external">https://pypi.python.org/pypi/MySQL-python/</a></p>
+<p>下载MySQL-python-1.2.5.zip 文件之后直接解压。进入MySQL-python-1.2.5目录:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python setup.py install</div></pre></td></tr></table></figure>
+<p>可能会提示缺少<strong>“error: Microsoft Visual C++ 9.0 is required (Unable to find vcvarsall.bat). Get it from <a href="http://aka.ms/vcpython27" target="_blank" rel="external">http://aka.ms/vcpython27</a>”</strong><br>这个地方查找了很多资料，有的说要修改注册表，有的说要改VS2015的配置。简直一派胡言，I am angry。直接按照要求，在这个<em><a href="http://aka.ms/vcpython27" target="_blank" rel="external">http://aka.ms/vcpython27</a></em>下载安装就可以了。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://cdn.mmmxcc.cn/blog/20170209/192148401.png" alt="Microsoft Visual C++ Compiler for Python 2.7"></h2><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import MySQLdb</div></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import mysql</div></pre></td></tr></table></figure></p>
+<p>如果不报错，那么就安装成功了。</p>
+<hr>
+<h2 id="mysql-的基本操作"><a href="#mysql-的基本操作" class="headerlink" title="mysql 的基本操作"></a>mysql 的基本操作</h2><ul>
+<li><p>启动mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前所有的数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show databases;</div></pre></td></tr></table></figure>
+</li>
+<li><p>新建数据库表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create database if not exists test;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用某表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use test;</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">insert into user values(&apos;Alen&apos;,&apos;7875&apos;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from student</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">delete from user where name = &apos;Jack&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除table</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drop table if exists student</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除database</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drop database if exists test</div></pre></td></tr></table></figure>
+</li>
+<li><p>mysql卡死怎么办<br>查看目前连接情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show processlist;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170210/103558354.png" alt="卡死"><br>发现多个线程数据处理间出现了死锁，也没什么好的办法，kill掉就可以了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kill 65;</div></pre></td></tr></table></figure></p>
+<h2 id="然后就可以继续使用了。"><a href="#然后就可以继续使用了。" class="headerlink" title="然后就可以继续使用了。"></a>然后就可以继续使用了。</h2><h2 id="python-操作mysql基本语法"><a href="#python-操作mysql基本语法" class="headerlink" title="python 操作mysql基本语法"></a>python 操作mysql基本语法</h2><ul>
+<li>建立数据库连接<br>注意，这个地方的test表要存在，否则无法连接<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> MySQLdb</div><div class="line">conn=MySQLdb.connect(</div><div class="line">        host=<span class="string">'localhost'</span>,</div><div class="line">        port = <span class="number">3306</span>, <span class="comment">#默认3306端口，不写也可以</span></div><div class="line">        user=<span class="string">'root'</span>,</div><div class="line">        passwd=<span class="string">'123456'</span>,</div><div class="line">        db =<span class="string">'test'</span>,</div><div class="line">)</div><div class="line">cur = conn.cursor()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>cursor 是游标, 通过获取到的数据库连接conn下的cursor()方法来创建游标。</strong><br>其中，第二行代码可以缩写为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">connect(&apos;localhost&apos;, &apos;root&apos;, &apos;123456&apos;, &apos;test&apos;)</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>创建数据表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cur.execute(&quot;create table student(id int ,name varchar(20),class varchar(30),age varchar(10))&quot;) </div><div class="line">#通过游标cur 操作execute()方法可以写入纯sql语句。通过execute()方法中写如sql语句来对数据进行操作。</div></pre></td></tr></table></figure>
+</li>
+<li><p>插入一条数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cur.execute(&quot;insert into student values(&apos;2&apos;,&apos;Tom&apos;,&apos;3 year 2 class&apos;,&apos;9&apos;)&quot;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改查询条件的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cur.execute(&quot;update student set class=&apos;3 year 1 class&apos; where name = &apos;Tom&apos;&quot;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除查询条件的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cur.execute(&quot;delete from student where age=&apos;9&apos;&quot;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>关闭游标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cur.close()</div></pre></td></tr></table></figure>
+</li>
+<li><p>提交数据<br>向数据库插入一条数据时必须要有这个方法，否则数据不会被真正的插入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conn.commit()</div></pre></td></tr></table></figure>
+</li>
+<li><p>关闭数据库连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conn.close()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="打印表中所有数据"><a href="#打印表中所有数据" class="headerlink" title="打印表中所有数据"></a>打印表中所有数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"><span class="keyword">import</span> MySQLdb</div><div class="line"></div><div class="line">conn= MySQLdb.connect(</div><div class="line">        host=<span class="string">'localhost'</span>,</div><div class="line">        port = <span class="number">3306</span>,</div><div class="line">        user=<span class="string">'root'</span>,</div><div class="line">        passwd=<span class="string">'123456'</span>,</div><div class="line">        db =<span class="string">'test'</span>,</div><div class="line">        )</div><div class="line">cur = conn.cursor()</div><div class="line"></div><div class="line"><span class="comment">#获得表中有多少条数据</span></div><div class="line">aa=cur.execute(<span class="string">"select * from student"</span>)</div><div class="line"><span class="keyword">print</span> aa</div><div class="line"></div><div class="line"><span class="comment">#打印表中的多少数据</span></div><div class="line">info = cur.fetchmany(aa)</div><div class="line"><span class="keyword">for</span> ii <span class="keyword">in</span> info:</div><div class="line">    <span class="keyword">print</span> ii</div><div class="line">cur.close()</div><div class="line">conn.commit()</div><div class="line">conn.close()</div></pre></td></tr></table></figure>
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"><span class="keyword">import</span> MySQLdb</div><div class="line"></div><div class="line">conn= MySQLdb.connect(</div><div class="line">        host=<span class="string">'localhost'</span>,</div><div class="line">        port = <span class="number">3306</span>,</div><div class="line">        user=<span class="string">'root'</span>,</div><div class="line">        passwd=<span class="string">'123456'</span>,</div><div class="line">        db =<span class="string">'test'</span>,</div><div class="line">        )</div><div class="line">cur = conn.cursor()</div><div class="line"></div><div class="line"><span class="comment">#一次插入多条记录</span></div><div class="line">sqli=<span class="string">"insert into student values(%s,%s,%s,%s)"</span></div><div class="line">cur.executemany(sqli,[</div><div class="line">    (<span class="string">'3'</span>,<span class="string">'Tom'</span>,<span class="string">'1 year 1 class'</span>,<span class="string">'6'</span>),</div><div class="line">    (<span class="string">'3'</span>,<span class="string">'Jack'</span>,<span class="string">'2 year 1 class'</span>,<span class="string">'7'</span>),</div><div class="line">    (<span class="string">'3'</span>,<span class="string">'Yaheng'</span>,<span class="string">'2 year 2 class'</span>,<span class="string">'7'</span>),</div><div class="line">    ])</div><div class="line"></div><div class="line">cur.close()</div><div class="line">conn.commit()</div><div class="line">conn.close()</div></pre></td></tr></table></figure>
+<p>以上两段代码参考 虫师的博客</p>
+<hr>
+<h1 id="正式代码"><a href="#正式代码" class="headerlink" title="正式代码"></a>正式代码</h1><p>经过以上铺垫之后，就可以写出满足要求的代码了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> uuid <span class="keyword">import</span> uuid4</div><div class="line"><span class="keyword">import</span> MySQLdb,random, string</div><div class="line">chars = string.digits + string.letters</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">uuidkey</span><span class="params">(num)</span>:</span><span class="comment"># 使用uuid方法得到随机值</span></div><div class="line">    id_list = [str(uuid4()) <span class="keyword">for</span> i <span class="keyword">in</span> range(num)]</div><div class="line">    <span class="keyword">return</span> id_list</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">randomkey</span><span class="params">(num)</span>:</span><span class="comment"># 使用random随机取数据值</span></div><div class="line">    id_list = [<span class="string">""</span>.join(random.sample(chars, <span class="number">20</span>)) <span class="keyword">for</span> i <span class="keyword">in</span> range(num)]</div><div class="line">    <span class="keyword">return</span> id_list</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_table_put_keys</span><span class="params">(id_list,table)</span>:</span><span class="comment">#将获得的随机值存入mysql</span></div><div class="line">    conn= MySQLdb.connect(</div><div class="line">        host=<span class="string">'localhost'</span>,</div><div class="line">        port = <span class="number">3306</span>,</div><div class="line">        user=<span class="string">'root'</span>,</div><div class="line">        passwd=<span class="string">'lyyc12345'</span>,</div><div class="line">        db =<span class="string">'test'</span>,</div><div class="line">        )</div><div class="line">    cur = conn.cursor()</div><div class="line">    cur.execute(<span class="string">"drop table if exists %s"</span> % table)    <span class="comment">#若存在table表则删除</span></div><div class="line">    cur.execute(<span class="string">"create table %s(id int, coupon char(40))"</span> % table)    <span class="comment">#创建数据表</span></div><div class="line">    temp = <span class="number">1</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> id_list:    <span class="comment">#将id_list里边的数据插入到mysql中</span></div><div class="line">        cur.execute(<span class="string">"insert into %s values('%d','%s')"</span> %(table,temp,i))</div><div class="line">        temp=temp+<span class="number">1</span></div><div class="line">    cur.close()    <span class="comment">#关闭游标</span></div><div class="line">    conn.commit()    <span class="comment">#提交数据</span></div><div class="line">    conn.close()    <span class="comment">#关闭数据库连接</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    create_table_put_keys(uuidkey(<span class="number">200</span>),<span class="string">'uuidtable'</span>)</div><div class="line">    create_table_put_keys(randomkey(<span class="number">200</span>),<span class="string">'randomtable'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>python 中 % 的使用：<code>cur.execute(&quot;insert into %s values(&#39;%d&#39;,&#39;%s&#39;)&quot; %(table,temp,i))</code>，前后两部分用%相隔</li>
+<li>提交数据<strong>conn.commit()</strong>，否则数据将不会保存。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;，今天做的是第三题，使用 Python 将激活码保存到 MySQL。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+    
+      <category term="Python练习题" scheme="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>frp内网穿透</title>
@@ -48,9 +163,9 @@
     </summary>
     
     
-      <category term="frp" scheme="https://mmmxcc.cn/tags/frp/"/>
-    
       <category term="VPS" scheme="https://mmmxcc.cn/tags/VPS/"/>
+    
+      <category term="frp" scheme="https://mmmxcc.cn/tags/frp/"/>
     
   </entry>
   
@@ -59,10 +174,10 @@
     <link href="https://mmmxcc.cn/2017/02/07/%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%9A%E4%BD%BF%E7%94%A8-Python-%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90-200-%E4%B8%AA%E6%BF%80%E6%B4%BB%E7%A0%81/"/>
     <id>https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/</id>
     <published>2017-02-07T11:50:11.000Z</published>
-    <updated>2017-02-07T11:51:55.432Z</updated>
+    <updated>2017-02-10T07:47:55.652Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>题目来自：<a href="https://github.com/Yixiaohan/show-me-the-code" target="_blank" rel="external">Python 练习册，每天一个小程序</a>，今天做的是第二题，使用 Python 如何生成 200 个激活码。</p>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第二题，使用 Python 如何生成 200 个激活码。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
@@ -123,7 +238,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/Yixiaohan/show-me-the-code&quot;&gt;Python 练习册，每天一个小程序&lt;/a&gt;，今天做的是第二题，使用 Python 如何生成 200 个激活码。&lt;/p&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;，今天做的是第二题，使用 Python 如何生成 200 个激活码。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
     
@@ -355,7 +470,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 <ul>
 <li>支持的格式很多，Markdown，Latex等都支持，还有很方便的快捷键。</li>
 <li>可以将代码可视化分享给其他人，<a href="https://www.continuum.io/blog/developer/jupyter-and-conda-r" target="_blank" rel="external">From notebook to slides</a></li>
-<li>像一张草稿纸，可以一边通过它来进行你的思考探索过程，交互式的进行，每一步都能看到结果，也很方便查看之前的结果。<h5 id="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"><a href="#可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333" class="headerlink" title="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"></a>可以到<a href="https://mmmxcc.cn/" target="_blank" rel="external">我的博客</a>，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333</h5><h1 id="本地安装Jupyter"><a href="#本地安装Jupyter" class="headerlink" title="本地安装Jupyter"></a>本地安装Jupyter</h1>推荐先安装<a href="https://www.continuum.io/downloads" target="_blank" rel="external">python科学计算包ANACONDA</a>点击进入官网下载，按要求下载安装完成之后。期间会有一步提示是否加入Path，勾选加入环境变量。如果但是没有勾选，对于win事后可以手动添加环境变量。对于linux，使用<code>export PATH=~/anaconda2/bin:$PATH</code>进行添加。<br>anaconda安装完后，对于win10用户，可以看到已经成功安装Jupyter Notebook，点击即可打开食用~<br><img src="http://cdn.mmmxcc.cn/blog/20161231/212802868.png" alt=""><br>点击之后，默认直接打开浏览器localhost:8888<br><img src="http://cdn.mmmxcc.cn/blog/20161231/213001998.png?imageMogr2/thumbnail/!100p" alt=""><br>用命令行也可以打开此页面，并且在打开的页面会形成<strong>.ipynb</strong>文件<br><img src="http://cdn.mmmxcc.cn/blog/20161231/213247968.png" alt=""></li>
+<li>像一张草稿纸，可以一边通过它来进行你的思考探索过程，交互式的进行，每一步都能看到结果，也很方便查看之前的结果。<h5 id="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"><a href="#可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333" class="headerlink" title="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"></a>可以到<a href="https://mmmxcc.cn/">我的博客</a>，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333</h5><h1 id="本地安装Jupyter"><a href="#本地安装Jupyter" class="headerlink" title="本地安装Jupyter"></a>本地安装Jupyter</h1>推荐先安装<a href="https://www.continuum.io/downloads" target="_blank" rel="external">python科学计算包ANACONDA</a>点击进入官网下载，按要求下载安装完成之后。期间会有一步提示是否加入Path，勾选加入环境变量。如果但是没有勾选，对于win事后可以手动添加环境变量。对于linux，使用<code>export PATH=~/anaconda2/bin:$PATH</code>进行添加。<br>anaconda安装完后，对于win10用户，可以看到已经成功安装Jupyter Notebook，点击即可打开食用~<br><img src="http://cdn.mmmxcc.cn/blog/20161231/212802868.png" alt=""><br>点击之后，默认直接打开浏览器localhost:8888<br><img src="http://cdn.mmmxcc.cn/blog/20161231/213001998.png?imageMogr2/thumbnail/!100p" alt=""><br>用命令行也可以打开此页面，并且在打开的页面会形成<strong>.ipynb</strong>文件<br><img src="http://cdn.mmmxcc.cn/blog/20161231/213247968.png" alt=""></li>
 </ul>
 <h1 id="线上部署-Jupyter-Notebook"><a href="#线上部署-Jupyter-Notebook" class="headerlink" title="线上部署 Jupyter Notebook"></a>线上部署 Jupyter Notebook</h1><p>在本地部署好了之后，其实给了我一些灵感，既然可以在浏览器运行。那么其实部署在服务器上也是可以的，大家如果看过我看过我之前的文章，就知道我对vps很感兴趣。其实在本地看到的那个localhost:8888，在外网也可以访问，只需要稍微加以设置即可。</p>
 <h2 id="首先要申请虚拟机"><a href="#首先要申请虚拟机" class="headerlink" title="首先要申请虚拟机"></a>首先要申请虚拟机</h2><p>这里推荐腾讯云或者<a href="https://m.do.co/c/990a117f5061" target="_blank" rel="external">DO</a>，通过本链接注册送$10。然后再加上github的学生优惠包，可以很便宜哦。设置好之后，使用SSH连接上服务器。</p>
@@ -372,7 +487,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 <p>jupyter_notebook_config.py内包含以下内容，稍作修改即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">c.NotebookApp.ip=&apos;*&apos; # 就是设置所有ip皆可访问</div><div class="line">c.NotebookApp.password = u&apos;sha:ce...刚才复制的那个密文&apos;</div><div class="line">c.NotebookApp.open_browser = False # 禁止自动打开浏览器</div><div class="line">c.NotebookApp.port =8888 #随便指定一个端口</div></pre></td></tr></table></figure></p>
 <h2 id="启动jupyter-notebook"><a href="#启动jupyter-notebook" class="headerlink" title="启动jupyter notebook"></a>启动jupyter notebook</h2><p><code>jupyter notebook</code><br><img src="http://cdn.mmmxcc.cn/blog/20161231/225106541.png" alt=""></p>
 <p>此时应该可以直接从本地浏览器直接访问<em><a href="http://address_of_remote:8888" target="_blank" rel="external">http://address_of_remote:8888</a></em>就可以看到jupyter的登陆界面。<br><img src="http://cdn.mmmxcc.cn/blog/20161231/224810212.png?imageMogr2/thumbnail/!80p" alt=""></p>
-<p>如果希望不要在退出SSH命令行的时候，同时也停止jupyter notebook服务，推荐<strong>nohup </strong>，之前写过篇博客解释过<a href="https://mmmxcc.cn/2016/10/19/%E6%97%A0%E5%85%AC%E7%BD%91IP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAWeb%E7%AB%99%E7%82%B9/" target="_blank" rel="external">nohup的作用</a><br>在线python编译器就搭建好了，是不是很洋气~</p>
+<p>如果希望不要在退出SSH命令行的时候，同时也停止jupyter notebook服务，推荐<strong>nohup </strong>，之前写过篇博客解释过<a href="https://mmmxcc.cn/2016/10/19/%E6%97%A0%E5%85%AC%E7%BD%91IP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAWeb%E7%AB%99%E7%82%B9/">nohup的作用</a><br>在线python编译器就搭建好了，是不是很洋气~</p>
 ]]></content>
     
     <summary type="html">
@@ -385,9 +500,9 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
-    
       <category term="VPS" scheme="https://mmmxcc.cn/tags/VPS/"/>
+    
+      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
     
       <category term="Jupyter" scheme="https://mmmxcc.cn/tags/Jupyter/"/>
     
@@ -587,7 +702,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <updated>2017-02-07T05:49:29.639Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>现在，你应该能在访问<a href="https://mmmxcc.cn" target="_blank" rel="external">https://mmmxcc.cn</a> 的时候，在地址栏里看到一个漂亮的小绿锁<img src="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~</p>
+<p>现在，你应该能在访问<a href="https://mmmxcc.cn">https://mmmxcc.cn</a> 的时候，在地址栏里看到一个漂亮的小绿锁<img src="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~</p>
 </blockquote>
 <hr>
 <a id="more"></a>
@@ -662,10 +777,10 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <link href="https://mmmxcc.cn/2016/12/16/%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%9APython%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/"/>
     <id>https://mmmxcc.cn/2016/12/16/第一题：Python图片添加水印/</id>
     <published>2016-12-16T04:16:16.000Z</published>
-    <updated>2017-02-07T05:49:18.196Z</updated>
+    <updated>2017-02-10T07:47:54.974Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>题目来自：<a href="https://github.com/Yixiaohan/show-me-the-code" target="_blank" rel="external">Python 练习册，每天一个小程序</a>，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 </p>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 </p>
 </blockquote>
 <hr>
 <a id="more"></a>
@@ -691,7 +806,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/Yixiaohan/show-me-the-code&quot;&gt;Python 练习册，每天一个小程序&lt;/a&gt;，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 &lt;/p&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
     
@@ -752,7 +867,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <updated>2017-02-07T05:47:49.680Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>上篇文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/" target="_blank" rel="external">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
+<p>上篇文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
@@ -764,7 +879,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 <p><img src="http://cdn.mmmxcc.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p" alt="运行结果"></p>
 <p>我们可以发现title这个地方本来应该是中文的，但因为编码的原因，导致出现乱码。通过将html页面重新用”utf-8”编码，可以解决这个问题。</p>
 <hr>
-<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/" target="_blank" rel="external">http://mmmxcc.cn/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
+<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/">http://mmmxcc.cn/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
 <p>这里需要导入lxml，代码格式如下。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = requests.get(<span class="string">"http://jandan.net/ooxx"</span>)</div><div class="line">html.encoding = <span class="string">'utf-8'</span></div><div class="line">selector = etree.HTML(html.text)</div><div class="line">content = selector.xpath(<span class="string">'//ol[@class = "commentlist"]//@src'</span>)</div></pre></td></tr></table></figure>
 <p>单独运行 以上代码可以获得<br><img src="http://cdn.mmmxcc.cn/blog/20161215/182806800.png" alt="Xpath运行结果"></p>
@@ -1204,62 +1319,6 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
       <category term="Android" scheme="https://mmmxcc.cn/tags/Android/"/>
     
       <category term="VelocityTracker" scheme="https://mmmxcc.cn/tags/VelocityTracker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建个人SSR帐号及私人分享</title>
-    <link href="https://mmmxcc.cn/2016/10/19/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BASSR%E5%B8%90%E5%8F%B7%E5%8F%8A%E7%A7%81%E4%BA%BA%E5%88%86%E4%BA%AB/"/>
-    <id>https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/</id>
-    <published>2016-10-19T06:13:18.000Z</published>
-    <updated>2017-02-07T05:49:51.432Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>本文转自<a href="http://t66y.com/htm_data/7/1608/2036792.html" target="_blank" rel="external">1024社区</a>，讲了一下SSR的搭建流程，并分享自己的SSR服务器。</p>
-</blockquote>
-<a id="more"></a>
-<hr>
-<h3 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h3><h4 id="安装SSR"><a href="#安装SSR" class="headerlink" title="安装SSR"></a>安装SSR</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/shadowsocks_install/master/shadowsocksR.sh &amp;&amp; bash shadowsocksR.sh</div></pre></td></tr></table></figure>
-<p><img src="http://cdn.mmmxcc.cn/ssr/1.png" alt=""><br><img src="http://cdn.mmmxcc.cn/ssr/2.png" alt=""></p>
-<h4 id="锐速一键包"><a href="#锐速一键包" class="headerlink" title="锐速一键包"></a>锐速一键包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh &amp;&amp; bash serverspeeder-all.sh</div></pre></td></tr></table></figure>
-<h4 id="finalspeed-一键包"><a href="#finalspeed-一键包" class="headerlink" title="finalspeed 一键包"></a>finalspeed 一键包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/finalspeed/master/install_fs.sh &amp;&amp; bash install_fs.sh</div></pre></td></tr></table></figure>
-<hr>
-<h4 id="finalspeed客户端配置"><a href="#finalspeed客户端配置" class="headerlink" title="finalspeed客户端配置"></a>finalspeed客户端配置</h4><p>假设服务器 IP 为 10.10.10.10,finalspeed 端口为默认 150,ss 端口为 8989.</p>
-<p>加速前提 ss 服务端运行正常, ss 客户端也能正常登录,运行FinalSpeed客户端,填写服务器地址 10.10.10.10 .</p>
-<hr>
-<h3 id="搭建个人SSR翻墙帐号及私人分享"><a href="#搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="搭建个人SSR翻墙帐号及私人分享"></a>搭建个人SSR翻墙帐号及私人分享</h3><ol>
-<li>点击添加,增加加速端口,加速端口为ss端口8989,如果为其他端口,请相应修改,本地端口任意,这里是2000搭建个人SSR翻墙帐号及私人分享</li>
-<li>打开ss客户端,添加服务器,服务器IP为127.0.0.1,服务器端口为加速端口对应的本地端口,这里是2000,然后设置你的ss密码,加密方式.搭建个人SSR翻墙帐号及私人分享</li>
-<li>确定保存,选择使用刚添加的服务器,并设置浏览器代理,成功连接后,FinalSpeed状态栏会出现”连接服务器成功”提示.<br>SSR 客户端、Xshell5和finalspeed客户端自己百度下载吧，我就不分享主要是不知用什么网盘分享，度盘不安全，免得被请去喝茶。</li>
-</ol>
-<hr>
-<h3 id="下面分享多个楼主个人搭建的SSR帐号"><a href="#下面分享多个楼主个人搭建的SSR帐号" class="headerlink" title="下面分享多个楼主个人搭建的SSR帐号"></a>下面分享多个楼主个人搭建的SSR帐号</h3><h4 id="德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享"><a href="#德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享"></a>德国黑森州法兰克福搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/3.jpg" alt=""></p>
-<h4 id="搭建个人SSR翻墙帐号及私人分享-1"><a href="#搭建个人SSR翻墙帐号及私人分享-1" class="headerlink" title="搭建个人SSR翻墙帐号及私人分享"></a>搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/4.jpg" alt=""></p>
-<h4 id="日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享"><a href="#日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享"></a>日本东京都东京容器SS搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/5.jpg" alt=""></p>
-<h4 id="容器SSR搭建个人SSR翻墙帐号及私人分享"><a href="#容器SSR搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="容器SSR搭建个人SSR翻墙帐号及私人分享"></a>容器SSR搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/6.jpg" alt=""></p>
-<h4 id="CentOS6-7搭建个人SSR翻墙帐号及私人分享"><a href="#CentOS6-7搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="CentOS6.7搭建个人SSR翻墙帐号及私人分享"></a>CentOS6.7搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/7.jpg" alt=""></p>
-<h4 id="CentOS6搭建个人SSR翻墙帐号及私人分享"><a href="#CentOS6搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="CentOS6搭建个人SSR翻墙帐号及私人分享"></a>CentOS6搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/8.jpg" alt=""></p>
-<h4 id="centos7搭建个人SSR翻墙帐号及私人分享"><a href="#centos7搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="centos7搭建个人SSR翻墙帐号及私人分享"></a>centos7搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/9.jpg" alt=""></p>
-<h4 id="Ubuntu搭建个人SSR翻墙帐号及私人分享"><a href="#Ubuntu搭建个人SSR翻墙帐号及私人分享" class="headerlink" title="Ubuntu搭建个人SSR翻墙帐号及私人分享"></a>Ubuntu搭建个人SSR翻墙帐号及私人分享</h4><p><img src="http://cdn.mmmxcc.cn/ssr/10.jpg" alt=""></p>
-<h3 id="安卓版SSR下载地址"><a href="#安卓版SSR下载地址" class="headerlink" title="安卓版SSR下载地址"></a>安卓版SSR下载地址</h3><p>下载地址：<a href="http://cdn.mmmxcc.cn/ssr_3.0.2.2.apk" target="_blank" rel="external">http://cdn.mmmxcc.cn/ssr_3.0.2.2.apk</a></p>
-<hr>
-<p><img src="http://cdn.mmmxcc.cn/ssr/11.jpg" alt=""><br><img src="http://cdn.mmmxcc.cn/ssr/12.jpg" alt=""><br>右键使用扫描二维码添加，不用填写参数，之所以我上的是截图。<br><img src="http://cdn.mmmxcc.cn/ssr/13.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;本文转自&lt;a href=&quot;http://t66y.com/htm_data/7/1608/2036792.html&quot;&gt;1024社区&lt;/a&gt;，讲了一下SSR的搭建流程，并分享自己的SSR服务器。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://mmmxcc.cn/tags/Linux/"/>
-    
-      <category term="GFW" scheme="https://mmmxcc.cn/tags/GFW/"/>
-    
-      <category term="SSR" scheme="https://mmmxcc.cn/tags/SSR/"/>
     
   </entry>
   
