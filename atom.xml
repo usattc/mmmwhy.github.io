@@ -4,9 +4,9 @@
   <subtitle>PM、Coder、Data mining</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://www.mmmxcc.cn/"/>
+  <link href="https://mmmxcc.cn/"/>
   <updated>2017-02-09T02:57:39.454Z</updated>
-  <id>https://www.mmmxcc.cn/</id>
+  <id>https://mmmxcc.cn/</id>
   
   <author>
     <name>Wing Lee</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>frp内网穿透</title>
-    <link href="https://www.mmmxcc.cn/2017/02/09/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
-    <id>https://www.mmmxcc.cn/2017/02/09/frp内网穿透/</id>
+    <link href="https://mmmxcc.cn/2017/02/09/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    <id>https://mmmxcc.cn/2017/02/09/frp内网穿透/</id>
     <published>2017-02-09T02:56:15.000Z</published>
     <updated>2017-02-09T02:57:39.454Z</updated>
     
@@ -48,16 +48,16 @@
     </summary>
     
     
-      <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
+      <category term="frp" scheme="https://mmmxcc.cn/tags/frp/"/>
     
-      <category term="frp" scheme="https://www.mmmxcc.cn/tags/frp/"/>
+      <category term="VPS" scheme="https://mmmxcc.cn/tags/VPS/"/>
     
   </entry>
   
   <entry>
     <title>第二题：使用 Python 如何生成 200 个激活码</title>
-    <link href="https://www.mmmxcc.cn/2017/02/07/%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%9A%E4%BD%BF%E7%94%A8-Python-%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90-200-%E4%B8%AA%E6%BF%80%E6%B4%BB%E7%A0%81/"/>
-    <id>https://www.mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/</id>
+    <link href="https://mmmxcc.cn/2017/02/07/%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%9A%E4%BD%BF%E7%94%A8-Python-%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90-200-%E4%B8%AA%E6%BF%80%E6%B4%BB%E7%A0%81/"/>
+    <id>https://mmmxcc.cn/2017/02/07/第二题：使用-Python-如何生成-200-个激活码/</id>
     <published>2017-02-07T11:50:11.000Z</published>
     <updated>2017-02-07T11:51:55.432Z</updated>
     
@@ -130,16 +130,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
     
-      <category term="Python练习题" scheme="https://www.mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
+      <category term="Python练习题" scheme="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>Github Pages + CDN全站加速</title>
-    <link href="https://www.mmmxcc.cn/2017/02/07/Github-Pages-CDN%E5%85%A8%E7%AB%99%E5%8A%A0%E9%80%9F/"/>
-    <id>https://www.mmmxcc.cn/2017/02/07/Github-Pages-CDN全站加速/</id>
+    <link href="https://mmmxcc.cn/2017/02/07/Github-Pages-CDN%E5%85%A8%E7%AB%99%E5%8A%A0%E9%80%9F/"/>
+    <id>https://mmmxcc.cn/2017/02/07/Github-Pages-CDN全站加速/</id>
     <published>2017-02-07T05:38:38.000Z</published>
     <updated>2017-02-07T05:50:20.986Z</updated>
     
@@ -183,16 +183,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="CDN" scheme="https://www.mmmxcc.cn/tags/CDN/"/>
+      <category term="CDN" scheme="https://mmmxcc.cn/tags/CDN/"/>
     
-      <category term="Pages" scheme="https://www.mmmxcc.cn/tags/Pages/"/>
+      <category term="Pages" scheme="https://mmmxcc.cn/tags/Pages/"/>
     
   </entry>
   
   <entry>
     <title>jupyter notebook使用帮助</title>
-    <link href="https://www.mmmxcc.cn/2017/01/12/jupyter-notebook%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/"/>
-    <id>https://www.mmmxcc.cn/2017/01/12/jupyter-notebook使用帮助/</id>
+    <link href="https://mmmxcc.cn/2017/01/12/jupyter-notebook%E4%BD%BF%E7%94%A8%E5%B8%AE%E5%8A%A9/"/>
+    <id>https://mmmxcc.cn/2017/01/12/jupyter-notebook使用帮助/</id>
     <published>2017-01-12T12:50:52.000Z</published>
     <updated>2017-02-07T05:50:12.304Z</updated>
     
@@ -333,16 +333,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
     
-      <category term="Jupyer" scheme="https://www.mmmxcc.cn/tags/Jupyer/"/>
+      <category term="Jupyer" scheme="https://mmmxcc.cn/tags/Jupyer/"/>
     
   </entry>
   
   <entry>
     <title>部署在线IPyhton notebook(在线python编译器)</title>
-    <link href="https://www.mmmxcc.cn/2016/12/31/%E9%83%A8%E7%BD%B2%E5%9C%A8%E7%BA%BFIPyhton-notebook-%E5%9C%A8%E7%BA%BFpython%E7%BC%96%E8%AF%91%E5%99%A8/"/>
-    <id>https://www.mmmxcc.cn/2016/12/31/部署在线IPyhton-notebook-在线python编译器/</id>
+    <link href="https://mmmxcc.cn/2016/12/31/%E9%83%A8%E7%BD%B2%E5%9C%A8%E7%BA%BFIPyhton-notebook-%E5%9C%A8%E7%BA%BFpython%E7%BC%96%E8%AF%91%E5%99%A8/"/>
+    <id>https://mmmxcc.cn/2016/12/31/部署在线IPyhton-notebook-在线python编译器/</id>
     <published>2016-12-31T14:52:39.000Z</published>
     <updated>2017-02-07T05:49:43.794Z</updated>
     
@@ -385,18 +385,18 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
+      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
+      <category term="VPS" scheme="https://mmmxcc.cn/tags/VPS/"/>
     
-      <category term="Jupyter" scheme="https://www.mmmxcc.cn/tags/Jupyter/"/>
+      <category term="Jupyter" scheme="https://mmmxcc.cn/tags/Jupyter/"/>
     
   </entry>
   
   <entry>
     <title>使用Python selenium处理页面延迟加载问题</title>
-    <link href="https://www.mmmxcc.cn/2016/12/29/%E4%BD%BF%E7%94%A8Python-selenium%E5%A4%84%E7%90%86%E9%A1%B5%E9%9D%A2%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E9%97%AE%E9%A2%98/"/>
-    <id>https://www.mmmxcc.cn/2016/12/29/使用Python-selenium处理页面延迟加载问题/</id>
+    <link href="https://mmmxcc.cn/2016/12/29/%E4%BD%BF%E7%94%A8Python-selenium%E5%A4%84%E7%90%86%E9%A1%B5%E9%9D%A2%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E9%97%AE%E9%A2%98/"/>
+    <id>https://mmmxcc.cn/2016/12/29/使用Python-selenium处理页面延迟加载问题/</id>
     <published>2016-12-29T08:06:43.000Z</published>
     <updated>2017-02-07T05:49:34.921Z</updated>
     
@@ -440,20 +440,20 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
     
-      <category term="爬虫" scheme="https://www.mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
+      <category term="爬虫" scheme="https://mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
     
-      <category term="Xpath" scheme="https://www.mmmxcc.cn/tags/Xpath/"/>
+      <category term="Xpath" scheme="https://mmmxcc.cn/tags/Xpath/"/>
     
-      <category term="selenium" scheme="https://www.mmmxcc.cn/tags/selenium/"/>
+      <category term="selenium" scheme="https://mmmxcc.cn/tags/selenium/"/>
     
   </entry>
   
   <entry>
     <title>牛顿迭代法计算平方根(Java,Python实现)</title>
-    <link href="https://www.mmmxcc.cn/2016/12/28/%E7%89%9B%E9%A1%BF%E8%BF%AD%E4%BB%A3%E6%B3%95%E8%AE%A1%E7%AE%97%E5%B9%B3%E6%96%B9%E6%A0%B9-Java-Python%E5%AE%9E%E7%8E%B0/"/>
-    <id>https://www.mmmxcc.cn/2016/12/28/牛顿迭代法计算平方根-Java-Python实现/</id>
+    <link href="https://mmmxcc.cn/2016/12/28/%E7%89%9B%E9%A1%BF%E8%BF%AD%E4%BB%A3%E6%B3%95%E8%AE%A1%E7%AE%97%E5%B9%B3%E6%96%B9%E6%A0%B9-Java-Python%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://mmmxcc.cn/2016/12/28/牛顿迭代法计算平方根-Java-Python实现/</id>
     <published>2016-12-28T08:33:55.000Z</published>
     <updated>2017-02-07T05:49:58.104Z</updated>
     
@@ -477,18 +477,18 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
     
-      <category term="Algorithms" scheme="https://www.mmmxcc.cn/tags/Algorithms/"/>
+      <category term="Algorithms" scheme="https://mmmxcc.cn/tags/Algorithms/"/>
     
-      <category term="Java" scheme="https://www.mmmxcc.cn/tags/Java/"/>
+      <category term="Java" scheme="https://mmmxcc.cn/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>LaTex 编辑公式</title>
-    <link href="https://www.mmmxcc.cn/2016/12/28/LaTex-%E7%BC%96%E8%BE%91%E5%85%AC%E5%BC%8F/"/>
-    <id>https://www.mmmxcc.cn/2016/12/28/LaTex-编辑公式/</id>
+    <link href="https://mmmxcc.cn/2016/12/28/LaTex-%E7%BC%96%E8%BE%91%E5%85%AC%E5%BC%8F/"/>
+    <id>https://mmmxcc.cn/2016/12/28/LaTex-编辑公式/</id>
     <published>2016-12-28T07:21:21.000Z</published>
     <updated>2017-02-07T05:49:24.538Z</updated>
     
@@ -575,14 +575,14 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="LaTex" scheme="https://www.mmmxcc.cn/tags/LaTex/"/>
+      <category term="LaTex" scheme="https://mmmxcc.cn/tags/LaTex/"/>
     
   </entry>
   
   <entry>
     <title>Nginx环境下配置HTTPS</title>
-    <link href="https://www.mmmxcc.cn/2016/12/18/Nginx%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%85%8D%E7%BD%AEHTTPS/"/>
-    <id>https://www.mmmxcc.cn/2016/12/18/Nginx环境下配置HTTPS/</id>
+    <link href="https://mmmxcc.cn/2016/12/18/Nginx%E7%8E%AF%E5%A2%83%E4%B8%8B%E9%85%8D%E7%BD%AEHTTPS/"/>
+    <id>https://mmmxcc.cn/2016/12/18/Nginx环境下配置HTTPS/</id>
     <published>2016-12-18T08:47:29.000Z</published>
     <updated>2017-02-07T05:49:29.639Z</updated>
     
@@ -649,18 +649,18 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="VPS" scheme="https://www.mmmxcc.cn/tags/VPS/"/>
+      <category term="VPS" scheme="https://mmmxcc.cn/tags/VPS/"/>
     
-      <category term="Nginx" scheme="https://www.mmmxcc.cn/tags/Nginx/"/>
+      <category term="Nginx" scheme="https://mmmxcc.cn/tags/Nginx/"/>
     
-      <category term="HTTPS" scheme="https://www.mmmxcc.cn/tags/HTTPS/"/>
+      <category term="HTTPS" scheme="https://mmmxcc.cn/tags/HTTPS/"/>
     
   </entry>
   
   <entry>
     <title>第一题：Python图片添加水印</title>
-    <link href="https://www.mmmxcc.cn/2016/12/16/%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%9APython%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/"/>
-    <id>https://www.mmmxcc.cn/2016/12/16/第一题：Python图片添加水印/</id>
+    <link href="https://mmmxcc.cn/2016/12/16/%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%9APython%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/"/>
+    <id>https://mmmxcc.cn/2016/12/16/第一题：Python图片添加水印/</id>
     <published>2016-12-16T04:16:16.000Z</published>
     <updated>2017-02-07T05:49:18.196Z</updated>
     
@@ -698,16 +698,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
     
-      <category term="Python练习题" scheme="https://www.mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
+      <category term="Python练习题" scheme="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>使用Python插入排序</title>
-    <link href="https://www.mmmxcc.cn/2016/12/15/%E4%BD%BF%E7%94%A8Python%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"/>
-    <id>https://www.mmmxcc.cn/2016/12/15/使用Python插入排序/</id>
+    <link href="https://mmmxcc.cn/2016/12/15/%E4%BD%BF%E7%94%A8Python%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"/>
+    <id>https://mmmxcc.cn/2016/12/15/使用Python插入排序/</id>
     <published>2016-12-15T13:44:51.000Z</published>
     <updated>2017-02-07T05:47:48.848Z</updated>
     
@@ -738,16 +738,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
     
-      <category term="Algorithms" scheme="https://www.mmmxcc.cn/tags/Algorithms/"/>
+      <category term="Algorithms" scheme="https://mmmxcc.cn/tags/Algorithms/"/>
     
   </entry>
   
   <entry>
     <title>Python爬取图片（使用urllib2）</title>
-    <link href="https://www.mmmxcc.cn/2016/12/15/Python%E7%88%AC%E5%8F%96%E5%9B%BE%E7%89%87%EF%BC%88%E4%BD%BF%E7%94%A8urllib2%EF%BC%89/"/>
-    <id>https://www.mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/</id>
+    <link href="https://mmmxcc.cn/2016/12/15/Python%E7%88%AC%E5%8F%96%E5%9B%BE%E7%89%87%EF%BC%88%E4%BD%BF%E7%94%A8urllib2%EF%BC%89/"/>
+    <id>https://mmmxcc.cn/2016/12/15/Python爬取图片（使用urllib2）/</id>
     <published>2016-12-15T11:14:24.000Z</published>
     <updated>2017-02-07T05:47:49.680Z</updated>
     
@@ -826,18 +826,18 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
     
-      <category term="爬虫" scheme="https://www.mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
+      <category term="爬虫" scheme="https://mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
     
-      <category term="urllib2" scheme="https://www.mmmxcc.cn/tags/urllib2/"/>
+      <category term="urllib2" scheme="https://mmmxcc.cn/tags/urllib2/"/>
     
   </entry>
   
   <entry>
     <title>使用 XPath 提取网页信息</title>
-    <link href="https://www.mmmxcc.cn/2016/12/13/%E6%8F%90%E5%8F%96%E7%BD%91%E9%A1%B5%E4%BF%A1%E6%81%AF/"/>
-    <id>https://www.mmmxcc.cn/2016/12/13/提取网页信息/</id>
+    <link href="https://mmmxcc.cn/2016/12/13/%E6%8F%90%E5%8F%96%E7%BD%91%E9%A1%B5%E4%BF%A1%E6%81%AF/"/>
+    <id>https://mmmxcc.cn/2016/12/13/提取网页信息/</id>
     <published>2016-12-13T08:24:34.000Z</published>
     <updated>2017-02-07T05:47:51.672Z</updated>
     
@@ -886,18 +886,18 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
     
-      <category term="爬虫" scheme="https://www.mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
+      <category term="爬虫" scheme="https://mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
     
-      <category term="Xpath" scheme="https://www.mmmxcc.cn/tags/Xpath/"/>
+      <category term="Xpath" scheme="https://mmmxcc.cn/tags/Xpath/"/>
     
   </entry>
   
   <entry>
     <title>永远的7012</title>
-    <link href="https://www.mmmxcc.cn/2016/10/28/%E6%B0%B8%E8%BF%9C%E7%9A%847012/"/>
-    <id>https://www.mmmxcc.cn/2016/10/28/永远的7012/</id>
+    <link href="https://mmmxcc.cn/2016/10/28/%E6%B0%B8%E8%BF%9C%E7%9A%847012/"/>
+    <id>https://mmmxcc.cn/2016/10/28/永远的7012/</id>
     <published>2016-10-28T13:33:08.000Z</published>
     <updated>2017-02-07T05:47:51.001Z</updated>
     
@@ -944,16 +944,16 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Running man" scheme="https://www.mmmxcc.cn/tags/Running-man/"/>
+      <category term="Running man" scheme="https://mmmxcc.cn/tags/Running-man/"/>
     
-      <category term="臭臭" scheme="https://www.mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
+      <category term="臭臭" scheme="https://mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
     
   </entry>
   
   <entry>
     <title>C / C++ 文件读取写入、文件夹的打开</title>
-    <link href="https://www.mmmxcc.cn/2016/10/28/C-C-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%86%99%E5%85%A5%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%89%93%E5%BC%80/"/>
-    <id>https://www.mmmxcc.cn/2016/10/28/C-C-文件读取写入、文件夹的打开/</id>
+    <link href="https://mmmxcc.cn/2016/10/28/C-C-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%86%99%E5%85%A5%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%89%93%E5%BC%80/"/>
+    <id>https://mmmxcc.cn/2016/10/28/C-C-文件读取写入、文件夹的打开/</id>
     <published>2016-10-28T11:09:24.000Z</published>
     <updated>2017-02-07T05:47:54.922Z</updated>
     
@@ -985,14 +985,14 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="C++" scheme="https://www.mmmxcc.cn/tags/C/"/>
+      <category term="C++" scheme="https://mmmxcc.cn/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>解忧杂货店</title>
-    <link href="https://www.mmmxcc.cn/2016/10/28/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7%E5%BA%97/"/>
-    <id>https://www.mmmxcc.cn/2016/10/28/解忧杂货店/</id>
+    <link href="https://mmmxcc.cn/2016/10/28/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7%E5%BA%97/"/>
+    <id>https://mmmxcc.cn/2016/10/28/解忧杂货店/</id>
     <published>2016-10-28T04:30:59.000Z</published>
     <updated>2017-02-07T05:47:03.322Z</updated>
     
@@ -1034,16 +1034,16 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="臭臭" scheme="https://www.mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
+      <category term="臭臭" scheme="https://mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
     
-      <category term="读书笔记" scheme="https://www.mmmxcc.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="https://mmmxcc.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>Python基础</title>
-    <link href="https://www.mmmxcc.cn/2016/10/27/Python%E5%9F%BA%E7%A1%80/"/>
-    <id>https://www.mmmxcc.cn/2016/10/27/Python基础/</id>
+    <link href="https://mmmxcc.cn/2016/10/27/Python%E5%9F%BA%E7%A1%80/"/>
+    <id>https://mmmxcc.cn/2016/10/27/Python基础/</id>
     <published>2016-10-27T03:38:32.000Z</published>
     <updated>2017-02-07T05:46:54.992Z</updated>
     
@@ -1090,14 +1090,14 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Python" scheme="https://www.mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>Android正则表达式及Pattern Matcher使用</title>
-    <link href="https://www.mmmxcc.cn/2016/10/19/Android%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8APattern%20Matcher%E4%BD%BF%E7%94%A8/"/>
-    <id>https://www.mmmxcc.cn/2016/10/19/Android正则表达式及Pattern Matcher使用/</id>
+    <link href="https://mmmxcc.cn/2016/10/19/Android%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%8APattern%20Matcher%E4%BD%BF%E7%94%A8/"/>
+    <id>https://mmmxcc.cn/2016/10/19/Android正则表达式及Pattern Matcher使用/</id>
     <published>2016-10-19T13:25:57.000Z</published>
     <updated>2016-10-20T07:14:18.936Z</updated>
     
@@ -1154,16 +1154,16 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Android" scheme="https://www.mmmxcc.cn/tags/Android/"/>
+      <category term="Android" scheme="https://mmmxcc.cn/tags/Android/"/>
     
-      <category term="Pattern" scheme="https://www.mmmxcc.cn/tags/Pattern/"/>
+      <category term="Pattern" scheme="https://mmmxcc.cn/tags/Pattern/"/>
     
   </entry>
   
   <entry>
     <title>VelocityTracker滑动屏幕切换Activity</title>
-    <link href="https://www.mmmxcc.cn/2016/10/19/VelocityTracker%E6%BB%91%E5%8A%A8%E5%B1%8F%E5%B9%95%E5%88%87%E6%8D%A2Activity/"/>
-    <id>https://www.mmmxcc.cn/2016/10/19/VelocityTracker滑动屏幕切换Activity/</id>
+    <link href="https://mmmxcc.cn/2016/10/19/VelocityTracker%E6%BB%91%E5%8A%A8%E5%B1%8F%E5%B9%95%E5%88%87%E6%8D%A2Activity/"/>
+    <id>https://mmmxcc.cn/2016/10/19/VelocityTracker滑动屏幕切换Activity/</id>
     <published>2016-10-19T09:11:28.000Z</published>
     <updated>2016-10-20T07:13:10.520Z</updated>
     
@@ -1201,16 +1201,16 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     </summary>
     
     
-      <category term="Android" scheme="https://www.mmmxcc.cn/tags/Android/"/>
+      <category term="Android" scheme="https://mmmxcc.cn/tags/Android/"/>
     
-      <category term="VelocityTracker" scheme="https://www.mmmxcc.cn/tags/VelocityTracker/"/>
+      <category term="VelocityTracker" scheme="https://mmmxcc.cn/tags/VelocityTracker/"/>
     
   </entry>
   
   <entry>
     <title>搭建个人SSR帐号及私人分享</title>
-    <link href="https://www.mmmxcc.cn/2016/10/19/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BASSR%E5%B8%90%E5%8F%B7%E5%8F%8A%E7%A7%81%E4%BA%BA%E5%88%86%E4%BA%AB/"/>
-    <id>https://www.mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/</id>
+    <link href="https://mmmxcc.cn/2016/10/19/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BASSR%E5%B8%90%E5%8F%B7%E5%8F%8A%E7%A7%81%E4%BA%BA%E5%88%86%E4%BA%AB/"/>
+    <id>https://mmmxcc.cn/2016/10/19/搭建个人SSR帐号及私人分享/</id>
     <published>2016-10-19T06:13:18.000Z</published>
     <updated>2017-02-07T05:49:51.432Z</updated>
     
@@ -1255,11 +1255,11 @@ ACTION_POINTER_UP:一个非主要的手指抬起来了
     </summary>
     
     
-      <category term="GFW" scheme="https://www.mmmxcc.cn/tags/GFW/"/>
+      <category term="Linux" scheme="https://mmmxcc.cn/tags/Linux/"/>
     
-      <category term="SSR" scheme="https://www.mmmxcc.cn/tags/SSR/"/>
+      <category term="GFW" scheme="https://mmmxcc.cn/tags/GFW/"/>
     
-      <category term="Linux" scheme="https://www.mmmxcc.cn/tags/Linux/"/>
+      <category term="SSR" scheme="https://mmmxcc.cn/tags/SSR/"/>
     
   </entry>
   
