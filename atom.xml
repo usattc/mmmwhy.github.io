@@ -500,9 +500,9 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="VPS" scheme="https://mmmxcc.cn/tags/VPS/"/>
-    
       <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+    
+      <category term="VPS" scheme="https://mmmxcc.cn/tags/VPS/"/>
     
       <category term="Jupyter" scheme="https://mmmxcc.cn/tags/Jupyter/"/>
     
@@ -560,7 +560,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <link href="https://mmmxcc.cn/2016/12/31/Python%E7%BB%83%E4%B9%A0%E5%86%8C/"/>
     <id>https://mmmxcc.cn/2016/12/31/Python练习册/</id>
     <published>2016-12-31T03:35:04.000Z</published>
-    <updated>2017-02-10T08:37:43.206Z</updated>
+    <updated>2017-02-10T08:45:07.034Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p><a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">参考代码</a>一同附上，分析过程见<a href="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/">李飞阳</a>，请多指教。</p>
@@ -574,7 +574,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 <p><strong>题目1.4：</strong>任一个英文的纯文本文件，统计其中的单词出现的个数。</p>
 <p><strong>题目1.5：</strong>你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。</p>
 <p><strong>题目1.6：</strong>使用 Python 生成类似于下图中的<strong>字母验证码图片</strong></p>
-<p><img src="http://i.imgur.com/aVhbegV.jpg" alt="字母验证码"></p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170210/164221438.png" alt="验证码"></p>
 <ul>
 <li><a href="http://stackoverflow.com/questions/2823316/generate-a-random-letter-in-python" target="_blank" rel="external">阅读资料</a> </li>
 </ul>
@@ -597,7 +597,7 @@ jiangge
     &quot;3&quot;:[&quot;王五&quot;,60,66,68]
 }
 </code></pre><p>请将上述内容写到 student.xls 文件中，如下图所示：</p>
-<p><img src="http://i.imgur.com/nPDlpme.jpg" alt="student.xls"></p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170210/164341562.png" alt="student.xls"></p>
 <ul>
 <li><a href="http://www.cnblogs.com/skynet/archive/2013/05/06/3063245.html" target="_blank" rel="external">阅读资料</a> 腾讯游戏开发 XML 和 Excel 内容相互转换</li>
 </ul>
@@ -622,11 +622,11 @@ jiangge
 <h1 id="四、Web问题"><a href="#四、Web问题" class="headerlink" title="四、Web问题"></a>四、Web问题</h1><p><strong>题目4.1：</strong> 使用 Python 的 Web 框架，做一个 Web 版本 留言簿 应用。</p>
 <p><a href="http://v2ex.com/t/151643#reply53" target="_blank" rel="external">阅读资料：Python 有哪些 Web 框架</a></p>
 <ul>
-<li><img src="http://i.imgur.com/VIyCZ0i.jpg" alt="留言簿参考"></li>
+<li><img src="http://cdn.mmmxcc.cn/blog/20170210/164432170.png" alt="留言簿参考"></li>
 </ul>
 <p><strong>题目4.2：</strong> 使用 Python 的 Web 框架，做一个 Web 版本 TodoList 应用。</p>
 <ul>
-<li><img src="http://i.imgur.com/NEf7zHp.jpg" alt="SpringSide 版TodoList"></li>
+<li><img src="http://cdn.mmmxcc.cn/blog/20170210/164451954.png" alt="SpringSide 版TodoList"></li>
 </ul>
 <p><strong>题目来自 <a href="https://github.com/Yixiaohan" target="_blank" rel="external">易枭寒的Github</a></strong></p>
 ]]></content>
