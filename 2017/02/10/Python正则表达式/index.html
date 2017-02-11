@@ -36,7 +36,7 @@
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="使用正则表达式，会使得字符串的处理很方便。">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170210/204306504.png">
-<meta property="og:updated_time" content="2017-02-10T14:21:33.768Z">
+<meta property="og:updated_time" content="2017-02-11T07:39:14.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python正则表达式">
 <meta name="twitter:description" content="使用正则表达式，会使得字符串的处理很方便。">
@@ -109,7 +109,7 @@
             <li class="waves-block waves-effect">
               <a href="/2016/01/18/resume/"  >
                 <i class="icon icon-lg icon-link"></i>
-                关于我
+                关于
               </a>
             </li>
         
@@ -168,7 +168,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#正则表达式基础"><span class="post-toc-number">1.</span> <span class="post-toc-text">正则表达式基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用语法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">常用语法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数量词的贪婪模式与非贪婪模式"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">数量词的贪婪模式与非贪婪模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#re模块"><span class="post-toc-number">2.</span> <span class="post-toc-text">re模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开始使用re"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">开始使用re</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Match"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Match</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#属性："><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">属性：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法："><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">方法：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pattern"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Pattern</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#正则表达式基础"><span class="post-toc-number">1.</span> <span class="post-toc-text">正则表达式基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用语法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">常用语法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数量词的贪婪模式与非贪婪模式"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">数量词的贪婪模式与非贪婪模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#re模块"><span class="post-toc-number">2.</span> <span class="post-toc-text">re模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开始使用re"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">开始使用re</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Match"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Match</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#属性："><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">属性：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法："><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">方法：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pattern"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Pattern</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#实例方法-re模块方法-："><span class="post-toc-number">2.3.0.1.</span> <span class="post-toc-text">实例方法[ | re模块方法]：</span></a></li></ol></li></ol></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -252,8 +252,7 @@
 <li>groupindex: 以表达式中有别名的组的别名为键、以该组对应的编号为值的字典，没有别名的组不包含在内。</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">p = re.compile(<span class="string">r'(\w+) (\w+)(?P&lt;sign&gt;.*)'</span>, re.DOTALL)</div><div class="line"> </div><div class="line"><span class="keyword">print</span> (<span class="string">"p.pattern:"</span>, p.pattern)</div><div class="line"><span class="keyword">print</span> (<span class="string">"p.flags:"</span>, p.flags)</div><div class="line"><span class="keyword">print</span> (<span class="string">"p.groups:"</span>, p.groups)</div><div class="line"><span class="keyword">print</span> (<span class="string">"p.groupindex:"</span>, p.groupindex)</div><div class="line"> </div><div class="line"><span class="comment">### output ###</span></div><div class="line"><span class="comment"># p.pattern: (\w+) (\w+)(?P&lt;sign&gt;.*)</span></div><div class="line"><span class="comment"># p.flags: 16</span></div><div class="line"><span class="comment"># p.groups: 3</span></div><div class="line"><span class="comment"># p.groupindex: &#123;'sign': 3&#125;</span></div></pre></td></tr></table></figure>
-<p>####实例方法[ | re模块方法]：####</p>
-<ul>
+<h4 id="实例方法-re模块方法-："><a href="#实例方法-re模块方法-：" class="headerlink" title="实例方法[ | re模块方法]："></a>实例方法[ | re模块方法]：</h4><ul>
 <li><p><strong>match(string[, pos[, endpos]]) | re.match(pattern, string[, flags]): </strong><br>这个方法将从string的pos下标处起尝试匹配pattern；如果pattern结束时仍可匹配，则返回一个Match对象；如果匹配过程中pattern无法匹配，或者匹配未结束就已到达endpos，则返回None。<br>pos和endpos的默认值分别为0和len(string)；<br>re.match()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。<br>注意：这个方法并不是完全匹配。当pattern结束时若string还有剩余字符，仍然视为成功。想要完全匹配，可以在表达式末尾加上边界匹配符’$’。 </p>
 </li>
 <li><p><strong>search(string[, pos[, endpos]]) | re.search(pattern, string[, flags]): </strong><br>这个方法用于查找字符串中可以匹配成功的子串。从string的pos下标处起尝试匹配pattern，如果pattern结束时仍可匹配，则返回一个Match对象；<br>若无法匹配，则将pos加1后重新尝试匹配；直到pos=endpos时仍无法匹配则返回None。<br>pos和endpos的默认值分别为0和len(string))；re.search()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。 </p>
@@ -288,7 +287,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-02-10T14:21:33.768Z" itemprop="dateUpdated">2017年2月10日 22:21</time>
+    最后更新时间：<time datetime="2017-02-11T07:39:14.632Z" itemprop="dateUpdated">2017年2月11日 15:39</time>
 </span><br>
 
 
@@ -539,6 +538,27 @@ lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502')
 <script src="/js/search.min.js?v=1.4.7" async></script>
 
 
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 
 
