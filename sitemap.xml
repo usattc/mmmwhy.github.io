@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2016/12/31/python_camp/</loc>
+    
+    <lastmod>2017-02-11T14:26:43.626Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2017/02/11/python_camp4/</loc>
     
     <lastmod>2017-02-11T13:38:09.250Z</lastmod>
@@ -138,13 +145,6 @@
     <loc>http://feiyang.li/2017/02/09/frp/</loc>
     
     <lastmod>2017-02-11T13:20:27.500Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/12/31/python_camp/</loc>
-    
-    <lastmod>2017-02-11T13:18:49.297Z</lastmod>
     
   </url>
   
