@@ -313,7 +313,7 @@
     <link href="http://feiyang.li/2017/02/09/frp/"/>
     <id>http://feiyang.li/2017/02/09/frp/</id>
     <published>2017-02-09T02:56:15.000Z</published>
-    <updated>2017-02-09T02:57:39.454Z</updated>
+    <updated>2017-02-11T13:20:27.500Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>我之前写过一篇文章是用Ngrok方式进行内网穿透，该方法需要借助到别人的服务器，非常麻烦。后来发现了Frp这个神器，只需要有一台公网的主机，就可以进行端口穿透，同时还可以转发tcp，udp，dns查询。</p>
@@ -464,7 +464,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <link href="http://feiyang.li/2017/02/07/Github-Pages-CDN/"/>
     <id>http://feiyang.li/2017/02/07/Github-Pages-CDN/</id>
     <published>2017-02-07T05:38:38.000Z</published>
-    <updated>2017-02-07T05:50:20.986Z</updated>
+    <updated>2017-02-11T13:20:33.275Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速度是一种不错的选择。以Coding Pages和腾讯CDN为例。</p>
@@ -574,7 +574,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <link href="http://feiyang.li/2017/01/12/jupyter-notebook/"/>
     <id>http://feiyang.li/2017/01/12/jupyter-notebook/</id>
     <published>2017-01-12T12:50:52.000Z</published>
-    <updated>2017-02-07T05:50:12.304Z</updated>
+    <updated>2017-02-11T13:20:37.749Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。</p>
@@ -1106,7 +1106,7 @@ jiangge
     <link href="http://feiyang.li/2016/12/28/Newton-Raphson_method-Java-Python/"/>
     <id>http://feiyang.li/2016/12/28/Newton-Raphson_method-Java-Python/</id>
     <published>2016-12-28T08:33:55.000Z</published>
-    <updated>2017-02-07T05:49:58.104Z</updated>
+    <updated>2017-02-11T13:20:52.231Z</updated>
     
     <content type="html"><![CDATA[<p>牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。</p>
 <hr>
@@ -1141,7 +1141,7 @@ jiangge
     <link href="http://feiyang.li/2016/12/28/LaTex/"/>
     <id>http://feiyang.li/2016/12/28/LaTex/</id>
     <published>2016-12-28T07:21:21.000Z</published>
-    <updated>2017-02-07T05:49:24.538Z</updated>
+    <updated>2017-02-11T13:23:33.245Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p> 在计算机直接输入数学公式是一件棘手的事情，我一般是用一个专业的数学工具MathType，但最近在使用Markdown写作，遂产生念头用LaTex输入公式。发现目前网上的语法介绍往往不够全面，于是自己写了一份。</p>
@@ -1522,7 +1522,7 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     <link href="http://feiyang.li/2016/12/13/get_html/"/>
     <id>http://feiyang.li/2016/12/13/get_html/</id>
     <published>2016-12-13T08:24:34.000Z</published>
-    <updated>2017-02-07T05:47:51.672Z</updated>
+    <updated>2017-02-11T13:27:18.463Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p> 以1024举例，使用XPath提取图片链接以及磁力链接地址。</p>
@@ -1675,9 +1675,9 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Running man" scheme="http://feiyang.li/tags/Running-man/"/>
-    
       <category term="臭臭" scheme="http://feiyang.li/tags/%E8%87%AD%E8%87%AD/"/>
+    
+      <category term="Running man" scheme="http://feiyang.li/tags/Running-man/"/>
     
   </entry>
   
@@ -1686,7 +1686,7 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     <link href="http://feiyang.li/2016/10/28/C_read/"/>
     <id>http://feiyang.li/2016/10/28/C_read/</id>
     <published>2016-10-28T11:09:24.000Z</published>
-    <updated>2017-02-07T05:47:54.922Z</updated>
+    <updated>2017-02-11T13:27:15.125Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>使用C++做文件处理时常用的几个函数</p>
@@ -1731,7 +1731,7 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     <link href="http://feiyang.li/2016/10/28/book/"/>
     <id>http://feiyang.li/2016/10/28/book/</id>
     <published>2016-10-28T04:30:59.000Z</published>
-    <updated>2017-02-07T05:47:03.322Z</updated>
+    <updated>2017-02-11T13:28:10.757Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>我一直很努力去当一个善良的人，却总是在现实中受到各种打击。</p>
@@ -1795,9 +1795,9 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="臭臭" scheme="http://feiyang.li/tags/%E8%87%AD%E8%87%AD/"/>
-    
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="臭臭" scheme="http://feiyang.li/tags/%E8%87%AD%E8%87%AD/"/>
     
   </entry>
   
