@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+<!-- Tencent Speed -->
+<script>var _speedMark = new Date()</script>
+<!-- End Tencent Speed -->
+<!-- Tencent Analysis -->
+<script async src="//tajs.qq.com/stats?sId=60691835"></script>
+<!-- End Tencent Analysis -->
+
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="https://mmmxcc.cn//2016/10/19/VelocityTracker_Activity/">
+    
+    
+    <title>VelocityTracker滑动屏幕切换Activity | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Android,VelocityTracker">
+    <meta name="description" content="我现在非常恨自己手贱选了安卓这门课，作业多的令人发指。不过自己选的课，哭着也要上完。本文主要讲解如何实现 滑动屏幕时切换Activity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VelocityTracker滑动屏幕切换Activity">
+<meta property="og:url" content="https://mmmxcc.cn/2016/10/19/VelocityTracker_Activity/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="我现在非常恨自己手贱选了安卓这门课，作业多的令人发指。不过自己选的课，哭着也要上完。本文主要讲解如何实现 滑动屏幕时切换Activity">
+<meta property="og:updated_time" content="2016-10-20T07:13:10.520Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VelocityTracker滑动屏幕切换Activity">
+<meta name="twitter:description" content="我现在非常恨自己手贱选了安卓这门课，作业多的令人发指。不过自己选的课，哭着也要上完。本文主要讲解如何实现 滑动屏幕时切换Activity">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:i@mmmxcc.com" title="i@mmmxcc.com" class="mail">i@mmmxcc.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy/python-camp" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                Python练习册
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">VelocityTracker滑动屏幕切换Activity</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">VelocityTracker滑动屏幕切换Activity</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-10-19T09:11:28.000Z" itemprop="datePublished" class="page-time">
+  2016-10-19
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#VelocityTracker简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">VelocityTracker简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用VelocityTracker"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用VelocityTracker</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对于-MotionEvent"><span class="post-toc-number">3.</span> <span class="post-toc-text">对于 MotionEvent</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其余部分代码"><span class="post-toc-number">4.</span> <span class="post-toc-text">其余部分代码</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-VelocityTracker_Activity"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">VelocityTracker滑动屏幕切换Activity</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年10月19日 17:11" datetime="2016-10-19T09:11:28.000Z"  itemprop="datePublished">2016-10-19</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>我现在非常恨自己手贱选了安卓这门课，作业多的令人发指。不过自己选的课，哭着也要上完。本文主要讲解如何实现 滑动屏幕时切换Activity</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="VelocityTracker简介"><a href="#VelocityTracker简介" class="headerlink" title="VelocityTracker简介"></a>VelocityTracker简介</h2><ul>
+<li>android.view.VelocityTracker主要用跟踪触摸屏事件（flinging事件和其他gestures手势事件）的速率。</li>
+<li>用addMovement(MotionEvent)函数将Motion event加入到VelocityTracker类实例中。</li>
+<li>使用getXVelocity() 或getXVelocity()获得横向和竖向的速率到速率时，<strong>但是使用它们之前请先调用computeCurrentVelocity(int)来初始化速率的单位 。</strong></li>
+<li><p>使用recycleVelocityTracker()释放空间，循环使用。</p>
+<p>  当你需要跟踪触摸屏事件的速度的时候</p>
+</li>
+</ul>
+<p>使用<em>obtain()</em> 方法来获得 <em>VelocityTracker</em> 类的一个实例对象在<em>onTouchEvent</em>回调函数中，使用<em>addMovement(MotionEvent)</em>函数将当前的移动事件传递给<em>VelocityTracker</em>对象使用<em>computeCurrentVelocity (int units)</em>函数来计算当前的速度，使用 <em>getXVelocity ()、 getYVelocity ()</em>函数来获得当前的速度。</p>
+<h2 id="使用VelocityTracker"><a href="#使用VelocityTracker" class="headerlink" title="使用VelocityTracker"></a>使用VelocityTracker</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span></span>&#123;</div><div class="line">        entryLayout = (RelativeLayout)<span class="keyword">super</span>.findViewById(R.id.entry);</div><div class="line">        entryLayout.setOnTouchListener(<span class="keyword">new</span> View.OnTouchListener() &#123;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouch</span><span class="params">(View v, MotionEvent event)</span> </span>&#123;</div><div class="line">                createVelocityTracker(event); <span class="comment">//获取实例对象</span></div><div class="line">                <span class="keyword">switch</span>(event.getAction())&#123;</div><div class="line">                    <span class="keyword">case</span> MotionEvent.ACTION_DOWN: <span class="comment">//</span></div><div class="line">                        xDown=event.getX();</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</div><div class="line">                        <span class="keyword">int</span> xSpeed = getScrollVelocity();</div><div class="line">                        xMove = event.getRawX();</div><div class="line">                        <span class="keyword">int</span> distanceX1 = (<span class="keyword">int</span>) (xMove - xDown);</div><div class="line">                        <span class="keyword">int</span> distanceX2 = (<span class="keyword">int</span>) (xDown-xMove);</div><div class="line">                        <span class="keyword">if</span> ((distanceX1 &gt; XDISTANCE_MIN||distanceX2&gt;XDISTANCE_MIN )&amp;&amp;(xSpeed&gt;XSPEED_MIN)) &#123;</div><div class="line">                            openNew();</div><div class="line">                        &#125;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">case</span> MotionEvent.ACTION_UP:</div><div class="line">                        recycleVelocityTracker();</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="对于-MotionEvent"><a href="#对于-MotionEvent" class="headerlink" title="对于 MotionEvent"></a>对于 MotionEvent</h2><pre><code>ACTION_DOWN: 表示用户开始触摸.
+ACTION_MOVE: 表示用户在移动(手指或者其他)
+ACTION_UP:表示用户抬起了手指
+ACTION_CANCEL:表示手势被取消了
+ACTION_OUTSIDE: 表示用户触碰超出了正常的UI边界.
+ACTION_POINTER_DOWN:有一个非主要的手指按下了.
+ACTION_POINTER_UP:一个非主要的手指抬起来了
+</code></pre><h2 id="其余部分代码"><a href="#其余部分代码" class="headerlink" title="其余部分代码"></a>其余部分代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getScrollVelocity</span><span class="params">()</span> </span>&#123;<span class="comment">//计算移动距离</span></div><div class="line">        mVelocityTracker.computeCurrentVelocity(<span class="number">1000</span>);</div><div class="line">        <span class="keyword">int</span> velocity = (<span class="keyword">int</span>) mVelocityTracker.getXVelocity();</div><div class="line">        <span class="keyword">return</span> Math.abs(velocity);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span>  <span class="keyword">void</span> <span class="title">createVelocityTracker</span><span class="params">(MotionEvent event)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(mVelocityTracker == <span class="keyword">null</span>)&#123;</div><div class="line">            mVelocityTracker = VelocityTracker.obtain(); <span class="comment">//获得VelocityTracker类实例</span></div><div class="line">        &#125;</div><div class="line">        mVelocityTracker.addMovement(event);<span class="comment">//将事件加入到VelocityTracker类实例中</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">recycleVelocityTracker</span><span class="params">()</span></span>&#123;</div><div class="line">        mVelocityTracker.recycle();</div><div class="line">        mVelocityTracker = <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">openNew</span><span class="params">()</span></span>&#123;</div><div class="line">        Intent intent = <span class="keyword">new</span> Intent(SCOSEntry.<span class="keyword">this</span>,MainScreen.class);</div><div class="line">        Bundle bundle = <span class="keyword">new</span> Bundle();</div><div class="line">        bundle.putString(<span class="string">"message"</span>,<span class="string">"FromEntry"</span>);</div><div class="line">        intent.putExtras(bundle);</div><div class="line">        startActivity(intent);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2016-10-20T07:13:10.520Z" itemprop="dateUpdated">2016年10月20日 15:13</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2016/10/19/VelocityTracker_Activity/" target="_blank" rel="external">https://mmmxcc.cn/2016/10/19/VelocityTracker_Activity/</a>
+    </div>
+    <footer>
+        <a href="https://mmmxcc.cn">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VelocityTracker/">VelocityTracker</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mmmxcc.cn/2016/10/19/VelocityTracker_Activity/&title=《VelocityTracker滑动屏幕切换Activity》 — 李飞阳&pic=https://mmmxcc.cn/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mmmxcc.cn/2016/10/19/VelocityTracker_Activity/&title=《VelocityTracker滑动屏幕切换Activity》 — 李飞阳&source=
+我现在非常恨自己手贱选了安卓这门课，作业多的令人发指。不过自己选的课，哭着也要上完。本文主要讲解如何实现 滑动屏幕时切换Activity
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mmmxcc.cn/2016/10/19/VelocityTracker_Activity/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VelocityTracker滑动屏幕切换Activity》 — 李飞阳&url=https://mmmxcc.cn/2016/10/19/VelocityTracker_Activity/&via=https://mmmxcc.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mmmxcc.cn/2016/10/19/VelocityTracker_Activity/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/10/19/Android_Pattern Matcher/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android正则表达式及Pattern Matcher使用</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/10/19/SSR/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">搭建个人SSR帐号及私人分享</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="VelocityTracker_Activity" data-title="VelocityTracker滑动屏幕切换Activity" data-url="https://mmmxcc.cn/2016/10/19/VelocityTracker_Activity/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'mmmxcc', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.7');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        
+<p>
+
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span>内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0协议</a></span>
+            <span><a href="http://www.miitbeian.gov.cn/" target="_blank">陕ICP备17001447号</a></span> 
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mmmxcc.cn/2016/10/19/VelocityTracker_Activity/&title=《VelocityTracker滑动屏幕切换Activity》 — 李飞阳&pic=https://mmmxcc.cn/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mmmxcc.cn/2016/10/19/VelocityTracker_Activity/&title=《VelocityTracker滑动屏幕切换Activity》 — 李飞阳&source=
+我现在非常恨自己手贱选了安卓这门课，作业多的令人发指。不过自己选的课，哭着也要上完。本文主要讲解如何实现 滑动屏幕时切换Activity
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mmmxcc.cn/2016/10/19/VelocityTracker_Activity/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VelocityTracker滑动屏幕切换Activity》 — 李飞阳&url=https://mmmxcc.cn/2016/10/19/VelocityTracker_Activity/&via=https://mmmxcc.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mmmxcc.cn/2016/10/19/VelocityTracker_Activity/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aSW7DMAwF0Nz/0i7QXdHa+SSdApaeVkUGWa8LRhxer3gd3+vs9bN3z3Y4fq3qbs2FgYHxWMZxuc4Okex2/ZQe+HQHDAyMDRi97XoBNP98cjYMDAyMs89cv1J4fADDwMDAuDfgJqHz+pKHgYGBMUlie8lncoj80nlDLo6BgfFARrUx8J9/f7C/gYGB8RDGUVx5MyAPnb2T/NgBAwNjaUZeSksuf9Xy3L2tAgwMjFUZvYtaNWhWL5rVJgQGBsbajOqX58G32k7Im6AYGBhrM3qHmw9qTAL0GwwGBsY2jLsKar1Et/czgIGBsQNj3lCcjIhNLpoYGBi7MebFuDm7+gOAgYGxKiP50GTYojdmkZcCMTAw9mH0Go3zBLiah2JgYGBUxyl6LcY8iN82ZoGBgfFwRi9BzcN03rZMLqM3zLhhYGA8kNFLLCeHrhbmolNhYGAszZg/Mi+xzb9VuOdiYGBsxpgMPRT6pcHgxSjgYmBgPJbRGzCtBt+ktHfbpRADA2NRRrU0Vk1Zk4tg/lwMDIzdGNUkNtk0Tz7zK2O0AwYGxqKMSUMxYeSDF3mj9I93MTAwlmb0wlxv/KuX1iYXRwwMjB0YvdQxf0AvZJcbmRgYGBsw8tJ80lTotTyrQb9QO8TAwNiGUR2YKJT146Jes5GJgYGxMaNaqpsMZLzBYGBgbMCoJqKFsa38KMV/WXlCBAMD47GMeQKZbDqh5u1PDAyM5RhfE+q8KjGH2kgAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
