@@ -60,9 +60,9 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
       <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
     
@@ -73,7 +73,7 @@
     <link href="http://feiyang.li/2017/02/10/Python_lambda/"/>
     <id>http://feiyang.li/2017/02/10/Python_lambda/</id>
     <published>2017-02-10T14:18:55.000Z</published>
-    <updated>2017-02-11T13:12:38.891Z</updated>
+    <updated>2017-02-11T13:36:55.460Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>使用正则表达式，会使得字符串的处理很方便。</p>
@@ -176,7 +176,7 @@
     
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="python_camp" scheme="http://feiyang.li/tags/python-camp/"/>
+      <category term="Python-camp" scheme="http://feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
@@ -834,9 +834,9 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
     
       <category term="VPS" scheme="http://feiyang.li/tags/VPS/"/>
     
@@ -1128,11 +1128,11 @@ jiangge
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
     
       <category term="Java" scheme="http://feiyang.li/tags/Java/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1397,9 +1397,9 @@ jiangge
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
