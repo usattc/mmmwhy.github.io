@@ -19,7 +19,7 @@
     <meta charset="utf-8">
     
     
-    <link rel="canonical" href="https://mmmxcc.cn//2016/12/15/Python_use_urllib2/">
+    <link rel="canonical" href="https://feiyang.li//2016/12/15/Python_use_urllib2/">
     
     
     <title>Python爬取图片（使用urllib2） | 李飞阳 | PM、Coder、Data mining</title>
@@ -32,14 +32,14 @@
     <meta name="description" content="上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python爬取图片（使用urllib2）">
-<meta property="og:url" content="https://mmmxcc.cn/2016/12/15/Python_use_urllib2/index.html">
+<meta property="og:url" content="http://feiyang.li/2016/12/15/Python_use_urllib2/index.html">
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161215/182806800.png">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161215/191015695.png">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161215/191141723.png">
-<meta property="og:updated_time" content="2017-02-07T05:47:49.680Z">
+<meta property="og:updated_time" content="2017-02-11T13:27:59.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python爬取图片（使用urllib2）">
 <meta name="twitter:description" content="上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。">
@@ -96,14 +96,14 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/mmmwhy/python-camp" target="_blank" >
+              <a href="https://github.com/mmmwhy" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"  >
+              <a href="https://feiyang.li/tags/Python_camp/"  >
                 <i class="icon icon-lg icon-rocket"></i>
                 Python练习册
               </a>
@@ -197,13 +197,13 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <blockquote>
-<p>上篇文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
+<p>上篇文章 <a href="http://feiyang.li/2016/12/13/提取网页信息/">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
 <h1 id="urllib2-简介"><a href="#urllib2-简介" class="headerlink" title="urllib2 简介"></a>urllib2 简介</h1><p>urllib2提供一个基础函数urlopen，通过向指定的URL发出请求来获取数据。最简单的形式就是：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2 </div><div class="line">response = urllib2.urlopen(<span class="string">'http://mmmxcc.cn/'</span>) </div><div class="line">html = response.read()</div></pre></td></tr></table></figure>
-<p>可以将上述代码看作两个步骤，我们指定一个域名并发送请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request=urllib2.request(&apos;http://mmmxcc.cn/&apos;)</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2 </div><div class="line">response = urllib2.urlopen(<span class="string">'http://feiyang.li/'</span>) </div><div class="line">html = response.read()</div></pre></td></tr></table></figure>
+<p>可以将上述代码看作两个步骤，我们指定一个域名并发送请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request=urllib2.request(&apos;http://feiyang.li/&apos;)</div></pre></td></tr></table></figure></p>
 <p>接着服务端响应来自客户端的请求 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">response=urllib2.urlopen(request)</div></pre></td></tr></table></figure>
 <figure class="image-bubble">
@@ -215,7 +215,7 @@
             </figure>
 <p>我们可以发现title这个地方本来应该是中文的，但因为编码的原因，导致出现乱码。通过将html页面重新用”utf-8”编码，可以解决这个问题。</p>
 <hr>
-<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/">http://mmmxcc.cn/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
+<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://feiyang.li/2016/12/13/提取网页信息/">http://feiyang.li/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
 <p>这里需要导入lxml，代码格式如下。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = requests.get(<span class="string">"http://jandan.net/ooxx"</span>)</div><div class="line">html.encoding = <span class="string">'utf-8'</span></div><div class="line">selector = etree.HTML(html.text)</div><div class="line">content = selector.xpath(<span class="string">'//ol[@class = "commentlist"]//@src'</span>)</div></pre></td></tr></table></figure>
 <p>单独运行 以上代码可以获得<br><figure class="image-bubble">
@@ -290,14 +290,14 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-02-07T05:47:49.680Z" itemprop="dateUpdated">2017年2月7日 13:47</time>
+    最后更新时间：<time datetime="2017-02-11T13:27:59.892Z" itemprop="dateUpdated">2017年2月11日 21:27</time>
 </span><br>
 
 
-        转载请注明出处：<a href="/2016/12/15/Python_use_urllib2/" target="_blank" rel="external">https://mmmxcc.cn/2016/12/15/Python_use_urllib2/</a>
+        转载请注明出处：<a href="/2016/12/15/Python_use_urllib2/" target="_blank" rel="external">http://feiyang.li/2016/12/15/Python_use_urllib2/</a>
     </div>
     <footer>
-        <a href="https://mmmxcc.cn">
+        <a href="http://feiyang.li">
             <img src="/img/logo.jpg" alt="Wing Lee">
             Wing Lee
         </a>
@@ -323,7 +323,7 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mmmxcc.cn/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&pic=https://mmmxcc.cn/img/logo.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -333,7 +333,7 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mmmxcc.cn/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&source=
 上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。
 
 " data-title=" QQ">
@@ -341,17 +341,17 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mmmxcc.cn/2016/12/15/Python_use_urllib2/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2016/12/15/Python_use_urllib2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python爬取图片（使用urllib2）》 — 李飞阳&url=https://mmmxcc.cn/2016/12/15/Python_use_urllib2/&via=https://mmmxcc.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python爬取图片（使用urllib2）》 — 李飞阳&url=http://feiyang.li/2016/12/15/Python_use_urllib2/&via=http://feiyang.li" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mmmxcc.cn/2016/12/15/Python_use_urllib2/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2016/12/15/Python_use_urllib2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -396,7 +396,7 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     
 
 <div class="comments" id="comments">
-    <div class="ds-thread" data-thread-key="Python_use_urllib2" data-title="Python爬取图片（使用urllib2）" data-url="https://mmmxcc.cn/2016/12/15/Python_use_urllib2/"></div>
+    <div class="ds-thread" data-thread-key="Python_use_urllib2" data-title="Python爬取图片（使用urllib2）" data-url="http://feiyang.li/2016/12/15/Python_use_urllib2/"></div>
 </div>
 <script>
 lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
@@ -470,7 +470,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mmmxcc.cn/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&pic=https://mmmxcc.cn/img/logo.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -480,7 +480,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mmmxcc.cn/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&source=
 上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。
 
 " data-title=" QQ">
@@ -488,17 +488,17 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mmmxcc.cn/2016/12/15/Python_use_urllib2/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2016/12/15/Python_use_urllib2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python爬取图片（使用urllib2）》 — 李飞阳&url=https://mmmxcc.cn/2016/12/15/Python_use_urllib2/&via=https://mmmxcc.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python爬取图片（使用urllib2）》 — 李飞阳&url=http://feiyang.li/2016/12/15/Python_use_urllib2/&via=http://feiyang.li" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mmmxcc.cn/2016/12/15/Python_use_urllib2/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2016/12/15/Python_use_urllib2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -509,7 +509,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aSW7EMAwFUd//0s42QSClPukOYKq8avQg63nB5qDrwtf97Vp9Slb4vdrq/esTlwwZMl7LuLfX/sYpY/Vbft8lVYYMGQcwSIjcv+ahec/er798X4YMGTLAtvZU8h0ZMmTI+FzA5UUpB8uQIUNGrYglm+NJYS1YP1CLy5Ah44UM3nX//9cfmW/IkCHjVYw7vPg6PDWs7eTHOjJkyBjNqA0g+Qhz/82HB6IyZMgYykjLxX6Bypt3/HHIkCHjBAZP4NLBQKd9Rh7iMsOVIUPGOEbtCEVtJFAra4PUUIYMGaMZfENpKpkG6DQNlSFDxmwG+ZiHQj48SJtxwYBThgwZoxmtMBemlWkjj7TqZMiQMZVRC5HpYDItcTlGhgwZJzDS5fhGeWjm/wlohzJkyDiAkRafvJWWrhActpAhQ8YBDH4AotMIu/FVC9AyZMiYzUhvQ0Inb6JxRrGIlSFDxssZtTFkbbTZacPFgwEZMmQMYvBQGBx0aDTmyKNBoVmGDBnjGPzHcQ8vbM/x0ndZi8uQIeMABmmB1ZK/tFgle5AhQ8aZjHS7nQMWzyadMmTImMroDAP6KV26fnCiTYYMGYMYtQD36SD7VPEsQ4aMSYzOoYr0OEXnkf2RvMqQIeMARnq0olboPou8yJ+IDBkyDmb0W/z9Y2EyZMiQUTu8lTbj0q0v15chQ8YBDN6sf3Y8SQ6NBZNYGTJkDGXw0jEdAPABZ+2hyJAh4wDGF0E22xk2prm2AAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3ay27CMBAFUP7/p9NtJUq4104qxT5eVUAdHxaD5/F6xev4td5fz3d43+3T6687FgYGxmMZx+k6f3COOf/f92flZ8PAwNiHkYTIT5/Pg2b7bnI2DAwMjOQzbdC86rkYGBgYY4zz4JuDMTAwMMaS2LZ81iar/5SLY2BgPJAxVtb/n79v6W9gYGA8inGUa74lmbQH6lNhYGAszZhpQI6lmjmpbohiYGAsysgDX55etsMZMwH6y7eFgYGxEGNmLGz+EtleK//YGQMDYwNGW79KSnIzbc56gAwDA2MbRhI082tictXLw3SRhWNgYCzHaEdRZ8pkVw1wfCnGYWBgLMq4O1kdG1RtS3UYGBj7MJIQOXbEsRS3QGJgYCzKaMtqeYjMBybydz/uj4GBsTSjLejPNwDaYYsk3cXAwNiTMVbQz8ttY+2BLxgMDIylGfOhc6wNmae4dSMTAwNjIcZYG3KslD9ThvtyBgwMjKUZY6E2D45tK7TdYeoXAwMD41GMtg3QluzzUl2e9NbDFhgYGAsx2iJaXuifbzMUMyMYGBhLM9p0NB+taIN4sg8GBsYOjKNcSVBud2jLc1PdUQwMjAcyxgLcVe2Eq5JnDAyMHRhtqjl2lPb6mLcNMDAw9mG0oxVtQf8O5FQLEwMDYwPGfIm/Hd2IMnIMDAyMIE1tjzgToC+7GmJgYDyE0Zby7yjot18cBgbGPoz2AfOPSQY15n8GMDAwlmD8AKpf0T92OB26AAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

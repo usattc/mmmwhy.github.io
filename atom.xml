@@ -4,9 +4,9 @@
   <subtitle>PM、Coder、Data mining</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://mmmxcc.cn/"/>
-  <updated>2017-02-11T07:39:14.632Z</updated>
-  <id>https://mmmxcc.cn/</id>
+  <link href="http://feiyang.li/"/>
+  <updated>2017-02-11T13:29:03.724Z</updated>
+  <id>http://feiyang.li/</id>
   
   <author>
     <name>Wing Lee</name>
@@ -16,11 +16,64 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>第四题：统计文件中单词出现个数</title>
+    <link href="http://feiyang.li/2017/02/11/python_camp4/"/>
+    <id>http://feiyang.li/2017/02/11/python_camp4/</id>
+    <published>2017-02-11T12:16:52.000Z</published>
+    <updated>2017-02-11T13:29:03.724Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="铺垫工作"><a href="#铺垫工作" class="headerlink" title="铺垫工作"></a>铺垫工作</h1><p>这一期的铺垫工作比较多，所以单独写了一篇文章，详见  <a href="https://feiyang.li/2017/02/10/Python_lambda/">Python正则表达式</a></p>
+<h1 id="正文部分"><a href="#正文部分" class="headerlink" title="正文部分"></a>正文部分</h1><h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>任一个英文的纯文本文件，统计其中的单词出现的个数。<br>参考英文：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">If you are looking for someone you can pour out your love to, let me suggest the empowered woman. The empowered woman knows what she wants, knows how to get it, knows how to live fully, and she knows how to love you back without needing anyone’s approval or recognition. An empowered woman is unarguably one of the most magnificent beings you will ever come in contact with. Read on and find 10 reason why you should absolutely love and embrace the empowered women in your life! . </div><div class="line"></div><div class="line">1. She knows how to love you in returnIt is difficult to give what you don’t have. It is impossible to love someone and feel fulfilled when they can’t love you in return because they don’t love themselves. This will never happen to you when you love an empowered woman. She loves herself (not in a narcissistic manner). In turn, she appreciates who you are and loves you in return. She will love you just like you deserve to be loved. </div><div class="line"></div><div class="line">2. She will inspire youWhen life puts you down and you are at the end of your rope, the empowered woman will be there to see you through. Her drive, enthusiasm and (at times) hopeless optimism will inspire you to carry on despite the obstacles you face. </div><div class="line"></div><div class="line">3. She is not afraid of failureWhile many out there are thoroughly terrified of failure, the empowered woman understands that failures are simply stepping stones in life. How can you not love someone that is thoroughly unafraid to try, fail, and give it a shot all over again?! </div><div class="line"></div><div class="line"></div><div class="line">4. She is all about the legacyWhile most people are focused on the car, the house, the job, and corner office; the empowered woman is focused on leaving a legacy that will inspire others and change the world. The empowered woman is focused on empowering others to maximize their potential and fulfill their purpose. She is all about inspiring others to look beyond themselves and live a life of service to others.</div><div class="line"></div><div class="line"></div><div class="line"> 5. She can laugh at her mistakes……and learn from them as well! She understands mistakes are part of the journey. The empowered woman can laugh and learn from her mistakes to ensure they never happen again. </div><div class="line"></div><div class="line"></div><div class="line">6. She can be vulnerableThe empowered woman understands there is no debt in relationships without vulnerability. Although she is emotionally strong, she is willing to laugh and cry with you because all of these emotions are an essential part of life. </div><div class="line"></div><div class="line"></div><div class="line">7. She can speak her mindWhile everyone else is too concerned with what others may think or say, the empowered woman is not afraid to speak her mind. She understands that her value comes from within, not from what others say or think about her. </div><div class="line"></div><div class="line"></div><div class="line">8. She knows when to remain quietShe lives by Abe Lincoln’s words, “Better to remain silent and be thought a fool, than to speak out and remove all doubt.” </div><div class="line"></div><div class="line"></div><div class="line">9. She knows how to have funWhether it is at the symphony or at a ball game, the empowered woman understands life is made up of experiences with people – not the places you go. She is able to live in the moment and enjoy it fully without being concerned for the future. After all, who’s got a guaranteed future?</div><div class="line"></div><div class="line"></div><div class="line"> 10. She is not afraid of changeWhile most people rather continue on living unfulfilled lives as long as their comfort zone remains intact, the empowered woman is all about embracing change. She understands growth cannot happen without change. She understands that change is the gift life offers you to choose your destiny. Therefore, she is not afraid of change because it is her stepping stone towards success.</div></pre></td></tr></table></figure></p>
+<p><a href="http://cdn.mmmxcc.cn/blog/20170211/203305485.txt" target="_blank" rel="external">下载链接</a><br>将文件下载到python的<strong>工作路径</strong>里去，如果不知道哪里是工作路径，输入<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">#获取当前工作目录</div><div class="line">os.getcwd()</div><div class="line">#更改当前工作目录</div><div class="line">os.chdir('d:\')</div><div class="line">os.getcwd()</div></pre></td></tr></table></figure></p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p>每一步我都尽量附带上了解释<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">replace</span><span class="params">(s)</span>:</span></div><div class="line">    <span class="keyword">if</span> s.group(<span class="number">1</span>) == <span class="string">'n\'t'</span>:</div><div class="line">        <span class="keyword">return</span> s.group(<span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> <span class="string">' '</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span><span class="params">(filename=<span class="string">'203305485.txt'</span>)</span>:</span></div><div class="line">    <span class="comment"># 使用lambda来定义简单的函数</span></div><div class="line">    dic = defaultdict(<span class="keyword">lambda</span>: <span class="number">0</span>)<span class="comment">#dic = defaultdict(int)也可以</span></div><div class="line">    <span class="keyword">with</span> open(filename, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        data = f.read()</div><div class="line">    <span class="comment"># 全部变为小写字母</span></div><div class="line">    data = data.lower()</div><div class="line">    <span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line">    data = re.sub(<span class="string">r'(n[\']t)|([\W\d])'</span>, replace, data)</div><div class="line">    datalist = re.split(<span class="string">r'[\s\n]+'</span>, data)</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> datalist:</div><div class="line">        dic[item] += <span class="number">1</span></div><div class="line">    <span class="keyword">del</span> dic[<span class="string">''</span>]</div><div class="line">    <span class="keyword">return</span> dic</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    dic = cal()</div><div class="line">    <span class="keyword">for</span> key, val <span class="keyword">in</span> dic.items():</div><div class="line">        print(<span class="string">'%15s  ----&gt;   %3s'</span> % (key,val))</div></pre></td></tr></table></figure></p>
+<p>运行结果如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170211/204153138.png" alt="结果" title="">
+                </div>
+                <div class="image-caption">结果</div>
+            </figure></p>
+<h3 id="增加排序函数"><a href="#增加排序函数" class="headerlink" title="增加排序函数"></a>增加排序函数</h3><p>代码有参考 《利用python进行数据分析》<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">top_counts</span><span class="params">(dic, n=<span class="number">10</span>)</span>:</span></div><div class="line">    value_key_pairs = [(count, tz) <span class="keyword">for</span> tz, count <span class="keyword">in</span> dic.items()]</div><div class="line">    value_key_pairs.sort()</div><div class="line">    <span class="keyword">return</span> value_key_pairs[-n:]</div><div class="line">top_counts(dic)</div></pre></td></tr></table></figure></p>
+<p>运行结果如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170211/204402151.png" alt="结果" title="">
+                </div>
+                <div class="image-caption">结果</div>
+            </figure><br>可以看出，人们最喜欢用的词是定冠词<strong>the</strong>，下来是介词<strong>to</strong>…….</p>
+<hr>
+<p>以上~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
+    
+      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python正则表达式</title>
-    <link href="https://mmmxcc.cn/2017/02/10/Python_lambda/"/>
-    <id>https://mmmxcc.cn/2017/02/10/Python_lambda/</id>
+    <link href="http://feiyang.li/2017/02/10/Python_lambda/"/>
+    <id>http://feiyang.li/2017/02/10/Python_lambda/</id>
     <published>2017-02-10T14:18:55.000Z</published>
-    <updated>2017-02-11T07:39:14.632Z</updated>
+    <updated>2017-02-11T13:12:38.891Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>使用正则表达式，会使得字符串的处理很方便。</p>
@@ -121,16 +174,18 @@
     </summary>
     
     
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="python_camp" scheme="http://feiyang.li/tags/python-camp/"/>
     
   </entry>
   
   <entry>
     <title>第三题：将  200 个激活码保存到 MySQL</title>
-    <link href="https://mmmxcc.cn/2017/02/10/python_camp3/"/>
-    <id>https://mmmxcc.cn/2017/02/10/python_camp3/</id>
+    <link href="http://feiyang.li/2017/02/10/python_camp3/"/>
+    <id>http://feiyang.li/2017/02/10/python_camp3/</id>
     <published>2017-02-10T07:16:52.000Z</published>
-    <updated>2017-02-10T08:36:02.452Z</updated>
+    <updated>2017-02-11T13:13:23.244Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第三题，使用 Python 将激活码保存到 MySQL。</p>
@@ -247,16 +302,16 @@
     </summary>
     
     
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="Python练习题" scheme="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
+      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>frp内网穿透</title>
-    <link href="https://mmmxcc.cn/2017/02/09/frp/"/>
-    <id>https://mmmxcc.cn/2017/02/09/frp/</id>
+    <link href="http://feiyang.li/2017/02/09/frp/"/>
+    <id>http://feiyang.li/2017/02/09/frp/</id>
     <published>2017-02-09T02:56:15.000Z</published>
     <updated>2017-02-09T02:57:39.454Z</updated>
     
@@ -316,18 +371,18 @@
     </summary>
     
     
-      <category term="VPS" scheme="https://mmmxcc.cn/tags/VPS/"/>
+      <category term="VPS" scheme="http://feiyang.li/tags/VPS/"/>
     
-      <category term="frp" scheme="https://mmmxcc.cn/tags/frp/"/>
+      <category term="frp" scheme="http://feiyang.li/tags/frp/"/>
     
   </entry>
   
   <entry>
     <title>第二题：使用 Python 如何生成 200 个激活码</title>
-    <link href="https://mmmxcc.cn/2017/02/07/python_camp2/"/>
-    <id>https://mmmxcc.cn/2017/02/07/python_camp2/</id>
+    <link href="http://feiyang.li/2017/02/07/python_camp2/"/>
+    <id>http://feiyang.li/2017/02/07/python_camp2/</id>
     <published>2017-02-07T11:50:11.000Z</published>
-    <updated>2017-02-10T08:36:01.474Z</updated>
+    <updated>2017-02-11T13:13:20.644Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第二题，使用 Python 如何生成 200 个激活码。</p>
@@ -398,16 +453,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="Python练习题" scheme="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
+      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>Github Pages + CDN全站加速</title>
-    <link href="https://mmmxcc.cn/2017/02/07/Github-Pages-CDN/"/>
-    <id>https://mmmxcc.cn/2017/02/07/Github-Pages-CDN/</id>
+    <link href="http://feiyang.li/2017/02/07/Github-Pages-CDN/"/>
+    <id>http://feiyang.li/2017/02/07/Github-Pages-CDN/</id>
     <published>2017-02-07T05:38:38.000Z</published>
     <updated>2017-02-07T05:50:20.986Z</updated>
     
@@ -508,16 +563,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="CDN" scheme="https://mmmxcc.cn/tags/CDN/"/>
+      <category term="CDN" scheme="http://feiyang.li/tags/CDN/"/>
     
-      <category term="Pages" scheme="https://mmmxcc.cn/tags/Pages/"/>
+      <category term="Pages" scheme="http://feiyang.li/tags/Pages/"/>
     
   </entry>
   
   <entry>
     <title>jupyter notebook使用帮助</title>
-    <link href="https://mmmxcc.cn/2017/01/12/jupyter-notebook/"/>
-    <id>https://mmmxcc.cn/2017/01/12/jupyter-notebook/</id>
+    <link href="http://feiyang.li/2017/01/12/jupyter-notebook/"/>
+    <id>http://feiyang.li/2017/01/12/jupyter-notebook/</id>
     <published>2017-01-12T12:50:52.000Z</published>
     <updated>2017-02-07T05:50:12.304Z</updated>
     
@@ -688,18 +743,18 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="Jupyer" scheme="https://mmmxcc.cn/tags/Jupyer/"/>
+      <category term="Jupyer" scheme="http://feiyang.li/tags/Jupyer/"/>
     
   </entry>
   
   <entry>
     <title>部署在线IPyhton notebook(在线python编译器)</title>
-    <link href="https://mmmxcc.cn/2016/12/31/IPyhton-notebook/"/>
-    <id>https://mmmxcc.cn/2016/12/31/IPyhton-notebook/</id>
+    <link href="http://feiyang.li/2016/12/31/IPyhton-notebook/"/>
+    <id>http://feiyang.li/2016/12/31/IPyhton-notebook/</id>
     <published>2016-12-31T14:52:39.000Z</published>
-    <updated>2017-02-07T05:49:43.794Z</updated>
+    <updated>2017-02-11T13:20:55.971Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>jupyter notebook在数据分析时使用非常的方便，特别那优美的页面，简直让我着迷。</p>
@@ -710,7 +765,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 <ul>
 <li>支持的格式很多，Markdown，Latex等都支持，还有很方便的快捷键。</li>
 <li>可以将代码可视化分享给其他人，<a href="https://www.continuum.io/blog/developer/jupyter-and-conda-r" target="_blank" rel="external">From notebook to slides</a></li>
-<li>像一张草稿纸，可以一边通过它来进行你的思考探索过程，交互式的进行，每一步都能看到结果，也很方便查看之前的结果。<h5 id="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"><a href="#可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333" class="headerlink" title="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"></a>可以到<a href="https://mmmxcc.cn/">我的博客</a>，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333</h5><h1 id="本地安装Jupyter"><a href="#本地安装Jupyter" class="headerlink" title="本地安装Jupyter"></a>本地安装Jupyter</h1>推荐先安装<a href="https://www.continuum.io/downloads" target="_blank" rel="external">python科学计算包ANACONDA</a>点击进入官网下载，按要求下载安装完成之后。期间会有一步提示是否加入Path，勾选加入环境变量。如果但是没有勾选，对于win事后可以手动添加环境变量。对于linux，使用<code>export PATH=~/anaconda2/bin:$PATH</code>进行添加。<br>anaconda安装完后，对于win10用户，可以看到已经成功安装Jupyter Notebook，点击即可打开食用~<figure class="image-bubble">
+<li>像一张草稿纸，可以一边通过它来进行你的思考探索过程，交互式的进行，每一步都能看到结果，也很方便查看之前的结果。<h5 id="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"><a href="#可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333" class="headerlink" title="可以到我的博客，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333"></a>可以到<a href="https://feiyang.li/">我的博客</a>，点击左边的python在线编译试，密码是我的名字。我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333</h5><h1 id="本地安装Jupyter"><a href="#本地安装Jupyter" class="headerlink" title="本地安装Jupyter"></a>本地安装Jupyter</h1>推荐先安装<a href="https://www.continuum.io/downloads" target="_blank" rel="external">python科学计算包ANACONDA</a>点击进入官网下载，按要求下载安装完成之后。期间会有一步提示是否加入Path，勾选加入环境变量。如果但是没有勾选，对于win事后可以手动添加环境变量。对于linux，使用<code>export PATH=~/anaconda2/bin:$PATH</code>进行添加。<br>anaconda安装完后，对于win10用户，可以看到已经成功安装Jupyter Notebook，点击即可打开食用~<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="http://cdn.mmmxcc.cn/blog/20161231/212802868.png" alt="" title="">
@@ -766,7 +821,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
-<p>如果希望不要在退出SSH命令行的时候，同时也停止jupyter notebook服务，推荐<strong>nohup </strong>，之前写过篇博客解释过<a href="https://mmmxcc.cn/2016/10/19/%E6%97%A0%E5%85%AC%E7%BD%91IP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAWeb%E7%AB%99%E7%82%B9/">nohup的作用</a><br>在线python编译器就搭建好了，是不是很洋气~</p>
+<p>如果希望不要在退出SSH命令行的时候，同时也停止jupyter notebook服务，推荐<strong>nohup </strong>，之前写过篇博客解释过<a href="https://feiyang.li/2016/10/19/%E6%97%A0%E5%85%AC%E7%BD%91IP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAWeb%E7%AB%99%E7%82%B9/">nohup的作用</a><br>在线python编译器就搭建好了，是不是很洋气~</p>
 ]]></content>
     
     <summary type="html">
@@ -779,20 +834,20 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Jupyter" scheme="https://mmmxcc.cn/tags/Jupyter/"/>
+      <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
     
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="VPS" scheme="https://mmmxcc.cn/tags/VPS/"/>
+      <category term="VPS" scheme="http://feiyang.li/tags/VPS/"/>
     
   </entry>
   
   <entry>
     <title>第一题：Python图片添加水印</title>
-    <link href="https://mmmxcc.cn/2016/12/31/python_camp1/"/>
-    <id>https://mmmxcc.cn/2016/12/31/python_camp1/</id>
+    <link href="http://feiyang.li/2016/12/31/python_camp1/"/>
+    <id>http://feiyang.li/2016/12/31/python_camp1/</id>
     <published>2016-12-31T04:16:16.000Z</published>
-    <updated>2017-02-10T08:36:00.893Z</updated>
+    <updated>2017-02-11T13:13:11.699Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 </p>
@@ -847,25 +902,25 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="Python练习题" scheme="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
+      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>Python练习册</title>
-    <link href="https://mmmxcc.cn/2016/12/31/python_camp/"/>
-    <id>https://mmmxcc.cn/2016/12/31/python_camp/</id>
+    <link href="http://feiyang.li/2016/12/31/python_camp/"/>
+    <id>http://feiyang.li/2016/12/31/python_camp/</id>
     <published>2016-12-31T03:35:04.000Z</published>
-    <updated>2017-02-10T08:45:07.034Z</updated>
+    <updated>2017-02-11T13:18:49.297Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p><a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">参考代码</a>一同附上，分析过程见<a href="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/">李飞阳</a>，请多指教。</p>
+<p><a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">参考代码</a>一同附上，分析过程见<a href="https://feiyang.li/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/">李飞阳</a>，请多指教。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
-<h1 id="一、基础问题"><a href="#一、基础问题" class="headerlink" title="一、基础问题"></a>一、基础问题</h1><p><strong>题目1.1：</strong><a href="https://mmmxcc.cn/2016/12/16/%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%9APython%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/">图片加水印</a>，类似于微信未读信息数量那种提示效果</p>
+<h1 id="一、基础问题"><a href="#一、基础问题" class="headerlink" title="一、基础问题"></a>一、基础问题</h1><p><strong>题目1.1：</strong><a href="https://feiyang.li/2016/12/16/%E7%AC%AC%E4%B8%80%E9%A2%98%EF%BC%9APython%E5%9B%BE%E7%89%87%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/">图片加水印</a>，类似于微信未读信息数量那种提示效果</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -873,8 +928,8 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
                 </div>
                 <div class="image-caption">头像</div>
             </figure>
-<p><strong>题目1.2：</strong><a href="https://mmmxcc.cn/2017/02/07/%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%9A%E4%BD%BF%E7%94%A8-Python-%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90-200-%E4%B8%AA%E6%BF%80%E6%B4%BB%E7%A0%81/">使用 Python 如何生成 200 个激活码（或者优惠券）</a></p>
-<p><strong>题目1.3</strong>：<a href="https://mmmxcc.cn/2017/02/10/%E7%AC%AC%E4%B8%89%E9%A2%98%EF%BC%9A%E5%B0%86200%E4%B8%AA%E6%BF%80%E6%B4%BB%E7%A0%81%E4%BF%9D%E5%AD%98%E5%88%B0-MySQL/">将 0002 题生成的 200 个激活码（或者优惠券）保存到 <strong>MySQL</strong> 关系型数据库中。 </a></p>
+<p><strong>题目1.2：</strong><a href="https://feiyang.li/2017/02/07/%E7%AC%AC%E4%BA%8C%E9%A2%98%EF%BC%9A%E4%BD%BF%E7%94%A8-Python-%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90-200-%E4%B8%AA%E6%BF%80%E6%B4%BB%E7%A0%81/">使用 Python 如何生成 200 个激活码（或者优惠券）</a></p>
+<p><strong>题目1.3</strong>：<a href="https://feiyang.li/2017/02/10/%E7%AC%AC%E4%B8%89%E9%A2%98%EF%BC%9A%E5%B0%86200%E4%B8%AA%E6%BF%80%E6%B4%BB%E7%A0%81%E4%BF%9D%E5%AD%98%E5%88%B0-MySQL/">将 0002 题生成的 200 个激活码（或者优惠券）保存到 <strong>MySQL</strong> 关系型数据库中。 </a></p>
 <p><strong>题目1.4：</strong>任一个英文的纯文本文件，统计其中的单词出现的个数。</p>
 <p><strong>题目1.5：</strong>你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。</p>
 <p><strong>题目1.6：</strong>使用 Python 生成类似于下图中的<strong>字母验证码图片</strong></p>
@@ -932,8 +987,8 @@ jiangge
 <p><strong>题目2.3：</strong> <a href="http://iservice.10010.com/index_.html" target="_blank" rel="external">登陆中国联通网上营业厅</a> 后选择「自助服务」 –&gt; 「详单查询」，然后选择你要查询的时间段，点击「查询」按钮，查询结果页面的最下方，点击「导出」，就会生成类似于 2014年10月01日～2014年10月31日通话详单.xls 文件。写代码，对每月通话时间做个统计。</p>
 <hr>
 <h1 id="三、爬虫方面"><a href="#三、爬虫方面" class="headerlink" title="三、爬虫方面"></a>三、爬虫方面</h1><p><strong>题目3.1：</strong>一个HTML文件，找出里面的<strong>正文</strong>。</p>
-<p><strong>题目3.2：</strong><a href="https://mmmxcc.cn/2016/12/13/%E6%8F%90%E5%8F%96%E7%BD%91%E9%A1%B5%E4%BF%A1%E6%81%AF/">一个HTML文件，找出里面的<strong>链接</strong>。</a></p>
-<p><strong>题目3.3：</strong> 用 Python 写一个爬图片的程序，可以参考<a href="https://mmmxcc.cn/2016/12/15/Python%E7%88%AC%E5%8F%96%E5%9B%BE%E7%89%87%EF%BC%88%E4%BD%BF%E7%94%A8urllib2%EF%BC%89/">Python爬取图片（使用urllib2）</a>，如果出现难题，可以尝试<a href="https://mmmxcc.cn/2016/12/29/%E4%BD%BF%E7%94%A8Python-selenium%E5%A4%84%E7%90%86%E9%A1%B5%E9%9D%A2%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E9%97%AE%E9%A2%98/">selenium自动化测试工具</a></p>
+<p><strong>题目3.2：</strong><a href="https://feiyang.li/2016/12/13/%E6%8F%90%E5%8F%96%E7%BD%91%E9%A1%B5%E4%BF%A1%E6%81%AF/">一个HTML文件，找出里面的<strong>链接</strong>。</a></p>
+<p><strong>题目3.3：</strong> 用 Python 写一个爬图片的程序，可以参考<a href="https://feiyang.li/2016/12/15/Python%E7%88%AC%E5%8F%96%E5%9B%BE%E7%89%87%EF%BC%88%E4%BD%BF%E7%94%A8urllib2%EF%BC%89/">Python爬取图片（使用urllib2）</a>，如果出现难题，可以尝试<a href="https://feiyang.li/2016/12/29/%E4%BD%BF%E7%94%A8Python-selenium%E5%A4%84%E7%90%86%E9%A1%B5%E9%9D%A2%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E9%97%AE%E9%A2%98/">selenium自动化测试工具</a></p>
 <hr>
 <h1 id="四、Web问题"><a href="#四、Web问题" class="headerlink" title="四、Web问题"></a>四、Web问题</h1><p><strong>题目4.1：</strong> 使用 Python 的 Web 框架，做一个 Web 版本 留言簿 应用。</p>
 <p><a href="http://v2ex.com/t/151643#reply53" target="_blank" rel="external">阅读资料：Python 有哪些 Web 框架</a></p>
@@ -964,25 +1019,25 @@ jiangge
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;参考代码&lt;/a&gt;一同附上，分析过程见&lt;a href=&quot;https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/&quot;&gt;李飞阳&lt;/a&gt;，请多指教。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;参考代码&lt;/a&gt;一同附上，分析过程见&lt;a href=&quot;https://feiyang.li/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/&quot;&gt;李飞阳&lt;/a&gt;，请多指教。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
     
     </summary>
     
     
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="Python练习题" scheme="https://mmmxcc.cn/tags/Python%E7%BB%83%E4%B9%A0%E9%A2%98/"/>
+      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>使用Python selenium处理页面延迟加载问题</title>
-    <link href="https://mmmxcc.cn/2016/12/29/Python-selenium/"/>
-    <id>https://mmmxcc.cn/2016/12/29/Python-selenium/</id>
+    <link href="http://feiyang.li/2016/12/29/Python-selenium/"/>
+    <id>http://feiyang.li/2016/12/29/Python-selenium/</id>
     <published>2016-12-29T08:06:43.000Z</published>
-    <updated>2017-02-07T05:49:34.921Z</updated>
+    <updated>2017-02-11T13:21:00.266Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>使用python爬取数据的时候，碰到了一个非常无语的问题。有个网站，在输入url进入页面之后，会强制加载一段动画，之后才显示正确内容。后来发现了selenium这个神器，不过还是折腾了我好久。</p>
@@ -995,7 +1050,7 @@ jiangge
 <li>接下来安装<strong> ChromeDriver</strong><br>推荐在这里 <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads" target="_blank" rel="external">https://sites.google.com/a/chromium.org/chromedriver/downloads</a> 下载，然后放在Chrome浏览器目录内，配置Path环境变量为形如 <em>XXGoogle\Chrome\Application</em>的形式<br>你玩了，抛个异常撂挑子了。</li>
 </ul>
 <p>最简单粗暴的一种办法就是强制等待sleep(xx)，强制让闪电侠等xx时间，不管凹凸曼能不能跟上速度，还是已经提前到了，都必须等xx时间。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding: utf-8</span></div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</div><div class="line">driver = webdriver.Chrome()</div><div class="line">driver.get(<span class="string">'https://mmmxcc.cn'</span>)</div><div class="line">sleep(<span class="number">3</span>) <span class="comment"># 强制等待3秒再执行下一步</span></div><div class="line"><span class="keyword">print</span> driver.title</div><div class="line">driver.quit()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding: utf-8</span></div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</div><div class="line">driver = webdriver.Chrome()</div><div class="line">driver.get(<span class="string">'https://feiyang.li'</span>)</div><div class="line">sleep(<span class="number">3</span>) <span class="comment"># 强制等待3秒再执行下一步</span></div><div class="line"><span class="keyword">print</span> driver.title</div><div class="line">driver.quit()</div></pre></td></tr></table></figure>
 <h1 id="结合selenium使用Xpath获得所需信息"><a href="#结合selenium使用Xpath获得所需信息" class="headerlink" title="结合selenium使用Xpath获得所需信息"></a>结合selenium使用Xpath获得所需信息</h1><ul>
 <li>需要注意的是，selenium内find_elements的方法有很多种，xpath表达式的要求很严格，所以可以试试<strong>find_elements_id</strong>等方法。</li>
 <li>Xpath表达式可以检测文字中是否包含某文字，以此为标准过滤。<figure class="image-bubble">
@@ -1036,20 +1091,20 @@ jiangge
     </summary>
     
     
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="爬虫" scheme="https://mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
+      <category term="爬虫" scheme="http://feiyang.li/tags/%E7%88%AC%E8%99%AB/"/>
     
-      <category term="Xpath" scheme="https://mmmxcc.cn/tags/Xpath/"/>
+      <category term="Xpath" scheme="http://feiyang.li/tags/Xpath/"/>
     
-      <category term="selenium" scheme="https://mmmxcc.cn/tags/selenium/"/>
+      <category term="selenium" scheme="http://feiyang.li/tags/selenium/"/>
     
   </entry>
   
   <entry>
     <title>牛顿迭代法计算平方根(Java,Python实现)</title>
-    <link href="https://mmmxcc.cn/2016/12/28/Newton-Raphson_method-Java-Python/"/>
-    <id>https://mmmxcc.cn/2016/12/28/Newton-Raphson_method-Java-Python/</id>
+    <link href="http://feiyang.li/2016/12/28/Newton-Raphson_method-Java-Python/"/>
+    <id>http://feiyang.li/2016/12/28/Newton-Raphson_method-Java-Python/</id>
     <published>2016-12-28T08:33:55.000Z</published>
     <updated>2017-02-07T05:49:58.104Z</updated>
     
@@ -1073,18 +1128,18 @@ jiangge
     </summary>
     
     
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="Algorithms" scheme="https://mmmxcc.cn/tags/Algorithms/"/>
+      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
     
-      <category term="Java" scheme="https://mmmxcc.cn/tags/Java/"/>
+      <category term="Java" scheme="http://feiyang.li/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>LaTex 编辑公式</title>
-    <link href="https://mmmxcc.cn/2016/12/28/LaTex/"/>
-    <id>https://mmmxcc.cn/2016/12/28/LaTex/</id>
+    <link href="http://feiyang.li/2016/12/28/LaTex/"/>
+    <id>http://feiyang.li/2016/12/28/LaTex/</id>
     <published>2016-12-28T07:21:21.000Z</published>
     <updated>2017-02-07T05:49:24.538Z</updated>
     
@@ -1183,19 +1238,19 @@ jiangge
     </summary>
     
     
-      <category term="LaTex" scheme="https://mmmxcc.cn/tags/LaTex/"/>
+      <category term="LaTex" scheme="http://feiyang.li/tags/LaTex/"/>
     
   </entry>
   
   <entry>
     <title>Nginx环境下配置HTTPS</title>
-    <link href="https://mmmxcc.cn/2016/12/18/Nginx_HTTPS/"/>
-    <id>https://mmmxcc.cn/2016/12/18/Nginx_HTTPS/</id>
+    <link href="http://feiyang.li/2016/12/18/Nginx_HTTPS/"/>
+    <id>http://feiyang.li/2016/12/18/Nginx_HTTPS/</id>
     <published>2016-12-18T08:47:29.000Z</published>
-    <updated>2017-02-07T05:49:29.639Z</updated>
+    <updated>2017-02-11T13:21:04.182Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>现在，你应该能在访问<a href="https://mmmxcc.cn">https://mmmxcc.cn</a> 的时候，在地址栏里看到一个漂亮的小绿锁<figure class="image-bubble">
+<p>现在，你应该能在访问<a href="https://feiyang.li">https://feiyang.li</a> 的时候，在地址栏里看到一个漂亮的小绿锁<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
@@ -1287,7 +1342,7 @@ jiangge
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;现在，你应该能在访问&lt;a href=&quot;https://mmmxcc.cn&quot;&gt;https://mmmxcc.cn&lt;/a&gt; 的时候，在地址栏里看到一个漂亮的小绿锁&lt;figure class=&quot;image-bubble&quot;&gt;
+&lt;p&gt;现在，你应该能在访问&lt;a href=&quot;https://feiyang.li&quot;&gt;https://feiyang.li&lt;/a&gt; 的时候，在地址栏里看到一个漂亮的小绿锁&lt;figure class=&quot;image-bubble&quot;&gt;
                 &lt;div class=&quot;img-lightbox&quot;&gt;
                     &lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;
                     &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; title=&quot;&quot;&gt;
@@ -1300,18 +1355,18 @@ jiangge
     </summary>
     
     
-      <category term="VPS" scheme="https://mmmxcc.cn/tags/VPS/"/>
+      <category term="VPS" scheme="http://feiyang.li/tags/VPS/"/>
     
-      <category term="Nginx" scheme="https://mmmxcc.cn/tags/Nginx/"/>
+      <category term="Nginx" scheme="http://feiyang.li/tags/Nginx/"/>
     
-      <category term="HTTPS" scheme="https://mmmxcc.cn/tags/HTTPS/"/>
+      <category term="HTTPS" scheme="http://feiyang.li/tags/HTTPS/"/>
     
   </entry>
   
   <entry>
     <title>使用Python插入排序</title>
-    <link href="https://mmmxcc.cn/2016/12/15/Python_get_order/"/>
-    <id>https://mmmxcc.cn/2016/12/15/Python_get_order/</id>
+    <link href="http://feiyang.li/2016/12/15/Python_get_order/"/>
+    <id>http://feiyang.li/2016/12/15/Python_get_order/</id>
     <published>2016-12-15T13:44:51.000Z</published>
     <updated>2017-02-07T05:47:48.848Z</updated>
     
@@ -1342,27 +1397,27 @@ jiangge
     </summary>
     
     
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="Algorithms" scheme="https://mmmxcc.cn/tags/Algorithms/"/>
+      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
     
   </entry>
   
   <entry>
     <title>Python爬取图片（使用urllib2）</title>
-    <link href="https://mmmxcc.cn/2016/12/15/Python_use_urllib2/"/>
-    <id>https://mmmxcc.cn/2016/12/15/Python_use_urllib2/</id>
+    <link href="http://feiyang.li/2016/12/15/Python_use_urllib2/"/>
+    <id>http://feiyang.li/2016/12/15/Python_use_urllib2/</id>
     <published>2016-12-15T11:14:24.000Z</published>
-    <updated>2017-02-07T05:47:49.680Z</updated>
+    <updated>2017-02-11T13:27:59.892Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>上篇文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
+<p>上篇文章 <a href="http://feiyang.li/2016/12/13/提取网页信息/">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
 <h1 id="urllib2-简介"><a href="#urllib2-简介" class="headerlink" title="urllib2 简介"></a>urllib2 简介</h1><p>urllib2提供一个基础函数urlopen，通过向指定的URL发出请求来获取数据。最简单的形式就是：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2 </div><div class="line">response = urllib2.urlopen(<span class="string">'http://mmmxcc.cn/'</span>) </div><div class="line">html = response.read()</div></pre></td></tr></table></figure>
-<p>可以将上述代码看作两个步骤，我们指定一个域名并发送请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request=urllib2.request(&apos;http://mmmxcc.cn/&apos;)</div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2 </div><div class="line">response = urllib2.urlopen(<span class="string">'http://feiyang.li/'</span>) </div><div class="line">html = response.read()</div></pre></td></tr></table></figure>
+<p>可以将上述代码看作两个步骤，我们指定一个域名并发送请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request=urllib2.request(&apos;http://feiyang.li/&apos;)</div></pre></td></tr></table></figure></p>
 <p>接着服务端响应来自客户端的请求 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">response=urllib2.urlopen(request)</div></pre></td></tr></table></figure>
 <figure class="image-bubble">
@@ -1374,7 +1429,7 @@ jiangge
             </figure>
 <p>我们可以发现title这个地方本来应该是中文的，但因为编码的原因，导致出现乱码。通过将html页面重新用”utf-8”编码，可以解决这个问题。</p>
 <hr>
-<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://mmmxcc.cn/2016/12/13/提取网页信息/">http://mmmxcc.cn/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
+<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://feiyang.li/2016/12/13/提取网页信息/">http://feiyang.li/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
 <p>这里需要导入lxml，代码格式如下。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = requests.get(<span class="string">"http://jandan.net/ooxx"</span>)</div><div class="line">html.encoding = <span class="string">'utf-8'</span></div><div class="line">selector = etree.HTML(html.text)</div><div class="line">content = selector.xpath(<span class="string">'//ol[@class = "commentlist"]//@src'</span>)</div></pre></td></tr></table></figure>
 <p>单独运行 以上代码可以获得<br><figure class="image-bubble">
@@ -1447,25 +1502,25 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;上篇文章 &lt;a href=&quot;http://mmmxcc.cn/2016/12/13/提取网页信息/&quot;&gt;使用 XPath 提取网页信息&lt;/a&gt; 之后，将链接中的内容下载至本地，需要使用到 urllib2 。&lt;/p&gt;
+&lt;p&gt;上篇文章 &lt;a href=&quot;http://feiyang.li/2016/12/13/提取网页信息/&quot;&gt;使用 XPath 提取网页信息&lt;/a&gt; 之后，将链接中的内容下载至本地，需要使用到 urllib2 。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
     
     </summary>
     
     
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="爬虫" scheme="https://mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
+      <category term="爬虫" scheme="http://feiyang.li/tags/%E7%88%AC%E8%99%AB/"/>
     
-      <category term="urllib2" scheme="https://mmmxcc.cn/tags/urllib2/"/>
+      <category term="urllib2" scheme="http://feiyang.li/tags/urllib2/"/>
     
   </entry>
   
   <entry>
     <title>使用 XPath 提取网页信息</title>
-    <link href="https://mmmxcc.cn/2016/12/13/get_html/"/>
-    <id>https://mmmxcc.cn/2016/12/13/get_html/</id>
+    <link href="http://feiyang.li/2016/12/13/get_html/"/>
+    <id>http://feiyang.li/2016/12/13/get_html/</id>
     <published>2016-12-13T08:24:34.000Z</published>
     <updated>2017-02-07T05:47:51.672Z</updated>
     
@@ -1550,18 +1605,18 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="爬虫" scheme="https://mmmxcc.cn/tags/%E7%88%AC%E8%99%AB/"/>
+      <category term="爬虫" scheme="http://feiyang.li/tags/%E7%88%AC%E8%99%AB/"/>
     
-      <category term="Xpath" scheme="https://mmmxcc.cn/tags/Xpath/"/>
+      <category term="Xpath" scheme="http://feiyang.li/tags/Xpath/"/>
     
   </entry>
   
   <entry>
     <title>永远的7012</title>
-    <link href="https://mmmxcc.cn/2016/10/28/forever_7012/"/>
-    <id>https://mmmxcc.cn/2016/10/28/forever_7012/</id>
+    <link href="http://feiyang.li/2016/10/28/forever_7012/"/>
+    <id>http://feiyang.li/2016/10/28/forever_7012/</id>
     <published>2016-10-28T13:33:08.000Z</published>
     <updated>2017-02-07T05:47:51.001Z</updated>
     
@@ -1620,16 +1675,16 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="臭臭" scheme="https://mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
+      <category term="Running man" scheme="http://feiyang.li/tags/Running-man/"/>
     
-      <category term="Running man" scheme="https://mmmxcc.cn/tags/Running-man/"/>
+      <category term="臭臭" scheme="http://feiyang.li/tags/%E8%87%AD%E8%87%AD/"/>
     
   </entry>
   
   <entry>
     <title>C / C++ 文件读取写入、文件夹的打开</title>
-    <link href="https://mmmxcc.cn/2016/10/28/C_read/"/>
-    <id>https://mmmxcc.cn/2016/10/28/C_read/</id>
+    <link href="http://feiyang.li/2016/10/28/C_read/"/>
+    <id>http://feiyang.li/2016/10/28/C_read/</id>
     <published>2016-10-28T11:09:24.000Z</published>
     <updated>2017-02-07T05:47:54.922Z</updated>
     
@@ -1667,14 +1722,14 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="C++" scheme="https://mmmxcc.cn/tags/C/"/>
+      <category term="C++" scheme="http://feiyang.li/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>解忧杂货店</title>
-    <link href="https://mmmxcc.cn/2016/10/28/book/"/>
-    <id>https://mmmxcc.cn/2016/10/28/book/</id>
+    <link href="http://feiyang.li/2016/10/28/book/"/>
+    <id>http://feiyang.li/2016/10/28/book/</id>
     <published>2016-10-28T04:30:59.000Z</published>
     <updated>2017-02-07T05:47:03.322Z</updated>
     
@@ -1740,69 +1795,9 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     </summary>
     
     
-      <category term="读书笔记" scheme="https://mmmxcc.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="臭臭" scheme="http://feiyang.li/tags/%E8%87%AD%E8%87%AD/"/>
     
-      <category term="臭臭" scheme="https://mmmxcc.cn/tags/%E8%87%AD%E8%87%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python基础</title>
-    <link href="https://mmmxcc.cn/2016/10/27/Python_basic/"/>
-    <id>https://mmmxcc.cn/2016/10/27/Python_basic/</id>
-    <published>2016-10-27T03:38:32.000Z</published>
-    <updated>2017-02-07T05:46:54.992Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="脚本运行"><a href="#脚本运行" class="headerlink" title="脚本运行"></a>脚本运行</h1><ul>
-<li>Windows 下需将python加入的系统变量中；</li>
-<li><p>Linux 下需添加头部</p>
-<a id="more"></a>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#! /usr/bin/enc python</span></div><div class="line">    print(<span class="string">'Hello World!'</span>)</div></pre></td></tr></table></figure>
-<h1 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h1><ul>
-<li>for 循环<pre><code>for 元素 in 序列:
-    statement
-</code></pre></li>
-</ul>
-<ul>
-<li>while 循环<pre><code>while 条件:
-    statement
-</code></pre></li>
-</ul>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">square_sum</span><span class="params">(a,b)</span>:</span> </div><div class="line">    c = a**<span class="number">2</span> + b**<span class="number">2</span> </div><div class="line">    <span class="keyword">return</span> c</div></pre></td></tr></table></figure>
-<p>def，这个关键字通知python：我在定义一个函数。square_sum是函数名。括号中的a, b是函数的<strong>参数</strong>，是对函数的<strong>输入</strong>。</p>
-<h2 id="函数调用和参数传递"><a href="#函数调用和参数传递" class="headerlink" title="函数调用和参数传递"></a>函数调用和参数传递</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">a = <span class="number">1</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_integer</span><span class="params">(a)</span>:</span></div><div class="line">    a = a + <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> a</div><div class="line"></div><div class="line"><span class="keyword">print</span> (change_integer(a))      <span class="comment">#注意观察结果</span></div><div class="line"><span class="keyword">print</span> (a)      <span class="comment">#注意观察结果</span></div><div class="line"></div><div class="line"><span class="comment">#===(Python中 "#" 后面跟的内容是注释，不执行 )</span></div><div class="line"></div><div class="line">b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_list</span><span class="params">(b)</span>:</span></div><div class="line">    b[<span class="number">0</span>] = b[<span class="number">0</span>] + <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> b</div><div class="line"></div><div class="line"><span class="keyword">print</span> (change_list(b))      <span class="comment">#注意观察结果</span></div><div class="line"><span class="keyword">print</span> (b)      <span class="comment">#注意观察结果</span></div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/python/1.jpg" alt="运行结果" title="">
-                </div>
-                <div class="image-caption">运行结果</div>
-            </figure>
-<p>第一个例子，我们将一个<strong>整数变量传递给函数</strong>，函数对它进行操作，但<strong>原整数变量a不发生变化</strong>。<br>第二个例子，我们将一个<strong>表传递给函数</strong>，函数进行操作，<strong>原来的表b发生变化</strong>。<br>对于基本数据类型的变量，变量传递给函数后，函数会在内存中复制一个新的变量，从而不影响原来的变量。（我们称此为<strong>值传递</strong>）<br>但是对于表来说，表传递给函数的是一个指针，指针指向序列在内存中的位置，在函数中对表的操作将在原有内存中进行，从而影响原有变量。 （我们称此为<strong>指针传递</strong>）。</p>
-<h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><p>我们定义一个类“鸟”，鸟有羽毛，鸟的方法是下蛋，定义一个函数fly()。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bird</span><span class="params">(object)</span>:</span></div><div class="line">    feather = <span class="keyword">True</span></div><div class="line">    way = <span class="string">'egg'</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fly</span><span class="params">(self, dx, dy)</span>:</span></div><div class="line">        position = [<span class="number">0</span>,<span class="number">0</span>]</div><div class="line">        position[<span class="number">0</span>] = position[<span class="number">0</span>] + dx</div><div class="line">        position[<span class="number">1</span>] = position[<span class="number">1</span>] + dy</div><div class="line">        <span class="keyword">return</span> position</div><div class="line"></div><div class="line">summer = Bird()</div><div class="line"><span class="keyword">print</span> (after move:<span class="string">',summer.fly(5,8))</span></div></pre></td></tr></table></figure></p>
-<p><strong>方法的第一个参数必须是self，无论是否用到。</strong></p>
-<p>我的summer可以飞了。</p>
-<hr>
-<h1 id="常见python-os-命令"><a href="#常见python-os-命令" class="headerlink" title="常见python os 命令"></a>常见python os 命令</h1><ul>
-<li>os.getcwd() 函数得到当前工作目录，即当前Python脚本工作的目录路径。</li>
-<li>os.listdir() 返回指定目录下的所有文件和目录名。</li>
-<li>os.remove() 删除一个文件。</li>
-<li>os.chdir(dirname) 改变工作目录到dirname</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;脚本运行&quot;&gt;&lt;a href=&quot;#脚本运行&quot; class=&quot;headerlink&quot; title=&quot;脚本运行&quot;&gt;&lt;/a&gt;脚本运行&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;Windows 下需将python加入的系统变量中；&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Linux 下需添加头部&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="https://mmmxcc.cn/tags/Python/"/>
+      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
