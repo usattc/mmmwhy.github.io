@@ -2,9 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2017/02/13/python-camp6/</loc>
+    
+    <lastmod>2017-02-13T05:38:30.441Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2017/02/13/python-camp5/</loc>
     
-    <lastmod>2017-02-13T02:38:27.905Z</lastmod>
+    <lastmod>2017-02-13T05:37:50.976Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/11/python_camp4/</loc>
+    
+    <lastmod>2017-02-13T05:37:47.955Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/10/python_camp3/</loc>
+    
+    <lastmod>2017-02-13T05:37:44.188Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/07/python_camp2/</loc>
+    
+    <lastmod>2017-02-13T05:37:40.975Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2016/12/31/python_camp1/</loc>
+    
+    <lastmod>2017-02-13T05:37:36.719Z</lastmod>
     
   </url>
   
@@ -12,13 +47,6 @@
     <loc>http://feiyang.li/2016/12/31/python_camp/</loc>
     
     <lastmod>2017-02-13T02:38:25.035Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/02/11/python_camp4/</loc>
-    
-    <lastmod>2017-02-11T13:38:09.250Z</lastmod>
     
   </url>
   
@@ -152,27 +180,6 @@
     <loc>http://feiyang.li/2017/02/09/frp/</loc>
     
     <lastmod>2017-02-11T13:20:27.500Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/02/10/python_camp3/</loc>
-    
-    <lastmod>2017-02-11T13:13:23.244Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/02/07/python_camp2/</loc>
-    
-    <lastmod>2017-02-11T13:13:20.644Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/12/31/python_camp1/</loc>
-    
-    <lastmod>2017-02-11T13:13:11.699Z</lastmod>
     
   </url>
   
