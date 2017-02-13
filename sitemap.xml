@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2017/02/13/jiewang/</loc>
+    
+    <lastmod>2017-02-13T13:46:11.319Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2016/10/28/book/</loc>
+    
+    <lastmod>2017-02-13T08:36:38.289Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2016/12/31/python_camp/</loc>
     
     <lastmod>2017-02-13T05:43:54.616Z</lastmod>
@@ -89,13 +103,6 @@
     <loc>http://feiyang.li/2016/10/27/Python_basic/</loc>
     
     <lastmod>2017-02-11T13:28:16.372Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/10/28/book/</loc>
-    
-    <lastmod>2017-02-11T13:28:10.757Z</lastmod>
     
   </url>
   
