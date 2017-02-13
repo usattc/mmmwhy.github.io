@@ -162,9 +162,9 @@
     </summary>
     
     
-      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
     
       <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
     
@@ -936,9 +936,9 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
       <category term="VPS" scheme="http://feiyang.li/tags/VPS/"/>
     
@@ -1015,7 +1015,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <link href="http://feiyang.li/2016/12/31/python_camp/"/>
     <id>http://feiyang.li/2016/12/31/python_camp/</id>
     <published>2016-12-31T03:35:04.000Z</published>
-    <updated>2017-02-13T02:38:25.035Z</updated>
+    <updated>2017-02-13T05:43:54.616Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p><a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">参考代码</a>一同附上，分析过程见<a href="https://feiyang.li/tags/Python-camp/">李飞阳</a>，请多指教。</p>
@@ -1034,7 +1034,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
 <p><strong>题目1.3</strong>：<a href="https://feiyang.li/2017/02/10/python_camp3/">将 0002 题生成的 200 个激活码（或者优惠券）保存到 <strong>MySQL</strong> 关系型数据库中。 </a></p>
 <p><strong>题目1.4：</strong><a href="https://feiyang.li/2017/02/11/python_camp4/">任一个英文的纯文本文件，统计其中的单词出现的个数。</a></p>
 <p><strong>题目1.5：</strong><a href="https://feiyang.li/2017/02/13/python-camp5/">你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。</a></p>
-<p><strong>题目1.6：</strong>使用 Python 生成类似于下图中的<strong>字母验证码图片</strong></p>
+<p><strong>题目1.6：</strong><a href="https://feiyang.li/2017/02/13/python-camp6/">使用 Python 生成类似于下图中的<strong>字母验证码图片</strong></a></p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -1230,11 +1230,11 @@ jiangge
     </summary>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
     
       <category term="Java" scheme="http://feiyang.li/tags/Java/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1499,9 +1499,9 @@ jiangge
     </summary>
     
     
-      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
     
   </entry>
   
