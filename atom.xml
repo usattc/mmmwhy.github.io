@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-02-13T14:09:06.067Z</updated>
+  <updated>2017-02-14T11:24:58.929Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -14,6 +14,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Coursera ML笔记-机器学习基础概念</title>
+    <link href="http://feiyang.li/2017/02/14/Coursera-ML/"/>
+    <id>http://feiyang.li/2017/02/14/Coursera-ML/</id>
+    <published>2017-02-14T11:19:17.000Z</published>
+    <updated>2017-02-14T11:24:58.929Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>在学习的过程中，抓住基本概念是非常重要的，这样可以防止自己陷入某些细节中无法自拔，可以让自己站在比较宏观的层面上看待问题。 更多见：<a href="https://feiyang.li/">李飞阳</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="机器学习（Machine-Learning）"><a href="#机器学习（Machine-Learning）" class="headerlink" title="机器学习（Machine Learning）"></a>机器学习（Machine Learning）</h1><ul>
+<li>Coursera上机器学习课程的介绍中，第一句话是：<br>　<strong>Machine learning is the science of getting computers to act without being explicitly programmed. </strong><br>　机器学习是让电脑自己学会如何处理问题，而不需要人们刻意的编程。</li>
+<li>Andrew Ng老师的讲义中（Coursera）给出的定义：<br>Tom Mitchell provides a more modern definition: “A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.”<br>Example: playing checkers.<br>　· E = the experience of playing many games of checkers<br>　· T = the task of playing checkers.<br>　· P = the probability that the program will win the next game. </li>
+<li>周志华的《机器学习》中定义：<br>机器学习正是这样一门学科，它致力于研究如何通过计算的手段，利用经验来改善系统自身的性能。在计算机系统中，“经验”通常以“数据”的形式存在，因此，机器学习所研究的主要内容，是关于在计算机上从数据中产生“模型”（model）的算法，即“学习算法”（learning algorithm）。有了学习算法，我们把经验数据提供给它，它就能基于这些数据产生模型；在面对新的情况时，模型会给我们提供相应的判断。</li>
+</ul>
+<h1 id="有监督学习（Supervised-Learning）"><a href="#有监督学习（Supervised-Learning）" class="headerlink" title="有监督学习（Supervised Learning）"></a>有监督学习（Supervised Learning）</h1><ul>
+<li>维基百科<br><strong>Supervised learning</strong> is the machine learningtask of inferring a function from labeled training data.<br>The training data consist of a set of <em>training examples</em>. In supervised learning, each example is a <em>pair</em> consisting of an input object (typically a vector) and a desired output value (also called the <em>supervisory signal</em>). A supervised learning algorithm analyzes the training data and produces an inferred function, which can be used for mapping new examples. An optimal scenario will allow for the algorithm to correctly determine the class labels for unseen instances. This requires the learning algorithm to generalize from the training data to unseen situations in a “reasonable” way.</li>
+</ul>
+<p><strong>Example: </strong><br>　Given data about the size of houses on the real estate market, try to predict their price. Price as a function of size is a continuous output, so this is a regression problem.<br>　We could turn this example into a classification problem by instead making our output about whether the house “sells for more or less than the asking price.” Here we are classifying the houses based on price into two discrete categories</p>
+<h1 id="无监督学习（Unsupervised-Learning）"><a href="#无监督学习（Unsupervised-Learning）" class="headerlink" title="无监督学习（Unsupervised Learning）"></a>无监督学习（Unsupervised Learning）</h1><p><strong>维基百科：</strong><br> 　<strong>Unsupervised learning</strong> is the machine learning task of inferring a function to describe hidden structure from unlabeled data. Since the examples given to the learner are unlabeled, there is no error or reward signal to evaluate a potential solution. This distinguishes unsupervised learning from supervised learning and reinforcement learning. 　Unsupervised learning is closely related to the problem of density estimation in statistics.[1] However unsupervised learning also encompasses many other techniques that seek to summarize and explain key features of the data. Many methods employed in unsupervised learning are based on data mining methods used to preprocess data. 　</p>
+<p>Example:<br>　Clustering: Take a collection of 1000 essays written on the US Economy, and find a way to automatically group these essays into a small number that are somehow similar or related by different variables, such as word frequency, sentence length, page count, and so on.<br>　Associative: Suppose a doctor over years of experience forms associations in his mind between patient characteristics and illnesses that they have. If a new patient shows up then based on this patient’s characteristics such as symptoms, family medical history, physical attributes, mental outlook, etc the doctor associates possible illness or illnesses based on what the doctor has seen before with similar patients. This is not the same as rule based reasoning as in expert systems. In this case we would like to estimate a mapping function from patient characteristics into illnesses.</p>
+<p><strong>解释一下：</strong></p>
+<p>首先看什么是学习（learning）？一个成语就可概括：举一反三。此处以高考为例，高考的题目在上考场前我们未必做过，但在高中三年我们做过很多很多题目，懂解题方法，因此考场上面对陌生问题也可以算出答案。机器学习的思路也类似：我们能不能利用一些训练数据（已经做过的题），使机器能够利用它们（解题方法）分析未知数据（高考的题目）？</p>
+<p>最简单也最普遍的一类机器学习算法就是分类（classification）。对于分类，输入的训练数据有特征（feature），有标签（label）。所谓的学习，其本质就是找到特征和标签间的关系（mapping）。这样当有特征而无标签的未知数据输入时，我们就可以通过已有的关系得到未知数据标签。</p>
+<p>在上述的分类过程中，如果所有训练数据都有标签，则为有监督学习（supervised learning）。如果数据没有标签，显然就是无监督学习（unsupervised learning）了，也即聚类（clustering）。</p>
+<p>目前分类算法的效果还是不错的，但相对来讲，聚类算法就有些惨不忍睹了。确实，无监督学习本身的特点使其难以得到如分类一样近乎完美的结果。这也正如我们在高中做题，答案（标签）是非常重要的，假设两个完全相同的人进入高中，一个正常学习，另一人做的所有题目都没有答案，那么想必第一个人高考会发挥更好，第二个人会发疯。</p>
+<p>这时各位可能要问，既然分类如此之好，聚类如此之不靠谱，那为何我们还可以容忍聚类的存在？因为在实际应用中，标签的获取常常需要极大的人工工作量，有时甚至非常困难。例如在自然语言处理（NLP）中，Penn Chinese Treebank在2年里只完成了4000句话的标签……</p>
+<p>这时有人可能会想，难道有监督学习和无监督学习就是非黑即白的关系吗？有没有灰呢？Good idea。灰是存在的。二者的中间带就是半监督学习（semi-supervised learning）。对于半监督学习，其训练数据的一部分是有标签的，另一部分没有标签，而没标签数据的数量常常极大于有标签数据数量（这也是符合现实情况的）。隐藏在半监督学习下的基本规律在于：数据的分布必然不是完全随机的，通过一些有标签数据的局部特征，以及更多没标签数据的整体分布，就可以得到可以接受甚至是非常好的分类结果。（此处大量忽略细节）</p>
+<p>因此，learning家族的整体构造是这样的：<br>有监督学习（分类，回归）<br>↕<br>半监督学习（分类，回归），transductive learning（分类，回归）<br>↕<br>半监督聚类（有标签数据的标签不是确定的，类似于：肯定不是xxx，很可能是yyy）<br>↕<br>无监督学习（聚类）</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在Coursera上Andrew Ng的课程中，主要涉及： 　</p>
+<ul>
+<li>Supervised Learning，包括Linear Regression、Logistic Regression、Neural Networks、Support Vector Machines； 　</li>
+<li>Unsupervised Learning，包括Clustering、Dimensionality Reduction、Anomaly Detection、Recommender Systems。 </li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>Coursera - Machine learning( Andrew Ng)  <a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">https://www.coursera.org/learn/machine-learning</a><br>什么是无监督学习？ <a href="https://www.zhihu.com/question/23194489" target="_blank" rel="external">https://www.zhihu.com/question/23194489</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;在学习的过程中，抓住基本概念是非常重要的，这样可以防止自己陷入某些细节中无法自拔，可以让自己站在比较宏观的层面上看待问题。 更多见：&lt;a href=&quot;https://feiyang.li/&quot;&gt;李飞阳&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>《结网》</title>
@@ -265,9 +320,9 @@
     </summary>
     
     
-      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
     
       <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
     
@@ -1039,9 +1094,9 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
       <category term="VPS" scheme="http://feiyang.li/tags/VPS/"/>
     
@@ -1333,11 +1388,11 @@ jiangge
     </summary>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
     
       <category term="Java" scheme="http://feiyang.li/tags/Java/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1602,9 +1657,9 @@ jiangge
     </summary>
     
     
-      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
     
   </entry>
   
@@ -1719,102 +1774,6 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
       <category term="爬虫" scheme="http://feiyang.li/tags/%E7%88%AC%E8%99%AB/"/>
     
       <category term="urllib2" scheme="http://feiyang.li/tags/urllib2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 XPath 提取网页信息</title>
-    <link href="http://feiyang.li/2016/12/13/get_html/"/>
-    <id>http://feiyang.li/2016/12/13/get_html/</id>
-    <published>2016-12-13T08:24:34.000Z</published>
-    <updated>2017-02-11T13:27:18.463Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p> 以1024举例，使用XPath提取图片链接以及磁力链接地址。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="学习XPath的基本知识"><a href="#学习XPath的基本知识" class="headerlink" title="学习XPath的基本知识"></a>学习XPath的基本知识</h1><p>推荐 <a href="http://www.w3school.com.cn/xpath/index.asp" target="_blank" rel="external">Xpath教程</a>  很容易理解。<br>推荐可以将常用的语法记下来，不常用的可以等用的时候再查。</p>
-<h2 id="推荐使用Chrome浏览器中的XPath-Helper，良心之作"><a href="#推荐使用Chrome浏览器中的XPath-Helper，良心之作" class="headerlink" title="推荐使用Chrome浏览器中的XPath Helper，良心之作."></a>推荐使用Chrome浏览器中的<a href="https://chrome.google.com/webstore/detail/hgimnogjllphhhkhlmebbmlgjoejdpjl" target="_blank" rel="external">XPath Helper</a>，<strong>良心之作</strong>.</h2><ul>
-<li><p>左边输入XPath表达式，右侧会自动展示结果。</p>
-</li>
-<li><p>选择元素之后按下<em>ctral + shift + x</em>，可以自动提取该元素的XPath表达式。</p>
-</li>
-</ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161213/154603126.png?imageMogr2/thumbnail/!80p" alt="使用Xpath" title="">
-                </div>
-                <div class="image-caption">使用Xpath</div>
-            </figure>
-<h2 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h2><ul>
-<li>/    从根节点选取。</li>
-<li>//    从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。</li>
-<li>@    选取属性，常见使用方法为[@class = “title”]</li>
-</ul>
-<p>举例，比如在<a href="https://s.taobao.com/search?q=%E5%8F%8C%E9%9D%A2%E8%83%B6&amp;refpid=430266_1006&amp;source=tbsy&amp;style=grid&amp;tab=all&amp;pvid=b644f95644f7acd22cbc011dd2b4335f&amp;clk1=e2a07cd1788da47d4c393b5b8bbbcc27&amp;spm=a21bo.50862.201856-sline.1.o2a4b1" target="_blank" rel="external">双面胶-淘宝搜索</a> 页面</p>
-<p>输入: <strong>//*[@class=”m-itemlist”]//a[@trace-price&lt;20]/@href</strong>，用来提取出class为itemlist内a标签里所有price 小于20的产品，并将其href(即超链接)输出<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161213/155438640.png?imageMogr2/thumbnail/!80p" alt="结果展示" title="">
-                </div>
-                <div class="image-caption">结果展示</div>
-            </figure></p>
-<p>需要结合Chrome浏览器的F12一起使用，先选定大致的框架，比如itemlist这个class，然后逐渐加上更多的要求，具体见文首给出的链接学习。</p>
-<p><code>知道这些就可以抓取1024上的图片和磁力链接了，目测是不是很简单</code></p>
-<hr>
-<h1 id="挑选网页实验一下"><a href="#挑选网页实验一下" class="headerlink" title="挑选网页实验一下"></a>挑选网页实验一下</h1><blockquote>
-<p>作为一名1024资深游客，首先在技术讨论区选择一篇好文，这里用的是<a href="http://www.t66y.com/htm_mob/7/1612/2172569.html" target="_blank" rel="external">[榴民资讯]11月精品主题推荐（49期）</a></p>
-</blockquote>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161213/160946786.png?imageMogr2/thumbnail/!80p" alt="还是熟悉的味道"></p>
-<h2 id="使用F12查看网页的结构"><a href="#使用F12查看网页的结构" class="headerlink" title="使用F12查看网页的结构"></a>使用F12查看网页的结构</h2><p>有两个主要标签 header 和 main ，鼠标移动到main上，可以看到内容页面都被包含起来，所以第一个节点应该选main。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161213/161454868.png?imageMogr2/thumbnail/!80p" alt="main标签" title="">
-                </div>
-                <div class="image-caption">main标签</div>
-            </figure></p>
-<h2 id="使用XPath表达式筛选图片链接"><a href="#使用XPath表达式筛选图片链接" class="headerlink" title="使用XPath表达式筛选图片链接"></a>使用XPath表达式筛选图片链接</h2><p>我们看到图片前边都有一个属性src，这个src后边就是我们所需的图片链接。</p>
-<p>综上，使用XPath表达式: <strong>//*[@id=”main”]//@src</strong><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161213/161747115.png?imageMogr2/thumbnail/!80p" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure><br>输入XPath代码，获得图片链接。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161213/161335310.png?imageMogr2/thumbnail/!80p" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure></p>
-<h2 id="使用XPath表达式筛选磁力链接"><a href="#使用XPath表达式筛选磁力链接" class="headerlink" title="使用XPath表达式筛选磁力链接"></a>使用XPath表达式筛选磁力链接</h2><p>同理，我们可以发现，磁力链接前边都有一个blockquote，与上一条处理方式类似，使用XPath表达式: <strong>//*[@id=”main”]//blockquote</strong></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161213/162129381.png?imageMogr2/thumbnail/!80p" alt="磁力链接" title="">
-                </div>
-                <div class="image-caption">磁力链接</div>
-            </figure>
-<p><strong>以上</strong> </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt; 以1024举例，使用XPath提取图片链接以及磁力链接地址。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="爬虫" scheme="http://feiyang.li/tags/%E7%88%AC%E8%99%AB/"/>
-    
-      <category term="Xpath" scheme="http://feiyang.li/tags/Xpath/"/>
     
   </entry>
   
