@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2016/12/31/IPyhton-notebook/</loc>
+    
+    <lastmod>2017-02-15T12:07:19.977Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2017/02/15/python-camp7/</loc>
     
     <lastmod>2017-02-15T11:32:47.616Z</lastmod>
@@ -159,13 +166,6 @@
     <loc>http://feiyang.li/2016/12/29/Python-selenium/</loc>
     
     <lastmod>2017-02-11T13:21:00.266Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/12/31/IPyhton-notebook/</loc>
-    
-    <lastmod>2017-02-11T13:20:55.971Z</lastmod>
     
   </url>
   
