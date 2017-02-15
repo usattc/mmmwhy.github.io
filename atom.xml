@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-02-15T11:32:47.616Z</updated>
+  <updated>2017-02-15T14:09:04.064Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -14,6 +14,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第1.8题：文本读取转化</title>
+    <link href="http://feiyang.li/2017/02/15/python-camp8/"/>
+    <id>http://feiyang.li/2017/02/15/python-camp8/</id>
+    <published>2017-02-15T14:07:40.000Z</published>
+    <updated>2017-02-15T14:09:04.064Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.8：</strong> 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p><strong>题目1.8：</strong> 纯文本文件 student.txt为学生信息, 里面的内容（包括花括号）如下所示：</p>
+<pre><code>{
+    &quot;1&quot;:[&quot;张三&quot;,150,120,100],
+    &quot;2&quot;:[&quot;李四&quot;,90,99,95],
+    &quot;3&quot;:[&quot;王五&quot;,60,66,68]
+}
+</code></pre><p>请将上述内容写到 student.xls 文件中，如下图所示：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164341562.png" alt="student.xls" title="">
+                </div>
+                <div class="image-caption">student.xls</div>
+            </figure>
+<p>这个题使用到<strong>文件读取</strong>，<strong>数据读取</strong>，<strong>Xls文件输出</strong>三部分内容。</p>
+<h1 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h1><p>使用<strong>open()</strong>函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'student.txt'</span>) <span class="keyword">as</span> f:</div><div class="line">    content = f.read()</div></pre></td></tr></table></figure></p>
+<h1 id="数据读取"><a href="#数据读取" class="headerlink" title="数据读取"></a>数据读取</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d = json.loads(content)</div></pre></td></tr></table></figure>
+<h1 id="xls文件输出"><a href="#xls文件输出" class="headerlink" title="xls文件输出"></a>xls文件输出</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">file = xlwt.Workbook()</div><div class="line"><span class="comment"># 添加sheet</span></div><div class="line">table = file.add_sheet(<span class="string">'test'</span>)</div><div class="line"><span class="keyword">for</span> row, i <span class="keyword">in</span> enumerate(list(d)):</div><div class="line">    table.write(row, <span class="number">0</span>, i)</div><div class="line">    <span class="keyword">for</span> col, j <span class="keyword">in</span> enumerate(d[i]):</div><div class="line">        table.write(row, col + <span class="number">1</span>, j)</div><div class="line">file.save(<span class="string">'student.xls'</span>)</div></pre></td></tr></table></figure>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>student.txt 可以在这里下载~  <a href="http://cdn.mmmxcc.cn/blog/student.txt" target="_blank" rel="external">http://cdn.mmmxcc.cn/blog/student.txt</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding: utf-8</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">import</span> xlwt</div><div class="line"></div><div class="line"><span class="comment"># 存放文件的目录</span></div><div class="line">filepath = <span class="string">'D:'</span></div><div class="line"></div><div class="line">os.chdir(filepath)</div><div class="line"><span class="comment"># 读取文件内容</span></div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">'student.txt'</span>) <span class="keyword">as</span> f:</div><div class="line">    content = f.read()</div><div class="line"><span class="comment"># 转为json</span></div><div class="line">d = json.loads(content)</div><div class="line">file = xlwt.Workbook()</div><div class="line"><span class="comment"># 添加sheet</span></div><div class="line">table = file.add_sheet(<span class="string">'test'</span>)</div><div class="line"><span class="keyword">for</span> row, i <span class="keyword">in</span> enumerate(list(d)):</div><div class="line">    table.write(row, <span class="number">0</span>, i)</div><div class="line">    <span class="keyword">for</span> col, j <span class="keyword">in</span> enumerate(d[i]):</div><div class="line">        table.write(row, col + <span class="number">1</span>, j)</div><div class="line">file.save(<span class="string">'student.xls'</span>)</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。&lt;strong&gt;题目1.8：&lt;/strong&gt; 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+    
+      <category term="自然语言处理" scheme="http://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>第1.7题：Python敏感词检测</title>
@@ -111,9 +162,9 @@
     </summary>
     
     
-      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -1667,46 +1718,6 @@ jiangge
       <category term="Nginx" scheme="http://feiyang.li/tags/Nginx/"/>
     
       <category term="HTTPS" scheme="http://feiyang.li/tags/HTTPS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用Python插入排序</title>
-    <link href="http://feiyang.li/2016/12/15/Python_get_order/"/>
-    <id>http://feiyang.li/2016/12/15/Python_get_order/</id>
-    <published>2016-12-15T13:44:51.000Z</published>
-    <updated>2017-02-07T05:47:48.848Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>使用Python进行数据结构操作比较少见，但为了更深入的理解Python的操作原理，提升自己的算法能力。我决定认真过一遍 <strong>普林斯顿大学教授Robert Sedgewick主讲的《Algorithms》</strong></p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<p><a href="http://download.csdn.net/detail/mmmwhy/9712719" target="_blank" rel="external">【普林斯顿算法下载链接】普林斯顿大学教授Robert Sedgewick主讲的《Algorithms》</a></p>
-<h1 id="使用C-插入排序"><a href="#使用C-插入排序" class="headerlink" title="使用C++插入排序"></a>使用C++插入排序</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> a[] = &#123; <span class="number">4</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span> &#125;;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">		<span class="keyword">int</span> key = a[i];</div><div class="line">		<span class="keyword">int</span> j = i - <span class="number">1</span>;</div><div class="line">		<span class="keyword">while</span> (j &gt;= <span class="number">0</span>&amp;&amp;a[j] &gt; key) &#123;</div><div class="line">			a[j + <span class="number">1</span>] = a[j];  </div><div class="line">			j--;</div><div class="line">		&#125;</div><div class="line">		a[j + <span class="number">1</span>] = key;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; a[i];</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这一段比较简单，我也就不多说了。</p>
-<h1 id="使用Python进行排序"><a href="#使用Python进行排序" class="headerlink" title="使用Python进行排序"></a>使用Python进行排序</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">data = [<span class="number">4</span>,<span class="number">3</span>,<span class="number">9</span>,<span class="number">0</span>,<span class="number">1</span>]</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(data)):</div><div class="line">    key = data[i]</div><div class="line">    j = i - <span class="number">1</span></div><div class="line">    <span class="keyword">while</span> j &gt;= <span class="number">0</span> <span class="keyword">and</span> data[j] &gt; key:</div><div class="line">            data[j+<span class="number">1</span>]=data[j]</div><div class="line">            j = j - <span class="number">1</span></div><div class="line">    data[j+<span class="number">1</span>] = key</div><div class="line">print(data)</div></pre></td></tr></table></figure>
-<p>总结：</p>
-<ul>
-<li>Python的确比CPP简洁得多；</li>
-<li>while循环体中条件部分可以使用 and ，不能用&amp;&amp;</li>
-<li>python没有{}，需要对齐，输入Tab或者敲空格。</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;使用Python进行数据结构操作比较少见，但为了更深入的理解Python的操作原理，提升自己的算法能力。我决定认真过一遍 &lt;strong&gt;普林斯顿大学教授Robert Sedgewick主讲的《Algorithms》&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
     
   </entry>
   
