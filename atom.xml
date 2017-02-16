@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-02-15T14:09:04.064Z</updated>
+  <updated>2017-02-16T14:00:31.614Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -14,6 +14,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第1.8题：Python对密码加密</title>
+    <link href="http://feiyang.li/2017/02/16/python-camp9/"/>
+    <id>http://feiyang.li/2017/02/16/python-camp9/</id>
+    <published>2017-02-16T13:59:43.000Z</published>
+    <updated>2017-02-16T14:00:31.614Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.9</strong>： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>思路：salt 加 hash 来单向转换密码明文</p>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>以下给出Py2和Py3两段代码，输出的内容是一样的。因为加密之后的内容不是unicode代码，所以存储可能不方便，可以使用<code>base64.b64encode(hashed)</code>转化为base64编码格式。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170216/194046518.png" alt="输出结果" title="">
+                </div>
+                <div class="image-caption">输出结果</div>
+            </figure>
+<p>Python2代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os,base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>) <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, str)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> isinstance(password, unicode):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line">    </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
+<p>Python3代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os, base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>)  <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, bytes)</div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> isinstance(password, str):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, bytes)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
+<h1 id="Python编码问题"><a href="#Python编码问题" class="headerlink" title="Python编码问题"></a>Python编码问题</h1><p>一开始直接在Python3环境运行第一段代码的时候，总会报错<code>NameError: global name &#39;unicode&#39; is not defined</code>，百思不得其解。</p>
+<p>查了资料，才发现是因为Python更新的时候，Python 3 renamed the <strong>unicode</strong> type to <strong>str</strong>, the old <strong>str</strong> type has been replaced by <strong>bytes</strong>。在<a href="https://docs.python.org/dev/howto/pyporting.html" target="_blank" rel="external">Python升级文档</a>内可以查到相关内容，也就是<strong>unicode</strong>直接改名<strong>str</strong>，<strong>str</strong>改名成<strong>bytes</strong>。<br>Python2和Python3，在编码方面挖下太多的坑<br>举个简单的例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">isinstance(<span class="string">u'中文'</span>, unicode) <span class="comment">#python2内是正确的</span></div><div class="line">isinstance(<span class="string">u'中文'</span>, str) <span class="comment">#python3内是正确的</span></div></pre></td></tr></table></figure></p>
+<h1 id="Python3内的unicode和bytes"><a href="#Python3内的unicode和bytes" class="headerlink" title="Python3内的unicode和bytes"></a>Python3内的unicode和bytes</h1><p>Python 3最重要的新特性大概要算是<strong>对文本和二进制数据作了更为清晰的区分</strong>。文本总是Unicode，由str类型表示，二进制数据则由bytes类型表示。</p>
+<p>在将字符串存入磁盘和从磁盘读取字符串的过程中，Python 自动地帮你完成了编码和解码的工作，你不需要关心它的过程，例如你能把一个中文赋值给字符串。而使用 bytes 类型，实质上是告诉 Python，不需要它帮你自动地完成编码和解码的工作，而是用户自己手动进行，并指定编码格式。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<p>参考链接：<br><a href="http://zhuoqiang.me/password-storage-and-python-example.html" target="_blank" rel="external">http://zhuoqiang.me/password-storage-and-python-example.html</a><br><a href="http://www.ituring.com.cn/article/61192" target="_blank" rel="external">http://www.ituring.com.cn/article/61192</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。&lt;strong&gt;题目1.9&lt;/strong&gt;： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+    
+      <category term="密码处理" scheme="http://feiyang.li/tags/%E5%AF%86%E7%A0%81%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
   
   <entry>
     <title>第1.8题：文本读取转化</title>
@@ -1597,127 +1653,6 @@ jiangge
     
     
       <category term="LaTex" scheme="http://feiyang.li/tags/LaTex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nginx环境下配置HTTPS</title>
-    <link href="http://feiyang.li/2016/12/18/Nginx_HTTPS/"/>
-    <id>http://feiyang.li/2016/12/18/Nginx_HTTPS/</id>
-    <published>2016-12-18T08:47:29.000Z</published>
-    <updated>2017-02-11T13:21:04.182Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>现在，你应该能在访问<a href="https://feiyang.li">https://feiyang.li</a> 的时候，在地址栏里看到一个漂亮的小绿锁<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="申请免费SSL证书"><a href="#申请免费SSL证书" class="headerlink" title="申请免费SSL证书"></a>申请免费SSL证书</h1><p>普通的SSL证书动辄好几千，简直令人发指。不过别担心，我找到了3个免费申请HTTPS证书的方式。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161218/161515528.png?imageMogr2/thumbnail/!80p" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<ul>
-<li><strong>StartSSL也免费提供了一个证书（纯英文）</strong><br>申请地址：<a href="https://www.startssl.com/Account?r=L1ZhbGlkYXRl" target="_blank" rel="external">https://www.startssl.com/Account?r=L1ZhbGlkYXRl</a></li>
-<li>阿里云免费提供的证书<br><a href="https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy" target="_blank" rel="external">https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy</a><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161218/162129508.png?imageMogr2/thumbnail/!80p" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></li>
-<li>腾讯云免费申请<br><a href="https://console.qcloud.com/ssl" target="_blank" rel="external">https://console.qcloud.com/ssl</a><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-f86b2f0ec2e121b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-</li>
-</ul>
-<p>获得证书之后，下载至本地。</p>
-<h1 id="VPS上安装SSL证书"><a href="#VPS上安装SSL证书" class="headerlink" title="VPS上安装SSL证书"></a>VPS上安装SSL证书</h1><p><strong>以Nginx 为例</strong></p>
-<h2 id="获取证书"><a href="#获取证书" class="headerlink" title="获取证书"></a>获取证书</h2><p>Nginx文件夹内获得SSL证书文件 1_www.domain.com_bundle.crt 和私钥文件 2_www.domain.com.key,</p>
-<p>1_www.domain.com_bundle.crt 文件包括两段证书代码 “—–BEGIN CERTIFICATE—–”和“—–END CERTIFICATE—–”,<br>2_www.domain.com.key 文件包括一段私钥代码“—–BEGIN RSA PRIVATE KEY—–”和“—–END RSA PRIVATE KEY—–”。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-47e83ff91ca63910.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<h2 id="上传和部署SSL证书"><a href="#上传和部署SSL证书" class="headerlink" title="上传和部署SSL证书"></a>上传和部署SSL证书</h2><p>将域名 www.domain.com 的证书文件1_www.domain.com_bundle.crt 、私钥文件2_www.domain.com.key保存到同一个目录，例如/usr/local/nginx/conf目录下。更新Nginx根目录下 conf/nginx.conf 文件如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen 443;</div><div class="line">        server_name www.domain.com; #填写绑定证书的域名</div><div class="line">        ssl on;</div><div class="line">        ssl_certificate 1_www.domain.com_bundle.crt;</div><div class="line">        ssl_certificate_key 2_www.domain.com.key;</div><div class="line">        ssl_session_timeout 5m;</div><div class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置</div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置</div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line">        location / &#123;</div><div class="line">            root   html; #站点目录</div><div class="line">            index  index.html index.htm;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">配置文件参数</th>
-<th style="text-align:left">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">listen 443</td>
-<td style="text-align:left">SSL访问端口号为443</td>
-</tr>
-<tr>
-<td style="text-align:left">ssl on</td>
-<td style="text-align:left">启用SSL功能</td>
-</tr>
-<tr>
-<td style="text-align:left">ssl_certificate</td>
-<td style="text-align:left">证书文件</td>
-</tr>
-<tr>
-<td style="text-align:left">ssl_certificate_key</td>
-<td style="text-align:left">私钥文件</td>
-</tr>
-<tr>
-<td style="text-align:left">ssl_protocols</td>
-<td style="text-align:left">使用的协议</td>
-</tr>
-<tr>
-<td style="text-align:left">ssl_ciphers</td>
-<td style="text-align:left">配置加密套件，写法遵循openssl标准</td>
-</tr>
-</tbody>
-</table>
-<h2 id="重启Nginx"><a href="#重启Nginx" class="headerlink" title="重启Nginx"></a>重启Nginx</h2><p>输入 <code>nginx -s reload</code>  ：修改配置后重新加载生效<br>可以看到SSL证书生效，且HTTPS可以访问站点。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-f690fba71ee4240b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;现在，你应该能在访问&lt;a href=&quot;https://feiyang.li&quot;&gt;https://feiyang.li&lt;/a&gt; 的时候，在地址栏里看到一个漂亮的小绿锁&lt;figure class=&quot;image-bubble&quot;&gt;
-                &lt;div class=&quot;img-lightbox&quot;&gt;
-                    &lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;
-                    &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; title=&quot;&quot;&gt;
-                &lt;/div&gt;
-                &lt;div class=&quot;image-caption&quot;&gt;&lt;/div&gt;
-            &lt;/figure&gt;&lt;br&gt;作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="VPS" scheme="http://feiyang.li/tags/VPS/"/>
-    
-      <category term="Nginx" scheme="http://feiyang.li/tags/Nginx/"/>
-    
-      <category term="HTTPS" scheme="http://feiyang.li/tags/HTTPS/"/>
     
   </entry>
   
