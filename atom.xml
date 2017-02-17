@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-02-17T09:05:52.728Z</updated>
+  <updated>2017-02-17T09:07:37.504Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>第2.1题：Python对密码加密</title>
+    <title>第2.1题：Python统计日记最重要的词</title>
     <link href="http://feiyang.li/2017/02/17/python-camp2-1/"/>
     <id>http://feiyang.li/2017/02/17/python-camp2-1/</id>
     <published>2017-02-17T09:04:55.000Z</published>
-    <updated>2017-02-17T09:05:52.728Z</updated>
+    <updated>2017-02-17T09:07:37.504Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目2.1</strong>： 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。</p>
