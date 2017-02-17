@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-02-16T14:00:31.614Z</updated>
+  <updated>2017-02-17T04:33:14.710Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>第1.8题：Python对密码加密</title>
+    <title>第1.9题：Python对密码加密</title>
     <link href="http://feiyang.li/2017/02/16/python-camp9/"/>
     <id>http://feiyang.li/2017/02/16/python-camp9/</id>
     <published>2017-02-16T13:59:43.000Z</published>
-    <updated>2017-02-16T14:00:31.614Z</updated>
+    <updated>2017-02-17T04:33:14.710Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.9</strong>： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</p>
