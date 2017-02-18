@@ -58,7 +58,7 @@
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170218/193330168.png">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170218/193636035.png">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170218/193700547.png">
-<meta property="og:updated_time" content="2017-02-18T11:41:22.013Z">
+<meta property="og:updated_time" content="2017-02-18T12:41:10.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django 创建第一个项目">
 <meta name="twitter:description" content="上手使用Python的Web框架– Django">
@@ -190,7 +190,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#windows上virtualenv-安装及使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">windows上virtualenv 安装及使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正常安装过程"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">正常安装过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pycharm使用虚拟环境"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Pycharm使用虚拟环境</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#初识Django工程"><span class="post-toc-number">2.</span> <span class="post-toc-text">初识Django工程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#点击Create创建工程"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">点击Create创建工程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#直接启动Django项目"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">直接启动Django项目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pycharm启动Django项目"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Pycharm启动Django项目</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#windows上virtualenv-安装及使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">windows上virtualenv 安装及使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正常安装过程"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">正常安装过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pycharm使用虚拟环境"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Pycharm使用虚拟环境</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#初识Django工程"><span class="post-toc-number">2.</span> <span class="post-toc-text">初识Django工程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#点击Create创建工程"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">点击Create创建工程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#直接启动Django项目"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">直接启动Django项目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pycharm启动Django项目"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Pycharm启动Django项目</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Hello-world"><span class="post-toc-number">3.</span> <span class="post-toc-text">Hello world</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码分析"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">代码分析</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#补充"><span class="post-toc-number">4.</span> <span class="post-toc-text">补充</span></a></li></ol>
         </nav>
     </aside>
     
@@ -220,7 +220,7 @@
 </blockquote>
 <hr>
 <a id="more"></a>
-<p>网上教程安装环境多是linux环境，所以我写一下windows系统下创建Django项目。</p>
+<p>网上教程安装环境多是linux环境，所以我写一下windows系统下创建Django项目。基于Django 1.10 和Python3.5，作为学生狗的好处之一，就是有很多时间，慢慢琢磨新技术。</p>
 <h1 id="windows上virtualenv-安装及使用"><a href="#windows上virtualenv-安装及使用" class="headerlink" title="windows上virtualenv 安装及使用"></a>windows上virtualenv 安装及使用</h1><p>一开始我不太懂virtualenv 到底有什么意思，后来慢慢各种package装的多了后，发现还是很有必要的。举个例子：如果应用A需要jinja 2.7，而应用B需要jinja 2.6怎么办？</p>
 <p>这种情况下，每个应用可能需要各自拥有一套“独立”的Python运行环境。virtualenv就是用来为一个应用创建一套“隔离”的Python运行环境。</p>
 <h2 id="正常安装过程"><a href="#正常安装过程" class="headerlink" title="正常安装过程"></a>正常安装过程</h2><ul>
@@ -263,16 +263,15 @@
             </figure></p>
 <p>文件如下:</p>
 <ul>
-<li><p><strong>init</strong>.py：让Python把该目录看成一个package使需的文件，而不是一个文件的目录</p>
-</li>
-<li><p>settings.py：Django项目的设置和设置，数据库，时区等等的配置，都是在这个配置文件下</p>
-</li>
-<li><p>urls.py：Django项目的url设置，可以理解为Django网站的目录,后面在介绍url隐射的时候会介绍到该文件</p>
-</li>
-<li><p>manage.py：一个命令行工具，允许以多种方式与python进行交互。</p>
-</li>
+<li>my_site: 项目的容器。</li>
+<li>manage.py: 一个实用的命令行工具，可让你以各种方式与该 Django 项目进行交互。</li>
+<li>my_site/<strong>init</strong>.py: 一个空文件，告诉 Python 该目录是一个 Python 包。</li>
+<li>my_site/settings.py: 该 Django 项目的设置/配置。</li>
+<li>my_site/urls.py: 该 Django 项目的 URL 声明; 一份由 Django 驱动的网站”目录”。</li>
+<li>my_site/wsgi.py: 一个 WSGI 兼容的 Web 服务器的入口，以便运行你的项目。</li>
 </ul>
-<h2 id="直接启动Django项目"><a href="#直接启动Django项目" class="headerlink" title="直接启动Django项目"></a>直接启动Django项目</h2><p>来看执行的结果，启动的方式是：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py runserver</div></pre></td></tr></table></figure></p>
+<h2 id="直接启动Django项目"><a href="#直接启动Django项目" class="headerlink" title="直接启动Django项目"></a>直接启动Django项目</h2><p>来看执行的结果，启动的方式是：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py runserver <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">8000</span></div></pre></td></tr></table></figure></p>
+<p>0.0.0.0让其它电脑可连接到开发服务器，8000为端口号。如果不说明，那么端口号默认为8000。</p>
 <h2 id="Pycharm启动Django项目"><a href="#Pycharm启动Django项目" class="headerlink" title="Pycharm启动Django项目"></a>Pycharm启动Django项目</h2><ul>
 <li>打开manage.py文件</li>
 <li>在菜单栏中Run中选择Edit Configurations，见截图：<br>修改<strong>Script parameters:</strong> <code>runserver</code><figure class="image-bubble">
@@ -289,15 +288,54 @@
                 </div>
                 <div class="image-caption">输出</div>
             </figure>
-页面截图<figure class="image-bubble">
+</li>
+</ul>
+<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="http://cdn.mmmxcc.cn/blog/20170218/193700547.png" alt="页面" title="">
                 </div>
                 <div class="image-caption">页面</div>
             </figure>
+<hr>
+<h1 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello world"></a>Hello world</h1><ul>
+<li><p>新建 view.py<br>在先前创建的 my_site 目录下的 my_site 目录新建一个 view.py 文件，并输入代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"Hello world ! "</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><p>我们从 django.http 中导入了 HttpResponse 这个类。我们会在接下来用到这个类。</p>
+</li>
+<li><p>我们定义了一个叫做 hello 的视图函数(view function)。每个view function至少要有一个参数，通常被叫做 request 。这是一个对象，包含了触发这个 view function的Web请求的信息， 它是 django.http.HttpRequest 的一个实例(instance)。 在这个例子中，虽然我们不对这个 request 做任何处理，但是我们还必须要把它作为视图的第一个参数。</p>
+</li>
+<li><p>这个函数只有一行简单的代码：它仅仅返回一个 HttpResponse 对象，这个对象包含了文本“Hello world”。</p>
 </li>
 </ul>
+</li>
+</ul>
+<p>记住，一个视图本身就是一个Python的函数，这个函数接受一个 HttpRequest 作为它的第一个参数，并返回 一个 HttpResponse 的实例。要想让一个Python函数成为一个Django的视图，你需要让它满足这两个条件。 </p>
+<ul>
+<li>修改urls.py<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> include, url</div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> my_site.view <span class="keyword">import</span> hello</div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^hello/$'</span>, hello)</div><div class="line">]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><ul>
+<li><p>URLconf<br>在Django里，要关联view function到一个URL，需要用到 URLconf。URLconf 就像是你的Django站点的目录。本质上，它是一个URL和这个URL将调用的view function之间的映射关系。 通过这种方式，你就可以告诉Django：“对于这个URL，调用这段代码，对于那个URL，调用那段代码。”例如，当用户访问 /hello/ 时，调用view function hello() ， 这个view function在 views.py 中。因此需要在使用function前，进行声明：<code>from my_site.view import hello</code>。</p>
+</li>
+<li><p>URLpattern<br>首先，我们从模块mysite/views.py中导入了 hello 这个view function。Python的导入语法用mysite.views表示 mysite/views.py 。(这段代码假设了mysite/views.py在Python的搜索路径中) 接着，我们添加了url(r’^hello/$’, hello), 到 urlpatterns 中。这一行被叫做一个URLpattern。 url() 函数会告诉Django如何处理你配置的url。 url() 的第一个参数是一个模式匹配字符串( 正则表达式)，第二个参数处理这个URLpattern的view function。</p>
+</li>
+</ul>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
+<li><p>正则表达式<br>我们在正则表达式字符串前面加了一个 r 。在Python中，这表示一个原始字符串(raw string)，Python不会去转义那些反斜杠()。在普通的Python字符串中，反斜杠会被用来转义特殊字符，比如字符串 ‘\n’ 会被解释成换行符。当你加上 r 之后，Python就不会转义那些字符了， r’\n’ 就是一个包括了一个反斜杠和一个小写字母“n”的字符串。正则表达式中反斜杠的用法和Python字符串中反斜杠的用法刚好冲突了。所以在Python中使用正则表达式的时候最好都加上 r 。本书中所有的URLpattern都会用这种形式。</p>
+</li>
+<li><p>URLpattern的语法</p>
+<ul>
+<li><p>Django在检查URL模式之前，会移除每个URL最开始的斜杠。这意味着URLpattern并不包括 /hello 开头那个斜杠。(一开始，这可能不太直观，但是这样做简化了很多事情。)</p>
+</li>
+<li><p>匹配模式里面包括了一个脱字符( ^ )和一个美元符( \$ )。这两个符号在正则表达式里面的有特别的意义： ^ 要求从字符串开头开始匹配， \$ 则是要求对字符串尾部进行匹配。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>这个URLconf中我们是把 hello 这个view function直接作为一个对象传递的，而不是去调用它。 这是Pyhton(作为动态语言)的一个重要特征，函数是一级对象(first-class objects)，你可以像 传递其它变量一样传递一个函数。很洋气吧？</p>
 <hr>
 <p>以上</p>
 
@@ -307,7 +345,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-02-18T11:41:22.013Z" itemprop="dateUpdated">2017年2月18日 19:41</time>
+    最后更新时间：<time datetime="2017-02-18T12:41:10.174Z" itemprop="dateUpdated">2017年2月18日 20:41</time>
 </span><br>
 
 
