@@ -15,6 +15,23 @@
     
 
 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
 
     <meta charset="utf-8">
     
@@ -32,7 +49,7 @@
     <meta name="description" content="上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python爬取图片（使用urllib2）">
-<meta property="og:url" content="http://feiyang.li/2016/12/15/Python_use_urllib2/index.html">
+<meta property="og:url" content="https://feiyang.li/2016/12/15/Python_use_urllib2/index.html">
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p">
@@ -67,7 +84,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">Wing Lee</h5>
-          <a href="mailto:i@mmmxcc.com" title="i@mmmxcc.com" class="mail">i@mmmxcc.com</a>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -294,10 +311,10 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
 </span><br>
 
 
-        转载请注明出处：<a href="/2016/12/15/Python_use_urllib2/" target="_blank" rel="external">http://feiyang.li/2016/12/15/Python_use_urllib2/</a>
+        转载请注明出处：<a href="/2016/12/15/Python_use_urllib2/" target="_blank" rel="external">https://feiyang.li/2016/12/15/Python_use_urllib2/</a>
     </div>
     <footer>
-        <a href="http://feiyang.li">
+        <a href="https://feiyang.li">
             <img src="/img/logo.jpg" alt="Wing Lee">
             Wing Lee
         </a>
@@ -323,7 +340,7 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://feiyang.li/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&pic=https://feiyang.li/img/logo.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -333,7 +350,7 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://feiyang.li/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&source=
 上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。
 
 " data-title=" QQ">
@@ -341,17 +358,17 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2016/12/15/Python_use_urllib2/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://feiyang.li/2016/12/15/Python_use_urllib2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python爬取图片（使用urllib2）》 — 李飞阳&url=http://feiyang.li/2016/12/15/Python_use_urllib2/&via=http://feiyang.li" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python爬取图片（使用urllib2）》 — 李飞阳&url=https://feiyang.li/2016/12/15/Python_use_urllib2/&via=https://feiyang.li" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2016/12/15/Python_use_urllib2/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://feiyang.li/2016/12/15/Python_use_urllib2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -396,7 +413,7 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     
 
 <div class="comments" id="comments">
-    <div class="ds-thread" data-thread-key="Python_use_urllib2" data-title="Python爬取图片（使用urllib2）" data-url="http://feiyang.li/2016/12/15/Python_use_urllib2/"></div>
+    <div class="ds-thread" data-thread-key="Python_use_urllib2" data-title="Python爬取图片（使用urllib2）" data-url="https://feiyang.li/2016/12/15/Python_use_urllib2/"></div>
 </div>
 <script>
 lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
@@ -470,7 +487,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://feiyang.li/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&pic=https://feiyang.li/img/logo.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -480,7 +497,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://feiyang.li/2016/12/15/Python_use_urllib2/&title=《Python爬取图片（使用urllib2）》 — 李飞阳&source=
 上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。
 
 " data-title=" QQ">
@@ -488,17 +505,17 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2016/12/15/Python_use_urllib2/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://feiyang.li/2016/12/15/Python_use_urllib2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python爬取图片（使用urllib2）》 — 李飞阳&url=http://feiyang.li/2016/12/15/Python_use_urllib2/&via=http://feiyang.li" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python爬取图片（使用urllib2）》 — 李飞阳&url=https://feiyang.li/2016/12/15/Python_use_urllib2/&via=https://feiyang.li" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2016/12/15/Python_use_urllib2/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://feiyang.li/2016/12/15/Python_use_urllib2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -509,25 +526,10 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3ay27CMBAFUP7/p9NtJUq4104qxT5eVUAdHxaD5/F6xev4td5fz3d43+3T6687FgYGxmMZx+k6f3COOf/f92flZ8PAwNiHkYTIT5/Pg2b7bnI2DAwMjOQzbdC86rkYGBgYY4zz4JuDMTAwMMaS2LZ81iar/5SLY2BgPJAxVtb/n79v6W9gYGA8inGUa74lmbQH6lNhYGAszZhpQI6lmjmpbohiYGAsysgDX55etsMZMwH6y7eFgYGxEGNmLGz+EtleK//YGQMDYwNGW79KSnIzbc56gAwDA2MbRhI082tictXLw3SRhWNgYCzHaEdRZ8pkVw1wfCnGYWBgLMq4O1kdG1RtS3UYGBj7MJIQOXbEsRS3QGJgYCzKaMtqeYjMBybydz/uj4GBsTSjLejPNwDaYYsk3cXAwNiTMVbQz8ttY+2BLxgMDIylGfOhc6wNmae4dSMTAwNjIcZYG3KslD9ThvtyBgwMjKUZY6E2D45tK7TdYeoXAwMD41GMtg3QluzzUl2e9NbDFhgYGAsx2iJaXuifbzMUMyMYGBhLM9p0NB+taIN4sg8GBsYOjKNcSVBud2jLc1PdUQwMjAcyxgLcVe2Eq5JnDAyMHRhtqjl2lPb6mLcNMDAw9mG0oxVtQf8O5FQLEwMDYwPGfIm/Hd2IMnIMDAyMIE1tjzgToC+7GmJgYDyE0Zby7yjot18cBgbGPoz2AfOPSQY15n8GMDAwlmD8AKpf0T92OB26AAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHUlEQVR42u3aW27DMAwF0ex/0+4CWitzSauAqdFXkKSWTgoQ4uPzwev6tdaf3q310+6e/9iSIUPGaxn9jdeH4N8h+95SZciQcQDjLoKtX/Pn8CBb3EuGDBkyliGy9g45ugwZMmR0GDztTEOtDBkyZHSSWL4ZL8+RgPtwLi5DhowXMnjV/f9fb+lvyJAh41WMK1zkObwZUDvDH6eSIUPGaAYPcASWBs20wfAleZYhQ8ZhjHTwopam8rEw8o4MGTJmMzpF/E7I5lfDGCNDhoxxjP7R+6MSnVEzGTJknMbgIxSkVclHwfgYx+0TZMiQMZTx1EHX26RBPE2YZciQMZuxb/tamzP9Eb/8Z2TIkDGawQfCakfng1+88SBDhoypDNK8JNunqSlvlKLgK0OGjGMYvK3IQ2pa+QuugOnjZMiQ8VoGbyjyUYn+j5WeSoYMGbMZKYAj02tlLcjKkCHjHMaOAS9+oaxdE9G0iAwZMkYw0j/gYTdtYZKLowwZMmR0QiQpz9WGOXipToYMGScw+EjWviSW7BVUDWXIkHEAg1zaOD69JqZgGTJkTGVc4aq1PNMBizj4ypAhYzSDL5LipmE6TVNrbU4ZMmTMYHSCLCm99Uc30IiGDBkyDmCQcMkZfXAc+mXIkCEjLIf1Aek1VIYMGTJ2f4cX77YEXBkyZLyEwQcm+JWOB9a0LihDhozTGDx17AxhdA5BdpchQ8ZQxg8L7xkGXp8PdAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
-
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>

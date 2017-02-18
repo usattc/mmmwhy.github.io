@@ -4,9 +4,9 @@
   <subtitle>PM、Coder、Data mining</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://feiyang.li/"/>
+  <link href="https://feiyang.li/"/>
   <updated>2017-02-17T09:07:37.504Z</updated>
-  <id>http://feiyang.li/</id>
+  <id>https://feiyang.li/</id>
   
   <author>
     <name>Wing Lee</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>第2.1题：Python统计日记最重要的词</title>
-    <link href="http://feiyang.li/2017/02/17/python-camp2-1/"/>
-    <id>http://feiyang.li/2017/02/17/python-camp2-1/</id>
+    <link href="https://feiyang.li/2017/02/17/python-camp2-1/"/>
+    <id>https://feiyang.li/2017/02/17/python-camp2-1/</id>
     <published>2017-02-17T09:04:55.000Z</published>
     <updated>2017-02-17T09:07:37.504Z</updated>
     
@@ -52,18 +52,18 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="https://feiyang.li/tags/Python-camp/"/>
     
-      <category term="自然语言处理" scheme="http://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+      <category term="自然语言处理" scheme="https://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>第1.9题：Python对密码加密</title>
-    <link href="http://feiyang.li/2017/02/16/python-camp9/"/>
-    <id>http://feiyang.li/2017/02/16/python-camp9/</id>
+    <link href="https://feiyang.li/2017/02/16/python-camp9/"/>
+    <id>https://feiyang.li/2017/02/16/python-camp9/</id>
     <published>2017-02-16T13:59:43.000Z</published>
     <updated>2017-02-17T04:33:14.710Z</updated>
     
@@ -108,18 +108,18 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="https://feiyang.li/tags/Python-camp/"/>
     
-      <category term="密码处理" scheme="http://feiyang.li/tags/%E5%AF%86%E7%A0%81%E5%A4%84%E7%90%86/"/>
+      <category term="密码处理" scheme="https://feiyang.li/tags/%E5%AF%86%E7%A0%81%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>第1.8题：文本读取转化</title>
-    <link href="http://feiyang.li/2017/02/15/python-camp8/"/>
-    <id>http://feiyang.li/2017/02/15/python-camp8/</id>
+    <link href="https://feiyang.li/2017/02/15/python-camp8/"/>
+    <id>https://feiyang.li/2017/02/15/python-camp8/</id>
     <published>2017-02-15T14:07:40.000Z</published>
     <updated>2017-02-15T14:09:04.064Z</updated>
     
@@ -159,18 +159,18 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="https://feiyang.li/tags/Python-camp/"/>
     
-      <category term="自然语言处理" scheme="http://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+      <category term="自然语言处理" scheme="https://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>第1.7题：Python敏感词检测</title>
-    <link href="http://feiyang.li/2017/02/15/python-camp7/"/>
-    <id>http://feiyang.li/2017/02/15/python-camp7/</id>
+    <link href="https://feiyang.li/2017/02/15/python-camp7/"/>
+    <id>https://feiyang.li/2017/02/15/python-camp7/</id>
     <published>2017-02-15T11:28:20.000Z</published>
     <updated>2017-02-16T14:24:00.864Z</updated>
     
@@ -209,18 +209,18 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="https://feiyang.li/tags/Python-camp/"/>
     
-      <category term="自然语言处理" scheme="http://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+      <category term="自然语言处理" scheme="https://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>Coursera ML笔记-机器学习基础概念</title>
-    <link href="http://feiyang.li/2017/02/14/Coursera-ML/"/>
-    <id>http://feiyang.li/2017/02/14/Coursera-ML/</id>
+    <link href="https://feiyang.li/2017/02/14/Coursera-ML/"/>
+    <id>https://feiyang.li/2017/02/14/Coursera-ML/</id>
     <published>2017-02-14T11:19:17.000Z</published>
     <updated>2017-02-14T11:24:58.929Z</updated>
     
@@ -266,16 +266,16 @@
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+      <category term="Machine Learning" scheme="https://feiyang.li/tags/Machine-Learning/"/>
     
-      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="https://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>《结网》</title>
-    <link href="http://feiyang.li/2017/02/13/jiewang/"/>
-    <id>http://feiyang.li/2017/02/13/jiewang/</id>
+    <link href="https://feiyang.li/2017/02/13/jiewang/"/>
+    <id>https://feiyang.li/2017/02/13/jiewang/</id>
     <published>2017-02-13T13:39:16.000Z</published>
     <updated>2017-02-13T14:09:06.067Z</updated>
     
@@ -369,16 +369,16 @@
     </summary>
     
     
-      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="https://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="臭臭" scheme="http://feiyang.li/tags/%E8%87%AD%E8%87%AD/"/>
+      <category term="臭臭" scheme="https://feiyang.li/tags/%E8%87%AD%E8%87%AD/"/>
     
   </entry>
   
   <entry>
     <title>第1.6题：使用Python生成字母验证码图片</title>
-    <link href="http://feiyang.li/2017/02/13/python-camp6/"/>
-    <id>http://feiyang.li/2017/02/13/python-camp6/</id>
+    <link href="https://feiyang.li/2017/02/13/python-camp6/"/>
+    <id>https://feiyang.li/2017/02/13/python-camp6/</id>
     <published>2017-02-13T05:36:02.000Z</published>
     <updated>2017-02-13T05:38:30.441Z</updated>
     
@@ -425,18 +425,18 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="https://feiyang.li/tags/Python-camp/"/>
     
-      <category term="图片处理" scheme="http://feiyang.li/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
+      <category term="图片处理" scheme="https://feiyang.li/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>第1.5题：使用Python处理图片</title>
-    <link href="http://feiyang.li/2017/02/13/python-camp5/"/>
-    <id>http://feiyang.li/2017/02/13/python-camp5/</id>
+    <link href="https://feiyang.li/2017/02/13/python-camp5/"/>
+    <id>https://feiyang.li/2017/02/13/python-camp5/</id>
     <published>2017-02-13T02:33:53.000Z</published>
     <updated>2017-02-13T05:37:50.976Z</updated>
     
@@ -469,18 +469,18 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="https://feiyang.li/tags/Python-camp/"/>
     
-      <category term="图片处理" scheme="http://feiyang.li/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
+      <category term="图片处理" scheme="https://feiyang.li/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>第1.4题：统计文件中单词出现个数</title>
-    <link href="http://feiyang.li/2017/02/11/python_camp4/"/>
-    <id>http://feiyang.li/2017/02/11/python_camp4/</id>
+    <link href="https://feiyang.li/2017/02/11/python_camp4/"/>
+    <id>https://feiyang.li/2017/02/11/python_camp4/</id>
     <published>2017-02-11T12:16:52.000Z</published>
     <updated>2017-02-17T06:12:58.915Z</updated>
     
@@ -530,18 +530,18 @@
     </summary>
     
     
-      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
+      <category term="Algorithms" scheme="https://feiyang.li/tags/Algorithms/"/>
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="https://feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>Python正则表达式</title>
-    <link href="http://feiyang.li/2017/02/10/Python_lambda/"/>
-    <id>http://feiyang.li/2017/02/10/Python_lambda/</id>
+    <link href="https://feiyang.li/2017/02/10/Python_lambda/"/>
+    <id>https://feiyang.li/2017/02/10/Python_lambda/</id>
     <published>2017-02-10T14:18:55.000Z</published>
     <updated>2017-02-11T13:36:55.460Z</updated>
     
@@ -644,16 +644,16 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="Python-camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python-camp" scheme="https://feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>第1.3题：将  200 个激活码保存到 MySQL</title>
-    <link href="http://feiyang.li/2017/02/10/python_camp3/"/>
-    <id>http://feiyang.li/2017/02/10/python_camp3/</id>
+    <link href="https://feiyang.li/2017/02/10/python_camp3/"/>
+    <id>https://feiyang.li/2017/02/10/python_camp3/</id>
     <published>2017-02-10T07:16:52.000Z</published>
     <updated>2017-02-13T05:37:44.188Z</updated>
     
@@ -772,16 +772,16 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="https://feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>frp内网穿透</title>
-    <link href="http://feiyang.li/2017/02/09/frp/"/>
-    <id>http://feiyang.li/2017/02/09/frp/</id>
+    <link href="https://feiyang.li/2017/02/09/frp/"/>
+    <id>https://feiyang.li/2017/02/09/frp/</id>
     <published>2017-02-09T02:56:15.000Z</published>
     <updated>2017-02-11T13:20:27.500Z</updated>
     
@@ -841,16 +841,16 @@
     </summary>
     
     
-      <category term="VPS" scheme="http://feiyang.li/tags/VPS/"/>
+      <category term="VPS" scheme="https://feiyang.li/tags/VPS/"/>
     
-      <category term="frp" scheme="http://feiyang.li/tags/frp/"/>
+      <category term="frp" scheme="https://feiyang.li/tags/frp/"/>
     
   </entry>
   
   <entry>
     <title>第1.2题：使用 Python 如何生成 200 个激活码</title>
-    <link href="http://feiyang.li/2017/02/07/python_camp2/"/>
-    <id>http://feiyang.li/2017/02/07/python_camp2/</id>
+    <link href="https://feiyang.li/2017/02/07/python_camp2/"/>
+    <id>https://feiyang.li/2017/02/07/python_camp2/</id>
     <published>2017-02-07T11:50:11.000Z</published>
     <updated>2017-02-13T05:37:40.975Z</updated>
     
@@ -923,16 +923,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="https://feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>Github Pages + CDN全站加速</title>
-    <link href="http://feiyang.li/2017/02/07/Github-Pages-CDN/"/>
-    <id>http://feiyang.li/2017/02/07/Github-Pages-CDN/</id>
+    <link href="https://feiyang.li/2017/02/07/Github-Pages-CDN/"/>
+    <id>https://feiyang.li/2017/02/07/Github-Pages-CDN/</id>
     <published>2017-02-07T05:38:38.000Z</published>
     <updated>2017-02-11T13:20:33.275Z</updated>
     
@@ -1033,16 +1033,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="CDN" scheme="http://feiyang.li/tags/CDN/"/>
+      <category term="CDN" scheme="https://feiyang.li/tags/CDN/"/>
     
-      <category term="Pages" scheme="http://feiyang.li/tags/Pages/"/>
+      <category term="Pages" scheme="https://feiyang.li/tags/Pages/"/>
     
   </entry>
   
   <entry>
     <title>jupyter notebook使用帮助</title>
-    <link href="http://feiyang.li/2017/01/12/jupyter-notebook/"/>
-    <id>http://feiyang.li/2017/01/12/jupyter-notebook/</id>
+    <link href="https://feiyang.li/2017/01/12/jupyter-notebook/"/>
+    <id>https://feiyang.li/2017/01/12/jupyter-notebook/</id>
     <published>2017-01-12T12:50:52.000Z</published>
     <updated>2017-02-11T13:20:37.749Z</updated>
     
@@ -1213,16 +1213,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="Jupyer" scheme="http://feiyang.li/tags/Jupyer/"/>
+      <category term="Jupyer" scheme="https://feiyang.li/tags/Jupyer/"/>
     
   </entry>
   
   <entry>
     <title>部署在线IPyhton notebook(在线python编译器)</title>
-    <link href="http://feiyang.li/2016/12/31/IPyhton-notebook/"/>
-    <id>http://feiyang.li/2016/12/31/IPyhton-notebook/</id>
+    <link href="https://feiyang.li/2016/12/31/IPyhton-notebook/"/>
+    <id>https://feiyang.li/2016/12/31/IPyhton-notebook/</id>
     <published>2016-12-31T14:52:39.000Z</published>
     <updated>2017-02-15T12:08:27.233Z</updated>
     
@@ -1304,18 +1304,18 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="VPS" scheme="http://feiyang.li/tags/VPS/"/>
+      <category term="VPS" scheme="https://feiyang.li/tags/VPS/"/>
     
-      <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
+      <category term="Jupyter" scheme="https://feiyang.li/tags/Jupyter/"/>
     
   </entry>
   
   <entry>
     <title>第1.1题：Python图片添加水印</title>
-    <link href="http://feiyang.li/2016/12/31/python_camp1/"/>
-    <id>http://feiyang.li/2016/12/31/python_camp1/</id>
+    <link href="https://feiyang.li/2016/12/31/python_camp1/"/>
+    <id>https://feiyang.li/2016/12/31/python_camp1/</id>
     <published>2016-12-31T04:16:16.000Z</published>
     <updated>2017-02-13T05:37:36.719Z</updated>
     
@@ -1372,16 +1372,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="https://feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>Python练习册</title>
-    <link href="http://feiyang.li/2016/12/31/python_camp/"/>
-    <id>http://feiyang.li/2016/12/31/python_camp/</id>
+    <link href="https://feiyang.li/2016/12/31/python_camp/"/>
+    <id>https://feiyang.li/2016/12/31/python_camp/</id>
     <published>2016-12-31T03:35:04.000Z</published>
     <updated>2017-02-13T05:43:54.616Z</updated>
     
@@ -1496,16 +1496,16 @@ jiangge
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="https://feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>使用Python selenium处理页面延迟加载问题</title>
-    <link href="http://feiyang.li/2016/12/29/Python-selenium/"/>
-    <id>http://feiyang.li/2016/12/29/Python-selenium/</id>
+    <link href="https://feiyang.li/2016/12/29/Python-selenium/"/>
+    <id>https://feiyang.li/2016/12/29/Python-selenium/</id>
     <published>2016-12-29T08:06:43.000Z</published>
     <updated>2017-02-11T13:21:00.266Z</updated>
     
@@ -1561,20 +1561,20 @@ jiangge
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
-      <category term="爬虫" scheme="http://feiyang.li/tags/%E7%88%AC%E8%99%AB/"/>
+      <category term="爬虫" scheme="https://feiyang.li/tags/%E7%88%AC%E8%99%AB/"/>
     
-      <category term="Xpath" scheme="http://feiyang.li/tags/Xpath/"/>
+      <category term="Xpath" scheme="https://feiyang.li/tags/Xpath/"/>
     
-      <category term="selenium" scheme="http://feiyang.li/tags/selenium/"/>
+      <category term="selenium" scheme="https://feiyang.li/tags/selenium/"/>
     
   </entry>
   
   <entry>
     <title>牛顿迭代法计算平方根(Java,Python实现)</title>
-    <link href="http://feiyang.li/2016/12/28/Newton-Raphson_method-Java-Python/"/>
-    <id>http://feiyang.li/2016/12/28/Newton-Raphson_method-Java-Python/</id>
+    <link href="https://feiyang.li/2016/12/28/Newton-Raphson_method-Java-Python/"/>
+    <id>https://feiyang.li/2016/12/28/Newton-Raphson_method-Java-Python/</id>
     <published>2016-12-28T08:33:55.000Z</published>
     <updated>2017-02-11T13:20:52.231Z</updated>
     
@@ -1598,11 +1598,11 @@ jiangge
     </summary>
     
     
-      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
+      <category term="Algorithms" scheme="https://feiyang.li/tags/Algorithms/"/>
     
-      <category term="Java" scheme="http://feiyang.li/tags/Java/"/>
+      <category term="Java" scheme="https://feiyang.li/tags/Java/"/>
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="https://feiyang.li/tags/Python/"/>
     
   </entry>
   

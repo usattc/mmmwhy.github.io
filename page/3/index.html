@@ -15,6 +15,23 @@
     
 
 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
 
     <meta charset="utf-8">
     
@@ -32,7 +49,7 @@
     <meta name="description" content="Python ,Code,Data mining">
 <meta property="og:type" content="website">
 <meta property="og:title" content="李飞阳">
-<meta property="og:url" content="http://feiyang.li/page/3/index.html">
+<meta property="og:url" content="https://feiyang.li/page/3/index.html">
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="Python ,Code,Data mining">
 <meta name="twitter:card" content="summary">
@@ -61,7 +78,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">Wing Lee</h5>
-          <a href="mailto:i@mmmxcc.com" title="i@mmmxcc.com" class="mail">i@mmmxcc.com</a>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -698,7 +715,7 @@ Linux 下需添加头部
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/page/3/&title=李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://feiyang.li/page/3/&title=李飞阳&pic=https://feiyang.li/img/logo.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -708,22 +725,22 @@ Linux 下需添加头部
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/page/3/&title=李飞阳&source=Python ,Code,Data mining" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://feiyang.li/page/3/&title=李飞阳&source=Python ,Code,Data mining" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/page/3/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://feiyang.li/page/3/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=李飞阳&url=http://feiyang.li/page/3/&via=http://feiyang.li" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=李飞阳&url=https://feiyang.li/page/3/&via=https://feiyang.li" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/page/3/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://feiyang.li/page/3/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -734,25 +751,10 @@ Linux 下需添加头部
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABZElEQVR42u3a0QrDIAxG4b7/S3ewq8HQnV8dY8nxqlBpv140xpjrwuN+jtfr1zGa8359eMiSVYh1T8fo0aM5hDt/lyxZnVkkKMxBPLjM58iSJStdnskLZMmS9Y0AQRbvNIGWJUsWT5rJz/+DXF6WrBKstULS2vXX61uyZP0h6z400oT7w9NkyWrGmi/Dpw5a1spPsmTJIndJsEjT4iBAyJJVjsVxaXLMS0hDtCxZDVhkKp9DludgkZYlqzGLNxmcSqBRgJAlqzQrbdxZCyLz7evwA2TJasYiPy1fmHe2r1eaEciSVYiVJsd8Dg89iyUkWbLKsdby1Xhryt8rS1Yb1k5jAV+YeWOfLFk9WWkGm7Yg8ICylenLklWCRYJCWvxNA0ewn5YlqzQr3l6mHQ24gCVLlqydI0/eaoA+WJYsWRupcLrdjfN0WbJKs/gxJ4eutTLIktWTtX8+sxM+Dte3ZMn6P9YDoHfuNkuck7gAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABWklEQVR42u3a2woCMQxF0f7/T1fwSdAJ56QZ0WT3SbS0S8E2l1lLHvs53NevY90xYMFqxNrhiLfX19T3ggVrMks/FOKZVzh9L1iwYMWs95nKZQwLFqz7Dojcp7BgwYpZStCsL6qntQWxPCxYLVj3FZL0dPer9S1YsH6MtY+HflgYa8KCNYylp6D6xidzlpsZw4LViKXfm24rxf3aBhQWrAGs2j98nAYbxxMsWE1ZSiisLOr+EsZBAAvWANY5UbmS9YQWFixYShCcu/n1ho19nsGC1ZTlJplueF3QzoQFqykrt1D8GIGe0F7OhAVrPMstDFUVcD+Uk2DBGsDKPQpQ+z4sWLBywbSysf5wXlmMDwvWn7P0Q0H5G+shuPEQHixYY1h6cFx19sCCBauKlSsHG31XWLBgyU3N5GWc6/PAgtWa5RaP9PnJshEsWMNY593/XJDtNmNgwWrKegCNQe42TrCguwAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 
-
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>

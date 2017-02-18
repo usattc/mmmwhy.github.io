@@ -15,6 +15,23 @@
     
 
 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
 
     <meta charset="utf-8">
     
@@ -32,7 +49,7 @@
     <meta name="description" content="Python ,Code,Data mining">
 <meta property="og:type" content="website">
 <meta property="og:title" content="李飞阳">
-<meta property="og:url" content="http://feiyang.li/tags/Python/index.html">
+<meta property="og:url" content="https://feiyang.li/tags/Python/index.html">
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="Python ,Code,Data mining">
 <meta name="twitter:card" content="summary">
@@ -61,7 +78,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">Wing Lee</h5>
-          <a href="mailto:i@mmmxcc.com" title="i@mmmxcc.com" class="mail">i@mmmxcc.com</a>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -664,7 +681,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/tags/Python/&title=李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://feiyang.li/tags/Python/&title=李飞阳&pic=https://feiyang.li/img/logo.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -674,22 +691,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/tags/Python/&title=李飞阳&source=Python ,Code,Data mining" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://feiyang.li/tags/Python/&title=李飞阳&source=Python ,Code,Data mining" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/tags/Python/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://feiyang.li/tags/Python/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=李飞阳&url=http://feiyang.li/tags/Python/&via=http://feiyang.li" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=李飞阳&url=https://feiyang.li/tags/Python/&via=https://feiyang.li" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/tags/Python/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://feiyang.li/tags/Python/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -700,25 +717,10 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwUlEQVR42u3ay46DMAwFUP7/p5ltpWrg2iZpZ3SyQhUNBxaWHzmOeJ0v6/WX9+v3fyW7PbxwcXHH3PNyXXPzRyYvfG3AxcXdz70OQwk9QSQ73NhwcXG/knsdevJ7cHFx/x+3h+7tj4uL+ynuJOicwaomQw/Uari4uANu3tRYd72kv4uLi9vinsV1nXz0CpvC03Fxcbdw84DSG4RUy6RoHIuLi7uYm7Qw5k2TakJTCGG4uLjLuElwmTQsnkp9cHFx93DzVCaH9tqgvcMZuLi4K7j5WPSpRkmv+YKLi7uTW2195i+THL+opkS4uLg7uU+1Lc7BytMdXFzc1dzqI6v06vXNbri4uB/lTg5mVROdpCGCi4u7kztpeiaJUZ42jXbAxcVdwJ2nMtXhyuRAGC4u7k7u6pKm2mr59cVwcXE3cpPxSXXsUQ1b0Z24uLiLub2BR3XImpdVRy/a4eLiPsqttify0qgaHJOdcXFxd3KrD+uVRr3jXMf82+Di4g64k8Imb23kLZKbUQouLu4f4VZjTv56N/1dXFzcr+EmwatXdd18Glxc3I3ceYIyGc0WPhYuLu4WbnXwOR+rVBupuLi4G7k//qPiMROqJZQAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABv0lEQVR42u3aQY7CMAwF0N7/0ow0KxZD+203oSO9rlCB8MriK7ZzHPH1+r3eX7/fmdw/Vly4uLhj7uv0+rR0fidf//wzuLi4+7l5eH1c6DRzPq2ZG3BxcZ/J7YXU+bdwcXH/O/d8a1LdMOHi4j6fO/mB5PO9LRQuLu63uL2G6b2vl/d3cXFxb5pKnAdKXuT0wuuPX8fFxd3CzYci+ai12lKplkO4uLiruUkxkwdZL/LypiouLu4ebjV6qi2MeWu1HGq4uLhjbt4GLTx3NZLisQ0uLu5+br5cfiBjXvBcdHFwcXEXcPMiJD9WNS+cRoNVXFzcBdxenOWFzaQJi4uLu4ebly55YdOLp+RYGC4u7k5u0ricH6SoRicuLu53ub1tR29zU/1TcHFx93MTUO9wVR6O1dEsLi7uam5euvQarHeVUri4uPu5SXg1tyPFdy8eEhcXdyN3sjWZHNooD1ZxcXG3cKuBUm18VOn5u7i4uKu51VHKve3RclMGFxd3I3fdQKXaZLlIXFxc3Idx5w+TP8ANQYaLi/swbi8co3VwcXE3cu89UJUUOTm0Wavh4uIOuL2G6YpNTP534OLiLuP+AFMdGzFJoVp3AAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
-
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>

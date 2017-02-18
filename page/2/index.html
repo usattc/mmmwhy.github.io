@@ -15,6 +15,23 @@
     
 
 
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
 
     <meta charset="utf-8">
     
@@ -32,7 +49,7 @@
     <meta name="description" content="Python ,Code,Data mining">
 <meta property="og:type" content="website">
 <meta property="og:title" content="李飞阳">
-<meta property="og:url" content="http://feiyang.li/page/2/index.html">
+<meta property="og:url" content="https://feiyang.li/page/2/index.html">
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="Python ,Code,Data mining">
 <meta name="twitter:card" content="summary">
@@ -61,7 +78,7 @@
         </a>
         <hgroup class="introduce">
           <h5 class="nickname">Wing Lee</h5>
-          <a href="mailto:i@mmmxcc.com" title="i@mmmxcc.com" class="mail">i@mmmxcc.com</a>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
         </hgroup>
       </div>
     </div>
@@ -695,7 +712,7 @@ jupyter notebook在数据分析时使用非常的方便，特别那优美的页�
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/page/2/&title=李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://feiyang.li/page/2/&title=李飞阳&pic=https://feiyang.li/img/logo.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -705,22 +722,22 @@ jupyter notebook在数据分析时使用非常的方便，特别那优美的页�
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/page/2/&title=李飞阳&source=Python ,Code,Data mining" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://feiyang.li/page/2/&title=李飞阳&source=Python ,Code,Data mining" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/page/2/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://feiyang.li/page/2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=李飞阳&url=http://feiyang.li/page/2/&via=http://feiyang.li" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=李飞阳&url=https://feiyang.li/page/2/&via=https://feiyang.li" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/page/2/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://feiyang.li/page/2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -731,25 +748,10 @@ jupyter notebook在数据分析时使用非常的方便，特别那优美的页�
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABUUlEQVR42u3aQQ7DIAwF0dz/0lTqHjLfoFbCw6qqUvKyqLEdPw9e47v2Px9esmRdxBrLNdt6gDUjrq+XJaszKw0K0+3wPi8GWbJkYQoPJbJkyTobIHh+K0uWrJRFtk6v+VEuL0vWFSz7W7Jk/Zc1thd/jGBPWbKasWYlaPovJkGBFLovN5Al61IWb8iuQwP5Pmj+ypLVjJUmyunhzVtIQXiSJes61qnXJ/x4DnIHWbJasmq3SVu66PiXJasZi48I1BJiEmimDyBLVjMWyanTFLlWvsZdLlmyLmLtt4H4IR0Ut7JktWTtJ8fpeMHLb2XJasOqjQLw47zYopIlqxkrzWDJQbs/iCBLVk9WLSjUbkxaVLJkdWbx8jIdAEpHi2TJksUbPby1xAvjrQAhS1YbVtreDbpZsmTJwklzWqamo0WyZHVmnWokkYI2LmJlybqf9QGdo8VtwQsFkwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABWElEQVR42u3aMRLDIAwFUd//0k6bBmW/cDITtFQZB+znAoGRrgu3+62trtQ9r280WbIOYt1l46z0yupZsmRNZq1m6KoPDwRpH1myZKW34yusLFmynmWtggUJHLJkyapZfGLzwPGjvbwsWUew+AK8//sr51uyZP056w5bvTDzPh+eIkvWMBafwMHtSi5f1GXJmsPiA8jBLgkKKKzIkjWSVU/y/RKE+p7oe1qWrKNZfNjOBjpNwMiSNY21k4zcDwfLsbJkDWPxQ5/e2DTxufyqliVrDCv9TOWHv/XroeglS9ZgVjqx09RmUAchS9YYVlowl26X4y24LFljWM1SAJ5BxQfHsmRNZvXq4kggiD9We02WrINYvcK7lBIHCFmyRrLSoh++gX5gLy9Lliyc4CRb7eAFZMmS1QoQpLwg4MqSNZK1k7Akicz4X1myhrF6G9xm8vLZJkvWCawXYAPFbWGHPCcAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
-
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
 
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
