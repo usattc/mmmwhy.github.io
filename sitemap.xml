@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2017/02/24/Hexo-music-video/</loc>
+    
+    <lastmod>2017-02-24T14:30:48.629Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2017/02/18/django-hello-world/</loc>
     
     <lastmod>2017-02-18T12:41:10.174Z</lastmod>

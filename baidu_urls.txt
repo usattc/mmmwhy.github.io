@@ -1,3 +1,4 @@
+http://feiyang.li/2017/02/24/Hexo-music-video/
 http://feiyang.li/2017/02/18/django-hello-world/
 http://feiyang.li/2017/02/17/python-camp2-1/
 http://feiyang.li/2017/02/16/python-camp9/

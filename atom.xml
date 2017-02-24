@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-02-18T12:41:10.174Z</updated>
+  <updated>2017-02-24T14:30:48.629Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -16,13 +16,114 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hexo博客中插入音乐/视频</title>
+    <link href="http://feiyang.li/2017/02/24/Hexo-music-video/"/>
+    <id>http://feiyang.li/2017/02/24/Hexo-music-video/</id>
+    <published>2017-02-24T12:57:01.000Z</published>
+    <updated>2017-02-24T14:30:48.629Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>Hexo插入音乐及视频，会让博客看起来很洋气  (ง •̀_•́)ง </p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="Markdown-通用的音乐视频插入方法"><a href="#Markdown-通用的音乐视频插入方法" class="headerlink" title="Markdown 通用的音乐视频插入方法"></a>Markdown 通用的音乐视频插入方法</h1><h2 id="iframe-标签"><a href="#iframe-标签" class="headerlink" title="iframe 标签"></a><em>iframe</em> 标签</h2><p>代码从网易云音乐获得<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170224/221537233.png" alt="网易云音乐" title="">
+                </div>
+                <div class="image-caption">网易云音乐</div>
+            </figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=430 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=114389&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;</div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="430" height="86" src="//music.163.com/outchain/player?type=2&id=114389&auto=0&height=66"></iframe>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170224/221316592.png" alt="iframe" title="">
+                </div>
+                <div class="image-caption">iframe</div>
+            </figure>
+<h2 id="embed-标签"><a href="#embed-标签" class="headerlink" title="embed 标签"></a><em>embed</em> 标签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;embed height=&quot;415&quot; width=&quot;544&quot; quality=&quot;high&quot; allowfullscreen=&quot;true&quot; type=&quot;application/x-shockwave-flash&quot; src=&quot;//static.hdslb.com/miniloader.swf&quot; flashvars=&quot;aid=8506694&amp;page=1&quot; pluginspage=&quot;//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash&quot;&gt;&lt;/embed&gt;</div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=8506694&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170224/221447863.png" alt="embed" title="">
+                </div>
+                <div class="image-caption">embed</div>
+            </figure>
+<h2 id="javascript标签举例"><a href="#javascript标签举例" class="headerlink" title="javascript标签举例"></a><em>javascript</em>标签举例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.xiami.com/widget/player-single?uid=32329501&amp;sid=1776238762&amp;mode=js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h1 id="使用-Hexo-插件插入音乐-视频"><a href="#使用-Hexo-插件插入音乐-视频" class="headerlink" title="使用 Hexo 插件插入音乐/视频"></a>使用 Hexo 插件插入音乐/视频</h1><p>两个好用的hexo插件：</p>
+<p>**hexo-tag-aplayer：<a href="https://github.com/grzhan/hexo-tag-aplayer" target="_blank" rel="external">https://github.com/grzhan/hexo-tag-aplayer</a>)</p>
+<p>**hexo-tag-dplayer： <a href="https://github.com/NextMoe/hexo-tag-dplayer" target="_blank" rel="external">https://github.com/NextMoe/hexo-tag-dplayer</a></p>
+<h2 id="播放音乐的aplayer"><a href="#播放音乐的aplayer" class="headerlink" title="播放音乐的aplayer"></a>播放音乐的aplayer</h2><p>在cmd页面内，使用npm安装：<br><code>npm install hexo-tag-aplayer</code></p>
+<p>在markdown内添加以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% aplayer &quot;她的睫毛&quot; &quot;周杰伦&quot; &quot;http://home.ustc.edu.cn/~mmmwhy/%d6%dc%bd%dc%c2%d7%20-%20%cb%fd%b5%c4%bd%de%c3%ab.mp3&quot;  &quot;http://home.ustc.edu.cn/~mmmwhy/jay.jpg&quot; &quot;autoplay=false&quot; %&#125;</div></pre></td></tr></table></figure>
+<p>效果如下所示：<br><div id="aplayer0" class="aplayer" style="margin-bottom: 20px;"></div>
+		<script>
+			new APlayer({
+				element: document.getElementById("aplayer0"),
+				narrow: false,
+				autoplay: false,
+				showlrc: 0,
+				music: {
+					title: "她的睫毛",
+					author: "周杰伦",
+					url: "http://home.ustc.edu.cn/~mmmwhy/%d6%dc%bd%dc%c2%d7%20-%20%cb%fd%b5%c4%bd%de%c3%ab.mp3",
+					pic: "http://home.ustc.edu.cn/~mmmwhy/jay.jpg",
+				}
+			});
+		</script></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170224/222700415.png" alt="aplayer" title="">
+                </div>
+                <div class="image-caption">aplayer</div>
+            </figure>
+<h2 id="播放视频的dplayer"><a href="#播放视频的dplayer" class="headerlink" title="播放视频的dplayer"></a>播放视频的dplayer</h2><p>在cmd页面内，使用npm安装：<br><code>npm install hexo-tag-dplayer</code></p>
+<p>在markdown内添加以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% dplayer &quot;url=http://home.ustc.edu.cn/~mmmwhy/GEM.mp4&quot;  &quot;pic=http://home.ustc.edu.cn/~mmmwhy/GEM.jpg&quot; &quot;loop=yes&quot; &quot;theme=#FADFA3&quot; &quot;autoplay=false&quot; &quot;token=tokendemo&quot; %&#125;</div></pre></td></tr></table></figure>
+<p>效果如下所示：<br><div id="dplayer0" class="dplayer" style="margin-bottom: 20px;"></div><script>var dplayer0 = new DPlayer({"element":document.getElementById("dplayer0"),"autoplay":false,"theme":"#FADFA3","loop":true,"video":{"url":"http://home.ustc.edu.cn/~mmmwhy/GEM.mp4","pic":"http://home.ustc.edu.cn/~mmmwhy/GEM.jpg"}});</script></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170224/222804155.png" alt="dplayer" title="">
+                </div>
+                <div class="image-caption">dplayer</div>
+            </figure>
+<hr>
+<p>以上</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Hexo插入音乐及视频，会让博客看起来很洋气  (ง •̀_•́)ง &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://feiyang.li/tags/hexo/"/>
+    
+      <category term="plugins" scheme="http://feiyang.li/tags/plugins/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Django 创建第一个项目</title>
     <link href="http://feiyang.li/2017/02/18/django-hello-world/"/>
     <id>http://feiyang.li/2017/02/18/django-hello-world/</id>
     <published>2017-02-18T11:37:59.000Z</published>
     <updated>2017-02-18T12:41:10.174Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>上手使用Python的Web框架– Django</p>
 </blockquote>
 <hr>
@@ -170,7 +271,7 @@
     <published>2017-02-17T09:04:55.000Z</published>
     <updated>2017-02-17T09:07:37.504Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目2.1</strong>： 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。</p>
 </blockquote>
 <hr>
@@ -215,7 +316,7 @@
     <published>2017-02-16T13:59:43.000Z</published>
     <updated>2017-02-17T04:33:14.710Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.9</strong>： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</p>
 </blockquote>
 <hr>
@@ -271,7 +372,7 @@
     <published>2017-02-15T14:07:40.000Z</published>
     <updated>2017-02-15T14:09:04.064Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.8：</strong> 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。</p>
 </blockquote>
 <hr>
@@ -322,7 +423,7 @@
     <published>2017-02-15T11:28:20.000Z</published>
     <updated>2017-02-16T14:24:00.864Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.7：</strong>敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。</p>
 </blockquote>
 <hr>
@@ -372,7 +473,7 @@
     <published>2017-02-14T11:19:17.000Z</published>
     <updated>2017-02-14T11:24:58.929Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>在学习的过程中，抓住基本概念是非常重要的，这样可以防止自己陷入某些细节中无法自拔，可以让自己站在比较宏观的层面上看待问题。 更多见：<a href="https://feiyang.li/">李飞阳</a></p>
 </blockquote>
 <hr>
@@ -427,7 +528,7 @@
     <published>2017-02-13T13:39:16.000Z</published>
     <updated>2017-02-13T14:09:06.067Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>对于产品经理来说，自己所负责的产品的表现就是自己的履历。</p>
 </blockquote>
 <hr>
@@ -530,7 +631,7 @@
     <published>2017-02-13T05:36:02.000Z</published>
     <updated>2017-02-13T05:38:30.441Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.6：</strong>使用 Python 生成类似于下图中的<strong>字母验证码图片</strong><br>查看更多于本人博客：<a href="https://feiyang.li/">李飞阳</a></p>
 </blockquote>
 <hr>
@@ -588,7 +689,7 @@
     <published>2017-02-13T02:33:53.000Z</published>
     <updated>2017-02-13T05:37:50.976Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。题目1.5：你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。查看更多于本人博客：<a href="https://feiyang.li/">李飞阳</a></p>
 </blockquote>
 <hr>
@@ -632,7 +733,7 @@
     <published>2017-02-11T12:16:52.000Z</published>
     <updated>2017-02-17T06:12:58.915Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。</p>
 </blockquote>
 <hr>
@@ -693,7 +794,7 @@
     <published>2017-02-10T14:18:55.000Z</published>
     <updated>2017-02-11T13:36:55.460Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>使用正则表达式，会使得字符串的处理很方便。</p>
 </blockquote>
 <hr>
@@ -805,7 +906,7 @@
     <published>2017-02-10T07:16:52.000Z</published>
     <updated>2017-02-13T05:37:44.188Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第三题，使用 Python 将激活码保存到 MySQL。</p>
 </blockquote>
 <hr>
@@ -933,7 +1034,7 @@
     <published>2017-02-09T02:56:15.000Z</published>
     <updated>2017-02-11T13:20:27.500Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>我之前写过一篇文章是用Ngrok方式进行内网穿透，该方法需要借助到别人的服务器，非常麻烦。后来发现了Frp这个神器，只需要有一台公网的主机，就可以进行端口穿透，同时还可以转发tcp，udp，dns查询。</p>
 </blockquote>
 <hr>
@@ -1002,7 +1103,7 @@
     <published>2017-02-07T11:50:11.000Z</published>
     <updated>2017-02-13T05:37:40.975Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第二题，使用 Python 如何生成 200 个激活码。</p>
 </blockquote>
 <hr>
@@ -1084,7 +1185,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <published>2017-02-07T05:38:38.000Z</published>
     <updated>2017-02-11T13:20:33.275Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速度是一种不错的选择。以Coding Pages和腾讯CDN为例。</p>
 </blockquote>
 <p>本方法同样可以对虚拟主机进行CDN加速。</p>
@@ -1194,7 +1295,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <published>2017-01-12T12:50:52.000Z</published>
     <updated>2017-02-11T13:20:37.749Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。</p>
 </blockquote>
 <a id="more"></a>
@@ -1374,7 +1475,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <published>2016-12-31T14:52:39.000Z</published>
     <updated>2017-02-15T12:08:27.233Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>jupyter notebook在数据分析时使用非常的方便，特别那优美的页面，简直让我着迷。</p>
 </blockquote>
 <hr>
@@ -1467,7 +1568,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <published>2016-12-31T04:16:16.000Z</published>
     <updated>2017-02-13T05:37:36.719Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 </p>
 </blockquote>
 <hr>
@@ -1533,7 +1634,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <published>2016-12-31T03:35:04.000Z</published>
     <updated>2017-02-18T06:04:32.379Z</updated>
     
-    <content type="html"><![CDATA[<blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p><a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">参考代码</a>一同附上，分析过程见<a href="https://feiyang.li/tags/Python-camp/">李飞阳</a>，请多指教。</p>
 </blockquote>
 <hr>
@@ -1647,75 +1748,6 @@ jiangge
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
       <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用Python selenium处理页面延迟加载问题</title>
-    <link href="http://feiyang.li/2016/12/29/Python-selenium/"/>
-    <id>http://feiyang.li/2016/12/29/Python-selenium/</id>
-    <published>2016-12-29T08:06:43.000Z</published>
-    <updated>2017-02-11T13:21:00.266Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>使用python爬取数据的时候，碰到了一个非常无语的问题。有个网站，在输入url进入页面之后，会强制加载一段动画，之后才显示正确内容。后来发现了selenium这个神器，不过还是折腾了我好久。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="用selenium-设置浏览器等待时间"><a href="#用selenium-设置浏览器等待时间" class="headerlink" title="用selenium 设置浏览器等待时间"></a>用selenium 设置浏览器等待时间</h1><p>很多人问，这个下拉框定位不到、那个弹出框定位不到…各种定位不到，其实大多数情况下就是两种问题：1 有frame，2 没有加等待。殊不知，你的代码运行速度是什么量级的，而浏览器加载渲染速度又是什么量级的，就好比闪电侠和奥特曼约好去打怪兽，然后闪电侠打完回来之后问奥特曼你为啥还在穿鞋没出门？奥特曼分分中内心一万只羊驼飞过，欺负哥速度慢，哥不跟<br>运行需要两个前提，每个都不好搞。。</p>
-<ul>
-<li>首先需要安装<strong>selenium </strong>，<br>推荐使用pip安装,<code>pip install selenium</code><br>或者直接下载selenium包:<a href="https://pypi.python.org/pypi/selenium" target="_blank" rel="external">https://pypi.python.org/pypi/selenium</a>  解压，cmd进入目录:<code>python setup.py install</code></li>
-<li>接下来安装<strong> ChromeDriver</strong><br>推荐在这里 <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads" target="_blank" rel="external">https://sites.google.com/a/chromium.org/chromedriver/downloads</a> 下载，然后放在Chrome浏览器目录内，配置Path环境变量为形如 <em>XXGoogle\Chrome\Application</em>的形式<br>你玩了，抛个异常撂挑子了。</li>
-</ul>
-<p>最简单粗暴的一种办法就是强制等待sleep(xx)，强制让闪电侠等xx时间，不管凹凸曼能不能跟上速度，还是已经提前到了，都必须等xx时间。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding: utf-8</span></div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</div><div class="line">driver = webdriver.Chrome()</div><div class="line">driver.get(<span class="string">'https://feiyang.li'</span>)</div><div class="line">sleep(<span class="number">3</span>) <span class="comment"># 强制等待3秒再执行下一步</span></div><div class="line"><span class="keyword">print</span> driver.title</div><div class="line">driver.quit()</div></pre></td></tr></table></figure>
-<h1 id="结合selenium使用Xpath获得所需信息"><a href="#结合selenium使用Xpath获得所需信息" class="headerlink" title="结合selenium使用Xpath获得所需信息"></a>结合selenium使用Xpath获得所需信息</h1><ul>
-<li>需要注意的是，selenium内find_elements的方法有很多种，xpath表达式的要求很严格，所以可以试试<strong>find_elements_id</strong>等方法。</li>
-<li>Xpath表达式可以检测文字中是否包含某文字，以此为标准过滤。<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161229/170825303.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure></li>
-<li>Xpath表达式支持and 和 or。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_from</span><span class="params">(browser)</span>:</span></div><div class="line">    links = browser.find_elements_by_xpath(<span class="string">"//p[contains(text(), '出处') or contains(text(), '组成') or contains(text(), '组成') or contains(text(), '主治') or contains(text(), '用法')] "</span>)</div><div class="line">    print(browser.title)</div><div class="line">    <span class="keyword">return</span> [link.text <span class="keyword">for</span> link <span class="keyword">in</span> links]</div></pre></td></tr></table></figure>
-<h1 id="中文输入输出问题"><a href="#中文输入输出问题" class="headerlink" title="中文输入输出问题"></a>中文输入输出问题</h1><ul>
-<li>send_keys() 不能正确的输入关键字，在中文前边加一个u即可，比如<code>elem.send_keys(u&#39;你好哇&#39;)</code></li>
-<li>不能正确的输出中文，<code>print (&#39;\n&#39;.join(extract_from(browser)))</code><br>以上两个问题都跟python2的特性有关，升级至3之后应当不会出现此类问题。</li>
-</ul>
-<p>写了一个小demo，解释中文输入输出问题<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(key)</span>:</span></div><div class="line">    elem = browser.find_element_by_xpath(<span class="string">"//input[@id='kw']"</span>)</div><div class="line">    elem.send_keys(key)</div><div class="line">    elem.send_keys(Keys.RETURN)</div><div class="line">    time.sleep(<span class="number">1</span>)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_from</span><span class="params">(browser)</span>:</span></div><div class="line">    links = browser.find_elements_by_xpath(<span class="string">"//div[contains(text(),'李银河')]"</span>)</div><div class="line">    <span class="keyword">return</span> [link.text <span class="keyword">for</span> link <span class="keyword">in</span> links]</div><div class="line">key = <span class="string">u"你好哇"</span></div><div class="line">browser = webdriver.Chrome()</div><div class="line">browser.get(<span class="string">'http://www.baidu.com'</span>)</div><div class="line">search(key)</div><div class="line"><span class="keyword">print</span> (<span class="string">'\n'</span>.join(extract_from(browser)))</div><div class="line">browser.close()</div></pre></td></tr></table></figure></p>
-<p>运行结果见下，可以抽取出对应文字。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161229/171126089.png" alt="运行结果" title="">
-                </div>
-                <div class="image-caption">运行结果</div>
-            </figure></p>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(key)</span>:</span></div><div class="line">    elem = browser.find_element_by_xpath(<span class="string">"//input[@id='simple_search_filed']"</span>)</div><div class="line">    elem.send_keys(key)</div><div class="line">    elem.send_keys(Keys.RETURN)</div><div class="line">    time.sleep(<span class="number">3</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_from</span><span class="params">(browser)</span>:</span></div><div class="line">    links = browser.find_elements_by_xpath(<span class="string">"//p[contains(text(), '出处') or contains(text(), '组成') or contains(text(), '组成') or contains(text(), '主治') or contains(text(), '用法')] "</span>)</div><div class="line">    print(browser.title)</div><div class="line">    <span class="keyword">return</span> [link.text <span class="keyword">for</span> link <span class="keyword">in</span> links]</div><div class="line"></div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = requests.get(<span class="string">"http://www.zk120.com/fang/"</span>)</div><div class="line">html.encoding = <span class="string">'utf-8'</span></div><div class="line">selector = etree.HTML(html.text)</div><div class="line">content = selector.xpath(<span class="string">"//ul/li/a/span[@class='free_icon_r']/../@href"</span>)</div><div class="line"><span class="keyword">for</span> imgurl <span class="keyword">in</span> content:</div><div class="line">    imgurl = <span class="string">"http://www.zk120.com"</span> +imgurl</div><div class="line">    browser = webdriver.Chrome()</div><div class="line">    browser.get(imgurl)</div><div class="line">    time.sleep(<span class="number">2</span>)</div><div class="line">    <span class="keyword">print</span> (<span class="string">'\n'</span>.join(extract_from(browser)))</div><div class="line">    print(<span class="string">"------------"</span>)</div><div class="line">    browser.close()</div></pre></td></tr></table></figure>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p>在搜索资料的时候，同时发现了一个非常好的示例代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</div><div class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</div><div class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_data</span><span class="params">(browser)</span>:</span></div><div class="line">    links = browser.find_elements_by_xpath(<span class="string">'//i[@class="RecordStats"]/a'</span>)</div><div class="line">    <span class="keyword">return</span> [link.get_attribute(<span class="string">'href'</span>) <span class="keyword">for</span> link <span class="keyword">in</span> links]</div><div class="line"></div><div class="line"></div><div class="line">browser = webdriver.Firefox()</div><div class="line">browser.get(<span class="string">"http://www.scba.gov.ar/jurisprudencia/Navbar.asp?Busca=Fallos+Completos&amp;SearchString=Inconstitucionalidad"</span>)</div><div class="line"></div><div class="line"><span class="comment"># get max pages</span></div><div class="line">element = WebDriverWait(browser, <span class="number">10</span>).until(EC.presence_of_element_located((By.XPATH, <span class="string">"//p[@class='c'][last()]"</span>)))</div><div class="line">max_pages = int(re.search(<span class="string">r'\d+ de (\d+)'</span>, element.text).group(<span class="number">1</span>), re.UNICODE)</div><div class="line"></div><div class="line"><span class="comment"># extract from the current (1) page</span></div><div class="line"><span class="keyword">print</span> <span class="string">"Page 1"</span></div><div class="line"><span class="keyword">print</span> extract_data(browser)</div><div class="line"></div><div class="line"><span class="comment"># loop over the rest of the pages</span></div><div class="line"><span class="keyword">for</span> page <span class="keyword">in</span> xrange(<span class="number">2</span>, max_pages + <span class="number">1</span>):</div><div class="line">    <span class="keyword">print</span> <span class="string">"Page %d"</span> % page</div><div class="line"></div><div class="line">    next_page = browser.find_element_by_xpath(<span class="string">"//table[last()]//td[last()]/a"</span>).click()</div><div class="line"></div><div class="line">    <span class="keyword">print</span> extract_data(browser)</div><div class="line">    <span class="keyword">print</span> <span class="string">"-----"</span></div></pre></td></tr></table></figure>
-<p>这个地方真的花费了我好大的精力啊，让人头疼。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;使用python爬取数据的时候，碰到了一个非常无语的问题。有个网站，在输入url进入页面之后，会强制加载一段动画，之后才显示正确内容。后来发现了selenium这个神器，不过还是折腾了我好久。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="爬虫" scheme="http://feiyang.li/tags/%E7%88%AC%E8%99%AB/"/>
-    
-      <category term="Xpath" scheme="http://feiyang.li/tags/Xpath/"/>
-    
-      <category term="selenium" scheme="http://feiyang.li/tags/selenium/"/>
     
   </entry>
   
