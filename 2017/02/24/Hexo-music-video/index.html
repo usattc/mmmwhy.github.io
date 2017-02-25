@@ -46,21 +46,17 @@
     
     
     <meta name="keywords" content="hexo,plugins">
-    <meta name="description" content="Hexo插入音乐及视频，会让博客看起来很洋气  (ง •̀_•́)ง">
+    <meta name="description" content="Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo博客中插入音乐/视频">
 <meta property="og:url" content="http://feiyang.li/2017/02/24/Hexo-music-video/index.html">
 <meta property="og:site_name" content="李飞阳">
-<meta property="og:description" content="Hexo插入音乐及视频，会让博客看起来很洋气  (ง •̀_•́)ง">
+<meta property="og:description" content="Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170224/221537233.png">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170224/221316592.png">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170224/221447863.png">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170224/222700415.png">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170224/222804155.png">
-<meta property="og:updated_time" content="2017-02-24T14:30:48.629Z">
+<meta property="og:updated_time" content="2017-02-25T05:59:28.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo博客中插入音乐/视频">
-<meta name="twitter:description" content="Hexo插入音乐及视频，会让博客看起来很洋气  (ง •̀_•́)ง">
+<meta name="twitter:description" content="Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง">
 <meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170224/221537233.png">
     
         <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
@@ -190,7 +186,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Markdown-通用的音乐视频插入方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">Markdown 通用的音乐视频插入方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#iframe-标签"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">iframe 标签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#embed-标签"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">embed 标签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#javascript标签举例"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">javascript标签举例</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用-Hexo-插件插入音乐-视频"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用 Hexo 插件插入音乐/视频</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#播放音乐的aplayer"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">播放音乐的aplayer</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#播放视频的dplayer"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">播放视频的dplayer</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Markdown-通用的音乐视频插入方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">Markdown 通用的音乐视频插入方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#iframe标签"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">iframe标签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#embed标签"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">embed标签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#javascript标签举例"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">javascript标签举例</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用-Hexo-插件插入音乐-视频"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用 Hexo 插件插入音乐/视频</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#播放音乐的aplayer"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">播放音乐的aplayer</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#播放视频的dplayer"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">播放视频的dplayer</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -216,11 +212,11 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>Hexo插入音乐及视频，会让博客看起来很洋气  (ง •̀_•́)ง </p>
+<p>Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง </p>
 </blockquote>
 <hr>
 <a id="more"></a>
-<h1 id="Markdown-通用的音乐视频插入方法"><a href="#Markdown-通用的音乐视频插入方法" class="headerlink" title="Markdown 通用的音乐视频插入方法"></a>Markdown 通用的音乐视频插入方法</h1><h2 id="iframe-标签"><a href="#iframe-标签" class="headerlink" title="iframe 标签"></a><em>iframe</em> 标签</h2><p>代码从网易云音乐获得<br><figure class="image-bubble">
+<h1 id="Markdown-通用的音乐视频插入方法"><a href="#Markdown-通用的音乐视频插入方法" class="headerlink" title="Markdown 通用的音乐视频插入方法"></a>Markdown 通用的音乐视频插入方法</h1><h2 id="iframe标签"><a href="#iframe标签" class="headerlink" title="iframe标签"></a>iframe标签</h2><p>代码从网易云音乐获得<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="http://cdn.mmmxcc.cn/blog/20170224/221537233.png" alt="网易云音乐" title="">
@@ -231,28 +227,19 @@
 <p>效果如下：</p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="430" height="86" src="//music.163.com/outchain/player?type=2&id=114389&auto=0&height=66"></iframe>
 
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170224/221316592.png" alt="iframe" title="">
-                </div>
-                <div class="image-caption">iframe</div>
-            </figure>
-<h2 id="embed-标签"><a href="#embed-标签" class="headerlink" title="embed 标签"></a><em>embed</em> 标签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;embed height=&quot;415&quot; width=&quot;544&quot; quality=&quot;high&quot; allowfullscreen=&quot;true&quot; type=&quot;application/x-shockwave-flash&quot; src=&quot;//static.hdslb.com/miniloader.swf&quot; flashvars=&quot;aid=8506694&amp;page=1&quot; pluginspage=&quot;//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash&quot;&gt;&lt;/embed&gt;</div></pre></td></tr></table></figure>
+
+
+<h2 id="embed标签"><a href="#embed标签" class="headerlink" title="embed标签"></a>embed标签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;embed height=&quot;415&quot; width=&quot;544&quot; quality=&quot;high&quot; allowfullscreen=&quot;true&quot; type=&quot;application/x-shockwave-flash&quot; src=&quot;//static.hdslb.com/miniloader.swf&quot; flashvars=&quot;aid=8506694&amp;page=1&quot; pluginspage=&quot;//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash&quot;&gt;&lt;/embed&gt;</div></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=8506694&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">
 
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170224/221447863.png" alt="embed" title="">
-                </div>
-                <div class="image-caption">embed</div>
-            </figure>
-<h2 id="javascript标签举例"><a href="#javascript标签举例" class="headerlink" title="javascript标签举例"></a><em>javascript</em>标签举例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.xiami.com/widget/player-single?uid=32329501&amp;sid=1776238762&amp;mode=js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+
+<h2 id="javascript标签举例"><a href="#javascript标签举例" class="headerlink" title="javascript标签举例"></a>javascript标签举例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.xiami.com/widget/player-single?uid=32329501&amp;sid=1776238762&amp;mode=js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=32329501&sid=1776238762&mode=js"></script>
+
 <h1 id="使用-Hexo-插件插入音乐-视频"><a href="#使用-Hexo-插件插入音乐-视频" class="headerlink" title="使用 Hexo 插件插入音乐/视频"></a>使用 Hexo 插件插入音乐/视频</h1><p>两个好用的hexo插件：</p>
-<p>**hexo-tag-aplayer：<a href="https://github.com/grzhan/hexo-tag-aplayer" target="_blank" rel="external">https://github.com/grzhan/hexo-tag-aplayer</a>)</p>
-<p>**hexo-tag-dplayer： <a href="https://github.com/NextMoe/hexo-tag-dplayer" target="_blank" rel="external">https://github.com/NextMoe/hexo-tag-dplayer</a></p>
+<p><strong>hexo-tag-aplayer：<a href="https://github.com/grzhan/hexo-tag-aplayer" target="_blank" rel="external">https://github.com/grzhan/hexo-tag-aplayer</a></strong></p>
+<p><strong>hexo-tag-dplayer： <a href="https://github.com/NextMoe/hexo-tag-dplayer" target="_blank" rel="external">https://github.com/NextMoe/hexo-tag-dplayer</a></strong></p>
 <h2 id="播放音乐的aplayer"><a href="#播放音乐的aplayer" class="headerlink" title="播放音乐的aplayer"></a>播放音乐的aplayer</h2><p>在cmd页面内，使用npm安装：<br><code>npm install hexo-tag-aplayer</code></p>
 <p>在markdown内添加以下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% aplayer &quot;她的睫毛&quot; &quot;周杰伦&quot; &quot;http://home.ustc.edu.cn/~mmmwhy/%d6%dc%bd%dc%c2%d7%20-%20%cb%fd%b5%c4%bd%de%c3%ab.mp3&quot;  &quot;http://home.ustc.edu.cn/~mmmwhy/jay.jpg&quot; &quot;autoplay=false&quot; %&#125;</div></pre></td></tr></table></figure>
@@ -271,24 +258,11 @@
 				}
 			});
 		</script></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170224/222700415.png" alt="aplayer" title="">
-                </div>
-                <div class="image-caption">aplayer</div>
-            </figure>
 <h2 id="播放视频的dplayer"><a href="#播放视频的dplayer" class="headerlink" title="播放视频的dplayer"></a>播放视频的dplayer</h2><p>在cmd页面内，使用npm安装：<br><code>npm install hexo-tag-dplayer</code></p>
 <p>在markdown内添加以下代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% dplayer &quot;url=http://home.ustc.edu.cn/~mmmwhy/GEM.mp4&quot;  &quot;pic=http://home.ustc.edu.cn/~mmmwhy/GEM.jpg&quot; &quot;loop=yes&quot; &quot;theme=#FADFA3&quot; &quot;autoplay=false&quot; &quot;token=tokendemo&quot; %&#125;</div></pre></td></tr></table></figure>
-<p>效果如下所示：<br><div id="dplayer0" class="dplayer" style="margin-bottom: 20px;"></div><script>var dplayer0 = new DPlayer({"element":document.getElementById("dplayer0"),"autoplay":false,"theme":"#FADFA3","loop":true,"video":{"url":"http://home.ustc.edu.cn/~mmmwhy/GEM.mp4","pic":"http://home.ustc.edu.cn/~mmmwhy/GEM.jpg"}});</script></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170224/222804155.png" alt="dplayer" title="">
-                </div>
-                <div class="image-caption">dplayer</div>
-            </figure>
+<p>效果如下所示：</p>
+<div id="dplayer0" class="dplayer" style="margin-bottom: 20px;"></div><script>var dplayer0 = new DPlayer({"element":document.getElementById("dplayer0"),"autoplay":false,"theme":"#FADFA3","loop":true,"video":{"url":"http://home.ustc.edu.cn/~mmmwhy/GEM.mp4","pic":"http://home.ustc.edu.cn/~mmmwhy/GEM.jpg"}});</script>
 <hr>
 <p>以上</p>
 
@@ -298,7 +272,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-02-24T14:30:48.629Z" itemprop="dateUpdated">2017年2月24日 22:30</time>
+    最后更新时间：<time datetime="2017-02-25T05:59:28.975Z" itemprop="dateUpdated">2017年2月25日 13:59</time>
 </span><br>
 
 
@@ -342,7 +316,7 @@
       </li>
       <li>
         <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/02/24/Hexo-music-video/&title=《Hexo博客中插入音乐/视频》 — 李飞阳&source=
-Hexo插入音乐及视频，会让博客看起来很洋气  (ง •̀_•́)ง 
+Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง 
 
 " data-title=" QQ">
           <i class="icon icon-qq"></i>
@@ -482,7 +456,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
       </li>
       <li>
         <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/02/24/Hexo-music-video/&title=《Hexo博客中插入音乐/视频》 — 李飞阳&source=
-Hexo插入音乐及视频，会让博客看起来很洋气  (ง •̀_•́)ง 
+Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง 
 
 " data-title=" QQ">
           <i class="icon icon-qq"></i>
