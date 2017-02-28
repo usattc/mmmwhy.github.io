@@ -22,7 +22,7 @@
     <published>2017-02-26T13:28:39.000Z</published>
     <updated>2017-02-28T03:22:11.178Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>jetbrains 家的东西都非常好看，但是价格贵的令人发指，所以我搭建了一个 Pycharm激活服务器，可以用来激活 Pycharm，IntelliJ IDEA，WebStorm。避免频繁更换激活码的问题。</p>
 </blockquote>
 <hr>
@@ -92,7 +92,7 @@
     <published>2017-02-24T12:57:01.000Z</published>
     <updated>2017-02-25T05:59:28.975Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง </p>
 </blockquote>
 <hr>
@@ -171,7 +171,7 @@
     <published>2017-02-18T11:37:59.000Z</published>
     <updated>2017-02-18T12:41:10.174Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>上手使用Python的Web框架– Django</p>
 </blockquote>
 <hr>
@@ -319,7 +319,7 @@
     <published>2017-02-17T09:04:55.000Z</published>
     <updated>2017-02-17T09:07:37.504Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目2.1</strong>： 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。</p>
 </blockquote>
 <hr>
@@ -364,7 +364,7 @@
     <published>2017-02-16T13:59:43.000Z</published>
     <updated>2017-02-17T04:33:14.710Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.9</strong>： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</p>
 </blockquote>
 <hr>
@@ -420,7 +420,7 @@
     <published>2017-02-15T14:07:40.000Z</published>
     <updated>2017-02-15T14:09:04.064Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.8：</strong> 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。</p>
 </blockquote>
 <hr>
@@ -471,7 +471,7 @@
     <published>2017-02-15T11:28:20.000Z</published>
     <updated>2017-02-16T14:24:00.864Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.7：</strong>敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。</p>
 </blockquote>
 <hr>
@@ -521,7 +521,7 @@
     <published>2017-02-14T11:19:17.000Z</published>
     <updated>2017-02-14T11:24:58.929Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>在学习的过程中，抓住基本概念是非常重要的，这样可以防止自己陷入某些细节中无法自拔，可以让自己站在比较宏观的层面上看待问题。 更多见：<a href="https://feiyang.li/" target="_blank" rel="external">李飞阳</a></p>
 </blockquote>
 <hr>
@@ -576,7 +576,7 @@
     <published>2017-02-13T13:39:16.000Z</published>
     <updated>2017-02-13T14:09:06.067Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>对于产品经理来说，自己所负责的产品的表现就是自己的履历。</p>
 </blockquote>
 <hr>
@@ -679,7 +679,7 @@
     <published>2017-02-13T05:36:02.000Z</published>
     <updated>2017-02-13T05:38:30.441Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.6：</strong>使用 Python 生成类似于下图中的<strong>字母验证码图片</strong><br>查看更多于本人博客：<a href="https://feiyang.li/" target="_blank" rel="external">李飞阳</a></p>
 </blockquote>
 <hr>
@@ -737,7 +737,7 @@
     <published>2017-02-13T02:33:53.000Z</published>
     <updated>2017-02-13T05:37:50.976Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。题目1.5：你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。查看更多于本人博客：<a href="https://feiyang.li/" target="_blank" rel="external">李飞阳</a></p>
 </blockquote>
 <hr>
@@ -781,7 +781,7 @@
     <published>2017-02-11T12:16:52.000Z</published>
     <updated>2017-02-17T06:12:58.915Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。</p>
 </blockquote>
 <hr>
@@ -842,7 +842,7 @@
     <published>2017-02-10T14:18:55.000Z</published>
     <updated>2017-02-11T13:36:55.460Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>使用正则表达式，会使得字符串的处理很方便。</p>
 </blockquote>
 <hr>
@@ -954,7 +954,7 @@
     <published>2017-02-10T07:16:52.000Z</published>
     <updated>2017-02-13T05:37:44.188Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第三题，使用 Python 将激活码保存到 MySQL。</p>
 </blockquote>
 <hr>
@@ -1082,7 +1082,7 @@
     <published>2017-02-09T02:56:15.000Z</published>
     <updated>2017-02-11T13:20:27.500Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>我之前写过一篇文章是用Ngrok方式进行内网穿透，该方法需要借助到别人的服务器，非常麻烦。后来发现了Frp这个神器，只需要有一台公网的主机，就可以进行端口穿透，同时还可以转发tcp，udp，dns查询。</p>
 </blockquote>
 <hr>
@@ -1151,7 +1151,7 @@
     <published>2017-02-07T11:50:11.000Z</published>
     <updated>2017-02-13T05:37:40.975Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第二题，使用 Python 如何生成 200 个激活码。</p>
 </blockquote>
 <hr>
@@ -1233,7 +1233,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <published>2017-02-07T05:38:38.000Z</published>
     <updated>2017-02-11T13:20:33.275Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速度是一种不错的选择。以Coding Pages和腾讯CDN为例。</p>
 </blockquote>
 <p>本方法同样可以对虚拟主机进行CDN加速。</p>
@@ -1343,7 +1343,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <published>2017-01-12T12:50:52.000Z</published>
     <updated>2017-02-11T13:20:37.749Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。</p>
 </blockquote>
 <a id="more"></a>
@@ -1523,7 +1523,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <published>2016-12-31T14:52:39.000Z</published>
     <updated>2017-02-15T12:08:27.233Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>jupyter notebook在数据分析时使用非常的方便，特别那优美的页面，简直让我着迷。</p>
 </blockquote>
 <hr>
@@ -1616,7 +1616,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     <published>2016-12-31T04:16:16.000Z</published>
     <updated>2017-02-13T05:37:36.719Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 </p>
 </blockquote>
 <hr>
