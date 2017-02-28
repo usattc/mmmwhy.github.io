@@ -15,28 +15,11 @@
     
 
 
-<!-- Baidu Push -->
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-<!-- End Baidu Push -->
-
 
     <meta charset="utf-8">
     
     
-    <link rel="canonical" href="https://feiyang.li//2017/02/11/python_camp4/">
+    <link rel="canonical" href="http://www.feiyang.li/2017/02/11/python_camp4/">
     
     
     <title>第1.4题：统计文件中单词出现个数 | 李飞阳 | PM、Coder、Data mining</title>
@@ -49,7 +32,7 @@
     <meta name="description" content="题目来自：Python 练习册。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第1.4题：统计文件中单词出现个数">
-<meta property="og:url" content="http://feiyang.li/2017/02/11/python_camp4/index.html">
+<meta property="og:url" content="http://www.feiyang.li/2017/02/11/python_camp4/index.html">
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="题目来自：Python 练习册。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170211/204153138.png">
@@ -64,7 +47,7 @@
         <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
     
     <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.8">
     <script>window.lazyScripts=[]</script>
 </head>
 
@@ -119,7 +102,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://feiyang.li/tags/Python-camp/"  >
+              <a href="http://feiyang.li/tags/Python-camp/"  >
                 <i class="icon icon-lg icon-rocket"></i>
                 Python练习册
               </a>
@@ -135,7 +118,6 @@
       </ul>
     </div>
   </div>
-
 </aside>
 
     <main id="main">
@@ -218,7 +200,7 @@
 </blockquote>
 <hr>
 <a id="more"></a>
-<h1 id="铺垫工作"><a href="#铺垫工作" class="headerlink" title="铺垫工作"></a>铺垫工作</h1><p>这一期的铺垫工作比较多，所以单独写了一篇文章，详见  <a href="https://feiyang.li/2017/02/10/Python_lambda/">Python正则表达式</a></p>
+<h1 id="铺垫工作"><a href="#铺垫工作" class="headerlink" title="铺垫工作"></a>铺垫工作</h1><p>这一期的铺垫工作比较多，所以单独写了一篇文章，详见  <a href="https://feiyang.li/2017/02/10/Python_lambda/" target="_blank" rel="external">Python正则表达式</a></p>
 <h1 id="正文部分"><a href="#正文部分" class="headerlink" title="正文部分"></a>正文部分</h1><h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>任一个英文的纯文本文件，统计其中的单词出现的个数。<br>参考英文：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">If you are looking for someone you can pour out your love to, let me suggest the empowered woman. The empowered woman knows what she wants, knows how to get it, knows how to live fully, and she knows how to love you back without needing anyone’s approval or recognition. An empowered woman is unarguably one of the most magnificent beings you will ever come in contact with. Read on and find 10 reason why you should absolutely love and embrace the empowered women in your life! . </div><div class="line"></div><div class="line">1. She knows how to love you in returnIt is difficult to give what you don’t have. It is impossible to love someone and feel fulfilled when they can’t love you in return because they don’t love themselves. This will never happen to you when you love an empowered woman. She loves herself (not in a narcissistic manner). In turn, she appreciates who you are and loves you in return. She will love you just like you deserve to be loved. </div><div class="line"></div><div class="line">2. She will inspire youWhen life puts you down and you are at the end of your rope, the empowered woman will be there to see you through. Her drive, enthusiasm and (at times) hopeless optimism will inspire you to carry on despite the obstacles you face. </div><div class="line"></div><div class="line">3. She is not afraid of failureWhile many out there are thoroughly terrified of failure, the empowered woman understands that failures are simply stepping stones in life. How can you not love someone that is thoroughly unafraid to try, fail, and give it a shot all over again?! </div><div class="line"></div><div class="line"></div><div class="line">4. She is all about the legacyWhile most people are focused on the car, the house, the job, and corner office; the empowered woman is focused on leaving a legacy that will inspire others and change the world. The empowered woman is focused on empowering others to maximize their potential and fulfill their purpose. She is all about inspiring others to look beyond themselves and live a life of service to others.</div><div class="line"></div><div class="line"></div><div class="line"> 5. She can laugh at her mistakes……and learn from them as well! She understands mistakes are part of the journey. The empowered woman can laugh and learn from her mistakes to ensure they never happen again. </div><div class="line"></div><div class="line"></div><div class="line">6. She can be vulnerableThe empowered woman understands there is no debt in relationships without vulnerability. Although she is emotionally strong, she is willing to laugh and cry with you because all of these emotions are an essential part of life. </div><div class="line"></div><div class="line"></div><div class="line">7. She can speak her mindWhile everyone else is too concerned with what others may think or say, the empowered woman is not afraid to speak her mind. She understands that her value comes from within, not from what others say or think about her. </div><div class="line"></div><div class="line"></div><div class="line">8. She knows when to remain quietShe lives by Abe Lincoln’s words, “Better to remain silent and be thought a fool, than to speak out and remove all doubt.” </div><div class="line"></div><div class="line"></div><div class="line">9. She knows how to have funWhether it is at the symphony or at a ball game, the empowered woman understands life is made up of experiences with people – not the places you go. She is able to live in the moment and enjoy it fully without being concerned for the future. After all, who’s got a guaranteed future?</div><div class="line"></div><div class="line"></div><div class="line"> 10. She is not afraid of changeWhile most people rather continue on living unfulfilled lives as long as their comfort zone remains intact, the empowered woman is all about embracing change. She understands growth cannot happen without change. She understands that change is the gift life offers you to choose your destiny. Therefore, she is not afraid of change because it is her stepping stone towards success.</div></pre></td></tr></table></figure></p>
 <p><a href="http://cdn.mmmxcc.cn/blog/20170211/203305485.txt" target="_blank" rel="external">下载链接</a><br>将文件下载到python的<strong>工作路径</strong>里去，如果不知道哪里是工作路径，输入<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">#获取当前工作目录</div><div class="line">os.getcwd()</div><div class="line">#更改当前工作目录</div><div class="line">os.chdir('d:\')</div><div class="line">os.getcwd()</div></pre></td></tr></table></figure></p>
 <h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p>每一步我都尽量附带上了解释<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">replace</span><span class="params">(s)</span>:</span></div><div class="line">    <span class="keyword">if</span> s.group(<span class="number">1</span>) == <span class="string">'n\'t'</span>:</div><div class="line">        <span class="keyword">return</span> s.group(<span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> <span class="string">' '</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span><span class="params">(filename=<span class="string">'203305485.txt'</span>)</span>:</span></div><div class="line">    <span class="comment"># 使用lambda来定义简单的函数</span></div><div class="line">    dic = defaultdict(<span class="keyword">lambda</span>: <span class="number">0</span>)<span class="comment">#dic = defaultdict(int)也可以</span></div><div class="line">    <span class="keyword">with</span> open(filename, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        data = f.read()</div><div class="line">    <span class="comment"># 全部变为小写字母</span></div><div class="line">    data = data.lower()</div><div class="line">    <span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line">    data = re.sub(<span class="string">r'(n[\']t)|([\W\d])'</span>, replace, data)</div><div class="line">    datalist = re.split(<span class="string">r'[\s\n]+'</span>, data)</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> datalist:</div><div class="line">        dic[item] += <span class="number">1</span></div><div class="line">    <span class="keyword">del</span> dic[<span class="string">''</span>]</div><div class="line">    <span class="keyword">return</span> dic</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    dic = cal()</div><div class="line">    <span class="keyword">for</span> key, val <span class="keyword">in</span> dic.items():</div><div class="line">        print(<span class="string">'%15s  ----&gt;   %3s'</span> % (key,val))</div></pre></td></tr></table></figure></p>
@@ -258,10 +240,10 @@
 </span><br>
 
 
-        转载请注明出处：<a href="/2017/02/11/python_camp4/" target="_blank" rel="external">http://feiyang.li/2017/02/11/python_camp4/</a>
+        转载请注明出处：<a href="/2017/02/11/python_camp4/" target="_blank" rel="external">http://www.feiyang.li/2017/02/11/python_camp4/</a>
     </div>
     <footer>
-        <a href="http://feiyang.li">
+        <a href="http://www.feiyang.li">
             <img src="/img/logo.jpg" alt="Wing Lee">
             Wing Lee
         </a>
@@ -287,7 +269,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/02/11/python_camp4/&title=《第1.4题：统计文件中单词出现个数》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.feiyang.li/2017/02/11/python_camp4/&title=《第1.4题：统计文件中单词出现个数》 — 李飞阳&pic=http://www.feiyang.li/img/logo.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -297,7 +279,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/02/11/python_camp4/&title=《第1.4题：统计文件中单词出现个数》 — 李飞阳&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.feiyang.li/2017/02/11/python_camp4/&title=《第1.4题：统计文件中单词出现个数》 — 李飞阳&source=
 题目来自：Python 练习册。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。
 
 " data-title=" QQ">
@@ -305,17 +287,17 @@
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/02/11/python_camp4/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.feiyang.li/2017/02/11/python_camp4/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第1.4题：统计文件中单词出现个数》 — 李飞阳&url=http://feiyang.li/2017/02/11/python_camp4/&via=http://feiyang.li" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第1.4题：统计文件中单词出现个数》 — 李飞阳&url=http://www.feiyang.li/2017/02/11/python_camp4/&via=http://www.feiyang.li" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/02/11/python_camp4/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.feiyang.li/2017/02/11/python_camp4/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -360,13 +342,13 @@
     
 
 <div class="comments" id="comments">
-    <div class="ds-thread" data-thread-key="python_camp4" data-title="第1.4题：统计文件中单词出现个数" data-url="http://feiyang.li/2017/02/11/python_camp4/"></div>
+    <div class="ds-thread" data-thread-key="python_camp4" data-title="第1.4题：统计文件中单词出现个数" data-url="http://www.feiyang.li/2017/02/11/python_camp4/"></div>
 </div>
 <script>
 lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
 
 var duoshuoQuery = {short_name:'mmmxcc', theme: 'none'};
-lazyScripts.push('/js/embed.min.js?v=1.4.7');
+lazyScripts.push('/js/embed.min.js?v=1.4.8');
 
 
 </script>
@@ -411,7 +393,9 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
     <div class="bottom">
         
 <p>
-
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        <span id="busuanzi_value_site_uv"></span>
+    </span>
     <span id="busuanzi_container_site_pv" style='display:none'>
         站点访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
@@ -420,7 +404,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
 
         <p>
             <span>内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0协议</a></span>
-            <span><a href="https://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span> 
+            <span><a href="http://www.feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
         </p>
     </div>
 </footer>
@@ -434,7 +418,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/02/11/python_camp4/&title=《第1.4题：统计文件中单词出现个数》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.feiyang.li/2017/02/11/python_camp4/&title=《第1.4题：统计文件中单词出现个数》 — 李飞阳&pic=http://www.feiyang.li/img/logo.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -444,7 +428,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/02/11/python_camp4/&title=《第1.4题：统计文件中单词出现个数》 — 李飞阳&source=
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.feiyang.li/2017/02/11/python_camp4/&title=《第1.4题：统计文件中单词出现个数》 — 李飞阳&source=
 题目来自：Python 练习册。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。
 
 " data-title=" QQ">
@@ -452,17 +436,17 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/02/11/python_camp4/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.feiyang.li/2017/02/11/python_camp4/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第1.4题：统计文件中单词出现个数》 — 李飞阳&url=http://feiyang.li/2017/02/11/python_camp4/&via=http://feiyang.li" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第1.4题：统计文件中单词出现个数》 — 李飞阳&url=http://www.feiyang.li/2017/02/11/python_camp4/&via=http://www.feiyang.li" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/02/11/python_camp4/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.feiyang.li/2017/02/11/python_camp4/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -473,8 +457,9 @@ lazyScripts.push('/js/embed.min.js?v=1.4.7');
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByUlEQVR42u3aMY7EIAwF0Nz/0tl2m8C3CSgjPaooE8FjCgsbX1c87uF4+iaZ7doxcHFxl7lVyv834+cxcbzVxy3h4uIe5D4tMJ56x/cTGy4u7ie51V/zLeHi4v4uNz8GjQ83uLi43+cmyU9eo+ilTC/nari4uAvcvEq573lLfRcXF7fFvYtjnOqsB6zJ6ri4uEe4eUCpHj5WiqSTeXBxcTdzeylNtTiSp1KTNg5cXNyD3CQ8VcsfZUqyFi4u7hFu3j7Va7lYacWIAh8uLu5mbu/6JC+U5CWSZB5cXNx93KTQuV4wjZoqktIJLi7uEe56I0W12SIPXoW4i4uL+yo3D08r4ay61ce1cHFxj3Crx4v8TRKk8oIILi7uee4djF720UuNJmkSLi7uQW5UVY2vTPJ06IU+Mlxc3M3clcuP8u1NL9HCxcU9yK0unKc31TGZARcXdzP3Lo68waJaNo02iYuLe4RbDS69NKaaRFWPR7i4uDu4SfB661olD2TNgw4uLu6r3F6gya9Xq/NcO+IiLi7uEW4vmemFTlxc3O9z15uu8kg1uRPGxcXdxt2RqDRD1fjPwsXFPcKtXnyuHGuqIXKpvouLi9vh/gERCuIxZAU2lAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aQU7EMAwFUO5/6SKxAomW/+MO0qQvq1EZ0rwsPHbij494HF/j7MnxbUz+62ye2wYGBsbbMo7Lkb8gmSEBXD8/XQkGBsYDGNdB9npZZ5iEl7w3+QHAwMDAaNO+65kn78XAwMBoGXnyNymPMTAwMPIitk0Bk0Qz347banEMDIw3ZLQXA//5+YX3GxgYGG/COMoxKVnbhLJYFQYGxtaM5PowvzCYBM38+0WGi4GBsSljrUy9qwSdlNAYGBi7MtbSwevn+RInh3o/PmNgYGzNaE+xkkC8dmHZhuzRYRwGBsZbMdpGh3xX7rqejNaAgYGxNaNtkpg0T7RFb15OY2BgPIeRJHl5gpgz5iEbAwNjb0Ye7JKDs/mF6FrHFwYGxt6MPPFKXtZ+c222P343MDAwtmO0BWQSWCcNZGvNGRgYGE9gtAncGjVPK+vWNAwMjAcw5m1Y7XLXZj5dGwYGxmMYdUJWPl+bP7pSxcDA2JqRtz4kS1krcdsmjOImFgMDYwtGnrqtBdC8jSMJ3xgYGBjtgX478jDdlrIYGBh7M/JELfl+/te1JoxoWzEwMLZjHOVow3EyT/v8l23CwMDYmtEmdmutFXmAnjR2YGBg7M3Ig+writ52v/+438DAwNiaMQmC8yvMG8pdDAwMjPias00Z50d+GBgYGG0Avea17RpFmMbAwHgAY1LE3naqF4RsDAyMZzLWLgZe11Qx30oMDIyNGJ/4VMxSNnhoTAAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
+
 
 
 
@@ -488,7 +473,7 @@ lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502')
 
 </script>
 
-<script src="/js/main.min.js?v=1.4.7"></script>
+<script src="/js/main.min.js?v=1.4.8"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -508,7 +493,7 @@ lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502')
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.4.7" async></script>
+<script src="/js/search.min.js?v=1.4.8" async></script>
 
 
 
@@ -531,7 +516,7 @@ MathJax.Hub.Queue(function() {
 });
 </script>
 
-<script async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 
 

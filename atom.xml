@@ -4,9 +4,9 @@
   <subtitle>PM、Coder、Data mining</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://feiyang.li/"/>
-  <updated>2017-02-25T05:59:28.975Z</updated>
-  <id>http://feiyang.li/</id>
+  <link href="http://www.feiyang.li/"/>
+  <updated>2017-02-28T03:22:11.178Z</updated>
+  <id>http://www.feiyang.li/</id>
   
   <author>
     <name>Wing Lee</name>
@@ -16,9 +16,79 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>IntelliJ 、Pycharm激活码及激活服务器</title>
+    <link href="http://www.feiyang.li/2017/02/26/jetbrains/"/>
+    <id>http://www.feiyang.li/2017/02/26/jetbrains/</id>
+    <published>2017-02-26T13:28:39.000Z</published>
+    <updated>2017-02-28T03:22:11.178Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>jetbrains 家的东西都非常好看，但是价格贵的令人发指，所以我搭建了一个 Pycharm激活服务器，可以用来激活 Pycharm，IntelliJ IDEA，WebStorm。避免频繁更换激活码的问题。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="jetbrains-激活服务器搭建"><a href="#jetbrains-激活服务器搭建" class="headerlink" title="jetbrains 激活服务器搭建"></a>jetbrains 激活服务器搭建</h1><h2 id="一台VPS"><a href="#一台VPS" class="headerlink" title="一台VPS"></a>一台VPS</h2><p>连vps都没有，小拳头你怕不怕(ง •̀_•́)ง 。 那你用我的吧，╮(╯▽╰)╭  。</p>
+<h2 id="一键脚本"><a href="#一键脚本" class="headerlink" title="一键脚本"></a>一键脚本</h2><p>建议在特权模式下运行，即<code>sudo -s</code>一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://home.ustc.edu.cn/~mmmwhy/jetbrain.sh &amp;&amp; sh ./jetbrain.sh</div></pre></td></tr></table></figure></p>
+<p>会出现两个空，用于输入端口号和默认用户名，建议直接回车，否则可能会出现莫名其妙的错误。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170227/131856881.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>将最后那个<strong>License sever地址</strong>记下，之后激活用。</p>
+<h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><p>选择<strong>License sever</strong>激活方式，输入激活地址<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170226/211949408.png" alt="License" title="">
+                </div>
+                <div class="image-caption">License</div>
+            </figure></p>
+<p>分分钟应该就会弹出提示，一劳永逸解决激活问题。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170226/212224250.png" alt="激活成功提示" title="">
+                </div>
+                <div class="image-caption">激活成功提示</div>
+            </figure></p>
+<h2 id="激活服务器分享"><a href="#激活服务器分享" class="headerlink" title="激活服务器分享"></a>激活服务器分享</h2><p>我搭建了一个激活服务器，直接公布会很容易被封，需要的请关注：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170226/214429172.jpg" alt="小小臭臭" title="">
+                </div>
+                <div class="image-caption">小小臭臭</div>
+            </figure><br>回复“激活”即可获得地址。</p>
+<h1 id="Pycharm激活码-IntelliJ-IDEA激活码"><a href="#Pycharm激活码-IntelliJ-IDEA激活码" class="headerlink" title="Pycharm激活码 / IntelliJ IDEA激活码"></a>Pycharm激活码 / IntelliJ IDEA激活码</h1><p>双击复制全部<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CNEKJPQZEX-eyJsaWNlbnNlSWQiOiJDTkVLSlBRWkVYIiwibGljZW5zZWVOYW1lIjoibGFuIHl1IiwiYXNzaWduZWVOYW1lIjoiIiwiYXNzaWduZWVFbWFpbCI6IiIsImxpY2Vuc2VSZXN0cmljdGlvbiI6IkZvciBlZHVjYXRpb25hbCB1c2Ugb25seSIsImNoZWNrQ29uY3VycmVudFVzZSI6ZmFsc2UsInByb2R1Y3RzIjpbeyJjb2RlIjoiQUMiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJETSIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9LHsiY29kZSI6IklJIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiUlMwIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiV1MiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJEUE4iLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJSQyIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9LHsiY29kZSI6IlBTIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiREMiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJEQiIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9LHsiY29kZSI6IlJNIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiUEMiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJDTCIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9XSwiaGFzaCI6IjUxOTU1OTMvMCIsImdyYWNlUGVyaW9kRGF5cyI6MCwiYXV0b1Byb2xvbmdhdGVkIjpmYWxzZSwiaXNBdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlfQ==-QOxwjWvRwJz6vo6J6adC3CJ4ukQHosbPYZ94URUVFna/Rbew8xK/M5gP3kAaPh6ZDveFdtMR1UBoumq3eCwXtXM3U3ls5noB4LIr+QplVlCj2pK5uNq7g/feyNyQcHpSXtvhIOnXDBLOecB05DOsxzm0p7ulGGJoAInmHeb9mc0eYjqc4RPpUQfh6HSYBnvEnKMlLF5bz4KEtzmsvvgA55CwzwQ3gRitm5Q/wUT7AQCBdjmBfNUjKVQL6TSjSDPp56FUdEs4Aab8LqstA2DIMbxocO64rvytmcUeIwu8Mi5uq87KQP5AQMSMYb59Inbd+dmVfx5cJo3fRS4/5s3/Hg==-MIIEPjCCAiagAwIBAgIBBTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE1MTEwMjA4MjE0OFoXDTE4MTEwMTA4MjE0OFowETEPMA0GA1UEAwwGcHJvZDN5MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxcQkq+zdxlR2mmRYBPzGbUNdMN6OaXiXzxIWtMEkrJMO/5oUfQJbLLuMSMK0QHFmaI37WShyxZcfRCidwXjot4zmNBKnlyHodDij/78TmVqFl8nOeD5+07B8VEaIu7c3E1N+e1doC6wht4I4+IEmtsPAdoaj5WCQVQbrI8KeT8M9VcBIWX7fD0fhexfg3ZRt0xqwMcXGNp3DdJHiO0rCdU+Itv7EmtnSVq9jBG1usMSFvMowR25mju2JcPFp1+I4ZI+FqgR8gyG8oiNDyNEoAbsR3lOpI7grUYSvkB/xVy/VoklPCK2h0f0GJxFjnye8NT1PAywoyl7RmiAVRE/EKwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQC9WZuYgQedSuOc5TOUSrRigMw4/+wuC5EtZBfvdl4HT/8vzMW/oUlIP4YCvA0XKyBaCJ2iX+ZCDKoPfiYXiaSiH+HxAPV6J79vvouxKrWg2XV6ShFtPLP+0gPdGq3x9R3+kJbmAm8w+FOdlWqAfJrLvpzMGNeDU14YGXiZ9bVzmIQbwrBA+c/F4tlK/DV07dsNExihqFoibnqDiVNTGombaU2dDup2gwKdL81ua8EIcGNExHe82kjF4zwfadHk3bQVvbfdAwxcDy4xBjs3L4raPLU3yenSzr/OEur1+jfOxnQSmEcMXKXgrAQ9U55gwjcOFKrgOxEdek/Sk1VfOjvS+nuM4eyEruFMfaZHzoQiuw4IqgGc45ohFH0UUyjYcuFxxDSU9lMCv8qdHKm+wnPRb0l9l5vXsCBDuhAGYD6ss+Ga+aDY6f/qXZuUCEUOH3QUNbbCUlviSz6+GiRnt1kA9N2Qachl+2yBfaqUqr8h7Z2gsx5LcIf5kYNsqJ0GavXTVyWh7PYiKX4bs354ZQLUwwa/cG++2+wNWP+HtBhVxMRNTdVhSm38AknZlD+PTAsWGu9GyLmhti2EnVwGybSD2Dxmhxk3IPCkhKAK+pl0eWYGZWG3tJ9mZ7SowcXLWDFAk0lRJnKGFMTggrWjV8GYpw5bq23VmIqqDLgkNzuoog==</div></pre></td></tr></table></figure></p>
+<p>在Activate code处粘贴进去即可<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170226/213942164.png" alt="Activate" title="">
+                </div>
+                <div class="image-caption">Activate</div>
+            </figure></p>
+<hr>
+<p>衷心感谢博主：ilanyu， <a href="http://blog.lanyus.com/" target="_blank" rel="external">http://blog.lanyus.com/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;jetbrains 家的东西都非常好看，但是价格贵的令人发指，所以我搭建了一个 Pycharm激活服务器，可以用来激活 Pycharm，IntelliJ IDEA，WebStorm。避免频繁更换激活码的问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Pycharm激活" scheme="http://www.feiyang.li/tags/Pycharm%E6%BF%80%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo博客中插入音乐/视频</title>
-    <link href="http://feiyang.li/2017/02/24/Hexo-music-video/"/>
-    <id>http://feiyang.li/2017/02/24/Hexo-music-video/</id>
+    <link href="http://www.feiyang.li/2017/02/24/Hexo-music-video/"/>
+    <id>http://www.feiyang.li/2017/02/24/Hexo-music-video/</id>
     <published>2017-02-24T12:57:01.000Z</published>
     <updated>2017-02-25T05:59:28.975Z</updated>
     
@@ -88,16 +158,16 @@
     </summary>
     
     
-      <category term="hexo" scheme="http://feiyang.li/tags/hexo/"/>
+      <category term="hexo" scheme="http://www.feiyang.li/tags/hexo/"/>
     
-      <category term="plugins" scheme="http://feiyang.li/tags/plugins/"/>
+      <category term="plugins" scheme="http://www.feiyang.li/tags/plugins/"/>
     
   </entry>
   
   <entry>
     <title>Django 创建第一个项目</title>
-    <link href="http://feiyang.li/2017/02/18/django-hello-world/"/>
-    <id>http://feiyang.li/2017/02/18/django-hello-world/</id>
+    <link href="http://www.feiyang.li/2017/02/18/django-hello-world/"/>
+    <id>http://www.feiyang.li/2017/02/18/django-hello-world/</id>
     <published>2017-02-18T11:37:59.000Z</published>
     <updated>2017-02-18T12:41:10.174Z</updated>
     
@@ -236,16 +306,16 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="Django" scheme="http://feiyang.li/tags/Django/"/>
+      <category term="Django" scheme="http://www.feiyang.li/tags/Django/"/>
     
   </entry>
   
   <entry>
     <title>第2.1题：Python统计日记最重要的词</title>
-    <link href="http://feiyang.li/2017/02/17/python-camp2-1/"/>
-    <id>http://feiyang.li/2017/02/17/python-camp2-1/</id>
+    <link href="http://www.feiyang.li/2017/02/17/python-camp2-1/"/>
+    <id>http://www.feiyang.li/2017/02/17/python-camp2-1/</id>
     <published>2017-02-17T09:04:55.000Z</published>
     <updated>2017-02-17T09:07:37.504Z</updated>
     
@@ -279,18 +349,18 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
     
-      <category term="自然语言处理" scheme="http://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+      <category term="自然语言处理" scheme="http://www.feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>第1.9题：Python对密码加密</title>
-    <link href="http://feiyang.li/2017/02/16/python-camp9/"/>
-    <id>http://feiyang.li/2017/02/16/python-camp9/</id>
+    <link href="http://www.feiyang.li/2017/02/16/python-camp9/"/>
+    <id>http://www.feiyang.li/2017/02/16/python-camp9/</id>
     <published>2017-02-16T13:59:43.000Z</published>
     <updated>2017-02-17T04:33:14.710Z</updated>
     
@@ -335,18 +405,18 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
     
-      <category term="密码处理" scheme="http://feiyang.li/tags/%E5%AF%86%E7%A0%81%E5%A4%84%E7%90%86/"/>
+      <category term="密码处理" scheme="http://www.feiyang.li/tags/%E5%AF%86%E7%A0%81%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>第1.8题：文本读取转化</title>
-    <link href="http://feiyang.li/2017/02/15/python-camp8/"/>
-    <id>http://feiyang.li/2017/02/15/python-camp8/</id>
+    <link href="http://www.feiyang.li/2017/02/15/python-camp8/"/>
+    <id>http://www.feiyang.li/2017/02/15/python-camp8/</id>
     <published>2017-02-15T14:07:40.000Z</published>
     <updated>2017-02-15T14:09:04.064Z</updated>
     
@@ -386,18 +456,18 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
     
-      <category term="自然语言处理" scheme="http://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+      <category term="自然语言处理" scheme="http://www.feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>第1.7题：Python敏感词检测</title>
-    <link href="http://feiyang.li/2017/02/15/python-camp7/"/>
-    <id>http://feiyang.li/2017/02/15/python-camp7/</id>
+    <link href="http://www.feiyang.li/2017/02/15/python-camp7/"/>
+    <id>http://www.feiyang.li/2017/02/15/python-camp7/</id>
     <published>2017-02-15T11:28:20.000Z</published>
     <updated>2017-02-16T14:24:00.864Z</updated>
     
@@ -436,23 +506,23 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
     
-      <category term="自然语言处理" scheme="http://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+      <category term="自然语言处理" scheme="http://www.feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>Coursera ML笔记-机器学习基础概念</title>
-    <link href="http://feiyang.li/2017/02/14/Coursera-ML/"/>
-    <id>http://feiyang.li/2017/02/14/Coursera-ML/</id>
+    <link href="http://www.feiyang.li/2017/02/14/Coursera-ML/"/>
+    <id>http://www.feiyang.li/2017/02/14/Coursera-ML/</id>
     <published>2017-02-14T11:19:17.000Z</published>
     <updated>2017-02-14T11:24:58.929Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>在学习的过程中，抓住基本概念是非常重要的，这样可以防止自己陷入某些细节中无法自拔，可以让自己站在比较宏观的层面上看待问题。 更多见：<a href="https://feiyang.li/">李飞阳</a></p>
+<p>在学习的过程中，抓住基本概念是非常重要的，这样可以防止自己陷入某些细节中无法自拔，可以让自己站在比较宏观的层面上看待问题。 更多见：<a href="https://feiyang.li/" target="_blank" rel="external">李飞阳</a></p>
 </blockquote>
 <hr>
 <a id="more"></a>
@@ -493,16 +563,16 @@
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+      <category term="Machine Learning" scheme="http://www.feiyang.li/tags/Machine-Learning/"/>
     
-      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="http://www.feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>《结网》</title>
-    <link href="http://feiyang.li/2017/02/13/jiewang/"/>
-    <id>http://feiyang.li/2017/02/13/jiewang/</id>
+    <link href="http://www.feiyang.li/2017/02/13/jiewang/"/>
+    <id>http://www.feiyang.li/2017/02/13/jiewang/</id>
     <published>2017-02-13T13:39:16.000Z</published>
     <updated>2017-02-13T14:09:06.067Z</updated>
     
@@ -596,21 +666,21 @@
     </summary>
     
     
-      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="http://www.feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
-      <category term="臭臭" scheme="http://feiyang.li/tags/%E8%87%AD%E8%87%AD/"/>
+      <category term="臭臭" scheme="http://www.feiyang.li/tags/%E8%87%AD%E8%87%AD/"/>
     
   </entry>
   
   <entry>
     <title>第1.6题：使用Python生成字母验证码图片</title>
-    <link href="http://feiyang.li/2017/02/13/python-camp6/"/>
-    <id>http://feiyang.li/2017/02/13/python-camp6/</id>
+    <link href="http://www.feiyang.li/2017/02/13/python-camp6/"/>
+    <id>http://www.feiyang.li/2017/02/13/python-camp6/</id>
     <published>2017-02-13T05:36:02.000Z</published>
     <updated>2017-02-13T05:38:30.441Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.6：</strong>使用 Python 生成类似于下图中的<strong>字母验证码图片</strong><br>查看更多于本人博客：<a href="https://feiyang.li/">李飞阳</a></p>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.6：</strong>使用 Python 生成类似于下图中的<strong>字母验证码图片</strong><br>查看更多于本人博客：<a href="https://feiyang.li/" target="_blank" rel="external">李飞阳</a></p>
 </blockquote>
 <hr>
 <a id="more"></a>
@@ -652,23 +722,23 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
     
-      <category term="图片处理" scheme="http://feiyang.li/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
+      <category term="图片处理" scheme="http://www.feiyang.li/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>第1.5题：使用Python处理图片</title>
-    <link href="http://feiyang.li/2017/02/13/python-camp5/"/>
-    <id>http://feiyang.li/2017/02/13/python-camp5/</id>
+    <link href="http://www.feiyang.li/2017/02/13/python-camp5/"/>
+    <id>http://www.feiyang.li/2017/02/13/python-camp5/</id>
     <published>2017-02-13T02:33:53.000Z</published>
     <updated>2017-02-13T05:37:50.976Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。题目1.5：你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。查看更多于本人博客：<a href="https://feiyang.li/">李飞阳</a></p>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。题目1.5：你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。查看更多于本人博客：<a href="https://feiyang.li/" target="_blank" rel="external">李飞阳</a></p>
 </blockquote>
 <hr>
 <a id="more"></a>
@@ -696,18 +766,18 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
     
-      <category term="图片处理" scheme="http://feiyang.li/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
+      <category term="图片处理" scheme="http://www.feiyang.li/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>第1.4题：统计文件中单词出现个数</title>
-    <link href="http://feiyang.li/2017/02/11/python_camp4/"/>
-    <id>http://feiyang.li/2017/02/11/python_camp4/</id>
+    <link href="http://www.feiyang.li/2017/02/11/python_camp4/"/>
+    <id>http://www.feiyang.li/2017/02/11/python_camp4/</id>
     <published>2017-02-11T12:16:52.000Z</published>
     <updated>2017-02-17T06:12:58.915Z</updated>
     
@@ -716,7 +786,7 @@
 </blockquote>
 <hr>
 <a id="more"></a>
-<h1 id="铺垫工作"><a href="#铺垫工作" class="headerlink" title="铺垫工作"></a>铺垫工作</h1><p>这一期的铺垫工作比较多，所以单独写了一篇文章，详见  <a href="https://feiyang.li/2017/02/10/Python_lambda/">Python正则表达式</a></p>
+<h1 id="铺垫工作"><a href="#铺垫工作" class="headerlink" title="铺垫工作"></a>铺垫工作</h1><p>这一期的铺垫工作比较多，所以单独写了一篇文章，详见  <a href="https://feiyang.li/2017/02/10/Python_lambda/" target="_blank" rel="external">Python正则表达式</a></p>
 <h1 id="正文部分"><a href="#正文部分" class="headerlink" title="正文部分"></a>正文部分</h1><h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>任一个英文的纯文本文件，统计其中的单词出现的个数。<br>参考英文：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">If you are looking for someone you can pour out your love to, let me suggest the empowered woman. The empowered woman knows what she wants, knows how to get it, knows how to live fully, and she knows how to love you back without needing anyone’s approval or recognition. An empowered woman is unarguably one of the most magnificent beings you will ever come in contact with. Read on and find 10 reason why you should absolutely love and embrace the empowered women in your life! . </div><div class="line"></div><div class="line">1. She knows how to love you in returnIt is difficult to give what you don’t have. It is impossible to love someone and feel fulfilled when they can’t love you in return because they don’t love themselves. This will never happen to you when you love an empowered woman. She loves herself (not in a narcissistic manner). In turn, she appreciates who you are and loves you in return. She will love you just like you deserve to be loved. </div><div class="line"></div><div class="line">2. She will inspire youWhen life puts you down and you are at the end of your rope, the empowered woman will be there to see you through. Her drive, enthusiasm and (at times) hopeless optimism will inspire you to carry on despite the obstacles you face. </div><div class="line"></div><div class="line">3. She is not afraid of failureWhile many out there are thoroughly terrified of failure, the empowered woman understands that failures are simply stepping stones in life. How can you not love someone that is thoroughly unafraid to try, fail, and give it a shot all over again?! </div><div class="line"></div><div class="line"></div><div class="line">4. She is all about the legacyWhile most people are focused on the car, the house, the job, and corner office; the empowered woman is focused on leaving a legacy that will inspire others and change the world. The empowered woman is focused on empowering others to maximize their potential and fulfill their purpose. She is all about inspiring others to look beyond themselves and live a life of service to others.</div><div class="line"></div><div class="line"></div><div class="line"> 5. She can laugh at her mistakes……and learn from them as well! She understands mistakes are part of the journey. The empowered woman can laugh and learn from her mistakes to ensure they never happen again. </div><div class="line"></div><div class="line"></div><div class="line">6. She can be vulnerableThe empowered woman understands there is no debt in relationships without vulnerability. Although she is emotionally strong, she is willing to laugh and cry with you because all of these emotions are an essential part of life. </div><div class="line"></div><div class="line"></div><div class="line">7. She can speak her mindWhile everyone else is too concerned with what others may think or say, the empowered woman is not afraid to speak her mind. She understands that her value comes from within, not from what others say or think about her. </div><div class="line"></div><div class="line"></div><div class="line">8. She knows when to remain quietShe lives by Abe Lincoln’s words, “Better to remain silent and be thought a fool, than to speak out and remove all doubt.” </div><div class="line"></div><div class="line"></div><div class="line">9. She knows how to have funWhether it is at the symphony or at a ball game, the empowered woman understands life is made up of experiences with people – not the places you go. She is able to live in the moment and enjoy it fully without being concerned for the future. After all, who’s got a guaranteed future?</div><div class="line"></div><div class="line"></div><div class="line"> 10. She is not afraid of changeWhile most people rather continue on living unfulfilled lives as long as their comfort zone remains intact, the empowered woman is all about embracing change. She understands growth cannot happen without change. She understands that change is the gift life offers you to choose your destiny. Therefore, she is not afraid of change because it is her stepping stone towards success.</div></pre></td></tr></table></figure></p>
 <p><a href="http://cdn.mmmxcc.cn/blog/20170211/203305485.txt" target="_blank" rel="external">下载链接</a><br>将文件下载到python的<strong>工作路径</strong>里去，如果不知道哪里是工作路径，输入<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">#获取当前工作目录</div><div class="line">os.getcwd()</div><div class="line">#更改当前工作目录</div><div class="line">os.chdir('d:\')</div><div class="line">os.getcwd()</div></pre></td></tr></table></figure></p>
 <h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p>每一步我都尽量附带上了解释<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">replace</span><span class="params">(s)</span>:</span></div><div class="line">    <span class="keyword">if</span> s.group(<span class="number">1</span>) == <span class="string">'n\'t'</span>:</div><div class="line">        <span class="keyword">return</span> s.group(<span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> <span class="string">' '</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span><span class="params">(filename=<span class="string">'203305485.txt'</span>)</span>:</span></div><div class="line">    <span class="comment"># 使用lambda来定义简单的函数</span></div><div class="line">    dic = defaultdict(<span class="keyword">lambda</span>: <span class="number">0</span>)<span class="comment">#dic = defaultdict(int)也可以</span></div><div class="line">    <span class="keyword">with</span> open(filename, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        data = f.read()</div><div class="line">    <span class="comment"># 全部变为小写字母</span></div><div class="line">    data = data.lower()</div><div class="line">    <span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line">    data = re.sub(<span class="string">r'(n[\']t)|([\W\d])'</span>, replace, data)</div><div class="line">    datalist = re.split(<span class="string">r'[\s\n]+'</span>, data)</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> datalist:</div><div class="line">        dic[item] += <span class="number">1</span></div><div class="line">    <span class="keyword">del</span> dic[<span class="string">''</span>]</div><div class="line">    <span class="keyword">return</span> dic</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    dic = cal()</div><div class="line">    <span class="keyword">for</span> key, val <span class="keyword">in</span> dic.items():</div><div class="line">        print(<span class="string">'%15s  ----&gt;   %3s'</span> % (key,val))</div></pre></td></tr></table></figure></p>
@@ -757,18 +827,18 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
+      <category term="Algorithms" scheme="http://www.feiyang.li/tags/Algorithms/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>Python正则表达式</title>
-    <link href="http://feiyang.li/2017/02/10/Python_lambda/"/>
-    <id>http://feiyang.li/2017/02/10/Python_lambda/</id>
+    <link href="http://www.feiyang.li/2017/02/10/Python_lambda/"/>
+    <id>http://www.feiyang.li/2017/02/10/Python_lambda/</id>
     <published>2017-02-10T14:18:55.000Z</published>
     <updated>2017-02-11T13:36:55.460Z</updated>
     
@@ -871,16 +941,16 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="Python-camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python-camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>第1.3题：将  200 个激活码保存到 MySQL</title>
-    <link href="http://feiyang.li/2017/02/10/python_camp3/"/>
-    <id>http://feiyang.li/2017/02/10/python_camp3/</id>
+    <link href="http://www.feiyang.li/2017/02/10/python_camp3/"/>
+    <id>http://www.feiyang.li/2017/02/10/python_camp3/</id>
     <published>2017-02-10T07:16:52.000Z</published>
     <updated>2017-02-13T05:37:44.188Z</updated>
     
@@ -999,16 +1069,16 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>frp内网穿透</title>
-    <link href="http://feiyang.li/2017/02/09/frp/"/>
-    <id>http://feiyang.li/2017/02/09/frp/</id>
+    <link href="http://www.feiyang.li/2017/02/09/frp/"/>
+    <id>http://www.feiyang.li/2017/02/09/frp/</id>
     <published>2017-02-09T02:56:15.000Z</published>
     <updated>2017-02-11T13:20:27.500Z</updated>
     
@@ -1068,16 +1138,16 @@
     </summary>
     
     
-      <category term="VPS" scheme="http://feiyang.li/tags/VPS/"/>
+      <category term="VPS" scheme="http://www.feiyang.li/tags/VPS/"/>
     
-      <category term="frp" scheme="http://feiyang.li/tags/frp/"/>
+      <category term="frp" scheme="http://www.feiyang.li/tags/frp/"/>
     
   </entry>
   
   <entry>
     <title>第1.2题：使用 Python 如何生成 200 个激活码</title>
-    <link href="http://feiyang.li/2017/02/07/python_camp2/"/>
-    <id>http://feiyang.li/2017/02/07/python_camp2/</id>
+    <link href="http://www.feiyang.li/2017/02/07/python_camp2/"/>
+    <id>http://www.feiyang.li/2017/02/07/python_camp2/</id>
     <published>2017-02-07T11:50:11.000Z</published>
     <updated>2017-02-13T05:37:40.975Z</updated>
     
@@ -1150,16 +1220,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
   <entry>
     <title>Github Pages + CDN全站加速</title>
-    <link href="http://feiyang.li/2017/02/07/Github-Pages-CDN/"/>
-    <id>http://feiyang.li/2017/02/07/Github-Pages-CDN/</id>
+    <link href="http://www.feiyang.li/2017/02/07/Github-Pages-CDN/"/>
+    <id>http://www.feiyang.li/2017/02/07/Github-Pages-CDN/</id>
     <published>2017-02-07T05:38:38.000Z</published>
     <updated>2017-02-11T13:20:33.275Z</updated>
     
@@ -1260,16 +1330,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="CDN" scheme="http://feiyang.li/tags/CDN/"/>
+      <category term="CDN" scheme="http://www.feiyang.li/tags/CDN/"/>
     
-      <category term="Pages" scheme="http://feiyang.li/tags/Pages/"/>
+      <category term="Pages" scheme="http://www.feiyang.li/tags/Pages/"/>
     
   </entry>
   
   <entry>
     <title>jupyter notebook使用帮助</title>
-    <link href="http://feiyang.li/2017/01/12/jupyter-notebook/"/>
-    <id>http://feiyang.li/2017/01/12/jupyter-notebook/</id>
+    <link href="http://www.feiyang.li/2017/01/12/jupyter-notebook/"/>
+    <id>http://www.feiyang.li/2017/01/12/jupyter-notebook/</id>
     <published>2017-01-12T12:50:52.000Z</published>
     <updated>2017-02-11T13:20:37.749Z</updated>
     
@@ -1440,16 +1510,16 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="Jupyer" scheme="http://feiyang.li/tags/Jupyer/"/>
+      <category term="Jupyer" scheme="http://www.feiyang.li/tags/Jupyer/"/>
     
   </entry>
   
   <entry>
     <title>部署在线IPyhton notebook(在线python编译器)</title>
-    <link href="http://feiyang.li/2016/12/31/IPyhton-notebook/"/>
-    <id>http://feiyang.li/2016/12/31/IPyhton-notebook/</id>
+    <link href="http://www.feiyang.li/2016/12/31/IPyhton-notebook/"/>
+    <id>http://www.feiyang.li/2016/12/31/IPyhton-notebook/</id>
     <published>2016-12-31T14:52:39.000Z</published>
     <updated>2017-02-15T12:08:27.233Z</updated>
     
@@ -1518,7 +1588,7 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
-<p>如果希望不要在退出SSH命令行的时候，同时也停止jupyter notebook服务，推荐<strong>nohup </strong>，之前写过篇博客解释过<a href="https://feiyang.li/2016/10/19/%E6%97%A0%E5%85%AC%E7%BD%91IP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAWeb%E7%AB%99%E7%82%B9/">nohup的作用</a><br>在线python编译器就搭建好了，是不是很洋气~</p>
+<p>如果希望不要在退出SSH命令行的时候，同时也停止jupyter notebook服务，推荐<strong>nohup </strong>，之前写过篇博客解释过<a href="https://feiyang.li/2016/10/19/%E6%97%A0%E5%85%AC%E7%BD%91IP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAWeb%E7%AB%99%E7%82%B9/" target="_blank" rel="external">nohup的作用</a><br>在线python编译器就搭建好了，是不是很洋气~</p>
 ]]></content>
     
     <summary type="html">
@@ -1531,18 +1601,18 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
+      <category term="Jupyter" scheme="http://www.feiyang.li/tags/Jupyter/"/>
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="VPS" scheme="http://feiyang.li/tags/VPS/"/>
+      <category term="VPS" scheme="http://www.feiyang.li/tags/VPS/"/>
     
   </entry>
   
   <entry>
     <title>第1.1题：Python图片添加水印</title>
-    <link href="http://feiyang.li/2016/12/31/python_camp1/"/>
-    <id>http://feiyang.li/2016/12/31/python_camp1/</id>
+    <link href="http://www.feiyang.li/2016/12/31/python_camp1/"/>
+    <id>http://www.feiyang.li/2016/12/31/python_camp1/</id>
     <published>2016-12-31T04:16:16.000Z</published>
     <updated>2017-02-13T05:37:36.719Z</updated>
     
@@ -1599,133 +1669,9 @@ ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
     
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python练习册</title>
-    <link href="http://feiyang.li/2016/12/31/python_camp/"/>
-    <id>http://feiyang.li/2016/12/31/python_camp/</id>
-    <published>2016-12-31T03:35:04.000Z</published>
-    <updated>2017-02-18T06:04:32.379Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p><a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">参考代码</a>一同附上，分析过程见<a href="https://feiyang.li/tags/Python-camp/">李飞阳</a>，请多指教。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="一、基础问题"><a href="#一、基础问题" class="headerlink" title="一、基础问题"></a>一、基础问题</h1><p><strong>题目1.1：</strong><a href="https://feiyang.li/2016/12/31/python_camp1/">图片加水印</a>，类似于微信未读信息数量那种提示效果</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161216/115246388.jpg?imageMogr2/thumbnail/!80p" alt="头像" title="">
-                </div>
-                <div class="image-caption">头像</div>
-            </figure>
-<p><strong>题目1.2：</strong><a href="https://feiyang.li/2017/02/07/python_camp2/">使用 Python 如何生成 200 个激活码（或者优惠券）</a></p>
-<p><strong>题目1.3</strong>：<a href="https://feiyang.li/2017/02/10/python_camp3/">将 0002 题生成的 200 个激活码（或者优惠券）保存到 <strong>MySQL</strong> 关系型数据库中。 </a></p>
-<p><strong>题目1.4：</strong><a href="https://feiyang.li/2017/02/11/python_camp4/">任一个英文的纯文本文件，统计其中的单词出现的个数。</a></p>
-<p><strong>题目1.5：</strong><a href="https://feiyang.li/2017/02/13/python-camp5/">你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。</a></p>
-<p><strong>题目1.6：</strong><a href="https://feiyang.li/2017/02/13/python-camp6/">使用 Python 生成类似于下图中的<strong>字母验证码图片</strong></a></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164221438.png" alt="字母验证码" title="">
-                </div>
-                <div class="image-caption">字母验证码</div>
-            </figure>
-<ul>
-<li><a href="http://stackoverflow.com/questions/2823316/generate-a-random-letter-in-python" target="_blank" rel="external">阅读资料</a> </li>
-</ul>
-<p><strong>题目1.7：</strong><a href="https://feiyang.li/2017/02/15/python-camp7/"> 敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。</a></p>
-<pre><code>北京
-程序员
-公务员
-领导
-牛比
-牛逼
-你娘
-你妈
-love
-sex
-jiangge
-</code></pre><p><strong>题目1.8：</strong> <a href="https://feiyang.li/2017/02/15/python-camp8/">纯文本文件 student.txt为学生信息, 里面的内容（包括花括号）如下所示：</a></p>
-<pre><code>{
-    &quot;1&quot;:[&quot;张三&quot;,150,120,100],
-    &quot;2&quot;:[&quot;李四&quot;,90,99,95],
-    &quot;3&quot;:[&quot;王五&quot;,60,66,68]
-}
-</code></pre><p>请将上述内容写到 student.xls 文件中，如下图所示：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164341562.png" alt="student.xls" title="">
-                </div>
-                <div class="image-caption">student.xls</div>
-            </figure>
-<ul>
-<li><a href="http://www.cnblogs.com/skynet/archive/2013/05/06/3063245.html" target="_blank" rel="external">阅读资料</a> 腾讯游戏开发 XML 和 Excel 内容相互转换</li>
-</ul>
-<p><strong>题目1.9：</strong> <a href="https://feiyang.li/2017/02/16/python-camp9/">通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</a></p>
-<ul>
-<li><p>阅读资料 <a href="http://zhuoqiang.me/password-storage-and-python-example.html" target="_blank" rel="external">用户密码的存储与 Python 示例</a></p>
-</li>
-<li><p>阅读资料 <a href="http://www.pythoncentral.io/hashing-strings-with-python/" target="_blank" rel="external">Hashing Strings with Python</a></p>
-</li>
-<li><p>阅读资料 <a href="http://stackoverflow.com/questions/2572099/pythons-safest-method-to-store-and-retrieve-passwords-from-a-database" target="_blank" rel="external">Python’s safest method to store and retrieve passwords from a database</a></p>
-</li>
-</ul>
-<hr>
-<h1 id="二、数据分析"><a href="#二、数据分析" class="headerlink" title="二、数据分析"></a>二、数据分析</h1><p><strong>题目2.1：</strong><a href="https://feiyang.li/2017/02/17/python-camp2-1/">你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。</a></p>
-<p><strong>题目2.2：</strong>有个目录，里面是你自己写过的程序，统计一下你写过多少行代码。包括空行和注释，但是要分别列出来。</p>
-<p><strong>题目2.3：</strong> <a href="http://iservice.10010.com/index_.html" target="_blank" rel="external">登陆中国联通网上营业厅</a> 后选择「自助服务」 –&gt; 「详单查询」，然后选择你要查询的时间段，点击「查询」按钮，查询结果页面的最下方，点击「导出」，就会生成类似于 2014年10月01日～2014年10月31日通话详单.xls 文件。写代码，对每月通话时间做个统计。</p>
-<hr>
-<h1 id="三、爬虫方面"><a href="#三、爬虫方面" class="headerlink" title="三、爬虫方面"></a>三、爬虫方面</h1><p><strong>题目3.1：</strong>一个HTML文件，找出里面的<strong>正文</strong>。</p>
-<p><strong>题目3.2：</strong><a href="https://feiyang.li/2016/12/13/get_html/">一个HTML文件，找出里面的<strong>链接</strong>。</a></p>
-<p><strong>题目3.3：</strong> 用 Python 写一个爬图片的程序，可以参考<a href="hhttps://feiyang.li/2016/12/15/Python_use_urllib2/">Python爬取图片（使用urllib2）</a>，如果出现问题，可以尝试<a href="https://feiyang.li/2016/12/29/Python-selenium/">selenium自动化测试工具</a></p>
-<hr>
-<h1 id="四、Web问题"><a href="#四、Web问题" class="headerlink" title="四、Web问题"></a>四、Web问题</h1><p><strong>题目4.1：</strong> 使用 Python 的 Web 框架，做一个 Web 版本 留言簿 应用。</p>
-<p><a href="http://v2ex.com/t/151643#reply53" target="_blank" rel="external">阅读资料：Python 有哪些 Web 框架</a></p>
-<ul>
-<li><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164432170.png" alt="留言簿参考" title="">
-                </div>
-                <div class="image-caption">留言簿参考</div>
-            </figure>
-</li>
-</ul>
-<p><strong>题目4.2：</strong> 使用 Python 的 Web 框架，做一个 Web 版本 TodoList 应用。</p>
-<ul>
-<li><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164451954.png" alt="SpringSide" title="">
-                </div>
-                <div class="image-caption">SpringSide</div>
-            </figure>
-</li>
-</ul>
-<p><strong>题目来自 <a href="https://github.com/Yixiaohan" target="_blank" rel="external">易枭寒的Github</a></strong></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;参考代码&lt;/a&gt;一同附上，分析过程见&lt;a href=&quot;https://feiyang.li/tags/Python-camp/&quot;&gt;李飞阳&lt;/a&gt;，请多指教。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
     
   </entry>
   
