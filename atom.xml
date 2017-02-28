@@ -1,0 +1,1678 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>李飞阳</title>
+  <subtitle>PM、Coder、Data mining</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.feiyang.li/"/>
+  <updated>2017-02-28T03:22:11.178Z</updated>
+  <id>http://www.feiyang.li/</id>
+  
+  <author>
+    <name>Wing Lee</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IntelliJ 、Pycharm激活码及激活服务器</title>
+    <link href="http://www.feiyang.li/2017/02/26/jetbrains/"/>
+    <id>http://www.feiyang.li/2017/02/26/jetbrains/</id>
+    <published>2017-02-26T13:28:39.000Z</published>
+    <updated>2017-02-28T03:22:11.178Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>jetbrains 家的东西都非常好看，但是价格贵的令人发指，所以我搭建了一个 Pycharm激活服务器，可以用来激活 Pycharm，IntelliJ IDEA，WebStorm。避免频繁更换激活码的问题。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="jetbrains-激活服务器搭建"><a href="#jetbrains-激活服务器搭建" class="headerlink" title="jetbrains 激活服务器搭建"></a>jetbrains 激活服务器搭建</h1><h2 id="一台VPS"><a href="#一台VPS" class="headerlink" title="一台VPS"></a>一台VPS</h2><p>连vps都没有，小拳头你怕不怕(ง •̀_•́)ง 。 那你用我的吧，╮(╯▽╰)╭  。</p>
+<h2 id="一键脚本"><a href="#一键脚本" class="headerlink" title="一键脚本"></a>一键脚本</h2><p>建议在特权模式下运行，即<code>sudo -s</code>一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://home.ustc.edu.cn/~mmmwhy/jetbrain.sh &amp;&amp; sh ./jetbrain.sh</div></pre></td></tr></table></figure></p>
+<p>会出现两个空，用于输入端口号和默认用户名，建议直接回车，否则可能会出现莫名其妙的错误。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170227/131856881.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>将最后那个<strong>License sever地址</strong>记下，之后激活用。</p>
+<h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><p>选择<strong>License sever</strong>激活方式，输入激活地址<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170226/211949408.png" alt="License" title="">
+                </div>
+                <div class="image-caption">License</div>
+            </figure></p>
+<p>分分钟应该就会弹出提示，一劳永逸解决激活问题。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170226/212224250.png" alt="激活成功提示" title="">
+                </div>
+                <div class="image-caption">激活成功提示</div>
+            </figure></p>
+<h2 id="激活服务器分享"><a href="#激活服务器分享" class="headerlink" title="激活服务器分享"></a>激活服务器分享</h2><p>我搭建了一个激活服务器，直接公布会很容易被封，需要的请关注：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170226/214429172.jpg" alt="小小臭臭" title="">
+                </div>
+                <div class="image-caption">小小臭臭</div>
+            </figure><br>回复“激活”即可获得地址。</p>
+<h1 id="Pycharm激活码-IntelliJ-IDEA激活码"><a href="#Pycharm激活码-IntelliJ-IDEA激活码" class="headerlink" title="Pycharm激活码 / IntelliJ IDEA激活码"></a>Pycharm激活码 / IntelliJ IDEA激活码</h1><p>双击复制全部<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CNEKJPQZEX-eyJsaWNlbnNlSWQiOiJDTkVLSlBRWkVYIiwibGljZW5zZWVOYW1lIjoibGFuIHl1IiwiYXNzaWduZWVOYW1lIjoiIiwiYXNzaWduZWVFbWFpbCI6IiIsImxpY2Vuc2VSZXN0cmljdGlvbiI6IkZvciBlZHVjYXRpb25hbCB1c2Ugb25seSIsImNoZWNrQ29uY3VycmVudFVzZSI6ZmFsc2UsInByb2R1Y3RzIjpbeyJjb2RlIjoiQUMiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJETSIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9LHsiY29kZSI6IklJIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiUlMwIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiV1MiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJEUE4iLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJSQyIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9LHsiY29kZSI6IlBTIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiREMiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJEQiIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9LHsiY29kZSI6IlJNIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiUEMiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJDTCIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9XSwiaGFzaCI6IjUxOTU1OTMvMCIsImdyYWNlUGVyaW9kRGF5cyI6MCwiYXV0b1Byb2xvbmdhdGVkIjpmYWxzZSwiaXNBdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlfQ==-QOxwjWvRwJz6vo6J6adC3CJ4ukQHosbPYZ94URUVFna/Rbew8xK/M5gP3kAaPh6ZDveFdtMR1UBoumq3eCwXtXM3U3ls5noB4LIr+QplVlCj2pK5uNq7g/feyNyQcHpSXtvhIOnXDBLOecB05DOsxzm0p7ulGGJoAInmHeb9mc0eYjqc4RPpUQfh6HSYBnvEnKMlLF5bz4KEtzmsvvgA55CwzwQ3gRitm5Q/wUT7AQCBdjmBfNUjKVQL6TSjSDPp56FUdEs4Aab8LqstA2DIMbxocO64rvytmcUeIwu8Mi5uq87KQP5AQMSMYb59Inbd+dmVfx5cJo3fRS4/5s3/Hg==-MIIEPjCCAiagAwIBAgIBBTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE1MTEwMjA4MjE0OFoXDTE4MTEwMTA4MjE0OFowETEPMA0GA1UEAwwGcHJvZDN5MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxcQkq+zdxlR2mmRYBPzGbUNdMN6OaXiXzxIWtMEkrJMO/5oUfQJbLLuMSMK0QHFmaI37WShyxZcfRCidwXjot4zmNBKnlyHodDij/78TmVqFl8nOeD5+07B8VEaIu7c3E1N+e1doC6wht4I4+IEmtsPAdoaj5WCQVQbrI8KeT8M9VcBIWX7fD0fhexfg3ZRt0xqwMcXGNp3DdJHiO0rCdU+Itv7EmtnSVq9jBG1usMSFvMowR25mju2JcPFp1+I4ZI+FqgR8gyG8oiNDyNEoAbsR3lOpI7grUYSvkB/xVy/VoklPCK2h0f0GJxFjnye8NT1PAywoyl7RmiAVRE/EKwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQC9WZuYgQedSuOc5TOUSrRigMw4/+wuC5EtZBfvdl4HT/8vzMW/oUlIP4YCvA0XKyBaCJ2iX+ZCDKoPfiYXiaSiH+HxAPV6J79vvouxKrWg2XV6ShFtPLP+0gPdGq3x9R3+kJbmAm8w+FOdlWqAfJrLvpzMGNeDU14YGXiZ9bVzmIQbwrBA+c/F4tlK/DV07dsNExihqFoibnqDiVNTGombaU2dDup2gwKdL81ua8EIcGNExHe82kjF4zwfadHk3bQVvbfdAwxcDy4xBjs3L4raPLU3yenSzr/OEur1+jfOxnQSmEcMXKXgrAQ9U55gwjcOFKrgOxEdek/Sk1VfOjvS+nuM4eyEruFMfaZHzoQiuw4IqgGc45ohFH0UUyjYcuFxxDSU9lMCv8qdHKm+wnPRb0l9l5vXsCBDuhAGYD6ss+Ga+aDY6f/qXZuUCEUOH3QUNbbCUlviSz6+GiRnt1kA9N2Qachl+2yBfaqUqr8h7Z2gsx5LcIf5kYNsqJ0GavXTVyWh7PYiKX4bs354ZQLUwwa/cG++2+wNWP+HtBhVxMRNTdVhSm38AknZlD+PTAsWGu9GyLmhti2EnVwGybSD2Dxmhxk3IPCkhKAK+pl0eWYGZWG3tJ9mZ7SowcXLWDFAk0lRJnKGFMTggrWjV8GYpw5bq23VmIqqDLgkNzuoog==</div></pre></td></tr></table></figure></p>
+<p>在Activate code处粘贴进去即可<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170226/213942164.png" alt="Activate" title="">
+                </div>
+                <div class="image-caption">Activate</div>
+            </figure></p>
+<hr>
+<p>衷心感谢博主：ilanyu， <a href="http://blog.lanyus.com/" target="_blank" rel="external">http://blog.lanyus.com/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;jetbrains 家的东西都非常好看，但是价格贵的令人发指，所以我搭建了一个 Pycharm激活服务器，可以用来激活 Pycharm，IntelliJ IDEA，WebStorm。避免频繁更换激活码的问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Pycharm激活" scheme="http://www.feiyang.li/tags/Pycharm%E6%BF%80%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客中插入音乐/视频</title>
+    <link href="http://www.feiyang.li/2017/02/24/Hexo-music-video/"/>
+    <id>http://www.feiyang.li/2017/02/24/Hexo-music-video/</id>
+    <published>2017-02-24T12:57:01.000Z</published>
+    <updated>2017-02-25T05:59:28.975Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง </p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="Markdown-通用的音乐视频插入方法"><a href="#Markdown-通用的音乐视频插入方法" class="headerlink" title="Markdown 通用的音乐视频插入方法"></a>Markdown 通用的音乐视频插入方法</h1><h2 id="iframe标签"><a href="#iframe标签" class="headerlink" title="iframe标签"></a>iframe标签</h2><p>代码从网易云音乐获得<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170224/221537233.png" alt="网易云音乐" title="">
+                </div>
+                <div class="image-caption">网易云音乐</div>
+            </figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=430 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=114389&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;</div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="430" height="86" src="//music.163.com/outchain/player?type=2&id=114389&auto=0&height=66"></iframe>
+
+
+
+<h2 id="embed标签"><a href="#embed标签" class="headerlink" title="embed标签"></a>embed标签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;embed height=&quot;415&quot; width=&quot;544&quot; quality=&quot;high&quot; allowfullscreen=&quot;true&quot; type=&quot;application/x-shockwave-flash&quot; src=&quot;//static.hdslb.com/miniloader.swf&quot; flashvars=&quot;aid=8506694&amp;page=1&quot; pluginspage=&quot;//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash&quot;&gt;&lt;/embed&gt;</div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=8506694&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">
+
+
+<h2 id="javascript标签举例"><a href="#javascript标签举例" class="headerlink" title="javascript标签举例"></a>javascript标签举例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.xiami.com/widget/player-single?uid=32329501&amp;sid=1776238762&amp;mode=js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=32329501&sid=1776238762&mode=js"></script>
+
+<h1 id="使用-Hexo-插件插入音乐-视频"><a href="#使用-Hexo-插件插入音乐-视频" class="headerlink" title="使用 Hexo 插件插入音乐/视频"></a>使用 Hexo 插件插入音乐/视频</h1><p>两个好用的hexo插件：</p>
+<p><strong>hexo-tag-aplayer：<a href="https://github.com/grzhan/hexo-tag-aplayer" target="_blank" rel="external">https://github.com/grzhan/hexo-tag-aplayer</a></strong></p>
+<p><strong>hexo-tag-dplayer： <a href="https://github.com/NextMoe/hexo-tag-dplayer" target="_blank" rel="external">https://github.com/NextMoe/hexo-tag-dplayer</a></strong></p>
+<h2 id="播放音乐的aplayer"><a href="#播放音乐的aplayer" class="headerlink" title="播放音乐的aplayer"></a>播放音乐的aplayer</h2><p>在cmd页面内，使用npm安装：<br><code>npm install hexo-tag-aplayer</code></p>
+<p>在markdown内添加以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% aplayer &quot;她的睫毛&quot; &quot;周杰伦&quot; &quot;http://home.ustc.edu.cn/~mmmwhy/%d6%dc%bd%dc%c2%d7%20-%20%cb%fd%b5%c4%bd%de%c3%ab.mp3&quot;  &quot;http://home.ustc.edu.cn/~mmmwhy/jay.jpg&quot; &quot;autoplay=false&quot; %&#125;</div></pre></td></tr></table></figure>
+<p>效果如下所示：<br><div id="aplayer0" class="aplayer" style="margin-bottom: 20px;"></div>
+		<script>
+			new APlayer({
+				element: document.getElementById("aplayer0"),
+				narrow: false,
+				autoplay: false,
+				showlrc: 0,
+				music: {
+					title: "她的睫毛",
+					author: "周杰伦",
+					url: "http://home.ustc.edu.cn/~mmmwhy/%d6%dc%bd%dc%c2%d7%20-%20%cb%fd%b5%c4%bd%de%c3%ab.mp3",
+					pic: "http://home.ustc.edu.cn/~mmmwhy/jay.jpg",
+				}
+			});
+		</script></p>
+<h2 id="播放视频的dplayer"><a href="#播放视频的dplayer" class="headerlink" title="播放视频的dplayer"></a>播放视频的dplayer</h2><p>在cmd页面内，使用npm安装：<br><code>npm install hexo-tag-dplayer</code></p>
+<p>在markdown内添加以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% dplayer &quot;url=http://home.ustc.edu.cn/~mmmwhy/GEM.mp4&quot;  &quot;pic=http://home.ustc.edu.cn/~mmmwhy/GEM.jpg&quot; &quot;loop=yes&quot; &quot;theme=#FADFA3&quot; &quot;autoplay=false&quot; &quot;token=tokendemo&quot; %&#125;</div></pre></td></tr></table></figure>
+<p>效果如下所示：</p>
+<div id="dplayer0" class="dplayer" style="margin-bottom: 20px;"></div><script>var dplayer0 = new DPlayer({"element":document.getElementById("dplayer0"),"autoplay":false,"theme":"#FADFA3","loop":true,"video":{"url":"http://home.ustc.edu.cn/~mmmwhy/GEM.mp4","pic":"http://home.ustc.edu.cn/~mmmwhy/GEM.jpg"}});</script>
+<hr>
+<p>以上</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://www.feiyang.li/tags/hexo/"/>
+    
+      <category term="plugins" scheme="http://www.feiyang.li/tags/plugins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Django 创建第一个项目</title>
+    <link href="http://www.feiyang.li/2017/02/18/django-hello-world/"/>
+    <id>http://www.feiyang.li/2017/02/18/django-hello-world/</id>
+    <published>2017-02-18T11:37:59.000Z</published>
+    <updated>2017-02-18T12:41:10.174Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>上手使用Python的Web框架– Django</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>网上教程安装环境多是linux环境，所以我写一下windows系统下创建Django项目。基于Django 1.10 和Python3.5，作为学生狗的好处之一，就是有很多时间，慢慢琢磨新技术。</p>
+<h1 id="windows上virtualenv-安装及使用"><a href="#windows上virtualenv-安装及使用" class="headerlink" title="windows上virtualenv 安装及使用"></a>windows上virtualenv 安装及使用</h1><p>一开始我不太懂virtualenv 到底有什么意思，后来慢慢各种package装的多了后，发现还是很有必要的。举个例子：如果应用A需要jinja 2.7，而应用B需要jinja 2.6怎么办？</p>
+<p>这种情况下，每个应用可能需要各自拥有一套“独立”的Python运行环境。virtualenv就是用来为一个应用创建一套“隔离”的Python运行环境。</p>
+<h2 id="正常安装过程"><a href="#正常安装过程" class="headerlink" title="正常安装过程"></a>正常安装过程</h2><ul>
+<li><p>安装virtualenv</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install virtualenv</div></pre></td></tr></table></figure>
+</li>
+<li><p>为项目安装虚拟环境<br>为该<strong>虚拟环境</strong>起个名字，新建文件夹，<code>cd</code>进入。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">virtualenv env</div></pre></td></tr></table></figure>
+</li>
+<li><p>激活环境</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">your_env_dir\Scripts\activate</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Pycharm使用虚拟环境"><a href="#Pycharm使用虚拟环境" class="headerlink" title="Pycharm使用虚拟环境"></a>Pycharm使用虚拟环境</h2><p>上边说的那种方法，完全没有实用性，太扯淡了。切换环境难于上青天，用Pycharm会简便很多。</p>
+<ul>
+<li>新建项目<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170218/191620497.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>用Pycharm建立虚拟环境<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170218/191841405.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
+</li>
+</ul>
+<p>新建之后，在第一个图片那个地方进行选择就可以了，建议新建conda-env，自动新建在envs环境下，方便管理</p>
+<p>至此，django环境搭建完毕，接下来学习django工程的创建，以及简单的在网页中显示出”Hello World”。</p>
+<h1 id="初识Django工程"><a href="#初识Django工程" class="headerlink" title="初识Django工程"></a>初识Django工程</h1><h2 id="点击Create创建工程"><a href="#点击Create创建工程" class="headerlink" title="点击Create创建工程"></a>点击Create创建工程</h2><p>见创建后的工程截图：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170218/192837742.png" alt="Django" title="">
+                </div>
+                <div class="image-caption">Django</div>
+            </figure></p>
+<p>文件如下:</p>
+<ul>
+<li>my_site: 项目的容器。</li>
+<li>manage.py: 一个实用的命令行工具，可让你以各种方式与该 Django 项目进行交互。</li>
+<li>my_site/<strong>init</strong>.py: 一个空文件，告诉 Python 该目录是一个 Python 包。</li>
+<li>my_site/settings.py: 该 Django 项目的设置/配置。</li>
+<li>my_site/urls.py: 该 Django 项目的 URL 声明; 一份由 Django 驱动的网站”目录”。</li>
+<li>my_site/wsgi.py: 一个 WSGI 兼容的 Web 服务器的入口，以便运行你的项目。</li>
+</ul>
+<h2 id="直接启动Django项目"><a href="#直接启动Django项目" class="headerlink" title="直接启动Django项目"></a>直接启动Django项目</h2><p>来看执行的结果，启动的方式是：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py runserver <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">8000</span></div></pre></td></tr></table></figure></p>
+<p>0.0.0.0让其它电脑可连接到开发服务器，8000为端口号。如果不说明，那么端口号默认为8000。</p>
+<h2 id="Pycharm启动Django项目"><a href="#Pycharm启动Django项目" class="headerlink" title="Pycharm启动Django项目"></a>Pycharm启动Django项目</h2><ul>
+<li>打开manage.py文件</li>
+<li>在菜单栏中Run中选择Edit Configurations，见截图：<br>修改<strong>Script parameters:</strong> <code>runserver</code><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170218/193330168.png" alt="Script" title="">
+                </div>
+                <div class="image-caption">Script</div>
+            </figure></li>
+<li>ctrl + shift+ F10 运行<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170218/193636035.png" alt="输出" title="">
+                </div>
+                <div class="image-caption">输出</div>
+            </figure>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170218/193700547.png" alt="页面" title="">
+                </div>
+                <div class="image-caption">页面</div>
+            </figure>
+<hr>
+<h1 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello world"></a>Hello world</h1><ul>
+<li><p>新建 view.py<br>在先前创建的 my_site 目录下的 my_site 目录新建一个 view.py 文件，并输入代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"Hello world ! "</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><p>我们从 django.http 中导入了 HttpResponse 这个类。我们会在接下来用到这个类。</p>
+</li>
+<li><p>我们定义了一个叫做 hello 的视图函数(view function)。每个view function至少要有一个参数，通常被叫做 request 。这是一个对象，包含了触发这个 view function的Web请求的信息， 它是 django.http.HttpRequest 的一个实例(instance)。 在这个例子中，虽然我们不对这个 request 做任何处理，但是我们还必须要把它作为视图的第一个参数。</p>
+</li>
+<li><p>这个函数只有一行简单的代码：它仅仅返回一个 HttpResponse 对象，这个对象包含了文本“Hello world”。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>记住，一个视图本身就是一个Python的函数，这个函数接受一个 HttpRequest 作为它的第一个参数，并返回 一个 HttpResponse 的实例。要想让一个Python函数成为一个Django的视图，你需要让它满足这两个条件。 </p>
+<ul>
+<li>修改urls.py<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> include, url</div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> my_site.view <span class="keyword">import</span> hello</div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^hello/$'</span>, hello)</div><div class="line">]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><ul>
+<li><p>URLconf<br>在Django里，要关联view function到一个URL，需要用到 URLconf。URLconf 就像是你的Django站点的目录。本质上，它是一个URL和这个URL将调用的view function之间的映射关系。 通过这种方式，你就可以告诉Django：“对于这个URL，调用这段代码，对于那个URL，调用那段代码。”例如，当用户访问 /hello/ 时，调用view function hello() ， 这个view function在 views.py 中。因此需要在使用function前，进行声明：<code>from my_site.view import hello</code>。</p>
+</li>
+<li><p>URLpattern<br>首先，我们从模块mysite/views.py中导入了 hello 这个view function。Python的导入语法用mysite.views表示 mysite/views.py 。(这段代码假设了mysite/views.py在Python的搜索路径中) 接着，我们添加了url(r’^hello/$’, hello), 到 urlpatterns 中。这一行被叫做一个URLpattern。 url() 函数会告诉Django如何处理你配置的url。 url() 的第一个参数是一个模式匹配字符串( 正则表达式)，第二个参数处理这个URLpattern的view function。</p>
+</li>
+</ul>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
+<li><p>正则表达式<br>我们在正则表达式字符串前面加了一个 r 。在Python中，这表示一个原始字符串(raw string)，Python不会去转义那些反斜杠()。在普通的Python字符串中，反斜杠会被用来转义特殊字符，比如字符串 ‘\n’ 会被解释成换行符。当你加上 r 之后，Python就不会转义那些字符了， r’\n’ 就是一个包括了一个反斜杠和一个小写字母“n”的字符串。正则表达式中反斜杠的用法和Python字符串中反斜杠的用法刚好冲突了。所以在Python中使用正则表达式的时候最好都加上 r 。本书中所有的URLpattern都会用这种形式。</p>
+</li>
+<li><p>URLpattern的语法</p>
+<ul>
+<li><p>Django在检查URL模式之前，会移除每个URL最开始的斜杠。这意味着URLpattern并不包括 /hello 开头那个斜杠。(一开始，这可能不太直观，但是这样做简化了很多事情。)</p>
+</li>
+<li><p>匹配模式里面包括了一个脱字符( ^ )和一个美元符( \$ )。这两个符号在正则表达式里面的有特别的意义： ^ 要求从字符串开头开始匹配， \$ 则是要求对字符串尾部进行匹配。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>这个URLconf中我们是把 hello 这个view function直接作为一个对象传递的，而不是去调用它。 这是Pyhton(作为动态语言)的一个重要特征，函数是一级对象(first-class objects)，你可以像 传递其它变量一样传递一个函数。很洋气吧？</p>
+<hr>
+<p>以上</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;上手使用Python的Web框架– Django&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="Django" scheme="http://www.feiyang.li/tags/Django/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第2.1题：Python统计日记最重要的词</title>
+    <link href="http://www.feiyang.li/2017/02/17/python-camp2-1/"/>
+    <id>http://www.feiyang.li/2017/02/17/python-camp2-1/</id>
+    <published>2017-02-17T09:04:55.000Z</published>
+    <updated>2017-02-17T09:07:37.504Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目2.1</strong>： 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding: utf-8</span></div><div class="line"><span class="keyword">import</span> re, os</div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</div><div class="line"></div><div class="line"><span class="comment"># 目标文件所在目录</span></div><div class="line">PATH = <span class="string">'D:'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getCounter</span><span class="params">(source)</span>:</span></div><div class="line">    <span class="comment">#输入一个英文的纯文本文件，统计其中的单词出现的个数</span></div><div class="line">    <span class="keyword">with</span> open(source) <span class="keyword">as</span> f:</div><div class="line">        data = f.read()</div><div class="line">    data = data.lower()<span class="comment">#字母全部小写</span></div><div class="line">    datalist = re.split(<span class="string">r'[\s]+'</span>, data)<span class="comment">#根据空白字符，将data进行划分</span></div><div class="line">    <span class="keyword">return</span> Counter(datalist)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(PATH)</span>:</span></div><div class="line">    <span class="comment"># 切换到目标文件所在目录</span></div><div class="line">    os.chdir(PATH)</div><div class="line">    <span class="comment"># 遍历该目录下的txt文件</span></div><div class="line">    total_counter = Counter() <span class="comment"># 生成Counter()对象</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> os.listdir(os.getcwd()):</div><div class="line">        <span class="keyword">if</span> os.path.splitext(i)[<span class="number">1</span>] == <span class="string">'.txt'</span>:<span class="comment">#分离扩展名</span></div><div class="line">            total_counter += getCounter(i)<span class="comment"># 多个Counter()叠加</span></div><div class="line">    <span class="keyword">return</span> total_counter.most_common()<span class="comment">#Counter对象转化为list格式</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    dic = run(PATH)</div><div class="line">    <span class="keyword">for</span> i  <span class="keyword">in</span> range(len(dic)):</div><div class="line">        print(<span class="string">'%15s  ----&gt;   %3s'</span> % (dic[i][<span class="number">0</span>],dic[i][<span class="number">1</span>]))</div></pre></td></tr></table></figure>
+<h1 id="出现的错误"><a href="#出现的错误" class="headerlink" title="出现的错误"></a>出现的错误</h1><h2 id="编码问题"><a href="#编码问题" class="headerlink" title="编码问题"></a>编码问题</h2><p><strong>UnicodeDecodeError: ‘gbk’ codec can’t decode byte…</strong><br>两种解决方法：</p>
+<ul>
+<li><p>decode(‘utf-8’)重新编码一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fp = open(filename,<span class="string">'rb'</span>)</div><div class="line"></div><div class="line">content = fp.read().decode(<span class="string">'utf-8'</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>open方法指定参数encoding=’UTF-8’:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">content= open(<span class="string">'filename'</span>, mode=<span class="string">'rb'</span>, encoding=<span class="string">'UTF-8'</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>但是得注意一下，原文到底是不是UTF-8编码。反正Python编码这里是个大坑，多加小心。</p>
+<h2 id="文件名、目录名或卷标语法不正确"><a href="#文件名、目录名或卷标语法不正确" class="headerlink" title="文件名、目录名或卷标语法不正确"></a>文件名、目录名或卷标语法不正确</h2><p>Path里边的斜杠是 <strong>/</strong> 不是 \<br><code>PATH = &#39;E:/Python/pydata-book-master/ch02&#39;</code></p>
+<h1 id="AttributeError-‘list’-object-has-no-attribute-‘…"><a href="#AttributeError-‘list’-object-has-no-attribute-‘…" class="headerlink" title="AttributeError: ‘list’ object has no attribute ‘…"></a>AttributeError: ‘list’ object has no attribute ‘…</h1><p>看看那个object到底是什么，<code>print(type(name))</code> ，然后再查查其对应的函数。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。&lt;strong&gt;题目2.1&lt;/strong&gt;： 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
+    
+      <category term="自然语言处理" scheme="http://www.feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第1.9题：Python对密码加密</title>
+    <link href="http://www.feiyang.li/2017/02/16/python-camp9/"/>
+    <id>http://www.feiyang.li/2017/02/16/python-camp9/</id>
+    <published>2017-02-16T13:59:43.000Z</published>
+    <updated>2017-02-17T04:33:14.710Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.9</strong>： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>思路：salt 加 hash 来单向转换密码明文</p>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>以下给出Py2和Py3两段代码，输出的内容是一样的。因为加密之后的内容不是unicode代码，所以存储可能不方便，可以使用<code>base64.b64encode(hashed)</code>转化为base64编码格式。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170216/194046518.png" alt="输出结果" title="">
+                </div>
+                <div class="image-caption">输出结果</div>
+            </figure>
+<p>Python2代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os,base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>) <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, str)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> isinstance(password, unicode):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line">    </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
+<p>Python3代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os, base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>)  <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, bytes)</div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> isinstance(password, str):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, bytes)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
+<h1 id="Python编码问题"><a href="#Python编码问题" class="headerlink" title="Python编码问题"></a>Python编码问题</h1><p>一开始直接在Python3环境运行第一段代码的时候，总会报错<code>NameError: global name &#39;unicode&#39; is not defined</code>，百思不得其解。</p>
+<p>查了资料，才发现是因为Python更新的时候，Python 3 renamed the <strong>unicode</strong> type to <strong>str</strong>, the old <strong>str</strong> type has been replaced by <strong>bytes</strong>。在<a href="https://docs.python.org/dev/howto/pyporting.html" target="_blank" rel="external">Python升级文档</a>内可以查到相关内容，也就是<strong>unicode</strong>直接改名<strong>str</strong>，<strong>str</strong>改名成<strong>bytes</strong>。<br>Python2和Python3，在编码方面挖下太多的坑<br>举个简单的例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">isinstance(<span class="string">u'中文'</span>, unicode) <span class="comment">#python2内是正确的</span></div><div class="line">isinstance(<span class="string">u'中文'</span>, str) <span class="comment">#python3内是正确的</span></div></pre></td></tr></table></figure></p>
+<h1 id="Python3内的unicode和bytes"><a href="#Python3内的unicode和bytes" class="headerlink" title="Python3内的unicode和bytes"></a>Python3内的unicode和bytes</h1><p>Python 3最重要的新特性大概要算是<strong>对文本和二进制数据作了更为清晰的区分</strong>。文本总是Unicode，由str类型表示，二进制数据则由bytes类型表示。</p>
+<p>在将字符串存入磁盘和从磁盘读取字符串的过程中，Python 自动地帮你完成了编码和解码的工作，你不需要关心它的过程，例如你能把一个中文赋值给字符串。而使用 bytes 类型，实质上是告诉 Python，不需要它帮你自动地完成编码和解码的工作，而是用户自己手动进行，并指定编码格式。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<p>参考链接：<br><a href="http://zhuoqiang.me/password-storage-and-python-example.html" target="_blank" rel="external">http://zhuoqiang.me/password-storage-and-python-example.html</a><br><a href="http://www.ituring.com.cn/article/61192" target="_blank" rel="external">http://www.ituring.com.cn/article/61192</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。&lt;strong&gt;题目1.9&lt;/strong&gt;： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
+    
+      <category term="密码处理" scheme="http://www.feiyang.li/tags/%E5%AF%86%E7%A0%81%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第1.8题：文本读取转化</title>
+    <link href="http://www.feiyang.li/2017/02/15/python-camp8/"/>
+    <id>http://www.feiyang.li/2017/02/15/python-camp8/</id>
+    <published>2017-02-15T14:07:40.000Z</published>
+    <updated>2017-02-15T14:09:04.064Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.8：</strong> 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p><strong>题目1.8：</strong> 纯文本文件 student.txt为学生信息, 里面的内容（包括花括号）如下所示：</p>
+<pre><code>{
+    &quot;1&quot;:[&quot;张三&quot;,150,120,100],
+    &quot;2&quot;:[&quot;李四&quot;,90,99,95],
+    &quot;3&quot;:[&quot;王五&quot;,60,66,68]
+}
+</code></pre><p>请将上述内容写到 student.xls 文件中，如下图所示：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164341562.png" alt="student.xls" title="">
+                </div>
+                <div class="image-caption">student.xls</div>
+            </figure>
+<p>这个题使用到<strong>文件读取</strong>，<strong>数据读取</strong>，<strong>Xls文件输出</strong>三部分内容。</p>
+<h1 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h1><p>使用<strong>open()</strong>函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'student.txt'</span>) <span class="keyword">as</span> f:</div><div class="line">    content = f.read()</div></pre></td></tr></table></figure></p>
+<h1 id="数据读取"><a href="#数据读取" class="headerlink" title="数据读取"></a>数据读取</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d = json.loads(content)</div></pre></td></tr></table></figure>
+<h1 id="xls文件输出"><a href="#xls文件输出" class="headerlink" title="xls文件输出"></a>xls文件输出</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">file = xlwt.Workbook()</div><div class="line"><span class="comment"># 添加sheet</span></div><div class="line">table = file.add_sheet(<span class="string">'test'</span>)</div><div class="line"><span class="keyword">for</span> row, i <span class="keyword">in</span> enumerate(list(d)):</div><div class="line">    table.write(row, <span class="number">0</span>, i)</div><div class="line">    <span class="keyword">for</span> col, j <span class="keyword">in</span> enumerate(d[i]):</div><div class="line">        table.write(row, col + <span class="number">1</span>, j)</div><div class="line">file.save(<span class="string">'student.xls'</span>)</div></pre></td></tr></table></figure>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>student.txt 可以在这里下载~  <a href="http://cdn.mmmxcc.cn/blog/student.txt" target="_blank" rel="external">http://cdn.mmmxcc.cn/blog/student.txt</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding: utf-8</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">import</span> xlwt</div><div class="line"></div><div class="line"><span class="comment"># 存放文件的目录</span></div><div class="line">filepath = <span class="string">'D:'</span></div><div class="line"></div><div class="line">os.chdir(filepath)</div><div class="line"><span class="comment"># 读取文件内容</span></div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">'student.txt'</span>) <span class="keyword">as</span> f:</div><div class="line">    content = f.read()</div><div class="line"><span class="comment"># 转为json</span></div><div class="line">d = json.loads(content)</div><div class="line">file = xlwt.Workbook()</div><div class="line"><span class="comment"># 添加sheet</span></div><div class="line">table = file.add_sheet(<span class="string">'test'</span>)</div><div class="line"><span class="keyword">for</span> row, i <span class="keyword">in</span> enumerate(list(d)):</div><div class="line">    table.write(row, <span class="number">0</span>, i)</div><div class="line">    <span class="keyword">for</span> col, j <span class="keyword">in</span> enumerate(d[i]):</div><div class="line">        table.write(row, col + <span class="number">1</span>, j)</div><div class="line">file.save(<span class="string">'student.xls'</span>)</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。&lt;strong&gt;题目1.8：&lt;/strong&gt; 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
+    
+      <category term="自然语言处理" scheme="http://www.feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第1.7题：Python敏感词检测</title>
+    <link href="http://www.feiyang.li/2017/02/15/python-camp7/"/>
+    <id>http://www.feiyang.li/2017/02/15/python-camp7/</id>
+    <published>2017-02-15T11:28:20.000Z</published>
+    <updated>2017-02-16T14:24:00.864Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.7：</strong>敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="Python-find-方法"><a href="#Python-find-方法" class="headerlink" title="Python find()方法"></a>Python find()方法</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>Python find() 方法检测字符串中是否包含子字符串 str ，如果指定 beg（开始） 和 end（结束） 范围，则检查是否包含在指定范围内，如果包含子字符串返回开始的索引值，否则返回-1。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>find()方法语法：<br>str.find(str, beg=0, end=len(string))</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>str – 指定检索的字符串<br>beg – 开始索引，默认为0。<br>end – 结束索引，默认为字符串的长度。</p>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>如果包含子字符串返回开始的索引值，否则返回-1。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>以下实例展示了find()方法的实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">info = <span class="string">'abca'</span></div><div class="line"><span class="keyword">print</span> info.find(<span class="string">'a'</span>)<span class="comment">##从下标0开始，查找在字符串里第一个出现的子串，返回结果：0</span></div><div class="line"></div><div class="line">info = <span class="string">'abca'</span></div><div class="line"><span class="keyword">print</span> info.find(<span class="string">'a'</span>,<span class="number">1</span>)<span class="comment">##从下标1开始，查找在字符串里第一个出现的子串：返回结果3</span></div><div class="line"></div><div class="line">info = <span class="string">'abca'</span></div><div class="line"><span class="keyword">print</span> info.find(<span class="string">'333'</span>)<span class="comment">##返回-1,查找不到返回-1</span></div></pre></td></tr></table></figure></p>
+<h1 id="Python-strip-方法"><a href="#Python-strip-方法" class="headerlink" title="Python strip()方法"></a>Python strip()方法</h1><h2 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h2><p>Python strip() 方法用于移除字符串头尾指定的字符（默认为空格）。</p>
+<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><p>strip()方法语法：<br>str.strip([chars]);</p>
+<h2 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h2><p>chars – 移除字符串头尾指定的字符。</p>
+<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>返回移除字符串头尾指定的字符生成的新字符串。</p>
+<h2 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h2><p>以下实例展示了strip()函数的使用方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = <span class="string">"0000000this is string example....wow!!!0000000"</span>;</div><div class="line"><span class="keyword">print</span> str.strip( <span class="string">'0'</span> );</div></pre></td></tr></table></figure></p>
+<p>以上实例输出结果如下：<br>this is string example….wow!!!</p>
+<h1 id="Python-map-方法"><a href="#Python-map-方法" class="headerlink" title="Python map()方法"></a>Python map()方法</h1><h2 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h2><p>很简单，第一个参数接收一个函数名，第二个参数接收一个可迭代对象。</p>
+<h2 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h2><p>map(f, iterable)<br>基本上等于：<br>[f(x) for x in iterable]</p>
+<h2 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">add100</span><span class="params">(x)</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> x+<span class="number">100</span></div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>hh = [<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>map(add100,hh)</div><div class="line">[<span class="number">111</span>, <span class="number">122</span>, <span class="number">133</span>]</div></pre></td></tr></table></figure>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p><a href="http://cdn.mmmxcc.cn//blog/filtered_words.txt" target="_blank" rel="external">filtered_words.txt</a><br>将文件下载到D盘内即可<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding: utf-8</span></div><div class="line"><span class="keyword">import</span> cmd</div><div class="line"><span class="comment"># 存放敏感词文件的路径</span></div><div class="line">filtered_words_filepath = <span class="string">'d:/filtered_words.txt'</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CLI</span><span class="params">(cmd.Cmd)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span> <span class="comment">#初始基础类方法  </span></div><div class="line">        cmd.Cmd.__init__(self)  <span class="comment"># 初始化，提取敏感词列表</span></div><div class="line">        self.intro = <span class="string">'Python敏感词检测:'</span> <span class="comment">#输出欢迎信息</span></div><div class="line">        f = open(filtered_words_filepath)</div><div class="line">        self.words = list(map(<span class="keyword">lambda</span> i: i.strip(<span class="string">'\n'</span>), f.readlines()))</div><div class="line">        self.prompt = <span class="string">"&gt;&gt;&gt; "</span>    <span class="comment"># 定义提示符</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">default</span><span class="params">(self, line)</span>:</span></div><div class="line">        <span class="keyword">if</span> any([i <span class="keyword">in</span> line <span class="keyword">for</span> i <span class="keyword">in</span> self.words]):</div><div class="line">            <span class="keyword">print</span> (<span class="string">'Freedom'</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">print</span> (<span class="string">'Human Rights'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_quit</span><span class="params">(self, arg)</span>:</span></div><div class="line">        exit()</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ ==<span class="string">"__main__"</span>:</div><div class="line">    cli = CLI()</div><div class="line">    cli.cmdloop()</div></pre></td></tr></table></figure></p>
+<hr>
+<p>其实这个地方出现过一个错误，map()形成的<strong>iterable</strong>是一次性的。</p>
+<p>也就是如果不保存，直接迭代之后，<code>self.words =map(lambda i: i.strip(&#39;\n&#39;), f.readlines())</code><br><strong>self.words </strong>里边的数据会丢失，因此这个地方加了一个list()函数，将<strong>iterable</strong>到处保存。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。&lt;strong&gt;题目1.7：&lt;/strong&gt;敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
+    
+      <category term="自然语言处理" scheme="http://www.feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Coursera ML笔记-机器学习基础概念</title>
+    <link href="http://www.feiyang.li/2017/02/14/Coursera-ML/"/>
+    <id>http://www.feiyang.li/2017/02/14/Coursera-ML/</id>
+    <published>2017-02-14T11:19:17.000Z</published>
+    <updated>2017-02-14T11:24:58.929Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>在学习的过程中，抓住基本概念是非常重要的，这样可以防止自己陷入某些细节中无法自拔，可以让自己站在比较宏观的层面上看待问题。 更多见：<a href="https://feiyang.li/" target="_blank" rel="external">李飞阳</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="机器学习（Machine-Learning）"><a href="#机器学习（Machine-Learning）" class="headerlink" title="机器学习（Machine Learning）"></a>机器学习（Machine Learning）</h1><ul>
+<li>Coursera上机器学习课程的介绍中，第一句话是：<br>　<strong>Machine learning is the science of getting computers to act without being explicitly programmed. </strong><br>　机器学习是让电脑自己学会如何处理问题，而不需要人们刻意的编程。</li>
+<li>Andrew Ng老师的讲义中（Coursera）给出的定义：<br>Tom Mitchell provides a more modern definition: “A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.”<br>Example: playing checkers.<br>　· E = the experience of playing many games of checkers<br>　· T = the task of playing checkers.<br>　· P = the probability that the program will win the next game. </li>
+<li>周志华的《机器学习》中定义：<br>机器学习正是这样一门学科，它致力于研究如何通过计算的手段，利用经验来改善系统自身的性能。在计算机系统中，“经验”通常以“数据”的形式存在，因此，机器学习所研究的主要内容，是关于在计算机上从数据中产生“模型”（model）的算法，即“学习算法”（learning algorithm）。有了学习算法，我们把经验数据提供给它，它就能基于这些数据产生模型；在面对新的情况时，模型会给我们提供相应的判断。</li>
+</ul>
+<h1 id="有监督学习（Supervised-Learning）"><a href="#有监督学习（Supervised-Learning）" class="headerlink" title="有监督学习（Supervised Learning）"></a>有监督学习（Supervised Learning）</h1><ul>
+<li>维基百科<br><strong>Supervised learning</strong> is the machine learningtask of inferring a function from labeled training data.<br>The training data consist of a set of <em>training examples</em>. In supervised learning, each example is a <em>pair</em> consisting of an input object (typically a vector) and a desired output value (also called the <em>supervisory signal</em>). A supervised learning algorithm analyzes the training data and produces an inferred function, which can be used for mapping new examples. An optimal scenario will allow for the algorithm to correctly determine the class labels for unseen instances. This requires the learning algorithm to generalize from the training data to unseen situations in a “reasonable” way.</li>
+</ul>
+<p><strong>Example: </strong><br>　Given data about the size of houses on the real estate market, try to predict their price. Price as a function of size is a continuous output, so this is a regression problem.<br>　We could turn this example into a classification problem by instead making our output about whether the house “sells for more or less than the asking price.” Here we are classifying the houses based on price into two discrete categories</p>
+<h1 id="无监督学习（Unsupervised-Learning）"><a href="#无监督学习（Unsupervised-Learning）" class="headerlink" title="无监督学习（Unsupervised Learning）"></a>无监督学习（Unsupervised Learning）</h1><p><strong>维基百科：</strong><br> 　<strong>Unsupervised learning</strong> is the machine learning task of inferring a function to describe hidden structure from unlabeled data. Since the examples given to the learner are unlabeled, there is no error or reward signal to evaluate a potential solution. This distinguishes unsupervised learning from supervised learning and reinforcement learning. 　Unsupervised learning is closely related to the problem of density estimation in statistics.[1] However unsupervised learning also encompasses many other techniques that seek to summarize and explain key features of the data. Many methods employed in unsupervised learning are based on data mining methods used to preprocess data. 　</p>
+<p>Example:<br>　Clustering: Take a collection of 1000 essays written on the US Economy, and find a way to automatically group these essays into a small number that are somehow similar or related by different variables, such as word frequency, sentence length, page count, and so on.<br>　Associative: Suppose a doctor over years of experience forms associations in his mind between patient characteristics and illnesses that they have. If a new patient shows up then based on this patient’s characteristics such as symptoms, family medical history, physical attributes, mental outlook, etc the doctor associates possible illness or illnesses based on what the doctor has seen before with similar patients. This is not the same as rule based reasoning as in expert systems. In this case we would like to estimate a mapping function from patient characteristics into illnesses.</p>
+<p><strong>解释一下：</strong></p>
+<p>首先看什么是学习（learning）？一个成语就可概括：举一反三。此处以高考为例，高考的题目在上考场前我们未必做过，但在高中三年我们做过很多很多题目，懂解题方法，因此考场上面对陌生问题也可以算出答案。机器学习的思路也类似：我们能不能利用一些训练数据（已经做过的题），使机器能够利用它们（解题方法）分析未知数据（高考的题目）？</p>
+<p>最简单也最普遍的一类机器学习算法就是分类（classification）。对于分类，输入的训练数据有特征（feature），有标签（label）。所谓的学习，其本质就是找到特征和标签间的关系（mapping）。这样当有特征而无标签的未知数据输入时，我们就可以通过已有的关系得到未知数据标签。</p>
+<p>在上述的分类过程中，如果所有训练数据都有标签，则为有监督学习（supervised learning）。如果数据没有标签，显然就是无监督学习（unsupervised learning）了，也即聚类（clustering）。</p>
+<p>目前分类算法的效果还是不错的，但相对来讲，聚类算法就有些惨不忍睹了。确实，无监督学习本身的特点使其难以得到如分类一样近乎完美的结果。这也正如我们在高中做题，答案（标签）是非常重要的，假设两个完全相同的人进入高中，一个正常学习，另一人做的所有题目都没有答案，那么想必第一个人高考会发挥更好，第二个人会发疯。</p>
+<p>这时各位可能要问，既然分类如此之好，聚类如此之不靠谱，那为何我们还可以容忍聚类的存在？因为在实际应用中，标签的获取常常需要极大的人工工作量，有时甚至非常困难。例如在自然语言处理（NLP）中，Penn Chinese Treebank在2年里只完成了4000句话的标签……</p>
+<p>这时有人可能会想，难道有监督学习和无监督学习就是非黑即白的关系吗？有没有灰呢？Good idea。灰是存在的。二者的中间带就是半监督学习（semi-supervised learning）。对于半监督学习，其训练数据的一部分是有标签的，另一部分没有标签，而没标签数据的数量常常极大于有标签数据数量（这也是符合现实情况的）。隐藏在半监督学习下的基本规律在于：数据的分布必然不是完全随机的，通过一些有标签数据的局部特征，以及更多没标签数据的整体分布，就可以得到可以接受甚至是非常好的分类结果。（此处大量忽略细节）</p>
+<p>因此，learning家族的整体构造是这样的：<br>有监督学习（分类，回归）<br>↕<br>半监督学习（分类，回归），transductive learning（分类，回归）<br>↕<br>半监督聚类（有标签数据的标签不是确定的，类似于：肯定不是xxx，很可能是yyy）<br>↕<br>无监督学习（聚类）</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在Coursera上Andrew Ng的课程中，主要涉及： 　</p>
+<ul>
+<li>Supervised Learning，包括Linear Regression、Logistic Regression、Neural Networks、Support Vector Machines； 　</li>
+<li>Unsupervised Learning，包括Clustering、Dimensionality Reduction、Anomaly Detection、Recommender Systems。 </li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>Coursera - Machine learning( Andrew Ng)  <a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">https://www.coursera.org/learn/machine-learning</a><br>什么是无监督学习？ <a href="https://www.zhihu.com/question/23194489" target="_blank" rel="external">https://www.zhihu.com/question/23194489</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;在学习的过程中，抓住基本概念是非常重要的，这样可以防止自己陷入某些细节中无法自拔，可以让自己站在比较宏观的层面上看待问题。 更多见：&lt;a href=&quot;https://feiyang.li/&quot;&gt;李飞阳&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://www.feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="读书笔记" scheme="http://www.feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《结网》</title>
+    <link href="http://www.feiyang.li/2017/02/13/jiewang/"/>
+    <id>http://www.feiyang.li/2017/02/13/jiewang/</id>
+    <published>2017-02-13T13:39:16.000Z</published>
+    <updated>2017-02-13T14:09:06.067Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>对于产品经理来说，自己所负责的产品的表现就是自己的履历。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="入坑"><a href="#入坑" class="headerlink" title="入坑"></a>入坑</h1><p>说来惭愧，最初进入产品经理这个职位，是因为大二在OPPO的实习。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/165000570.png?imageMogr2/thumbnail/!60p" alt="搬砖的地方" title="">
+                </div>
+                <div class="image-caption">搬砖的地方</div>
+            </figure><br>当时实习的时候，认识了许和高，许  瘦瘦高高的风格很让人喜欢。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/164929902.png?imageMogr2/thumbnail/!60p" alt="许" title="">
+                </div>
+                <div class="image-caption">许</div>
+            </figure><br>当时应该算产品助理，但是不知道自己具体该做什么。</p>
+<p>最开始只是单纯的觉得HR纪姐姐真的好漂亮，如果不能进去实习，岂不后悔莫及。</p>
+<p>进入OPPO，很多时间是跟费费和飞哥玩，认识了女神。我们玩得时候，女神总默默的拿出自己的小Iphone用<strong>百词斩</strong>背单词。</p>
+<p>有一次做展示的时候，和高 有吵，记得争论是OPPO论坛的改版问题。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/165713732.png?imageMogr2/thumbnail/!60p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>我第一次对产品岗心生退意</p>
+<hr>
+<h1 id="更深"><a href="#更深" class="headerlink" title="更深"></a>更深</h1><p>大三暑假，走上了考研路，想想这一辈子应该也没有这样一次机会，这么长时间的去做一件事情。可以与喜欢的女孩，朝夕相处。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/204142936.png" alt="妹子" title="">
+                </div>
+                <div class="image-caption">妹子</div>
+            </figure></p>
+<p>那时最大的梦想就是一起去吃 老五烧烤<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/204930217.png" alt="吃" title="">
+                </div>
+                <div class="image-caption">吃</div>
+            </figure></p>
+<hr>
+<p>去年的这个时间，知道自己成绩后一脸懵逼。没有多想，立刻动身找工作。</p>
+<p>当时有很多互联网公司在春招，因为 高  的推荐，拿到了搜狐的offer。之后又拿到了360的offer，都是做产品经理。选择了数字公司，做线上商城业务。</p>
+<p>期间发现自己可以调剂，碾转奔波的面试，终于可以继续在象牙塔读书。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/212139299.png" alt="USTC" title="">
+                </div>
+                <div class="image-caption">USTC</div>
+            </figure>
+<hr>
+<p>在360的时候，跟卢老师系统的学习了一些产品方面的知识，后来又和涛哥共事了很久。慢慢的掌握了一些产品经理的技能，比如不要重复发明轮子。现有的组件可以用上的，就尽量不要重复开发，提高共用性，需求的快速化迭代。如何将已有的功能，逻辑性的展示出来。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/212229338.png" alt="疾病症状搜索" title="">
+                </div>
+                <div class="image-caption">疾病症状搜索</div>
+            </figure>
+<p>之后，自己接手<a href="http://g.360haoyao.com/" target="_blank" rel="external">360全球好药</a>的产品工作。看着薛姐、静姐、俊哥哥、欣欣，他们付出那么多心血，真心希望这个项目可以成功。页面还是我画的那个样子，好熟悉，时间过得真快。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/212535737.png?imageMogr2/thumbnail/!60p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>一开始，这个项目跟我对接业务的是金，金 是武大生物学硕士。真是条条大道通CS，后来金跳槽去了杭州。之后跟我对接的是超哥，超哥又跳槽去了<a href="http://www.pinduoduo.com/" target="_blank" rel="external">拼少少</a>。我都有点怀疑自己了……</p>
+<p>上次跟超超聊，又升值加薪了，就差一个白富美。</p>
+<p>期间发生了一些事，再加上我本身不喜与人当面争执，又一次对产品岗位心生退意</p>
+<hr>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>现在虽然已经远离产品经理这个角色，但是给我留下很多习惯。比如对一些细节会较真，会对一些人或事看的比较淡。</p>
+<p>当初计划大四面试前看，但是那时图书馆没这本书。</p>
+<p>谁知今天正好遇见它，也许是缘分吧。读了一些，做此感想。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;对于产品经理来说，自己所负责的产品的表现就是自己的履历。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="读书笔记" scheme="http://www.feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="臭臭" scheme="http://www.feiyang.li/tags/%E8%87%AD%E8%87%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第1.6题：使用Python生成字母验证码图片</title>
+    <link href="http://www.feiyang.li/2017/02/13/python-camp6/"/>
+    <id>http://www.feiyang.li/2017/02/13/python-camp6/</id>
+    <published>2017-02-13T05:36:02.000Z</published>
+    <updated>2017-02-13T05:38:30.441Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.6：</strong>使用 Python 生成类似于下图中的<strong>字母验证码图片</strong><br>查看更多于本人博客：<a href="https://feiyang.li/" target="_blank" rel="external">李飞阳</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>我们用随机颜色填充背景，再画上文字，最后对图像进行模糊，得到验证码图片如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont, ImageFilter</div><div class="line"></div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"><span class="comment"># 随机字母:</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">rndChar</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> chr(random.randint(<span class="number">65</span>, <span class="number">90</span>))</div><div class="line"></div><div class="line"><span class="comment"># 随机颜色1:</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">rndColor</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> (random.randint(<span class="number">64</span>, <span class="number">255</span>), random.randint(<span class="number">64</span>, <span class="number">255</span>), random.randint(<span class="number">64</span>, <span class="number">255</span>))</div><div class="line"></div><div class="line"><span class="comment"># 随机颜色2:</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">rndColor2</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> (random.randint(<span class="number">32</span>, <span class="number">127</span>), random.randint(<span class="number">32</span>, <span class="number">127</span>), random.randint(<span class="number">32</span>, <span class="number">127</span>))</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">compose</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># 240 x 60:</span></div><div class="line">    width = <span class="number">240</span></div><div class="line">    height = <span class="number">60</span></div><div class="line">    image = Image.new(<span class="string">'RGB'</span>, (width, height), (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</div><div class="line">    <span class="comment"># 创建Font对象:</span></div><div class="line">    font = ImageFont.truetype(<span class="string">'C:/windows/fonts/Arial.ttf'</span>, <span class="number">36</span>)</div><div class="line">    <span class="comment"># 创建Draw对象:</span></div><div class="line">    draw = ImageDraw.Draw(image)</div><div class="line">    <span class="comment"># 填充每个像素:</span></div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(width):</div><div class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> range(height):</div><div class="line">            draw.point((x, y), fill=rndColor())</div><div class="line">    <span class="comment"># 输出文字:</span></div><div class="line">    letter = [] </div><div class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">        letter.append(rndChar())</div><div class="line">        draw.text((<span class="number">60</span> * t + <span class="number">10</span>, <span class="number">10</span>), letter[t], font=font, fill=rndColor2())</div><div class="line">    <span class="comment"># 模糊:</span></div><div class="line">    image.save(<span class="string">'code.jpg'</span>, <span class="string">'jpeg'</span>)</div><div class="line">    image = image.filter(ImageFilter.BLUR)</div><div class="line">    image.save(<span class="string">'filter.jpg'</span>, <span class="string">'jpeg'</span>)</div><div class="line">    <span class="keyword">print</span> (letter)</div><div class="line">compose()</div></pre></td></tr></table></figure></p>
+<p>输出验证码原本数字：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/132814657.png" alt="运行结果" title="">
+                </div>
+                <div class="image-caption">运行结果</div>
+            </figure><br>模糊前：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/133458968.jpg" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
+<p><code>image = image.filter(ImageFilter.BLUR)    # 模糊:</code><br>模糊后：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/133523965.jpg" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></p>
+<p>如果运行的时候报错：<br><code>IOError: cannot open resource</code></p>
+<p>这是因为PIL无法定位到字体文件的位置，可以根据操作系统提供绝对路径，比如：<br><code>&#39;/Library/Fonts/Arial.ttf&#39;</code></p>
+<p>要详细了解PIL的强大功能，请请参考Pillow官方文档：<a href="https://pillow.readthedocs.io/en/4.0.x/" target="_blank" rel="external">https://pillow.readthedocs.io/en/4.0.x/</a></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>PIL提供了操作图像的强大功能，可以通过简单的代码完成复杂的图像处理。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。&lt;strong&gt;题目1.6：&lt;/strong&gt;使用 Python 生成类似于下图中的&lt;strong&gt;字母验证码图片&lt;/strong&gt;&lt;br&gt;查看更多于本人博客：&lt;a href=&quot;https://feiyang.li/&quot;&gt;李飞阳&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
+    
+      <category term="图片处理" scheme="http://www.feiyang.li/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第1.5题：使用Python处理图片</title>
+    <link href="http://www.feiyang.li/2017/02/13/python-camp5/"/>
+    <id>http://www.feiyang.li/2017/02/13/python-camp5/</id>
+    <published>2017-02-13T02:33:53.000Z</published>
+    <updated>2017-02-13T05:37:50.976Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。题目1.5：你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。查看更多于本人博客：<a href="https://feiyang.li/" target="_blank" rel="external">李飞阳</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>使用python来处理图片是非常方便的，下面提供一小段python处理图片的代码，需要安装图像处理工具包PIL(Python Image Library)。</p>
+<h1 id="安装PIL"><a href="#安装PIL" class="headerlink" title="安装PIL"></a>安装PIL</h1><p>我用的是anaconda(一个开源的Python发行版本，包含了常用的数据科学库。)，其中自带了PIL和Pillow，但是不能用，真是(ಥ _ ಥ) 。<br>检查自己电脑是否支持PIL，可以在Python shell 页面输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">from PIL import Image</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/102210566.png" alt="Image" title="">
+                </div>
+                <div class="image-caption">Image</div>
+            </figure>
+<p>如果没有报错的话，就可以代表正常。如果报错说<strong>[importError: <em>No</em> <em>module</em> <em>named</em> <em>images</em>]</strong>，使用pip卸载pillow，重新安装应该就可以了.</p>
+<hr>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>稍微注意一下，图片的宽高是两个数字，不能理所当然的认为图片都是宽大于高的。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os  </div><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image  </div><div class="line">pathDir=<span class="string">'F:\CloudMusic'</span>  </div><div class="line">os.chdir(pathDir)  </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_imglist</span><span class="params">()</span>:</span> <span class="comment">#获取照片名称list  </span></div><div class="line">    img_list=[]  </div><div class="line">    list_dir=os.listdir(pathDir)  </div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> list_dir:  </div><div class="line">        <span class="keyword">if</span> <span class="string">'.jpg'</span> <span class="keyword">in</span> x:  </div><div class="line">            img_list.append(x)  </div><div class="line">        <span class="keyword">else</span>:  </div><div class="line">            print(<span class="string">"This is not a picture: "</span>+x)  </div><div class="line">    <span class="keyword">return</span> img_list  </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">modify_imgsize</span><span class="params">()</span>:</span>  </div><div class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> get_imglist():      </div><div class="line">        img=Image.open(filename)  </div><div class="line">        <span class="keyword">if</span> max(img.size)&gt;<span class="number">1136</span>:  </div><div class="line">            value=max(img.size)/<span class="number">1136.0</span>  </div><div class="line">            newsize =(int(img.size[<span class="number">0</span>]/value),int(img.size[<span class="number">1</span>]/value)) </div><div class="line">            newimg = img.resize(newsize,Image.ANTIALIAS) <span class="comment">#修改大小                 </span></div><div class="line">            newimg.save(<span class="string">'new_'</span>+filename)  </div><div class="line">        <span class="keyword">else</span>:  </div><div class="line">            print(<span class="string">"This picture is availabe:"</span>+filename)  </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    modify_imgsize()</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。题目1.5：你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。查看更多于本人博客：&lt;a href=&quot;https://feiyang.li/&quot;&gt;李飞阳&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
+    
+      <category term="图片处理" scheme="http://www.feiyang.li/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第1.4题：统计文件中单词出现个数</title>
+    <link href="http://www.feiyang.li/2017/02/11/python_camp4/"/>
+    <id>http://www.feiyang.li/2017/02/11/python_camp4/</id>
+    <published>2017-02-11T12:16:52.000Z</published>
+    <updated>2017-02-17T06:12:58.915Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="铺垫工作"><a href="#铺垫工作" class="headerlink" title="铺垫工作"></a>铺垫工作</h1><p>这一期的铺垫工作比较多，所以单独写了一篇文章，详见  <a href="https://feiyang.li/2017/02/10/Python_lambda/" target="_blank" rel="external">Python正则表达式</a></p>
+<h1 id="正文部分"><a href="#正文部分" class="headerlink" title="正文部分"></a>正文部分</h1><h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>任一个英文的纯文本文件，统计其中的单词出现的个数。<br>参考英文：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">If you are looking for someone you can pour out your love to, let me suggest the empowered woman. The empowered woman knows what she wants, knows how to get it, knows how to live fully, and she knows how to love you back without needing anyone’s approval or recognition. An empowered woman is unarguably one of the most magnificent beings you will ever come in contact with. Read on and find 10 reason why you should absolutely love and embrace the empowered women in your life! . </div><div class="line"></div><div class="line">1. She knows how to love you in returnIt is difficult to give what you don’t have. It is impossible to love someone and feel fulfilled when they can’t love you in return because they don’t love themselves. This will never happen to you when you love an empowered woman. She loves herself (not in a narcissistic manner). In turn, she appreciates who you are and loves you in return. She will love you just like you deserve to be loved. </div><div class="line"></div><div class="line">2. She will inspire youWhen life puts you down and you are at the end of your rope, the empowered woman will be there to see you through. Her drive, enthusiasm and (at times) hopeless optimism will inspire you to carry on despite the obstacles you face. </div><div class="line"></div><div class="line">3. She is not afraid of failureWhile many out there are thoroughly terrified of failure, the empowered woman understands that failures are simply stepping stones in life. How can you not love someone that is thoroughly unafraid to try, fail, and give it a shot all over again?! </div><div class="line"></div><div class="line"></div><div class="line">4. She is all about the legacyWhile most people are focused on the car, the house, the job, and corner office; the empowered woman is focused on leaving a legacy that will inspire others and change the world. The empowered woman is focused on empowering others to maximize their potential and fulfill their purpose. She is all about inspiring others to look beyond themselves and live a life of service to others.</div><div class="line"></div><div class="line"></div><div class="line"> 5. She can laugh at her mistakes……and learn from them as well! She understands mistakes are part of the journey. The empowered woman can laugh and learn from her mistakes to ensure they never happen again. </div><div class="line"></div><div class="line"></div><div class="line">6. She can be vulnerableThe empowered woman understands there is no debt in relationships without vulnerability. Although she is emotionally strong, she is willing to laugh and cry with you because all of these emotions are an essential part of life. </div><div class="line"></div><div class="line"></div><div class="line">7. She can speak her mindWhile everyone else is too concerned with what others may think or say, the empowered woman is not afraid to speak her mind. She understands that her value comes from within, not from what others say or think about her. </div><div class="line"></div><div class="line"></div><div class="line">8. She knows when to remain quietShe lives by Abe Lincoln’s words, “Better to remain silent and be thought a fool, than to speak out and remove all doubt.” </div><div class="line"></div><div class="line"></div><div class="line">9. She knows how to have funWhether it is at the symphony or at a ball game, the empowered woman understands life is made up of experiences with people – not the places you go. She is able to live in the moment and enjoy it fully without being concerned for the future. After all, who’s got a guaranteed future?</div><div class="line"></div><div class="line"></div><div class="line"> 10. She is not afraid of changeWhile most people rather continue on living unfulfilled lives as long as their comfort zone remains intact, the empowered woman is all about embracing change. She understands growth cannot happen without change. She understands that change is the gift life offers you to choose your destiny. Therefore, she is not afraid of change because it is her stepping stone towards success.</div></pre></td></tr></table></figure></p>
+<p><a href="http://cdn.mmmxcc.cn/blog/20170211/203305485.txt" target="_blank" rel="external">下载链接</a><br>将文件下载到python的<strong>工作路径</strong>里去，如果不知道哪里是工作路径，输入<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">#获取当前工作目录</div><div class="line">os.getcwd()</div><div class="line">#更改当前工作目录</div><div class="line">os.chdir('d:\')</div><div class="line">os.getcwd()</div></pre></td></tr></table></figure></p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p>每一步我都尽量附带上了解释<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">replace</span><span class="params">(s)</span>:</span></div><div class="line">    <span class="keyword">if</span> s.group(<span class="number">1</span>) == <span class="string">'n\'t'</span>:</div><div class="line">        <span class="keyword">return</span> s.group(<span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> <span class="string">' '</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span><span class="params">(filename=<span class="string">'203305485.txt'</span>)</span>:</span></div><div class="line">    <span class="comment"># 使用lambda来定义简单的函数</span></div><div class="line">    dic = defaultdict(<span class="keyword">lambda</span>: <span class="number">0</span>)<span class="comment">#dic = defaultdict(int)也可以</span></div><div class="line">    <span class="keyword">with</span> open(filename, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        data = f.read()</div><div class="line">    <span class="comment"># 全部变为小写字母</span></div><div class="line">    data = data.lower()</div><div class="line">    <span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line">    data = re.sub(<span class="string">r'(n[\']t)|([\W\d])'</span>, replace, data)</div><div class="line">    datalist = re.split(<span class="string">r'[\s\n]+'</span>, data)</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> datalist:</div><div class="line">        dic[item] += <span class="number">1</span></div><div class="line">    <span class="keyword">del</span> dic[<span class="string">''</span>]</div><div class="line">    <span class="keyword">return</span> dic</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    dic = cal()</div><div class="line">    <span class="keyword">for</span> key, val <span class="keyword">in</span> dic.items():</div><div class="line">        print(<span class="string">'%15s  ----&gt;   %3s'</span> % (key,val))</div></pre></td></tr></table></figure></p>
+<p>运行结果如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170211/204153138.png" alt="结果" title="">
+                </div>
+                <div class="image-caption">结果</div>
+            </figure></p>
+<h3 id="增加排序函数"><a href="#增加排序函数" class="headerlink" title="增加排序函数"></a>增加排序函数</h3><p>代码有参考 《利用python进行数据分析》<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">top_counts</span><span class="params">(dic, n=<span class="number">10</span>)</span>:</span></div><div class="line">    value_key_pairs = [(count, tz) <span class="keyword">for</span> tz, count <span class="keyword">in</span> dic.items()]</div><div class="line">    value_key_pairs.sort()</div><div class="line">    <span class="keyword">return</span> value_key_pairs[-n:]</div><div class="line">top_counts(dic)</div></pre></td></tr></table></figure></p>
+<p>运行结果如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170211/204402151.png" alt="结果" title="">
+                </div>
+                <div class="image-caption">结果</div>
+            </figure><br>可以看出，人们最喜欢用的词是定冠词<strong>the</strong>，下来是介词<strong>to</strong>…….</p>
+<hr>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>最近发现collections模块的<em>Counter</em>类 ，<br>导入语句是：<code>from collections import Counter</code>，作用是：<strong>定义一个list数组，求数组中每个元素出现的次数</strong><br>修改之后代码量要少很多，而且可以直接排列好顺序~<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span><span class="params">(filename=<span class="string">'203305485.txt'</span>)</span>:</span></div><div class="line">    <span class="keyword">with</span> open(filename, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        data = f.read()</div><div class="line">    data = data.lower()</div><div class="line">    <span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line">    datalist = re.split(<span class="string">r'[\s\n]+'</span>, data)</div><div class="line">    <span class="keyword">return</span> Counter(datalist).most_common()</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    dic = cal()</div><div class="line">    <span class="keyword">for</span> i  <span class="keyword">in</span> range(len(dic)):</div><div class="line">        print(<span class="string">'%15s  ----&gt;   %3s'</span> % (dic[i][<span class="number">0</span>],dic[i][<span class="number">1</span>]))</div></pre></td></tr></table></figure></p>
+<p>代码看起来行云流水，舒服多了。当然结论是一样的，人们还是比较喜欢说 <em>the</em> , <em>you</em>~<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170217/140823923.png" alt="修改后" title="">
+                </div>
+                <div class="image-caption">修改后</div>
+            </figure></p>
+<p>以上~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="Algorithms" scheme="http://www.feiyang.li/tags/Algorithms/"/>
+    
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python正则表达式</title>
+    <link href="http://www.feiyang.li/2017/02/10/Python_lambda/"/>
+    <id>http://www.feiyang.li/2017/02/10/Python_lambda/</id>
+    <published>2017-02-10T14:18:55.000Z</published>
+    <updated>2017-02-11T13:36:55.460Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>使用正则表达式，会使得字符串的处理很方便。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="正则表达式基础"><a href="#正则表达式基础" class="headerlink" title="正则表达式基础"></a>正则表达式基础</h1><h2 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h2><p>Python中经常要对字符串进行处理，处理用户的输入，对文本的编辑等等。使用正则表达式，会使得字符串的处理很方便。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170210/204306504.png" alt="Python支持的正则表达式元字符和语法" title="">
+                </div>
+                <div class="image-caption">Python支持的正则表达式元字符和语法</div>
+            </figure></p>
+<h2 id="数量词的贪婪模式与非贪婪模式"><a href="#数量词的贪婪模式与非贪婪模式" class="headerlink" title="数量词的贪婪模式与非贪婪模式"></a>数量词的贪婪模式与非贪婪模式</h2><p>正则表达式通常用于在文本中查找匹配的字符串。</p>
+<p>Python里数量词默认是贪婪的（在少数语言里也可能是默认非贪婪），总是尝试匹配尽可能多的字符；非贪婪的则相反，总是尝试匹配尽可能少的字符。</p>
+<p>例如：正则表达式”ab<em>“如果用于查找”abbbc”，将找到”abbb”。而如果使用非贪婪的数量词”ab</em>?”，将找到”a”。</p>
+<h1 id="re模块"><a href="#re模块" class="headerlink" title="re模块"></a>re模块</h1><h2 id="开始使用re"><a href="#开始使用re" class="headerlink" title="开始使用re"></a>开始使用re</h2><p>Python通过re模块提供对正则表达式的支持。使用re的一般步骤是先将正则表达式的字符串形式编译为Pattern实例，然后使用Pattern实例处理文本并获得匹配结果（一个Match实例），最后使用Match实例获得信息，进行其他的操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># encoding: UTF-8</span></div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># 将正则表达式编译成Pattern对象</span></div><div class="line">    pattern1 = re.compile(<span class="string">r'hello'</span>) </div><div class="line">    <span class="comment"># 使用Pattern匹配文本，获得匹配结果，无法匹配时将返回None</span></div><div class="line">    <span class="keyword">return</span> pattern1.match(<span class="string">'hello world!'</span>)</div><div class="line">    </div><div class="line"><span class="keyword">if</span> test():</div><div class="line">    <span class="comment"># 使用Match获得分组信息</span></div><div class="line">    <span class="keyword">print</span> (<span class="string">"match"</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> (<span class="string">"not match"</span>)</div></pre></td></tr></table></figure>
+<p><strong>re.compile(strPattern[, flag]):</strong><br>这个方法用于将字符串形式的正则表达式编译为Pattern对象， 第二个参数flag是匹配模式，取值可以使用按位或运算符’|’表示同时生效，比如re.I | re.M。另外，你也可以在regex字符串中指定模式，比如<strong>re.compile(‘pattern’, re.I | re.M)</strong>与<strong>re.compile(‘(?im)pattern’)</strong>是等价的。<br>可选值有：</p>
+<ul>
+<li>re.<strong>I</strong>(re.IGNORECASE): 忽略大小写（括号内是完整写法，下同）</li>
+<li><strong>M</strong>(MULTILINE): 多行模式，改变’^’和’$’的行为（参见上图）</li>
+<li><strong>S</strong>(DOTALL): 点任意匹配模式，改变’.’的行为</li>
+<li><strong>L</strong>(LOCALE): 使预定字符类 \w \W \b \B \s \S 取决于当前区域设定</li>
+<li><strong>U</strong>(UNICODE): 使预定字符类 \w \W \b \B \s \S \d \D 取决于unicode定义的字符属性</li>
+<li><strong>X</strong>(VERBOSE): 详细模式。这个模式下正则表达式可以是多行，忽略空白字符，并可以加入注释。以下两个正则表达式是等价的：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = re.compile(<span class="string">r"""\d +  # the integral part</span></div><div class="line">                   \.    # the decimal point</div><div class="line">                   \d *  # some fractional digits""", re.X)</div><div class="line">b = re.compile(<span class="string">r"\d+\.\d*"</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>re提供了众多模块方法用于完成正则表达式的功能。这些方法可以使用Pattern实例的相应方法替代，唯一的好处是少写一行re.compile()代码，但同时也无法复用编译后的Pattern对象。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">m = re.match(<span class="string">r'hello'</span>, <span class="string">'hello world!'</span>)</div><div class="line"><span class="keyword">print</span> m.group()</div></pre></td></tr></table></figure></p>
+<p>re模块还提供了一个方法escape(string)，用于将string中的正则表达式元字符如*/+/?等之前加上转义符再返回，在需要大量匹配元字符时有那么一点用。</p>
+<h2 id="Match"><a href="#Match" class="headerlink" title="Match"></a>Match</h2><p>Match对象是一次匹配的结果，包含了很多关于此次匹配的信息，可以使用Match提供的可读属性或方法来获取这些信息。</p>
+<h3 id="属性："><a href="#属性：" class="headerlink" title="属性："></a>属性：</h3><ul>
+<li><strong>string</strong>: 匹配时使用的文本。</li>
+<li><strong>re</strong>: 匹配时使用的Pattern对象。</li>
+<li><strong>pos</strong>: 文本中正则表达式开始搜索的索引。值与Pattern.match()和Pattern.seach()方法的同名参数相同。</li>
+<li><strong>endpos</strong>: 文本中正则表达式结束搜索的索引。值与Pattern.match()和Pattern.seach()方法的同名参数相同。</li>
+<li><strong>lastindex</strong>: 最后一个被捕获的分组在文本中的索引。如果没有被捕获的分组，将为None。</li>
+<li><strong>lastgroup</strong>: 最后一个被捕获的分组的别名。如果这个分组没有别名或者没有被捕获的分组，将为None。</li>
+</ul>
+<h3 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h3><ul>
+<li><strong>group([group1, …])</strong>:<br>获得一个或多个分组截获的字符串；指定多个参数时将以元组形式返回。group1可以使用编号也可以使用别名；编号0代表整个匹配的子串；不填写参数时，返回group(0)；没有截获字符串的组返回None；截获了多次的组返回最后一次截获的子串。</li>
+<li><strong>groups([default]): </strong><br>以元组形式返回全部分组截获的字符串。相当于调用group(1,2,…last)。default表示没有截获字符串的组以这个值替代，默认为None。</li>
+<li><strong>groupdict([default]): </strong><br>返回以有别名的组的别名为键、以该组截获的子串为值的字典，没有别名的组不包含在内。default含义同上。</li>
+<li><strong>start([group]): </strong><br>返回指定的组截获的子串在string中的起始索引（子串第一个字符的索引）。group默认值为0。</li>
+<li><strong>end([group]): </strong><br>返回指定的组截获的子串在string中的结束索引（子串最后一个字符的索引+1）。group默认值为0。</li>
+<li><strong>span([group]): </strong><br>返回(start(group), end(group))。</li>
+<li><strong>expand(template): </strong><br>将匹配到的分组代入template中然后返回。template中可以使用\id或\g<id>、\g<name>引用分组，但不能使用编号0。\id与\g<id>是等价的；但\10将被认为是第10个分组，如果你想表达\1之后是字符’0’，只能使用\g<1>0。</1></id></name></id></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">m = re.match(<span class="string">r'(\w+) (\w+)(?P&lt;sign&gt;.*)'</span>, <span class="string">'hello world!'</span>)</div><div class="line"> </div><div class="line"><span class="keyword">print</span> (<span class="string">"m.string:"</span>, m.string)</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.re:"</span>, m.re)</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.pos:"</span>, m.pos)</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.endpos:"</span>, m.endpos)</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.lastindex:"</span>, m.lastindex)</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.lastgroup:"</span>, m.lastgroup)</div><div class="line"> </div><div class="line"><span class="keyword">print</span> (<span class="string">"m.group(1,2):"</span>, m.group(<span class="number">1</span>, <span class="number">2</span>))</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.groups():"</span>, m.groups())</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.groupdict():"</span>, m.groupdict())</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.start(2):"</span>, m.start(<span class="number">2</span>))</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.end(2):"</span>, m.end(<span class="number">2</span>))</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.span(2):"</span>, m.span(<span class="number">2</span>))</div><div class="line"><span class="keyword">print</span> (<span class="string">r"m.expand(r'\2 \1\3'):"</span>, m.expand(<span class="string">r'\2 \1\3'</span>))</div></pre></td></tr></table></figure>
+<p>输出内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">m.string: hello world!</div><div class="line">m.re: re.compile(&apos;(\\w+) (\\w+)(?P&lt;sign&gt;.*)&apos;)</div><div class="line">m.pos: 0</div><div class="line">m.endpos: 12</div><div class="line">m.lastindex: 3</div><div class="line">m.lastgroup: sign</div><div class="line">m.group(1,2): (&apos;hello&apos;, &apos;world&apos;)</div><div class="line">m.groups(): (&apos;hello&apos;, &apos;world&apos;, &apos;!&apos;)</div><div class="line">m.groupdict(): &#123;&apos;sign&apos;: &apos;!&apos;&#125;</div><div class="line">m.start(2): 6</div><div class="line">m.end(2): 11</div><div class="line">m.span(2): (6, 11)</div><div class="line">m.expand(r&apos;\2 \1\3&apos;): world hello!</div></pre></td></tr></table></figure></p>
+<h2 id="Pattern"><a href="#Pattern" class="headerlink" title="Pattern"></a>Pattern</h2><p>Pattern对象是一个编译好的正则表达式，通过Pattern提供的一系列方法可以对文本进行匹配查找。</p>
+<p>Pattern不能直接实例化，必须使用re.compile()进行构造。</p>
+<p>Pattern提供了几个可读属性用于获取表达式的相关信息：</p>
+<ul>
+<li>pattern: 编译时用的表达式字符串。</li>
+<li>flags: 编译时用的匹配模式。数字形式。</li>
+<li>groups: 表达式中分组的数量。</li>
+<li>groupindex: 以表达式中有别名的组的别名为键、以该组对应的编号为值的字典，没有别名的组不包含在内。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">p = re.compile(<span class="string">r'(\w+) (\w+)(?P&lt;sign&gt;.*)'</span>, re.DOTALL)</div><div class="line"> </div><div class="line"><span class="keyword">print</span> (<span class="string">"p.pattern:"</span>, p.pattern)</div><div class="line"><span class="keyword">print</span> (<span class="string">"p.flags:"</span>, p.flags)</div><div class="line"><span class="keyword">print</span> (<span class="string">"p.groups:"</span>, p.groups)</div><div class="line"><span class="keyword">print</span> (<span class="string">"p.groupindex:"</span>, p.groupindex)</div><div class="line"> </div><div class="line"><span class="comment">### output ###</span></div><div class="line"><span class="comment"># p.pattern: (\w+) (\w+)(?P&lt;sign&gt;.*)</span></div><div class="line"><span class="comment"># p.flags: 16</span></div><div class="line"><span class="comment"># p.groups: 3</span></div><div class="line"><span class="comment"># p.groupindex: &#123;'sign': 3&#125;</span></div></pre></td></tr></table></figure>
+<h4 id="实例方法-re模块方法-："><a href="#实例方法-re模块方法-：" class="headerlink" title="实例方法[ | re模块方法]："></a>实例方法[ | re模块方法]：</h4><ul>
+<li><p><strong>match(string[, pos[, endpos]]) | re.match(pattern, string[, flags]): </strong><br>这个方法将从string的pos下标处起尝试匹配pattern；如果pattern结束时仍可匹配，则返回一个Match对象；如果匹配过程中pattern无法匹配，或者匹配未结束就已到达endpos，则返回None。<br>pos和endpos的默认值分别为0和len(string)；<br>re.match()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。<br>注意：这个方法并不是完全匹配。当pattern结束时若string还有剩余字符，仍然视为成功。想要完全匹配，可以在表达式末尾加上边界匹配符’$’。 </p>
+</li>
+<li><p><strong>search(string[, pos[, endpos]]) | re.search(pattern, string[, flags]): </strong><br>这个方法用于查找字符串中可以匹配成功的子串。从string的pos下标处起尝试匹配pattern，如果pattern结束时仍可匹配，则返回一个Match对象；<br>若无法匹配，则将pos加1后重新尝试匹配；直到pos=endpos时仍无法匹配则返回None。<br>pos和endpos的默认值分别为0和len(string))；re.search()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。 </p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># encoding: UTF-8 </span></div><div class="line"><span class="keyword">import</span> re </div><div class="line"> </div><div class="line"><span class="comment"># 将正则表达式编译成Pattern对象 </span></div><div class="line">pattern = re.compile(<span class="string">r'world'</span>) </div><div class="line"> </div><div class="line"><span class="comment"># 使用search()查找匹配的子串，不存在能匹配的子串时将返回None </span></div><div class="line"><span class="comment"># 这个例子中使用match()无法成功匹配 </span></div><div class="line">match = pattern.search(<span class="string">'hello world!'</span>) </div><div class="line"> </div><div class="line"><span class="keyword">if</span> match: </div><div class="line">    <span class="comment"># 使用Match获得分组信息 </span></div><div class="line">    <span class="keyword">print</span> (match.group() )</div><div class="line"> </div><div class="line"><span class="comment">### 输出 ### </span></div><div class="line"><span class="comment"># world</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>split(string[, maxsplit]) | re.split(pattern, string[, maxsplit]): </strong><br>按照能够匹配的子串将string分割后返回列表。maxsplit用于指定最大分割次数，不指定将全部分割。 </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"> </div><div class="line">p = re.compile(<span class="string">r'\d+'</span>)</div><div class="line"><span class="keyword">print</span> (p.split(<span class="string">'one1two2three3four4'</span>))</div><div class="line"> </div><div class="line"><span class="comment">### output ###</span></div><div class="line"><span class="comment"># ['one', 'two', 'three', 'four', '']</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>findall(string[, pos[, endpos]]) | re.findall(pattern, string[, flags]): </strong><br>搜索string，以列表形式返回全部能匹配的子串。 </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"> </div><div class="line">p = re.compile(<span class="string">r'\d+'</span>)</div><div class="line"><span class="keyword">print</span> (p.findall(<span class="string">'one1two2three3four4'</span>))</div><div class="line"> </div><div class="line"><span class="comment">### output ###</span></div><div class="line"><span class="comment"># ['1', '2', '3', '4']</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>finditer(string[, pos[, endpos]]) | re.finditer(pattern, string[, flags]): </strong><br>搜索string，返回一个顺序访问每一个匹配结果（Match对象）的迭代器。 </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"> </div><div class="line">p = re.compile(<span class="string">r'\d+'</span>)</div><div class="line"><span class="keyword">for</span> m <span class="keyword">in</span> p.finditer(<span class="string">'one1two2three3four4'</span>):</div><div class="line">    <span class="keyword">print</span> m.group(),</div><div class="line"> </div><div class="line"><span class="comment">### output ###</span></div><div class="line"><span class="comment"># 1 2 3 4</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>sub(repl, string[, count]) | re.sub(pattern, repl, string[, count]): </strong><br>使用repl替换string中每一个匹配的子串后返回替换后的字符串。<br>当repl是一个字符串时，可以使用\id或\g<id>、\g<name>引用分组，但不能使用编号0。<br>当repl是一个方法时，这个方法应当只接受一个参数（Match对象），并返回一个字符串用于替换（返回的字符串中不能再引用分组）。<br>count用于指定最多替换次数，不指定时全部替换。 </name></id></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"> </div><div class="line">p = re.compile(<span class="string">r'(\w+) (\w+)'</span>)</div><div class="line">s = <span class="string">'i say, hello world!'</span></div><div class="line"> </div><div class="line"><span class="keyword">print</span> p.sub(<span class="string">r'\2 \1'</span>, s)</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(m)</span>:</span></div><div class="line">    <span class="keyword">return</span> m.group(<span class="number">1</span>).title() + <span class="string">' '</span> + m.group(<span class="number">2</span>).title()</div><div class="line"> </div><div class="line"><span class="keyword">print</span> p.sub(func, s)</div><div class="line"> </div><div class="line"><span class="comment">### output ###</span></div><div class="line"><span class="comment"># say i, world hello!</span></div><div class="line"><span class="comment"># I Say, Hello World!</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>subn(repl, string[, count]) |re.sub(pattern, repl, string[, count]): </strong><br>返回 (sub(repl, string[, count]), 替换次数)。 </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"> </div><div class="line">p = re.compile(<span class="string">r'(\w+) (\w+)'</span>)</div><div class="line">s = <span class="string">'i say, hello world!'</span></div><div class="line"> </div><div class="line"><span class="keyword">print</span> p.subn(<span class="string">r'\2 \1'</span>, s)</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(m)</span>:</span></div><div class="line">    <span class="keyword">return</span> m.group(<span class="number">1</span>).title() + <span class="string">' '</span> + m.group(<span class="number">2</span>).title()</div><div class="line"> </div><div class="line"><span class="keyword">print</span> p.subn(func, s)</div><div class="line"> </div><div class="line"><span class="comment">### output ###</span></div><div class="line"><span class="comment"># ('say i, world hello!', 2)</span></div><div class="line"><span class="comment"># ('I Say, Hello World!', 2)</span></div></pre></td></tr></table></figure>
+<p>以上就是Python对于正则表达式的支持。熟练掌握正则表达式是每一个程序员必须具备的技能。笔者也是看的迷迷糊糊，文章来自<a href="http://www.cnblogs.com/huxi/archive/2010/07/04/1771073.html" target="_blank" rel="external">cnblog</a>，原版博客基于Python2.4完成，年代有点久，我稍微修改了一下代码。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;使用正则表达式，会使得字符串的处理很方便。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="Python-camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第1.3题：将  200 个激活码保存到 MySQL</title>
+    <link href="http://www.feiyang.li/2017/02/10/python_camp3/"/>
+    <id>http://www.feiyang.li/2017/02/10/python_camp3/</id>
+    <published>2017-02-10T07:16:52.000Z</published>
+    <updated>2017-02-13T05:37:44.188Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第三题，使用 Python 将激活码保存到 MySQL。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="准备姿势"><a href="#准备姿势" class="headerlink" title="准备姿势"></a>准备姿势</h1><h2 id="安装Mysql"><a href="#安装Mysql" class="headerlink" title="安装Mysql"></a>安装Mysql</h2><p>如果是windows 用户，mysql 的安装非常简单，直接下载安装文件，双击安装文件一步一步进行操作即可。</p>
+<p>Linux 下的安装可能会更加简单，除了下载安装包进行安装外，一般的linux 仓库中都会有mysql ，我们只需要通过一个命令就可以下载安装：</p>
+<p>Ubuntu\deepin<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install mysql-server </div><div class="line">sudo apt-get install  mysql-client</div></pre></td></tr></table></figure></p>
+<p>centOS/redhat<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install mysql</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="安装MySQL-python"><a href="#安装MySQL-python" class="headerlink" title="安装MySQL-python"></a>安装MySQL-python</h2><p>要想使python可以操作mysql 就需要MySQL-python驱动，它是python 操作mysql必不可少的模块。</p>
+<p>下载地址：<a href="https://pypi.python.org/pypi/MySQL-python/" target="_blank" rel="external">https://pypi.python.org/pypi/MySQL-python/</a></p>
+<p>下载MySQL-python-1.2.5.zip 文件之后直接解压。进入MySQL-python-1.2.5目录:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python setup.py install</div></pre></td></tr></table></figure>
+<p>可能会提示缺少<strong>“error: Microsoft Visual C++ 9.0 is required (Unable to find vcvarsall.bat). Get it from <a href="http://aka.ms/vcpython27" target="_blank" rel="external">http://aka.ms/vcpython27</a>”</strong><br>这个地方查找了很多资料，有的说要修改注册表，有的说要改VS2015的配置。简直一派胡言，I am angry。直接按照要求，在这个<em><a href="http://aka.ms/vcpython27" target="_blank" rel="external">http://aka.ms/vcpython27</a></em>下载安装就可以了。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/192148401.png" alt="Microsoft" title="">
+                </div>
+                <div class="image-caption">Microsoft</div>
+            </figure></h2><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import MySQLdb</div></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import mysql</div></pre></td></tr></table></figure></p>
+<p>如果不报错，那么就安装成功了。</p>
+<hr>
+<h2 id="mysql-的基本操作"><a href="#mysql-的基本操作" class="headerlink" title="mysql 的基本操作"></a>mysql 的基本操作</h2><ul>
+<li><p>启动mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前所有的数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show databases;</div></pre></td></tr></table></figure>
+</li>
+<li><p>新建数据库表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create database if not exists test;</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用某表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use test;</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">insert into user values(&apos;Alen&apos;,&apos;7875&apos;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from student</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">delete from user where name = &apos;Jack&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除table</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drop table if exists student</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除database</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drop database if exists test</div></pre></td></tr></table></figure>
+</li>
+<li><p>mysql卡死怎么办<br>查看目前连接情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show processlist;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170210/103558354.png" alt="卡死" title="">
+                </div>
+                <div class="image-caption">卡死</div>
+            </figure>
+<p>发现多个线程数据处理间出现了死锁，也没什么好的办法，kill掉就可以了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kill 65;</div></pre></td></tr></table></figure></p>
+<h2 id="然后就可以继续使用了。"><a href="#然后就可以继续使用了。" class="headerlink" title="然后就可以继续使用了。"></a>然后就可以继续使用了。</h2><h2 id="python-操作mysql基本语法"><a href="#python-操作mysql基本语法" class="headerlink" title="python 操作mysql基本语法"></a>python 操作mysql基本语法</h2><ul>
+<li>建立数据库连接<br>注意，这个地方的test表要存在，否则无法连接<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> MySQLdb</div><div class="line">conn=MySQLdb.connect(</div><div class="line">        host=<span class="string">'localhost'</span>,</div><div class="line">        port = <span class="number">3306</span>, <span class="comment">#默认3306端口，不写也可以</span></div><div class="line">        user=<span class="string">'root'</span>,</div><div class="line">        passwd=<span class="string">'123456'</span>,</div><div class="line">        db =<span class="string">'test'</span>,</div><div class="line">)</div><div class="line">cur = conn.cursor()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>cursor 是游标, 通过获取到的数据库连接conn下的cursor()方法来创建游标。</strong><br>其中，第二行代码可以缩写为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">connect(&apos;localhost&apos;, &apos;root&apos;, &apos;123456&apos;, &apos;test&apos;)</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>创建数据表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cur.execute(&quot;create table student(id int ,name varchar(20),class varchar(30),age varchar(10))&quot;) </div><div class="line">#通过游标cur 操作execute()方法可以写入纯sql语句。通过execute()方法中写如sql语句来对数据进行操作。</div></pre></td></tr></table></figure>
+</li>
+<li><p>插入一条数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cur.execute(&quot;insert into student values(&apos;2&apos;,&apos;Tom&apos;,&apos;3 year 2 class&apos;,&apos;9&apos;)&quot;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改查询条件的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cur.execute(&quot;update student set class=&apos;3 year 1 class&apos; where name = &apos;Tom&apos;&quot;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除查询条件的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cur.execute(&quot;delete from student where age=&apos;9&apos;&quot;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>关闭游标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cur.close()</div></pre></td></tr></table></figure>
+</li>
+<li><p>提交数据<br>向数据库插入一条数据时必须要有这个方法，否则数据不会被真正的插入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conn.commit()</div></pre></td></tr></table></figure>
+</li>
+<li><p>关闭数据库连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conn.close()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="打印表中所有数据"><a href="#打印表中所有数据" class="headerlink" title="打印表中所有数据"></a>打印表中所有数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"><span class="keyword">import</span> MySQLdb</div><div class="line"></div><div class="line">conn= MySQLdb.connect(</div><div class="line">        host=<span class="string">'localhost'</span>,</div><div class="line">        port = <span class="number">3306</span>,</div><div class="line">        user=<span class="string">'root'</span>,</div><div class="line">        passwd=<span class="string">'123456'</span>,</div><div class="line">        db =<span class="string">'test'</span>,</div><div class="line">        )</div><div class="line">cur = conn.cursor()</div><div class="line"></div><div class="line"><span class="comment">#获得表中有多少条数据</span></div><div class="line">aa=cur.execute(<span class="string">"select * from student"</span>)</div><div class="line"><span class="keyword">print</span> aa</div><div class="line"></div><div class="line"><span class="comment">#打印表中的多少数据</span></div><div class="line">info = cur.fetchmany(aa)</div><div class="line"><span class="keyword">for</span> ii <span class="keyword">in</span> info:</div><div class="line">    <span class="keyword">print</span> ii</div><div class="line">cur.close()</div><div class="line">conn.commit()</div><div class="line">conn.close()</div></pre></td></tr></table></figure>
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"><span class="keyword">import</span> MySQLdb</div><div class="line"></div><div class="line">conn= MySQLdb.connect(</div><div class="line">        host=<span class="string">'localhost'</span>,</div><div class="line">        port = <span class="number">3306</span>,</div><div class="line">        user=<span class="string">'root'</span>,</div><div class="line">        passwd=<span class="string">'123456'</span>,</div><div class="line">        db =<span class="string">'test'</span>,</div><div class="line">        )</div><div class="line">cur = conn.cursor()</div><div class="line"></div><div class="line"><span class="comment">#一次插入多条记录</span></div><div class="line">sqli=<span class="string">"insert into student values(%s,%s,%s,%s)"</span></div><div class="line">cur.executemany(sqli,[</div><div class="line">    (<span class="string">'3'</span>,<span class="string">'Tom'</span>,<span class="string">'1 year 1 class'</span>,<span class="string">'6'</span>),</div><div class="line">    (<span class="string">'3'</span>,<span class="string">'Jack'</span>,<span class="string">'2 year 1 class'</span>,<span class="string">'7'</span>),</div><div class="line">    (<span class="string">'3'</span>,<span class="string">'Yaheng'</span>,<span class="string">'2 year 2 class'</span>,<span class="string">'7'</span>),</div><div class="line">    ])</div><div class="line"></div><div class="line">cur.close()</div><div class="line">conn.commit()</div><div class="line">conn.close()</div></pre></td></tr></table></figure>
+<p>以上两段代码参考 虫师的博客</p>
+<hr>
+<h1 id="正式代码"><a href="#正式代码" class="headerlink" title="正式代码"></a>正式代码</h1><p>经过以上铺垫之后，就可以写出满足要求的代码了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> uuid <span class="keyword">import</span> uuid4</div><div class="line"><span class="keyword">import</span> MySQLdb,random, string</div><div class="line">chars = string.digits + string.letters</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">uuidkey</span><span class="params">(num)</span>:</span><span class="comment"># 使用uuid方法得到随机值</span></div><div class="line">    id_list = [str(uuid4()) <span class="keyword">for</span> i <span class="keyword">in</span> range(num)]</div><div class="line">    <span class="keyword">return</span> id_list</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">randomkey</span><span class="params">(num)</span>:</span><span class="comment"># 使用random随机取数据值</span></div><div class="line">    id_list = [<span class="string">""</span>.join(random.sample(chars, <span class="number">20</span>)) <span class="keyword">for</span> i <span class="keyword">in</span> range(num)]</div><div class="line">    <span class="keyword">return</span> id_list</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_table_put_keys</span><span class="params">(id_list,table)</span>:</span><span class="comment">#将获得的随机值存入mysql</span></div><div class="line">    conn= MySQLdb.connect(</div><div class="line">        host=<span class="string">'localhost'</span>,</div><div class="line">        port = <span class="number">3306</span>,</div><div class="line">        user=<span class="string">'root'</span>,</div><div class="line">        passwd=<span class="string">'lyyc12345'</span>,</div><div class="line">        db =<span class="string">'test'</span>,</div><div class="line">        )</div><div class="line">    cur = conn.cursor()</div><div class="line">    cur.execute(<span class="string">"drop table if exists %s"</span> % table)    <span class="comment">#若存在table表则删除</span></div><div class="line">    cur.execute(<span class="string">"create table %s(id int, coupon char(40))"</span> % table)    <span class="comment">#创建数据表</span></div><div class="line">    temp = <span class="number">1</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> id_list:    <span class="comment">#将id_list里边的数据插入到mysql中</span></div><div class="line">        cur.execute(<span class="string">"insert into %s values('%d','%s')"</span> %(table,temp,i))</div><div class="line">        temp=temp+<span class="number">1</span></div><div class="line">    cur.close()    <span class="comment">#关闭游标</span></div><div class="line">    conn.commit()    <span class="comment">#提交数据</span></div><div class="line">    conn.close()    <span class="comment">#关闭数据库连接</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    create_table_put_keys(uuidkey(<span class="number">200</span>),<span class="string">'uuidtable'</span>)</div><div class="line">    create_table_put_keys(randomkey(<span class="number">200</span>),<span class="string">'randomtable'</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>python 中 % 的使用：<code>cur.execute(&quot;insert into %s values(&#39;%d&#39;,&#39;%s&#39;)&quot; %(table,temp,i))</code>，前后两部分用%相隔</li>
+<li>提交数据<strong>conn.commit()</strong>，否则数据将不会保存。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;，今天做的是第三题，使用 Python 将激活码保存到 MySQL。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>frp内网穿透</title>
+    <link href="http://www.feiyang.li/2017/02/09/frp/"/>
+    <id>http://www.feiyang.li/2017/02/09/frp/</id>
+    <published>2017-02-09T02:56:15.000Z</published>
+    <updated>2017-02-11T13:20:27.500Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>我之前写过一篇文章是用Ngrok方式进行内网穿透，该方法需要借助到别人的服务器，非常麻烦。后来发现了Frp这个神器，只需要有一台公网的主机，就可以进行端口穿透，同时还可以转发tcp，udp，dns查询。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>这里仅使用的到最简单的端口映射，需要一台有公网的vps，以及一台本地主机。</p>
+<h1 id="ssh登录公网vps"><a href="#ssh登录公网vps" class="headerlink" title="ssh登录公网vps"></a>ssh登录公网vps</h1><h2 id="下载frp安装包"><a href="#下载frp安装包" class="headerlink" title="下载frp安装包"></a>下载frp安装包</h2><p>这里下载的是64位安装包<br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_amd64.tar.gz</code><br>如果你的系统版本是32位，那么建议使用如下命令：<strong>(如果不知道自己系统版本的，也用这个)</strong><br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_386.tar.gz</code><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/100609833.png" alt="frp" title="">
+                </div>
+                <div class="image-caption">frp</div>
+            </figure></p>
+<h2 id="解压安装包"><a href="#解压安装包" class="headerlink" title="解压安装包"></a>解压安装包</h2><p><code>tar -xzvf frp_0.9.3_linux_386.tar.gz</code><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/100924889.png" alt="frp" title="">
+                </div>
+                <div class="image-caption">frp</div>
+            </figure></p>
+<h2 id="修改-frps-ini-文件，配置一个名为-ssh-的反向代理："><a href="#修改-frps-ini-文件，配置一个名为-ssh-的反向代理：" class="headerlink" title="修改 frps.ini 文件，配置一个名为 ssh 的反向代理："></a>修改 <strong>frps.ini</strong> 文件，配置一个名为 ssh 的反向代理：</h2><p><code>cd frp_0.9.3_linux_386/ &amp;&amp; vi frps.ini</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># frps.ini</div><div class="line">[common]</div><div class="line">bind_port = 7000</div><div class="line"></div><div class="line">[ssh]</div><div class="line">listen_port = 6000</div><div class="line">auth_token = 123</div></pre></td></tr></table></figure></p>
+<p>[ssh]后边写vps自己的端口。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/104436103.png" alt="公网端口" title="">
+                </div>
+                <div class="image-caption">公网端口</div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/102426087.png" alt="ssh端口号" title="">
+                </div>
+                <div class="image-caption">ssh端口号</div>
+            </figure></p>
+<h2 id="启动-frps："><a href="#启动-frps：" class="headerlink" title="启动 frps："></a>启动 frps：</h2><p>./frps -c ./frps.ini</p>
+<h1 id="登录无公网主机"><a href="#登录无公网主机" class="headerlink" title="登录无公网主机"></a>登录无公网主机</h1><p>下载frp安装包与 解压安装包，与上部相同，在此不赘述。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/102821860.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h2 id="修改-frpc-ini-文件，配置一个名为-ssh-的反向代理："><a href="#修改-frpc-ini-文件，配置一个名为-ssh-的反向代理：" class="headerlink" title="修改 frpc.ini 文件，配置一个名为 ssh 的反向代理："></a>修改 <strong>frpc.ini</strong> 文件，配置一个名为 ssh 的反向代理：</h2><p><code>cd frp_0.9.3_linux_386/ &amp;&amp; vi frpc.ini</code><br>如果希望转发到本地8888端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[common]</div><div class="line">server_addr = 115.159.102.118</div><div class="line">server_port = 7000</div><div class="line">auth_token = 123</div><div class="line"></div><div class="line">[ssh]</div><div class="line">local_ip = 127.0.0.1</div><div class="line">local_port = 8888</div></pre></td></tr></table></figure></p>
+<h2 id="启动-frpc："><a href="#启动-frpc：" class="headerlink" title="启动 frpc："></a>启动 frpc：</h2><p>./frpc -c ./frpc.ini</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;我之前写过一篇文章是用Ngrok方式进行内网穿透，该方法需要借助到别人的服务器，非常麻烦。后来发现了Frp这个神器，只需要有一台公网的主机，就可以进行端口穿透，同时还可以转发tcp，udp，dns查询。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="VPS" scheme="http://www.feiyang.li/tags/VPS/"/>
+    
+      <category term="frp" scheme="http://www.feiyang.li/tags/frp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第1.2题：使用 Python 如何生成 200 个激活码</title>
+    <link href="http://www.feiyang.li/2017/02/07/python_camp2/"/>
+    <id>http://www.feiyang.li/2017/02/07/python_camp2/</id>
+    <published>2017-02-07T11:50:11.000Z</published>
+    <updated>2017-02-13T05:37:40.975Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第二题，使用 Python 如何生成 200 个激活码。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="random模块介绍"><a href="#random模块介绍" class="headerlink" title="random模块介绍"></a>random模块介绍</h1><p>我们可以使用python中的random模块，用于生成随机浮点数、整数、字符串，甚至帮助你随机选择列表序列中的一个元素，打乱一组数据等。</p>
+<h2 id="random模块五个函数"><a href="#random模块五个函数" class="headerlink" title="random模块五个函数"></a>random模块五个函数</h2><ul>
+<li>random() 返回0&lt;=n&lt;1之间的随机实数n；</li>
+<li>choice(seq) 从序列seq中返回随机的元素；</li>
+<li>getrandbits(n) 以长整型形式返回n个随机位；</li>
+<li>shuffle(seq[, random]) 原地指定seq序列；</li>
+<li>sample(seq, n) 从序列seq中选择n个随机且独立的元素；</li>
+</ul>
+<h2 id="random模块方法说明"><a href="#random模块方法说明" class="headerlink" title="random模块方法说明"></a>random模块方法说明</h2><ul>
+<li><strong>random.random()</strong>函数是这个模块中最常用的方法了，它会生成一个随机的浮点数，范围是在0.0~1.0之间。</li>
+<li><strong>random.uniform()</strong>正好弥补了上面函数的不足，它可以设定浮点数的范围，一个是上限，一个是下限。</li>
+<li><strong>random.randint()</strong>随机生一个整数int类型，可以指定这个整数的范围，同样有上限和下限值，<em>python random.randint</em>。</li>
+<li><strong>random.choice()</strong>可以从任何序列，比如list列表中，选取一个随机的元素返回，可以用于字符串、列表、<a href="http://www.iplaypython.com/jichu/tuple.html" target="_blank" rel="external">元组</a>等。</li>
+<li><strong>random.shuffle()</strong>如果你想将一个序列中的元素，随机打乱的话可以用这个函数方法。</li>
+<li><strong>random.sample()</strong>可以从指定的序列中，随机的截取指定长度的片断，不作原地修改。</li>
+</ul>
+<h1 id="使用random直接随机抽取"><a href="#使用random直接随机抽取" class="headerlink" title="使用random直接随机抽取"></a>使用random直接随机抽取</h1><p>从26个大小字母+10个数字，随机选取10个数字，组成一组激活码。重复此过程200次即可。</p>
+<h2 id="设定字符串内容"><a href="#设定字符串内容" class="headerlink" title="设定字符串内容"></a>设定字符串内容</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random, string</div><div class="line">chars = string.letters + string.digits</div><div class="line"><span class="keyword">print</span> chars</div></pre></td></tr></table></figure>
+<p>输出内容为：<br><code>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</code></p>
+<h2 id="从给定内容中随机选取"><a href="#从给定内容中随机选取" class="headerlink" title="从给定内容中随机选取"></a>从给定内容中随机选取</h2><p>使用<strong>random.choice()</strong>和<strong>random.sample()</strong>两个函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">s= <span class="string">""</span>.join(random.choice(chars) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>))</div><div class="line">gene = <span class="string">""</span>.join(random.sample(chars, <span class="number">10</span>))</div><div class="line"><span class="keyword">print</span> s +<span class="string">"    ///////   "</span> + gene</div></pre></td></tr></table></figure></p>
+<p>其中s与gene分别可以获得两个随机序列，从这里我们可以看出两个函数使用上的差异，相对来说，<strong>random.sample()简单一些</strong>。</p>
+<h1 id="使用UUID"><a href="#使用UUID" class="headerlink" title="使用UUID"></a>使用UUID</h1><p><a href="http://en.wikipedia.org/wiki/Universally_unique_identifier" target="_blank" rel="external">UUID</a>是128位的全局唯一标识符，通常由32字节的字符串表示。 它可以保证时间和空间的唯一性，也称为GUID，全称为：Universally Unique IDentifie。</p>
+<h2 id="UUID的五种实现方法"><a href="#UUID的五种实现方法" class="headerlink" title="UUID的五种实现方法"></a>UUID的五种实现方法</h2><ul>
+<li>uuid1()——基于时间戳<br>由MAC地址、当前时间戳、随机数生成。可以保证全球范围内的唯一性，但MAC的使用同时带来安全性问题，局域网中可以使用IP来代替MAC。</li>
+<li>uuid2()——基于分布式计算环境DCE（Python中没有这个函数）<br>算法与uuid1相同，不同的是把时间戳的前4位置换为POSIX的UID，实际中很少用到该方法。</li>
+<li>uuid3()——基于名字的MD5散列值<br>通过计算名字和命名空间的MD5散列值得到，保证了同一命名空间中不同名字的唯一性，和不同命名空间的唯一性，但同一命名空间的同一名字生成相同的uuid。    </li>
+<li>uuid4()——基于随机数<br>由伪随机数得到，有一定的重复概率，该概率可以计算出来。</li>
+<li>uuid5()——基于名字的SHA-1散列值<br>算法与uuid3相同，不同的是使用 Secure Hash Algorithm 1 算法<h2 id="使用UUID生成激活码"><a href="#使用UUID生成激活码" class="headerlink" title="使用UUID生成激活码"></a>使用UUID生成激活码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> uuid</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20</span>):</div><div class="line">    <span class="keyword">print</span> uuid.uuid1()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>输出：<br><code>ebb4911e-ed1e-11e6-82ec-708bcda57790
+ebb4b82e-ed1e-11e6-9f24-708bcda57790
+ebb4b82f-ed1e-11e6-9d5c-708bcda57790
+ebb4b830-ed1e-11e6-9f8b-708bcda57790
+ebb4b831-ed1e-11e6-89d4-708bcda57790
+ebb4b832-ed1e-11e6-903a-708bcda57790
+ebb4b833-ed1e-11e6-9038-708bcda57790
+ebb4b834-ed1e-11e6-b1dc-708bcda57790
+ebb4b835-ed1e-11e6-8fb8-708bcda57790
+ebb4b836-ed1e-11e6-a399-708bcda57790
+ebb4b837-ed1e-11e6-a9a0-708bcda57790
+ebb4b838-ed1e-11e6-8f85-708bcda57790
+ebb4b839-ed1e-11e6-9ac2-708bcda57790
+ebb4b83a-ed1e-11e6-8f48-708bcda57790
+ebb4b83b-ed1e-11e6-b6d8-708bcda57790
+ebb4b83c-ed1e-11e6-9bde-708bcda57790
+ebb4b83d-ed1e-11e6-b03f-708bcda57790
+ebb4b83e-ed1e-11e6-ac70-708bcda57790
+ebb4b83f-ed1e-11e6-baf1-708bcda57790
+ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
+<h1 id="写入文件代码示例"><a href="#写入文件代码示例" class="headerlink" title="写入文件代码示例"></a>写入文件代码示例</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="keyword">import</span> string</div><div class="line">FIELD = string.digits + string.letters</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate</span><span class="params">(n, many=<span class="number">1</span>, where=None)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getCode</span><span class="params">(n)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="string">""</span>.join(random.sample(FIELD, n))</div><div class="line">    gene = [getCode(n) <span class="keyword">for</span> i <span class="keyword">in</span> range(many)]</div><div class="line">    <span class="keyword">return</span> gene</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">writeIn</span><span class="params">(n, many, where)</span>:</span></div><div class="line">    count = <span class="number">1</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> generate(n, many):</div><div class="line">        <span class="keyword">with</span> open(where, <span class="string">"a"</span>) <span class="keyword">as</span> boom:</div><div class="line">            boom.write(str(count).rjust(<span class="number">3</span>)+<span class="string">"  "</span>+i+<span class="string">"\n"</span>)</div><div class="line">        count += <span class="number">1</span></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    writeIn(<span class="number">20</span>, <span class="number">200</span>, <span class="string">"coupon.txt"</span>)</div></pre></td></tr></table></figure>
+<p>以上</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;，今天做的是第二题，使用 Python 如何生成 200 个激活码。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Github Pages + CDN全站加速</title>
+    <link href="http://www.feiyang.li/2017/02/07/Github-Pages-CDN/"/>
+    <id>http://www.feiyang.li/2017/02/07/Github-Pages-CDN/</id>
+    <published>2017-02-07T05:38:38.000Z</published>
+    <updated>2017-02-11T13:20:33.275Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速度是一种不错的选择。以Coding Pages和腾讯CDN为例。</p>
+</blockquote>
+<p>本方法同样可以对虚拟主机进行CDN加速。</p>
+<a id="more"></a>
+<hr>
+<p>本方法可解决以下问题：</p>
+<ul>
+<li>提高Pages的访问速度；</li>
+<li>利用 CDN 解决百度爬虫被 Github Pages 拒绝的问题；</li>
+</ul>
+<hr>
+<h1 id="加速效果展示"><a href="#加速效果展示" class="headerlink" title="加速效果展示"></a>加速效果展示</h1><h2 id="不使用CDN加速"><a href="#不使用CDN加速" class="headerlink" title="不使用CDN加速"></a>不使用CDN加速</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/123752053.png" alt="不使用CDN" title="">
+                </div>
+                <div class="image-caption">不使用CDN</div>
+            </figure>
+<p>平均响应时间130ms，比我想象中要好。可能因为现在是上午11点上网的人少（?），之前我在学校测得时候动辄200ms。</p>
+<h2 id="使用CDN加速"><a href="#使用CDN加速" class="headerlink" title="使用CDN加速"></a>使用CDN加速</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/123341114.png?imageMogr2/thumbnail/!60p" alt="CDN加速后" title="">
+                </div>
+                <div class="image-caption">CDN加速后</div>
+            </figure>
+<p>可以看到平均响应时间大约24.2ms，祖国山河一片绿。多环保~</p>
+<h1 id="利用Pages搭建个人网站"><a href="#利用Pages搭建个人网站" class="headerlink" title="利用Pages搭建个人网站"></a>利用Pages搭建个人网站</h1><p>这一步在网上搜一下，有很多教程，在此不赘述。</p>
+<h1 id="使用CDN为Pages加速"><a href="#使用CDN为Pages加速" class="headerlink" title="使用CDN为Pages加速"></a>使用CDN为Pages加速</h1><p>推荐腾讯云CDN，<a href="https://www.qcloud.com/product/cdn" target="_blank" rel="external">https://www.qcloud.com/product/cdn</a> 目前可以免费送300G流量。<br>根据服务商的要求，如Coding要求为：</p>
+<blockquote>
+<p><strong>在您的域名管理面板中添加 CNAME 记录指向到 pages.coding.me</strong>。</p>
+</blockquote>
+<h2 id="获得CNAME的IP地址"><a href="#获得CNAME的IP地址" class="headerlink" title="获得CNAME的IP地址"></a>获得CNAME的IP地址</h2><p>ping 一下 <strong>pages.coding.me</strong>，获得IP地址： 23.248.162.138，源站设置为该IP。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/140625255.png?imageMogr2/thumbnail/!80p" alt="设置源站" title="">
+                </div>
+                <div class="image-caption">设置源站</div>
+            </figure></p>
+<p>接下来，加速服务配置，默认时长都是30天。明显这个时间忒长了，我们可以设置为1天或者几个小时。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/141205144.png" alt="设置缓存逻辑" title="">
+                </div>
+                <div class="image-caption">设置缓存逻辑</div>
+            </figure><br><strong> 点击提交 </strong>，过约5分钟会返回提示成功。点击管理进一步设置；</p>
+<h2 id="配置回源host"><a href="#配置回源host" class="headerlink" title="配置回源host"></a>配置回源host</h2><p>我们可以把回源host理解为，访问<em>23.248.162.138</em>这个IP地址的服务器时，向服务器发出的url访问请求，服务器根据host头部里边的url地址，映射到内部相应访问空间去。<strong>回源host是用于CDN回源到源站时的访问域名，即http请求包包头的host字段内容。</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/151918753.png?imageMogr2/thumbnail/!80p" alt="回源host" title="">
+                </div>
+                <div class="image-caption">回源host</div>
+            </figure></p>
+<h2 id="配置域名CNAME"><a href="#配置域名CNAME" class="headerlink" title="配置域名CNAME"></a>配置域名CNAME</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/152322828.png?imageMogr2/thumbnail/!80p" alt="CNAME" title="">
+                </div>
+                <div class="image-caption">CNAME</div>
+            </figure>
+<p>为域名配置相应的CNAME，常见的是<strong>@</strong>和<strong>www</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/152658278.png?imageMogr2/thumbnail/!80p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><p>ping 一下自己的域名，如果PING到后缀为cdntip.com或后缀为tcdn.qq.com表示域名CNAME已生效。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/153033720.png?imageMogr2/thumbnail/!80p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>使用CDN为Pages加速，到这一步已经算结束了。但是由于使用国内CDN，使得网站在国外加载速度会慢的令人发指。</p>
+<h1 id="分地区DNS"><a href="#分地区DNS" class="headerlink" title="分地区DNS"></a>分地区DNS</h1><p>国内国外设置不同CANME，国外指向 <strong>mmmwhy.github.io</strong>或者<strong>pages.coding.me</strong>（设置自己的），国内的指向刚才CDN给出的地址。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/153601063.png?imageMogr2/thumbnail/!80p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<hr>
+<p>以上</p>
+<p>通过此方法可以将pages或者国外的免费空间，速度快到令人发指的地步~<br>祝新年快乐~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速度是一种不错的选择。以Coding Pages和腾讯CDN为例。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;本方法同样可以对虚拟主机进行CDN加速。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="CDN" scheme="http://www.feiyang.li/tags/CDN/"/>
+    
+      <category term="Pages" scheme="http://www.feiyang.li/tags/Pages/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jupyter notebook使用帮助</title>
+    <link href="http://www.feiyang.li/2017/01/12/jupyter-notebook/"/>
+    <id>http://www.feiyang.li/2017/01/12/jupyter-notebook/</id>
+    <published>2017-01-12T12:50:52.000Z</published>
+    <updated>2017-02-11T13:20:37.749Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h1 id="jupyter-notebook-换字体换颜色换主题"><a href="#jupyter-notebook-换字体换颜色换主题" class="headerlink" title="jupyter notebook 换字体换颜色换主题"></a>jupyter notebook 换字体换颜色换主题</h1><p>jupyter notebook自带的默认颜色实在是阳春白雪，看的多了眼睛有点累。页面的相关定义都是在CSS内完成的，我们可以通过修改CSS来达到目标。<br>但是这样实在是太累了，在<a href="https://github.com/mmmwhy/jupyter-themes" target="_blank" rel="external">Github</a>有一个<strong><a href="https://github.com/mmmwhy/jupyter-themes" target="_blank" rel="external">jupyter-themes</a></strong>工具，真的很好用，通过pip进行安装，分分钟更换成自己喜欢的主题。</p>
+<h2 id="安装-jupyterthemes"><a href="#安装-jupyterthemes" class="headerlink" title="安装 jupyterthemes"></a>安装 jupyterthemes</h2><p><code>pip install jupyterthemes</code><br>通过pip安装省时省力，如果你当前pip安装速度很慢，可以考虑使用清华源，代码如下：<br><code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple jupyterthemes</code></p>
+<h2 id="命令行格式"><a href="#命令行格式" class="headerlink" title="命令行格式"></a>命令行格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">usage: jt [-h] [-l] [-t THEME] [-f MONOFONT] [-fs MONOSIZE] [-nf NBFONT]</div><div class="line">          [-nfs NBFONTSIZE] [-tf TCFONT] [-tfs TCFONTSIZE] [-m MARGINS]</div><div class="line">          [-cursw CURSORWIDTH] [-cursc CURSORCOLOR] [-cellw CELLWIDTH]</div><div class="line">          [-lineh LINEHEIGHT] [-alt] [-vim] [-T] [-N] [-r]</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">options</th>
+<th style="text-align:center">arg</th>
+<th style="text-align:center">default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Usage help</td>
+<td style="text-align:center">-h</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">List Themes</td>
+<td style="text-align:center">-l</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Theme Name to Install</td>
+<td style="text-align:center">-t</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Code Font</td>
+<td style="text-align:center">-f</td>
+<td style="text-align:center">droidmono</td>
+</tr>
+<tr>
+<td style="text-align:left">Code Font-Size</td>
+<td style="text-align:center">-fs</td>
+<td style="text-align:center">11</td>
+</tr>
+<tr>
+<td style="text-align:left">Notebook Font</td>
+<td style="text-align:center">-nf</td>
+<td style="text-align:center">exosans</td>
+</tr>
+<tr>
+<td style="text-align:left">Notebook Font Size</td>
+<td style="text-align:center">-nfs</td>
+<td style="text-align:center">13</td>
+</tr>
+<tr>
+<td style="text-align:left">Text/MD Cell Font</td>
+<td style="text-align:center">-tf</td>
+<td style="text-align:center">loraserif</td>
+</tr>
+<tr>
+<td style="text-align:left">Text/MD Cell Fontsize</td>
+<td style="text-align:center">-tfs</td>
+<td style="text-align:center">13</td>
+</tr>
+<tr>
+<td style="text-align:left">Intro Page Margins</td>
+<td style="text-align:center">-m</td>
+<td style="text-align:center">auto</td>
+</tr>
+<tr>
+<td style="text-align:left">Cell Width</td>
+<td style="text-align:center">-cellw</td>
+<td style="text-align:center">980</td>
+</tr>
+<tr>
+<td style="text-align:left">Line Height</td>
+<td style="text-align:center">-lineh</td>
+<td style="text-align:center">170</td>
+</tr>
+<tr>
+<td style="text-align:left">Cursor Width</td>
+<td style="text-align:center">-cursw</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:left">Cursor Color</td>
+<td style="text-align:center">-cursc</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Alt Text/MD Layout</td>
+<td style="text-align:center">-alt</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Alt Prompt Layout</td>
+<td style="text-align:center">-altp</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Style Vim NBExt*</td>
+<td style="text-align:center">-vim</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Toolbar Visible</td>
+<td style="text-align:center">-T</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Name &amp; Logo Visible</td>
+<td style="text-align:center">-N</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Restore Default</td>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">–</td>
+</tr>
+</tbody>
+</table>
+<p>举个例子<br><code>jt -t oceans16 -f roboto -fs 15</code><br>意味着选择oceans16主题，roboto字体，大小为15，效果如下。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>恢复原始主题，重新启动Jupyter notebook，如果主题没有改变，Ctrl+F5刷新即可。<br><code># restore default themejt -r</code></p>
+<h1 id="jupyter-notebook换工作空间"><a href="#jupyter-notebook换工作空间" class="headerlink" title="jupyter notebook换工作空间"></a>jupyter notebook换工作空间</h1><ul>
+<li>打开 cmd 输入命令<br><code>jupyter notebook --generate-config</code><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170112/204418862.png?imageMogr2/thumbnail/!100p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>进入自己工作目录，<strong>.jupyter</strong>，打开<strong>jupyter_notebook_config.py</strong><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170112/204526634.png?imageMogr2/thumbnail/!100p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>ctrl+f查到<strong>c.NotebookApp.notebook_dir</strong>，<br>将这一行改为<strong>c.NotebookApp.notebook_dir = ‘自己的位置’</strong><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170112/204842314.png?imageMogr2/thumbnail/!100p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>启动 jupyter notebook<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170112/204957560.png?imageMogr2/thumbnail/!60p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="Jupyer" scheme="http://www.feiyang.li/tags/Jupyer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>部署在线IPyhton notebook(在线python编译器)</title>
+    <link href="http://www.feiyang.li/2016/12/31/IPyhton-notebook/"/>
+    <id>http://www.feiyang.li/2016/12/31/IPyhton-notebook/</id>
+    <published>2016-12-31T14:52:39.000Z</published>
+    <updated>2017-02-15T12:08:27.233Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>jupyter notebook在数据分析时使用非常的方便，特别那优美的页面，简直让我着迷。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>优点：</p>
+<ul>
+<li>支持的格式很多，Markdown，Latex等都支持，还有很方便的快捷键。</li>
+<li>可以将代码可视化分享给其他人，<a href="https://www.continuum.io/blog/developer/jupyter-and-conda-r" target="_blank" rel="external">From notebook to slides</a></li>
+<li>像一张草稿纸，可以一边通过它来进行你的思考探索过程，交互式的进行，每一步都能看到结果，也很方便查看之前的结果。<br>可以到<a href="https://stoic-pasteur-4603.arukascloud.io/tree" target="_blank" rel="external">IPython Notebook</a>看一下，密码是<em>Jupyter</em>，我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333 <h1 id="本地安装Jupyter"><a href="#本地安装Jupyter" class="headerlink" title="本地安装Jupyter"></a>本地安装Jupyter</h1>推荐先安装<a href="https://www.continuum.io/downloads" target="_blank" rel="external">python科学计算包ANACONDA</a>点击进入官网下载，按要求下载安装完成之后。期间会有一步提示是否加入Path，勾选加入环境变量。如果但是没有勾选，对于win事后可以手动添加环境变量。对于linux，使用<code>export PATH=~/anaconda2/bin:$PATH</code>进行添加。<br>anaconda安装完后，对于win10用户，可以看到已经成功安装Jupyter Notebook，点击即可打开食用~<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161231/212802868.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+点击之后，默认直接打开浏览器localhost:8888<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161231/213001998.png?imageMogr2/thumbnail/!100p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+用命令行也可以打开此页面，并且在打开的页面会形成<strong>.ipynb</strong>文件<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161231/213247968.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<h1 id="线上部署-Jupyter-Notebook"><a href="#线上部署-Jupyter-Notebook" class="headerlink" title="线上部署 Jupyter Notebook"></a>线上部署 Jupyter Notebook</h1><p>在本地部署好了之后，其实给了我一些灵感，既然可以在浏览器运行。那么其实部署在服务器上也是可以的，大家如果看过我看过我之前的文章，就知道我对vps很感兴趣。其实在本地看到的那个localhost:8888，在外网也可以访问，只需要稍微加以设置即可。</p>
+<h2 id="首先要申请虚拟机"><a href="#首先要申请虚拟机" class="headerlink" title="首先要申请虚拟机"></a>首先要申请虚拟机</h2><p>这里推荐腾讯云或者<a href="https://m.do.co/c/990a117f5061" target="_blank" rel="external">DO</a>，通过本链接注册送$10。然后再加上github的学生优惠包，可以很便宜哦。设置好之后，使用SSH连接上服务器。</p>
+<h2 id="服务器下载Anaconda"><a href="#服务器下载Anaconda" class="headerlink" title="服务器下载Anaconda"></a>服务器下载Anaconda</h2><ul>
+<li>如果选择国内服务器，推荐<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="external">清华Anaconda 镜像</a>，点击进入，选择与自己服务器相符的版本。<code>wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda-2.3.0-Linux-x86_64.sh</code></li>
+<li>如果选择国外服务器，使用代码<code>wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh</code><br>本来想推荐科大源的，但是科大源实在是烂泥扶不上墙，目前清华源是国内比较好的了。</li>
+</ul>
+<h2 id="安装Anaconda"><a href="#安装Anaconda" class="headerlink" title="安装Anaconda"></a>安装Anaconda</h2><p><code>sudo bash Miniconda-latest-Linux-x86_64.sh</code><br><em>Miniconda-latest-Linux-x86_64.sh</em>这个地方，输入自己下载的文件名称，其实只要写前几个字母，然后敲Tab，就可以自动补全了。<br>安装好时候输入<code>conda --v</code>检查一下，如果输出为conda的版本则正常。<br>如果输出<strong>conda: command not found</strong>，出现这种情况的原因是conda没有在path添加，使用<code>export PATH=~/anaconda2/bin:$PATH</code> 添加即可。</p>
+<h2 id="打开Ipython-设置密码"><a href="#打开Ipython-设置密码" class="headerlink" title="打开Ipython ,设置密码"></a>打开Ipython ,设置密码</h2><p>设置过程中要设置用于远程登录的密码，把生成的密文‘sha:ce…’复制下来<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161231/223937327.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">In [1]: from IPython.lib import passwd</div><div class="line">In [2]: passwd()</div><div class="line">Enter password:</div><div class="line">Verify password: </div><div class="line">Out[2]: &apos;sha1:7467b73*************************3003b****&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="生成配置文件"><a href="#生成配置文件" class="headerlink" title="生成配置文件"></a>生成配置文件</h2><p>终端输入：<br><code>jupyter notebook --generate-config</code><br>这个时候在当前目录会生成一个<strong>.jupyter</strong>的隐藏文件夹，修改文件内的jupyter_notebook_config.py<br><code>vim ~/.jupyter/jupyter_notebook_config.py</code></p>
+<blockquote>
+<p>关于vim的常用功能：按a在光标所在位置插入内容（进入编辑模式），Esc退出编辑模式，连续按两下z，保存并退出。</p>
+</blockquote>
+<p>jupyter_notebook_config.py内包含以下内容，稍作修改即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">c.NotebookApp.ip=&apos;*&apos; # 就是设置所有ip皆可访问</div><div class="line">c.NotebookApp.password = u&apos;sha:ce...刚才复制的那个密文&apos;</div><div class="line">c.NotebookApp.open_browser = False # 禁止自动打开浏览器</div><div class="line">c.NotebookApp.port =8888 #随便指定一个端口</div></pre></td></tr></table></figure></p>
+<h2 id="启动jupyter-notebook"><a href="#启动jupyter-notebook" class="headerlink" title="启动jupyter notebook"></a>启动jupyter notebook</h2><p><code>jupyter notebook</code><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161231/225106541.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>此时应该可以直接从本地浏览器直接访问<em><a href="http://address_of_remote:8888" target="_blank" rel="external">http://address_of_remote:8888</a></em>就可以看到jupyter的登陆界面。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161231/224810212.png?imageMogr2/thumbnail/!80p" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>如果希望不要在退出SSH命令行的时候，同时也停止jupyter notebook服务，推荐<strong>nohup </strong>，之前写过篇博客解释过<a href="https://feiyang.li/2016/10/19/%E6%97%A0%E5%85%AC%E7%BD%91IP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAWeb%E7%AB%99%E7%82%B9/" target="_blank" rel="external">nohup的作用</a><br>在线python编译器就搭建好了，是不是很洋气~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;jupyter notebook在数据分析时使用非常的方便，特别那优美的页面，简直让我着迷。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Jupyter" scheme="http://www.feiyang.li/tags/Jupyter/"/>
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="VPS" scheme="http://www.feiyang.li/tags/VPS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第1.1题：Python图片添加水印</title>
+    <link href="http://www.feiyang.li/2016/12/31/python_camp1/"/>
+    <id>http://www.feiyang.li/2016/12/31/python_camp1/</id>
+    <published>2016-12-31T04:16:16.000Z</published>
+    <updated>2017-02-13T05:37:36.719Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 </p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="添加文字水印"><a href="#添加文字水印" class="headerlink" title="添加文字水印"></a>添加文字水印</h1><p>初始图像<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161216/122038769.png?imageMogr2/thumbnail/!80p" alt="我的头像" title="">
+                </div>
+                <div class="image-caption">我的头像</div>
+            </figure></p>
+<h2 id="Python代码"><a href="#Python代码" class="headerlink" title="Python代码"></a>Python代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_num</span><span class="params">(img)</span>:</span></div><div class="line">    draw = ImageDraw.Draw(img)</div><div class="line">    myfont = ImageFont.truetype(<span class="string">'C:/windows/fonts/Arial.ttf'</span>, size=<span class="number">40</span>)</div><div class="line">    fillcolor = <span class="string">"#ff0000"</span></div><div class="line">    width, height = img.size</div><div class="line">    draw.text((width<span class="number">-50</span>, <span class="number">5</span>), <span class="string">'99'</span>, font=myfont, fill=fillcolor)</div><div class="line">    img.save(<span class="string">'result.jpg'</span>,<span class="string">'jpeg'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    image = Image.open(<span class="string">'F:/Picture/touxiang.jpg'</span>)</div><div class="line">    add_num(image)</div><div class="line">    image.show()</div></pre></td></tr></table></figure>
+<h2 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h2><ul>
+<li><code>from PIL import Image, ImageDraw, ImageFont</code> 导入PIL图像处理库</li>
+<li><code>draw = ImageDraw.Draw(img)</code>，查了一下ImageDraw作用：</li>
+</ul>
+<p><strong>创建绘画对象</strong> ImageDraw module creates drawing surface for image<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import Image, ImageDraw</div><div class="line">im = Image.open(“vacation.jpeg") </div><div class="line">drawSurface = ImageDraw.Draw(im)</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>draw.text((width-50, 5), &#39;99&#39;, font=myfont, fill=fillcolor)</code> 第一个括号填写的是位置，表示在x轴在width-50，y轴在5的位置加入文字，也就是右上角的意思。</li>
+</ul>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161216/115246388.jpg?imageMogr2/thumbnail/!80p" alt="文字水印" title="">
+                </div>
+                <div class="image-caption">文字水印</div>
+            </figure>
+<h1 id="添加图片水印"><a href="#添加图片水印" class="headerlink" title="添加图片水印"></a>添加图片水印</h1><h2 id="Python代码-1"><a href="#Python代码-1" class="headerlink" title="Python代码"></a>Python代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_num</span><span class="params">(im,mark)</span>:</span></div><div class="line">    layer = Image.new(<span class="string">'RGBA'</span>, im.size, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>))</div><div class="line">    layer.paste(mark, (im.size[<span class="number">0</span>] - <span class="number">150</span>, im.size[<span class="number">1</span>] - <span class="number">150</span>))</div><div class="line">    out = Image.composite(layer, im, layer)</div><div class="line">    out.save(<span class="string">'result.jpg'</span>,<span class="string">'jpeg'</span>)</div><div class="line">    out.show()</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    image = Image.open(<span class="string">'F:/Picture/touxiang.jpg'</span>)</div><div class="line">    mark = Image.open(<span class="string">'F:/Picture/1022.png'</span>)</div><div class="line">    add_num(image,mark)</div></pre></td></tr></table></figure>
+<h2 id="代码解释-1"><a href="#代码解释-1" class="headerlink" title="代码解释"></a>代码解释</h2><ul>
+<li><code>Image.composite(layer, im, layer)</code> 解释一下<code>Image.composite()</code>的意思<br>使用案例<br><code>Image.composite(image1, image2, mask) =&gt; image</code><br>使用遮罩（mask）作为alpha，通过在两个图像之间进行插值来创建一个新图像。遮罩图像的模式可以是“1”，“L”，或者“RGBA”。所有的图像的大小必须有相同。 </li>
+<li><code>out.save(&#39;result.jpg&#39;,&#39;jpeg&#39;)</code>，对图片进行保存，设置文件名和文件格式。</li>
+</ul>
+<h2 id="效果展示-1"><a href="#效果展示-1" class="headerlink" title="效果展示"></a>效果展示</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161216/115917853.jpg?imageMogr2/thumbnail/!80p" alt="图片水印" title="">
+                </div>
+                <div class="image-caption">图片水印</div>
+            </figure>
+<p>参考文章<a href="http://www.cnblogs.com/wei-li/archive/2012/04/19/2456725.html" target="_blank" rel="external"><a href="http://www.cnblogs.com/wei-li/archive/2012/04/19/2456725.html" target="_blank" rel="external">Python图像处理库：PIL中Image,ImageDraw等基本模块介绍</a></a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="http://www.feiyang.li/tags/Python/"/>
+    
+      <category term="Python_camp" scheme="http://www.feiyang.li/tags/Python-camp/"/>
+    
+  </entry>
+  
+</feed>

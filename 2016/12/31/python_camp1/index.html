@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://www.feiyang.li/2016/12/31/python_camp1/">
+    
+    
+    <title>第1.1题：Python图片添加水印 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="Python,Python_camp">
+    <meta name="description" content="题目来自：Python 练习册，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第1.1题：Python图片添加水印">
+<meta property="og:url" content="http://www.feiyang.li/2016/12/31/python_camp1/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="题目来自：Python 练习册，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161216/122038769.png?imageMogr2/thumbnail/!80p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161216/115246388.jpg?imageMogr2/thumbnail/!80p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161216/115917853.jpg?imageMogr2/thumbnail/!80p">
+<meta property="og:updated_time" content="2017-02-13T05:37:36.719Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第1.1题：Python图片添加水印">
+<meta name="twitter:description" content="题目来自：Python 练习册，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20161216/122038769.png?imageMogr2/thumbnail/!80p">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.8">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://feiyang.li/tags/Python-camp/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                Python练习册
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">第1.1题：Python图片添加水印</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">第1.1题：Python图片添加水印</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-12-31T04:16:16.000Z" itemprop="datePublished" class="page-time">
+  2016-12-31
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#添加文字水印"><span class="post-toc-number">1.</span> <span class="post-toc-text">添加文字水印</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Python代码"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Python代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码解释"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">代码解释</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#效果展示"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">效果展示</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#添加图片水印"><span class="post-toc-number">2.</span> <span class="post-toc-text">添加图片水印</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Python代码-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Python代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码解释-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">代码解释</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#效果展示-1"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">效果展示</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-python_camp1"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">第1.1题：Python图片添加水印</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年12月31日 12:16" datetime="2016-12-31T04:16:16.000Z"  itemprop="datePublished">2016-12-31</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 </p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="添加文字水印"><a href="#添加文字水印" class="headerlink" title="添加文字水印"></a>添加文字水印</h1><p>初始图像<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161216/122038769.png?imageMogr2/thumbnail/!80p" alt="我的头像" title="">
+                </div>
+                <div class="image-caption">我的头像</div>
+            </figure></p>
+<h2 id="Python代码"><a href="#Python代码" class="headerlink" title="Python代码"></a>Python代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_num</span><span class="params">(img)</span>:</span></div><div class="line">    draw = ImageDraw.Draw(img)</div><div class="line">    myfont = ImageFont.truetype(<span class="string">'C:/windows/fonts/Arial.ttf'</span>, size=<span class="number">40</span>)</div><div class="line">    fillcolor = <span class="string">"#ff0000"</span></div><div class="line">    width, height = img.size</div><div class="line">    draw.text((width<span class="number">-50</span>, <span class="number">5</span>), <span class="string">'99'</span>, font=myfont, fill=fillcolor)</div><div class="line">    img.save(<span class="string">'result.jpg'</span>,<span class="string">'jpeg'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    image = Image.open(<span class="string">'F:/Picture/touxiang.jpg'</span>)</div><div class="line">    add_num(image)</div><div class="line">    image.show()</div></pre></td></tr></table></figure>
+<h2 id="代码解释"><a href="#代码解释" class="headerlink" title="代码解释"></a>代码解释</h2><ul>
+<li><code>from PIL import Image, ImageDraw, ImageFont</code> 导入PIL图像处理库</li>
+<li><code>draw = ImageDraw.Draw(img)</code>，查了一下ImageDraw作用：</li>
+</ul>
+<p><strong>创建绘画对象</strong> ImageDraw module creates drawing surface for image<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import Image, ImageDraw</div><div class="line">im = Image.open(“vacation.jpeg") </div><div class="line">drawSurface = ImageDraw.Draw(im)</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>draw.text((width-50, 5), &#39;99&#39;, font=myfont, fill=fillcolor)</code> 第一个括号填写的是位置，表示在x轴在width-50，y轴在5的位置加入文字，也就是右上角的意思。</li>
+</ul>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161216/115246388.jpg?imageMogr2/thumbnail/!80p" alt="文字水印" title="">
+                </div>
+                <div class="image-caption">文字水印</div>
+            </figure>
+<h1 id="添加图片水印"><a href="#添加图片水印" class="headerlink" title="添加图片水印"></a>添加图片水印</h1><h2 id="Python代码-1"><a href="#Python代码-1" class="headerlink" title="Python代码"></a>Python代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_num</span><span class="params">(im,mark)</span>:</span></div><div class="line">    layer = Image.new(<span class="string">'RGBA'</span>, im.size, (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>))</div><div class="line">    layer.paste(mark, (im.size[<span class="number">0</span>] - <span class="number">150</span>, im.size[<span class="number">1</span>] - <span class="number">150</span>))</div><div class="line">    out = Image.composite(layer, im, layer)</div><div class="line">    out.save(<span class="string">'result.jpg'</span>,<span class="string">'jpeg'</span>)</div><div class="line">    out.show()</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    image = Image.open(<span class="string">'F:/Picture/touxiang.jpg'</span>)</div><div class="line">    mark = Image.open(<span class="string">'F:/Picture/1022.png'</span>)</div><div class="line">    add_num(image,mark)</div></pre></td></tr></table></figure>
+<h2 id="代码解释-1"><a href="#代码解释-1" class="headerlink" title="代码解释"></a>代码解释</h2><ul>
+<li><code>Image.composite(layer, im, layer)</code> 解释一下<code>Image.composite()</code>的意思<br>使用案例<br><code>Image.composite(image1, image2, mask) =&gt; image</code><br>使用遮罩（mask）作为alpha，通过在两个图像之间进行插值来创建一个新图像。遮罩图像的模式可以是“1”，“L”，或者“RGBA”。所有的图像的大小必须有相同。 </li>
+<li><code>out.save(&#39;result.jpg&#39;,&#39;jpeg&#39;)</code>，对图片进行保存，设置文件名和文件格式。</li>
+</ul>
+<h2 id="效果展示-1"><a href="#效果展示-1" class="headerlink" title="效果展示"></a>效果展示</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161216/115917853.jpg?imageMogr2/thumbnail/!80p" alt="图片水印" title="">
+                </div>
+                <div class="image-caption">图片水印</div>
+            </figure>
+<p>参考文章<a href="http://www.cnblogs.com/wei-li/archive/2012/04/19/2456725.html" target="_blank" rel="external"><a href="http://www.cnblogs.com/wei-li/archive/2012/04/19/2456725.html" target="_blank" rel="external">Python图像处理库：PIL中Image,ImageDraw等基本模块介绍</a></a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-13T05:37:36.719Z" itemprop="dateUpdated">2017年2月13日 13:37</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2016/12/31/python_camp1/" target="_blank" rel="external">http://www.feiyang.li/2016/12/31/python_camp1/</a>
+    </div>
+    <footer>
+        <a href="http://www.feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python-camp/">Python_camp</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.feiyang.li/2016/12/31/python_camp1/&title=《第1.1题：Python图片添加水印》 — 李飞阳&pic=http://www.feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.feiyang.li/2016/12/31/python_camp1/&title=《第1.1题：Python图片添加水印》 — 李飞阳&source=
+题目来自：Python 练习册，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.feiyang.li/2016/12/31/python_camp1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第1.1题：Python图片添加水印》 — 李飞阳&url=http://www.feiyang.li/2016/12/31/python_camp1/&via=http://www.feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.feiyang.li/2016/12/31/python_camp1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/12/31/IPyhton-notebook/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">部署在线IPyhton notebook(在线python编译器)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/12/31/python_camp/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Python练习册</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+<div class="comments" id="comments">
+    <div class="ds-thread" data-thread-key="python_camp1" data-title="第1.1题：Python图片添加水印" data-url="http://www.feiyang.li/2016/12/31/python_camp1/"></div>
+</div>
+<script>
+lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
+
+var duoshuoQuery = {short_name:'mmmxcc', theme: 'none'};
+lazyScripts.push('/js/embed.min.js?v=1.4.8');
+
+
+</script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="bottom">
+        
+<p>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            <span>内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0协议</a></span>
+            <span><a href="http://www.feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.feiyang.li/2016/12/31/python_camp1/&title=《第1.1题：Python图片添加水印》 — 李飞阳&pic=http://www.feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.feiyang.li/2016/12/31/python_camp1/&title=《第1.1题：Python图片添加水印》 — 李飞阳&source=
+题目来自：Python 练习册，今天做的是第一题，将你的 QQ 头像（或者微博头像）右上角加上红色的数字，类似于微信未读信息数量那种提示效果。 
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.feiyang.li/2016/12/31/python_camp1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第1.1题：Python图片添加水印》 — 李飞阳&url=http://www.feiyang.li/2016/12/31/python_camp1/&via=http://www.feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://www.feiyang.li/2016/12/31/python_camp1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3ay07DQAwFUP7/p4vEDpWGazsFxTmzQlWZ5MzCHT8+PuL1+FrPnzyv5L+ed3j1yckLAwPjsozH4UpeOt8h+X51ZwwMjPswjoNsHlh7R3C8W/IDgIGBgXHW1XD+XAwMDIxkuyT5zNPRfwu4GBgYF2RUU9Bqktm7LL4lF8fAwLggo9oY+Mu/39jfwMDAuAjjUVzHpbf8IjhpGPzwdAwMjNWM3mtNymTV0ltyEBgYGLsZ1XJYUlCbpKDVNue33w0MDIzVjDyZnFwWq0W9/CqJgYFxH0Zv5OushmUVH5XbMDAwVjDyl0hGK6qXvHkIflluw8DAWMpIHtMrh/VGN6p7YmBgbGX0CmG9kbJJs/OEJBYDA+PijPwSljc45w3RfPwCAwPjPox8YGJSdJs0TaOAi4GBsY7xjmJZPnhx1nAGBgbGbkbTHa9kLKM3bDEqt2FgYFyKUW1VVofDquE4T2J/OVwMDIx1jDzslruj43vrMb4844aBgbGCMS+fTdqi1bGPlwEXAwNjEaM3BpE8Mr9o9g4IAwPjzow8re1d+PIgWwjiGBgYqxlJgJs3LHvhNR8Uw8DA2M14FFd1VCvZp/r5D8eEgYGxmlEdm5iEy14zIG+gYmBg7GbkQTZvIVRbofl5lzuxGBgYixi9oYfq6Nj8FwADAwMjL59Vk95qA6B8JcXAwMBoNQZ6rdBmfwMDA+MGjEkSe1pVrxXcMTAw7sCopo690a5eC6F3lBgYGIsYnxRZo4nQCWj4AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1260629502&web_id=1260629502')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.8"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.8" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
