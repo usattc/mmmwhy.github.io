@@ -190,7 +190,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>上篇文章 <a href="http://feiyang.li/2016/12/13/提取网页信息/" target="_blank" rel="external">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
+<p>上篇文章 <a href="http://feiyang.li/2016/12/13/提取网页信息/">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
@@ -208,7 +208,7 @@
             </figure>
 <p>我们可以发现title这个地方本来应该是中文的，但因为编码的原因，导致出现乱码。通过将html页面重新用”utf-8”编码，可以解决这个问题。</p>
 <hr>
-<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://feiyang.li/2016/12/13/提取网页信息/" target="_blank" rel="external">http://feiyang.li/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
+<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://feiyang.li/2016/12/13/提取网页信息/">http://feiyang.li/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
 <p>这里需要导入lxml，代码格式如下。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = requests.get(<span class="string">"http://jandan.net/ooxx"</span>)</div><div class="line">html.encoding = <span class="string">'utf-8'</span></div><div class="line">selector = etree.HTML(html.text)</div><div class="line">content = selector.xpath(<span class="string">'//ol[@class = "commentlist"]//@src'</span>)</div></pre></td></tr></table></figure>
 <p>单独运行 以上代码可以获得<br><figure class="image-bubble">
