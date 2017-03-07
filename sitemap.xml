@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2016/01/18/resume/</loc>
+    
+    <lastmod>2017-03-07T10:12:47.197Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2017/03/03/do-vpn/</loc>
     
     <lastmod>2017-03-06T13:55:54.460Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://feiyang.li/404.html</loc>
     
     <lastmod>2017-02-28T07:29:40.525Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/01/18/resume/</loc>
-    
-    <lastmod>2017-02-28T04:34:09.837Z</lastmod>
     
   </url>
   
