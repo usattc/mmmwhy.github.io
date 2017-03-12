@@ -1,3 +1,6 @@
+http://feiyang.li/2017/03/11/indian-movie/
+http://feiyang.li/2017/03/10/python-input/
+http://feiyang.li/2017/03/09/Python-quick-order/
 http://feiyang.li/2017/03/03/do-vpn/
 http://feiyang.li/2017/02/26/jetbrains/
 http://feiyang.li/2017/02/24/Hexo-music-video/
@@ -35,6 +38,3 @@ http://feiyang.li/2016/10/19/Android_Pattern Matcher/
 http://feiyang.li/2016/10/19/VelocityTracker_Activity/
 http://feiyang.li/2016/10/19/SSR/
 http://feiyang.li/2016/10/19/without_IP_build_Website/
-http://feiyang.li/2016/10/08/return_suzhou/
-http://feiyang.li/2016/09/29/travel_to_peking/
-http://feiyang.li/2016/01/18/resume/
