@@ -21,7 +21,7 @@
     <meta name="theme-color" content="#0288D1">
     
     
-    <meta name="keywords" content="Python,Jupyer">
+    <meta name="keywords" content="Jupyter,Python">
     <meta name="description" content="jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jupyter notebook使用帮助">
@@ -29,11 +29,12 @@
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170316/202506728.png">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204418862.png?imageMogr2/thumbnail/!100p">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204526634.png?imageMogr2/thumbnail/!100p">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204842314.png?imageMogr2/thumbnail/!100p">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204957560.png?imageMogr2/thumbnail/!60p">
-<meta property="og:updated_time" content="2017-02-11T13:20:37.749Z">
+<meta property="og:updated_time" content="2017-03-16T12:26:02.941Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jupyter notebook使用帮助">
 <meta name="twitter:description" content="jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。">
@@ -42,14 +43,14 @@
         <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
     
     <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.4.8">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
     <script>window.lazyScripts=[]</script>
 </head>
 
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu"  >
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -315,7 +316,14 @@
                     <img src="http://cdn.mmmxcc.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure><br>恢复原始主题，重新启动Jupyter notebook，如果主题没有改变，Ctrl+F5刷新即可。<br><code># restore default themejt -r</code></p>
+            </figure><br>恢复原始主题，重新启动Jupyter notebook，如果主题没有改变，Ctrl+F5刷新即可。<br><code>jt -r</code></p>
+<p>目前我自己用的是<br><code>jt -t onedork  -cellw 1600 -lineh 170 -tf georgiaserif -nf droidsans -fs 15</code><br>效果如下：主要修改了宽度，因为我电脑分辨率是1920*1080，使用默认的900宽度有点小了。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170316/202506728.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <h1 id="jupyter-notebook换工作空间"><a href="#jupyter-notebook换工作空间" class="headerlink" title="jupyter notebook换工作空间"></a>jupyter notebook换工作空间</h1><ul>
 <li>打开 cmd 输入命令<br><code>jupyter notebook --generate-config</code><figure class="image-bubble">
                 <div class="img-lightbox">
@@ -353,7 +361,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-02-11T13:20:37.749Z" itemprop="dateUpdated">2017年2月11日 21:20</time>
+    最后更新时间：<time datetime="2017-03-16T12:26:02.941Z" itemprop="dateUpdated">2017年3月16日 20:26</time>
 </span><br>
 
 
@@ -372,7 +380,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jupyer/">Jupyer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 
 
             
@@ -460,7 +468,7 @@ jupyer notebook 使用的时候常见换主题，以及换工作空间的问题�
 lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
 
 var duoshuoQuery = {short_name:'mmmxcc', theme: 'none'};
-lazyScripts.push('/js/embed.min.js?v=1.4.8');
+lazyScripts.push('/js/embed.min.js?v=1.4.11');
 
 
 </script>
@@ -477,23 +485,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.8');
 
 </div>
 
-        <footer class="footer">
-    <div class="bottom">
         
-<p>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            <span>内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0协议</a></span>
-            <span><a href="http://www.feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
-        </p>
-    </div>
-</footer>
-
     </main>
     <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
@@ -555,7 +547,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 </script>
 
-<script src="/js/main.min.js?v=1.4.8"></script>
+<script src="/js/main.min.js?v=1.4.11"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -575,7 +567,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.4.8" async></script>
+<script src="/js/search.min.js?v=1.4.11" async></script>
 
 
 
@@ -605,6 +597,15 @@ MathJax.Hub.Queue(function() {
 
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
 
 </body>
 </html>

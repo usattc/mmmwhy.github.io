@@ -42,14 +42,14 @@
         <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
     
     <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.4.8">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
     <script>window.lazyScripts=[]</script>
 </head>
 
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu"  >
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -190,7 +190,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p><a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">参考代码</a>一同附上，分析过程见<a href="http://feiyang.li/tags/Python-camp/">李飞阳</a>，请多指教。</p>
 </blockquote>
 <hr>
@@ -283,9 +283,9 @@ jiangge
 <li><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164451954.png" alt="SpringSide" title="">
+                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164451954.png" alt="SpringSide 版TodoList" title="">
                 </div>
-                <div class="image-caption">SpringSide</div>
+                <div class="image-caption">SpringSide 版TodoList</div>
             </figure>
 </li>
 </ul>
@@ -405,7 +405,7 @@ jiangge
 lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
 
 var duoshuoQuery = {short_name:'mmmxcc', theme: 'none'};
-lazyScripts.push('/js/embed.min.js?v=1.4.8');
+lazyScripts.push('/js/embed.min.js?v=1.4.11');
 
 
 </script>
@@ -422,23 +422,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.8');
 
 </div>
 
-        <footer class="footer">
-    <div class="bottom">
         
-<p>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            <span>内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0协议</a></span>
-            <span><a href="http://www.feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
-        </p>
-    </div>
-</footer>
-
     </main>
     <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
@@ -501,7 +485,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 </script>
 
-<script src="/js/main.min.js?v=1.4.8"></script>
+<script src="/js/main.min.js?v=1.4.11"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -521,7 +505,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.4.8" async></script>
+<script src="/js/search.min.js?v=1.4.11" async></script>
 
 
 
@@ -551,6 +535,15 @@ MathJax.Hub.Queue(function() {
 
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
 
 </body>
 </html>

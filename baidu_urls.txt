@@ -1,3 +1,7 @@
+http://feiyang.li/2017/03/17/python-mnist/
+http://feiyang.li/2017/03/17/python-struct/
+http://feiyang.li/2017/03/16/Ubuntu-caffe/
+http://feiyang.li/2017/03/15/win10-conda-tensorflow/
 http://feiyang.li/2017/03/11/indian-movie/
 http://feiyang.li/2017/03/10/python-input/
 http://feiyang.li/2017/03/09/Python-quick-order/
@@ -34,7 +38,3 @@ http://feiyang.li/2016/10/28/forever_7012/
 http://feiyang.li/2016/10/28/C_read/
 http://feiyang.li/2016/10/28/book/
 http://feiyang.li/2016/10/27/Python_basic/
-http://feiyang.li/2016/10/19/Android_Pattern Matcher/
-http://feiyang.li/2016/10/19/VelocityTracker_Activity/
-http://feiyang.li/2016/10/19/SSR/
-http://feiyang.li/2016/10/19/without_IP_build_Website/

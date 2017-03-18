@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161215/182806800.png">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161215/191015695.png">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161215/191141723.png">
-<meta property="og:updated_time" content="2017-02-11T13:27:59.892Z">
+<meta property="og:updated_time" content="2017-03-18T02:41:06.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python爬取图片（使用urllib2）">
 <meta name="twitter:description" content="上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。">
@@ -41,14 +41,14 @@
         <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
     
     <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.4.8">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
     <script>window.lazyScripts=[]</script>
 </head>
 
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu"  >
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -208,7 +208,7 @@
             </figure>
 <p>我们可以发现title这个地方本来应该是中文的，但因为编码的原因，导致出现乱码。通过将html页面重新用”utf-8”编码，可以解决这个问题。</p>
 <hr>
-<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://feiyang.li/2016/12/13/提取网页信息/">http://feiyang.li/2016/12/13/提取网页信息/</a>  ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
+<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://feiyang.li/2016/12/13/get_html/">http://feiyang.li/2016/12/13/get_html/</a>   ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
 <p>这里需要导入lxml，代码格式如下。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = requests.get(<span class="string">"http://jandan.net/ooxx"</span>)</div><div class="line">html.encoding = <span class="string">'utf-8'</span></div><div class="line">selector = etree.HTML(html.text)</div><div class="line">content = selector.xpath(<span class="string">'//ol[@class = "commentlist"]//@src'</span>)</div></pre></td></tr></table></figure>
 <p>单独运行 以上代码可以获得<br><figure class="image-bubble">
@@ -283,7 +283,7 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-02-11T13:27:59.892Z" itemprop="dateUpdated">2017年2月11日 21:27</time>
+    最后更新时间：<time datetime="2017-03-18T02:41:06.536Z" itemprop="dateUpdated">2017年3月18日 10:41</time>
 </span><br>
 
 
@@ -391,7 +391,7 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
 lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
 
 var duoshuoQuery = {short_name:'mmmxcc', theme: 'none'};
-lazyScripts.push('/js/embed.min.js?v=1.4.8');
+lazyScripts.push('/js/embed.min.js?v=1.4.11');
 
 
 </script>
@@ -408,23 +408,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.8');
 
 </div>
 
-        <footer class="footer">
-    <div class="bottom">
         
-<p>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            <span>内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0协议</a></span>
-            <span><a href="http://www.feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
-        </p>
-    </div>
-</footer>
-
     </main>
     <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
@@ -487,7 +471,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 </script>
 
-<script src="/js/main.min.js?v=1.4.8"></script>
+<script src="/js/main.min.js?v=1.4.11"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -507,7 +491,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.4.8" async></script>
+<script src="/js/search.min.js?v=1.4.11" async></script>
 
 
 
@@ -537,6 +521,15 @@ MathJax.Hub.Queue(function() {
 
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
 
 </body>
 </html>

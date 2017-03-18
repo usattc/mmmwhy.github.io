@@ -21,7 +21,7 @@
     <meta name="theme-color" content="#0288D1">
     
     
-    <meta name="keywords" content="Algorithms,Python,sort,cpp">
+    <meta name="keywords" content="Python,Algorithms,sort,cpp">
     <meta name="description" content="快速排序是一种非常优秀的排序方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法导论 第7章 快速排序">
@@ -38,14 +38,14 @@
         <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
     
     <link rel="shortcut icon" href="/img/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.4.8">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
     <script>window.lazyScripts=[]</script>
 </head>
 
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu"  >
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -186,7 +186,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>快速排序是一种非常优秀的排序方法 </p>
 </blockquote>
 <a id="more"></a>
@@ -202,9 +202,9 @@
 <p>借用一张《算法导论》的图<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170309/191837286.png" alt="Introduction" title="">
+                    <img src="http://cdn.mmmxcc.cn/blog/20170309/191837286.png" alt="Introduction to Algorithms" title="">
                 </div>
-                <div class="image-caption">Introduction</div>
+                <div class="image-caption">Introduction to Algorithms</div>
             </figure></p>
 <h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>##C++代码<br>基本和伪代码是一样的<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> temp = *b;</div><div class="line">    *b = *a;</div><div class="line">    *a = temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> *A, <span class="keyword">int</span> len)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%4d"</span>, A[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">PARTITION</span><span class="params">(<span class="keyword">int</span> *A, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i = p - <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> x = A[r];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = p; j &lt; r; j++) &#123;</div><div class="line">        <span class="keyword">if</span> (A[j] &lt;= x) &#123;</div><div class="line">            i++;</div><div class="line">            swap(&amp;A[i], &amp;A[j]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    swap(&amp;A[i + <span class="number">1</span>], &amp;A[r]);</div><div class="line">    <span class="keyword">return</span> i + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QUICKSORT</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (p &lt; r) &#123;</div><div class="line">        <span class="keyword">int</span> q = PARTITION(A, p, r);</div><div class="line">        QUICKSORT(A, p, q - <span class="number">1</span>);</div><div class="line">        QUICKSORT(A, q + <span class="number">1</span>, r);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> A[] = &#123; <span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">4</span> &#125;;</div><div class="line">    print(A, <span class="number">11</span>);</div><div class="line">    QUICKSORT(A, <span class="number">0</span>, <span class="number">10</span>);</div><div class="line">    print(A,<span class="number">11</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>期间出了一个错误，error C3861: 找不到标识符。后发现是因为把PARTITION放在了QUICKSORT后边，导致QUICKSORT找不到PARTITION。</p>
@@ -324,7 +324,7 @@
 lazyScripts.push('//cdn.bootcss.com/marked/0.3.6/marked.min.js');
 
 var duoshuoQuery = {short_name:'mmmxcc', theme: 'none'};
-lazyScripts.push('/js/embed.min.js?v=1.4.8');
+lazyScripts.push('/js/embed.min.js?v=1.4.11');
 
 
 </script>
@@ -341,23 +341,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.8');
 
 </div>
 
-        <footer class="footer">
-    <div class="bottom">
         
-<p>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        站点访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            <span>内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">CC BY-NC-SA 4.0协议</a></span>
-            <span><a href="http://www.feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
-        </p>
-    </div>
-</footer>
-
     </main>
     <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
@@ -419,7 +403,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 </script>
 
-<script src="/js/main.min.js?v=1.4.8"></script>
+<script src="/js/main.min.js?v=1.4.11"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -439,7 +423,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="/js/search.min.js?v=1.4.8" async></script>
+<script src="/js/search.min.js?v=1.4.11" async></script>
 
 
 
@@ -469,6 +453,15 @@ MathJax.Hub.Queue(function() {
 
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
 
 </body>
 </html>

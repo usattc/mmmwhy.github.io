@@ -2,9 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2016/12/15/Python_use_urllib2/</loc>
+    
+    <lastmod>2017-03-18T02:41:06.536Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/03/17/python-mnist/</loc>
+    
+    <lastmod>2017-03-17T08:28:18.253Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/03/17/python-struct/</loc>
+    
+    <lastmod>2017-03-17T06:09:27.006Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2016/01/18/resume/</loc>
+    
+    <lastmod>2017-03-17T04:42:21.531Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/01/12/jupyter-notebook/</loc>
+    
+    <lastmod>2017-03-16T12:26:02.941Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/404.html</loc>
+    
+    <lastmod>2017-03-16T08:36:50.963Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/03/16/Ubuntu-caffe/</loc>
+    
+    <lastmod>2017-03-16T02:57:42.391Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/03/15/win10-conda-tensorflow/</loc>
+    
+    <lastmod>2017-03-16T02:57:34.710Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/tags/index.html</loc>
+    
+    <lastmod>2017-03-13T10:49:14.047Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2017/03/11/indian-movie/</loc>
     
-    <lastmod>2017-03-12T08:38:27.970Z</lastmod>
+    <lastmod>2017-03-13T10:45:25.356Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/link.html</loc>
+    
+    <lastmod>2017-03-13T08:55:05.648Z</lastmod>
     
   </url>
   
@@ -44,30 +114,9 @@
   </url>
   
   <url>
-    <loc>http://feiyang.li/2016/01/18/resume/</loc>
-    
-    <lastmod>2017-03-07T10:14:45.723Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://feiyang.li/2017/03/03/do-vpn/</loc>
     
-    <lastmod>2017-03-06T13:55:54.460Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/link.html</loc>
-    
-    <lastmod>2017-03-06T05:04:09.510Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/404.html</loc>
-    
-    <lastmod>2017-02-28T07:29:40.525Z</lastmod>
+    <lastmod>2017-03-06T14:07:04.569Z</lastmod>
     
   </url>
   
@@ -226,13 +275,6 @@
   </url>
   
   <url>
-    <loc>http://feiyang.li/2016/12/15/Python_use_urllib2/</loc>
-    
-    <lastmod>2017-02-11T13:27:59.892Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://feiyang.li/2016/12/13/get_html/</loc>
     
     <lastmod>2017-02-11T13:27:18.463Z</lastmod>
@@ -275,13 +317,6 @@
   </url>
   
   <url>
-    <loc>http://feiyang.li/2017/01/12/jupyter-notebook/</loc>
-    
-    <lastmod>2017-02-11T13:20:37.749Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://feiyang.li/2017/02/07/Github-Pages-CDN/</loc>
     
     <lastmod>2017-02-11T13:20:33.275Z</lastmod>
@@ -313,13 +348,6 @@
     <loc>http://feiyang.li/2016/10/19/VelocityTracker_Activity/</loc>
     
     <lastmod>2016-10-20T07:13:10.520Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/tags/index.html</loc>
-    
-    <lastmod>2016-10-17T10:40:36.465Z</lastmod>
     
   </url>
   
