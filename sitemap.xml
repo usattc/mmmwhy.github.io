@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2016/01/18/resume/</loc>
+    
+    <lastmod>2017-03-18T07:32:56.346Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2016/12/15/Python_use_urllib2/</loc>
     
-    <lastmod>2017-03-18T02:41:06.536Z</lastmod>
+    <lastmod>2017-03-18T07:29:50.548Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>http://feiyang.li/2017/03/17/python-struct/</loc>
     
     <lastmod>2017-03-17T06:09:27.006Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/01/18/resume/</loc>
-    
-    <lastmod>2017-03-17T04:42:21.531Z</lastmod>
     
   </url>
   

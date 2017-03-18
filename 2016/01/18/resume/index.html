@@ -34,7 +34,7 @@
 李飞阳/男/1994 
 本科/华中科技大学 
 硕士/中国科学技术大学">
-<meta property="og:updated_time" content="2017-03-17T04:42:21.531Z">
+<meta property="og:updated_time" content="2017-03-18T07:32:56.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于">
 <meta name="twitter:description" content="个人信息
@@ -235,7 +235,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-03-17T04:42:21.531Z" itemprop="dateUpdated">2017年3月17日 12:42</time>
+    最后更新时间：<time datetime="2017-03-18T07:32:56.346Z" itemprop="dateUpdated">2017年3月18日 15:32</time>
 </span><br>
 
 
@@ -352,11 +352,13 @@ lazyScripts.push('/js/embed.min.js?v=1.4.11');
 
 
 </div>
+ 
 
-        
     </main>
     <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
 
 
 
@@ -408,6 +410,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.11');
 
 
 
+    
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
 var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
@@ -464,7 +467,27 @@ MathJax.Hub.Queue(function() {
 
 
 
+
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script class="xh-highlight">
+        var OriginTitile = document.title;
+        var titleTime;
+        document.addEventListener('visibilitychange',
+        function() {
+         if (document.hidden) {
+          document.title = '死鬼去哪里了！';
+          clearTimeout(titleTime);
+        } else {
+          document.title = '(つェ⊂)咦!又好了!';
+          titleTime = setTimeout(function() {
+            document.title = OriginTitile;
+          },
+          2000);
+        }
+      });</script>
 
 
     <footer class="footer">

@@ -21,7 +21,7 @@
     <meta name="theme-color" content="#0288D1">
     
     
-    <meta name="keywords" content="Python,Algorithms,Java">
+    <meta name="keywords" content="Algorithms,Java,Python">
     <meta name="description" content="牛顿法的作用是使用迭代的方法来求解函数方程的根。简单地说，牛顿法就是不断求取切线的过程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="牛顿迭代法计算平方根(Java,Python实现)">
@@ -323,11 +323,13 @@ lazyScripts.push('/js/embed.min.js?v=1.4.11');
 
 
 </div>
+ 
 
-        
     </main>
     <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
 
 
 
@@ -377,6 +379,7 @@ lazyScripts.push('/js/embed.min.js?v=1.4.11');
 
 
 
+    
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
 var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
@@ -433,7 +436,27 @@ MathJax.Hub.Queue(function() {
 
 
 
+
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script class="xh-highlight">
+        var OriginTitile = document.title;
+        var titleTime;
+        document.addEventListener('visibilitychange',
+        function() {
+         if (document.hidden) {
+          document.title = '死鬼去哪里了！';
+          clearTimeout(titleTime);
+        } else {
+          document.title = '(つェ⊂)咦!又好了!';
+          titleTime = setTimeout(function() {
+            document.title = OriginTitile;
+          },
+          2000);
+        }
+      });</script>
 
 
     <footer class="footer">

@@ -396,11 +396,11 @@
     </summary>
     
     
-      <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
     
   </entry>
   
@@ -650,9 +650,9 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
       <category term="sort" scheme="http://feiyang.li/tags/sort/"/>
     
@@ -1614,9 +1614,9 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
       <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
     

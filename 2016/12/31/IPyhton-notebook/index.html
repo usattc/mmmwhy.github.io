@@ -21,7 +21,7 @@
     <meta name="theme-color" content="#0288D1">
     
     
-    <meta name="keywords" content="Jupyter,Python,VPS">
+    <meta name="keywords" content="Python,VPS,Jupyter">
     <meta name="description" content="jupyter notebook在数据分析时使用非常的方便，特别那优美的页面，简直让我着迷。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="部署在线IPyhton notebook(在线python编译器)">
@@ -388,11 +388,13 @@ lazyScripts.push('/js/embed.min.js?v=1.4.11');
 
 
 </div>
+ 
 
-        
     </main>
     <div class="mask" id="mask"></div>
 <a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
 
 
 
@@ -444,6 +446,7 @@ jupyter notebook在数据分析时使用非常的方便，特别那优美的页�
 
 
 
+    
     <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
 var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
@@ -500,7 +503,27 @@ MathJax.Hub.Queue(function() {
 
 
 
+
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script class="xh-highlight">
+        var OriginTitile = document.title;
+        var titleTime;
+        document.addEventListener('visibilitychange',
+        function() {
+         if (document.hidden) {
+          document.title = '死鬼去哪里了！';
+          clearTimeout(titleTime);
+        } else {
+          document.title = '(つェ⊂)咦!又好了!';
+          titleTime = setTimeout(function() {
+            document.title = OriginTitile;
+          },
+          2000);
+        }
+      });</script>
 
 
     <footer class="footer">
