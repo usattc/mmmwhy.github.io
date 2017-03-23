@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2016/12/15/Python_use_urllib2/</loc>
+    
+    <lastmod>2017-03-23T13:48:38.099Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2016/01/18/resume/</loc>
     
     <lastmod>2017-03-23T11:43:52.275Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://feiyang.li/2017/03/09/Python-quick-order/</loc>
     
     <lastmod>2017-03-23T11:31:34.273Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/12/15/Python_use_urllib2/</loc>
-    
-    <lastmod>2017-03-18T07:29:50.548Z</lastmod>
     
   </url>
   
