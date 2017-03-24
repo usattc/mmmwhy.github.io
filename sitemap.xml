@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2017/03/24/dynamic-programming/</loc>
+    
+    <lastmod>2017-03-24T09:08:57.035Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2016/12/15/Python_use_urllib2/</loc>
     
     <lastmod>2017-03-23T13:48:38.099Z</lastmod>
@@ -61,13 +68,6 @@
     <loc>http://feiyang.li/2017/03/15/win10-conda-tensorflow/</loc>
     
     <lastmod>2017-03-16T02:57:34.710Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/tags/index.html</loc>
-    
-    <lastmod>2017-03-13T10:49:14.047Z</lastmod>
     
   </url>
   

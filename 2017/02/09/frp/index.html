@@ -196,12 +196,42 @@
 <hr>
 <a id="more"></a>
 <p>这里仅使用的到最简单的端口映射，需要一台有公网的vps，以及一台本地主机。</p>
-<h1 id="ssh登录公网vps"><a href="#ssh登录公网vps" class="headerlink" title="ssh登录公网vps"></a>ssh登录公网vps</h1><h2 id="下载frp安装包"><a href="#下载frp安装包" class="headerlink" title="下载frp安装包"></a>下载frp安装包</h2><p>这里下载的是64位安装包<br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_amd64.tar.gz</code><br>如果你的系统版本是32位，那么建议使用如下命令：<strong>(如果不知道自己系统版本的，也用这个)</strong><br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_386.tar.gz</code><br><img src="http://cdn.mmmxcc.cn/blog/20170209/100609833.png" alt="frp"></p>
-<h2 id="解压安装包"><a href="#解压安装包" class="headerlink" title="解压安装包"></a>解压安装包</h2><p><code>tar -xzvf frp_0.9.3_linux_386.tar.gz</code><br><img src="http://cdn.mmmxcc.cn/blog/20170209/100924889.png" alt="frp"></p>
+<h1 id="ssh登录公网vps"><a href="#ssh登录公网vps" class="headerlink" title="ssh登录公网vps"></a>ssh登录公网vps</h1><h2 id="下载frp安装包"><a href="#下载frp安装包" class="headerlink" title="下载frp安装包"></a>下载frp安装包</h2><p>这里下载的是64位安装包<br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_amd64.tar.gz</code><br>如果你的系统版本是32位，那么建议使用如下命令：<strong>(如果不知道自己系统版本的，也用这个)</strong><br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_386.tar.gz</code><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/100609833.png" alt="frp" title="">
+                </div>
+                <div class="image-caption">frp</div>
+            </figure></p>
+<h2 id="解压安装包"><a href="#解压安装包" class="headerlink" title="解压安装包"></a>解压安装包</h2><p><code>tar -xzvf frp_0.9.3_linux_386.tar.gz</code><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/100924889.png" alt="frp" title="">
+                </div>
+                <div class="image-caption">frp</div>
+            </figure></p>
 <h2 id="修改-frps-ini-文件，配置一个名为-ssh-的反向代理："><a href="#修改-frps-ini-文件，配置一个名为-ssh-的反向代理：" class="headerlink" title="修改 frps.ini 文件，配置一个名为 ssh 的反向代理："></a>修改 <strong>frps.ini</strong> 文件，配置一个名为 ssh 的反向代理：</h2><p><code>cd frp_0.9.3_linux_386/ &amp;&amp; vi frps.ini</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># frps.ini</div><div class="line">[common]</div><div class="line">bind_port = 7000</div><div class="line"></div><div class="line">[ssh]</div><div class="line">listen_port = 6000</div><div class="line">auth_token = 123</div></pre></td></tr></table></figure></p>
-<p>[ssh]后边写vps自己的端口。<br><img src="http://cdn.mmmxcc.cn/blog/20170209/104436103.png" alt="公网端口"><br><img src="http://cdn.mmmxcc.cn/blog/20170209/102426087.png" alt="ssh端口号"></p>
+<p>[ssh]后边写vps自己的端口。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/104436103.png" alt="公网端口" title="">
+                </div>
+                <div class="image-caption">公网端口</div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/102426087.png" alt="ssh端口号" title="">
+                </div>
+                <div class="image-caption">ssh端口号</div>
+            </figure></p>
 <h2 id="启动-frps："><a href="#启动-frps：" class="headerlink" title="启动 frps："></a>启动 frps：</h2><p>./frps -c ./frps.ini</p>
-<h1 id="登录无公网主机"><a href="#登录无公网主机" class="headerlink" title="登录无公网主机"></a>登录无公网主机</h1><p>下载frp安装包与 解压安装包，与上部相同，在此不赘述。<br><img src="http://cdn.mmmxcc.cn/blog/20170209/102821860.png" alt=""></p>
+<h1 id="登录无公网主机"><a href="#登录无公网主机" class="headerlink" title="登录无公网主机"></a>登录无公网主机</h1><p>下载frp安装包与 解压安装包，与上部相同，在此不赘述。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/102821860.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <h2 id="修改-frpc-ini-文件，配置一个名为-ssh-的反向代理："><a href="#修改-frpc-ini-文件，配置一个名为-ssh-的反向代理：" class="headerlink" title="修改 frpc.ini 文件，配置一个名为 ssh 的反向代理："></a>修改 <strong>frpc.ini</strong> 文件，配置一个名为 ssh 的反向代理：</h2><p><code>cd frp_0.9.3_linux_386/ &amp;&amp; vi frpc.ini</code><br>如果希望转发到本地8888端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[common]</div><div class="line">server_addr = 115.159.102.118</div><div class="line">server_port = 7000</div><div class="line">auth_token = 123</div><div class="line"></div><div class="line">[ssh]</div><div class="line">local_ip = 127.0.0.1</div><div class="line">local_port = 8888</div></pre></td></tr></table></figure></p>
 <h2 id="启动-frpc："><a href="#启动-frpc：" class="headerlink" title="启动 frpc："></a>启动 frpc：</h2><p>./frpc -c ./frpc.ini</p>
 

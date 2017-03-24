@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://feiyang.li/2017/03/24/dynamic-programming/">
+    
+    
+    <title>算法导论 第15章 动态规划 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="Python,Algorithms,dynamic programming">
+    <meta name="description" content="《算法导论》这门课的老师是黄刘生和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法导论 第15章 动态规划">
+<meta property="og:url" content="http://feiyang.li/2017/03/24/dynamic-programming/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="《算法导论》这门课的老师是黄刘生和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170323/194427893.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170323/195029493.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170323/200833676.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170324/145547041.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170324/150009279.png">
+<meta property="og:updated_time" content="2017-03-24T09:08:57.035Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法导论 第15章 动态规划">
+<meta name="twitter:description" content="《算法导论》这门课的老师是黄刘生和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170323/194427893.png">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">算法导论 第15章 动态规划</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">算法导论 第15章 动态规划</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-24T09:05:47.000Z" itemprop="datePublished" class="page-time">
+  2017-03-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言："><span class="post-toc-number">1.</span> <span class="post-toc-text">前言：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#基本概念"><span class="post-toc-number">2.</span> <span class="post-toc-text">基本概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动态规划算法的设计可以分为以下4个步骤："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">动态规划算法的设计可以分为以下4个步骤：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#两种等价的实现方法："><span class="post-toc-number">2.2.</span> <span class="post-toc-text">两种等价的实现方法：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动态规划与分治法之间的区别："><span class="post-toc-number">2.3.</span> <span class="post-toc-text">动态规划与分治法之间的区别：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#动态规划基础"><span class="post-toc-number">3.</span> <span class="post-toc-text">动态规划基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最优子结构（自下向上）"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">最优子结构（自下向上）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#寻找最优子结构，遵循的共同的模式："><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">寻找最优子结构，遵循的共同的模式：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最优子结构在问题域中以两种方式变化："><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">最优子结构在问题域中以两种方式变化：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#重叠子问题（自上向下）"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">重叠子问题（自上向下）</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#钢条切割问题"><span class="post-toc-number">4.</span> <span class="post-toc-text">钢条切割问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#题目"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">题目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#理论依据"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">理论依据</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自顶向下递归实现"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">自顶向下递归实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#带备忘的自顶向下"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">带备忘的自顶向下</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自底向上的方法"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">自底向上的方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#python实现切割钢条问题"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">python实现切割钢条问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#矩阵链乘法"><span class="post-toc-number">5.</span> <span class="post-toc-text">矩阵链乘法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#解题步骤"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">解题步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#刻画最优解的结构特征"><span class="post-toc-number">5.1.1.</span> <span class="post-toc-text">刻画最优解的结构特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#递归的定义最优解的值"><span class="post-toc-number">5.1.2.</span> <span class="post-toc-text">递归的定义最优解的值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计算最优解的值"><span class="post-toc-number">5.1.3.</span> <span class="post-toc-text">计算最优解的值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python实现矩阵链乘法问题"><span class="post-toc-number">5.1.4.</span> <span class="post-toc-text">python实现矩阵链乘法问题</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-dynamic-programming"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">算法导论 第15章 动态规划</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年03月24日 17:05" datetime="2017-03-24T09:05:47.000Z"  itemprop="datePublished">2017-03-24</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>《算法导论》这门课的老师是<a href="http://cs.ustc.edu.cn/szdw/bdjs/201006/t20100614_22062.html" target="_blank" rel="external">黄刘生</a>和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>书中列举四个常见问题，分析如何采用动态规划方法进行解决。<br>　　装配线调度问题<br>　　矩阵链乘问题：<br>　　最长公共子序列问题：<br>　　最优二叉查找树问题：</p>
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p><strong>动态规划</strong>通常应用于最优化问题，此类问题可能包含多个可行解。每个解有一个值，而我们期望找到<strong>最大</strong>或者<strong>最小</strong>的解。</p>
+<h2 id="动态规划算法的设计可以分为以下4个步骤："><a href="#动态规划算法的设计可以分为以下4个步骤：" class="headerlink" title="动态规划算法的设计可以分为以下4个步骤："></a>动态规划算法的设计可以分为以下4个步骤：</h2><ul>
+<li>描述最优解的结构。</li>
+<li>递归定义最优解的值。</li>
+<li>按自底向上的方式计算最优解的值。（其实还应该有自顶向下的求解）</li>
+<li>由计算出的结果构造一个最优解。</li>
+</ul>
+<p>动态规划算法效率会非常高的原因在于，其特殊的<strong>实现方法</strong>，也就是第三步。</p>
+<h2 id="两种等价的实现方法："><a href="#两种等价的实现方法：" class="headerlink" title="两种等价的实现方法："></a>两种等价的实现方法：</h2><ul>
+<li><strong>带备忘的自顶向下法</strong>，此方法按照正常的递归编写过程，但过程会保存每个子问题的解（通常保存在一个数组或散列表中）。当需要一个子问题的解时，程序首先检查是否已经保存过此解。如果是，直接返回；若不是，递归计算这个子问题。这种递归方式是<strong>带备忘的</strong>。</li>
+<li><strong>自底而上法</strong>，这种方法需要恰当的定义子问题的<strong>规模</strong>，因为任何一个子问题的求解的依赖着<strong>更小的</strong>子问题。因此需要将问题进行排序，从小的问题开始处理。这样可以确保，在处理到大的问题时，其所依赖的更小的子问题已经求解完毕，结果已经保存。</li>
+</ul>
+<p>因此，我们会说  动态规划算法属于典型的用<strong>空间换取时间</strong>。由于没有频繁的递归函数的开销，自底而上方法的时间复杂度会更好一些。</p>
+<h2 id="动态规划与分治法之间的区别："><a href="#动态规划与分治法之间的区别：" class="headerlink" title="动态规划与分治法之间的区别："></a>动态规划与分治法之间的区别：</h2><ul>
+<li>分治法是指将问题分成一些独立的子问题，递归的求解各子问题。</li>
+<li>动态规划适用于这些子问题不是独立的情况，也就是各子问题包含公共子问题。</li>
+</ul>
+<h1 id="动态规划基础"><a href="#动态规划基础" class="headerlink" title="动态规划基础"></a>动态规划基础</h1><p>什么时候可以使用动态规范方法解决问题呢？这个问题需要讨论一下，书中给出了采用动态规范方法的最优化问题中的两个要素：<strong>最优子结构</strong>和<strong>重叠子结构</strong>。</p>
+<h2 id="最优子结构（自下向上）"><a href="#最优子结构（自下向上）" class="headerlink" title="最优子结构（自下向上）"></a>最优子结构（自下向上）</h2><p>最优子结构是指问题的一个最优解中包含了其子问题的最优解。在动态规划中，每次采用子问题的最优解来构造问题的一个最优解。</p>
+<h3 id="寻找最优子结构，遵循的共同的模式："><a href="#寻找最优子结构，遵循的共同的模式：" class="headerlink" title="寻找最优子结构，遵循的共同的模式："></a>寻找最优子结构，遵循的共同的模式：</h3><ul>
+<li><p>问题的一个解可以是做一个选择，得到一个或者多个有待解决的子问题。</p>
+</li>
+<li><p>假设对一个给定的问题，已知的是一个可以导致最优解的选择，不必关心如何确定这个选择。</p>
+</li>
+<li><p>在已知这个选择后，要确定哪些子问题会随之发生，如何最好地描述所得到的子问题空间。</p>
+</li>
+<li><p>利用“剪贴”技术，来证明问题的一个最优解中，使用的子问题的解本身也是最优的。</p>
+</li>
+</ul>
+<h3 id="最优子结构在问题域中以两种方式变化："><a href="#最优子结构在问题域中以两种方式变化：" class="headerlink" title="最优子结构在问题域中以两种方式变化："></a>最优子结构在问题域中以两种方式变化：</h3><ul>
+<li>有多少个子问题被使用在原问题的一个最优解中。</li>
+<li>在决定一个最优解中使用哪些子问题时有多少个选择。</li>
+</ul>
+<p>动态规划按照自底向上的策略利用最优子结构，即：<strong>首先找到子问题的最优解，解决子问题，然后逐步向上找到问题的一个最优解</strong>。</p>
+<p>为了描述子问题空间，可以遵循这样一条有效的经验规则，就是尽量保持这个空间简单，然后在需要时再扩充它。</p>
+<p>注意：在不能应用最优子结构的时候，就一定不能假设它能够应用。 <strong>警惕使用动态规划去解决缺乏最优子结构的问题！</strong></p>
+<p>使用动态规划时，子问题之间必须是相互独立的！可以这样理解，N个子问题域互不相干，属于完全不同的空间。</p>
+<h2 id="重叠子问题（自上向下）"><a href="#重叠子问题（自上向下）" class="headerlink" title="重叠子问题（自上向下）"></a>重叠子问题（自上向下）</h2><p>用来解决原问题的递归算法可以反复地解同样的子问题，而不是总是产生新的子问题。</p>
+<p>重叠子问题是指当一个递归算法不断地调用同一个问题。</p>
+<p>动态规划算法总是充分利用重叠子问题，通过每个子问题只解一次，把解保存在一个需要时就可以查看的表中，每次查表的时间为常数。</p>
+<p>由计算出的结果反向构造一个最优解：把动态规划或者是递归过程中作出的每一次选择（记住：保存的是每次作出的选择）都保存下来，在最后就一定可以通过这些保存的选择来反向构造出最优解。</p>
+<p>做备忘录的递归方法：这种方法是动态规划的一个变形，它本质上与动态规划是一样的，但是比动态规划更好理解！<br>　　（1） 使用普通的递归结构，自上而下的解决问题。<br>　　（2） 当在递归算法的执行中每一次遇到一个子问题时，就计算它的解并填入一个表中。以后每次遇到该子问题时，只要查看并返回表中先前填入的值即可。</p>
+<h1 id="钢条切割问题"><a href="#钢条切割问题" class="headerlink" title="钢条切割问题"></a>钢条切割问题</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p> 给定一个长度为n的钢条，以及一个价格表p，p中列出了每英寸钢条的价格，将长度为n的钢条切割为若干短钢条出售，求一个钢条的切割方案，使得收益最大，切割工序没有成本。比如价格表p如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170323/194427893.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>长度为n的钢条，一共有$2^{n-1}$种不同的切割方案，因为可以再距离钢条左边为i（i=1,2,…,n-1）处，我们总是可以选择切割或者不切割。比如下图表示了n=4的切割情况：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170323/195029493.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
+<h2 id="理论依据"><a href="#理论依据" class="headerlink" title="理论依据"></a>理论依据</h2><p>我们称钢条切割问题满足<strong>最优子结构</strong>性质：问题的最优解由相关子问题的最优解组合而成，而这些子问题可以独立求解。</p>
+<p>我们可以这样理解钢条问题：将钢条从左边切下一段长度为i的一段，对剩下的n-i的部分继续进行切割（递归求解），而不对左边长度为i的一段在进行切割。</p>
+<p>$r<em>n =  \mathop{max}\limits</em>{1 \leq i \leq n} (p<em>i + r</em>{n-i})$</p>
+<p>这样问题的解就转化为最优解了。</p>
+<h2 id="自顶向下递归实现"><a href="#自顶向下递归实现" class="headerlink" title="自顶向下递归实现"></a>自顶向下递归实现</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CUT-ROD(p,n)</div><div class="line"><span class="keyword">if</span>  n == <span class="number">0</span></div><div class="line">    <span class="keyword">return</span>  <span class="number">0</span></div><div class="line">q = -∞</div><div class="line"><span class="keyword">for</span>  i = <span class="number">1</span> to n</div><div class="line">   q = max(q,  p[i]+CUT-ROD(p, n-i))</div><div class="line"><span class="keyword">return</span>  q</div></pre></td></tr></table></figure>
+<p>  CUT-ROD的效率很差，这是因为CUT-ROD反复的求解一些相同的子问题，下图显示了当n==4时的调用情况：<br>  <img src="http://cdn.mmmxcc.cn/blog/20170323/200833676.png" alt="mark"></p>
+<h2 id="带备忘的自顶向下"><a href="#带备忘的自顶向下" class="headerlink" title="带备忘的自顶向下"></a>带备忘的自顶向下</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">MEMOIZED-CUT-ROD(p,n)</div><div class="line">let  r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></div><div class="line"><span class="keyword">for</span>  i = <span class="number">0</span> to n</div><div class="line">    r[i]= -∞</div><div class="line"><span class="keyword">return</span>  MEMOIZED-CUT-ROD-AUX(p, n, r)</div><div class="line"> </div><div class="line">MEMOIZED-CUT-ROD-AUX(p,n, r)</div><div class="line"><span class="keyword">if</span>  r[n] &gt;= <span class="number">0</span></div><div class="line">    <span class="keyword">return</span>  r[n]</div><div class="line"><span class="keyword">if</span>  n == <span class="number">0</span></div><div class="line">    q = <span class="number">0</span></div><div class="line"><span class="keyword">else</span>  q = -∞</div><div class="line">    <span class="keyword">for</span>  i = <span class="number">1</span> to n</div><div class="line">        q= max(q,  p[i]+MEMOIZED-CUT-ROD-AUX(p, n-i,r))</div><div class="line">r[n] = q</div><div class="line"><span class="keyword">return</span> q</div></pre></td></tr></table></figure>
+<p>该方法与之前的普通递归方法类似，只是会在过程中保存子问题的解，当需要一个子问题的解的时候，先查看是否已经保存过了，如果是，则直接使用即可。否则，按常规的递归方式计算子问题。所以称为带备忘的，因为它记住了之前已经计算出的结果。</p>
+<h2 id="自底向上的方法"><a href="#自底向上的方法" class="headerlink" title="自底向上的方法"></a>自底向上的方法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">BOTTOM-UP-CUT-ROD(p,n)</div><div class="line">let  r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></div><div class="line">r[<span class="number">0</span>]= <span class="number">0</span></div><div class="line"><span class="keyword">for</span>  j = <span class="number">1</span> to n</div><div class="line">    q= -∞</div><div class="line">    <span class="keyword">for</span>  i = <span class="number">1</span> to j</div><div class="line">        q = max(q, p[i]+r[j-i])</div><div class="line">    r[j]= q</div><div class="line"><span class="keyword">return</span>  r[n]</div></pre></td></tr></table></figure>
+<p>方法采用子问题的自然顺序，因此过程中依次求解规模为$j=0,1,2,3,4…,n$的问题。             </p>
+<p>这两种算法具有相同的时间复杂度，BOTTOM-UP-CUT-ROD主要是双层嵌套循环，所以时间复杂度$Θ(n^2)$。MEMOIZED-CUT-ROD的时间复杂度也是$Θ(n^2)$。可以使用子问题图进行分析。</p>
+<h2 id="python实现切割钢条问题"><a href="#python实现切割钢条问题" class="headerlink" title="python实现切割钢条问题"></a>python实现切割钢条问题</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cut_rod</span><span class="params">()</span>:</span></div><div class="line">    p = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">17</span>,<span class="number">17</span>,<span class="number">20</span>,<span class="number">24</span>,<span class="number">30</span>]</div><div class="line">    n = len(p)</div><div class="line">    r = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</div><div class="line">    s = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</div><div class="line">        q = <span class="number">-10</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(j+<span class="number">1</span>):</div><div class="line">            <span class="keyword">if</span> q &lt; (p[i]+r[j-i]):</div><div class="line">                q = (p[i]+r[j-i])</div><div class="line">                s[j] = i</div><div class="line">            <span class="comment">#q = max(q,p[i]+r[j-i])</span></div><div class="line">        r[j] = q</div><div class="line">        </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_way</span><span class="params">(n)</span>:</span></div><div class="line">    cut_rod()</div><div class="line">    print(n,<span class="string">'---&gt;'</span>,r[n])</div><div class="line">    <span class="keyword">while</span> n &gt; <span class="number">0</span>:</div><div class="line">        print(s[n])</div><div class="line">        n = n - s[n]</div></pre></td></tr></table></figure>
+<p>调用<code>find_way(9)</code>输出</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170324/145547041.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h1><p>##题目<br>给定n 个矩阵的序列，希望求它们的乘积：$A_1A_2A_3…A_n$ 。因为矩阵的乘法满足结合律，所以可以对n个矩阵序列加括号，来改变乘积顺序。比如对于矩阵链&lt; $A_1$, $A_2$,$A_3$,$A_4$&gt;可以有下面的加括号方案：</p>
+<p><center><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170324/150009279.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><center></center></center></p>
+<p>不同的加括号的方案，对于乘积运算的代价影响很大.</p>
+<p>两个矩阵相乘，A为p <em> q矩阵，B为q </em> r矩阵。所以A 的乘法次数为p<em>q</em>r。</p>
+<p>如果A（10,100 ），B（100,5）， C（5,50 ）三个矩阵相乘。</p>
+<p>如果按照((AB)C)的顺序，则需要10<em>100</em>5  + 10<em>5</em>50  = 7500次乘法运算，如果按照(A(BC))的顺序，则需要100<em>5</em>50  + 10<em>100</em>50  = 75000次乘法运算。所以，不同的加括号方案，对于矩阵链乘法的代价影响很大。</p>
+<h2 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h2><h3 id="刻画最优解的结构特征"><a href="#刻画最优解的结构特征" class="headerlink" title="刻画最优解的结构特征"></a>刻画最优解的结构特征</h3><p>通过寻找最优子结构，利用最优子结构从子问题的最优解中构造出原问题的最优解。<br>假设$A<em>iA</em>{i+1}…A_j$的最优括号花方案的分割点是在$A<em>k$和$A</em>{K+1}$之间，一个非平凡的矩阵链乘法任何时候都是需要划分链的，<strong>任何最优解都是有子问题的最优解构成的</strong>。</p>
+<h3 id="递归的定义最优解的值"><a href="#递归的定义最优解的值" class="headerlink" title="递归的定义最优解的值"></a>递归的定义最优解的值</h3><p>令$m[i,j]$表示计算矩阵$A<em>{i,j}$所需标量乘法的最小值，也即原问题的最优解，计算$A</em>{1..n}$的最低代价就是$m[1,n]$。</p>
+<ul>
+<li>对于i == j 的平凡问题，矩阵链只包含唯一的矩阵$A_{i,j}$。</li>
+<li>对于$A<em>iA</em>{i+1}…A_j$的最优括号化方案的切割点在$A<em>k$和$A</em>{k+1}$之间。那么$m[i,j]$的解相当于计算$A<em>{i..k}$和$A</em>{k+1..j}$的代价加上，合并这两个子答案所需要的代价$p_{i-1}p_k p_j$</li>
+</ul>
+<p>因此，我们得到</p>
+<p>$$m[i,j] = m[i,k]+m[k,j]+p_{i-1}p_k p_j$$</p>
+<h3 id="计算最优解的值"><a href="#计算最优解的值" class="headerlink" title="计算最优解的值"></a>计算最优解的值</h3><p>算法应当按照长度递增的顺序求解矩阵链括号化问题，并按照对应的顺序填写表m。对举证连$A_{i,j}$，其规模为链的长度j-i+1</p>
+<p>伪代码就不写了，直接写python代码</p>
+<h3 id="python实现矩阵链乘法问题"><a href="#python实现矩阵链乘法问题" class="headerlink" title="python实现矩阵链乘法问题"></a>python实现矩阵链乘法问题</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">MATRIX_CHAIN_ORDER</span><span class="params">(p)</span>:</span>  </div><div class="line">    n = len(p)  </div><div class="line">    s = [[<span class="number">0</span> <span class="keyword">for</span> j <span class="keyword">in</span> range(n)] <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]  </div><div class="line">    m = [[<span class="number">0</span> <span class="keyword">for</span> j <span class="keyword">in</span> range(n)] <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]  </div><div class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">2</span>, n):           <span class="comment">#l is the chain length  </span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n-l+<span class="number">1</span>):  </div><div class="line">            j = i + l - <span class="number">1</span>  </div><div class="line">            m[i][j] = <span class="number">1e9</span>  </div><div class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> range(i, j):  </div><div class="line">                q = m[i][k] + m[k+<span class="number">1</span>][j] + p[i<span class="number">-1</span>]*p[k]*p[j]  </div><div class="line">                <span class="keyword">if</span> q &lt; m[i][j]:  </div><div class="line">                    m[i][j] = q  </div><div class="line">                    s[i][j] = k  </div><div class="line">    PRINT_OPTIMAL_PARENS(s, <span class="number">1</span>, n<span class="number">-1</span>)</div><div class="line">    <span class="keyword">return</span> m</div><div class="line">    </div><div class="line">      </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">PRINT_OPTIMAL_PARENS</span><span class="params">(s, i, j)</span>:</span>  </div><div class="line">    <span class="keyword">if</span> i == j:  </div><div class="line">        print(<span class="string">'A'</span>, end = <span class="string">''</span>)  </div><div class="line">        print(i, end = <span class="string">''</span>)  </div><div class="line">    <span class="keyword">else</span>:  </div><div class="line">        print(<span class="string">'('</span>, end = <span class="string">''</span>)  </div><div class="line">        PRINT_OPTIMAL_PARENS(s, i, s[i][j])  </div><div class="line">        PRINT_OPTIMAL_PARENS(s, s[i][j]+<span class="number">1</span>, j)  </div><div class="line">        print(<span class="string">')'</span>, end = <span class="string">''</span>)  </div><div class="line">   </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    A = [<span class="number">30</span>, <span class="number">35</span>, <span class="number">15</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span>,<span class="number">25</span>]</div><div class="line">    m = MATRIX_CHAIN_ORDER(A) </div><div class="line">    print(<span class="string">'\n'</span>,<span class="string">'共计需要'</span>,m[<span class="number">1</span>][n<span class="number">-1</span>],<span class="string">'次相乘'</span>)</div></pre></td></tr></table></figure>
+<hr>
+<p>以上</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-24T09:08:57.035Z" itemprop="dateUpdated">2017年3月24日 17:08</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2017/03/24/dynamic-programming/" target="_blank" rel="external">http://feiyang.li/2017/03/24/dynamic-programming/</a>
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/03/24/dynamic-programming/&title=《算法导论 第15章 动态规划》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/03/24/dynamic-programming/&title=《算法导论 第15章 动态规划》 — 李飞阳&source=
+《算法导论》这门课的老师是黄刘生和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/03/24/dynamic-programming/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《算法导论 第15章 动态规划》 — 李飞阳&url=http://feiyang.li/2017/03/24/dynamic-programming/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/03/24/dynamic-programming/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/17/python-mnist/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Python读取mnist</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'mmmwhy';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+</article>
+
+
+
+</div>
+ 
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/03/24/dynamic-programming/&title=《算法导论 第15章 动态规划》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/03/24/dynamic-programming/&title=《算法导论 第15章 动态规划》 — 李飞阳&source=
+《算法导论》这门课的老师是黄刘生和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/03/24/dynamic-programming/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《算法导论 第15章 动态规划》 — 李飞阳&url=http://feiyang.li/2017/03/24/dynamic-programming/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/03/24/dynamic-programming/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3a247CMAxFUf7/pzvPI9Swj12Q4uw8IdSWrCJZ8eX1wut6W/ya9TfrKx9eMmTI2JZxLRfZynoT79fc7eHu83pvMmTIOIfBH02+IVtZx0y+NxkyZMhIr+GB+6nflSFDhoz1dknyud46ebIMGTJk8ECZfq69iK/n4jJkyNiQwavuv//8lf6GDBkytmJc4UrLarwxeTWWDBkyZjN4gOOw2tZJUv3hXhkyZAxlpAMW/S12BshuqTJkyBjNIClr2lzkDU5+KOQDHzJkyJjN6KSjnJc+gTxNhgwZJzD4I+J3A15KmgajcpsMGTLGMX7TsKylzXxQTIYMGVMZPIDyIx0Ju+Re8g/8awzIkCFjKIMH2RqDF9HSI+ntK5MhQ8ZoRtq2RKNapUMnP1YmIyUyZMjYlZEG2XQgjLct09EKGTJknMMgJbBaCsrDdKc5Gsy4yZAhY3NGZzCC3Ft7BXGhTYYMGaMZ5Mc6A168eNd6iTJkyDiA0UllO2Nh/daCDBkyTmOkR8baTz7VzbitHcqQIWM0oxMQefMgDdPoXhkyZBzA4CX4WhGfZ521Ep4MGTKmMq5wPdsMSA+Ft3fJkCFjNKOWuPJv+LgGL/91KmwyZMjYl0GCbBr4igExbKnKkCHjNMZT0wu1kQvOjluYMmTIOJhRK8xxQHyelSFDhoxlUazYdMQwEu5lyJBxAoMksekmaq2FYhtVhgwZoxk8dSThjxfj+umrDBkyDmD8AXZZQc+Mp1jxAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.11"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.11" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script class="xh-highlight">
+        var OriginTitile = document.title;
+        var titleTime;
+        document.addEventListener('visibilitychange',
+        function() {
+         if (document.hidden) {
+          document.title = '死鬼去哪里了！';
+          clearTimeout(titleTime);
+        } else {
+          document.title = '(つェ⊂)咦!又好了!';
+          titleTime = setTimeout(function() {
+            document.title = OriginTitile;
+          },
+          2000);
+        }
+      });</script>
+
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
