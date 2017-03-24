@@ -22,24 +22,12 @@
     
     
     <meta name="keywords" content="VPS,Nginx,HTTPS">
-    <meta name="description" content="现在，你应该能在访问https://feiyang.li 的时候，在地址栏里看到一个漂亮的小绿锁
-                
-                    
-                    
-                
-                
-            作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~">
+    <meta name="description" content="现在，你应该能在访问https://feiyang.li 的时候，在地址栏里看到一个漂亮的小绿锁作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx环境下配置HTTPS">
 <meta property="og:url" content="http://feiyang.li/2016/12/18/Nginx_HTTPS/index.html">
 <meta property="og:site_name" content="李飞阳">
-<meta property="og:description" content="现在，你应该能在访问https://feiyang.li 的时候，在地址栏里看到一个漂亮的小绿锁
-                
-                    
-                    
-                
-                
-            作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~">
+<meta property="og:description" content="现在，你应该能在访问https://feiyang.li 的时候，在地址栏里看到一个漂亮的小绿锁作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161218/161515528.png?imageMogr2/thumbnail/!80p">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161218/162129508.png?imageMogr2/thumbnail/!80p">
@@ -49,13 +37,7 @@
 <meta property="og:updated_time" content="2017-02-11T13:21:04.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx环境下配置HTTPS">
-<meta name="twitter:description" content="现在，你应该能在访问https://feiyang.li 的时候，在地址栏里看到一个漂亮的小绿锁
-                
-                    
-                    
-                
-                
-            作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~">
+<meta name="twitter:description" content="现在，你应该能在访问https://feiyang.li 的时候，在地址栏里看到一个漂亮的小绿锁作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
     
         <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
@@ -209,52 +191,21 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>现在，你应该能在访问<a href="https://feiyang.li">https://feiyang.li</a> 的时候，在地址栏里看到一个漂亮的小绿锁<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~</p>
+            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>现在，你应该能在访问<a href="https://feiyang.li">https://feiyang.li</a> 的时候，在地址栏里看到一个漂亮的小绿锁<img src="http://upload-images.jianshu.io/upload_images/3326314-809c3f4f6b7a83d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~</p>
 </blockquote>
 <hr>
 <a id="more"></a>
-<h1 id="申请免费SSL证书"><a href="#申请免费SSL证书" class="headerlink" title="申请免费SSL证书"></a>申请免费SSL证书</h1><p>普通的SSL证书动辄好几千，简直令人发指。不过别担心，我找到了3个免费申请HTTPS证书的方式。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161218/161515528.png?imageMogr2/thumbnail/!80p" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+<h1 id="申请免费SSL证书"><a href="#申请免费SSL证书" class="headerlink" title="申请免费SSL证书"></a>申请免费SSL证书</h1><p>普通的SSL证书动辄好几千，简直令人发指。不过别担心，我找到了3个免费申请HTTPS证书的方式。<br><img src="http://cdn.mmmxcc.cn/blog/20161218/161515528.png?imageMogr2/thumbnail/!80p" alt=""></p>
 <ul>
 <li><strong>StartSSL也免费提供了一个证书（纯英文）</strong><br>申请地址：<a href="https://www.startssl.com/Account?r=L1ZhbGlkYXRl" target="_blank" rel="external">https://www.startssl.com/Account?r=L1ZhbGlkYXRl</a></li>
-<li>阿里云免费提供的证书<br><a href="https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy" target="_blank" rel="external">https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy</a><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161218/162129508.png?imageMogr2/thumbnail/!80p" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></li>
-<li>腾讯云免费申请<br><a href="https://console.qcloud.com/ssl" target="_blank" rel="external">https://console.qcloud.com/ssl</a><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-f86b2f0ec2e121b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-</li>
+<li>阿里云免费提供的证书<br><a href="https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy" target="_blank" rel="external">https://common-buy.aliyun.com/?spm=5176.7968328.231195.3.Vh92u7&amp;commodityCode=cas#/buy</a><br><img src="http://cdn.mmmxcc.cn/blog/20161218/162129508.png?imageMogr2/thumbnail/!80p" alt=""></li>
+<li>腾讯云免费申请<br><a href="https://console.qcloud.com/ssl" target="_blank" rel="external">https://console.qcloud.com/ssl</a><br><img src="http://upload-images.jianshu.io/upload_images/3326314-f86b2f0ec2e121b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
 </ul>
 <p>获得证书之后，下载至本地。</p>
 <h1 id="VPS上安装SSL证书"><a href="#VPS上安装SSL证书" class="headerlink" title="VPS上安装SSL证书"></a>VPS上安装SSL证书</h1><p><strong>以Nginx 为例</strong></p>
 <h2 id="获取证书"><a href="#获取证书" class="headerlink" title="获取证书"></a>获取证书</h2><p>Nginx文件夹内获得SSL证书文件 1_www.domain.com_bundle.crt 和私钥文件 2_www.domain.com.key,</p>
-<p>1_www.domain.com_bundle.crt 文件包括两段证书代码 “—–BEGIN CERTIFICATE—–”和“—–END CERTIFICATE—–”,<br>2_www.domain.com.key 文件包括一段私钥代码“—–BEGIN RSA PRIVATE KEY—–”和“—–END RSA PRIVATE KEY—–”。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-47e83ff91ca63910.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+<p>1_www.domain.com_bundle.crt 文件包括两段证书代码 “—–BEGIN CERTIFICATE—–”和“—–END CERTIFICATE—–”,<br>2_www.domain.com.key 文件包括一段私钥代码“—–BEGIN RSA PRIVATE KEY—–”和“—–END RSA PRIVATE KEY—–”。<br><img src="http://upload-images.jianshu.io/upload_images/3326314-47e83ff91ca63910.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h2 id="上传和部署SSL证书"><a href="#上传和部署SSL证书" class="headerlink" title="上传和部署SSL证书"></a>上传和部署SSL证书</h2><p>将域名 www.domain.com 的证书文件1_www.domain.com_bundle.crt 、私钥文件2_www.domain.com.key保存到同一个目录，例如/usr/local/nginx/conf目录下。更新Nginx根目录下 conf/nginx.conf 文件如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen 443;</div><div class="line">        server_name www.domain.com; #填写绑定证书的域名</div><div class="line">        ssl on;</div><div class="line">        ssl_certificate 1_www.domain.com_bundle.crt;</div><div class="line">        ssl_certificate_key 2_www.domain.com.key;</div><div class="line">        ssl_session_timeout 5m;</div><div class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #按照这个协议配置</div><div class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;#按照这个套件配置</div><div class="line">        ssl_prefer_server_ciphers on;</div><div class="line">        location / &#123;</div><div class="line">            root   html; #站点目录</div><div class="line">            index  index.html index.htm;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
 <table>
 <thead>
@@ -290,13 +241,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="重启Nginx"><a href="#重启Nginx" class="headerlink" title="重启Nginx"></a>重启Nginx</h2><p>输入 <code>nginx -s reload</code>  ：修改配置后重新加载生效<br>可以看到SSL证书生效，且HTTPS可以访问站点。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-f690fba71ee4240b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+<h2 id="重启Nginx"><a href="#重启Nginx" class="headerlink" title="重启Nginx"></a>重启Nginx</h2><p>输入 <code>nginx -s reload</code>  ：修改配置后重新加载生效<br>可以看到SSL证书生效，且HTTPS可以访问站点。<br><img src="http://upload-images.jianshu.io/upload_images/3326314-f690fba71ee4240b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 
         </div>
 
@@ -344,9 +289,9 @@
       </li>
       <li>
         <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2016/12/18/Nginx_HTTPS/&title=《Nginx环境下配置HTTPS》 — 李飞阳&source=
-现在，你应该能在访问https://feiyang.li 的时候，在地址栏里看到一个漂亮的小绿锁
-                
-          ..." data-title=" QQ">
+现在，你应该能在访问https://feiyang.li 的时候，在地址栏里看到一个漂亮的小绿锁作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~
+
+" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -449,9 +394,9 @@
       </li>
       <li>
         <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2016/12/18/Nginx_HTTPS/&title=《Nginx环境下配置HTTPS》 — 李飞阳&source=
-现在，你应该能在访问https://feiyang.li 的时候，在地址栏里看到一个漂亮的小绿锁
-                
-          ..." data-title=" QQ">
+现在，你应该能在访问https://feiyang.li 的时候，在地址栏里看到一个漂亮的小绿锁作为肤浅的人，为了这么洋气的小绿锁也要上HTTPS~
+
+" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>

@@ -186,7 +186,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>使用C++做文件处理时常用的几个函数</p>
 </blockquote>
 <a id="more"></a>
@@ -200,13 +200,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">system(<span class="string">"start E:\\tax.out"</span>);</div></pre></td></tr></table></figure>
 <p>E:\tax.out 就是你文件的地址</p>
 <h1 id="运行程序demo"><a href="#运行程序demo" class="headerlink" title="运行程序demo"></a>运行程序demo</h1><p>读取hello.txt文件内的收入数据，计算税金，并输出到tax.txt中</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20161028/190446344.png" alt="demo" title="">
-                </div>
-                <div class="image-caption">demo</div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20161028/190446344.png" alt="demo"></p>
 <p><a href="http://cdn.mmmxcc.cn/blog/20161028/190626684.txt" target="_blank" rel="external">hello.txt</a>，直接 Ctrl+S 保存到E盘即可</p>
 <p>C++代码如下<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> cutoff = <span class="number">6000</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">float</span> rate1 = <span class="number">0.3</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">float</span> rate2 = <span class="number">0.6</span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	ifstream infile;</div><div class="line">	ofstream outfile;</div><div class="line">	<span class="keyword">int</span> income, tax;</div><div class="line">	infile.open(<span class="string">"E:\\hello.txt"</span>);</div><div class="line">	outfile.open(<span class="string">"E:\\tax.txt"</span>);</div><div class="line">		<span class="keyword">while</span> (infile &gt;&gt; income)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (income &lt; cutoff)</div><div class="line">				tax = rate1*income;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				tax = rate2*income;</div><div class="line">			outfile &lt;&lt;  <span class="string">"income:"</span>&lt;&lt;left&lt;&lt;setw(<span class="number">6</span>) &lt;&lt; income &lt;&lt; right&lt;&lt;setw(<span class="number">8</span>) &lt;&lt; <span class="string">"Tax:"</span> &lt;&lt;tax&lt;&lt; <span class="built_in">endl</span>;</div><div class="line">		&#125;</div><div class="line">		infile.close();</div><div class="line">		outfile.close();</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"done"</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">		system(<span class="string">"start E:\\tax.txt"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 

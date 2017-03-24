@@ -189,7 +189,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。</p>
 </blockquote>
 <hr>
@@ -205,28 +205,10 @@
 <p>安装失败的话多试几次</p>
 <h2 id="加入jupyter-notebook的ipykernel内核"><a href="#加入jupyter-notebook的ipykernel内核" class="headerlink" title="加入jupyter notebook的ipykernel内核"></a>加入jupyter notebook的ipykernel内核</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">source activate tensorflow# On Windows, remove the word &apos;source&apos;</div><div class="line">install ipykernel</div><div class="line">python -m ipykernel install --user --name tensorflow--display-name &quot;Python (myenv)&quot;</div></pre></td></tr></table></figure>
 <p>在激活状态下，安装<code>ipykernel</code>，后边那个展示名称，自己可以随便填。进入jupyter notebook ，运行一下测试文件，看是否可以使用。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170315/130833100.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>如果不行，输入<code>jupyter --paths</code><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170315/130930707.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170315/130833100.png" alt=""></p>
+<p>如果不行，输入<code>jupyter --paths</code><br><img src="http://cdn.mmmxcc.cn/blog/20170315/130930707.png" alt=""></p>
 <p>检查一下kernal是不是设置的有问题，比如我的就是<code>C:\Users\wing\AppData\Roaming\jupyter\kernels\tensorflow</code><br>一般来说是环境所在的地址有问题，修改一下就可以啦。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170315/131024268.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170315/131024268.png" alt=""></p>
 <p>通过这个方法，可以把自己手贱多加上去的kernel删掉。<strong>jupyter kernal 删除</strong><br>更多建议阅读<a href="http://ipython.readthedocs.io/en/stable/install/kernel_install.html" target="_blank" rel="external">官方文档</a></p>
 <p>我记得这个地方蛮复杂的，我当时往kernel里边加入R内核，费了大力气。当时还没写博客的习惯，现在又忘记怎么加的，真是日了狗。</p>
 <p><img src="http://cdn.mmmxcc.cn/blog/20170315/131835074.png" alt=""></p>

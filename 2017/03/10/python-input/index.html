@@ -188,7 +188,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>本文介绍了<code>raw_input</code> 和 <code>input</code>在<code>python2</code>和<code>python3</code>上的区别，以及如何利用正则表达式和<code>input</code>键盘输入一维数组和二维数组。</p>
 </blockquote>
 <hr>
@@ -196,13 +196,7 @@
 <h1 id="raw-input-和-input"><a href="#raw-input-和-input" class="headerlink" title="raw_input 和 input"></a>raw_input 和 input</h1><h2 id="python2中"><a href="#python2中" class="headerlink" title="python2中"></a>python2中</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">raw_input_A = raw_input(<span class="string">"raw_input: "</span>)</div><div class="line">type(raw_input_A)</div></pre></td></tr></table></figure>
 <p>可以看到输出的是 <code>str</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">input_A = input(<span class="string">"Input: "</span>) <span class="comment">#不能输入字母</span></div><div class="line">type(raw_input_A)</div></pre></td></tr></table></figure>
-<p>可以看到输出的是 <code>int</code>，并且我们发现，input根本不能输入字母，会直接报<code>NameError: name &#39;abc&#39; is not defined</code>，提示没有定义。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170310/125930252.png" alt="Python2报错" title="">
-                </div>
-                <div class="image-caption">Python2报错</div>
-            </figure></p>
+<p>可以看到输出的是 <code>int</code>，并且我们发现，input根本不能输入字母，会直接报<code>NameError: name &#39;abc&#39; is not defined</code>，提示没有定义。<br><img src="http://cdn.mmmxcc.cn/blog/20170310/125930252.png" alt="Python2报错"></p>
 <p>查看 <a href="http://docs.python.org/library/functions.html?highlight=input#built-in-functions" target="_blank" rel="external">Built-in Functions</a> ，得知：<br><code>input([prompt])
     Equivalent to eval(raw_input(prompt))</code></p>
 <p>input() 本质上还是使用 raw_input() 来实现的，只是调用完 raw_input() 之后再调用 eval() 函数，所以，你甚至可以将表达式作为 input() 的参数，并且它会计算表达式的值并返回它。<br>不过在 Built-in Functions 里有一句话是这样写的：Consider using the raw_input() function for general input from users.<br>除非对 input() 有特别需要，否则一般情况下我们都是推荐使用 raw_input() 来与用户交互。</p>
@@ -219,23 +213,10 @@
 <li>先声明<code>data</code>是一个list，将<code>input_A</code>一个个<code>+</code>进去。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">data = []</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        input_A = int(input(<span class="string">"Input: "</span>))</div><div class="line">        data +=[input_A]</div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">break</span></div><div class="line">data</div><div class="line">type(data)</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170310/132018132.png" alt="输入数组" title="">
-                </div>
-                <div class="image-caption">输入数组</div>
-            </figure>
-<p>在以上的基础上，我们可以用python输入二维数组</p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170310/132018132.png" alt="输入数组"><br>在以上的基础上，我们可以用python输入二维数组</p>
 <h2 id="python输入二维数组"><a href="#python输入二维数组" class="headerlink" title="python输入二维数组"></a>python输入二维数组</h2><p>正则表达式会利用非数字的字符，进行切割，因此数字之间插入什么都无所谓。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">data2D = []</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    userInput = input(<span class="string">'Input:'</span>) <span class="comment"># 输入数组，用空格隔开即可</span></div><div class="line">    info = re.split(<span class="string">r'[\D]'</span>,userInput)<span class="comment">#正则表达式分割</span></div><div class="line">    data = []<span class="comment"># 定义一维数组</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">for</span> number <span class="keyword">in</span> info:</div><div class="line">            data+=[int(number)] <span class="comment"># 一维数组加入数字</span></div><div class="line">        data2D+=[data] <span class="comment">#一维数组加入到二维中去</span></div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">data2D</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170310/135120083.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170310/135120083.png" alt=""></p>
 
         </div>
 

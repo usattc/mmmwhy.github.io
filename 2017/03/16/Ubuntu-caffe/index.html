@@ -186,7 +186,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式</p>
 </blockquote>
 <hr>
@@ -197,14 +197,7 @@
 <h2 id="安装anaconda，建议安装。"><a href="#安装anaconda，建议安装。" class="headerlink" title="安装anaconda，建议安装。"></a>安装anaconda，建议安装。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-4.3.1-Linux-x86_64.sh</div><div class="line">bash Anaconda3-4.3.1-Linux-x86_64.sh</div></pre></td></tr></table></figure>
 <p>安装过程中记得一直选择默认的就行，傻瓜式安装。是否在bashrc中添加路径，这里选择“yes”就可以。忘了的话，解决方法很麻烦，自己查查吧。</p>
 <h2 id="安装OpenCV2-4-这个经常失败，建议跳过，不影响使用"><a href="#安装OpenCV2-4-这个经常失败，建议跳过，不影响使用" class="headerlink" title="安装OpenCV2.4(这个经常失败，建议跳过，不影响使用)"></a>安装OpenCV2.4(这个经常失败，建议跳过，不影响使用)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/bearpaw/Install-OpenCV</div><div class="line">cd Install-OpenCV/Ubuntu/2.4</div><div class="line">sh ./opencv2_4_10.sh</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170315/155549210.png" alt="jayrambhia/Install-OpenCV.git" title="">
-                </div>
-                <div class="image-caption">jayrambhia/Install-OpenCV.git</div>
-            </figure>
-<p>编译过程很慢，中间我还报过一次错，不得不重新来了一次。如果觉得难度不够的话，可以选择官网的安装包：<a href="http://opencv.org/" target="_blank" rel="external">http://opencv.org/</a>，我这里是根据大神编译过的版本进行安装的。</p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170315/155549210.png" alt="jayrambhia/Install-OpenCV.git"><br>编译过程很慢，中间我还报过一次错，不得不重新来了一次。如果觉得难度不够的话，可以选择官网的安装包：<a href="http://opencv.org/" target="_blank" rel="external">http://opencv.org/</a>，我这里是根据大神编译过的版本进行安装的。</p>
 <h2 id="安装atlas"><a href="#安装atlas" class="headerlink" title="安装atlas"></a>安装atlas</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libatlas-base-dev                #安装atlas简单易行。</div></pre></td></tr></table></figure>
 <h1 id="编译Caffe"><a href="#编译Caffe" class="headerlink" title="编译Caffe"></a>编译Caffe</h1><h2 id="下载caffe"><a href="#下载caffe" class="headerlink" title="下载caffe"></a>下载caffe</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~  </div><div class="line">git clone https://github.com/BVLC/caffe.git</div></pre></td></tr></table></figure>
 <h2 id="修改Makefile配置"><a href="#修改Makefile配置" class="headerlink" title="修改Makefile配置"></a>修改Makefile配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd caffe  </div><div class="line">cp Makefile.config.example Makefile.config </div><div class="line">gedit Makefile.config         #我个人比较喜欢gedit ，用起来方便。</div></pre></td></tr></table></figure>

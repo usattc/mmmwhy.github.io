@@ -22,19 +22,13 @@
     <published>2017-03-17T08:25:27.000Z</published>
     <updated>2017-03-17T08:28:18.253Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以<code>.idx1-ubyte</code>后缀，包含60000个训练图像。将这些图像展示出来，需要利用到<a href="http://feiyang.li/2017/03/17/python-struct/">struct模块</a>。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
 <h1 id="下载MNIST训练数据集"><a href="#下载MNIST训练数据集" class="headerlink" title="下载MNIST训练数据集"></a>下载MNIST训练数据集</h1><h2 id="手动下载"><a href="#手动下载" class="headerlink" title="手动下载"></a>手动下载</h2><p>下载链接为： <a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="external">http://yann.lecun.com/exdb/mnist/</a>  下载好之后解压就可以了，网站好像被墙了？</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170317/110144292.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170317/110144292.png" alt="mark"></p>
 <h2 id="使用tensorflow自带下载"><a href="#使用tensorflow自带下载" class="headerlink" title="使用tensorflow自带下载"></a>使用tensorflow自带下载</h2><p>可以看到，这个地方是有监督学习   (有label这个东西嘛)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</div><div class="line"><span class="comment"># 下载mnist数据集</span></div><div class="line">mnist = input_data.read_data_sets(<span class="string">'/tmp/'</span>, one_hot=<span class="keyword">True</span>)</div><div class="line"><span class="comment"># 数字(label)只能是0-9，神经网络使用10个出口节点就可以编码表示0-9；</span></div><div class="line"><span class="comment">#  1 -&gt; [0,1.0,0,0,0,0,0,0,0]   one_hot表示只有一个出口节点是hot</span></div><div class="line"><span class="comment">#  2 -&gt; [0,0.1,0,0,0,0,0,0,0]</span></div><div class="line"><span class="comment">#  5 -&gt; [0,0,0,0,0,1.0,0,0,0]</span></div><div class="line"><span class="comment">#  /tmp是macOS的临时目录，重启系统数据丢失; Linux的临时目录也是/tmp</span></div></pre></td></tr></table></figure></p>
 <h1 id="详细步骤"><a href="#详细步骤" class="headerlink" title="详细步骤"></a>详细步骤</h1><h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(filename ,<span class="string">'rb'</span>) <span class="keyword">as</span> f1:</div><div class="line">    buf1 = f1.read()</div></pre></td></tr></table></figure>
 <p>还有另外一种常用的方法，两个方法目前来看没有什么区别。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">f1 = open(filename , <span class="string">'rb'</span>)</div><div class="line">buf = binfile.read() <span class="comment"># 先使用二进制方式把文件都读进来</span></div></pre></td></tr></table></figure></p>
@@ -45,20 +39,8 @@
 <h3 id="train-labels-idx1-ubyte"><a href="#train-labels-idx1-ubyte" class="headerlink" title="train-labels-idx1-ubyte"></a>train-labels-idx1-ubyte</h3><p>可以看到头部有2个integer 类型，同理，label_index 直接跳过去。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">TRAINING SET LABEL FILE (train-labels-idx1-ubyte):</div><div class="line"></div><div class="line">[offset] [type]          [value]          [description] </div><div class="line">0000     32 bit integer  0x00000801(2049) magic number (MSB first) </div><div class="line">0004     32 bit integer  60000            number of items </div><div class="line">0008     unsigned byte   ??               label </div><div class="line">0009     unsigned byte   ??               label </div><div class="line">........ </div><div class="line">xxxx     unsigned byte   ??               label</div><div class="line">The labels values are 0 to 9.</div></pre></td></tr></table></figure></p>
 <h2 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plt.imshow(im , cmap=<span class="string">'gray'</span>)</div></pre></td></tr></table></figure>
 <p>应该就可以看到图片了，是一张5， 当然头部文件还是要有的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">%matplotlib inline</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> struct</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">path = <span class="string">'E:\\Machine Learning\\train-images.idx3-ubyte'</span></div><div class="line"><span class="keyword">with</span> open(path,<span class="string">'rb'</span>) <span class="keyword">as</span> f1:</div><div class="line">    buf1 = f1.read() </div><div class="line">image_index = <span class="number">0</span></div><div class="line">image_index += struct.calcsize(<span class="string">'&gt;IIII'</span>)</div><div class="line">temp = struct.unpack_from(<span class="string">'&gt;784B'</span>, buf1, image_index) </div><div class="line"><span class="comment"># '&gt;784B'的意思就是用大端法读取784( 28*28 )个unsigned byte</span></div><div class="line">im = np.reshape(temp,(<span class="number">28</span>,<span class="number">28</span>))</div><div class="line">plt.imshow(im , cmap=<span class="string">'gray'</span>)</div></pre></td></tr></table></figure></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170317/162019276.png" alt="give me 5" title="">
-                </div>
-                <div class="image-caption">give me 5</div>
-            </figure>
-<h1 id="多张图片读取"><a href="#多张图片读取" class="headerlink" title="多张图片读取"></a>多张图片读取</h1><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170317/162228549.png" alt="多张图片" title="">
-                </div>
-                <div class="image-caption">多张图片</div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170317/162019276.png" alt="give me 5"></p>
+<h1 id="多张图片读取"><a href="#多张图片读取" class="headerlink" title="多张图片读取"></a>多张图片读取</h1><p><img src="http://cdn.mmmxcc.cn/blog/20170317/162228549.png" alt="多张图片"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> struct</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">readfile</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">with</span> open(<span class="string">'E:\\Machine Learning\\train-images.idx3-ubyte'</span>,<span class="string">'rb'</span>) <span class="keyword">as</span> f1:</div><div class="line">        buf1 = f1.read()</div><div class="line">    <span class="keyword">with</span> open(<span class="string">'E:\\Machine Learning\\train-labels.idx1-ubyte'</span>,<span class="string">'rb'</span>) <span class="keyword">as</span> f2:</div><div class="line">        buf2 = f2.read()</div><div class="line">    <span class="keyword">return</span> buf1, buf2</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_image</span><span class="params">(buf1)</span>:</span></div><div class="line">    image_index = <span class="number">0</span></div><div class="line">    image_index += struct.calcsize(<span class="string">'&gt;IIII'</span>)</div><div class="line">    im = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</div><div class="line">        temp = struct.unpack_from(<span class="string">'&gt;784B'</span>, buf1, image_index) <span class="comment"># '&gt;784B'的意思就是用大端法读取784个unsigned byte</span></div><div class="line">        im.append(np.reshape(temp,(<span class="number">28</span>,<span class="number">28</span>)))</div><div class="line">        image_index += struct.calcsize(<span class="string">'&gt;784B'</span>)  <span class="comment"># 每次增加784B</span></div><div class="line">    <span class="keyword">return</span> im</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_label</span><span class="params">(buf2)</span>:</span> <span class="comment"># 得到标签数据</span></div><div class="line">    label_index = <span class="number">0</span></div><div class="line">    label_index += struct.calcsize(<span class="string">'&gt;II'</span>)</div><div class="line">    <span class="keyword">return</span> struct.unpack_from(<span class="string">'&gt;9B'</span>, buf2, label_index)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    image_data, label_data = readfile()</div><div class="line">    im = get_image(image_data)</div><div class="line">    label = get_label(label_data)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</div><div class="line">        plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i + <span class="number">1</span>)</div><div class="line">        title = <span class="string">u"标签对应为："</span>+ str(label[i])</div><div class="line">        plt.title(title, fontproperties=<span class="string">'SimHei'</span>)</div><div class="line">        plt.imshow(im[i], cmap=<span class="string">'gray'</span>)</div><div class="line">    plt.show()</div></pre></td></tr></table></figure>
 <hr>
 <p>遇到的一些坑：</p>
@@ -94,7 +76,7 @@
     <published>2017-03-17T06:08:07.000Z</published>
     <updated>2017-03-17T06:09:27.006Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p><a href="https://docs.python.org/3/library/struct.html#module-struct" target="_blank" rel="external">struct</a> — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具<strong>Python struct 模块</strong>。</p>
 </blockquote>
 <hr>
@@ -204,13 +186,7 @@
 <h1 id="struct-pack-fmt-v1-v2-…"><a href="#struct-pack-fmt-v1-v2-…" class="headerlink" title="struct.pack(fmt, v1, v2, …)"></a>struct.pack(fmt, v1, v2, …)</h1><blockquote>
 <p>Return a string containing the values v1, v2, … packed according to the given format. The arguments must match the values required by the format exactly.</p>
 </blockquote>
-<p>struct.pack用于将Python的值根据格式符，转换为字符串,准确来说是Byte。这个地方我们之前有提过，<a href="http://feiyang.li/2017/02/16/python-camp9/#Python3内的unicode和bytes">Python3内的unicode和bytes</a>，在Py3内<strong>文本总是Unicode，由str类型表示，二进制数据则由bytes类型表示。</strong><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>Py2是没有Byte这么个东西的。参数fmt是格式字符串，v1, v2, …表示要转换的python值。下面的例子将两个整数转换为字符串:</p>
+<p>struct.pack用于将Python的值根据格式符，转换为字符串,准确来说是Byte。这个地方我们之前有提过，<a href="http://feiyang.li/2017/02/16/python-camp9/#Python3内的unicode和bytes">Python3内的unicode和bytes</a>，在Py3内<strong>文本总是Unicode，由str类型表示，二进制数据则由bytes类型表示。</strong><br><img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png" alt=""><br>Py2是没有Byte这么个东西的。参数fmt是格式字符串，v1, v2, …表示要转换的python值。下面的例子将两个整数转换为字符串:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> struct  </div><div class="line"></div><div class="line">a = <span class="number">20</span>  </div><div class="line">b = <span class="number">400</span></div><div class="line"></div><div class="line">byte = struct.pack(<span class="string">"ii"</span>, a, b) <span class="comment">#转换后的str相当于其他语言中的字节流（字节数组），可以在网络上传输  </span></div><div class="line">big = struct.pack(<span class="string">"&gt;ii"</span>, a, b)  <span class="comment">#大端保存</span></div><div class="line">small = struct.pack(<span class="string">"&lt;ii"</span>, a, b) <span class="comment">#小端保存</span></div><div class="line">print(byte)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x14\x00\x00\x00\x90\x01\x00\x00'</span></div><div class="line">print(big)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x00\x00\x00\x14\x00\x00\x01\x90'</span></div><div class="line">print(small)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x14\x00\x00\x00\x90\x01\x00\x00'</span></div><div class="line"><span class="keyword">print</span> (byte[<span class="number">0</span>],byte[<span class="number">4</span>]) </div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x14\x00\x00\x00\x90\x01\x00\x00'</span></div></pre></td></tr></table></figure>
 <p>格式符”i”表示转换为int，’ii’表示有两个int变量。进行转换后的结果长度为8个字节（int类型占用4个字节，两个int为8个字节）<del>可以看到输出的结果是乱码，因为结果是二进制数据，所以显示为乱码。可以使用python的内置函数repr来获取可识别的字符串</del> ，以上问题在Python3中不会出现了其中十六进制的0x00000014, 0x00000190分别表示20和400。</p>
 <p>上一段代码<strong>最后那个很有意思诶，竟然是默认采用小端</strong>。</p>
@@ -274,7 +250,7 @@
     <published>2017-03-16T02:52:28.000Z</published>
     <updated>2017-03-16T02:57:42.391Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式</p>
 </blockquote>
 <hr>
@@ -285,14 +261,7 @@
 <h2 id="安装anaconda，建议安装。"><a href="#安装anaconda，建议安装。" class="headerlink" title="安装anaconda，建议安装。"></a>安装anaconda，建议安装。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-4.3.1-Linux-x86_64.sh</div><div class="line">bash Anaconda3-4.3.1-Linux-x86_64.sh</div></pre></td></tr></table></figure>
 <p>安装过程中记得一直选择默认的就行，傻瓜式安装。是否在bashrc中添加路径，这里选择“yes”就可以。忘了的话，解决方法很麻烦，自己查查吧。</p>
 <h2 id="安装OpenCV2-4-这个经常失败，建议跳过，不影响使用"><a href="#安装OpenCV2-4-这个经常失败，建议跳过，不影响使用" class="headerlink" title="安装OpenCV2.4(这个经常失败，建议跳过，不影响使用)"></a>安装OpenCV2.4(这个经常失败，建议跳过，不影响使用)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/bearpaw/Install-OpenCV</div><div class="line">cd Install-OpenCV/Ubuntu/2.4</div><div class="line">sh ./opencv2_4_10.sh</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170315/155549210.png" alt="jayrambhia/Install-OpenCV.git" title="">
-                </div>
-                <div class="image-caption">jayrambhia/Install-OpenCV.git</div>
-            </figure>
-<p>编译过程很慢，中间我还报过一次错，不得不重新来了一次。如果觉得难度不够的话，可以选择官网的安装包：<a href="http://opencv.org/" target="_blank" rel="external">http://opencv.org/</a>，我这里是根据大神编译过的版本进行安装的。</p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170315/155549210.png" alt="jayrambhia/Install-OpenCV.git"><br>编译过程很慢，中间我还报过一次错，不得不重新来了一次。如果觉得难度不够的话，可以选择官网的安装包：<a href="http://opencv.org/" target="_blank" rel="external">http://opencv.org/</a>，我这里是根据大神编译过的版本进行安装的。</p>
 <h2 id="安装atlas"><a href="#安装atlas" class="headerlink" title="安装atlas"></a>安装atlas</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libatlas-base-dev                #安装atlas简单易行。</div></pre></td></tr></table></figure>
 <h1 id="编译Caffe"><a href="#编译Caffe" class="headerlink" title="编译Caffe"></a>编译Caffe</h1><h2 id="下载caffe"><a href="#下载caffe" class="headerlink" title="下载caffe"></a>下载caffe</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~  </div><div class="line">git clone https://github.com/BVLC/caffe.git</div></pre></td></tr></table></figure>
 <h2 id="修改Makefile配置"><a href="#修改Makefile配置" class="headerlink" title="修改Makefile配置"></a>修改Makefile配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd caffe  </div><div class="line">cp Makefile.config.example Makefile.config </div><div class="line">gedit Makefile.config         #我个人比较喜欢gedit ，用起来方便。</div></pre></td></tr></table></figure>
@@ -341,7 +310,7 @@
     <published>2017-03-15T05:22:44.000Z</published>
     <updated>2017-03-16T02:57:34.710Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。</p>
 </blockquote>
 <hr>
@@ -357,28 +326,10 @@
 <p>安装失败的话多试几次</p>
 <h2 id="加入jupyter-notebook的ipykernel内核"><a href="#加入jupyter-notebook的ipykernel内核" class="headerlink" title="加入jupyter notebook的ipykernel内核"></a>加入jupyter notebook的ipykernel内核</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">source activate tensorflow# On Windows, remove the word &apos;source&apos;</div><div class="line">install ipykernel</div><div class="line">python -m ipykernel install --user --name tensorflow--display-name &quot;Python (myenv)&quot;</div></pre></td></tr></table></figure>
 <p>在激活状态下，安装<code>ipykernel</code>，后边那个展示名称，自己可以随便填。进入jupyter notebook ，运行一下测试文件，看是否可以使用。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170315/130833100.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>如果不行，输入<code>jupyter --paths</code><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170315/130930707.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170315/130833100.png" alt=""></p>
+<p>如果不行，输入<code>jupyter --paths</code><br><img src="http://cdn.mmmxcc.cn/blog/20170315/130930707.png" alt=""></p>
 <p>检查一下kernal是不是设置的有问题，比如我的就是<code>C:\Users\wing\AppData\Roaming\jupyter\kernels\tensorflow</code><br>一般来说是环境所在的地址有问题，修改一下就可以啦。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170315/131024268.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170315/131024268.png" alt=""></p>
 <p>通过这个方法，可以把自己手贱多加上去的kernel删掉。<strong>jupyter kernal 删除</strong><br>更多建议阅读<a href="http://ipython.readthedocs.io/en/stable/install/kernel_install.html" target="_blank" rel="external">官方文档</a></p>
 <p>我记得这个地方蛮复杂的，我当时往kernel里边加入R内核，费了大力气。当时还没写博客的习惯，现在又忘记怎么加的，真是日了狗。</p>
 <p><img src="http://cdn.mmmxcc.cn/blog/20170315/131835074.png" alt=""></p>
@@ -411,95 +362,35 @@
     <published>2017-03-11T07:06:14.000Z</published>
     <updated>2017-03-13T10:45:25.356Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>但行好事，莫问前程。真正能做到的能有几个呢？</p>
 </blockquote>
 <hr>
 <a id="more"></a>
-<div align="center"><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145041434.png" alt="你是我心脏跳动的力量" title="">
-                </div>
-                <div class="image-caption">你是我心脏跳动的力量</div>
-            </figure><br></div>
+<div align="center"><br><img src="http://cdn.mmmxcc.cn/blog/20170311/145041434.png" alt="你是我心脏跳动的力量"><br></div>
 
 
 
 <p>没看过几部印度电影，算上三傻，这也仅仅是第二部而已。什么小萝莉的猴神大叔，印度电影命名水平还是一如既往的差。</p>
-<div align="center"><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145415244.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br></div>
+<div align="center"><br><img src="http://cdn.mmmxcc.cn/blog/20170311/145415244.png" alt=""><br></div>
 
 <p>刚开始看的时候呀，我一边哈哈哈一边和室友猜下边将发生啥，猜了好几次，竟然都猜对了。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145514334.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170311/145514334.png" alt=""></p>
 <p>后来不知道怎么了，就不想说话了，戴着耳机投入到猴神大叔的世界了。就算猜到了结尾，也丝毫不影响我看的时候哭的稀里哗啦的。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145548062.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170311/145548062.png" alt=""></p>
 <p>我其实不太懂印度巴基斯坦那边的渊源，也不太懂宗教信仰之类的，所以我觉得我应该错过了好多值得玩味的小细节。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/151454612.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170311/151454612.png" alt=""></p>
 <p>印度电影中的人物好像总是一言不合就唱歌跳舞，开心也跳，难过也跳，想跳就跳，一跳还跳很长时间，但我还挺喜欢看的。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145814885.png" alt="童话里的巴士" title="">
-                </div>
-                <div class="image-caption">童话里的巴士</div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170311/145814885.png" alt="童话里的巴士"></p>
 <p>国家和国家之间，宗教和宗教之间也许有很多矛盾，但是爱和信仰是相通的。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/150129990.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170311/150129990.png" alt=""></p>
 <p>善良朴实虔诚的猴神大叔因为对小女孩的一个承诺，毅然决然的走上了送小女孩回家的路。这一路，太凶险，却也不乏各种各样善良的人的帮助。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/150007185.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170311/150007185.png" alt=""></p>
 <p>小女孩从小无法说话，后来又和家人走丢，这本是一件不幸的事，却因为遇到了猴神大叔，遇到正义的摄影师，遇到善良的伊斯兰教父，还有很多很多充满善意的人，才如此幸运的回到妈妈身边。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/150040056.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170311/150040056.png" alt=""></p>
 <p>感觉这个世界上，像猴神大叔这样的好人还是太少了。</p>
 <p>因为爱，扛起对一个陌生小姑娘的全部责任，从一个平庸的别人眼中的失败者，到无所不能面对重重困难都充满力量的人。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/151638605.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170311/151638605.png" alt=""></p>
 <p><strong>但行好事，莫问前程。真正能做到的能有几个呢？</strong></p>
 <hr>
 <p>主题歌是这样唱的：</p>
@@ -542,7 +433,7 @@
     <published>2017-03-10T05:52:53.000Z</published>
     <updated>2017-03-10T05:58:53.620Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>本文介绍了<code>raw_input</code> 和 <code>input</code>在<code>python2</code>和<code>python3</code>上的区别，以及如何利用正则表达式和<code>input</code>键盘输入一维数组和二维数组。</p>
 </blockquote>
 <hr>
@@ -550,13 +441,7 @@
 <h1 id="raw-input-和-input"><a href="#raw-input-和-input" class="headerlink" title="raw_input 和 input"></a>raw_input 和 input</h1><h2 id="python2中"><a href="#python2中" class="headerlink" title="python2中"></a>python2中</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">raw_input_A = raw_input(<span class="string">"raw_input: "</span>)</div><div class="line">type(raw_input_A)</div></pre></td></tr></table></figure>
 <p>可以看到输出的是 <code>str</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">input_A = input(<span class="string">"Input: "</span>) <span class="comment">#不能输入字母</span></div><div class="line">type(raw_input_A)</div></pre></td></tr></table></figure>
-<p>可以看到输出的是 <code>int</code>，并且我们发现，input根本不能输入字母，会直接报<code>NameError: name &#39;abc&#39; is not defined</code>，提示没有定义。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170310/125930252.png" alt="Python2报错" title="">
-                </div>
-                <div class="image-caption">Python2报错</div>
-            </figure></p>
+<p>可以看到输出的是 <code>int</code>，并且我们发现，input根本不能输入字母，会直接报<code>NameError: name &#39;abc&#39; is not defined</code>，提示没有定义。<br><img src="http://cdn.mmmxcc.cn/blog/20170310/125930252.png" alt="Python2报错"></p>
 <p>查看 <a href="http://docs.python.org/library/functions.html?highlight=input#built-in-functions" target="_blank" rel="external">Built-in Functions</a> ，得知：<br><code>input([prompt])
     Equivalent to eval(raw_input(prompt))</code></p>
 <p>input() 本质上还是使用 raw_input() 来实现的，只是调用完 raw_input() 之后再调用 eval() 函数，所以，你甚至可以将表达式作为 input() 的参数，并且它会计算表达式的值并返回它。<br>不过在 Built-in Functions 里有一句话是这样写的：Consider using the raw_input() function for general input from users.<br>除非对 input() 有特别需要，否则一般情况下我们都是推荐使用 raw_input() 来与用户交互。</p>
@@ -573,23 +458,10 @@
 <li>先声明<code>data</code>是一个list，将<code>input_A</code>一个个<code>+</code>进去。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">data = []</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        input_A = int(input(<span class="string">"Input: "</span>))</div><div class="line">        data +=[input_A]</div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">break</span></div><div class="line">data</div><div class="line">type(data)</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170310/132018132.png" alt="输入数组" title="">
-                </div>
-                <div class="image-caption">输入数组</div>
-            </figure>
-<p>在以上的基础上，我们可以用python输入二维数组</p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170310/132018132.png" alt="输入数组"><br>在以上的基础上，我们可以用python输入二维数组</p>
 <h2 id="python输入二维数组"><a href="#python输入二维数组" class="headerlink" title="python输入二维数组"></a>python输入二维数组</h2><p>正则表达式会利用非数字的字符，进行切割，因此数字之间插入什么都无所谓。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">data2D = []</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    userInput = input(<span class="string">'Input:'</span>) <span class="comment"># 输入数组，用空格隔开即可</span></div><div class="line">    info = re.split(<span class="string">r'[\D]'</span>,userInput)<span class="comment">#正则表达式分割</span></div><div class="line">    data = []<span class="comment"># 定义一维数组</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">for</span> number <span class="keyword">in</span> info:</div><div class="line">            data+=[int(number)] <span class="comment"># 一维数组加入数字</span></div><div class="line">        data2D+=[data] <span class="comment">#一维数组加入到二维中去</span></div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">data2D</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170310/135120083.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170310/135120083.png" alt=""></p>
 ]]></content>
     
     <summary type="html">
@@ -615,7 +487,7 @@
     <published>2017-03-09T14:22:16.000Z</published>
     <updated>2017-03-23T11:31:34.273Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>快速排序是一种非常优秀的排序方法 </p>
 </blockquote>
 <a id="more"></a>
@@ -628,13 +500,7 @@
 </ul>
 <h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><p>对整个数组进行递归排序：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">QUICKSORT(A,p,r)</div><div class="line"><span class="keyword">if</span> p &lt; r:</div><div class="line">    q = PARTITION(A,p,r);</div><div class="line">    QUICKSORT(A,p,q<span class="number">-1</span>);</div><div class="line">    QUICKSORT(A,q+<span class="number">1</span>,r);</div></pre></td></tr></table></figure></p>
 <p>快速排序算法的关键是PARTITION过程，它对A[p..r]进行就地重排：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">PARTITION(A,p,r)</div><div class="line">x = A[r]</div><div class="line">i = p<span class="number">-1</span></div><div class="line"><span class="keyword">for</span> j = p to r<span class="number">-1</span><span class="comment">// A[j]是待比较的元素</span></div><div class="line">  <span class="keyword">if</span> A[j] ≤ r<span class="comment">// 若A[j]比主元小</span></div><div class="line">    i = i + <span class="number">1</span> <span class="comment">// i往后一位（符合，不用替换；不符合i就停在这个地方，等着j过来叫唤）</span></div><div class="line">    exchange A[i] with A[j]<span class="comment">//倘若A[j]比主元小，其实是不发生交换的。</span></div><div class="line">exchange A[i+<span class="number">1</span>] with A[r]</div><div class="line"><span class="keyword">return</span> i + <span class="number">1</span></div></pre></td></tr></table></figure></p>
-<p>借用一张《算法导论》的图<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170309/191837286.png" alt="Introduction to Algorithms" title="">
-                </div>
-                <div class="image-caption">Introduction to Algorithms</div>
-            </figure></p>
+<p>借用一张《算法导论》的图<br><img src="http://cdn.mmmxcc.cn/blog/20170309/191837286.png" alt="Introduction to Algorithms"></p>
 <h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><h2 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h2><p>基本和伪代码是一样的<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> temp = *b;</div><div class="line">    *b = *a;</div><div class="line">    *a = temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> *A, <span class="keyword">int</span> len)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%4d"</span>, A[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">PARTITION</span><span class="params">(<span class="keyword">int</span> *A, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i = p - <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> x = A[r];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = p; j &lt; r; j++) &#123;</div><div class="line">        <span class="keyword">if</span> (A[j] &lt;= x) &#123;</div><div class="line">            i++;</div><div class="line">            swap(&amp;A[i], &amp;A[j]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    swap(&amp;A[i + <span class="number">1</span>], &amp;A[r]);</div><div class="line">    <span class="keyword">return</span> i + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QUICKSORT</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (p &lt; r) &#123;</div><div class="line">        <span class="keyword">int</span> q = PARTITION(A, p, r);</div><div class="line">        QUICKSORT(A, p, q - <span class="number">1</span>);</div><div class="line">        QUICKSORT(A, q + <span class="number">1</span>, r);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> A[] = &#123; <span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">4</span> &#125;;</div><div class="line">    print(A, <span class="number">11</span>);</div><div class="line">    QUICKSORT(A, <span class="number">0</span>, <span class="number">10</span>);</div><div class="line">    print(A,<span class="number">11</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>期间出了一个错误，error C3861: 找不到标识符。后发现是因为把PARTITION放在了QUICKSORT后边，导致QUICKSORT找不到PARTITION。</p>
 <h2 id="python代码"><a href="#python代码" class="headerlink" title="python代码"></a>python代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">PARTITION</span><span class="params">(A,p,r)</span>:</span></div><div class="line">    x = A[r]</div><div class="line">    i = p - <span class="number">1</span></div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(p,r):</div><div class="line">        <span class="keyword">if</span> A[j]&lt;=x:</div><div class="line">            i = i + <span class="number">1</span></div><div class="line">            temp = A[i]</div><div class="line">            A[i] = A[j]</div><div class="line">            A[j] = temp <span class="comment">#python没有指针，这个地方稍微不一样</span></div><div class="line">    temp = A[i+<span class="number">1</span>]</div><div class="line">    A[i+<span class="number">1</span>] = A[r]</div><div class="line">    A[r] = temp</div><div class="line">    <span class="keyword">return</span> i+<span class="number">1</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">QUICKSORT</span><span class="params">(A,p,r)</span>:</span></div><div class="line">    <span class="keyword">if</span> p &gt;= r:</div><div class="line">        <span class="keyword">return</span></div><div class="line">    q = PARTITION(A,p,r)</div><div class="line">    QUICKSORT(A,p,q<span class="number">-1</span>)</div><div class="line">    QUICKSORT(A,q+<span class="number">1</span>,r)</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    l =  [<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">4</span>] ;</div><div class="line">    QUICKSORT(l,<span class="number">0</span>,len(l)<span class="number">-1</span>)</div><div class="line">    print(l)</div></pre></td></tr></table></figure>
@@ -667,7 +533,7 @@
     <published>2017-03-03T06:17:00.000Z</published>
     <updated>2017-03-06T14:07:04.569Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>使用github学生优惠内的digitalocean，一键搭建vpn。获得60刀，免费用一年~</p>
 </blockquote>
 <hr>
@@ -678,100 +544,28 @@
 <li>每月1000GB的流量</li>
 </ul>
 <h2 id="申请github学生优惠包"><a href="#申请github学生优惠包" class="headerlink" title="申请github学生优惠包"></a>申请github学生优惠包</h2><ul>
-<li>前往 <a href="https://education.github.com/pack/" target="_blank" rel="external">https://education.github.com/pack/</a> 申请学生优惠包<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170303/130655469.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure></li>
-<li>有账号就直接登录，没有账号选择注册账号：<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170303/133824667.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure></li>
-<li>申请的时候，会问你是不是学生，那我肯定说是学生啦，我又不是撒<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170303/133923463.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure></li>
-<li>然后会要求提供学校名称，所以那么骗人的edu邮箱基本是没有办法使用的。最后那句<code>How do you plan to use GitHub?</code> 你就说<code>I&#39;ll public my program at github.</code>或者什么<code>I love github</code>，开心就好，说什么无所谓。<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170303/134154441.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure></li>
+<li>前往 <a href="https://education.github.com/pack/" target="_blank" rel="external">https://education.github.com/pack/</a> 申请学生优惠包<br><img src="http://cdn.mmmxcc.cn/blog/20170303/130655469.png" alt="mark"></li>
+<li>有账号就直接登录，没有账号选择注册账号：<br><img src="http://cdn.mmmxcc.cn/blog/20170303/133824667.png" alt="mark"></li>
+<li>申请的时候，会问你是不是学生，那我肯定说是学生啦，我又不是撒<br><img src="http://cdn.mmmxcc.cn/blog/20170303/133923463.png" alt="mark"></li>
+<li>然后会要求提供学校名称，所以那么骗人的edu邮箱基本是没有办法使用的。最后那句<code>How do you plan to use GitHub?</code> 你就说<code>I&#39;ll public my program at github.</code>或者什么<code>I love github</code>，开心就好，说什么无所谓。<br><img src="http://cdn.mmmxcc.cn/blog/20170303/134154441.png" alt="mark"></li>
 <li>很快就会审核通过，会邮件通知。</li>
 </ul>
 <h2 id="领取-DigitalOcean-优惠包"><a href="#领取-DigitalOcean-优惠包" class="headerlink" title="领取 DigitalOcean 优惠包"></a>领取 <a href="https://www.digitalocean.com/company/contact/" target="_blank" rel="external">DigitalOcean</a> 优惠包</h2><ul>
-<li>看到这个码，50刀就到你手了。<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170303/134605243.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure></li>
+<li>看到这个码，50刀就到你手了。<br><img src="http://cdn.mmmxcc.cn/blog/20170303/134605243.png" alt="mark"></li>
 <li>注册DO账号，用我的邀请链接注册，多送10刀。<a href="https://m.do.co/c/990a117f5061" target="_blank" rel="external">https://m.do.co/c/990a117f5061</a> ，注册之后需要付款5刀，这个时候不要用paypel的汇率，用本地的汇率。</li>
 </ul>
-<h2 id="使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法"><a href="#使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法" class="headerlink" title="使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法"></a>使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法</h2><p>我看到很多人提到领取了这个10刀之后，那个50刀的github优惠包里边的码就不能用了。简直<strong>一派胡言，I’m angry</strong>。<br>可以通过<a href="https://cloud.digitalocean.com/support/tickets/new?i=f00e90" target="_blank" rel="external">提交ticket</a><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170303/135235188.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure><br>然后告诉他，我不知道github学生优惠包里边的码怎么用，让他给你处理。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170303/135344548.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure><br>一般来说分分钟就会回复邮件，帮你加上50刀。<strong>如果使用我的推荐链接的话，我可以把我的回复内容复制给你。</strong></p>
+<h2 id="使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法"><a href="#使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法" class="headerlink" title="使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法"></a>使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法</h2><p>我看到很多人提到领取了这个10刀之后，那个50刀的github优惠包里边的码就不能用了。简直<strong>一派胡言，I’m angry</strong>。<br>可以通过<a href="https://cloud.digitalocean.com/support/tickets/new?i=f00e90" target="_blank" rel="external">提交ticket</a><br><img src="http://cdn.mmmxcc.cn/blog/20170303/135235188.png" alt="mark"><br>然后告诉他，我不知道github学生优惠包里边的码怎么用，让他给你处理。<br><img src="http://cdn.mmmxcc.cn/blog/20170303/135344548.png" alt="mark"><br>一般来说分分钟就会回复邮件，帮你加上50刀。<strong>如果使用我的推荐链接的话，我可以把我的回复内容复制给你。</strong></p>
 <h1 id="安装vpn"><a href="#安装vpn" class="headerlink" title="安装vpn"></a>安装vpn</h1><p>这里使用一键安装脚本，基于centos。</p>
-<h2 id="新建vps"><a href="#新建vps" class="headerlink" title="新建vps"></a>新建vps</h2><p>选择顶栏第一个 <a href="https://cloud.digitalocean.com/droplets?i=f00e90" target="_blank" rel="external">Droplets</a>，点击<code>create droplet</code><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170303/135808655.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure><br>选择5刀，centos的这一款，地点选择<code>San Francisco</code>，这个新加坡，虽然离中国近，但是速度慢，旧金山还是比较合适的。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170303/135912016.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure><br>选择确定之后，会发邮件告诉你IP地址以及账号密码。</p>
+<h2 id="新建vps"><a href="#新建vps" class="headerlink" title="新建vps"></a>新建vps</h2><p>选择顶栏第一个 <a href="https://cloud.digitalocean.com/droplets?i=f00e90" target="_blank" rel="external">Droplets</a>，点击<code>create droplet</code><br><img src="http://cdn.mmmxcc.cn/blog/20170303/135808655.png" alt="mark"><br>选择5刀，centos的这一款，地点选择<code>San Francisco</code>，这个新加坡，虽然离中国近，但是速度慢，旧金山还是比较合适的。<br><img src="http://cdn.mmmxcc.cn/blog/20170303/135912016.png" alt="mark"><br>选择确定之后，会发邮件告诉你IP地址以及账号密码。</p>
 <h2 id="一键安装vpn"><a href="#一键安装vpn" class="headerlink" title="一键安装vpn"></a>一键安装vpn</h2><ul>
-<li>使用<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank" rel="external">putty</a> 连接vps，我在打马赛克那个地方输入ip地址。然后点open<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170303/140209424.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure></li>
+<li>使用<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank" rel="external">putty</a> 连接vps，我在打马赛克那个地方输入ip地址。然后点open<br><img src="http://cdn.mmmxcc.cn/blog/20170303/140209424.png" alt="mark"></li>
 <li>第一次进行会有个提示，点击确定就好。之后会要求输入当前密码账号，按照邮箱里边给的密码写就可以了。</li>
 <li>成功登陆后，还会要求输入当前密码，然后自己设置<strong>新密码</strong></li>
 <li>一键安装vpn代码</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wget https://raw.githubusercontent.com/mmmwhy/centos-setup-simple-pptp-vpn/master/setup.sh</div><div class="line"></div><div class="line">chmod +x ./setup.sh</div><div class="line"></div><div class="line">./setup.sh</div></pre></td></tr></table></figure>
-<p>全部复制，点两下确定，然后坐等片刻，vpn就搭好了。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170303/140730763.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure></p>
-<p>搭建的是最常见的pptp协议类型的vpn，使用win自带拨号程序即可连接。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170303/140844414.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure></p>
+<p>全部复制，点两下确定，然后坐等片刻，vpn就搭好了。<br><img src="http://cdn.mmmxcc.cn/blog/20170303/140730763.png" alt="mark"></p>
+<p>搭建的是最常见的pptp协议类型的vpn，使用win自带拨号程序即可连接。<br><img src="http://cdn.mmmxcc.cn/blog/20170303/140844414.png" alt="mark"></p>
 <h2 id="修改账户密码"><a href="#修改账户密码" class="headerlink" title="修改账户密码"></a>修改账户密码</h2><p><code>sudo vi /etc/ppp/chap-secrets</code><br>都有提示，按<code>i</code>之后修改就可以了。</p>
 <h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>之前一直懒得写这样一篇教程，但是发现好多人对这方面都不了解，我稍微解释了一下。</p>
 <ul>
@@ -809,7 +603,7 @@
     <published>2017-02-26T13:28:39.000Z</published>
     <updated>2017-02-28T03:22:11.178Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>jetbrains 家的东西都非常好看，但是价格贵的令人发指，所以我搭建了一个 Pycharm激活服务器，可以用来激活 Pycharm，IntelliJ IDEA，WebStorm。避免频繁更换激活码的问题。</p>
 </blockquote>
 <hr>
@@ -817,43 +611,13 @@
 <h1 id="jetbrains-激活服务器搭建"><a href="#jetbrains-激活服务器搭建" class="headerlink" title="jetbrains 激活服务器搭建"></a>jetbrains 激活服务器搭建</h1><h2 id="一台VPS"><a href="#一台VPS" class="headerlink" title="一台VPS"></a>一台VPS</h2><p>连vps都没有，小拳头你怕不怕(ง •̀_•́)ง 。 那你用我的吧，╮(╯▽╰)╭  。</p>
 <h2 id="一键脚本"><a href="#一键脚本" class="headerlink" title="一键脚本"></a>一键脚本</h2><p>建议在特权模式下运行，即<code>sudo -s</code>一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://home.ustc.edu.cn/~mmmwhy/jetbrain.sh &amp;&amp; sh ./jetbrain.sh</div></pre></td></tr></table></figure></p>
 <p>会出现两个空，用于输入端口号和默认用户名，建议直接回车，否则可能会出现莫名其妙的错误。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170227/131856881.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170227/131856881.png" alt=""></p>
 <p>将最后那个<strong>License sever地址</strong>记下，之后激活用。</p>
-<h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><p>选择<strong>License sever</strong>激活方式，输入激活地址<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170226/211949408.png" alt="License sever激活" title="">
-                </div>
-                <div class="image-caption">License sever激活</div>
-            </figure></p>
-<p>分分钟应该就会弹出提示，一劳永逸解决激活问题。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170226/212224250.png" alt="激活成功提示" title="">
-                </div>
-                <div class="image-caption">激活成功提示</div>
-            </figure></p>
-<h2 id="激活服务器分享"><a href="#激活服务器分享" class="headerlink" title="激活服务器分享"></a>激活服务器分享</h2><p>我搭建了一个激活服务器，直接公布会很容易被封，需要的请关注：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170226/214429172.jpg" alt="小小臭臭" title="">
-                </div>
-                <div class="image-caption">小小臭臭</div>
-            </figure><br>回复“激活”即可获得地址。</p>
+<h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><p>选择<strong>License sever</strong>激活方式，输入激活地址<br><img src="http://cdn.mmmxcc.cn/blog/20170226/211949408.png" alt="License sever激活"></p>
+<p>分分钟应该就会弹出提示，一劳永逸解决激活问题。<br><img src="http://cdn.mmmxcc.cn/blog/20170226/212224250.png" alt="激活成功提示"></p>
+<h2 id="激活服务器分享"><a href="#激活服务器分享" class="headerlink" title="激活服务器分享"></a>激活服务器分享</h2><p>我搭建了一个激活服务器，直接公布会很容易被封，需要的请关注：<br><img src="http://cdn.mmmxcc.cn/blog/20170226/214429172.jpg" alt="小小臭臭"><br>回复“激活”即可获得地址。</p>
 <h1 id="Pycharm激活码-IntelliJ-IDEA激活码"><a href="#Pycharm激活码-IntelliJ-IDEA激活码" class="headerlink" title="Pycharm激活码 / IntelliJ IDEA激活码"></a>Pycharm激活码 / IntelliJ IDEA激活码</h1><p>双击复制全部<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CNEKJPQZEX-eyJsaWNlbnNlSWQiOiJDTkVLSlBRWkVYIiwibGljZW5zZWVOYW1lIjoibGFuIHl1IiwiYXNzaWduZWVOYW1lIjoiIiwiYXNzaWduZWVFbWFpbCI6IiIsImxpY2Vuc2VSZXN0cmljdGlvbiI6IkZvciBlZHVjYXRpb25hbCB1c2Ugb25seSIsImNoZWNrQ29uY3VycmVudFVzZSI6ZmFsc2UsInByb2R1Y3RzIjpbeyJjb2RlIjoiQUMiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJETSIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9LHsiY29kZSI6IklJIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiUlMwIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiV1MiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJEUE4iLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJSQyIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9LHsiY29kZSI6IlBTIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiREMiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJEQiIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9LHsiY29kZSI6IlJNIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiUEMiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJDTCIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9XSwiaGFzaCI6IjUxOTU1OTMvMCIsImdyYWNlUGVyaW9kRGF5cyI6MCwiYXV0b1Byb2xvbmdhdGVkIjpmYWxzZSwiaXNBdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlfQ==-QOxwjWvRwJz6vo6J6adC3CJ4ukQHosbPYZ94URUVFna/Rbew8xK/M5gP3kAaPh6ZDveFdtMR1UBoumq3eCwXtXM3U3ls5noB4LIr+QplVlCj2pK5uNq7g/feyNyQcHpSXtvhIOnXDBLOecB05DOsxzm0p7ulGGJoAInmHeb9mc0eYjqc4RPpUQfh6HSYBnvEnKMlLF5bz4KEtzmsvvgA55CwzwQ3gRitm5Q/wUT7AQCBdjmBfNUjKVQL6TSjSDPp56FUdEs4Aab8LqstA2DIMbxocO64rvytmcUeIwu8Mi5uq87KQP5AQMSMYb59Inbd+dmVfx5cJo3fRS4/5s3/Hg==-MIIEPjCCAiagAwIBAgIBBTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE1MTEwMjA4MjE0OFoXDTE4MTEwMTA4MjE0OFowETEPMA0GA1UEAwwGcHJvZDN5MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxcQkq+zdxlR2mmRYBPzGbUNdMN6OaXiXzxIWtMEkrJMO/5oUfQJbLLuMSMK0QHFmaI37WShyxZcfRCidwXjot4zmNBKnlyHodDij/78TmVqFl8nOeD5+07B8VEaIu7c3E1N+e1doC6wht4I4+IEmtsPAdoaj5WCQVQbrI8KeT8M9VcBIWX7fD0fhexfg3ZRt0xqwMcXGNp3DdJHiO0rCdU+Itv7EmtnSVq9jBG1usMSFvMowR25mju2JcPFp1+I4ZI+FqgR8gyG8oiNDyNEoAbsR3lOpI7grUYSvkB/xVy/VoklPCK2h0f0GJxFjnye8NT1PAywoyl7RmiAVRE/EKwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQC9WZuYgQedSuOc5TOUSrRigMw4/+wuC5EtZBfvdl4HT/8vzMW/oUlIP4YCvA0XKyBaCJ2iX+ZCDKoPfiYXiaSiH+HxAPV6J79vvouxKrWg2XV6ShFtPLP+0gPdGq3x9R3+kJbmAm8w+FOdlWqAfJrLvpzMGNeDU14YGXiZ9bVzmIQbwrBA+c/F4tlK/DV07dsNExihqFoibnqDiVNTGombaU2dDup2gwKdL81ua8EIcGNExHe82kjF4zwfadHk3bQVvbfdAwxcDy4xBjs3L4raPLU3yenSzr/OEur1+jfOxnQSmEcMXKXgrAQ9U55gwjcOFKrgOxEdek/Sk1VfOjvS+nuM4eyEruFMfaZHzoQiuw4IqgGc45ohFH0UUyjYcuFxxDSU9lMCv8qdHKm+wnPRb0l9l5vXsCBDuhAGYD6ss+Ga+aDY6f/qXZuUCEUOH3QUNbbCUlviSz6+GiRnt1kA9N2Qachl+2yBfaqUqr8h7Z2gsx5LcIf5kYNsqJ0GavXTVyWh7PYiKX4bs354ZQLUwwa/cG++2+wNWP+HtBhVxMRNTdVhSm38AknZlD+PTAsWGu9GyLmhti2EnVwGybSD2Dxmhxk3IPCkhKAK+pl0eWYGZWG3tJ9mZ7SowcXLWDFAk0lRJnKGFMTggrWjV8GYpw5bq23VmIqqDLgkNzuoog==</div></pre></td></tr></table></figure></p>
-<p>在Activate code处粘贴进去即可<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170226/213942164.png" alt="Activate code" title="">
-                </div>
-                <div class="image-caption">Activate code</div>
-            </figure></p>
+<p>在Activate code处粘贴进去即可<br><img src="http://cdn.mmmxcc.cn/blog/20170226/213942164.png" alt="Activate code"></p>
 <hr>
 <p>衷心感谢博主：ilanyu， <a href="http://blog.lanyus.com/" target="_blank" rel="external">http://blog.lanyus.com/</a></p>
 ]]></content>
@@ -879,18 +643,12 @@
     <published>2017-02-24T12:57:01.000Z</published>
     <updated>2017-02-25T05:59:28.975Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง </p>
 </blockquote>
 <hr>
 <a id="more"></a>
-<h1 id="Markdown-通用的音乐视频插入方法"><a href="#Markdown-通用的音乐视频插入方法" class="headerlink" title="Markdown 通用的音乐视频插入方法"></a>Markdown 通用的音乐视频插入方法</h1><h2 id="iframe标签"><a href="#iframe标签" class="headerlink" title="iframe标签"></a>iframe标签</h2><p>代码从网易云音乐获得<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170224/221537233.png" alt="网易云音乐" title="">
-                </div>
-                <div class="image-caption">网易云音乐</div>
-            </figure></p>
+<h1 id="Markdown-通用的音乐视频插入方法"><a href="#Markdown-通用的音乐视频插入方法" class="headerlink" title="Markdown 通用的音乐视频插入方法"></a>Markdown 通用的音乐视频插入方法</h1><h2 id="iframe标签"><a href="#iframe标签" class="headerlink" title="iframe标签"></a>iframe标签</h2><p>代码从网易云音乐获得<br><img src="http://cdn.mmmxcc.cn/blog/20170224/221537233.png" alt="网易云音乐"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=430 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=114389&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;</div></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="430" height="86" src="//music.163.com/outchain/player?type=2&id=114389&auto=0&height=66"></iframe>
@@ -958,7 +716,7 @@
     <published>2017-02-18T11:37:59.000Z</published>
     <updated>2017-02-18T12:41:10.174Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>上手使用Python的Web框架– Django</p>
 </blockquote>
 <hr>
@@ -979,31 +737,12 @@
 </ul>
 <h2 id="Pycharm使用虚拟环境"><a href="#Pycharm使用虚拟环境" class="headerlink" title="Pycharm使用虚拟环境"></a>Pycharm使用虚拟环境</h2><p>上边说的那种方法，完全没有实用性，太扯淡了。切换环境难于上青天，用Pycharm会简便很多。</p>
 <ul>
-<li>新建项目<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170218/191620497.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></li>
-<li>用Pycharm建立虚拟环境<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170218/191841405.png" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure>
-</li>
+<li>新建项目<br><img src="http://cdn.mmmxcc.cn/blog/20170218/191620497.png" alt=""></li>
+<li>用Pycharm建立虚拟环境<br><img src="http://cdn.mmmxcc.cn/blog/20170218/191841405.png" alt="mark"></li>
 </ul>
 <p>新建之后，在第一个图片那个地方进行选择就可以了，建议新建conda-env，自动新建在envs环境下，方便管理</p>
 <p>至此，django环境搭建完毕，接下来学习django工程的创建，以及简单的在网页中显示出”Hello World”。</p>
-<h1 id="初识Django工程"><a href="#初识Django工程" class="headerlink" title="初识Django工程"></a>初识Django工程</h1><h2 id="点击Create创建工程"><a href="#点击Create创建工程" class="headerlink" title="点击Create创建工程"></a>点击Create创建工程</h2><p>见创建后的工程截图：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170218/192837742.png" alt="Django" title="">
-                </div>
-                <div class="image-caption">Django</div>
-            </figure></p>
+<h1 id="初识Django工程"><a href="#初识Django工程" class="headerlink" title="初识Django工程"></a>初识Django工程</h1><h2 id="点击Create创建工程"><a href="#点击Create创建工程" class="headerlink" title="点击Create创建工程"></a>点击Create创建工程</h2><p>见创建后的工程截图：<br><img src="http://cdn.mmmxcc.cn/blog/20170218/192837742.png" alt="Django"></p>
 <p>文件如下:</p>
 <ul>
 <li>my_site: 项目的容器。</li>
@@ -1017,29 +756,10 @@
 <p>0.0.0.0让其它电脑可连接到开发服务器，8000为端口号。如果不说明，那么端口号默认为8000。</p>
 <h2 id="Pycharm启动Django项目"><a href="#Pycharm启动Django项目" class="headerlink" title="Pycharm启动Django项目"></a>Pycharm启动Django项目</h2><ul>
 <li>打开manage.py文件</li>
-<li>在菜单栏中Run中选择Edit Configurations，见截图：<br>修改<strong>Script parameters:</strong> <code>runserver</code><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170218/193330168.png" alt="Script parameters" title="">
-                </div>
-                <div class="image-caption">Script parameters</div>
-            </figure></li>
-<li>ctrl + shift+ F10 运行<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170218/193636035.png" alt="输出" title="">
-                </div>
-                <div class="image-caption">输出</div>
-            </figure>
-</li>
+<li>在菜单栏中Run中选择Edit Configurations，见截图：<br>修改<strong>Script parameters:</strong> <code>runserver</code><br><img src="http://cdn.mmmxcc.cn/blog/20170218/193330168.png" alt="Script parameters"></li>
+<li>ctrl + shift+ F10 运行<br><img src="http://cdn.mmmxcc.cn/blog/20170218/193636035.png" alt="输出"></li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170218/193700547.png" alt="页面" title="">
-                </div>
-                <div class="image-caption">页面</div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170218/193700547.png" alt="页面"></p>
 <hr>
 <h1 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello world"></a>Hello world</h1><ul>
 <li><p>新建 view.py<br>在先前创建的 my_site 目录下的 my_site 目录新建一个 view.py 文件，并输入代码：</p>
@@ -1106,7 +826,7 @@
     <published>2017-02-17T09:04:55.000Z</published>
     <updated>2017-02-17T09:07:37.504Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目2.1</strong>： 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。</p>
 </blockquote>
 <hr>
@@ -1151,33 +871,20 @@
     <published>2017-02-16T13:59:43.000Z</published>
     <updated>2017-02-17T04:33:14.710Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.9</strong>： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
 <p>思路：salt 加 hash 来单向转换密码明文</p>
 <h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>以下给出Py2和Py3两段代码，输出的内容是一样的。因为加密之后的内容不是unicode代码，所以存储可能不方便，可以使用<code>base64.b64encode(hashed)</code>转化为base64编码格式。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170216/194046518.png" alt="输出结果" title="">
-                </div>
-                <div class="image-caption">输出结果</div>
-            </figure>
-<p>Python2代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os,base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>) <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, str)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> isinstance(password, unicode):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line">    </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170216/194046518.png" alt="输出结果"><br>Python2代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os,base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>) <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, str)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> isinstance(password, unicode):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line">    </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
 <p>Python3代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os, base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>)  <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, bytes)</div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> isinstance(password, str):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, bytes)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
 <h1 id="Python编码问题"><a href="#Python编码问题" class="headerlink" title="Python编码问题"></a>Python编码问题</h1><p>一开始直接在Python3环境运行第一段代码的时候，总会报错<code>NameError: global name &#39;unicode&#39; is not defined</code>，百思不得其解。</p>
 <p>查了资料，才发现是因为Python更新的时候，Python 3 renamed the <strong>unicode</strong> type to <strong>str</strong>, the old <strong>str</strong> type has been replaced by <strong>bytes</strong>。在<a href="https://docs.python.org/dev/howto/pyporting.html" target="_blank" rel="external">Python升级文档</a>内可以查到相关内容，也就是<strong>unicode</strong>直接改名<strong>str</strong>，<strong>str</strong>改名成<strong>bytes</strong>。<br>Python2和Python3，在编码方面挖下太多的坑<br>举个简单的例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">isinstance(<span class="string">u'中文'</span>, unicode) <span class="comment">#python2内是正确的</span></div><div class="line">isinstance(<span class="string">u'中文'</span>, str) <span class="comment">#python3内是正确的</span></div></pre></td></tr></table></figure></p>
 <h1 id="Python3内的unicode和bytes"><a href="#Python3内的unicode和bytes" class="headerlink" title="Python3内的unicode和bytes"></a>Python3内的unicode和bytes</h1><p>Python 3最重要的新特性大概要算是<strong>对文本和二进制数据作了更为清晰的区分</strong>。文本总是Unicode，由str类型表示，二进制数据则由bytes类型表示。</p>
 <p>在将字符串存入磁盘和从磁盘读取字符串的过程中，Python 自动地帮你完成了编码和解码的工作，你不需要关心它的过程，例如你能把一个中文赋值给字符串。而使用 bytes 类型，实质上是告诉 Python，不需要它帮你自动地完成编码和解码的工作，而是用户自己手动进行，并指定编码格式。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png" alt=""></p>
 <hr>
 <p>参考链接：<br><a href="http://zhuoqiang.me/password-storage-and-python-example.html" target="_blank" rel="external">http://zhuoqiang.me/password-storage-and-python-example.html</a><br><a href="http://www.ituring.com.cn/article/61192" target="_blank" rel="external">http://www.ituring.com.cn/article/61192</a></p>
 ]]></content>
@@ -1207,7 +914,7 @@
     <published>2017-02-15T14:07:40.000Z</published>
     <updated>2017-02-15T14:09:04.064Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.8：</strong> 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。</p>
 </blockquote>
 <hr>
@@ -1219,13 +926,7 @@
     &quot;3&quot;:[&quot;王五&quot;,60,66,68]
 }
 </code></pre><p>请将上述内容写到 student.xls 文件中，如下图所示：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164341562.png" alt="student.xls" title="">
-                </div>
-                <div class="image-caption">student.xls</div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170210/164341562.png" alt="student.xls"></p>
 <p>这个题使用到<strong>文件读取</strong>，<strong>数据读取</strong>，<strong>Xls文件输出</strong>三部分内容。</p>
 <h1 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h1><p>使用<strong>open()</strong>函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'student.txt'</span>) <span class="keyword">as</span> f:</div><div class="line">    content = f.read()</div></pre></td></tr></table></figure></p>
 <h1 id="数据读取"><a href="#数据读取" class="headerlink" title="数据读取"></a>数据读取</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d = json.loads(content)</div></pre></td></tr></table></figure>
@@ -1258,7 +959,7 @@
     <published>2017-02-15T11:28:20.000Z</published>
     <updated>2017-02-16T14:24:00.864Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.7：</strong>敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。</p>
 </blockquote>
 <hr>
@@ -1308,7 +1009,7 @@
     <published>2017-02-14T11:19:17.000Z</published>
     <updated>2017-02-14T11:24:58.929Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>在学习的过程中，抓住基本概念是非常重要的，这样可以防止自己陷入某些细节中无法自拔，可以让自己站在比较宏观的层面上看待问题。 更多见：<a href="https://feiyang.li/">李飞阳</a></p>
 </blockquote>
 <hr>
@@ -1363,77 +1064,29 @@
     <published>2017-02-13T13:39:16.000Z</published>
     <updated>2017-03-11T07:07:30.991Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>对于产品经理来说，自己所负责的产品的表现就是自己的履历。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
-<h1 id="入坑"><a href="#入坑" class="headerlink" title="入坑"></a>入坑</h1><p>说来惭愧，最初进入产品经理这个职位，是因为大二在OPPO的实习。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/165000570.png?imageMogr2/thumbnail/!60p" alt="搬砖的地方" title="">
-                </div>
-                <div class="image-caption">搬砖的地方</div>
-            </figure><br>当时实习的时候，认识了许和高，许  瘦瘦高高的风格很让人喜欢。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/164929902.png?imageMogr2/thumbnail/!60p" alt="许" title="">
-                </div>
-                <div class="image-caption">许</div>
-            </figure><br>当时应该算产品助理，但是不知道自己具体该做什么。</p>
+<h1 id="入坑"><a href="#入坑" class="headerlink" title="入坑"></a>入坑</h1><p>说来惭愧，最初进入产品经理这个职位，是因为大二在OPPO的实习。<br><img src="http://cdn.mmmxcc.cn/blog/20170213/165000570.png?imageMogr2/thumbnail/!60p" alt="搬砖的地方"><br>当时实习的时候，认识了许和高，许  瘦瘦高高的风格很让人喜欢。<br><img src="http://cdn.mmmxcc.cn/blog/20170213/164929902.png?imageMogr2/thumbnail/!60p" alt="许"><br>当时应该算产品助理，但是不知道自己具体该做什么。</p>
 <p>最开始只是单纯的觉得HR纪姐姐真的好漂亮，如果不能进去实习，岂不后悔莫及。</p>
 <p>进入OPPO，很多时间是跟费费和飞哥玩，认识了女神。我们玩得时候，女神总默默的拿出自己的小Iphone用<strong>百词斩</strong>背单词。</p>
 <p>有一次做展示的时候，和高 有吵，记得争论是OPPO论坛的改版问题。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/165713732.png?imageMogr2/thumbnail/!60p" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170213/165713732.png?imageMogr2/thumbnail/!60p" alt=""></p>
 <p>我第一次对产品岗心生退意</p>
 <hr>
-<h1 id="更深"><a href="#更深" class="headerlink" title="更深"></a>更深</h1><p>大三暑假，走上了考研路，想想这一辈子应该也没有这样一次机会，这么长时间的去做一件事情。可以与喜欢的女孩，朝夕相处。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/204142936.png" alt="妹子" title="">
-                </div>
-                <div class="image-caption">妹子</div>
-            </figure></p>
-<p>那时最大的梦想就是一起去吃 老五烧烤<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/204930217.png" alt="吃" title="">
-                </div>
-                <div class="image-caption">吃</div>
-            </figure></p>
+<h1 id="更深"><a href="#更深" class="headerlink" title="更深"></a>更深</h1><p>大三暑假，走上了考研路，想想这一辈子应该也没有这样一次机会，这么长时间的去做一件事情。可以与喜欢的女孩，朝夕相处。<br><img src="http://cdn.mmmxcc.cn/blog/20170213/204142936.png" alt="妹子"></p>
+<p>那时最大的梦想就是一起去吃 老五烧烤<br><img src="http://cdn.mmmxcc.cn/blog/20170213/204930217.png" alt="吃"></p>
 <hr>
 <p>去年的这个时间，知道自己成绩后一脸懵逼。没有多想，立刻动身找工作。</p>
 <p>当时有很多互联网公司在春招，因为 高  的推荐，拿到了搜狐的offer。之后又拿到了360的offer，都是做产品经理。选择了数字公司，做线上商城业务。</p>
 <p>期间发现自己可以调剂，碾转奔波的面试，终于可以继续在象牙塔读书。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/212139299.png" alt="USTC" title="">
-                </div>
-                <div class="image-caption">USTC</div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170213/212139299.png" alt="USTC"></p>
 <hr>
 <p>在360的时候，跟卢老师系统的学习了一些产品方面的知识，后来又和涛哥共事了很久。慢慢的掌握了一些产品经理的技能，比如不要重复发明轮子。现有的组件可以用上的，就尽量不要重复开发，提高共用性，需求的快速化迭代。如何将已有的功能，逻辑性的展示出来。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/212229338.png" alt="疾病症状搜索" title="">
-                </div>
-                <div class="image-caption">疾病症状搜索</div>
-            </figure>
-<p>之后，自己接手<a href="http://g.360haoyao.com/" target="_blank" rel="external">360全球好药</a>的产品工作。看着薛姐、静姐、俊哥哥、欣欣，他们付出那么多心血，真心希望这个项目可以成功。页面还是我画的那个样子，好熟悉，时间过得真快。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/212535737.png?imageMogr2/thumbnail/!60p" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170213/212229338.png" alt="疾病症状搜索"></p>
+<p>之后，自己接手<a href="http://g.360haoyao.com/" target="_blank" rel="external">360全球好药</a>的产品工作。看着薛姐、静姐、俊哥哥、欣欣，他们付出那么多心血，真心希望这个项目可以成功。页面还是我画的那个样子，好熟悉，时间过得真快。<br><img src="http://cdn.mmmxcc.cn/blog/20170213/212535737.png?imageMogr2/thumbnail/!60p" alt=""></p>
 <p>一开始，这个项目跟我对接业务的是金，金 是武大生物学硕士。真是条条大道通CS，后来金跳槽去了杭州。之后跟我对接的是超哥，超哥又跳槽去了<a href="http://www.pinduoduo.com/" target="_blank" rel="external">拼少少</a>。我都有点怀疑自己了……</p>
 <p>上次跟超超聊，又升值加薪了，就差一个白富美。</p>
 <p>期间发生了一些事，再加上我本身不喜与人当面争执，又一次对产品岗位心生退意</p>
@@ -1466,33 +1119,14 @@
     <published>2017-02-13T05:36:02.000Z</published>
     <updated>2017-02-13T05:38:30.441Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.6：</strong>使用 Python 生成类似于下图中的<strong>字母验证码图片</strong><br>查看更多于本人博客：<a href="https://feiyang.li/">李飞阳</a></p>
 </blockquote>
 <hr>
 <a id="more"></a>
 <h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>我们用随机颜色填充背景，再画上文字，最后对图像进行模糊，得到验证码图片如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont, ImageFilter</div><div class="line"></div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"><span class="comment"># 随机字母:</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">rndChar</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> chr(random.randint(<span class="number">65</span>, <span class="number">90</span>))</div><div class="line"></div><div class="line"><span class="comment"># 随机颜色1:</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">rndColor</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> (random.randint(<span class="number">64</span>, <span class="number">255</span>), random.randint(<span class="number">64</span>, <span class="number">255</span>), random.randint(<span class="number">64</span>, <span class="number">255</span>))</div><div class="line"></div><div class="line"><span class="comment"># 随机颜色2:</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">rndColor2</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> (random.randint(<span class="number">32</span>, <span class="number">127</span>), random.randint(<span class="number">32</span>, <span class="number">127</span>), random.randint(<span class="number">32</span>, <span class="number">127</span>))</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">compose</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># 240 x 60:</span></div><div class="line">    width = <span class="number">240</span></div><div class="line">    height = <span class="number">60</span></div><div class="line">    image = Image.new(<span class="string">'RGB'</span>, (width, height), (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</div><div class="line">    <span class="comment"># 创建Font对象:</span></div><div class="line">    font = ImageFont.truetype(<span class="string">'C:/windows/fonts/Arial.ttf'</span>, <span class="number">36</span>)</div><div class="line">    <span class="comment"># 创建Draw对象:</span></div><div class="line">    draw = ImageDraw.Draw(image)</div><div class="line">    <span class="comment"># 填充每个像素:</span></div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(width):</div><div class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> range(height):</div><div class="line">            draw.point((x, y), fill=rndColor())</div><div class="line">    <span class="comment"># 输出文字:</span></div><div class="line">    letter = [] </div><div class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">        letter.append(rndChar())</div><div class="line">        draw.text((<span class="number">60</span> * t + <span class="number">10</span>, <span class="number">10</span>), letter[t], font=font, fill=rndColor2())</div><div class="line">    <span class="comment"># 模糊:</span></div><div class="line">    image.save(<span class="string">'code.jpg'</span>, <span class="string">'jpeg'</span>)</div><div class="line">    image = image.filter(ImageFilter.BLUR)</div><div class="line">    image.save(<span class="string">'filter.jpg'</span>, <span class="string">'jpeg'</span>)</div><div class="line">    <span class="keyword">print</span> (letter)</div><div class="line">compose()</div></pre></td></tr></table></figure></p>
-<p>输出验证码原本数字：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/132814657.png" alt="运行结果" title="">
-                </div>
-                <div class="image-caption">运行结果</div>
-            </figure><br>模糊前：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/133458968.jpg" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure>
-<p><code>image = image.filter(ImageFilter.BLUR)    # 模糊:</code><br>模糊后：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/133523965.jpg" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure></p>
+<p>输出验证码原本数字：<br><img src="http://cdn.mmmxcc.cn/blog/20170213/132814657.png" alt="运行结果"><br>模糊前：</p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170213/133458968.jpg" alt="mark"><br><code>image = image.filter(ImageFilter.BLUR)    # 模糊:</code><br>模糊后：<br><img src="http://cdn.mmmxcc.cn/blog/20170213/133523965.jpg" alt="mark"></p>
 <p>如果运行的时候报错：<br><code>IOError: cannot open resource</code></p>
 <p>这是因为PIL无法定位到字体文件的位置，可以根据操作系统提供绝对路径，比如：<br><code>&#39;/Library/Fonts/Arial.ttf&#39;</code></p>
 <p>要详细了解PIL的强大功能，请请参考Pillow官方文档：<a href="https://pillow.readthedocs.io/en/4.0.x/" target="_blank" rel="external">https://pillow.readthedocs.io/en/4.0.x/</a></p>
@@ -1524,21 +1158,14 @@
     <published>2017-02-13T02:33:53.000Z</published>
     <updated>2017-02-13T05:37:50.976Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。题目1.5：你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。查看更多于本人博客：<a href="https://feiyang.li/">李飞阳</a></p>
 </blockquote>
 <hr>
 <a id="more"></a>
 <p>使用python来处理图片是非常方便的，下面提供一小段python处理图片的代码，需要安装图像处理工具包PIL(Python Image Library)。</p>
 <h1 id="安装PIL"><a href="#安装PIL" class="headerlink" title="安装PIL"></a>安装PIL</h1><p>我用的是anaconda(一个开源的Python发行版本，包含了常用的数据科学库。)，其中自带了PIL和Pillow，但是不能用，真是(ಥ _ ಥ) 。<br>检查自己电脑是否支持PIL，可以在Python shell 页面输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">from PIL import Image</div></pre></td></tr></table></figure></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/102210566.png" alt="Image" title="">
-                </div>
-                <div class="image-caption">Image</div>
-            </figure>
-<p>如果没有报错的话，就可以代表正常。如果报错说<strong>[importError: <em>No</em> <em>module</em> <em>named</em> <em>images</em>]</strong>，使用pip卸载pillow，重新安装应该就可以了.</p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170213/102210566.png" alt="Image"><br>如果没有报错的话，就可以代表正常。如果报错说<strong>[importError: <em>No</em> <em>module</em> <em>named</em> <em>images</em>]</strong>，使用pip卸载pillow，重新安装应该就可以了.</p>
 <hr>
 <h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>稍微注意一下，图片的宽高是两个数字，不能理所当然的认为图片都是宽大于高的。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os  </div><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image  </div><div class="line">pathDir=<span class="string">'F:\CloudMusic'</span>  </div><div class="line">os.chdir(pathDir)  </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_imglist</span><span class="params">()</span>:</span> <span class="comment">#获取照片名称list  </span></div><div class="line">    img_list=[]  </div><div class="line">    list_dir=os.listdir(pathDir)  </div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> list_dir:  </div><div class="line">        <span class="keyword">if</span> <span class="string">'.jpg'</span> <span class="keyword">in</span> x:  </div><div class="line">            img_list.append(x)  </div><div class="line">        <span class="keyword">else</span>:  </div><div class="line">            print(<span class="string">"This is not a picture: "</span>+x)  </div><div class="line">    <span class="keyword">return</span> img_list  </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">modify_imgsize</span><span class="params">()</span>:</span>  </div><div class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> get_imglist():      </div><div class="line">        img=Image.open(filename)  </div><div class="line">        <span class="keyword">if</span> max(img.size)&gt;<span class="number">1136</span>:  </div><div class="line">            value=max(img.size)/<span class="number">1136.0</span>  </div><div class="line">            newsize =(int(img.size[<span class="number">0</span>]/value),int(img.size[<span class="number">1</span>]/value)) </div><div class="line">            newimg = img.resize(newsize,Image.ANTIALIAS) <span class="comment">#修改大小                 </span></div><div class="line">            newimg.save(<span class="string">'new_'</span>+filename)  </div><div class="line">        <span class="keyword">else</span>:  </div><div class="line">            print(<span class="string">"This picture is availabe:"</span>+filename)  </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    modify_imgsize()</div></pre></td></tr></table></figure></p>
 ]]></content>
@@ -1568,7 +1195,7 @@
     <published>2017-02-11T12:16:52.000Z</published>
     <updated>2017-02-17T06:12:58.915Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。</p>
 </blockquote>
 <hr>
@@ -1577,30 +1204,12 @@
 <h1 id="正文部分"><a href="#正文部分" class="headerlink" title="正文部分"></a>正文部分</h1><h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>任一个英文的纯文本文件，统计其中的单词出现的个数。<br>参考英文：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">If you are looking for someone you can pour out your love to, let me suggest the empowered woman. The empowered woman knows what she wants, knows how to get it, knows how to live fully, and she knows how to love you back without needing anyone’s approval or recognition. An empowered woman is unarguably one of the most magnificent beings you will ever come in contact with. Read on and find 10 reason why you should absolutely love and embrace the empowered women in your life! . </div><div class="line"></div><div class="line">1. She knows how to love you in returnIt is difficult to give what you don’t have. It is impossible to love someone and feel fulfilled when they can’t love you in return because they don’t love themselves. This will never happen to you when you love an empowered woman. She loves herself (not in a narcissistic manner). In turn, she appreciates who you are and loves you in return. She will love you just like you deserve to be loved. </div><div class="line"></div><div class="line">2. She will inspire youWhen life puts you down and you are at the end of your rope, the empowered woman will be there to see you through. Her drive, enthusiasm and (at times) hopeless optimism will inspire you to carry on despite the obstacles you face. </div><div class="line"></div><div class="line">3. She is not afraid of failureWhile many out there are thoroughly terrified of failure, the empowered woman understands that failures are simply stepping stones in life. How can you not love someone that is thoroughly unafraid to try, fail, and give it a shot all over again?! </div><div class="line"></div><div class="line"></div><div class="line">4. She is all about the legacyWhile most people are focused on the car, the house, the job, and corner office; the empowered woman is focused on leaving a legacy that will inspire others and change the world. The empowered woman is focused on empowering others to maximize their potential and fulfill their purpose. She is all about inspiring others to look beyond themselves and live a life of service to others.</div><div class="line"></div><div class="line"></div><div class="line"> 5. She can laugh at her mistakes……and learn from them as well! She understands mistakes are part of the journey. The empowered woman can laugh and learn from her mistakes to ensure they never happen again. </div><div class="line"></div><div class="line"></div><div class="line">6. She can be vulnerableThe empowered woman understands there is no debt in relationships without vulnerability. Although she is emotionally strong, she is willing to laugh and cry with you because all of these emotions are an essential part of life. </div><div class="line"></div><div class="line"></div><div class="line">7. She can speak her mindWhile everyone else is too concerned with what others may think or say, the empowered woman is not afraid to speak her mind. She understands that her value comes from within, not from what others say or think about her. </div><div class="line"></div><div class="line"></div><div class="line">8. She knows when to remain quietShe lives by Abe Lincoln’s words, “Better to remain silent and be thought a fool, than to speak out and remove all doubt.” </div><div class="line"></div><div class="line"></div><div class="line">9. She knows how to have funWhether it is at the symphony or at a ball game, the empowered woman understands life is made up of experiences with people – not the places you go. She is able to live in the moment and enjoy it fully without being concerned for the future. After all, who’s got a guaranteed future?</div><div class="line"></div><div class="line"></div><div class="line"> 10. She is not afraid of changeWhile most people rather continue on living unfulfilled lives as long as their comfort zone remains intact, the empowered woman is all about embracing change. She understands growth cannot happen without change. She understands that change is the gift life offers you to choose your destiny. Therefore, she is not afraid of change because it is her stepping stone towards success.</div></pre></td></tr></table></figure></p>
 <p><a href="http://cdn.mmmxcc.cn/blog/20170211/203305485.txt" target="_blank" rel="external">下载链接</a><br>将文件下载到python的<strong>工作路径</strong>里去，如果不知道哪里是工作路径，输入<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">#获取当前工作目录</div><div class="line">os.getcwd()</div><div class="line">#更改当前工作目录</div><div class="line">os.chdir('d:\')</div><div class="line">os.getcwd()</div></pre></td></tr></table></figure></p>
 <h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p>每一步我都尽量附带上了解释<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">replace</span><span class="params">(s)</span>:</span></div><div class="line">    <span class="keyword">if</span> s.group(<span class="number">1</span>) == <span class="string">'n\'t'</span>:</div><div class="line">        <span class="keyword">return</span> s.group(<span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> <span class="string">' '</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span><span class="params">(filename=<span class="string">'203305485.txt'</span>)</span>:</span></div><div class="line">    <span class="comment"># 使用lambda来定义简单的函数</span></div><div class="line">    dic = defaultdict(<span class="keyword">lambda</span>: <span class="number">0</span>)<span class="comment">#dic = defaultdict(int)也可以</span></div><div class="line">    <span class="keyword">with</span> open(filename, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        data = f.read()</div><div class="line">    <span class="comment"># 全部变为小写字母</span></div><div class="line">    data = data.lower()</div><div class="line">    <span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line">    data = re.sub(<span class="string">r'(n[\']t)|([\W\d])'</span>, replace, data)</div><div class="line">    datalist = re.split(<span class="string">r'[\s\n]+'</span>, data)</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> datalist:</div><div class="line">        dic[item] += <span class="number">1</span></div><div class="line">    <span class="keyword">del</span> dic[<span class="string">''</span>]</div><div class="line">    <span class="keyword">return</span> dic</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    dic = cal()</div><div class="line">    <span class="keyword">for</span> key, val <span class="keyword">in</span> dic.items():</div><div class="line">        print(<span class="string">'%15s  ----&gt;   %3s'</span> % (key,val))</div></pre></td></tr></table></figure></p>
-<p>运行结果如下：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170211/204153138.png" alt="结果" title="">
-                </div>
-                <div class="image-caption">结果</div>
-            </figure></p>
+<p>运行结果如下：<br><img src="http://cdn.mmmxcc.cn/blog/20170211/204153138.png" alt="结果"></p>
 <h3 id="增加排序函数"><a href="#增加排序函数" class="headerlink" title="增加排序函数"></a>增加排序函数</h3><p>代码有参考 《利用python进行数据分析》<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">top_counts</span><span class="params">(dic, n=<span class="number">10</span>)</span>:</span></div><div class="line">    value_key_pairs = [(count, tz) <span class="keyword">for</span> tz, count <span class="keyword">in</span> dic.items()]</div><div class="line">    value_key_pairs.sort()</div><div class="line">    <span class="keyword">return</span> value_key_pairs[-n:]</div><div class="line">top_counts(dic)</div></pre></td></tr></table></figure></p>
-<p>运行结果如下：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170211/204402151.png" alt="结果" title="">
-                </div>
-                <div class="image-caption">结果</div>
-            </figure><br>可以看出，人们最喜欢用的词是定冠词<strong>the</strong>，下来是介词<strong>to</strong>…….</p>
+<p>运行结果如下：<br><img src="http://cdn.mmmxcc.cn/blog/20170211/204402151.png" alt="结果"><br>可以看出，人们最喜欢用的词是定冠词<strong>the</strong>，下来是介词<strong>to</strong>…….</p>
 <hr>
 <h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>最近发现collections模块的<em>Counter</em>类 ，<br>导入语句是：<code>from collections import Counter</code>，作用是：<strong>定义一个list数组，求数组中每个元素出现的次数</strong><br>修改之后代码量要少很多，而且可以直接排列好顺序~<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span><span class="params">(filename=<span class="string">'203305485.txt'</span>)</span>:</span></div><div class="line">    <span class="keyword">with</span> open(filename, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        data = f.read()</div><div class="line">    data = data.lower()</div><div class="line">    <span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line">    datalist = re.split(<span class="string">r'[\s\n]+'</span>, data)</div><div class="line">    <span class="keyword">return</span> Counter(datalist).most_common()</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    dic = cal()</div><div class="line">    <span class="keyword">for</span> i  <span class="keyword">in</span> range(len(dic)):</div><div class="line">        print(<span class="string">'%15s  ----&gt;   %3s'</span> % (dic[i][<span class="number">0</span>],dic[i][<span class="number">1</span>]))</div></pre></td></tr></table></figure></p>
-<p>代码看起来行云流水，舒服多了。当然结论是一样的，人们还是比较喜欢说 <em>the</em> , <em>you</em>~<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170217/140823923.png" alt="修改后" title="">
-                </div>
-                <div class="image-caption">修改后</div>
-            </figure></p>
+<p>代码看起来行云流水，舒服多了。当然结论是一样的，人们还是比较喜欢说 <em>the</em> , <em>you</em>~<br><img src="http://cdn.mmmxcc.cn/blog/20170217/140823923.png" alt="修改后"></p>
 <p>以上~</p>
 ]]></content>
     
