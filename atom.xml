@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-03-25T11:03:53.964Z</updated>
+  <updated>2017-03-25T13:03:03.134Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/"/>
     <id>http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/</id>
     <published>2017-03-25T10:49:36.000Z</published>
-    <updated>2017-03-25T11:03:53.964Z</updated>
+    <updated>2017-03-25T13:03:03.134Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression</p>
@@ -45,7 +45,9 @@
 </tr>
 <tr>
 <td style="text-align:center">Cost Function</td>
-<td style="text-align:center">$J(\theta_0,\theta<em>1 )=\frac1{2m} \sum</em>{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w$</td>
+<td style="text-align:center">$J(\theta_0,\theta_1)= \frac1{2m}$</td>
+<td>$\sum_{i=1}^m$</td>
+<td>$(h_{\theta}(x^i)-y^i)^w$</td>
 </tr>
 <tr>
 <td style="text-align:center">Goal</td>
@@ -53,6 +55,7 @@
 </tr>
 </tbody>
 </table>
+<p>实在是latex在这个主题上识别的太烂，没办法拆开。</p>
 <h2 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h2><ul>
 <li>Hypothesis:<br>$$h_{\theta}={\theta}_0+{\theta}_1x$$<br>${\theta}_0$和${\theta}_1$称为模型参数</li>
 </ul>
