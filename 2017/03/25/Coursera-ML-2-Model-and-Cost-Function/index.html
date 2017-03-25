@@ -32,9 +32,8 @@
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170325/134518022.png">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170325/152030096.png">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170325/154825347.png">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170325/190347202.png">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170325/182301586.png">
-<meta property="og:updated_time" content="2017-03-25T13:10:55.725Z">
+<meta property="og:updated_time" content="2017-03-25T13:55:08.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coursera ML(2)-Model and Cost Function">
 <meta name="twitter:description" content="Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression">
@@ -214,9 +213,7 @@
 </tr>
 <tr>
 <td style="text-align:center">Cost Function</td>
-<td style="text-align:center">$J(\theta_0,\theta_1)= \frac1{2m}$</td>
-<td>$\sum_{i=1}^m$</td>
-<td>$(h_{\theta}(x^i)-y^i)^w$</td>
+<td style="text-align:center"> $J(\theta_0,\theta_1)= \frac1{2m}\sum_{i=1}^m(h_{\theta}(x^i)-y^i)^w$ </td>
 </tr>
 <tr>
 <td style="text-align:center">Goal</td>
@@ -224,7 +221,6 @@
 </tr>
 </tbody>
 </table>
-<p>实在是latex在这个主题上识别的太烂，没办法拆开。</p>
 <h2 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h2><ul>
 <li>Hypothesis:<br>$$h_{\theta}={\theta}_0+{\theta}_1x$$<br>${\theta}_0$和${\theta}_1$称为模型参数</li>
 </ul>
@@ -266,13 +262,9 @@
             </figure>
 </li>
 </ul>
-<h1 id="Gradient-Descent-For-Linear-Regression"><a href="#Gradient-Descent-For-Linear-Regression" class="headerlink" title="Gradient Descent For Linear Regression"></a>Gradient Descent For Linear Regression</h1><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170325/190347202.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<h1 id="Gradient-Descent-For-Linear-Regression"><a href="#Gradient-Descent-For-Linear-Regression" class="headerlink" title="Gradient Descent For Linear Regression"></a>Gradient Descent For Linear Regression</h1>
+ $$\begin{align*} \text{repeat until convergence: } \lbrace & \newline \theta_0 := & \theta_0 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m}(h_\theta(x_{i}) - y_{i}) \newline \theta_1 := & \theta_1 - \alpha \frac1m \sum\limits_{i=1}^m\left((h_\theta(x_i) - y_i) x_i\right) \newline \rbrace& \end{align*}$$
+
 <p> where m is the size of the training set, $\theta_0$ a constant that will be changing simultaneously with $\theta_1$  and $x_i y_i$are values of the given training set (data).</p>
 <center><figure class="image-bubble">
                 <div class="img-lightbox">
@@ -295,7 +287,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-03-25T13:10:55.725Z" itemprop="dateUpdated">2017年3月25日 21:10</time>
+    最后更新时间：<time datetime="2017-03-25T13:55:08.736Z" itemprop="dateUpdated">2017年3月25日 21:55</time>
 </span><br>
 
 
