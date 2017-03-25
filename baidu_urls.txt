@@ -1,3 +1,4 @@
+http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/
 http://feiyang.li/2017/03/24/dynamic-programming/
 http://feiyang.li/2017/03/17/python-mnist/
 http://feiyang.li/2017/03/17/python-struct/
@@ -37,4 +38,3 @@ http://feiyang.li/2016/12/15/Python_use_urllib2/
 http://feiyang.li/2016/12/13/get_html/
 http://feiyang.li/2016/10/28/forever_7012/
 http://feiyang.li/2016/10/28/C_read/
-http://feiyang.li/2016/10/28/book/

@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/</loc>
+    
+    <lastmod>2017-03-25T11:03:53.964Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/03/16/Ubuntu-caffe/</loc>
+    
+    <lastmod>2017-03-25T10:51:10.817Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/14/Coursera-ML/</loc>
+    
+    <lastmod>2017-03-25T10:51:06.384Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/03/09/Python-quick-order/</loc>
+    
+    <lastmod>2017-03-25T05:10:12.327Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2017/03/24/dynamic-programming/</loc>
     
     <lastmod>2017-03-24T09:26:24.294Z</lastmod>
@@ -30,13 +58,6 @@
   </url>
   
   <url>
-    <loc>http://feiyang.li/2017/03/09/Python-quick-order/</loc>
-    
-    <lastmod>2017-03-23T11:31:34.273Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://feiyang.li/2017/03/17/python-mnist/</loc>
     
     <lastmod>2017-03-17T08:28:18.253Z</lastmod>
@@ -54,13 +75,6 @@
     <loc>http://feiyang.li/2017/01/12/jupyter-notebook/</loc>
     
     <lastmod>2017-03-16T12:26:02.941Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/03/16/Ubuntu-caffe/</loc>
-    
-    <lastmod>2017-03-16T02:57:42.391Z</lastmod>
     
   </url>
   
@@ -180,13 +194,6 @@
     <loc>http://feiyang.li/2016/12/31/IPyhton-notebook/</loc>
     
     <lastmod>2017-02-15T12:08:27.233Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/02/14/Coursera-ML/</loc>
-    
-    <lastmod>2017-02-14T11:24:58.929Z</lastmod>
     
   </url>
   

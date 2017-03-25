@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-03-24T09:26:24.294Z</updated>
+  <updated>2017-03-25T11:03:53.964Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -16,13 +16,126 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Coursera ML(2)-Model and Cost Function</title>
+    <link href="http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/"/>
+    <id>http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/</id>
+    <published>2017-03-25T10:49:36.000Z</published>
+    <updated>2017-03-25T11:03:53.964Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="Model-and-Cost-Function"><a href="#Model-and-Cost-Function" class="headerlink" title="Model and Cost Function"></a>Model and Cost Function</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">Tables</th>
+<th style="text-align:center">Are</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Hypothesis</td>
+<td style="text-align:center">$$h_{\theta}={\theta}_0+{\theta}_1x$$</td>
+</tr>
+<tr>
+<td style="text-align:center">Parameter</td>
+<td style="text-align:center">${\theta}_0$，${\theta}_1$</td>
+</tr>
+<tr>
+<td style="text-align:center">Cost Function</td>
+<td style="text-align:center">$J(\theta_0,\theta<em>1 )=\frac1{2m} \sum</em>{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w$</td>
+</tr>
+<tr>
+<td style="text-align:center">Goal</td>
+<td style="text-align:center">$minimiseJ(\theta_0,\theta_1)$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h2><ul>
+<li>Hypothesis:<br>$$h_{\theta}={\theta}_0+{\theta}_1x$$<br>${\theta}_0$和${\theta}_1$称为模型参数</li>
+</ul>
+<h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><p>We can measure the accuracy of our hypothesis function by using a <strong>cost function</strong>. his takes an average difference (actually a fancier version of an average) of all the results of the hypothesis with inputs from x’s and the actual output y’s. 如何尽可能的将直线与我们的数据相拟合</p>
+<p>$J(\theta_0,\theta<em>1 )=\frac1{2m} \sum</em>{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w$</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/134518022.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="Parameter-Learning"><a href="#Parameter-Learning" class="headerlink" title="Parameter Learning"></a>Parameter Learning</h1><h2 id="Gradient-descent-idea"><a href="#Gradient-descent-idea" class="headerlink" title="Gradient descent idea"></a>Gradient descent idea</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/152030096.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<blockquote>
+<p>Turns out, that if you’re standing at that point on the hill, you look all around and you find that the best direction is to take a little step downhill is roughly that direction. Okay, and now you’re at this new point on your hill. You’re gonna, again, look all around and say what direction should I step in order to take a little baby step downhill? And if you do that and take another step, you take a step in that direction. </p>
+</blockquote>
+<h2 id="Gradient-descent-algorithm"><a href="#Gradient-descent-algorithm" class="headerlink" title="Gradient descent algorithm"></a>Gradient descent algorithm</h2><p>repeat until convergence:{<br>    $\theta_j:=\theta_j-\alpha\frac\partial{\partial\theta_j}J(\theta_0,\theta_1)$<br>}</p>
+<ul>
+<li>use <strong>:=</strong> to denote assignment, so it’s the assignment operator.</li>
+<li>$\alpha$ called:learning rate.controls how big a step we take downhill with creating descent. </li>
+<li>$\theta_0,\theta_1 $should be updated simultaneously(using multiple temp var should work!)<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/154825347.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<h1 id="Gradient-Descent-For-Linear-Regression"><a href="#Gradient-Descent-For-Linear-Regression" class="headerlink" title="Gradient Descent For Linear Regression"></a>Gradient Descent For Linear Regression</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/190347202.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p> where m is the size of the training set, $\theta_0$ a constant that will be changing simultaneously with $\theta_1$  and $x_i y_i$are values of the given training set (data).</p>
+<center><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/182301586.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></center>
+
+<ul>
+<li><p>The $J(θ_0,θ_1)$ is a convex function, which means it has only one global minimun, which means gradient descent will always hit the best fit</p>
+</li>
+<li><p>“Batch” Gradient Descent: “Batch” means the algo is trained from all the samples every time</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+  </entry>
+  
+  <entry>
     <title>算法导论 第15章 动态规划</title>
     <link href="http://feiyang.li/2017/03/24/dynamic-programming/"/>
     <id>http://feiyang.li/2017/03/24/dynamic-programming/</id>
     <published>2017-03-24T09:05:47.000Z</published>
     <updated>2017-03-24T09:26:24.294Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>《算法导论》这门课的老师是<a href="http://cs.ustc.edu.cn/szdw/bdjs/201006/t20100614_22062.html" target="_blank" rel="external">黄刘生</a>和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。</p>
 </blockquote>
 <hr>
@@ -165,7 +278,7 @@
     <published>2017-03-17T08:25:27.000Z</published>
     <updated>2017-03-17T08:28:18.253Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以<code>.idx1-ubyte</code>后缀，包含60000个训练图像。将这些图像展示出来，需要利用到<a href="http://feiyang.li/2017/03/17/python-struct/">struct模块</a>。</p>
 </blockquote>
 <hr>
@@ -224,9 +337,9 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine-Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -237,7 +350,7 @@
     <published>2017-03-17T06:08:07.000Z</published>
     <updated>2017-03-17T06:09:27.006Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p><a href="https://docs.python.org/3/library/struct.html#module-struct" target="_blank" rel="external">struct</a> — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具<strong>Python struct 模块</strong>。</p>
 </blockquote>
 <hr>
@@ -404,9 +517,9 @@
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine-Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -415,9 +528,9 @@
     <link href="http://feiyang.li/2017/03/16/Ubuntu-caffe/"/>
     <id>http://feiyang.li/2017/03/16/Ubuntu-caffe/</id>
     <published>2017-03-16T02:52:28.000Z</published>
-    <updated>2017-03-16T02:57:42.391Z</updated>
+    <updated>2017-03-25T10:51:10.817Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式</p>
 </blockquote>
 <hr>
@@ -471,9 +584,9 @@
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -484,7 +597,7 @@
     <published>2017-03-15T05:22:44.000Z</published>
     <updated>2017-03-16T02:57:34.710Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。</p>
 </blockquote>
 <hr>
@@ -539,11 +652,11 @@
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
     
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -554,7 +667,7 @@
     <published>2017-03-11T07:06:14.000Z</published>
     <updated>2017-03-13T10:45:25.356Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>但行好事，莫问前程。真正能做到的能有几个呢？</p>
 </blockquote>
 <hr>
@@ -685,7 +798,7 @@
     <published>2017-03-10T05:52:53.000Z</published>
     <updated>2017-03-10T05:58:53.620Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本文介绍了<code>raw_input</code> 和 <code>input</code>在<code>python2</code>和<code>python3</code>上的区别，以及如何利用正则表达式和<code>input</code>键盘输入一维数组和二维数组。</p>
 </blockquote>
 <hr>
@@ -756,9 +869,9 @@
     <link href="http://feiyang.li/2017/03/09/Python-quick-order/"/>
     <id>http://feiyang.li/2017/03/09/Python-quick-order/</id>
     <published>2017-03-09T14:22:16.000Z</published>
-    <updated>2017-03-23T11:31:34.273Z</updated>
+    <updated>2017-03-25T05:10:12.327Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>快速排序是一种非常优秀的排序方法 </p>
 </blockquote>
 <a id="more"></a>
@@ -810,7 +923,7 @@
     <published>2017-03-03T06:17:00.000Z</published>
     <updated>2017-03-06T14:07:04.569Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>使用github学生优惠内的digitalocean，一键搭建vpn。获得60刀，免费用一年~</p>
 </blockquote>
 <hr>
@@ -952,7 +1065,7 @@
     <published>2017-02-26T13:28:39.000Z</published>
     <updated>2017-02-28T03:22:11.178Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>jetbrains 家的东西都非常好看，但是价格贵的令人发指，所以我搭建了一个 Pycharm激活服务器，可以用来激活 Pycharm，IntelliJ IDEA，WebStorm。避免频繁更换激活码的问题。</p>
 </blockquote>
 <hr>
@@ -1022,7 +1135,7 @@
     <published>2017-02-24T12:57:01.000Z</published>
     <updated>2017-02-25T05:59:28.975Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง </p>
 </blockquote>
 <hr>
@@ -1101,7 +1214,7 @@
     <published>2017-02-18T11:37:59.000Z</published>
     <updated>2017-02-18T12:41:10.174Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>上手使用Python的Web框架– Django</p>
 </blockquote>
 <hr>
@@ -1249,7 +1362,7 @@
     <published>2017-02-17T09:04:55.000Z</published>
     <updated>2017-02-17T09:07:37.504Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目2.1</strong>： 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。</p>
 </blockquote>
 <hr>
@@ -1294,7 +1407,7 @@
     <published>2017-02-16T13:59:43.000Z</published>
     <updated>2017-02-17T04:33:14.710Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.9</strong>： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</p>
 </blockquote>
 <hr>
@@ -1350,7 +1463,7 @@
     <published>2017-02-15T14:07:40.000Z</published>
     <updated>2017-02-15T14:09:04.064Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.8：</strong> 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。</p>
 </blockquote>
 <hr>
@@ -1401,7 +1514,7 @@
     <published>2017-02-15T11:28:20.000Z</published>
     <updated>2017-02-16T14:24:00.864Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.7：</strong>敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。</p>
 </blockquote>
 <hr>
@@ -1445,13 +1558,13 @@
   </entry>
   
   <entry>
-    <title>Coursera ML笔记-机器学习基础概念</title>
+    <title>Coursera ML(1)-机器学习基础概念</title>
     <link href="http://feiyang.li/2017/02/14/Coursera-ML/"/>
     <id>http://feiyang.li/2017/02/14/Coursera-ML/</id>
     <published>2017-02-14T11:19:17.000Z</published>
-    <updated>2017-02-14T11:24:58.929Z</updated>
+    <updated>2017-03-25T10:51:06.384Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>在学习的过程中，抓住基本概念是非常重要的，这样可以防止自己陷入某些细节中无法自拔，可以让自己站在比较宏观的层面上看待问题。 更多见：<a href="https://feiyang.li/">李飞阳</a></p>
 </blockquote>
 <hr>
@@ -1493,9 +1606,9 @@
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -1506,7 +1619,7 @@
     <published>2017-02-13T13:39:16.000Z</published>
     <updated>2017-03-11T07:07:30.991Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>对于产品经理来说，自己所负责的产品的表现就是自己的履历。</p>
 </blockquote>
 <hr>
@@ -1609,7 +1722,7 @@
     <published>2017-02-13T05:36:02.000Z</published>
     <updated>2017-02-13T05:38:30.441Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.6：</strong>使用 Python 生成类似于下图中的<strong>字母验证码图片</strong><br>查看更多于本人博客：<a href="https://feiyang.li/">李飞阳</a></p>
 </blockquote>
 <hr>
@@ -1646,50 +1759,6 @@
     
       &lt;blockquote&gt;
 &lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。&lt;strong&gt;题目1.6：&lt;/strong&gt;使用 Python 生成类似于下图中的&lt;strong&gt;字母验证码图片&lt;/strong&gt;&lt;br&gt;查看更多于本人博客：&lt;a href=&quot;https://feiyang.li/&quot;&gt;李飞阳&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
-    
-      <category term="图片处理" scheme="http://feiyang.li/tags/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第1.5题：使用Python处理图片</title>
-    <link href="http://feiyang.li/2017/02/13/python-camp5/"/>
-    <id>http://feiyang.li/2017/02/13/python-camp5/</id>
-    <published>2017-02-13T02:33:53.000Z</published>
-    <updated>2017-02-13T05:37:50.976Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
-<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。题目1.5：你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。查看更多于本人博客：<a href="https://feiyang.li/">李飞阳</a></p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<p>使用python来处理图片是非常方便的，下面提供一小段python处理图片的代码，需要安装图像处理工具包PIL(Python Image Library)。</p>
-<h1 id="安装PIL"><a href="#安装PIL" class="headerlink" title="安装PIL"></a>安装PIL</h1><p>我用的是anaconda(一个开源的Python发行版本，包含了常用的数据科学库。)，其中自带了PIL和Pillow，但是不能用，真是(ಥ _ ಥ) 。<br>检查自己电脑是否支持PIL，可以在Python shell 页面输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">from PIL import Image</div></pre></td></tr></table></figure></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/102210566.png" alt="Image" title="">
-                </div>
-                <div class="image-caption">Image</div>
-            </figure>
-<p>如果没有报错的话，就可以代表正常。如果报错说<strong>[importError: <em>No</em> <em>module</em> <em>named</em> <em>images</em>]</strong>，使用pip卸载pillow，重新安装应该就可以了.</p>
-<hr>
-<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>稍微注意一下，图片的宽高是两个数字，不能理所当然的认为图片都是宽大于高的。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os  </div><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image  </div><div class="line">pathDir=<span class="string">'F:\CloudMusic'</span>  </div><div class="line">os.chdir(pathDir)  </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_imglist</span><span class="params">()</span>:</span> <span class="comment">#获取照片名称list  </span></div><div class="line">    img_list=[]  </div><div class="line">    list_dir=os.listdir(pathDir)  </div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> list_dir:  </div><div class="line">        <span class="keyword">if</span> <span class="string">'.jpg'</span> <span class="keyword">in</span> x:  </div><div class="line">            img_list.append(x)  </div><div class="line">        <span class="keyword">else</span>:  </div><div class="line">            print(<span class="string">"This is not a picture: "</span>+x)  </div><div class="line">    <span class="keyword">return</span> img_list  </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">modify_imgsize</span><span class="params">()</span>:</span>  </div><div class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> get_imglist():      </div><div class="line">        img=Image.open(filename)  </div><div class="line">        <span class="keyword">if</span> max(img.size)&gt;<span class="number">1136</span>:  </div><div class="line">            value=max(img.size)/<span class="number">1136.0</span>  </div><div class="line">            newsize =(int(img.size[<span class="number">0</span>]/value),int(img.size[<span class="number">1</span>]/value)) </div><div class="line">            newimg = img.resize(newsize,Image.ANTIALIAS) <span class="comment">#修改大小                 </span></div><div class="line">            newimg.save(<span class="string">'new_'</span>+filename)  </div><div class="line">        <span class="keyword">else</span>:  </div><div class="line">            print(<span class="string">"This picture is availabe:"</span>+filename)  </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    modify_imgsize()</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。题目1.5：你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。查看更多于本人博客：&lt;a href=&quot;https://feiyang.li/&quot;&gt;李飞阳&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
     
