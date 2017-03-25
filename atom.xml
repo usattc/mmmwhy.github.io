@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-03-25T13:03:03.134Z</updated>
+  <updated>2017-03-25T13:10:55.725Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/"/>
     <id>http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/</id>
     <published>2017-03-25T10:49:36.000Z</published>
-    <updated>2017-03-25T13:03:03.134Z</updated>
+    <updated>2017-03-25T13:10:55.725Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression</p>
@@ -60,7 +60,13 @@
 <li>Hypothesis:<br>$$h_{\theta}={\theta}_0+{\theta}_1x$$<br>${\theta}_0$和${\theta}_1$称为模型参数</li>
 </ul>
 <h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><p>We can measure the accuracy of our hypothesis function by using a <strong>cost function</strong>. his takes an average difference (actually a fancier version of an average) of all the results of the hypothesis with inputs from x’s and the actual output y’s. 如何尽可能的将直线与我们的数据相拟合</p>
-<p>$J(\theta_0,\theta<em>1 )=\frac1{2m} \sum</em>{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w$</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/211048488.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
