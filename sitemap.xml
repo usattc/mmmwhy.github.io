@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/</loc>
+    
+    <lastmod>2017-03-26T11:29:16.112Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/</loc>
     
     <lastmod>2017-03-25T13:55:08.736Z</lastmod>
