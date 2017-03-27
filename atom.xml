@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-03-26T11:39:57.013Z</updated>
+  <updated>2017-03-27T09:02:05.803Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/"/>
     <id>http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/</id>
     <published>2017-03-26T11:00:29.000Z</published>
-    <updated>2017-03-26T11:39:57.013Z</updated>
+    <updated>2017-03-27T09:02:05.803Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Multivariate Linear Regression and Programming Exercise 1</p>
@@ -67,7 +67,7 @@
 <li><p>computeCost</p>
  
 $$h_\theta (x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_3 + \cdots + \theta_n x_n$$
-$$J(\theta_0,\theta_1 )=\frac1{2m} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w$$
+$$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w$$
  
 </li>
 <li><p>gradientDescent</p>
