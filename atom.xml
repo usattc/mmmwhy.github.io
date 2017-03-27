@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-03-27T09:02:05.803Z</updated>
+  <updated>2017-03-27T11:50:49.766Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -16,11 +16,151 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Coursera ML(4)-Logistic Regression</title>
+    <link href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/"/>
+    <id>http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/</id>
+    <published>2017-03-27T11:13:38.000Z</published>
+    <updated>2017-03-27T11:50:49.766Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/3" target="_blank" rel="external">第三周Coursera课程</a>  <strong>binary classification problem</strong></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p><strong>Classification is not actually a linear function.</strong></p>
+<h1 id="Classification-and-Representation"><a href="#Classification-and-Representation" class="headerlink" title="Classification and Representation"></a>Classification and Representation</h1><h2 id="Hypothesis-Representation"><a href="#Hypothesis-Representation" class="headerlink" title="Hypothesis Representation"></a>Hypothesis Representation</h2><ul>
+<li>Sigmoid Function(or we called Logistic Function) $$\begin{align*}& h_\theta (x) = g ( \theta^T x ) \newline \newline& z = \theta^T x \newline& g(z) = \dfrac{1}{1 + e^{-z}}\end{align*}$$ 
+Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图为：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170327/112711489.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<ul>
+<li>$h_\theta(x)$ will give us the <strong>probability</strong> that our output is 1.</li>
+<li>Some basic knowledge of discrete $$\begin{align*}& h_\theta(x) = P(y=1 | x ; \theta) = 1 - P(y=0 | x ; \theta) \newline& P(y = 0 | x;\theta) + P(y = 1 | x ; \theta) = 1\end{align*}$$ 
+</li>
+</ul>
+<h2 id="Decision-Boundary"><a href="#Decision-Boundary" class="headerlink" title="Decision Boundary"></a>Decision Boundary</h2><ul>
+<li>translate the output of the hypothesis function as follows: $$\begin{align*}& h_\theta(x) \geq 0.5 \rightarrow y = 1 \newline& h_\theta(x) < 0.5 \rightarrow y = 0 \newline\end{align*}$$ </li>
+<li>From these statements we can now say: $$\begin{align*}& \theta^T x \geq 0 \Rightarrow y = 1 \newline& \theta^T x < 0 \Rightarrow y = 0 \newline\end{align*}$$ 
+</li>
+</ul>
+<h1 id="Logistic-Regression-Model"><a href="#Logistic-Regression-Model" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h1><h2 id="Cost-function-for-one-variable-hypothesis"><a href="#Cost-function-for-one-variable-hypothesis" class="headerlink" title="Cost function for one variable hypothesis"></a>Cost function for one variable hypothesis</h2><ul>
+<li>To let the cost function be convex for gradient descent, it should be like this: $$J(\theta) = \dfrac{1}{m} \sum_{i=1}^m \mathrm{Cost}(h_\theta(x^{(i)}),y^{(i)})$$ 
+</li>
+</ul>
+ $$Cost(h_\theta (x), y) =\begin{cases}-log(h_\theta (x)),  (y = 1) \\-log(1 - h_\theta (x)), (y = 0) \\\end{cases}$$ 
+<ul>
+<li>example $$\begin{align*}& \mathrm{Cost}(h_\theta(x),y) = 0 \text{ if } h_\theta(x) = y \newline & \mathrm{Cost}(h_\theta(x),y) \rightarrow \infty \text{ if } y = 0 \; \mathrm{and} \; h_\theta(x) \rightarrow 1 \newline & \mathrm{Cost}(h_\theta(x),y) \rightarrow \infty \text{ if } y = 1 \; \mathrm{and} \; h_\theta(x) \rightarrow 0 \newline \end{align*}$$ 
+</li>
+</ul>
+<h2 id="Simplified-Cost-Function-and-Gradient-Descent"><a href="#Simplified-Cost-Function-and-Gradient-Descent" class="headerlink" title="Simplified Cost Function and Gradient Descent"></a>Simplified Cost Function and Gradient Descent</h2><ul>
+<li><p>compress our cost function’s two conditional cases into one case:</p>
+ $$\mathrm{Cost}(h_\theta(x),y) = - y \; \log(h_\theta(x)) - (1 - y) \log(1 - h_\theta(x))$${ 
+</li>
+<li><p>entire cost function</p>
+ $$J(\theta) = - \frac{1}{m} \displaystyle \sum_{i=1}^m [y^{(i)}\log (h_\theta (x^{(i)})) + (1 - y^{(i)})\log (1 - h_\theta(x^{(i)}))]$$ 
+</li>
+</ul>
+<h2 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h2><ul>
+<li><p>the general form of gradient descent ，求偏导的得到$J(\theta)$的极值</p>
+ $$\begin{align*}& Repeat \; \lbrace \newline & \; \theta_j := \theta_j - \alpha \dfrac{\partial}{\partial \theta_j}J(\theta) \newline & \rbrace\end{align*}$$ 
+</li>
+<li><p>using calculus </p>
+ $$\frac{\partial}{\partial \theta_j} J(\theta) = \frac{1}{m}\sum\limits_{i=1}^{m}[(h_\theta (x^{(i)}) - y^{(i)})x_j^{(i)}]$$ 
+</li>
+<li><p>get</p>
+ $$\begin{align*} & Repeat \; \lbrace \newline & \; \theta_j := \theta_j - \frac{\alpha}{m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} \newline & \rbrace \end{align*}$$  
+</li>
+</ul>
+<h2 id="Multiclass-Classification-One-vs-all"><a href="#Multiclass-Classification-One-vs-all" class="headerlink" title="Multiclass Classification: One-vs-all"></a>Multiclass Classification: One-vs-all</h2><ul>
+<li>For more than 2 features of y, do logisitc regression for each feature separately</li>
+<li>Train a logistic regression classifier $h_\theta(x)$ for each class￼ to predict the probability that ￼ ￼y = i￼ ￼. </li>
+<li>To make a prediction on a new x, pick the class ￼that maximizes $ h_\theta (x) $<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170327/182954425.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<h1 id="Solving-the-Problem-of-Overfitting"><a href="#Solving-the-Problem-of-Overfitting" class="headerlink" title="Solving the Problem of Overfitting"></a>Solving the Problem of Overfitting</h1><h2 id="The-Problem-of-Overfitting"><a href="#The-Problem-of-Overfitting" class="headerlink" title="The Problem of Overfitting"></a>The Problem of Overfitting</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170327/183239547.png" alt="mark"></p>
+<h2 id="address-the-issue-of-overfitting"><a href="#address-the-issue-of-overfitting" class="headerlink" title="address the issue of overfitting"></a>address the issue of overfitting</h2><ul>
+<li>Reduce the number of features:<ul>
+<li>Manually select which features to keep.</li>
+<li>Use a model selection algorithm (studied later in the course).</li>
+</ul>
+</li>
+<li>Regularization:<ul>
+<li>Keep all the features, but reduce the magnitude of parameters $θ_j$. </li>
+<li>Regularization works well when we have a lot of slightly useful features.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170327/184128038.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>in a single summation $$min_\theta\ \dfrac{1}{2m}\  \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2 + \lambda\ \sum_{j=1}^n \theta_j^2$$ 
+</li>
+</ul>
+<p>The λ, or lambda, is the regularization parameter. It determines how much the costs of our theta parameters are inflated.</p>
+<h2 id="Regularized-Linear-Regression"><a href="#Regularized-Linear-Regression" class="headerlink" title="Regularized Linear Regression"></a>Regularized Linear Regression</h2><ul>
+<li><p>Gradient Descent</p>
+ $$\begin{align*} & \text{Repeat}\ \lbrace \newline & \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline & \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline & \rbrace \end{align*}$$ 
+</li>
+<li><p>Normal Equation</p>
+ $$\begin{align*}& \theta = \left( X^TX + \lambda \cdot L \right)^{-1} X^Ty \newline& \text{where}\ \ L = \begin{bmatrix} 0 & & & & \newline & 1 & & & \newline & & 1 & & \newline & & & \ddots & \newline & & & & 1 \newline\end{bmatrix}\end{align*}$$ 
+<ul>
+<li>L is a matrix with 0 at the top left and 1’s down the diagonal, with 0’s everywhere else. It should have dimension (n+1)×(n+1)</li>
+<li>Recall that if m ≤ n, then $X^TX$ is non-invertible. However, when we add the term λ⋅L, then $X^TX + λ⋅L $becomes invertible.</li>
+</ul>
+</li>
+</ul>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><ul>
+<li>Cost Function $$J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))\large] + \frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2$$ </li>
+<li>Gradient Descent $$\begin{align*} & \text{Repeat}\ \lbrace \newline & \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline & \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline & \rbrace \end{align*}$$ 
+<strong>j!=0</strong></li>
+</ul>
+<hr>
+<p>以上</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本节笔记对应&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/home/week/3&quot;&gt;第三周Coursera课程&lt;/a&gt;  &lt;strong&gt;binary classification problem&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Coursera ML(3)-Multivariate Linear Regression python实现</title>
     <link href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/"/>
     <id>http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/</id>
     <published>2017-03-26T11:00:29.000Z</published>
-    <updated>2017-03-27T09:02:05.803Z</updated>
+    <updated>2017-03-27T11:32:14.121Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Multivariate Linear Regression and Programming Exercise 1</p>
@@ -97,6 +237,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     
     </summary>
     
+      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
+    
     
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
@@ -111,7 +253,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <link href="http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/"/>
     <id>http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/</id>
     <published>2017-03-25T10:49:36.000Z</published>
-    <updated>2017-03-26T11:39:24.236Z</updated>
+    <updated>2017-03-27T11:35:22.375Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression</p>
@@ -213,6 +355,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 &lt;hr&gt;
     
     </summary>
+    
+      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
@@ -889,7 +1033,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <link href="http://feiyang.li/2017/03/10/python-input/"/>
     <id>http://feiyang.li/2017/03/10/python-input/</id>
     <published>2017-03-10T05:52:53.000Z</published>
-    <updated>2017-03-10T05:58:53.620Z</updated>
+    <updated>2017-03-27T11:44:05.567Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本文介绍了<code>raw_input</code> 和 <code>input</code>在<code>python2</code>和<code>python3</code>上的区别，以及如何利用正则表达式和<code>input</code>键盘输入一维数组和二维数组。</p>
@@ -949,6 +1093,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 &lt;hr&gt;
     
     </summary>
+    
+      <category term="Python_camp" scheme="http://feiyang.li/categories/Python-camp/"/>
     
     
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
@@ -1453,7 +1599,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <link href="http://feiyang.li/2017/02/17/python-camp2-1/"/>
     <id>http://feiyang.li/2017/02/17/python-camp2-1/</id>
     <published>2017-02-17T09:04:55.000Z</published>
-    <updated>2017-02-17T09:07:37.504Z</updated>
+    <updated>2017-03-27T11:44:11.367Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目2.1</strong>： 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。</p>
@@ -1484,6 +1630,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     
     </summary>
     
+      <category term="Python_camp" scheme="http://feiyang.li/categories/Python-camp/"/>
+    
     
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
@@ -1498,7 +1646,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <link href="http://feiyang.li/2017/02/16/python-camp9/"/>
     <id>http://feiyang.li/2017/02/16/python-camp9/</id>
     <published>2017-02-16T13:59:43.000Z</published>
-    <updated>2017-02-17T04:33:14.710Z</updated>
+    <updated>2017-03-27T11:44:14.250Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.9</strong>： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</p>
@@ -1540,6 +1688,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     
     </summary>
     
+      <category term="Python_camp" scheme="http://feiyang.li/categories/Python-camp/"/>
+    
     
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
@@ -1554,7 +1704,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <link href="http://feiyang.li/2017/02/15/python-camp8/"/>
     <id>http://feiyang.li/2017/02/15/python-camp8/</id>
     <published>2017-02-15T14:07:40.000Z</published>
-    <updated>2017-02-15T14:09:04.064Z</updated>
+    <updated>2017-03-27T11:44:20.470Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.8：</strong> 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。</p>
@@ -1591,6 +1741,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     
     </summary>
     
+      <category term="Python_camp" scheme="http://feiyang.li/categories/Python-camp/"/>
+    
     
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
@@ -1605,7 +1757,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <link href="http://feiyang.li/2017/02/15/python-camp7/"/>
     <id>http://feiyang.li/2017/02/15/python-camp7/</id>
     <published>2017-02-15T11:28:20.000Z</published>
-    <updated>2017-02-16T14:24:00.864Z</updated>
+    <updated>2017-03-27T11:44:17.551Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.7：</strong>敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。</p>
@@ -1641,6 +1793,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     
     </summary>
     
+      <category term="Python_camp" scheme="http://feiyang.li/categories/Python-camp/"/>
+    
     
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
@@ -1655,7 +1809,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <link href="http://feiyang.li/2017/02/14/Coursera-ML/"/>
     <id>http://feiyang.li/2017/02/14/Coursera-ML/</id>
     <published>2017-02-14T11:19:17.000Z</published>
-    <updated>2017-03-25T10:51:06.384Z</updated>
+    <updated>2017-03-27T11:41:09.516Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>在学习的过程中，抓住基本概念是非常重要的，这样可以防止自己陷入某些细节中无法自拔，可以让自己站在比较宏观的层面上看待问题。 更多见：<a href="https://feiyang.li/">李飞阳</a></p>
@@ -1698,113 +1852,12 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     
     </summary>
     
+      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
+    
     
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《结网》</title>
-    <link href="http://feiyang.li/2017/02/13/jiewang/"/>
-    <id>http://feiyang.li/2017/02/13/jiewang/</id>
-    <published>2017-02-13T13:39:16.000Z</published>
-    <updated>2017-03-11T07:07:30.991Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>对于产品经理来说，自己所负责的产品的表现就是自己的履历。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="入坑"><a href="#入坑" class="headerlink" title="入坑"></a>入坑</h1><p>说来惭愧，最初进入产品经理这个职位，是因为大二在OPPO的实习。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/165000570.png?imageMogr2/thumbnail/!60p" alt="搬砖的地方" title="">
-                </div>
-                <div class="image-caption">搬砖的地方</div>
-            </figure><br>当时实习的时候，认识了许和高，许  瘦瘦高高的风格很让人喜欢。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/164929902.png?imageMogr2/thumbnail/!60p" alt="许" title="">
-                </div>
-                <div class="image-caption">许</div>
-            </figure><br>当时应该算产品助理，但是不知道自己具体该做什么。</p>
-<p>最开始只是单纯的觉得HR纪姐姐真的好漂亮，如果不能进去实习，岂不后悔莫及。</p>
-<p>进入OPPO，很多时间是跟费费和飞哥玩，认识了女神。我们玩得时候，女神总默默的拿出自己的小Iphone用<strong>百词斩</strong>背单词。</p>
-<p>有一次做展示的时候，和高 有吵，记得争论是OPPO论坛的改版问题。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/165713732.png?imageMogr2/thumbnail/!60p" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>我第一次对产品岗心生退意</p>
-<hr>
-<h1 id="更深"><a href="#更深" class="headerlink" title="更深"></a>更深</h1><p>大三暑假，走上了考研路，想想这一辈子应该也没有这样一次机会，这么长时间的去做一件事情。可以与喜欢的女孩，朝夕相处。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/204142936.png" alt="妹子" title="">
-                </div>
-                <div class="image-caption">妹子</div>
-            </figure></p>
-<p>那时最大的梦想就是一起去吃 老五烧烤<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/204930217.png" alt="吃" title="">
-                </div>
-                <div class="image-caption">吃</div>
-            </figure></p>
-<hr>
-<p>去年的这个时间，知道自己成绩后一脸懵逼。没有多想，立刻动身找工作。</p>
-<p>当时有很多互联网公司在春招，因为 高  的推荐，拿到了搜狐的offer。之后又拿到了360的offer，都是做产品经理。选择了数字公司，做线上商城业务。</p>
-<p>期间发现自己可以调剂，碾转奔波的面试，终于可以继续在象牙塔读书。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/212139299.png" alt="USTC" title="">
-                </div>
-                <div class="image-caption">USTC</div>
-            </figure>
-<hr>
-<p>在360的时候，跟卢老师系统的学习了一些产品方面的知识，后来又和涛哥共事了很久。慢慢的掌握了一些产品经理的技能，比如不要重复发明轮子。现有的组件可以用上的，就尽量不要重复开发，提高共用性，需求的快速化迭代。如何将已有的功能，逻辑性的展示出来。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/212229338.png" alt="疾病症状搜索" title="">
-                </div>
-                <div class="image-caption">疾病症状搜索</div>
-            </figure>
-<p>之后，自己接手<a href="http://g.360haoyao.com/" target="_blank" rel="external">360全球好药</a>的产品工作。看着薛姐、静姐、俊哥哥、欣欣，他们付出那么多心血，真心希望这个项目可以成功。页面还是我画的那个样子，好熟悉，时间过得真快。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170213/212535737.png?imageMogr2/thumbnail/!60p" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>一开始，这个项目跟我对接业务的是金，金 是武大生物学硕士。真是条条大道通CS，后来金跳槽去了杭州。之后跟我对接的是超哥，超哥又跳槽去了<a href="http://www.pinduoduo.com/" target="_blank" rel="external">拼少少</a>。我都有点怀疑自己了……</p>
-<p>上次跟超超聊，又升值加薪了，就差一个白富美。</p>
-<p>期间发生了一些事，再加上我本身不喜与人当面争执，又一次对产品岗位心生退意</p>
-<hr>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>现在虽然已经远离产品经理这个角色，但是给我留下很多习惯。比如对一些细节会较真，会对一些人或事看的比较淡。</p>
-<p>当初计划大四面试前看，但是那时图书馆没这本书。</p>
-<p>谁知今天正好遇见它，也许是缘分吧。读了一些，做此感想。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;对于产品经理来说，自己所负责的产品的表现就是自己的履历。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="PM" scheme="http://feiyang.li/tags/PM/"/>
     
   </entry>
   

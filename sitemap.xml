@@ -2,16 +2,163 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/</loc>
+    <loc>http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/</loc>
     
-    <lastmod>2017-03-27T09:02:05.803Z</lastmod>
+    <lastmod>2017-03-27T11:50:49.766Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/categories/index.html</loc>
+    
+    <lastmod>2017-03-27T11:48:25.701Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/tags/index.html</loc>
+    
+    <lastmod>2017-03-27T11:47:02.502Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2016/12/28/Newton-Raphson_method-Java-Python/</loc>
+    
+    <lastmod>2017-03-27T11:44:42.774Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2016/12/29/Python-selenium/</loc>
+    
+    <lastmod>2017-03-27T11:44:39.069Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2016/10/27/Python_basic/</loc>
+    
+    <lastmod>2017-03-27T11:44:35.727Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/10/Python_lambda/</loc>
+    
+    <lastmod>2017-03-27T11:44:32.213Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/13/python-camp5/</loc>
+    
+    <lastmod>2017-03-27T11:44:28.359Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/13/python-camp6/</loc>
+    
+    <lastmod>2017-03-27T11:44:24.442Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/15/python-camp8/</loc>
+    
+    <lastmod>2017-03-27T11:44:20.470Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/15/python-camp7/</loc>
+    
+    <lastmod>2017-03-27T11:44:17.551Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/16/python-camp9/</loc>
+    
+    <lastmod>2017-03-27T11:44:14.250Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/17/python-camp2-1/</loc>
+    
+    <lastmod>2017-03-27T11:44:11.367Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/03/10/python-input/</loc>
+    
+    <lastmod>2017-03-27T11:44:05.567Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2016/12/15/Python_use_urllib2/</loc>
+    
+    <lastmod>2017-03-27T11:43:58.909Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2016/12/31/python_camp/</loc>
+    
+    <lastmod>2017-03-27T11:43:25.960Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/10/python_camp3/</loc>
+    
+    <lastmod>2017-03-27T11:43:22.581Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/07/python_camp2/</loc>
+    
+    <lastmod>2017-03-27T11:43:20.920Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2016/12/31/python_camp1/</loc>
+    
+    <lastmod>2017-03-27T11:43:18.800Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/11/python_camp4/</loc>
+    
+    <lastmod>2017-03-27T11:43:09.407Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/02/14/Coursera-ML/</loc>
+    
+    <lastmod>2017-03-27T11:41:09.516Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/</loc>
     
-    <lastmod>2017-03-26T11:39:24.236Z</lastmod>
+    <lastmod>2017-03-27T11:35:22.375Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/</loc>
+    
+    <lastmod>2017-03-27T11:32:14.121Z</lastmod>
     
   </url>
   
@@ -37,13 +184,6 @@
   </url>
   
   <url>
-    <loc>http://feiyang.li/2017/02/14/Coursera-ML/</loc>
-    
-    <lastmod>2017-03-25T10:51:06.384Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://feiyang.li/2017/03/09/Python-quick-order/</loc>
     
     <lastmod>2017-03-25T05:10:12.327Z</lastmod>
@@ -54,13 +194,6 @@
     <loc>http://feiyang.li/2017/03/24/dynamic-programming/</loc>
     
     <lastmod>2017-03-24T09:26:24.294Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/12/15/Python_use_urllib2/</loc>
-    
-    <lastmod>2017-03-23T13:48:38.099Z</lastmod>
     
   </url>
   
@@ -114,20 +247,6 @@
   </url>
   
   <url>
-    <loc>http://feiyang.li/2016/12/31/python_camp/</loc>
-    
-    <lastmod>2017-03-10T06:26:59.675Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/03/10/python-input/</loc>
-    
-    <lastmod>2017-03-10T05:58:53.620Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://feiyang.li/2016/12/15/Python_get_order/</loc>
     
     <lastmod>2017-03-09T14:37:28.515Z</lastmod>
@@ -163,41 +282,6 @@
   </url>
   
   <url>
-    <loc>http://feiyang.li/2017/02/17/python-camp2-1/</loc>
-    
-    <lastmod>2017-02-17T09:07:37.504Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/02/11/python_camp4/</loc>
-    
-    <lastmod>2017-02-17T06:12:58.915Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/02/16/python-camp9/</loc>
-    
-    <lastmod>2017-02-17T04:33:14.710Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/02/15/python-camp7/</loc>
-    
-    <lastmod>2017-02-16T14:24:00.864Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/02/15/python-camp8/</loc>
-    
-    <lastmod>2017-02-15T14:09:04.064Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://feiyang.li/2016/12/31/IPyhton-notebook/</loc>
     
     <lastmod>2017-02-15T12:08:27.233Z</lastmod>
@@ -208,48 +292,6 @@
     <loc>http://feiyang.li/2016/10/28/book/</loc>
     
     <lastmod>2017-02-13T08:36:38.289Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/02/13/python-camp6/</loc>
-    
-    <lastmod>2017-02-13T05:38:30.441Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/02/13/python-camp5/</loc>
-    
-    <lastmod>2017-02-13T05:37:50.976Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/02/10/python_camp3/</loc>
-    
-    <lastmod>2017-02-13T05:37:44.188Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/02/07/python_camp2/</loc>
-    
-    <lastmod>2017-02-13T05:37:40.975Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/12/31/python_camp1/</loc>
-    
-    <lastmod>2017-02-13T05:37:36.719Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/02/10/Python_lambda/</loc>
-    
-    <lastmod>2017-02-11T13:36:55.460Z</lastmod>
     
   </url>
   
@@ -282,13 +324,6 @@
   </url>
   
   <url>
-    <loc>http://feiyang.li/2016/10/27/Python_basic/</loc>
-    
-    <lastmod>2017-02-11T13:28:16.372Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://feiyang.li/2016/12/13/get_html/</loc>
     
     <lastmod>2017-02-11T13:27:18.463Z</lastmod>
@@ -313,20 +348,6 @@
     <loc>http://feiyang.li/2016/12/18/Nginx_HTTPS/</loc>
     
     <lastmod>2017-02-11T13:21:04.182Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/12/29/Python-selenium/</loc>
-    
-    <lastmod>2017-02-11T13:21:00.266Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/12/28/Newton-Raphson_method-Java-Python/</loc>
-    
-    <lastmod>2017-02-11T13:20:52.231Z</lastmod>
     
   </url>
   
