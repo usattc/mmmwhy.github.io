@@ -17,8 +17,8 @@
   
   <entry>
     <title>Coursera ML(4)-Logistic Regression</title>
-    <link href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/"/>
-    <id>http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/</id>
+    <link href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html"/>
+    <id>http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html</id>
     <published>2017-03-27T11:13:38.000Z</published>
     <updated>2017-03-27T11:50:49.766Z</updated>
     
@@ -157,8 +157,8 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
   
   <entry>
     <title>Coursera ML(3)-Multivariate Linear Regression python实现</title>
-    <link href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/"/>
-    <id>http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/</id>
+    <link href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html"/>
+    <id>http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html</id>
     <published>2017-03-26T11:00:29.000Z</published>
     <updated>2017-03-27T11:32:14.121Z</updated>
     
@@ -250,8 +250,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>Coursera ML(2)-Model and Cost Function</title>
-    <link href="http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/"/>
-    <id>http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/</id>
+    <link href="http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html"/>
+    <id>http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html</id>
     <published>2017-03-25T10:49:36.000Z</published>
     <updated>2017-03-27T11:35:22.375Z</updated>
     
@@ -367,8 +367,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>算法导论 第15章 动态规划</title>
-    <link href="http://feiyang.li/2017/03/24/dynamic-programming/"/>
-    <id>http://feiyang.li/2017/03/24/dynamic-programming/</id>
+    <link href="http://feiyang.li/2017/03/24/dynamic-programming/index.html"/>
+    <id>http://feiyang.li/2017/03/24/dynamic-programming/index.html</id>
     <published>2017-03-24T09:05:47.000Z</published>
     <updated>2017-03-24T09:26:24.294Z</updated>
     
@@ -510,8 +510,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>Python读取mnist</title>
-    <link href="http://feiyang.li/2017/03/17/python-mnist/"/>
-    <id>http://feiyang.li/2017/03/17/python-mnist/</id>
+    <link href="http://feiyang.li/2017/03/17/python-mnist/index.html"/>
+    <id>http://feiyang.li/2017/03/17/python-mnist/index.html</id>
     <published>2017-03-17T08:25:27.000Z</published>
     <updated>2017-03-26T11:39:21.829Z</updated>
     
@@ -582,8 +582,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>细究Python struct 模块</title>
-    <link href="http://feiyang.li/2017/03/17/python-struct/"/>
-    <id>http://feiyang.li/2017/03/17/python-struct/</id>
+    <link href="http://feiyang.li/2017/03/17/python-struct/index.html"/>
+    <id>http://feiyang.li/2017/03/17/python-struct/index.html</id>
     <published>2017-03-17T06:08:07.000Z</published>
     <updated>2017-03-26T11:39:20.941Z</updated>
     
@@ -762,8 +762,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>Ubuntu14.04+CPU+Python的Caffe安装教程</title>
-    <link href="http://feiyang.li/2017/03/16/Ubuntu-caffe/"/>
-    <id>http://feiyang.li/2017/03/16/Ubuntu-caffe/</id>
+    <link href="http://feiyang.li/2017/03/16/Ubuntu-caffe/index.html"/>
+    <id>http://feiyang.li/2017/03/16/Ubuntu-caffe/index.html</id>
     <published>2017-03-16T02:52:28.000Z</published>
     <updated>2017-03-25T10:51:10.817Z</updated>
     
@@ -829,8 +829,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>Win10 Anaconda中安装Tensorflow并配置到jupter kernel</title>
-    <link href="http://feiyang.li/2017/03/15/win10-conda-tensorflow/"/>
-    <id>http://feiyang.li/2017/03/15/win10-conda-tensorflow/</id>
+    <link href="http://feiyang.li/2017/03/15/win10-conda-tensorflow/index.html"/>
+    <id>http://feiyang.li/2017/03/15/win10-conda-tensorflow/index.html</id>
     <published>2017-03-15T05:22:44.000Z</published>
     <updated>2017-03-16T02:57:34.710Z</updated>
     
@@ -899,8 +899,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>《小萝莉的猴神大叔》</title>
-    <link href="http://feiyang.li/2017/03/11/indian-movie/"/>
-    <id>http://feiyang.li/2017/03/11/indian-movie/</id>
+    <link href="http://feiyang.li/2017/03/11/indian-movie/index.html"/>
+    <id>http://feiyang.li/2017/03/11/indian-movie/index.html</id>
     <published>2017-03-11T07:06:14.000Z</published>
     <updated>2017-03-13T10:45:25.356Z</updated>
     
@@ -1030,8 +1030,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>细究Python键盘输入</title>
-    <link href="http://feiyang.li/2017/03/10/python-input/"/>
-    <id>http://feiyang.li/2017/03/10/python-input/</id>
+    <link href="http://feiyang.li/2017/03/10/python-input/index.html"/>
+    <id>http://feiyang.li/2017/03/10/python-input/index.html</id>
     <published>2017-03-10T05:52:53.000Z</published>
     <updated>2017-03-27T11:44:05.567Z</updated>
     
@@ -1105,8 +1105,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>算法导论 第7章 快速排序</title>
-    <link href="http://feiyang.li/2017/03/09/Python-quick-order/"/>
-    <id>http://feiyang.li/2017/03/09/Python-quick-order/</id>
+    <link href="http://feiyang.li/2017/03/09/Python-quick-order/index.html"/>
+    <id>http://feiyang.li/2017/03/09/Python-quick-order/index.html</id>
     <published>2017-03-09T14:22:16.000Z</published>
     <updated>2017-03-25T05:10:12.327Z</updated>
     
@@ -1157,8 +1157,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>Digitalocean一键搭建vpn</title>
-    <link href="http://feiyang.li/2017/03/03/do-vpn/"/>
-    <id>http://feiyang.li/2017/03/03/do-vpn/</id>
+    <link href="http://feiyang.li/2017/03/03/do-vpn/index.html"/>
+    <id>http://feiyang.li/2017/03/03/do-vpn/index.html</id>
     <published>2017-03-03T06:17:00.000Z</published>
     <updated>2017-03-06T14:07:04.569Z</updated>
     
@@ -1299,8 +1299,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>IntelliJ 、Pycharm激活码及激活服务器</title>
-    <link href="http://feiyang.li/2017/02/26/jetbrains/"/>
-    <id>http://feiyang.li/2017/02/26/jetbrains/</id>
+    <link href="http://feiyang.li/2017/02/26/jetbrains/index.html"/>
+    <id>http://feiyang.li/2017/02/26/jetbrains/index.html</id>
     <published>2017-02-26T13:28:39.000Z</published>
     <updated>2017-02-28T03:22:11.178Z</updated>
     
@@ -1369,8 +1369,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>Hexo博客中插入音乐/视频</title>
-    <link href="http://feiyang.li/2017/02/24/Hexo-music-video/"/>
-    <id>http://feiyang.li/2017/02/24/Hexo-music-video/</id>
+    <link href="http://feiyang.li/2017/02/24/Hexo-music-video/index.html"/>
+    <id>http://feiyang.li/2017/02/24/Hexo-music-video/index.html</id>
     <published>2017-02-24T12:57:01.000Z</published>
     <updated>2017-02-25T05:59:28.975Z</updated>
     
@@ -1448,8 +1448,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>Django 创建第一个项目</title>
-    <link href="http://feiyang.li/2017/02/18/django-hello-world/"/>
-    <id>http://feiyang.li/2017/02/18/django-hello-world/</id>
+    <link href="http://feiyang.li/2017/02/18/django-hello-world/index.html"/>
+    <id>http://feiyang.li/2017/02/18/django-hello-world/index.html</id>
     <published>2017-02-18T11:37:59.000Z</published>
     <updated>2017-02-18T12:41:10.174Z</updated>
     
@@ -1596,8 +1596,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>第2.1题：Python统计日记最重要的词</title>
-    <link href="http://feiyang.li/2017/02/17/python-camp2-1/"/>
-    <id>http://feiyang.li/2017/02/17/python-camp2-1/</id>
+    <link href="http://feiyang.li/2017/02/17/python-camp2-1/index.html"/>
+    <id>http://feiyang.li/2017/02/17/python-camp2-1/index.html</id>
     <published>2017-02-17T09:04:55.000Z</published>
     <updated>2017-03-27T11:44:11.367Z</updated>
     
@@ -1643,8 +1643,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>第1.9题：Python对密码加密</title>
-    <link href="http://feiyang.li/2017/02/16/python-camp9/"/>
-    <id>http://feiyang.li/2017/02/16/python-camp9/</id>
+    <link href="http://feiyang.li/2017/02/16/python-camp9/index.html"/>
+    <id>http://feiyang.li/2017/02/16/python-camp9/index.html</id>
     <published>2017-02-16T13:59:43.000Z</published>
     <updated>2017-03-27T11:44:14.250Z</updated>
     
@@ -1701,8 +1701,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>第1.8题：文本读取转化</title>
-    <link href="http://feiyang.li/2017/02/15/python-camp8/"/>
-    <id>http://feiyang.li/2017/02/15/python-camp8/</id>
+    <link href="http://feiyang.li/2017/02/15/python-camp8/index.html"/>
+    <id>http://feiyang.li/2017/02/15/python-camp8/index.html</id>
     <published>2017-02-15T14:07:40.000Z</published>
     <updated>2017-03-27T11:44:20.470Z</updated>
     
@@ -1754,8 +1754,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>第1.7题：Python敏感词检测</title>
-    <link href="http://feiyang.li/2017/02/15/python-camp7/"/>
-    <id>http://feiyang.li/2017/02/15/python-camp7/</id>
+    <link href="http://feiyang.li/2017/02/15/python-camp7/index.html"/>
+    <id>http://feiyang.li/2017/02/15/python-camp7/index.html</id>
     <published>2017-02-15T11:28:20.000Z</published>
     <updated>2017-03-27T11:44:17.551Z</updated>
     
@@ -1806,8 +1806,8 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
   
   <entry>
     <title>Coursera ML(1)-机器学习基础概念</title>
-    <link href="http://feiyang.li/2017/02/14/Coursera-ML/"/>
-    <id>http://feiyang.li/2017/02/14/Coursera-ML/</id>
+    <link href="http://feiyang.li/2017/02/14/Coursera-ML/index.html"/>
+    <id>http://feiyang.li/2017/02/14/Coursera-ML/index.html</id>
     <published>2017-02-14T11:19:17.000Z</published>
     <updated>2017-03-27T11:41:09.516Z</updated>
     
