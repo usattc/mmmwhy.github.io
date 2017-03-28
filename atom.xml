@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-03-27T11:50:49.766Z</updated>
+  <updated>2017-03-28T05:07:49.837Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html"/>
     <id>http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html</id>
     <published>2017-03-27T11:13:38.000Z</published>
-    <updated>2017-03-27T11:50:49.766Z</updated>
+    <updated>2017-03-28T05:07:49.837Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/3" target="_blank" rel="external">第三周Coursera课程</a>  <strong>binary classification problem</strong></p>
@@ -60,7 +60,7 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
 </ul>
 <h2 id="Simplified-Cost-Function-and-Gradient-Descent"><a href="#Simplified-Cost-Function-and-Gradient-Descent" class="headerlink" title="Simplified Cost Function and Gradient Descent"></a>Simplified Cost Function and Gradient Descent</h2><ul>
 <li><p>compress our cost function’s two conditional cases into one case:</p>
- $$\mathrm{Cost}(h_\theta(x),y) = - y \; \log(h_\theta(x)) - (1 - y) \log(1 - h_\theta(x))$${ 
+ $$\mathrm{Cost}(h_\theta(x),y) = - y \; \log(h_\theta(x)) - (1 - y) \log(1 - h_\theta(x))$$ 
 </li>
 <li><p>entire cost function</p>
  $$J(\theta) = - \frac{1}{m} \displaystyle \sum_{i=1}^m [y^{(i)}\log (h_\theta (x^{(i)})) + (1 - y^{(i)})\log (1 - h_\theta(x^{(i)}))]$$ 
