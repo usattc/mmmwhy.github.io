@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-03-28T05:07:49.837Z</updated>
+  <updated>2017-03-28T07:49:36.625Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html"/>
     <id>http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html</id>
     <published>2017-03-27T11:13:38.000Z</published>
-    <updated>2017-03-28T05:07:49.837Z</updated>
+    <updated>2017-03-28T07:49:36.625Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/3" target="_blank" rel="external">第三周Coursera课程</a>  <strong>binary classification problem</strong></p>
@@ -126,11 +126,30 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
 </ul>
 </li>
 </ul>
-<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><ul>
-<li>Cost Function $$J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))\large] + \frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2$$ </li>
-<li>Gradient Descent $$\begin{align*} & \text{Repeat}\ \lbrace \newline & \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline & \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline & \rbrace \end{align*}$$ 
-<strong>j!=0</strong></li>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>我在这里整理一下上述两个方法，补全课程上的相关推导。</p>
+<h2 id="Logistic-Regression-Model-1"><a href="#Logistic-Regression-Model-1" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h2><h3 id="h-theta-x-是假设函数"><a href="#h-theta-x-是假设函数" class="headerlink" title="$h_\theta(x)$是假设函数"></a>$h_\theta(x)$是假设函数</h3> $$h_\theta (x) = g ( \theta^T x ) = \dfrac{1}{1 + e^{- \theta^T x}} $$ 
+<p>注意假设函数和真实数据之间的区别</p>
+<h3 id="Cost-Function-1"><a href="#Cost-Function-1" class="headerlink" title="Cost Function"></a>Cost Function</h3> $$J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))\large]$$ 
+<p>回头看看上边的那个$h_\theta (x)$ ，cost function定义了训练集给出的结果 和 当前计算结果之间的差距。当然，该差距越小越好，那么需要求导一下。</p>
+<h3 id="Gradient-Descent-1"><a href="#Gradient-Descent-1" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h3><ul>
+<li>原始公式 $$\theta_j := \theta_j - \alpha \dfrac{\partial}{\partial \theta_j}J(\theta)$$ </li>
+<li>求导计算 $$\frac{\partial}{\partial \theta_j} J(\theta) = \frac{1}{m}\sum\limits_{i=1}^{m}[(h_\theta (x^{(i)}) - y^{(i)})x_j^{(i)}]$$ </li>
+<li>计算结果 $$\theta_j := \theta_j - \frac{\alpha}{m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} $$ 
+</li>
 </ul>
+<p>这里推导一下$\frac{\partial}{\partial \theta_j} J(\theta)$：</p>
+<ul>
+<li><p>计算$h_\theta’(x)$导数</p>
+ $$\begin{align*} &h_\theta'(x) = ( \frac1{1+e^{- \theta x}})'\newline &\ \ \ \ \ \ \ \  =   \frac{e^{- \theta x}x}{1+e^{- \theta x}}\newline &\ \ \ \ \ \ \ \  =   \frac{1+e^{- \theta x}-1}{(1+e^{- \theta x})^2}x\newline &\ \ \ \ \ \ \ \  =  \large[\frac{1}{1+e^{- \theta x}}-\frac{1}{(1+e^{- \theta x})^2}\large]x\newline &\ \ \ \ \ \ \ \  = h_\theta(x)(1-h_\theta(x))x  \end{align*}$$ 
+</li>
+<li><p>推导$\frac{\partial}{\partial \theta_j} J(\theta)$</p>
+</li>
+</ul>
+ $$\begin{align*} &\frac{\partial}{\partial \theta_j} J(\theta) = \frac{\partial}{\partial \theta_j}   \frac{1}{m} \sum_{i=1}^m \large[ -y^{(i)}\ \log (h_\theta (x^{(i)})) - (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))\large] \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \  =   \frac{1}{m} \sum_{i=1}^m \large[ -y^{(i)}\ \frac1{h_\theta(x^{(i)})}h_\theta'(x^{(i)}) - (1 - y^{(i)}) \frac{-1}{1-h_\theta(x^{(i)})}h_\theta'(x^{(i)})\large] \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \  =   \frac{1}{m} \sum_{i=1}^m \large[ -y^{(i)}\ \frac1{h_\theta(x^{(i)})}h_\theta(x^{(i)})(1-h_\theta(x^{(i)}))x^{(i)}  \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ - (1 - y^{(i)}) \frac{-1}{1-h_\theta(x^{(i)})}h_\theta(x^{(i)})(1-h_\theta(x^{(i)}))x^{(i)}\large] \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \  =   \frac{1}{m} \sum_{i=1}^m \large[ -y^{(i)}(1-h_\theta(x^{(i)}) x^{(i)})+(1- y)h_\theta(x^{(i)}) x^{(i)})\large]  \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \  =   \frac{1}{m} \sum_{i=1}^m \large[ -x^{(i)}y^{(i)}+x^{(i)}y^{(i)}h_\theta(x^{(i)}) \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +x^{(i)}h_\theta(x^{(i)}) - x^{(i)}y^{(i)}h_\theta(x^{(i)}) \large] \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{1}{m}\sum\limits_{i=1}^{m}[(h_\theta (x^{(i)}) - y^{(i)})x_j^{(i)}] \end{align*}$$ 
+<p>即：<br> $$\begin{align*} &\frac{\partial}{\partial \theta_j} J(\theta) = \frac{1}{m}\sum\limits_{i=1}^{m}[(h_\theta (x^{(i)}) - y^{(i)})x_j^{(i)}] \end{align*}$$ </p>
+<h2 id="Solving-the-Problem-of-Overfitting-1"><a href="#Solving-the-Problem-of-Overfitting-1" class="headerlink" title="Solving the Problem of Overfitting"></a>Solving the Problem of Overfitting</h2><p>其他地方都一样，稍作修改</p>
+<h3 id="Cost-Function-2"><a href="#Cost-Function-2" class="headerlink" title="Cost Function"></a>Cost Function</h3> $$J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))\large] + \frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2$$ 
+<h3 id="Gradient-Descent-2"><a href="#Gradient-Descent-2" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h3> $$\begin{align*} & \text{Repeat}\ \lbrace \newline & \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline & \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline & \rbrace \end{align*}$$ 
 <hr>
 <p>以上</p>
 ]]></content>
