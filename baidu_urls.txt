@@ -1,3 +1,4 @@
+http://feiyang.li/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html
 http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html
 http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html
 http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html
@@ -37,4 +38,3 @@ http://feiyang.li/2016/12/28/LaTex/index.html
 http://feiyang.li/2016/12/18/Nginx_HTTPS/index.html
 http://feiyang.li/2016/12/15/Python_get_order/index.html
 http://feiyang.li/2016/12/15/Python_use_urllib2/index.html
-http://feiyang.li/2016/12/13/get_html/index.html

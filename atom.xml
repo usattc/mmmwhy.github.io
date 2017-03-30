@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-03-28T07:49:36.625Z</updated>
+  <updated>2017-03-30T04:54:25.373Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -16,13 +16,114 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Coursera ML(5)-Logistic Regression and Regularization with Python</title>
+    <link href="http://feiyang.li/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html"/>
+    <id>http://feiyang.li/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html</id>
+    <published>2017-03-30T04:46:11.000Z</published>
+    <updated>2017-03-30T04:54:25.373Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p><a href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">线性回归算法</a>，可用于房屋价格的估计及股票市场分析。 <a href="https://www.coursera.org/learn/machine-learning/programming/ixFof/logistic-regression" target="_blank" rel="external">Logistic Regression</a> （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在<a href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">这里</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>Stanford coursera Andrew Ng 机器学习课程编程作业（Exercise 2），作业下载链接貌似被墙了，下载链接放这。<a href="http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex2.zip" target="_blank" rel="external">http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex2.zip</a></p>
+<h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a><a href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/">预备知识</a></h1><p>这里应该分为 正常、过拟合和欠拟合，三种情况。</p>
+<ul>
+<li>Cost Function $$J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))\large] + \frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2$$ </li>
+<li><p>Gradient Descent</p>
+ $$\begin{align*} & \text{Repeat}\ \lbrace \newline & \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline & \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline & \rbrace \end{align*}$$ 
+</li>
+<li><p>Grad</p>
+ $$Grad =  \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)}+ \frac{\lambda}{m}\theta_j$$ 
+</li>
+</ul>
+<p>后边有一个$\frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2$和$\frac{\lambda}{m}\theta_j$小尾巴，作用就是进行 Regularization，防止拟合过度。</p>
+<h1 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h1><h2 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h2><ul>
+<li>you will build a logistic regression model to predict whether a student gets admitted into a university.（根据各科目分数预测该学生是否能录取）</li>
+<li>For each training example, you have the applicant’s scores on two exams and the admissions decision.</li>
+<li>Your task is to build a <strong>classication model</strong> that estimates an <strong>applicant’s probability of admission based the scores from those two exams.</strong></li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170327/203532750.png" alt="dataset" title="">
+                </div>
+                <div class="image-caption">dataset</div>
+            </figure>
+<h2 id="python-code"><a href="#python-code" class="headerlink" title="python code"></a>python code</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> optimize</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">(path)</span>:</span></div><div class="line">    X,y = load_dataset(path) <span class="comment"># 调用底下那个东西</span></div><div class="line">    m, n = shape(X)</div><div class="line">    initial_theta = zeros(n + <span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> X,y,m,n,initial_theta</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_dataset</span><span class="params">(path)</span>:</span></div><div class="line">    data = loadtxt(path, delimiter=<span class="string">','</span>)</div><div class="line">    X = data[:,:<span class="number">2</span>]</div><div class="line">    y = data[:, <span class="number">2</span>]</div><div class="line">    <span class="keyword">return</span> X,y</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotData</span><span class="params">(X,y)</span>:</span></div><div class="line">    plt.plot(X[y==<span class="number">1</span>][:,<span class="number">0</span>],X[y==<span class="number">1</span>][:,<span class="number">1</span>],<span class="string">'k+'</span>,linewidth=<span class="number">2</span>,)</div><div class="line">    plt.plot(X[y==<span class="number">0</span>][:,<span class="number">0</span>],X[y==<span class="number">0</span>][:,<span class="number">1</span>],<span class="string">'ko'</span>,color=<span class="string">'y'</span>,linewidth=<span class="number">2</span>)</div><div class="line">    plt.xlabel(<span class="string">'科目一成绩'</span>, fontproperties=<span class="string">'SimHei'</span>)</div><div class="line">    plt.ylabel(<span class="string">'科目二成绩'</span>, fontproperties=<span class="string">'SimHei'</span>)</div><div class="line">    plt.title(<span class="string">'分数与录取的关系'</span>, fontproperties=<span class="string">'SimHei'</span>)</div><div class="line">    </div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X, theta)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + exp(-dot(X, theta)))</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cost</span><span class="params">(theta, X, y)</span>:</span></div><div class="line">    J = sum((-y*log(sigmoid(X,theta)) - (<span class="number">1</span>-y)*log(<span class="number">1</span>-sigmoid(X,theta))))/len(X)</div><div class="line">    <span class="keyword">return</span> J</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_grad</span><span class="params">(theta, X, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> (sigmoid(X,theta) - mat(y))*X*(<span class="number">1</span>/m)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotDecisionBoundary</span><span class="params">(theta, X, y)</span>:</span></div><div class="line">    plotData(X[:, <span class="number">1</span>:<span class="number">3</span>], y)</div><div class="line">    <span class="keyword">if</span> X.shape[<span class="number">1</span>] &lt;= <span class="number">3</span>:</div><div class="line">        plot_x = r_[X[:,<span class="number">2</span>].min()<span class="number">-2</span>,  X[:,<span class="number">2</span>].max()+<span class="number">2</span>]</div><div class="line">        plot_y = - (theta[<span class="number">1</span>]*plot_x + theta[<span class="number">0</span>])/theta[<span class="number">2</span>]</div><div class="line">        plt.plot(plot_x, plot_y)</div><div class="line">        plt.axis([<span class="number">30</span>,<span class="number">100</span>,<span class="number">30</span>,<span class="number">100</span>])</div><div class="line">        plt.legend([<span class="string">'Accepted'</span>, <span class="string">'Not Accepted'</span>, <span class="string">'Decision Boundary'</span>])</div><div class="line">        plt.show()</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(theta, X)</span>:</span>  </div><div class="line">    prob = sigmoid([<span class="number">1</span>,<span class="number">45</span>,<span class="number">85</span>] , result[<span class="number">0</span>])</div><div class="line">    <span class="keyword">return</span> prob</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    path = <span class="string">'C:\\Users\\wing\\Desktop\\machine-learning-ex2\\ex2\\ex2data1.txt'</span></div><div class="line">    X,y,m,n,initial_theta = init(path)</div><div class="line">    X = column_stack((ones(m), X))</div><div class="line">    cost = get_cost(initial_theta, X, y)</div><div class="line">    grad = get_grad(initial_theta, X, y)</div><div class="line"></div><div class="line">    <span class="comment"># obtain the optimal theta</span></div><div class="line">    result = optimize.fmin_tnc(func=get_cost, x0=initial_theta, fprime=get_grad, args=(X, y))  </div><div class="line">    get_cost(result[<span class="number">0</span>], X, y)  </div><div class="line">    <span class="comment"># result = (array([-25.16131863,   0.20623159,   0.20147149]), 36, 0)</span></div><div class="line">    <span class="comment"># get_cost(result[0], X, y)  = 0.20349770158947464</span></div><div class="line">    plotDecisionBoundary(result[<span class="number">0</span>], X, y)</div><div class="line">    print(<span class="string">'For a student with scores 45 and 85, we predict an admission '</span> \</div><div class="line">         <span class="string">'probability of %f\n'</span>%predict(result[<span class="number">0</span>], X))</div><div class="line"></div><div class="line"><span class="comment"># For a student with scores 45 and 85, we predict an admission probability of 0.776291</span></div></pre></td></tr></table></figure>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170330/121908473.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>最后进行了一个测试，如果一个学生两门考试成绩，一门45分，另外一门85分，那么他被录取的概率为77%。幸亏是在外国，在中国这分数，连大专都考不上。</p>
+<h1 id="Logistic-Regression-and-Regularization"><a href="#Logistic-Regression-and-Regularization" class="headerlink" title="Logistic Regression and Regularization"></a>Logistic Regression and Regularization</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><ul>
+<li>Suppose you are the product manager of the factory and you have the test results for some microchips on two dierent tests.</li>
+<li>对于一批产品，有两个检测环节，通过检测结果判断产品是否合格。比如，宜家会有三十年床垫保证，那么如果确保床垫合格（用30年），我们只能通过一些检测，来推测产品是否合格。</li>
+</ul>
+<h2 id="python-code-1"><a href="#python-code-1" class="headerlink" title="python code"></a>python code</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> optimize</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">(path)</span>:</span></div><div class="line">    X,y = load_dataset(path)</div><div class="line">    dataplot(X,y)</div><div class="line">    X = map_feature(X[:,<span class="number">0</span>], X[:,<span class="number">1</span>])</div><div class="line">    initial_theta = zeros(size(X[<span class="number">1</span>]))</div><div class="line">    lam = <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> X,y,initial_theta,lam</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_dataset</span><span class="params">(path)</span>:</span></div><div class="line">    data = loadtxt(path, delimiter=<span class="string">','</span>)</div><div class="line">    X = data[:,:<span class="number">2</span>]</div><div class="line">    y = data[:, <span class="number">2</span>]</div><div class="line">    <span class="keyword">return</span> X,y</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dataplot</span><span class="params">(X,y)</span>:</span></div><div class="line">    plt.plot(X[y==<span class="number">1</span>][:,<span class="number">0</span>],X[y==<span class="number">1</span>][:,<span class="number">1</span>],<span class="string">'k+'</span>,linewidth=<span class="number">2</span>)</div><div class="line">    plt.plot(X[y==<span class="number">0</span>][:,<span class="number">0</span>],X[y==<span class="number">0</span>][:,<span class="number">1</span>],<span class="string">'ko'</span>,color=<span class="string">'y'</span>,linewidth=<span class="number">2</span>)</div><div class="line">    plt.legend([ <span class="string">'y = 1'</span>,<span class="string">'y = 0'</span>])</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X, theta)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + exp(-dot(X, theta)))</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">map_feature</span><span class="params">(x1, x2)</span>:</span></div><div class="line">    <span class="comment">#X1, X2, X1 ** 2, X2 ** 2, X1*X2, X1*X2 ** 2, etc...</span></div><div class="line"></div><div class="line">    x1.shape = (x1.size, <span class="number">1</span>)</div><div class="line">    x2.shape = (x2.size, <span class="number">1</span>)</div><div class="line">    degree = <span class="number">6</span></div><div class="line">    out = ones(shape=(x1[:, <span class="number">0</span>].size, <span class="number">1</span>))</div><div class="line">    m, n = out.shape</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, degree + <span class="number">1</span>):</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>):</div><div class="line">            r = (x1 ** (i - j)) * (x2 ** j)</div><div class="line">            out = append(out, r, axis=<span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> out</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cost</span><span class="params">(theta, X, y,lam)</span>:</span></div><div class="line">    hx = sigmoid(X,theta)</div><div class="line">    thetaR = theta[<span class="number">1</span>:]</div><div class="line">    J = sum((-y*log(hx) - (<span class="number">1</span>-y)*log(<span class="number">1</span>-hx)))/len(X) \</div><div class="line">        + (lam / (<span class="number">2.0</span> * len(X))) * (thetaR.T.dot(thetaR))</div><div class="line">    <span class="keyword">return</span> J</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_grad</span><span class="params">(theta, X, y,lam)</span>:</span></div><div class="line">    reg = (lam/len(y))*theta</div><div class="line">    reg[<span class="number">0</span>] = <span class="number">0</span></div><div class="line">    grad = X.T.dot(sigmoid(X,theta)-y)/len(y)+reg</div><div class="line">    <span class="keyword">return</span> grad</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotDecisionBoundary</span><span class="params">(theta,lam)</span>:</span></div><div class="line">    u = linspace(<span class="number">-1</span>, <span class="number">1.5</span>, <span class="number">50</span>)</div><div class="line">    v = linspace(<span class="number">-1</span>, <span class="number">1.5</span>, <span class="number">50</span>)</div><div class="line">    z = zeros(shape=(len(u), len(v)))</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(u)):</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(v)):</div><div class="line">            z[i, j] = (map_feature(array(u[i]), array(v[j])).dot(array(theta)))</div><div class="line">    z = z.T</div><div class="line">    plt.contour(u, v, z)</div><div class="line">    plt.title(<span class="string">'lambda = %f'</span> % lam)</div><div class="line">    plt.xlabel(<span class="string">'Microchip Test 1'</span>)</div><div class="line">    plt.ylabel(<span class="string">'Microchip Test 2'</span>)</div><div class="line">    plt.axis([<span class="number">-0.85</span>,<span class="number">1.1</span>,<span class="number">-0.85</span>,<span class="number">1.1</span>])</div><div class="line">    plt.legend([<span class="string">'y = 1'</span>, <span class="string">'y = 0'</span>, <span class="string">'Decision boundary'</span>])</div><div class="line">    plt.show()</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    path = <span class="string">'C:\\Users\\wing\\Desktop\\machine-learning-ex2\\ex2\\ex2data2.txt'</span></div><div class="line">    X,y,initial_theta,lam = init(path)</div><div class="line">    result = optimize.fmin_tnc(func=get_cost, x0=initial_theta, fprime=get_grad, args=(X, y,lam))  </div><div class="line">    plotDecisionBoundary(result[<span class="number">0</span>],lam)</div></pre></td></tr></table></figure>
+<h2 id="运算结果"><a href="#运算结果" class="headerlink" title="运算结果"></a>运算结果</h2><ul>
+<li>过拟合<br>lambda=0。不考虑 $\frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2$和$\frac{\lambda}{m}\theta_j$ ，我们可以看到图像已经被拟合过度。这样的答案没有通用性<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170330/122914544.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>欠拟合<br>lambda=10，欠拟合会导致数据的很多细节被抛弃。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170330/123134133.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>拟合较好<br>lambda=1，准确性到91%左右，这个准确率算低的了吧，还有很大上升空间。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170330/123236964.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p><a href="http://news.ustc.edu.cn/xwbl/201412/t20141205_206292.html" target="_blank" rel="external">熊辉</a>上课的时候，说机器学习需要调参数，参数很不好调，需要使用者对数据有极高的敏感度。</p>
+<p>参数lambda就是这种感觉，感觉真的是乱调一通，然后就发现，诶哟，好像还不错。</p>
+<p>参考链接：<br><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html" target="_blank" rel="external">scipy.optimize.minimize</a><br><a href="https://en.wikipedia.org/wiki/Logistic_regression" target="_blank" rel="external">Logistic regression</a><br><a href="http://www.johnwittenauer.net/machine-learning-exercises-in-python-part-3/" target="_blank" rel="external">Machine Learning Exercises In Python, Part 3</a><br><a href="http://aimotion.blogspot.com/2011/11/machine-learning-with-python-logistic.html" target="_blank" rel="external">machine-learning-with-python-logistic</a></p>
+<hr>
+<p>以上</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=421091970&auto=0&height=66"></iframe>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html&quot;&gt;线性回归算法&lt;/a&gt;，可用于房屋价格的估计及股票市场分析。 &lt;a href=&quot;https://www.coursera.org/learn/machine-learning/programming/ixFof/logistic-regression&quot;&gt;Logistic Regression&lt;/a&gt; （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在&lt;a href=&quot;http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
+    
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Coursera ML(4)-Logistic Regression</title>
     <link href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html"/>
     <id>http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html</id>
     <published>2017-03-27T11:13:38.000Z</published>
     <updated>2017-03-28T07:49:36.625Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/3" target="_blank" rel="external">第三周Coursera课程</a>  <strong>binary classification problem</strong></p>
 </blockquote>
 <hr>
@@ -166,11 +267,11 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -181,7 +282,7 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
     <published>2017-03-26T11:00:29.000Z</published>
     <updated>2017-03-27T11:32:14.121Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Multivariate Linear Regression and Programming Exercise 1</p>
 </blockquote>
 <hr>
@@ -259,11 +360,11 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -274,7 +375,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-25T10:49:36.000Z</published>
     <updated>2017-03-27T11:35:22.375Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression</p>
 </blockquote>
 <hr>
@@ -391,7 +492,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-24T09:05:47.000Z</published>
     <updated>2017-03-24T09:26:24.294Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>《算法导论》这门课的老师是<a href="http://cs.ustc.edu.cn/szdw/bdjs/201006/t20100614_22062.html" target="_blank" rel="external">黄刘生</a>和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。</p>
 </blockquote>
 <hr>
@@ -534,7 +635,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-17T08:25:27.000Z</published>
     <updated>2017-03-26T11:39:21.829Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以<code>.idx1-ubyte</code>后缀，包含60000个训练图像。将这些图像展示出来，需要利用到<a href="http://feiyang.li/2017/03/17/python-struct/">struct模块</a>。</p>
 </blockquote>
 <hr>
@@ -593,9 +694,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -606,7 +707,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-17T06:08:07.000Z</published>
     <updated>2017-03-26T11:39:20.941Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p><a href="https://docs.python.org/3/library/struct.html#module-struct" target="_blank" rel="external">struct</a> — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具<strong>Python struct 模块</strong>。</p>
 </blockquote>
 <hr>
@@ -773,9 +874,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -786,7 +887,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-16T02:52:28.000Z</published>
     <updated>2017-03-25T10:51:10.817Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式</p>
 </blockquote>
 <hr>
@@ -840,9 +941,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -853,7 +954,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-15T05:22:44.000Z</published>
     <updated>2017-03-16T02:57:34.710Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。</p>
 </blockquote>
 <hr>
@@ -908,9 +1009,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
     
@@ -923,7 +1024,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-11T07:06:14.000Z</published>
     <updated>2017-03-13T10:45:25.356Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>但行好事，莫问前程。真正能做到的能有几个呢？</p>
 </blockquote>
 <hr>
@@ -1054,7 +1155,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-10T05:52:53.000Z</published>
     <updated>2017-03-27T11:44:05.567Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>本文介绍了<code>raw_input</code> 和 <code>input</code>在<code>python2</code>和<code>python3</code>上的区别，以及如何利用正则表达式和<code>input</code>键盘输入一维数组和二维数组。</p>
 </blockquote>
 <hr>
@@ -1129,7 +1230,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-09T14:22:16.000Z</published>
     <updated>2017-03-25T05:10:12.327Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>快速排序是一种非常优秀的排序方法 </p>
 </blockquote>
 <a id="more"></a>
@@ -1166,9 +1267,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
-    
       <category term="sort" scheme="http://feiyang.li/tags/sort/"/>
+    
+      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
     
       <category term="cpp" scheme="http://feiyang.li/tags/cpp/"/>
     
@@ -1181,7 +1282,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-03T06:17:00.000Z</published>
     <updated>2017-03-06T14:07:04.569Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>使用github学生优惠内的digitalocean，一键搭建vpn。获得60刀，免费用一年~</p>
 </blockquote>
 <hr>
@@ -1323,7 +1424,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-26T13:28:39.000Z</published>
     <updated>2017-02-28T03:22:11.178Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>jetbrains 家的东西都非常好看，但是价格贵的令人发指，所以我搭建了一个 Pycharm激活服务器，可以用来激活 Pycharm，IntelliJ IDEA，WebStorm。避免频繁更换激活码的问题。</p>
 </blockquote>
 <hr>
@@ -1393,7 +1494,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-24T12:57:01.000Z</published>
     <updated>2017-02-25T05:59:28.975Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง </p>
 </blockquote>
 <hr>
@@ -1472,7 +1573,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-18T11:37:59.000Z</published>
     <updated>2017-02-18T12:41:10.174Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>上手使用Python的Web框架– Django</p>
 </blockquote>
 <hr>
@@ -1620,7 +1721,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-17T09:04:55.000Z</published>
     <updated>2017-03-27T11:44:11.367Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目2.1</strong>： 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。</p>
 </blockquote>
 <hr>
@@ -1667,7 +1768,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-16T13:59:43.000Z</published>
     <updated>2017-03-27T11:44:14.250Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.9</strong>： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</p>
 </blockquote>
 <hr>
@@ -1725,7 +1826,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-15T14:07:40.000Z</published>
     <updated>2017-03-27T11:44:20.470Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.8：</strong> 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。</p>
 </blockquote>
 <hr>
@@ -1778,7 +1879,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-15T11:28:20.000Z</published>
     <updated>2017-03-27T11:44:17.551Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.7：</strong>敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。</p>
 </blockquote>
 <hr>
@@ -1820,63 +1921,6 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
       <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
     
       <category term="自然语言处理" scheme="http://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Coursera ML(1)-机器学习基础概念</title>
-    <link href="http://feiyang.li/2017/02/14/Coursera-ML/index.html"/>
-    <id>http://feiyang.li/2017/02/14/Coursera-ML/index.html</id>
-    <published>2017-02-14T11:19:17.000Z</published>
-    <updated>2017-03-27T11:41:09.516Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>在学习的过程中，抓住基本概念是非常重要的，这样可以防止自己陷入某些细节中无法自拔，可以让自己站在比较宏观的层面上看待问题。 更多见：<a href="https://feiyang.li/">李飞阳</a></p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="机器学习（Machine-Learning）"><a href="#机器学习（Machine-Learning）" class="headerlink" title="机器学习（Machine Learning）"></a>机器学习（Machine Learning）</h1><ul>
-<li>Coursera上机器学习课程的介绍中，第一句话是：<br>　<strong>Machine learning is the science of getting computers to act without being explicitly programmed. </strong><br>　机器学习是让电脑自己学会如何处理问题，而不需要人们刻意的编程。</li>
-<li>Andrew Ng老师的讲义中（Coursera）给出的定义：<br>Tom Mitchell provides a more modern definition: “A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.”<br>Example: playing checkers.<br>　· E = the experience of playing many games of checkers<br>　· T = the task of playing checkers.<br>　· P = the probability that the program will win the next game. </li>
-<li>周志华的《机器学习》中定义：<br>机器学习正是这样一门学科，它致力于研究如何通过计算的手段，利用经验来改善系统自身的性能。在计算机系统中，“经验”通常以“数据”的形式存在，因此，机器学习所研究的主要内容，是关于在计算机上从数据中产生“模型”（model）的算法，即“学习算法”（learning algorithm）。有了学习算法，我们把经验数据提供给它，它就能基于这些数据产生模型；在面对新的情况时，模型会给我们提供相应的判断。</li>
-</ul>
-<h1 id="有监督学习（Supervised-Learning）"><a href="#有监督学习（Supervised-Learning）" class="headerlink" title="有监督学习（Supervised Learning）"></a>有监督学习（Supervised Learning）</h1><ul>
-<li>维基百科<br><strong>Supervised learning</strong> is the machine learningtask of inferring a function from labeled training data.<br>The training data consist of a set of <em>training examples</em>. In supervised learning, each example is a <em>pair</em> consisting of an input object (typically a vector) and a desired output value (also called the <em>supervisory signal</em>). A supervised learning algorithm analyzes the training data and produces an inferred function, which can be used for mapping new examples. An optimal scenario will allow for the algorithm to correctly determine the class labels for unseen instances. This requires the learning algorithm to generalize from the training data to unseen situations in a “reasonable” way.</li>
-</ul>
-<p><strong>Example: </strong><br>　Given data about the size of houses on the real estate market, try to predict their price. Price as a function of size is a continuous output, so this is a regression problem.<br>　We could turn this example into a classification problem by instead making our output about whether the house “sells for more or less than the asking price.” Here we are classifying the houses based on price into two discrete categories</p>
-<h1 id="无监督学习（Unsupervised-Learning）"><a href="#无监督学习（Unsupervised-Learning）" class="headerlink" title="无监督学习（Unsupervised Learning）"></a>无监督学习（Unsupervised Learning）</h1><p><strong>维基百科：</strong><br> 　<strong>Unsupervised learning</strong> is the machine learning task of inferring a function to describe hidden structure from unlabeled data. Since the examples given to the learner are unlabeled, there is no error or reward signal to evaluate a potential solution. This distinguishes unsupervised learning from supervised learning and reinforcement learning. 　Unsupervised learning is closely related to the problem of density estimation in statistics.[1] However unsupervised learning also encompasses many other techniques that seek to summarize and explain key features of the data. Many methods employed in unsupervised learning are based on data mining methods used to preprocess data. 　</p>
-<p>Example:<br>　Clustering: Take a collection of 1000 essays written on the US Economy, and find a way to automatically group these essays into a small number that are somehow similar or related by different variables, such as word frequency, sentence length, page count, and so on.<br>　Associative: Suppose a doctor over years of experience forms associations in his mind between patient characteristics and illnesses that they have. If a new patient shows up then based on this patient’s characteristics such as symptoms, family medical history, physical attributes, mental outlook, etc the doctor associates possible illness or illnesses based on what the doctor has seen before with similar patients. This is not the same as rule based reasoning as in expert systems. In this case we would like to estimate a mapping function from patient characteristics into illnesses.</p>
-<p><strong>解释一下：</strong></p>
-<p>首先看什么是学习（learning）？一个成语就可概括：举一反三。此处以高考为例，高考的题目在上考场前我们未必做过，但在高中三年我们做过很多很多题目，懂解题方法，因此考场上面对陌生问题也可以算出答案。机器学习的思路也类似：我们能不能利用一些训练数据（已经做过的题），使机器能够利用它们（解题方法）分析未知数据（高考的题目）？</p>
-<p>最简单也最普遍的一类机器学习算法就是分类（classification）。对于分类，输入的训练数据有特征（feature），有标签（label）。所谓的学习，其本质就是找到特征和标签间的关系（mapping）。这样当有特征而无标签的未知数据输入时，我们就可以通过已有的关系得到未知数据标签。</p>
-<p>在上述的分类过程中，如果所有训练数据都有标签，则为有监督学习（supervised learning）。如果数据没有标签，显然就是无监督学习（unsupervised learning）了，也即聚类（clustering）。</p>
-<p>目前分类算法的效果还是不错的，但相对来讲，聚类算法就有些惨不忍睹了。确实，无监督学习本身的特点使其难以得到如分类一样近乎完美的结果。这也正如我们在高中做题，答案（标签）是非常重要的，假设两个完全相同的人进入高中，一个正常学习，另一人做的所有题目都没有答案，那么想必第一个人高考会发挥更好，第二个人会发疯。</p>
-<p>这时各位可能要问，既然分类如此之好，聚类如此之不靠谱，那为何我们还可以容忍聚类的存在？因为在实际应用中，标签的获取常常需要极大的人工工作量，有时甚至非常困难。例如在自然语言处理（NLP）中，Penn Chinese Treebank在2年里只完成了4000句话的标签……</p>
-<p>这时有人可能会想，难道有监督学习和无监督学习就是非黑即白的关系吗？有没有灰呢？Good idea。灰是存在的。二者的中间带就是半监督学习（semi-supervised learning）。对于半监督学习，其训练数据的一部分是有标签的，另一部分没有标签，而没标签数据的数量常常极大于有标签数据数量（这也是符合现实情况的）。隐藏在半监督学习下的基本规律在于：数据的分布必然不是完全随机的，通过一些有标签数据的局部特征，以及更多没标签数据的整体分布，就可以得到可以接受甚至是非常好的分类结果。（此处大量忽略细节）</p>
-<p>因此，learning家族的整体构造是这样的：<br>有监督学习（分类，回归）<br>↕<br>半监督学习（分类，回归），transductive learning（分类，回归）<br>↕<br>半监督聚类（有标签数据的标签不是确定的，类似于：肯定不是xxx，很可能是yyy）<br>↕<br>无监督学习（聚类）</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在Coursera上Andrew Ng的课程中，主要涉及： 　</p>
-<ul>
-<li>Supervised Learning，包括Linear Regression、Logistic Regression、Neural Networks、Support Vector Machines； 　</li>
-<li>Unsupervised Learning，包括Clustering、Dimensionality Reduction、Anomaly Detection、Recommender Systems。 </li>
-</ul>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>Coursera - Machine learning( Andrew Ng)  <a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="external">https://www.coursera.org/learn/machine-learning</a><br>什么是无监督学习？ <a href="https://www.zhihu.com/question/23194489" target="_blank" rel="external">https://www.zhihu.com/question/23194489</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;在学习的过程中，抓住基本概念是非常重要的，这样可以防止自己陷入某些细节中无法自拔，可以让自己站在比较宏观的层面上看待问题。 更多见：&lt;a href=&quot;https://feiyang.li/&quot;&gt;李飞阳&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
-    
-    
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
-      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
