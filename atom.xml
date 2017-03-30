@@ -22,7 +22,7 @@
     <published>2017-03-30T04:46:11.000Z</published>
     <updated>2017-03-30T04:54:25.373Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p><a href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">线性回归算法</a>，可用于房屋价格的估计及股票市场分析。 <a href="https://www.coursera.org/learn/machine-learning/programming/ixFof/logistic-regression" target="_blank" rel="external">Logistic Regression</a> （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在<a href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">这里</a></p>
 </blockquote>
 <hr>
@@ -123,7 +123,7 @@
     <published>2017-03-27T11:13:38.000Z</published>
     <updated>2017-03-28T07:49:36.625Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/3" target="_blank" rel="external">第三周Coursera课程</a>  <strong>binary classification problem</strong></p>
 </blockquote>
 <hr>
@@ -282,7 +282,7 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
     <published>2017-03-26T11:00:29.000Z</published>
     <updated>2017-03-27T11:32:14.121Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Multivariate Linear Regression and Programming Exercise 1</p>
 </blockquote>
 <hr>
@@ -375,7 +375,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-25T10:49:36.000Z</published>
     <updated>2017-03-27T11:35:22.375Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression</p>
 </blockquote>
 <hr>
@@ -492,7 +492,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-24T09:05:47.000Z</published>
     <updated>2017-03-24T09:26:24.294Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>《算法导论》这门课的老师是<a href="http://cs.ustc.edu.cn/szdw/bdjs/201006/t20100614_22062.html" target="_blank" rel="external">黄刘生</a>和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。</p>
 </blockquote>
 <hr>
@@ -635,7 +635,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-17T08:25:27.000Z</published>
     <updated>2017-03-26T11:39:21.829Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以<code>.idx1-ubyte</code>后缀，包含60000个训练图像。将这些图像展示出来，需要利用到<a href="http://feiyang.li/2017/03/17/python-struct/">struct模块</a>。</p>
 </blockquote>
 <hr>
@@ -707,7 +707,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-17T06:08:07.000Z</published>
     <updated>2017-03-26T11:39:20.941Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p><a href="https://docs.python.org/3/library/struct.html#module-struct" target="_blank" rel="external">struct</a> — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具<strong>Python struct 模块</strong>。</p>
 </blockquote>
 <hr>
@@ -887,7 +887,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-16T02:52:28.000Z</published>
     <updated>2017-03-25T10:51:10.817Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式</p>
 </blockquote>
 <hr>
@@ -954,7 +954,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-15T05:22:44.000Z</published>
     <updated>2017-03-16T02:57:34.710Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。</p>
 </blockquote>
 <hr>
@@ -1024,7 +1024,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-11T07:06:14.000Z</published>
     <updated>2017-03-13T10:45:25.356Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>但行好事，莫问前程。真正能做到的能有几个呢？</p>
 </blockquote>
 <hr>
@@ -1155,7 +1155,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-10T05:52:53.000Z</published>
     <updated>2017-03-27T11:44:05.567Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>本文介绍了<code>raw_input</code> 和 <code>input</code>在<code>python2</code>和<code>python3</code>上的区别，以及如何利用正则表达式和<code>input</code>键盘输入一维数组和二维数组。</p>
 </blockquote>
 <hr>
@@ -1230,7 +1230,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-09T14:22:16.000Z</published>
     <updated>2017-03-25T05:10:12.327Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>快速排序是一种非常优秀的排序方法 </p>
 </blockquote>
 <a id="more"></a>
@@ -1282,7 +1282,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-03T06:17:00.000Z</published>
     <updated>2017-03-06T14:07:04.569Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>使用github学生优惠内的digitalocean，一键搭建vpn。获得60刀，免费用一年~</p>
 </blockquote>
 <hr>
@@ -1424,7 +1424,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-26T13:28:39.000Z</published>
     <updated>2017-02-28T03:22:11.178Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>jetbrains 家的东西都非常好看，但是价格贵的令人发指，所以我搭建了一个 Pycharm激活服务器，可以用来激活 Pycharm，IntelliJ IDEA，WebStorm。避免频繁更换激活码的问题。</p>
 </blockquote>
 <hr>
@@ -1494,7 +1494,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-24T12:57:01.000Z</published>
     <updated>2017-02-25T05:59:28.975Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง </p>
 </blockquote>
 <hr>
@@ -1573,7 +1573,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-18T11:37:59.000Z</published>
     <updated>2017-02-18T12:41:10.174Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>上手使用Python的Web框架– Django</p>
 </blockquote>
 <hr>
@@ -1721,7 +1721,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-17T09:04:55.000Z</published>
     <updated>2017-03-27T11:44:11.367Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目2.1</strong>： 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。</p>
 </blockquote>
 <hr>
@@ -1768,7 +1768,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-16T13:59:43.000Z</published>
     <updated>2017-03-27T11:44:14.250Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.9</strong>： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</p>
 </blockquote>
 <hr>
@@ -1826,7 +1826,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-15T14:07:40.000Z</published>
     <updated>2017-03-27T11:44:20.470Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.8：</strong> 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。</p>
 </blockquote>
 <hr>
@@ -1879,7 +1879,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-15T11:28:20.000Z</published>
     <updated>2017-03-27T11:44:17.551Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.7：</strong>敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。</p>
 </blockquote>
 <hr>
