@@ -28,16 +28,22 @@
 <meta property="og:url" content="http://feiyang.li/2017/02/09/frp/index.html">
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="我之前写过一篇文章是用Ngrok方式进行内网穿透，该方法需要借助到别人的服务器，非常麻烦。后来发现了Frp这个神器，只需要有一台公网的主机，就可以进行端口穿透，同时还可以转发tcp，udp，dns查询。">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170209/100609833.png">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170209/100924889.png">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170209/104436103.png">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170209/102426087.png">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170209/102821860.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170209/100609833.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170209/100924889.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170209/104436103.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170209/102426087.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170209/102821860.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
 <meta property="og:updated_time" content="2017-02-11T13:20:27.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="frp内网穿透">
 <meta name="twitter:description" content="我之前写过一篇文章是用Ngrok方式进行内网穿透，该方法需要借助到别人的服务器，非常麻烦。后来发现了Frp这个神器，只需要有一台公网的主机，就可以进行端口穿透，同时还可以转发tcp，udp，dns查询。">
-<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170209/100609833.png">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170209/100609833.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
     
         <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
     
@@ -190,7 +196,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>我之前写过一篇文章是用Ngrok方式进行内网穿透，该方法需要借助到别人的服务器，非常麻烦。后来发现了Frp这个神器，只需要有一台公网的主机，就可以进行端口穿透，同时还可以转发tcp，udp，dns查询。</p>
 </blockquote>
 <hr>
@@ -199,14 +205,16 @@
 <h1 id="ssh登录公网vps"><a href="#ssh登录公网vps" class="headerlink" title="ssh登录公网vps"></a>ssh登录公网vps</h1><h2 id="下载frp安装包"><a href="#下载frp安装包" class="headerlink" title="下载frp安装包"></a>下载frp安装包</h2><p>这里下载的是64位安装包<br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_amd64.tar.gz</code><br>如果你的系统版本是32位，那么建议使用如下命令：<strong>(如果不知道自己系统版本的，也用这个)</strong><br><code>wget http://home.ustc.edu.cn/~mmmwhy/frp/frp_0.9.3_linux_386.tar.gz</code><br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170209/100609833.png" alt="frp" title="">
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/100609833.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="frp" title="">
                 </div>
                 <div class="image-caption">frp</div>
             </figure></p>
 <h2 id="解压安装包"><a href="#解压安装包" class="headerlink" title="解压安装包"></a>解压安装包</h2><p><code>tar -xzvf frp_0.9.3_linux_386.tar.gz</code><br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170209/100924889.png" alt="frp" title="">
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/100924889.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="frp" title="">
                 </div>
                 <div class="image-caption">frp</div>
             </figure></p>
@@ -214,13 +222,15 @@
 <p>[ssh]后边写vps自己的端口。<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170209/104436103.png" alt="公网端口" title="">
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/104436103.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="公网端口" title="">
                 </div>
                 <div class="image-caption">公网端口</div>
             </figure><br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170209/102426087.png" alt="ssh端口号" title="">
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/102426087.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="ssh端口号" title="">
                 </div>
                 <div class="image-caption">ssh端口号</div>
             </figure></p>
@@ -228,7 +238,8 @@
 <h1 id="登录无公网主机"><a href="#登录无公网主机" class="headerlink" title="登录无公网主机"></a>登录无公网主机</h1><p>下载frp安装包与 解压安装包，与上部相同，在此不赘述。<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170209/102821860.png" alt="" title="">
+                    <img src="http://cdn.mmmxcc.cn/blog/20170209/102821860.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure></p>

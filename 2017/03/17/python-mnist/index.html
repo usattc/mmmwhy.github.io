@@ -28,14 +28,18 @@
 <meta property="og:url" content="http://feiyang.li/2017/03/17/python-mnist/index.html">
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以.idx1-ubyte后缀，包含60000个训练图像。将这些图像展示出来，需要利用到struct模块。">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170317/110144292.png">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170317/162019276.png">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170317/162228549.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170317/110144292.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170317/162019276.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170317/162228549.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
 <meta property="og:updated_time" content="2017-03-26T11:39:21.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python读取mnist">
 <meta name="twitter:description" content="在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以.idx1-ubyte后缀，包含60000个训练图像。将这些图像展示出来，需要利用到struct模块。">
-<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170317/110144292.png">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170317/110144292.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
     
         <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
     
@@ -188,7 +192,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以<code>.idx1-ubyte</code>后缀，包含60000个训练图像。将这些图像展示出来，需要利用到<a href="http://feiyang.li/2017/03/17/python-struct/">struct模块</a>。</p>
 </blockquote>
 <hr>
@@ -197,7 +201,8 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170317/110144292.png" alt="mark" title="">
+                    <img src="http://cdn.mmmxcc.cn/blog/20170317/110144292.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="mark" title="">
                 </div>
                 <div class="image-caption">mark</div>
             </figure>
@@ -214,14 +219,16 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170317/162019276.png" alt="give me 5" title="">
+                    <img src="http://cdn.mmmxcc.cn/blog/20170317/162019276.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="give me 5" title="">
                 </div>
                 <div class="image-caption">give me 5</div>
             </figure>
 <h1 id="多张图片读取"><a href="#多张图片读取" class="headerlink" title="多张图片读取"></a>多张图片读取</h1><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170317/162228549.png" alt="多张图片" title="">
+                    <img src="http://cdn.mmmxcc.cn/blog/20170317/162228549.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="多张图片" title="">
                 </div>
                 <div class="image-caption">多张图片</div>
             </figure>
