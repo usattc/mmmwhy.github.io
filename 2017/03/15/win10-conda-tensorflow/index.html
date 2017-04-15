@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://feiyang.li/2017/03/15/win10-conda-tensorflow/">
+    
+    
+    <title>Win10 Anaconda中安装Tensorflow并配置到jupter kernel | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="Machine Learning,Python,Jupyter">
+    <meta name="description" content="Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Win10 Anaconda中安装Tensorflow并配置到jupter kernel">
+<meta property="og:url" content="http://feiyang.li/2017/03/15/win10-conda-tensorflow/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170315/130833100.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170315/130930707.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170315/131024268.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170315/131835074.png">
+<meta property="og:updated_time" content="2017-03-16T02:57:34.710Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Win10 Anaconda中安装Tensorflow并配置到jupter kernel">
+<meta name="twitter:description" content="Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170315/130833100.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Win10 Anaconda中安装Tensorflow并配置到jupter kernel</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Win10 Anaconda中安装Tensorflow并配置到jupter kernel</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-15T05:22:44.000Z" itemprop="datePublished" class="page-time">
+  2017-03-15
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装Anaconda"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装Anaconda</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输入清华的仓库镜像，更新包更快："><span class="post-toc-number">1.1.</span> <span class="post-toc-text">输入清华的仓库镜像，更新包更快：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装TensorFlow"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装TensorFlow</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#加入jupyter-notebook的ipykernel内核"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">加入jupyter notebook的ipykernel内核</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#测试："><span class="post-toc-number">2.</span> <span class="post-toc-text">测试：</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-win10-conda-tensorflow"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Win10 Anaconda中安装Tensorflow并配置到jupter kernel</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年03月15日 13:22" datetime="2017-03-15T05:22:44.000Z"  itemprop="datePublished">2017-03-15</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="安装Anaconda"><a href="#安装Anaconda" class="headerlink" title="安装Anaconda"></a>安装Anaconda</h1><p>下载：<a href="https://www.continuum.io/downloads" target="_blank" rel="external">https://www.continuum.io/downloads</a>   ，我用的是Python 3.5<br>下载完以后，安装。</p>
+<h2 id="输入清华的仓库镜像，更新包更快："><a href="#输入清华的仓库镜像，更新包更快：" class="headerlink" title="输入清华的仓库镜像，更新包更快："></a>输入清华的仓库镜像，更新包更快：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</div><div class="line">conda config --set show_channel_urls yes</div></pre></td></tr></table></figure>
+<p>推荐第一行命令输入两次，以便把这个镜像地址放在首位。</p>
+<h2 id="安装TensorFlow"><a href="#安装TensorFlow" class="headerlink" title="安装TensorFlow"></a>安装TensorFlow</h2><p>一般来说，我们推荐新建一个新的virtualenv，这样可以预防同一个环境中的包太多，相互发生冲突。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conda create -n tensorflow python=3.5</div></pre></td></tr></table></figure></p>
+<p>既然是建议，那么<strong>忽视上边这一句话，也是可以的。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">activate tensorflow</div></pre></td></tr></table></figure>
+<p>激活后，我选择安装的是CPU版本，输入：</p>
+<p><code>pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/windows/cpu/tensorflow-0.12.0-cp35-cp35m-win_amd64.whl</code></p>
+<p>安装失败的话多试几次</p>
+<h2 id="加入jupyter-notebook的ipykernel内核"><a href="#加入jupyter-notebook的ipykernel内核" class="headerlink" title="加入jupyter notebook的ipykernel内核"></a>加入jupyter notebook的ipykernel内核</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">source activate tensorflow# On Windows, remove the word &apos;source&apos;</div><div class="line">install ipykernel</div><div class="line">python -m ipykernel install --user --name tensorflow--display-name &quot;Python (myenv)&quot;</div></pre></td></tr></table></figure>
+<p>在激活状态下，安装<code>ipykernel</code>，后边那个展示名称，自己可以随便填。进入jupyter notebook ，运行一下测试文件，看是否可以使用。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170315/130833100.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如果不行，输入<code>jupyter --paths</code><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170315/130930707.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>检查一下kernal是不是设置的有问题，比如我的就是<code>C:\Users\wing\AppData\Roaming\jupyter\kernels\tensorflow</code><br>一般来说是环境所在的地址有问题，修改一下就可以啦。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170315/131024268.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/100/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>通过这个方法，可以把自己手贱多加上去的kernel删掉。<strong>jupyter kernal 删除</strong><br>更多建议阅读<a href="http://ipython.readthedocs.io/en/stable/install/kernel_install.html" target="_blank" rel="external">官方文档</a></p>
+<p>我记得这个地方蛮复杂的，我当时往kernel里边加入R内核，费了大力气。当时还没写博客的习惯，现在又忘记怎么加的，真是日了狗。</p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170315/131835074.png" alt=""></p>
+<h1 id="测试："><a href="#测试：" class="headerlink" title="测试："></a>测试：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line">tf.__version__</div><div class="line">&gt;&gt;&gt;:<span class="string">'1.0.1'</span></div><div class="line">sess = tf.InteractiveSession()</div><div class="line">x = tf.Variable([<span class="number">1.0</span>, <span class="number">2.0</span>])</div><div class="line">a = tf.constant([<span class="number">3.0</span>, <span class="number">3.0</span>])</div><div class="line">x.initializer.run()<span class="comment"># 使用初始化器 initializer op 的 run() 方法初始化 ‘x‘ </span></div><div class="line">sub = tf.sub(x, a)<span class="comment"># 增加一个减法 sub op, 从 ‘x‘ 减去 ‘a‘. 运行减法 op, 输出结果 </span></div><div class="line">sub.eval()</div><div class="line">&gt;&gt;&gt;:array([<span class="number">-2.</span>, <span class="number">-1.</span>], dtype=float32)</div></pre></td></tr></table></figure>
+<p>我碰到了一个<code>module &#39;tensorflow&#39; has no attribute &#39;sub&#39;</code>，原因是tensorflow升级了之后，这个<code>sub</code>函数被改成了<code>subtract</code>，代码改成<code>sub = tf.subtract(x, a)</code>即可。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-16T02:57:34.710Z" itemprop="dateUpdated">2017年3月16日 10:57</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2017/03/15/win10-conda-tensorflow/" target="_blank" rel="external">http://feiyang.li/2017/03/15/win10-conda-tensorflow/</a>
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/03/15/win10-conda-tensorflow/&title=《Win10 Anaconda中安装Tensorflow并配置到jupter kernel》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/03/15/win10-conda-tensorflow/&title=《Win10 Anaconda中安装Tensorflow并配置到jupter kernel》 — 李飞阳&source=
+Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/03/15/win10-conda-tensorflow/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Win10 Anaconda中安装Tensorflow并配置到jupter kernel》 — 李飞阳&url=http://feiyang.li/2017/03/15/win10-conda-tensorflow/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/03/15/win10-conda-tensorflow/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/03/16/Ubuntu-caffe/index.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Ubuntu14.04+CPU+Python的Caffe安装教程</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/11/indian-movie/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">《小萝莉的猴神大叔》</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'mmmwhy';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃辣条好不好 ಠ౪ಠ
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+ 
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/03/15/win10-conda-tensorflow/&title=《Win10 Anaconda中安装Tensorflow并配置到jupter kernel》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/03/15/win10-conda-tensorflow/&title=《Win10 Anaconda中安装Tensorflow并配置到jupter kernel》 — 李飞阳&source=
+Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/03/15/win10-conda-tensorflow/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Win10 Anaconda中安装Tensorflow并配置到jupter kernel》 — 李飞阳&url=http://feiyang.li/2017/03/15/win10-conda-tensorflow/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/03/15/win10-conda-tensorflow/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aS27EMAwE0bn/pZ1NFgESaapJZwBT5ZUxH1nPC0JU6/XC1/XjWn3y+/erT/b3qzFvuGTIkPFYxrW9Vr9JH5yOyecmQ4aMcxj7orm6T4tm+i0v6DJkyJCRTr1WNGXIkCHjXsZ+irz15d/KkCFDBpkQ56XLvo/24jJkyHggg0/i8/f/km/IkCHjUYwrvDh1v/V/13y+x5QhQ8ZoBi9wPIAk7fE+JKjNR4YMGVMZPFAkjFoAkG7PBe9DhgwZgxhk0p0lYO14WRAhyJAh42AGP/LVKdycunyhMmTIGM3oNJb9MroPA/hLkSFDxgmMWoOaRo+1wh1ECzJkyBjKSIer4eOmFJfgN8GADBkyRjA65Y8vJfvxAxpThgwZQxl844xPhbSgZFkZxA8yZMg4nsHb1DRgSJtbdNhChgwZ4xhBi4gPVaRLwM7W3h/PkiFDxjhGbTjerNb+xV9K8Q3JkCHjUYzatlftWEaKjAEyZMg4gEE2xdJBa5t0tShChgwZsxmdSDI9EsHLKHnry3hAhgwZoxm1OLPWiJKFYzA3GTJkHMBIF3mtoLEdjr7ZO5QhQ8YgRicYIJ+nBy9qxzVkyJAxm5EWx/SYV/rLzsgyZMiYzeiXSPL42kabDBkyZNxV+Pjr4C1xHIvKkCFDBg41OwEDj0KDcx8yZMg4ksHv0/izddRDhgwZBzBIE9uJAeJjXukCUYYMGaMZ6cEIzuD/SrfhWvmGDBkynsT4Aq7NiYcw1mK4AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.11"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.11" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
