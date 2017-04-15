@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ubuntu14.04+CPU+Python的Caffe安装教程 | 李飞阳</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu14.04+CPU+Python的Caffe安装教程">
+<meta property="og:url" content="http://feiyang.li/2017/03/16/Ubuntu-caffe/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170315/155549210.png">
+<meta property="og:updated_time" content="2017-03-25T10:51:10.817Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu14.04+CPU+Python的Caffe安装教程">
+<meta name="twitter:description" content="背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170315/155549210.png">
+  
+    <link rel="alternate" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">李飞阳</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">PM、Coder、Data mining</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://feiyang.li"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Ubuntu-caffe" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/16/Ubuntu-caffe/index.html" class="article-date">
+  <time datetime="2017-03-16T02:52:28.000Z" itemprop="datePublished">2017-03-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ubuntu14.04+CPU+Python的Caffe安装教程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="安装开发所依赖的安装包"><a href="#安装开发所依赖的安装包" class="headerlink" title="安装开发所依赖的安装包"></a>安装开发所依赖的安装包</h1><p> 打开Ubuntu的终端，输入命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler</div><div class="line">sudo apt-get install --no-install-recommends libboost-all-dev</div><div class="line">sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev</div><div class="line">sudo apt-get install libatlas-base-dev</div></pre></td></tr></table></figure></p>
+<h2 id="升级g"><a href="#升级g" class="headerlink" title="升级g++"></a>升级g++</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g++ --version&lt;/span&gt;</div></pre></td></tr></table></figure>
+<p>查看g++版本，由于编译需要至少4.8版本的g++，一般来说，自带版本应该时4.8。如果想要升级g++，这里也提供以下下载方式，并且设置默认编译的g++为最新版本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:ubuntu-toolchain-r/test #用来添加库信息的帮助脚本。  </div><div class="line">sudo apt-get update                                 #更新  </div><div class="line">sudo apt-get install gcc-4.9                        </div><div class="line">sudo apt-get install g++-4.9                        #更新g++，gcc  </div><div class="line">sudo ln -sf /usr/bin/gcc-4.9 /usr/bin/gcc           #在调用的gcc库上做一个与最新版本的软连接，更改g++的默认版本。  </div><div class="line">sudo ln -sf /usr/bin/gcc-ar-4.9 /usr/bin/gcc-ar  </div><div class="line">sudo ln -sf /usr/bin/gcc-ranlib-4.9 /usr/bin/gcc-ranlib</div></pre></td></tr></table></figure></p>
+<h2 id="安装anaconda，建议安装。"><a href="#安装anaconda，建议安装。" class="headerlink" title="安装anaconda，建议安装。"></a>安装anaconda，建议安装。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-4.3.1-Linux-x86_64.sh</div><div class="line">bash Anaconda3-4.3.1-Linux-x86_64.sh</div></pre></td></tr></table></figure>
+<p>安装过程中记得一直选择默认的就行，傻瓜式安装。是否在bashrc中添加路径，这里选择“yes”就可以。忘了的话，解决方法很麻烦，自己查查吧。</p>
+<h2 id="安装OpenCV2-4-这个经常失败，建议跳过，不影响使用"><a href="#安装OpenCV2-4-这个经常失败，建议跳过，不影响使用" class="headerlink" title="安装OpenCV2.4(这个经常失败，建议跳过，不影响使用)"></a>安装OpenCV2.4(这个经常失败，建议跳过，不影响使用)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/bearpaw/Install-OpenCV</div><div class="line">cd Install-OpenCV/Ubuntu/2.4</div><div class="line">sh ./opencv2_4_10.sh</div></pre></td></tr></table></figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170315/155549210.png" alt="jayrambhia/Install-OpenCV.git"><br>编译过程很慢，中间我还报过一次错，不得不重新来了一次。如果觉得难度不够的话，可以选择官网的安装包：<a href="http://opencv.org/" target="_blank" rel="external">http://opencv.org/</a>，我这里是根据大神编译过的版本进行安装的。</p>
+<h2 id="安装atlas"><a href="#安装atlas" class="headerlink" title="安装atlas"></a>安装atlas</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libatlas-base-dev                #安装atlas简单易行。</div></pre></td></tr></table></figure>
+<h1 id="编译Caffe"><a href="#编译Caffe" class="headerlink" title="编译Caffe"></a>编译Caffe</h1><h2 id="下载caffe"><a href="#下载caffe" class="headerlink" title="下载caffe"></a>下载caffe</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~  </div><div class="line">git clone https://github.com/BVLC/caffe.git</div></pre></td></tr></table></figure>
+<h2 id="修改Makefile配置"><a href="#修改Makefile配置" class="headerlink" title="修改Makefile配置"></a>修改Makefile配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd caffe  </div><div class="line">cp Makefile.config.example Makefile.config </div><div class="line">gedit Makefile.config         #我个人比较喜欢gedit ，用起来方便。</div></pre></td></tr></table></figure>
+<ul>
+<li>CPU_ONLY := 1</li>
+<li>配置一些引用文件（增加部分主要是解决新版本下，HDF5的路径问题）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">INCLUDE_DIRS := $(PYTHON_INCLUDE)  /usr/local/include  /usr/include/hdf5/serial</div><div class="line">LIBRARY_DIRS := $(PYTHON_LIB)  /usr/local/lib   /usr/lib /usr/lib/x86_64-linux-gnu/hdf5/serial</div><div class="line">BLAS := atlas</div></pre></td></tr></table></figure>
+<h2 id="编译caffe"><a href="#编译caffe" class="headerlink" title="编译caffe"></a>编译caffe</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">make all -j8</div><div class="line">make test -j8</div><div class="line">make runtest -j8</div></pre></td></tr></table></figure>
+<p>另外, 这个make默认是用CPU单核运算,如果想要快一点, 比如我想使用四核, 在make后面加上-j4标签。<br>如果上面4行某一行报错之后想要重试,建议先make clean再重新开始。</p>
+<h2 id="更新安装依赖。"><a href="#更新安装依赖。" class="headerlink" title="更新安装依赖。"></a>更新安装依赖。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd caffe  </div><div class="line">cat python/requirements.txt | xargs -L 1 sudo pip install</div></pre></td></tr></table></figure>
+<h1 id="编译Python接口"><a href="#编译Python接口" class="headerlink" title="编译Python接口"></a>编译Python接口</h1><p>打开新的终端, 用which Python和which pip<br>确定使用的是anaconda提供的python环境，然后进入<code>caffe/python,</code> 执行下列命令，</p>
+<h2 id="确保pip已经安装"><a href="#确保pip已经安装" class="headerlink" title="确保pip已经安装"></a>确保pip已经安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install python-pip</div><div class="line">for req in $(cat requirements.txt); do pip install $req; done  #python运行需要的库。</div></pre></td></tr></table></figure>
+<h2 id="再次回到caffe根目录我们可以执行："><a href="#再次回到caffe根目录我们可以执行：" class="headerlink" title="再次回到caffe根目录我们可以执行："></a>再次回到caffe根目录我们可以执行：</h2><p>在caffe根目录的python文件夹下，有一个requirements.txt的清单文件，上面列出了需要的依赖库，按照这个清单安装就可以了。<br>在安装scipy库的时候，需要fortran编译器（gfortran)，如果没有这个编译器就会报错，因此，我们可以先安装一下。</p>
+<p>回到caffe的根目录，然后执行安装代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd ~/caffe</div><div class="line">sudo apt-get install gfortran</div><div class="line">cd ./python</div><div class="line">for req in $(cat requirements.txt); do pip install $req; done</div></pre></td></tr></table></figure>
+<p>安装完成以后，再次回到caffe根目录我们可以执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install -r python/requirements.txt</div></pre></td></tr></table></figure></p>
+<p>就会看到，安装成功的，都会显示Requirement already satisfied, 没有安装成功的，会继续安装。</p>
+<h2 id="编译python接口"><a href="#编译python接口" class="headerlink" title="编译python接口"></a>编译python接口</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make pycaffe -j8</div></pre></td></tr></table></figure>
+<h2 id="运行python"><a href="#运行python" class="headerlink" title="运行python"></a>运行python</h2><p>进入<code>caffe/python</code> ，运行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ python2<span class="number">.7</span></div><div class="line">Python <span class="number">2.7</span><span class="number">.12</span> (default, Jul  <span class="number">1</span> <span class="number">2016</span>, <span class="number">15</span>:<span class="number">12</span>:<span class="number">24</span>) </div><div class="line">[GCC <span class="number">5.4</span><span class="number">.0</span> <span class="number">20160609</span>] on linux2</div><div class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> caffe</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="加入PythonPath"><a href="#加入PythonPath" class="headerlink" title="加入PythonPath"></a>加入PythonPath</h2><p><code>gedit ~/.bashrc</code><br>将<code>export PYTHONPATH=/home/wing/caffe/python:$PYTHONPATH</code>添加到文件最后。<br><code>source ~/.bashrc</code> 使更改生效。<br>这样，在其他地方打开python，也可以import caffe了。</p>
+<hr>
+<p>出现过一个问题：<br><strong>error ：No module named google.protobuf.internal</strong><br>解决方法是：<br><code>sudo chmod 777 -R  anaconda</code>（文件夹） 改变权限 然后<br><code>conda install protobuf</code><br>可以很方便的解决的问题</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://feiyang.li/2017/03/16/Ubuntu-caffe/index.html" data-id="cj1iw7gzt001g2cjt03m9idbb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/17/python-struct/index.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          细究Python struct 模块
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/15/win10-conda-tensorflow/index.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Win10 Anaconda中安装Tensorflow并配置到jupter kernel</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GFW/">GFW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PM/">PM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pages/">Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pattern/">Pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm激活/">Pycharm激活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python-camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python_camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Running-man/">Running man</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSR/">SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPS/">VPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VelocityTracker/">VelocityTracker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xpath/">Xpath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love/">love</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugins/">plugins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/">resume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/urllib2/">urllib2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片处理/">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码处理/">密码处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/臭臭/">臭臭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithms/" style="font-size: 15px;">Algorithms</a> <a href="/tags/Android/" style="font-size: 11.25px;">Android</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/GFW/" style="font-size: 11.25px;">GFW</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jupyter/" style="font-size: 12.5px;">Jupyter</a> <a href="/tags/LaTex/" style="font-size: 10px;">LaTex</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 17.5px;">Machine Learning</a> <a href="/tags/Movie/" style="font-size: 10px;">Movie</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PM/" style="font-size: 10px;">PM</a> <a href="/tags/Pages/" style="font-size: 10px;">Pages</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/Pycharm激活/" style="font-size: 10px;">Pycharm激活</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Python-camp/" style="font-size: 10px;">Python-camp</a> <a href="/tags/Python-camp/" style="font-size: 18.75px;">Python_camp</a> <a href="/tags/Running-man/" style="font-size: 10px;">Running man</a> <a href="/tags/SSR/" style="font-size: 10px;">SSR</a> <a href="/tags/VPS/" style="font-size: 13.75px;">VPS</a> <a href="/tags/VelocityTracker/" style="font-size: 10px;">VelocityTracker</a> <a href="/tags/Xpath/" style="font-size: 11.25px;">Xpath</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/love/" style="font-size: 11.25px;">love</a> <a href="/tags/plugins/" style="font-size: 10px;">plugins</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/selenium/" style="font-size: 10px;">selenium</a> <a href="/tags/sort/" style="font-size: 11.25px;">sort</a> <a href="/tags/urllib2/" style="font-size: 10px;">urllib2</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/图片处理/" style="font-size: 11.25px;">图片处理</a> <a href="/tags/密码处理/" style="font-size: 10px;">密码处理</a> <a href="/tags/爬虫/" style="font-size: 12.5px;">爬虫</a> <a href="/tags/自然语言处理/" style="font-size: 12.5px;">自然语言处理</a> <a href="/tags/臭臭/" style="font-size: 12.5px;">臭臭</a> <a href="/tags/读书笔记/" style="font-size: 16.25px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/15/test/index.html">test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html">Coursera ML(5)-Logistic Regression and Regularization with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">Coursera ML(4)-Logistic Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">Coursera ML(3)-Multivariate Linear Regression python实现</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html">Coursera ML(2)-Model and Cost Function</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wing Lee<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

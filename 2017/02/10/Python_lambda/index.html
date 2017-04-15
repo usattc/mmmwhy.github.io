@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Python正则表达式 | 李飞阳</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="使用正则表达式，会使得字符串的处理很方便。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python正则表达式">
+<meta property="og:url" content="http://feiyang.li/2017/02/10/Python_lambda/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="使用正则表达式，会使得字符串的处理很方便。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170210/204306504.png">
+<meta property="og:updated_time" content="2017-03-27T11:44:32.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python正则表达式">
+<meta name="twitter:description" content="使用正则表达式，会使得字符串的处理很方便。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170210/204306504.png">
+  
+    <link rel="alternate" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">李飞阳</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">PM、Coder、Data mining</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://feiyang.li"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python_lambda" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/10/Python_lambda/index.html" class="article-date">
+  <time datetime="2017-02-10T14:18:55.000Z" itemprop="datePublished">2017-02-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python-camp/">Python_camp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python正则表达式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>使用正则表达式，会使得字符串的处理很方便。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="正则表达式基础"><a href="#正则表达式基础" class="headerlink" title="正则表达式基础"></a>正则表达式基础</h1><h2 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h2><p>Python中经常要对字符串进行处理，处理用户的输入，对文本的编辑等等。使用正则表达式，会使得字符串的处理很方便。<br><img src="http://cdn.mmmxcc.cn/blog/20170210/204306504.png" alt="Python支持的正则表达式元字符和语法"></p>
+<h2 id="数量词的贪婪模式与非贪婪模式"><a href="#数量词的贪婪模式与非贪婪模式" class="headerlink" title="数量词的贪婪模式与非贪婪模式"></a>数量词的贪婪模式与非贪婪模式</h2><p>正则表达式通常用于在文本中查找匹配的字符串。</p>
+<p>Python里数量词默认是贪婪的（在少数语言里也可能是默认非贪婪），总是尝试匹配尽可能多的字符；非贪婪的则相反，总是尝试匹配尽可能少的字符。</p>
+<p>例如：正则表达式”ab<em>“如果用于查找”abbbc”，将找到”abbb”。而如果使用非贪婪的数量词”ab</em>?”，将找到”a”。</p>
+<h1 id="re模块"><a href="#re模块" class="headerlink" title="re模块"></a>re模块</h1><h2 id="开始使用re"><a href="#开始使用re" class="headerlink" title="开始使用re"></a>开始使用re</h2><p>Python通过re模块提供对正则表达式的支持。使用re的一般步骤是先将正则表达式的字符串形式编译为Pattern实例，然后使用Pattern实例处理文本并获得匹配结果（一个Match实例），最后使用Match实例获得信息，进行其他的操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># encoding: UTF-8</span></div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># 将正则表达式编译成Pattern对象</span></div><div class="line">    pattern1 = re.compile(<span class="string">r'hello'</span>) </div><div class="line">    <span class="comment"># 使用Pattern匹配文本，获得匹配结果，无法匹配时将返回None</span></div><div class="line">    <span class="keyword">return</span> pattern1.match(<span class="string">'hello world!'</span>)</div><div class="line">    </div><div class="line"><span class="keyword">if</span> test():</div><div class="line">    <span class="comment"># 使用Match获得分组信息</span></div><div class="line">    <span class="keyword">print</span> (<span class="string">"match"</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> (<span class="string">"not match"</span>)</div></pre></td></tr></table></figure>
+<p><strong>re.compile(strPattern[, flag]):</strong><br>这个方法用于将字符串形式的正则表达式编译为Pattern对象， 第二个参数flag是匹配模式，取值可以使用按位或运算符’|’表示同时生效，比如re.I | re.M。另外，你也可以在regex字符串中指定模式，比如<strong>re.compile(‘pattern’, re.I | re.M)</strong>与<strong>re.compile(‘(?im)pattern’)</strong>是等价的。<br>可选值有：</p>
+<ul>
+<li>re.<strong>I</strong>(re.IGNORECASE): 忽略大小写（括号内是完整写法，下同）</li>
+<li><strong>M</strong>(MULTILINE): 多行模式，改变’^’和’$’的行为（参见上图）</li>
+<li><strong>S</strong>(DOTALL): 点任意匹配模式，改变’.’的行为</li>
+<li><strong>L</strong>(LOCALE): 使预定字符类 \w \W \b \B \s \S 取决于当前区域设定</li>
+<li><strong>U</strong>(UNICODE): 使预定字符类 \w \W \b \B \s \S \d \D 取决于unicode定义的字符属性</li>
+<li><strong>X</strong>(VERBOSE): 详细模式。这个模式下正则表达式可以是多行，忽略空白字符，并可以加入注释。以下两个正则表达式是等价的：<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = re.compile(<span class="string">r"""\d +  # the integral part</span></div><div class="line">                   \.    # the decimal point</div><div class="line">                   \d *  # some fractional digits""", re.X)</div><div class="line">b = re.compile(<span class="string">r"\d+\.\d*"</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>re提供了众多模块方法用于完成正则表达式的功能。这些方法可以使用Pattern实例的相应方法替代，唯一的好处是少写一行re.compile()代码，但同时也无法复用编译后的Pattern对象。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">m = re.match(<span class="string">r'hello'</span>, <span class="string">'hello world!'</span>)</div><div class="line"><span class="keyword">print</span> m.group()</div></pre></td></tr></table></figure></p>
+<p>re模块还提供了一个方法escape(string)，用于将string中的正则表达式元字符如*/+/?等之前加上转义符再返回，在需要大量匹配元字符时有那么一点用。</p>
+<h2 id="Match"><a href="#Match" class="headerlink" title="Match"></a>Match</h2><p>Match对象是一次匹配的结果，包含了很多关于此次匹配的信息，可以使用Match提供的可读属性或方法来获取这些信息。</p>
+<h3 id="属性："><a href="#属性：" class="headerlink" title="属性："></a>属性：</h3><ul>
+<li><strong>string</strong>: 匹配时使用的文本。</li>
+<li><strong>re</strong>: 匹配时使用的Pattern对象。</li>
+<li><strong>pos</strong>: 文本中正则表达式开始搜索的索引。值与Pattern.match()和Pattern.seach()方法的同名参数相同。</li>
+<li><strong>endpos</strong>: 文本中正则表达式结束搜索的索引。值与Pattern.match()和Pattern.seach()方法的同名参数相同。</li>
+<li><strong>lastindex</strong>: 最后一个被捕获的分组在文本中的索引。如果没有被捕获的分组，将为None。</li>
+<li><strong>lastgroup</strong>: 最后一个被捕获的分组的别名。如果这个分组没有别名或者没有被捕获的分组，将为None。</li>
+</ul>
+<h3 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h3><ul>
+<li><strong>group([group1, …])</strong>:<br>获得一个或多个分组截获的字符串；指定多个参数时将以元组形式返回。group1可以使用编号也可以使用别名；编号0代表整个匹配的子串；不填写参数时，返回group(0)；没有截获字符串的组返回None；截获了多次的组返回最后一次截获的子串。</li>
+<li><strong>groups([default]): </strong><br>以元组形式返回全部分组截获的字符串。相当于调用group(1,2,…last)。default表示没有截获字符串的组以这个值替代，默认为None。</li>
+<li><strong>groupdict([default]): </strong><br>返回以有别名的组的别名为键、以该组截获的子串为值的字典，没有别名的组不包含在内。default含义同上。</li>
+<li><strong>start([group]): </strong><br>返回指定的组截获的子串在string中的起始索引（子串第一个字符的索引）。group默认值为0。</li>
+<li><strong>end([group]): </strong><br>返回指定的组截获的子串在string中的结束索引（子串最后一个字符的索引+1）。group默认值为0。</li>
+<li><strong>span([group]): </strong><br>返回(start(group), end(group))。</li>
+<li><strong>expand(template): </strong><br>将匹配到的分组代入template中然后返回。template中可以使用\id或\g<id>、\g<name>引用分组，但不能使用编号0。\id与\g<id>是等价的；但\10将被认为是第10个分组，如果你想表达\1之后是字符’0’，只能使用\g<1>0。</1></id></name></id></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">m = re.match(<span class="string">r'(\w+) (\w+)(?P&lt;sign&gt;.*)'</span>, <span class="string">'hello world!'</span>)</div><div class="line"> </div><div class="line"><span class="keyword">print</span> (<span class="string">"m.string:"</span>, m.string)</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.re:"</span>, m.re)</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.pos:"</span>, m.pos)</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.endpos:"</span>, m.endpos)</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.lastindex:"</span>, m.lastindex)</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.lastgroup:"</span>, m.lastgroup)</div><div class="line"> </div><div class="line"><span class="keyword">print</span> (<span class="string">"m.group(1,2):"</span>, m.group(<span class="number">1</span>, <span class="number">2</span>))</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.groups():"</span>, m.groups())</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.groupdict():"</span>, m.groupdict())</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.start(2):"</span>, m.start(<span class="number">2</span>))</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.end(2):"</span>, m.end(<span class="number">2</span>))</div><div class="line"><span class="keyword">print</span> (<span class="string">"m.span(2):"</span>, m.span(<span class="number">2</span>))</div><div class="line"><span class="keyword">print</span> (<span class="string">r"m.expand(r'\2 \1\3'):"</span>, m.expand(<span class="string">r'\2 \1\3'</span>))</div></pre></td></tr></table></figure>
+<p>输出内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">m.string: hello world!</div><div class="line">m.re: re.compile(&apos;(\\w+) (\\w+)(?P&lt;sign&gt;.*)&apos;)</div><div class="line">m.pos: 0</div><div class="line">m.endpos: 12</div><div class="line">m.lastindex: 3</div><div class="line">m.lastgroup: sign</div><div class="line">m.group(1,2): (&apos;hello&apos;, &apos;world&apos;)</div><div class="line">m.groups(): (&apos;hello&apos;, &apos;world&apos;, &apos;!&apos;)</div><div class="line">m.groupdict(): &#123;&apos;sign&apos;: &apos;!&apos;&#125;</div><div class="line">m.start(2): 6</div><div class="line">m.end(2): 11</div><div class="line">m.span(2): (6, 11)</div><div class="line">m.expand(r&apos;\2 \1\3&apos;): world hello!</div></pre></td></tr></table></figure></p>
+<h2 id="Pattern"><a href="#Pattern" class="headerlink" title="Pattern"></a>Pattern</h2><p>Pattern对象是一个编译好的正则表达式，通过Pattern提供的一系列方法可以对文本进行匹配查找。</p>
+<p>Pattern不能直接实例化，必须使用re.compile()进行构造。</p>
+<p>Pattern提供了几个可读属性用于获取表达式的相关信息：</p>
+<ul>
+<li>pattern: 编译时用的表达式字符串。</li>
+<li>flags: 编译时用的匹配模式。数字形式。</li>
+<li>groups: 表达式中分组的数量。</li>
+<li>groupindex: 以表达式中有别名的组的别名为键、以该组对应的编号为值的字典，没有别名的组不包含在内。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">p = re.compile(<span class="string">r'(\w+) (\w+)(?P&lt;sign&gt;.*)'</span>, re.DOTALL)</div><div class="line"> </div><div class="line"><span class="keyword">print</span> (<span class="string">"p.pattern:"</span>, p.pattern)</div><div class="line"><span class="keyword">print</span> (<span class="string">"p.flags:"</span>, p.flags)</div><div class="line"><span class="keyword">print</span> (<span class="string">"p.groups:"</span>, p.groups)</div><div class="line"><span class="keyword">print</span> (<span class="string">"p.groupindex:"</span>, p.groupindex)</div><div class="line"> </div><div class="line"><span class="comment">### output ###</span></div><div class="line"><span class="comment"># p.pattern: (\w+) (\w+)(?P&lt;sign&gt;.*)</span></div><div class="line"><span class="comment"># p.flags: 16</span></div><div class="line"><span class="comment"># p.groups: 3</span></div><div class="line"><span class="comment"># p.groupindex: &#123;'sign': 3&#125;</span></div></pre></td></tr></table></figure>
+<h4 id="实例方法-re模块方法-："><a href="#实例方法-re模块方法-：" class="headerlink" title="实例方法[ | re模块方法]："></a>实例方法[ | re模块方法]：</h4><ul>
+<li><p><strong>match(string[, pos[, endpos]]) | re.match(pattern, string[, flags]): </strong><br>这个方法将从string的pos下标处起尝试匹配pattern；如果pattern结束时仍可匹配，则返回一个Match对象；如果匹配过程中pattern无法匹配，或者匹配未结束就已到达endpos，则返回None。<br>pos和endpos的默认值分别为0和len(string)；<br>re.match()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。<br>注意：这个方法并不是完全匹配。当pattern结束时若string还有剩余字符，仍然视为成功。想要完全匹配，可以在表达式末尾加上边界匹配符’$’。 </p>
+</li>
+<li><p><strong>search(string[, pos[, endpos]]) | re.search(pattern, string[, flags]): </strong><br>这个方法用于查找字符串中可以匹配成功的子串。从string的pos下标处起尝试匹配pattern，如果pattern结束时仍可匹配，则返回一个Match对象；<br>若无法匹配，则将pos加1后重新尝试匹配；直到pos=endpos时仍无法匹配则返回None。<br>pos和endpos的默认值分别为0和len(string))；re.search()无法指定这两个参数，参数flags用于编译pattern时指定匹配模式。 </p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># encoding: UTF-8 </span></div><div class="line"><span class="keyword">import</span> re </div><div class="line"> </div><div class="line"><span class="comment"># 将正则表达式编译成Pattern对象 </span></div><div class="line">pattern = re.compile(<span class="string">r'world'</span>) </div><div class="line"> </div><div class="line"><span class="comment"># 使用search()查找匹配的子串，不存在能匹配的子串时将返回None </span></div><div class="line"><span class="comment"># 这个例子中使用match()无法成功匹配 </span></div><div class="line">match = pattern.search(<span class="string">'hello world!'</span>) </div><div class="line"> </div><div class="line"><span class="keyword">if</span> match: </div><div class="line">    <span class="comment"># 使用Match获得分组信息 </span></div><div class="line">    <span class="keyword">print</span> (match.group() )</div><div class="line"> </div><div class="line"><span class="comment">### 输出 ### </span></div><div class="line"><span class="comment"># world</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>split(string[, maxsplit]) | re.split(pattern, string[, maxsplit]): </strong><br>按照能够匹配的子串将string分割后返回列表。maxsplit用于指定最大分割次数，不指定将全部分割。 </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"> </div><div class="line">p = re.compile(<span class="string">r'\d+'</span>)</div><div class="line"><span class="keyword">print</span> (p.split(<span class="string">'one1two2three3four4'</span>))</div><div class="line"> </div><div class="line"><span class="comment">### output ###</span></div><div class="line"><span class="comment"># ['one', 'two', 'three', 'four', '']</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>findall(string[, pos[, endpos]]) | re.findall(pattern, string[, flags]): </strong><br>搜索string，以列表形式返回全部能匹配的子串。 </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"> </div><div class="line">p = re.compile(<span class="string">r'\d+'</span>)</div><div class="line"><span class="keyword">print</span> (p.findall(<span class="string">'one1two2three3four4'</span>))</div><div class="line"> </div><div class="line"><span class="comment">### output ###</span></div><div class="line"><span class="comment"># ['1', '2', '3', '4']</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>finditer(string[, pos[, endpos]]) | re.finditer(pattern, string[, flags]): </strong><br>搜索string，返回一个顺序访问每一个匹配结果（Match对象）的迭代器。 </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"> </div><div class="line">p = re.compile(<span class="string">r'\d+'</span>)</div><div class="line"><span class="keyword">for</span> m <span class="keyword">in</span> p.finditer(<span class="string">'one1two2three3four4'</span>):</div><div class="line">    <span class="keyword">print</span> m.group(),</div><div class="line"> </div><div class="line"><span class="comment">### output ###</span></div><div class="line"><span class="comment"># 1 2 3 4</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>sub(repl, string[, count]) | re.sub(pattern, repl, string[, count]): </strong><br>使用repl替换string中每一个匹配的子串后返回替换后的字符串。<br>当repl是一个字符串时，可以使用\id或\g<id>、\g<name>引用分组，但不能使用编号0。<br>当repl是一个方法时，这个方法应当只接受一个参数（Match对象），并返回一个字符串用于替换（返回的字符串中不能再引用分组）。<br>count用于指定最多替换次数，不指定时全部替换。 </name></id></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"> </div><div class="line">p = re.compile(<span class="string">r'(\w+) (\w+)'</span>)</div><div class="line">s = <span class="string">'i say, hello world!'</span></div><div class="line"> </div><div class="line"><span class="keyword">print</span> p.sub(<span class="string">r'\2 \1'</span>, s)</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(m)</span>:</span></div><div class="line">    <span class="keyword">return</span> m.group(<span class="number">1</span>).title() + <span class="string">' '</span> + m.group(<span class="number">2</span>).title()</div><div class="line"> </div><div class="line"><span class="keyword">print</span> p.sub(func, s)</div><div class="line"> </div><div class="line"><span class="comment">### output ###</span></div><div class="line"><span class="comment"># say i, world hello!</span></div><div class="line"><span class="comment"># I Say, Hello World!</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>subn(repl, string[, count]) |re.sub(pattern, repl, string[, count]): </strong><br>返回 (sub(repl, string[, count]), 替换次数)。 </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line"> </div><div class="line">p = re.compile(<span class="string">r'(\w+) (\w+)'</span>)</div><div class="line">s = <span class="string">'i say, hello world!'</span></div><div class="line"> </div><div class="line"><span class="keyword">print</span> p.subn(<span class="string">r'\2 \1'</span>, s)</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(m)</span>:</span></div><div class="line">    <span class="keyword">return</span> m.group(<span class="number">1</span>).title() + <span class="string">' '</span> + m.group(<span class="number">2</span>).title()</div><div class="line"> </div><div class="line"><span class="keyword">print</span> p.subn(func, s)</div><div class="line"> </div><div class="line"><span class="comment">### output ###</span></div><div class="line"><span class="comment"># ('say i, world hello!', 2)</span></div><div class="line"><span class="comment"># ('I Say, Hello World!', 2)</span></div></pre></td></tr></table></figure>
+<p>以上就是Python对于正则表达式的支持。熟练掌握正则表达式是每一个程序员必须具备的技能。笔者也是看的迷迷糊糊，文章来自<a href="http://www.cnblogs.com/huxi/archive/2010/07/04/1771073.html" target="_blank" rel="external">cnblog</a>，原版博客基于Python2.4完成，年代有点久，我稍微修改了一下代码。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://feiyang.li/2017/02/10/Python_lambda/index.html" data-id="cj1iw7gzo00162cjtiw6vgxh8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python-camp/">Python-camp</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/11/python_camp4/index.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第1.4题：统计文件中单词出现个数
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/10/python_camp3/index.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第1.3题：将  200 个激活码保存到 MySQL</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GFW/">GFW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PM/">PM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pages/">Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pattern/">Pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm激活/">Pycharm激活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python-camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python_camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Running-man/">Running man</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSR/">SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPS/">VPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VelocityTracker/">VelocityTracker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xpath/">Xpath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love/">love</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugins/">plugins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/">resume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/urllib2/">urllib2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片处理/">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码处理/">密码处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/臭臭/">臭臭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithms/" style="font-size: 15px;">Algorithms</a> <a href="/tags/Android/" style="font-size: 11.25px;">Android</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/GFW/" style="font-size: 11.25px;">GFW</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jupyter/" style="font-size: 12.5px;">Jupyter</a> <a href="/tags/LaTex/" style="font-size: 10px;">LaTex</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 17.5px;">Machine Learning</a> <a href="/tags/Movie/" style="font-size: 10px;">Movie</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PM/" style="font-size: 10px;">PM</a> <a href="/tags/Pages/" style="font-size: 10px;">Pages</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/Pycharm激活/" style="font-size: 10px;">Pycharm激活</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Python-camp/" style="font-size: 10px;">Python-camp</a> <a href="/tags/Python-camp/" style="font-size: 18.75px;">Python_camp</a> <a href="/tags/Running-man/" style="font-size: 10px;">Running man</a> <a href="/tags/SSR/" style="font-size: 10px;">SSR</a> <a href="/tags/VPS/" style="font-size: 13.75px;">VPS</a> <a href="/tags/VelocityTracker/" style="font-size: 10px;">VelocityTracker</a> <a href="/tags/Xpath/" style="font-size: 11.25px;">Xpath</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/love/" style="font-size: 11.25px;">love</a> <a href="/tags/plugins/" style="font-size: 10px;">plugins</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/selenium/" style="font-size: 10px;">selenium</a> <a href="/tags/sort/" style="font-size: 11.25px;">sort</a> <a href="/tags/urllib2/" style="font-size: 10px;">urllib2</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/图片处理/" style="font-size: 11.25px;">图片处理</a> <a href="/tags/密码处理/" style="font-size: 10px;">密码处理</a> <a href="/tags/爬虫/" style="font-size: 12.5px;">爬虫</a> <a href="/tags/自然语言处理/" style="font-size: 12.5px;">自然语言处理</a> <a href="/tags/臭臭/" style="font-size: 12.5px;">臭臭</a> <a href="/tags/读书笔记/" style="font-size: 16.25px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/15/test/index.html">test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html">Coursera ML(5)-Logistic Regression and Regularization with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">Coursera ML(4)-Logistic Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">Coursera ML(3)-Multivariate Linear Regression python实现</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html">Coursera ML(2)-Model and Cost Function</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wing Lee<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

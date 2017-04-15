@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jupyter notebook使用帮助 | 李飞阳</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jupyter notebook使用帮助">
+<meta property="og:url" content="http://feiyang.li/2017/01/12/jupyter-notebook/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170316/202506728.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204418862.png?imageMogr2/thumbnail/!100p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204526634.png?imageMogr2/thumbnail/!100p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204842314.png?imageMogr2/thumbnail/!100p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170112/204957560.png?imageMogr2/thumbnail/!60p">
+<meta property="og:updated_time" content="2017-03-16T12:26:02.941Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jupyter notebook使用帮助">
+<meta name="twitter:description" content="jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p">
+  
+    <link rel="alternate" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">李飞阳</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">PM、Coder、Data mining</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://feiyang.li"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-jupyter-notebook" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/12/jupyter-notebook/index.html" class="article-date">
+  <time datetime="2017-01-12T12:50:52.000Z" itemprop="datePublished">2017-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jupyter notebook使用帮助
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>jupyer notebook 使用的时候常见换主题，以及换工作空间的问题。</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<h1 id="jupyter-notebook-换字体换颜色换主题"><a href="#jupyter-notebook-换字体换颜色换主题" class="headerlink" title="jupyter notebook 换字体换颜色换主题"></a>jupyter notebook 换字体换颜色换主题</h1><p>jupyter notebook自带的默认颜色实在是阳春白雪，看的多了眼睛有点累。页面的相关定义都是在CSS内完成的，我们可以通过修改CSS来达到目标。<br>但是这样实在是太累了，在<a href="https://github.com/mmmwhy/jupyter-themes" target="_blank" rel="external">Github</a>有一个<strong><a href="https://github.com/mmmwhy/jupyter-themes" target="_blank" rel="external">jupyter-themes</a></strong>工具，真的很好用，通过pip进行安装，分分钟更换成自己喜欢的主题。</p>
+<h2 id="安装-jupyterthemes"><a href="#安装-jupyterthemes" class="headerlink" title="安装 jupyterthemes"></a>安装 jupyterthemes</h2><p><code>pip install jupyterthemes</code><br>通过pip安装省时省力，如果你当前pip安装速度很慢，可以考虑使用清华源，代码如下：<br><code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple jupyterthemes</code></p>
+<h2 id="命令行格式"><a href="#命令行格式" class="headerlink" title="命令行格式"></a>命令行格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">usage: jt [-h] [-l] [-t THEME] [-f MONOFONT] [-fs MONOSIZE] [-nf NBFONT]</div><div class="line">          [-nfs NBFONTSIZE] [-tf TCFONT] [-tfs TCFONTSIZE] [-m MARGINS]</div><div class="line">          [-cursw CURSORWIDTH] [-cursc CURSORCOLOR] [-cellw CELLWIDTH]</div><div class="line">          [-lineh LINEHEIGHT] [-alt] [-vim] [-T] [-N] [-r]</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">options</th>
+<th style="text-align:center">arg</th>
+<th style="text-align:center">default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Usage help</td>
+<td style="text-align:center">-h</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">List Themes</td>
+<td style="text-align:center">-l</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Theme Name to Install</td>
+<td style="text-align:center">-t</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Code Font</td>
+<td style="text-align:center">-f</td>
+<td style="text-align:center">droidmono</td>
+</tr>
+<tr>
+<td style="text-align:left">Code Font-Size</td>
+<td style="text-align:center">-fs</td>
+<td style="text-align:center">11</td>
+</tr>
+<tr>
+<td style="text-align:left">Notebook Font</td>
+<td style="text-align:center">-nf</td>
+<td style="text-align:center">exosans</td>
+</tr>
+<tr>
+<td style="text-align:left">Notebook Font Size</td>
+<td style="text-align:center">-nfs</td>
+<td style="text-align:center">13</td>
+</tr>
+<tr>
+<td style="text-align:left">Text/MD Cell Font</td>
+<td style="text-align:center">-tf</td>
+<td style="text-align:center">loraserif</td>
+</tr>
+<tr>
+<td style="text-align:left">Text/MD Cell Fontsize</td>
+<td style="text-align:center">-tfs</td>
+<td style="text-align:center">13</td>
+</tr>
+<tr>
+<td style="text-align:left">Intro Page Margins</td>
+<td style="text-align:center">-m</td>
+<td style="text-align:center">auto</td>
+</tr>
+<tr>
+<td style="text-align:left">Cell Width</td>
+<td style="text-align:center">-cellw</td>
+<td style="text-align:center">980</td>
+</tr>
+<tr>
+<td style="text-align:left">Line Height</td>
+<td style="text-align:center">-lineh</td>
+<td style="text-align:center">170</td>
+</tr>
+<tr>
+<td style="text-align:left">Cursor Width</td>
+<td style="text-align:center">-cursw</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:left">Cursor Color</td>
+<td style="text-align:center">-cursc</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Alt Text/MD Layout</td>
+<td style="text-align:center">-alt</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Alt Prompt Layout</td>
+<td style="text-align:center">-altp</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Style Vim NBExt*</td>
+<td style="text-align:center">-vim</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Toolbar Visible</td>
+<td style="text-align:center">-T</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Name &amp; Logo Visible</td>
+<td style="text-align:center">-N</td>
+<td style="text-align:center">–</td>
+</tr>
+<tr>
+<td style="text-align:left">Restore Default</td>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">–</td>
+</tr>
+</tbody>
+</table>
+<p>举个例子<br><code>jt -t oceans16 -f roboto -fs 15</code><br>意味着选择oceans16主题，roboto字体，大小为15，效果如下。<br><img src="http://cdn.mmmxcc.cn/blog/20170112/204004006.png?imageMogr2/thumbnail/!60p" alt=""><br>恢复原始主题，重新启动Jupyter notebook，如果主题没有改变，Ctrl+F5刷新即可。<br><code>jt -r</code></p>
+<p>目前我自己用的是<br><code>jt -t onedork  -cellw 1600 -lineh 170 -tf georgiaserif -nf droidsans -fs 15</code><br>效果如下：主要修改了宽度，因为我电脑分辨率是1920*1080，使用默认的900宽度有点小了。<br><img src="http://cdn.mmmxcc.cn/blog/20170316/202506728.png" alt=""></p>
+<h1 id="jupyter-notebook换工作空间"><a href="#jupyter-notebook换工作空间" class="headerlink" title="jupyter notebook换工作空间"></a>jupyter notebook换工作空间</h1><ul>
+<li>打开 cmd 输入命令<br><code>jupyter notebook --generate-config</code><br><img src="http://cdn.mmmxcc.cn/blog/20170112/204418862.png?imageMogr2/thumbnail/!100p" alt=""></li>
+<li>进入自己工作目录，<strong>.jupyter</strong>，打开<strong>jupyter_notebook_config.py</strong><br><img src="http://cdn.mmmxcc.cn/blog/20170112/204526634.png?imageMogr2/thumbnail/!100p" alt=""></li>
+<li>ctrl+f查到<strong>c.NotebookApp.notebook_dir</strong>，<br>将这一行改为<strong>c.NotebookApp.notebook_dir = ‘自己的位置’</strong><br><img src="http://cdn.mmmxcc.cn/blog/20170112/204842314.png?imageMogr2/thumbnail/!100p" alt=""></li>
+<li>启动 jupyter notebook<br><img src="http://cdn.mmmxcc.cn/blog/20170112/204957560.png?imageMogr2/thumbnail/!60p" alt=""></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://feiyang.li/2017/01/12/jupyter-notebook/index.html" data-id="cj1iw7h0h002b2cjtwtarapux" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/07/Github-Pages-CDN/index.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Github Pages + CDN全站加速
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/31/IPyhton-notebook/index.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">部署在线IPyhton notebook(在线python编译器)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GFW/">GFW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PM/">PM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pages/">Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pattern/">Pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm激活/">Pycharm激活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python-camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python_camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Running-man/">Running man</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSR/">SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPS/">VPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VelocityTracker/">VelocityTracker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xpath/">Xpath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love/">love</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugins/">plugins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/">resume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/urllib2/">urllib2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片处理/">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码处理/">密码处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/臭臭/">臭臭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithms/" style="font-size: 15px;">Algorithms</a> <a href="/tags/Android/" style="font-size: 11.25px;">Android</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/GFW/" style="font-size: 11.25px;">GFW</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jupyter/" style="font-size: 12.5px;">Jupyter</a> <a href="/tags/LaTex/" style="font-size: 10px;">LaTex</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 17.5px;">Machine Learning</a> <a href="/tags/Movie/" style="font-size: 10px;">Movie</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PM/" style="font-size: 10px;">PM</a> <a href="/tags/Pages/" style="font-size: 10px;">Pages</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/Pycharm激活/" style="font-size: 10px;">Pycharm激活</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Python-camp/" style="font-size: 10px;">Python-camp</a> <a href="/tags/Python-camp/" style="font-size: 18.75px;">Python_camp</a> <a href="/tags/Running-man/" style="font-size: 10px;">Running man</a> <a href="/tags/SSR/" style="font-size: 10px;">SSR</a> <a href="/tags/VPS/" style="font-size: 13.75px;">VPS</a> <a href="/tags/VelocityTracker/" style="font-size: 10px;">VelocityTracker</a> <a href="/tags/Xpath/" style="font-size: 11.25px;">Xpath</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/love/" style="font-size: 11.25px;">love</a> <a href="/tags/plugins/" style="font-size: 10px;">plugins</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/selenium/" style="font-size: 10px;">selenium</a> <a href="/tags/sort/" style="font-size: 11.25px;">sort</a> <a href="/tags/urllib2/" style="font-size: 10px;">urllib2</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/图片处理/" style="font-size: 11.25px;">图片处理</a> <a href="/tags/密码处理/" style="font-size: 10px;">密码处理</a> <a href="/tags/爬虫/" style="font-size: 12.5px;">爬虫</a> <a href="/tags/自然语言处理/" style="font-size: 12.5px;">自然语言处理</a> <a href="/tags/臭臭/" style="font-size: 12.5px;">臭臭</a> <a href="/tags/读书笔记/" style="font-size: 16.25px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/15/test/index.html">test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html">Coursera ML(5)-Logistic Regression and Regularization with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">Coursera ML(4)-Logistic Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">Coursera ML(3)-Multivariate Linear Regression python实现</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html">Coursera ML(2)-Model and Cost Function</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wing Lee<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Python爬取图片（使用urllib2） | 李飞阳</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python爬取图片（使用urllib2）">
+<meta property="og:url" content="http://feiyang.li/2016/12/15/Python_use_urllib2/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161215/182806800.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161215/191015695.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161215/191141723.png">
+<meta property="og:updated_time" content="2017-03-27T11:43:58.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python爬取图片（使用urllib2）">
+<meta name="twitter:description" content="上篇文章 使用 XPath 提取网页信息 之后，将链接中的内容下载至本地，需要使用到 urllib2 。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p">
+  
+    <link rel="alternate" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">李飞阳</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">PM、Coder、Data mining</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://feiyang.li"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python_use_urllib2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/15/Python_use_urllib2/index.html" class="article-date">
+  <time datetime="2016-12-15T11:14:24.000Z" itemprop="datePublished">2016-12-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python-camp/">Python_camp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python爬取图片（使用urllib2）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>上篇文章 <a href="http://feiyang.li/2016/12/13/get_html/">使用 XPath 提取网页信息</a> 之后，将链接中的内容下载至本地，需要使用到 urllib2 。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="urllib2-简介"><a href="#urllib2-简介" class="headerlink" title="urllib2 简介"></a>urllib2 简介</h1><p>urllib2提供一个基础函数urlopen，通过向指定的URL发出请求来获取数据。最简单的形式就是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib2 </div><div class="line">response = urllib2.urlopen(<span class="string">'http://feiyang.li/'</span>) </div><div class="line">html = response.read()</div></pre></td></tr></table></figure>
+<p>可以将上述代码看作两个步骤，我们指定一个域名并发送请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request=urllib2.request(&apos;http://feiyang.li/&apos;)</div></pre></td></tr></table></figure></p>
+<p>接着服务端响应来自客户端的请求 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">response=urllib2.urlopen(request)</div></pre></td></tr></table></figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p" alt="运行结果"></p>
+<p>我们可以发现title这个地方本来应该是中文的，但因为编码的原因，导致出现乱码。通过将html页面重新用”utf-8”编码，可以解决这个问题。</p>
+<hr>
+<h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://feiyang.li/2016/12/13/get_html/">http://feiyang.li/2016/12/13/get_html/</a>   ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
+<p>这里需要导入lxml，代码格式如下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = requests.get(<span class="string">"http://jandan.net/ooxx"</span>)</div><div class="line">html.encoding = <span class="string">'utf-8'</span></div><div class="line">selector = etree.HTML(html.text)</div><div class="line">content = selector.xpath(<span class="string">'//ol[@class = "commentlist"]//@src'</span>)</div></pre></td></tr></table></figure>
+<p>单独运行 以上代码可以获得<br><img src="http://cdn.mmmxcc.cn/blog/20161215/182806800.png" alt="Xpath运行结果"></p>
+<h2 id="设置保存的位置"><a href="#设置保存的位置" class="headerlink" title="设置保存的位置"></a>设置保存的位置</h2><p>需要使用到os库中的 <em>os.chdir(r””)</em>函数，””中间插入地址。<strong>注意</strong>这个位置必须是<strong>存在</strong>的，如果位置不存在，函数会报错。因为该函数的意义是：将工作空间从python代码所在位置，改为指定的这个位置。</p>
+<h2 id="模拟正常浏览器下载图片（如果Python下载的图片不显示-）"><a href="#模拟正常浏览器下载图片（如果Python下载的图片不显示-）" class="headerlink" title="模拟正常浏览器下载图片（如果Python下载的图片不显示 ）"></a>模拟正常浏览器下载图片（如果Python下载的图片不显示 ）</h2><p>有时你会碰到，程序也对，但是服务器拒绝你的访问。这是为什么呢?</p>
+<p>问题出在请求中的头信息(header)。 有的服务端有洁癖，不喜欢程序来触摸它。</p>
+<p>这个时候你需要将你的程序伪装成浏览器来发出请求。请求的方式就包含在header中。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">header = &#123;</div><div class="line">        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36'</span>,</div><div class="line">        <span class="string">'Cookie'</span>: <span class="string">'AspxAutoDetectCookieSupport=1'</span>,</div><div class="line">    &#125;</div><div class="line">    request = urllib2.Request(imgurl, <span class="keyword">None</span>, header)  </div><div class="line">    response = urllib2.urlopen(request)</div></pre></td></tr></table></figure>
+<p>可以看到<em>urllib2.Request()</em>里边加入了一个header，用于模拟浏览器访问，第二个位置<strong>None</strong>表示data，用<a href="https://docs.python.org/2/howto/urllib2.html" target="_blank" rel="external">Python官方文档</a>的说法：<em>Sometimes you want to send data to a URL (often the URL will refer to a CGI (Common Gateway Interface) script <a href="https://docs.python.org/2/howto/urllib2.html#id9" target="_blank" rel="external">[1]</a> or other web application). With HTTP, this is often done using what’s known as a POST request. </em><br>暂时我们用不着，所以不深究，等我碰到这个问题了再说。</p>
+<h2 id="为图片命名（下载图片只有一张）"><a href="#为图片命名（下载图片只有一张）" class="headerlink" title="为图片命名（下载图片只有一张）"></a>为图片命名（下载图片只有一张）</h2><p>在获得response之后，将图片直接保存为某个特定名字的话。会导致之后抓取到的图片顶替掉之前的图片，导致图片看起来只有一张。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">"%s.jpg"</span> %name, <span class="string">"wb"</span>) <span class="keyword">as</span> f:</div><div class="line">        f.write(response.read())</div><div class="line">    print(imgurl)</div><div class="line">    name += <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>使用with as语句，将文件名保存为%s.jpg，类似于C语言的输出。循环结束的时候name++，保证文件名不重复。</p>
+<h2 id="使用with-as-函数"><a href="#使用with-as-函数" class="headerlink" title="使用with as 函数"></a>使用with as 函数</h2><p><em>Python’s with statement provides a very convenient way of dealing with the situation where you have to do a setup and teardown to make something happen. A very good example for this is the situation where you want to gain a handler to a file, read data from the file and the close the file handler.</em><br>有一些任务，可能事先需要设置，事后做清理工作。对于这种场景，Python的with语句提供了一种非常方便的处理方式。一个很好的例子是文件处理，你需要获取一个文件句柄，从文件中读取数据，然后关闭文件句柄。</p>
+<p><strong>Without the with statement, one would write something along the lines of:<br>如果不用with语句，代码如下：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">file = open(<span class="string">"/tmp/foo.txt"</span>)</div><div class="line">data = file.read()</div><div class="line">file.close()</div></pre></td></tr></table></figure></p>
+<p>使用with as之后代码为：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">"%s.jpg"</span> %name, <span class="string">"wb"</span>) <span class="keyword">as</span> f:</div><div class="line">       f.write(response.read())</div></pre></td></tr></table></figure></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文通过XPath表达式提取页面图片链接，使用urllib2下载，其中使用header模仿浏览器访问。解决了以下问题：</p>
+<ul>
+<li>Python下载的图片不显示 </li>
+<li>下载图片只有一张</li>
+<li>设置保存的位置</li>
+<li>使用with f函数</li>
+</ul>
+<p><strong>效果如下：</strong><br><img src="http://cdn.mmmxcc.cn/blog/20161215/191015695.png" alt="抓取到的图片"></p>
+<p><strong>完整代码</strong></p>
+<pre><code class="python"><span class="comment"># coding=utf-8</span>
+<span class="keyword">import</span> requests
+<span class="keyword">import</span> urllib2
+<span class="keyword">import</span> os
+
+<span class="keyword">from</span> lxml <span class="keyword">import</span> etree
+html = requests.get(<span class="string">"http://cl.d5j.biz/htm_mob/7/1612/2172569.html"</span>)
+html.encoding = <span class="string">'utf-8'</span>
+selector = etree.HTML(html.text)
+content = selector.xpath(<span class="string">'//table//img/@src'</span>)
+<span class="keyword">for</span> imgurl <span class="keyword">in</span> content:
+    name = imgurl[<span class="number">-9</span>:];
+    os.chdir(<span class="string">r"D:"</span>)
+    header = {
+        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36'</span>,
+        <span class="string">'Cookie'</span>: <span class="string">'AspxAutoDetectCookieSupport=1'</span>,
+    }
+    request = urllib2.Request(imgurl, <span class="keyword">None</span>, header)  <span class="comment">#刻意增加头部header，否则本行与下一行可以写为：response = urllib2.urlopen(imgurl)</span>
+    response = urllib2.urlopen(request)
+    f = open(name , <span class="string">'wb'</span>)
+    f.write(response.read())
+    f.close()
+    print(imgurl)
+</code></pre>
+<p>代码重新修改了一下，上手运行会发现D盘有惊喜哦~<br>加入print(imgurl)，运行起来更洋气~<br><img src="http://cdn.mmmxcc.cn/blog/20161215/191141723.png" alt="输入下载来源"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://feiyang.li/2016/12/15/Python_use_urllib2/index.html" data-id="cj1iw7gzq001a2cjtlf60ntjo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/urllib2/">urllib2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/15/Python_get_order/index.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          使用Python插入排序
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/13/get_html/index.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用 XPath 提取网页信息</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GFW/">GFW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PM/">PM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pages/">Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pattern/">Pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm激活/">Pycharm激活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python-camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python_camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Running-man/">Running man</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSR/">SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPS/">VPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VelocityTracker/">VelocityTracker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xpath/">Xpath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love/">love</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugins/">plugins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/">resume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/urllib2/">urllib2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片处理/">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码处理/">密码处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/臭臭/">臭臭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithms/" style="font-size: 15px;">Algorithms</a> <a href="/tags/Android/" style="font-size: 11.25px;">Android</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/GFW/" style="font-size: 11.25px;">GFW</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jupyter/" style="font-size: 12.5px;">Jupyter</a> <a href="/tags/LaTex/" style="font-size: 10px;">LaTex</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 17.5px;">Machine Learning</a> <a href="/tags/Movie/" style="font-size: 10px;">Movie</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PM/" style="font-size: 10px;">PM</a> <a href="/tags/Pages/" style="font-size: 10px;">Pages</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/Pycharm激活/" style="font-size: 10px;">Pycharm激活</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Python-camp/" style="font-size: 10px;">Python-camp</a> <a href="/tags/Python-camp/" style="font-size: 18.75px;">Python_camp</a> <a href="/tags/Running-man/" style="font-size: 10px;">Running man</a> <a href="/tags/SSR/" style="font-size: 10px;">SSR</a> <a href="/tags/VPS/" style="font-size: 13.75px;">VPS</a> <a href="/tags/VelocityTracker/" style="font-size: 10px;">VelocityTracker</a> <a href="/tags/Xpath/" style="font-size: 11.25px;">Xpath</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/love/" style="font-size: 11.25px;">love</a> <a href="/tags/plugins/" style="font-size: 10px;">plugins</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/selenium/" style="font-size: 10px;">selenium</a> <a href="/tags/sort/" style="font-size: 11.25px;">sort</a> <a href="/tags/urllib2/" style="font-size: 10px;">urllib2</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/图片处理/" style="font-size: 11.25px;">图片处理</a> <a href="/tags/密码处理/" style="font-size: 10px;">密码处理</a> <a href="/tags/爬虫/" style="font-size: 12.5px;">爬虫</a> <a href="/tags/自然语言处理/" style="font-size: 12.5px;">自然语言处理</a> <a href="/tags/臭臭/" style="font-size: 12.5px;">臭臭</a> <a href="/tags/读书笔记/" style="font-size: 16.25px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/15/test/index.html">test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html">Coursera ML(5)-Logistic Regression and Regularization with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">Coursera ML(4)-Logistic Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">Coursera ML(3)-Multivariate Linear Regression python实现</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html">Coursera ML(2)-Model and Cost Function</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wing Lee<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

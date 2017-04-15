@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第1.2题：使用 Python 如何生成 200 个激活码 | 李飞阳</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目来自：Python 练习册，今天做的是第二题，使用 Python 如何生成 200 个激活码。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第1.2题：使用 Python 如何生成 200 个激活码">
+<meta property="og:url" content="http://feiyang.li/2017/02/07/python_camp2/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="题目来自：Python 练习册，今天做的是第二题，使用 Python 如何生成 200 个激活码。">
+<meta property="og:updated_time" content="2017-03-27T11:43:20.920Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第1.2题：使用 Python 如何生成 200 个激活码">
+<meta name="twitter:description" content="题目来自：Python 练习册，今天做的是第二题，使用 Python 如何生成 200 个激活码。">
+  
+    <link rel="alternate" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">李飞阳</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">PM、Coder、Data mining</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://feiyang.li"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python_camp2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/07/python_camp2/index.html" class="article-date">
+  <time datetime="2017-02-07T11:50:11.000Z" itemprop="datePublished">2017-02-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python-camp/">Python_camp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      第1.2题：使用 Python 如何生成 200 个激活码
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>，今天做的是第二题，使用 Python 如何生成 200 个激活码。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="random模块介绍"><a href="#random模块介绍" class="headerlink" title="random模块介绍"></a>random模块介绍</h1><p>我们可以使用python中的random模块，用于生成随机浮点数、整数、字符串，甚至帮助你随机选择列表序列中的一个元素，打乱一组数据等。</p>
+<h2 id="random模块五个函数"><a href="#random模块五个函数" class="headerlink" title="random模块五个函数"></a>random模块五个函数</h2><ul>
+<li>random() 返回0&lt;=n&lt;1之间的随机实数n；</li>
+<li>choice(seq) 从序列seq中返回随机的元素；</li>
+<li>getrandbits(n) 以长整型形式返回n个随机位；</li>
+<li>shuffle(seq[, random]) 原地指定seq序列；</li>
+<li>sample(seq, n) 从序列seq中选择n个随机且独立的元素；</li>
+</ul>
+<h2 id="random模块方法说明"><a href="#random模块方法说明" class="headerlink" title="random模块方法说明"></a>random模块方法说明</h2><ul>
+<li><strong>random.random()</strong>函数是这个模块中最常用的方法了，它会生成一个随机的浮点数，范围是在0.0~1.0之间。</li>
+<li><strong>random.uniform()</strong>正好弥补了上面函数的不足，它可以设定浮点数的范围，一个是上限，一个是下限。</li>
+<li><strong>random.randint()</strong>随机生一个整数int类型，可以指定这个整数的范围，同样有上限和下限值，<em>python random.randint</em>。</li>
+<li><strong>random.choice()</strong>可以从任何序列，比如list列表中，选取一个随机的元素返回，可以用于字符串、列表、<a href="http://www.iplaypython.com/jichu/tuple.html" target="_blank" rel="external">元组</a>等。</li>
+<li><strong>random.shuffle()</strong>如果你想将一个序列中的元素，随机打乱的话可以用这个函数方法。</li>
+<li><strong>random.sample()</strong>可以从指定的序列中，随机的截取指定长度的片断，不作原地修改。</li>
+</ul>
+<h1 id="使用random直接随机抽取"><a href="#使用random直接随机抽取" class="headerlink" title="使用random直接随机抽取"></a>使用random直接随机抽取</h1><p>从26个大小字母+10个数字，随机选取10个数字，组成一组激活码。重复此过程200次即可。</p>
+<h2 id="设定字符串内容"><a href="#设定字符串内容" class="headerlink" title="设定字符串内容"></a>设定字符串内容</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random, string</div><div class="line">chars = string.letters + string.digits</div><div class="line"><span class="keyword">print</span> chars</div></pre></td></tr></table></figure>
+<p>输出内容为：<br><code>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</code></p>
+<h2 id="从给定内容中随机选取"><a href="#从给定内容中随机选取" class="headerlink" title="从给定内容中随机选取"></a>从给定内容中随机选取</h2><p>使用<strong>random.choice()</strong>和<strong>random.sample()</strong>两个函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">s= <span class="string">""</span>.join(random.choice(chars) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>))</div><div class="line">gene = <span class="string">""</span>.join(random.sample(chars, <span class="number">10</span>))</div><div class="line"><span class="keyword">print</span> s +<span class="string">"    ///////   "</span> + gene</div></pre></td></tr></table></figure></p>
+<p>其中s与gene分别可以获得两个随机序列，从这里我们可以看出两个函数使用上的差异，相对来说，<strong>random.sample()简单一些</strong>。</p>
+<h1 id="使用UUID"><a href="#使用UUID" class="headerlink" title="使用UUID"></a>使用UUID</h1><p><a href="http://en.wikipedia.org/wiki/Universally_unique_identifier" target="_blank" rel="external">UUID</a>是128位的全局唯一标识符，通常由32字节的字符串表示。 它可以保证时间和空间的唯一性，也称为GUID，全称为：Universally Unique IDentifie。</p>
+<h2 id="UUID的五种实现方法"><a href="#UUID的五种实现方法" class="headerlink" title="UUID的五种实现方法"></a>UUID的五种实现方法</h2><ul>
+<li>uuid1()——基于时间戳<br>由MAC地址、当前时间戳、随机数生成。可以保证全球范围内的唯一性，但MAC的使用同时带来安全性问题，局域网中可以使用IP来代替MAC。</li>
+<li>uuid2()——基于分布式计算环境DCE（Python中没有这个函数）<br>算法与uuid1相同，不同的是把时间戳的前4位置换为POSIX的UID，实际中很少用到该方法。</li>
+<li>uuid3()——基于名字的MD5散列值<br>通过计算名字和命名空间的MD5散列值得到，保证了同一命名空间中不同名字的唯一性，和不同命名空间的唯一性，但同一命名空间的同一名字生成相同的uuid。    </li>
+<li>uuid4()——基于随机数<br>由伪随机数得到，有一定的重复概率，该概率可以计算出来。</li>
+<li>uuid5()——基于名字的SHA-1散列值<br>算法与uuid3相同，不同的是使用 Secure Hash Algorithm 1 算法<h2 id="使用UUID生成激活码"><a href="#使用UUID生成激活码" class="headerlink" title="使用UUID生成激活码"></a>使用UUID生成激活码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> uuid</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20</span>):</div><div class="line">    <span class="keyword">print</span> uuid.uuid1()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>输出：<br><code>ebb4911e-ed1e-11e6-82ec-708bcda57790
+ebb4b82e-ed1e-11e6-9f24-708bcda57790
+ebb4b82f-ed1e-11e6-9d5c-708bcda57790
+ebb4b830-ed1e-11e6-9f8b-708bcda57790
+ebb4b831-ed1e-11e6-89d4-708bcda57790
+ebb4b832-ed1e-11e6-903a-708bcda57790
+ebb4b833-ed1e-11e6-9038-708bcda57790
+ebb4b834-ed1e-11e6-b1dc-708bcda57790
+ebb4b835-ed1e-11e6-8fb8-708bcda57790
+ebb4b836-ed1e-11e6-a399-708bcda57790
+ebb4b837-ed1e-11e6-a9a0-708bcda57790
+ebb4b838-ed1e-11e6-8f85-708bcda57790
+ebb4b839-ed1e-11e6-9ac2-708bcda57790
+ebb4b83a-ed1e-11e6-8f48-708bcda57790
+ebb4b83b-ed1e-11e6-b6d8-708bcda57790
+ebb4b83c-ed1e-11e6-9bde-708bcda57790
+ebb4b83d-ed1e-11e6-b03f-708bcda57790
+ebb4b83e-ed1e-11e6-ac70-708bcda57790
+ebb4b83f-ed1e-11e6-baf1-708bcda57790
+ebb4b840-ed1e-11e6-a694-708bcda57790</code></p>
+<h1 id="写入文件代码示例"><a href="#写入文件代码示例" class="headerlink" title="写入文件代码示例"></a>写入文件代码示例</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="keyword">import</span> string</div><div class="line">FIELD = string.digits + string.letters</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">generate</span><span class="params">(n, many=<span class="number">1</span>, where=None)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getCode</span><span class="params">(n)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="string">""</span>.join(random.sample(FIELD, n))</div><div class="line">    gene = [getCode(n) <span class="keyword">for</span> i <span class="keyword">in</span> range(many)]</div><div class="line">    <span class="keyword">return</span> gene</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">writeIn</span><span class="params">(n, many, where)</span>:</span></div><div class="line">    count = <span class="number">1</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> generate(n, many):</div><div class="line">        <span class="keyword">with</span> open(where, <span class="string">"a"</span>) <span class="keyword">as</span> boom:</div><div class="line">            boom.write(str(count).rjust(<span class="number">3</span>)+<span class="string">"  "</span>+i+<span class="string">"\n"</span>)</div><div class="line">        count += <span class="number">1</span></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    writeIn(<span class="number">20</span>, <span class="number">200</span>, <span class="string">"coupon.txt"</span>)</div></pre></td></tr></table></figure>
+<p>以上</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://feiyang.li/2017/02/07/python_camp2/index.html" data-id="cj1iw7h0p002y2cjt89qraxjx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python-camp/">Python_camp</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/09/frp/index.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          frp内网穿透
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/07/Github-Pages-CDN/index.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Github Pages + CDN全站加速</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GFW/">GFW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PM/">PM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pages/">Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pattern/">Pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm激活/">Pycharm激活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python-camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python_camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Running-man/">Running man</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSR/">SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPS/">VPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VelocityTracker/">VelocityTracker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xpath/">Xpath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love/">love</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugins/">plugins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/">resume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/urllib2/">urllib2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片处理/">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码处理/">密码处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/臭臭/">臭臭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithms/" style="font-size: 15px;">Algorithms</a> <a href="/tags/Android/" style="font-size: 11.25px;">Android</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/GFW/" style="font-size: 11.25px;">GFW</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jupyter/" style="font-size: 12.5px;">Jupyter</a> <a href="/tags/LaTex/" style="font-size: 10px;">LaTex</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 17.5px;">Machine Learning</a> <a href="/tags/Movie/" style="font-size: 10px;">Movie</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PM/" style="font-size: 10px;">PM</a> <a href="/tags/Pages/" style="font-size: 10px;">Pages</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/Pycharm激活/" style="font-size: 10px;">Pycharm激活</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Python-camp/" style="font-size: 10px;">Python-camp</a> <a href="/tags/Python-camp/" style="font-size: 18.75px;">Python_camp</a> <a href="/tags/Running-man/" style="font-size: 10px;">Running man</a> <a href="/tags/SSR/" style="font-size: 10px;">SSR</a> <a href="/tags/VPS/" style="font-size: 13.75px;">VPS</a> <a href="/tags/VelocityTracker/" style="font-size: 10px;">VelocityTracker</a> <a href="/tags/Xpath/" style="font-size: 11.25px;">Xpath</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/love/" style="font-size: 11.25px;">love</a> <a href="/tags/plugins/" style="font-size: 10px;">plugins</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/selenium/" style="font-size: 10px;">selenium</a> <a href="/tags/sort/" style="font-size: 11.25px;">sort</a> <a href="/tags/urllib2/" style="font-size: 10px;">urllib2</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/图片处理/" style="font-size: 11.25px;">图片处理</a> <a href="/tags/密码处理/" style="font-size: 10px;">密码处理</a> <a href="/tags/爬虫/" style="font-size: 12.5px;">爬虫</a> <a href="/tags/自然语言处理/" style="font-size: 12.5px;">自然语言处理</a> <a href="/tags/臭臭/" style="font-size: 12.5px;">臭臭</a> <a href="/tags/读书笔记/" style="font-size: 16.25px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/15/test/index.html">test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html">Coursera ML(5)-Logistic Regression and Regularization with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">Coursera ML(4)-Logistic Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">Coursera ML(3)-Multivariate Linear Regression python实现</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html">Coursera ML(2)-Model and Cost Function</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wing Lee<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

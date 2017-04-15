@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>第1.4题：统计文件中单词出现个数 | 李飞阳</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题目来自：Python 练习册。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第1.4题：统计文件中单词出现个数">
+<meta property="og:url" content="http://feiyang.li/2017/02/11/python_camp4/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="题目来自：Python 练习册。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170211/204153138.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170211/204402151.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170217/140823923.png">
+<meta property="og:updated_time" content="2017-03-27T11:43:09.407Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第1.4题：统计文件中单词出现个数">
+<meta name="twitter:description" content="题目来自：Python 练习册。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170211/204153138.png">
+  
+    <link rel="alternate" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">李飞阳</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">PM、Coder、Data mining</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://feiyang.li"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python_camp4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/11/python_camp4/index.html" class="article-date">
+  <time datetime="2017-02-11T12:16:52.000Z" itemprop="datePublished">2017-02-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python-camp/">Python_camp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      第1.4题：统计文件中单词出现个数
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。今天做第四题：任一英文的纯文本文件，统计其中的单词出现个数。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="铺垫工作"><a href="#铺垫工作" class="headerlink" title="铺垫工作"></a>铺垫工作</h1><p>这一期的铺垫工作比较多，所以单独写了一篇文章，详见  <a href="https://feiyang.li/2017/02/10/Python_lambda/">Python正则表达式</a></p>
+<h1 id="正文部分"><a href="#正文部分" class="headerlink" title="正文部分"></a>正文部分</h1><h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>任一个英文的纯文本文件，统计其中的单词出现的个数。<br>参考英文：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">If you are looking for someone you can pour out your love to, let me suggest the empowered woman. The empowered woman knows what she wants, knows how to get it, knows how to live fully, and she knows how to love you back without needing anyone’s approval or recognition. An empowered woman is unarguably one of the most magnificent beings you will ever come in contact with. Read on and find 10 reason why you should absolutely love and embrace the empowered women in your life! . </div><div class="line"></div><div class="line">1. She knows how to love you in returnIt is difficult to give what you don’t have. It is impossible to love someone and feel fulfilled when they can’t love you in return because they don’t love themselves. This will never happen to you when you love an empowered woman. She loves herself (not in a narcissistic manner). In turn, she appreciates who you are and loves you in return. She will love you just like you deserve to be loved. </div><div class="line"></div><div class="line">2. She will inspire youWhen life puts you down and you are at the end of your rope, the empowered woman will be there to see you through. Her drive, enthusiasm and (at times) hopeless optimism will inspire you to carry on despite the obstacles you face. </div><div class="line"></div><div class="line">3. She is not afraid of failureWhile many out there are thoroughly terrified of failure, the empowered woman understands that failures are simply stepping stones in life. How can you not love someone that is thoroughly unafraid to try, fail, and give it a shot all over again?! </div><div class="line"></div><div class="line"></div><div class="line">4. She is all about the legacyWhile most people are focused on the car, the house, the job, and corner office; the empowered woman is focused on leaving a legacy that will inspire others and change the world. The empowered woman is focused on empowering others to maximize their potential and fulfill their purpose. She is all about inspiring others to look beyond themselves and live a life of service to others.</div><div class="line"></div><div class="line"></div><div class="line"> 5. She can laugh at her mistakes……and learn from them as well! She understands mistakes are part of the journey. The empowered woman can laugh and learn from her mistakes to ensure they never happen again. </div><div class="line"></div><div class="line"></div><div class="line">6. She can be vulnerableThe empowered woman understands there is no debt in relationships without vulnerability. Although she is emotionally strong, she is willing to laugh and cry with you because all of these emotions are an essential part of life. </div><div class="line"></div><div class="line"></div><div class="line">7. She can speak her mindWhile everyone else is too concerned with what others may think or say, the empowered woman is not afraid to speak her mind. She understands that her value comes from within, not from what others say or think about her. </div><div class="line"></div><div class="line"></div><div class="line">8. She knows when to remain quietShe lives by Abe Lincoln’s words, “Better to remain silent and be thought a fool, than to speak out and remove all doubt.” </div><div class="line"></div><div class="line"></div><div class="line">9. She knows how to have funWhether it is at the symphony or at a ball game, the empowered woman understands life is made up of experiences with people – not the places you go. She is able to live in the moment and enjoy it fully without being concerned for the future. After all, who’s got a guaranteed future?</div><div class="line"></div><div class="line"></div><div class="line"> 10. She is not afraid of changeWhile most people rather continue on living unfulfilled lives as long as their comfort zone remains intact, the empowered woman is all about embracing change. She understands growth cannot happen without change. She understands that change is the gift life offers you to choose your destiny. Therefore, she is not afraid of change because it is her stepping stone towards success.</div></pre></td></tr></table></figure></p>
+<p><a href="http://cdn.mmmxcc.cn/blog/20170211/203305485.txt" target="_blank" rel="external">下载链接</a><br>将文件下载到python的<strong>工作路径</strong>里去，如果不知道哪里是工作路径，输入<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">#获取当前工作目录</div><div class="line">os.getcwd()</div><div class="line">#更改当前工作目录</div><div class="line">os.chdir('d:\')</div><div class="line">os.getcwd()</div></pre></td></tr></table></figure></p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p>每一步我都尽量附带上了解释<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">replace</span><span class="params">(s)</span>:</span></div><div class="line">    <span class="keyword">if</span> s.group(<span class="number">1</span>) == <span class="string">'n\'t'</span>:</div><div class="line">        <span class="keyword">return</span> s.group(<span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> <span class="string">' '</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span><span class="params">(filename=<span class="string">'203305485.txt'</span>)</span>:</span></div><div class="line">    <span class="comment"># 使用lambda来定义简单的函数</span></div><div class="line">    dic = defaultdict(<span class="keyword">lambda</span>: <span class="number">0</span>)<span class="comment">#dic = defaultdict(int)也可以</span></div><div class="line">    <span class="keyword">with</span> open(filename, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        data = f.read()</div><div class="line">    <span class="comment"># 全部变为小写字母</span></div><div class="line">    data = data.lower()</div><div class="line">    <span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line">    data = re.sub(<span class="string">r'(n[\']t)|([\W\d])'</span>, replace, data)</div><div class="line">    datalist = re.split(<span class="string">r'[\s\n]+'</span>, data)</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> datalist:</div><div class="line">        dic[item] += <span class="number">1</span></div><div class="line">    <span class="keyword">del</span> dic[<span class="string">''</span>]</div><div class="line">    <span class="keyword">return</span> dic</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    dic = cal()</div><div class="line">    <span class="keyword">for</span> key, val <span class="keyword">in</span> dic.items():</div><div class="line">        print(<span class="string">'%15s  ----&gt;   %3s'</span> % (key,val))</div></pre></td></tr></table></figure></p>
+<p>运行结果如下：<br><img src="http://cdn.mmmxcc.cn/blog/20170211/204153138.png" alt="结果"></p>
+<h3 id="增加排序函数"><a href="#增加排序函数" class="headerlink" title="增加排序函数"></a>增加排序函数</h3><p>代码有参考 《利用python进行数据分析》<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">top_counts</span><span class="params">(dic, n=<span class="number">10</span>)</span>:</span></div><div class="line">    value_key_pairs = [(count, tz) <span class="keyword">for</span> tz, count <span class="keyword">in</span> dic.items()]</div><div class="line">    value_key_pairs.sort()</div><div class="line">    <span class="keyword">return</span> value_key_pairs[-n:]</div><div class="line">top_counts(dic)</div></pre></td></tr></table></figure></p>
+<p>运行结果如下：<br><img src="http://cdn.mmmxcc.cn/blog/20170211/204402151.png" alt="结果"><br>可以看出，人们最喜欢用的词是定冠词<strong>the</strong>，下来是介词<strong>to</strong>…….</p>
+<hr>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>最近发现collections模块的<em>Counter</em>类 ，<br>导入语句是：<code>from collections import Counter</code>，作用是：<strong>定义一个list数组，求数组中每个元素出现的次数</strong><br>修改之后代码量要少很多，而且可以直接排列好顺序~<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal</span><span class="params">(filename=<span class="string">'203305485.txt'</span>)</span>:</span></div><div class="line">    <span class="keyword">with</span> open(filename, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        data = f.read()</div><div class="line">    data = data.lower()</div><div class="line">    <span class="comment"># 替换除了n't这类连字符外的所有非单词字符和数字字符</span></div><div class="line">    datalist = re.split(<span class="string">r'[\s\n]+'</span>, data)</div><div class="line">    <span class="keyword">return</span> Counter(datalist).most_common()</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    dic = cal()</div><div class="line">    <span class="keyword">for</span> i  <span class="keyword">in</span> range(len(dic)):</div><div class="line">        print(<span class="string">'%15s  ----&gt;   %3s'</span> % (dic[i][<span class="number">0</span>],dic[i][<span class="number">1</span>]))</div></pre></td></tr></table></figure></p>
+<p>代码看起来行云流水，舒服多了。当然结论是一样的，人们还是比较喜欢说 <em>the</em> , <em>you</em>~<br><img src="http://cdn.mmmxcc.cn/blog/20170217/140823923.png" alt="修改后"></p>
+<p>以上~</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://feiyang.li/2017/02/11/python_camp4/index.html" data-id="cj1iw7h0x003k2cjtyhxxnv9j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python-camp/">Python_camp</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/13/python-camp5/index.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第1.5题：使用Python处理图片
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/10/Python_lambda/index.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python正则表达式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GFW/">GFW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PM/">PM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pages/">Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pattern/">Pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm激活/">Pycharm激活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python-camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python_camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Running-man/">Running man</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSR/">SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPS/">VPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VelocityTracker/">VelocityTracker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xpath/">Xpath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love/">love</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugins/">plugins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/">resume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/urllib2/">urllib2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片处理/">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码处理/">密码处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/臭臭/">臭臭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithms/" style="font-size: 15px;">Algorithms</a> <a href="/tags/Android/" style="font-size: 11.25px;">Android</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/GFW/" style="font-size: 11.25px;">GFW</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jupyter/" style="font-size: 12.5px;">Jupyter</a> <a href="/tags/LaTex/" style="font-size: 10px;">LaTex</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 17.5px;">Machine Learning</a> <a href="/tags/Movie/" style="font-size: 10px;">Movie</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PM/" style="font-size: 10px;">PM</a> <a href="/tags/Pages/" style="font-size: 10px;">Pages</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/Pycharm激活/" style="font-size: 10px;">Pycharm激活</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Python-camp/" style="font-size: 10px;">Python-camp</a> <a href="/tags/Python-camp/" style="font-size: 18.75px;">Python_camp</a> <a href="/tags/Running-man/" style="font-size: 10px;">Running man</a> <a href="/tags/SSR/" style="font-size: 10px;">SSR</a> <a href="/tags/VPS/" style="font-size: 13.75px;">VPS</a> <a href="/tags/VelocityTracker/" style="font-size: 10px;">VelocityTracker</a> <a href="/tags/Xpath/" style="font-size: 11.25px;">Xpath</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/love/" style="font-size: 11.25px;">love</a> <a href="/tags/plugins/" style="font-size: 10px;">plugins</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/selenium/" style="font-size: 10px;">selenium</a> <a href="/tags/sort/" style="font-size: 11.25px;">sort</a> <a href="/tags/urllib2/" style="font-size: 10px;">urllib2</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/图片处理/" style="font-size: 11.25px;">图片处理</a> <a href="/tags/密码处理/" style="font-size: 10px;">密码处理</a> <a href="/tags/爬虫/" style="font-size: 12.5px;">爬虫</a> <a href="/tags/自然语言处理/" style="font-size: 12.5px;">自然语言处理</a> <a href="/tags/臭臭/" style="font-size: 12.5px;">臭臭</a> <a href="/tags/读书笔记/" style="font-size: 16.25px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/15/test/index.html">test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html">Coursera ML(5)-Logistic Regression and Regularization with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">Coursera ML(4)-Logistic Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">Coursera ML(3)-Multivariate Linear Regression python实现</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html">Coursera ML(2)-Model and Cost Function</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wing Lee<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

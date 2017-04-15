@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Github Pages + CDN全站加速 | 李飞阳</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速度是一种不错的选择。以Coding Pages和腾讯CDN为例。
+
+本方法同样可以对虚拟主机进行CDN加速。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Github Pages + CDN全站加速">
+<meta property="og:url" content="http://feiyang.li/2017/02/07/Github-Pages-CDN/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速度是一种不错的选择。以Coding Pages和腾讯CDN为例。
+
+本方法同样可以对虚拟主机进行CDN加速。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/123752053.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/123341114.png?imageMogr2/thumbnail/!60p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/140625255.png?imageMogr2/thumbnail/!80p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/141205144.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/151918753.png?imageMogr2/thumbnail/!80p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/152322828.png?imageMogr2/thumbnail/!80p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/152658278.png?imageMogr2/thumbnail/!80p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/153033720.png?imageMogr2/thumbnail/!80p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/153601063.png?imageMogr2/thumbnail/!80p">
+<meta property="og:updated_time" content="2017-02-11T13:20:33.275Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Github Pages + CDN全站加速">
+<meta name="twitter:description" content="常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速度是一种不错的选择。以Coding Pages和腾讯CDN为例。
+
+本方法同样可以对虚拟主机进行CDN加速。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170126/123752053.png">
+  
+    <link rel="alternate" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">李飞阳</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">PM、Coder、Data mining</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://feiyang.li"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Github-Pages-CDN" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/07/Github-Pages-CDN/index.html" class="article-date">
+  <time datetime="2017-02-07T05:38:38.000Z" itemprop="datePublished">2017-02-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Github Pages + CDN全站加速
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速度是一种不错的选择。以Coding Pages和腾讯CDN为例。</p>
+</blockquote>
+<p>本方法同样可以对虚拟主机进行CDN加速。</p>
+<a id="more"></a>
+<hr>
+<p>本方法可解决以下问题：</p>
+<ul>
+<li>提高Pages的访问速度；</li>
+<li>利用 CDN 解决百度爬虫被 Github Pages 拒绝的问题；</li>
+</ul>
+<hr>
+<h1 id="加速效果展示"><a href="#加速效果展示" class="headerlink" title="加速效果展示"></a>加速效果展示</h1><h2 id="不使用CDN加速"><a href="#不使用CDN加速" class="headerlink" title="不使用CDN加速"></a>不使用CDN加速</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170126/123752053.png" alt="不使用CDN"><br>平均响应时间130ms，比我想象中要好。可能因为现在是上午11点上网的人少（?），之前我在学校测得时候动辄200ms。</p>
+<h2 id="使用CDN加速"><a href="#使用CDN加速" class="headerlink" title="使用CDN加速"></a>使用CDN加速</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170126/123341114.png?imageMogr2/thumbnail/!60p" alt="CDN加速后"><br>可以看到平均响应时间大约24.2ms，祖国山河一片绿。多环保~</p>
+<h1 id="利用Pages搭建个人网站"><a href="#利用Pages搭建个人网站" class="headerlink" title="利用Pages搭建个人网站"></a>利用Pages搭建个人网站</h1><p>这一步在网上搜一下，有很多教程，在此不赘述。</p>
+<h1 id="使用CDN为Pages加速"><a href="#使用CDN为Pages加速" class="headerlink" title="使用CDN为Pages加速"></a>使用CDN为Pages加速</h1><p>推荐腾讯云CDN，<a href="https://www.qcloud.com/product/cdn" target="_blank" rel="external">https://www.qcloud.com/product/cdn</a> 目前可以免费送300G流量。<br>根据服务商的要求，如Coding要求为：</p>
+<blockquote>
+<p><strong>在您的域名管理面板中添加 CNAME 记录指向到 pages.coding.me</strong>。</p>
+</blockquote>
+<h2 id="获得CNAME的IP地址"><a href="#获得CNAME的IP地址" class="headerlink" title="获得CNAME的IP地址"></a>获得CNAME的IP地址</h2><p>ping 一下 <strong>pages.coding.me</strong>，获得IP地址： 23.248.162.138，源站设置为该IP。<br><img src="http://cdn.mmmxcc.cn/blog/20170126/140625255.png?imageMogr2/thumbnail/!80p" alt="设置源站"></p>
+<p>接下来，加速服务配置，默认时长都是30天。明显这个时间忒长了，我们可以设置为1天或者几个小时。<br><img src="http://cdn.mmmxcc.cn/blog/20170126/141205144.png" alt="设置缓存逻辑"><br><strong> 点击提交 </strong>，过约5分钟会返回提示成功。点击管理进一步设置；</p>
+<h2 id="配置回源host"><a href="#配置回源host" class="headerlink" title="配置回源host"></a>配置回源host</h2><p>我们可以把回源host理解为，访问<em>23.248.162.138</em>这个IP地址的服务器时，向服务器发出的url访问请求，服务器根据host头部里边的url地址，映射到内部相应访问空间去。<strong>回源host是用于CDN回源到源站时的访问域名，即http请求包包头的host字段内容。</strong><br><img src="http://cdn.mmmxcc.cn/blog/20170126/151918753.png?imageMogr2/thumbnail/!80p" alt="回源host"></p>
+<h2 id="配置域名CNAME"><a href="#配置域名CNAME" class="headerlink" title="配置域名CNAME"></a>配置域名CNAME</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170126/152322828.png?imageMogr2/thumbnail/!80p" alt="CNAME"><br>为域名配置相应的CNAME，常见的是<strong>@</strong>和<strong>www</strong><br><img src="http://cdn.mmmxcc.cn/blog/20170126/152658278.png?imageMogr2/thumbnail/!80p" alt=""></p>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><p>ping 一下自己的域名，如果PING到后缀为cdntip.com或后缀为tcdn.qq.com表示域名CNAME已生效。<br><img src="http://cdn.mmmxcc.cn/blog/20170126/153033720.png?imageMogr2/thumbnail/!80p" alt=""><br>使用CDN为Pages加速，到这一步已经算结束了。但是由于使用国内CDN，使得网站在国外加载速度会慢的令人发指。</p>
+<h1 id="分地区DNS"><a href="#分地区DNS" class="headerlink" title="分地区DNS"></a>分地区DNS</h1><p>国内国外设置不同CANME，国外指向 <strong>mmmwhy.github.io</strong>或者<strong>pages.coding.me</strong>（设置自己的），国内的指向刚才CDN给出的地址。<br><img src="http://cdn.mmmxcc.cn/blog/20170126/153601063.png?imageMogr2/thumbnail/!80p" alt=""></p>
+<hr>
+<p>以上</p>
+<p>通过此方法可以将pages或者国外的免费空间，速度快到令人发指的地步~<br>祝新年快乐~</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://feiyang.li/2017/02/07/Github-Pages-CDN/index.html" data-id="cj1iw7gz9000g2cjta7ccyecb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDN/">CDN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pages/">Pages</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/07/python_camp2/index.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第1.2题：使用 Python 如何生成 200 个激活码
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/12/jupyter-notebook/index.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">jupyter notebook使用帮助</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GFW/">GFW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PM/">PM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pages/">Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pattern/">Pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm激活/">Pycharm激活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python-camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python_camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Running-man/">Running man</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSR/">SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPS/">VPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VelocityTracker/">VelocityTracker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xpath/">Xpath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love/">love</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugins/">plugins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/">resume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/urllib2/">urllib2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片处理/">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码处理/">密码处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/臭臭/">臭臭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithms/" style="font-size: 15px;">Algorithms</a> <a href="/tags/Android/" style="font-size: 11.25px;">Android</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/GFW/" style="font-size: 11.25px;">GFW</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jupyter/" style="font-size: 12.5px;">Jupyter</a> <a href="/tags/LaTex/" style="font-size: 10px;">LaTex</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 17.5px;">Machine Learning</a> <a href="/tags/Movie/" style="font-size: 10px;">Movie</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PM/" style="font-size: 10px;">PM</a> <a href="/tags/Pages/" style="font-size: 10px;">Pages</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/Pycharm激活/" style="font-size: 10px;">Pycharm激活</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Python-camp/" style="font-size: 10px;">Python-camp</a> <a href="/tags/Python-camp/" style="font-size: 18.75px;">Python_camp</a> <a href="/tags/Running-man/" style="font-size: 10px;">Running man</a> <a href="/tags/SSR/" style="font-size: 10px;">SSR</a> <a href="/tags/VPS/" style="font-size: 13.75px;">VPS</a> <a href="/tags/VelocityTracker/" style="font-size: 10px;">VelocityTracker</a> <a href="/tags/Xpath/" style="font-size: 11.25px;">Xpath</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/love/" style="font-size: 11.25px;">love</a> <a href="/tags/plugins/" style="font-size: 10px;">plugins</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/selenium/" style="font-size: 10px;">selenium</a> <a href="/tags/sort/" style="font-size: 11.25px;">sort</a> <a href="/tags/urllib2/" style="font-size: 10px;">urllib2</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/图片处理/" style="font-size: 11.25px;">图片处理</a> <a href="/tags/密码处理/" style="font-size: 10px;">密码处理</a> <a href="/tags/爬虫/" style="font-size: 12.5px;">爬虫</a> <a href="/tags/自然语言处理/" style="font-size: 12.5px;">自然语言处理</a> <a href="/tags/臭臭/" style="font-size: 12.5px;">臭臭</a> <a href="/tags/读书笔记/" style="font-size: 16.25px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/15/test/index.html">test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html">Coursera ML(5)-Logistic Regression and Regularization with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">Coursera ML(4)-Logistic Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">Coursera ML(3)-Multivariate Linear Regression python实现</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html">Coursera ML(2)-Model and Cost Function</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wing Lee<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

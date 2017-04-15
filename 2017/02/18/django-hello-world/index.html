@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Django 创建第一个项目 | 李飞阳</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="上手使用Python的Web框架– Django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django 创建第一个项目">
+<meta property="og:url" content="http://feiyang.li/2017/02/18/django-hello-world/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="上手使用Python的Web框架– Django">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170218/191620497.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170218/191841405.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170218/192837742.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170218/193330168.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170218/193636035.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170218/193700547.png">
+<meta property="og:updated_time" content="2017-02-18T12:41:10.174Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django 创建第一个项目">
+<meta name="twitter:description" content="上手使用Python的Web框架– Django">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170218/191620497.png">
+  
+    <link rel="alternate" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">李飞阳</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">PM、Coder、Data mining</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://feiyang.li"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-django-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/18/django-hello-world/index.html" class="article-date">
+  <time datetime="2017-02-18T11:37:59.000Z" itemprop="datePublished">2017-02-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Django 创建第一个项目
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>上手使用Python的Web框架– Django</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>网上教程安装环境多是linux环境，所以我写一下windows系统下创建Django项目。基于Django 1.10 和Python3.5，作为学生狗的好处之一，就是有很多时间，慢慢琢磨新技术。</p>
+<h1 id="windows上virtualenv-安装及使用"><a href="#windows上virtualenv-安装及使用" class="headerlink" title="windows上virtualenv 安装及使用"></a>windows上virtualenv 安装及使用</h1><p>一开始我不太懂virtualenv 到底有什么意思，后来慢慢各种package装的多了后，发现还是很有必要的。举个例子：如果应用A需要jinja 2.7，而应用B需要jinja 2.6怎么办？</p>
+<p>这种情况下，每个应用可能需要各自拥有一套“独立”的Python运行环境。virtualenv就是用来为一个应用创建一套“隔离”的Python运行环境。</p>
+<h2 id="正常安装过程"><a href="#正常安装过程" class="headerlink" title="正常安装过程"></a>正常安装过程</h2><ul>
+<li><p>安装virtualenv</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install virtualenv</div></pre></td></tr></table></figure>
+</li>
+<li><p>为项目安装虚拟环境<br>为该<strong>虚拟环境</strong>起个名字，新建文件夹，<code>cd</code>进入。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">virtualenv env</div></pre></td></tr></table></figure>
+</li>
+<li><p>激活环境</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">your_env_dir\Scripts\activate</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Pycharm使用虚拟环境"><a href="#Pycharm使用虚拟环境" class="headerlink" title="Pycharm使用虚拟环境"></a>Pycharm使用虚拟环境</h2><p>上边说的那种方法，完全没有实用性，太扯淡了。切换环境难于上青天，用Pycharm会简便很多。</p>
+<ul>
+<li>新建项目<br><img src="http://cdn.mmmxcc.cn/blog/20170218/191620497.png" alt=""></li>
+<li>用Pycharm建立虚拟环境<br><img src="http://cdn.mmmxcc.cn/blog/20170218/191841405.png" alt="mark"></li>
+</ul>
+<p>新建之后，在第一个图片那个地方进行选择就可以了，建议新建conda-env，自动新建在envs环境下，方便管理</p>
+<p>至此，django环境搭建完毕，接下来学习django工程的创建，以及简单的在网页中显示出”Hello World”。</p>
+<h1 id="初识Django工程"><a href="#初识Django工程" class="headerlink" title="初识Django工程"></a>初识Django工程</h1><h2 id="点击Create创建工程"><a href="#点击Create创建工程" class="headerlink" title="点击Create创建工程"></a>点击Create创建工程</h2><p>见创建后的工程截图：<br><img src="http://cdn.mmmxcc.cn/blog/20170218/192837742.png" alt="Django"></p>
+<p>文件如下:</p>
+<ul>
+<li>my_site: 项目的容器。</li>
+<li>manage.py: 一个实用的命令行工具，可让你以各种方式与该 Django 项目进行交互。</li>
+<li>my_site/<strong>init</strong>.py: 一个空文件，告诉 Python 该目录是一个 Python 包。</li>
+<li>my_site/settings.py: 该 Django 项目的设置/配置。</li>
+<li>my_site/urls.py: 该 Django 项目的 URL 声明; 一份由 Django 驱动的网站”目录”。</li>
+<li>my_site/wsgi.py: 一个 WSGI 兼容的 Web 服务器的入口，以便运行你的项目。</li>
+</ul>
+<h2 id="直接启动Django项目"><a href="#直接启动Django项目" class="headerlink" title="直接启动Django项目"></a>直接启动Django项目</h2><p>来看执行的结果，启动的方式是：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py runserver <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">8000</span></div></pre></td></tr></table></figure></p>
+<p>0.0.0.0让其它电脑可连接到开发服务器，8000为端口号。如果不说明，那么端口号默认为8000。</p>
+<h2 id="Pycharm启动Django项目"><a href="#Pycharm启动Django项目" class="headerlink" title="Pycharm启动Django项目"></a>Pycharm启动Django项目</h2><ul>
+<li>打开manage.py文件</li>
+<li>在菜单栏中Run中选择Edit Configurations，见截图：<br>修改<strong>Script parameters:</strong> <code>runserver</code><br><img src="http://cdn.mmmxcc.cn/blog/20170218/193330168.png" alt="Script parameters"></li>
+<li>ctrl + shift+ F10 运行<br><img src="http://cdn.mmmxcc.cn/blog/20170218/193636035.png" alt="输出"></li>
+</ul>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170218/193700547.png" alt="页面"></p>
+<hr>
+<h1 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello world"></a>Hello world</h1><ul>
+<li><p>新建 view.py<br>在先前创建的 my_site 目录下的 my_site 目录新建一个 view.py 文件，并输入代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"Hello world ! "</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><p>我们从 django.http 中导入了 HttpResponse 这个类。我们会在接下来用到这个类。</p>
+</li>
+<li><p>我们定义了一个叫做 hello 的视图函数(view function)。每个view function至少要有一个参数，通常被叫做 request 。这是一个对象，包含了触发这个 view function的Web请求的信息， 它是 django.http.HttpRequest 的一个实例(instance)。 在这个例子中，虽然我们不对这个 request 做任何处理，但是我们还必须要把它作为视图的第一个参数。</p>
+</li>
+<li><p>这个函数只有一行简单的代码：它仅仅返回一个 HttpResponse 对象，这个对象包含了文本“Hello world”。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>记住，一个视图本身就是一个Python的函数，这个函数接受一个 HttpRequest 作为它的第一个参数，并返回 一个 HttpResponse 的实例。要想让一个Python函数成为一个Django的视图，你需要让它满足这两个条件。 </p>
+<ul>
+<li>修改urls.py<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> include, url</div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> my_site.view <span class="keyword">import</span> hello</div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^hello/$'</span>, hello)</div><div class="line">]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><ul>
+<li><p>URLconf<br>在Django里，要关联view function到一个URL，需要用到 URLconf。URLconf 就像是你的Django站点的目录。本质上，它是一个URL和这个URL将调用的view function之间的映射关系。 通过这种方式，你就可以告诉Django：“对于这个URL，调用这段代码，对于那个URL，调用那段代码。”例如，当用户访问 /hello/ 时，调用view function hello() ， 这个view function在 views.py 中。因此需要在使用function前，进行声明：<code>from my_site.view import hello</code>。</p>
+</li>
+<li><p>URLpattern<br>首先，我们从模块mysite/views.py中导入了 hello 这个view function。Python的导入语法用mysite.views表示 mysite/views.py 。(这段代码假设了mysite/views.py在Python的搜索路径中) 接着，我们添加了url(r’^hello/$’, hello), 到 urlpatterns 中。这一行被叫做一个URLpattern。 url() 函数会告诉Django如何处理你配置的url。 url() 的第一个参数是一个模式匹配字符串( 正则表达式)，第二个参数处理这个URLpattern的view function。</p>
+</li>
+</ul>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
+<li><p>正则表达式<br>我们在正则表达式字符串前面加了一个 r 。在Python中，这表示一个原始字符串(raw string)，Python不会去转义那些反斜杠()。在普通的Python字符串中，反斜杠会被用来转义特殊字符，比如字符串 ‘\n’ 会被解释成换行符。当你加上 r 之后，Python就不会转义那些字符了， r’\n’ 就是一个包括了一个反斜杠和一个小写字母“n”的字符串。正则表达式中反斜杠的用法和Python字符串中反斜杠的用法刚好冲突了。所以在Python中使用正则表达式的时候最好都加上 r 。本书中所有的URLpattern都会用这种形式。</p>
+</li>
+<li><p>URLpattern的语法</p>
+<ul>
+<li><p>Django在检查URL模式之前，会移除每个URL最开始的斜杠。这意味着URLpattern并不包括 /hello 开头那个斜杠。(一开始，这可能不太直观，但是这样做简化了很多事情。)</p>
+</li>
+<li><p>匹配模式里面包括了一个脱字符( ^ )和一个美元符( \$ )。这两个符号在正则表达式里面的有特别的意义： ^ 要求从字符串开头开始匹配， \$ 则是要求对字符串尾部进行匹配。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>这个URLconf中我们是把 hello 这个view function直接作为一个对象传递的，而不是去调用它。 这是Pyhton(作为动态语言)的一个重要特征，函数是一级对象(first-class objects)，你可以像 传递其它变量一样传递一个函数。很洋气吧？</p>
+<hr>
+<p>以上</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://feiyang.li/2017/02/18/django-hello-world/index.html" data-id="cj1iw7gzy001n2cjt8ecmsdyl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/24/Hexo-music-video/index.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hexo博客中插入音乐/视频
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/17/python-camp2-1/index.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第2.1题：Python统计日记最重要的词</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GFW/">GFW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PM/">PM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pages/">Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pattern/">Pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm激活/">Pycharm激活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python-camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python_camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Running-man/">Running man</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSR/">SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPS/">VPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VelocityTracker/">VelocityTracker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xpath/">Xpath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love/">love</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugins/">plugins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/">resume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/urllib2/">urllib2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片处理/">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码处理/">密码处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/臭臭/">臭臭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithms/" style="font-size: 15px;">Algorithms</a> <a href="/tags/Android/" style="font-size: 11.25px;">Android</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/GFW/" style="font-size: 11.25px;">GFW</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jupyter/" style="font-size: 12.5px;">Jupyter</a> <a href="/tags/LaTex/" style="font-size: 10px;">LaTex</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 17.5px;">Machine Learning</a> <a href="/tags/Movie/" style="font-size: 10px;">Movie</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PM/" style="font-size: 10px;">PM</a> <a href="/tags/Pages/" style="font-size: 10px;">Pages</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/Pycharm激活/" style="font-size: 10px;">Pycharm激活</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Python-camp/" style="font-size: 10px;">Python-camp</a> <a href="/tags/Python-camp/" style="font-size: 18.75px;">Python_camp</a> <a href="/tags/Running-man/" style="font-size: 10px;">Running man</a> <a href="/tags/SSR/" style="font-size: 10px;">SSR</a> <a href="/tags/VPS/" style="font-size: 13.75px;">VPS</a> <a href="/tags/VelocityTracker/" style="font-size: 10px;">VelocityTracker</a> <a href="/tags/Xpath/" style="font-size: 11.25px;">Xpath</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/love/" style="font-size: 11.25px;">love</a> <a href="/tags/plugins/" style="font-size: 10px;">plugins</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/selenium/" style="font-size: 10px;">selenium</a> <a href="/tags/sort/" style="font-size: 11.25px;">sort</a> <a href="/tags/urllib2/" style="font-size: 10px;">urllib2</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/图片处理/" style="font-size: 11.25px;">图片处理</a> <a href="/tags/密码处理/" style="font-size: 10px;">密码处理</a> <a href="/tags/爬虫/" style="font-size: 12.5px;">爬虫</a> <a href="/tags/自然语言处理/" style="font-size: 12.5px;">自然语言处理</a> <a href="/tags/臭臭/" style="font-size: 12.5px;">臭臭</a> <a href="/tags/读书笔记/" style="font-size: 16.25px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/15/test/index.html">test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html">Coursera ML(5)-Logistic Regression and Regularization with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">Coursera ML(4)-Logistic Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">Coursera ML(3)-Multivariate Linear Regression python实现</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html">Coursera ML(2)-Model and Cost Function</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wing Lee<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

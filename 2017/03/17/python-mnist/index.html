@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Python读取mnist | 李飞阳</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以.idx1-ubyte后缀，包含60000个训练图像。将这些图像展示出来，需要利用到struct模块。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python读取mnist">
+<meta property="og:url" content="http://feiyang.li/2017/03/17/python-mnist/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以.idx1-ubyte后缀，包含60000个训练图像。将这些图像展示出来，需要利用到struct模块。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170317/110144292.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170317/162019276.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170317/162228549.png">
+<meta property="og:updated_time" content="2017-03-26T11:39:21.829Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python读取mnist">
+<meta name="twitter:description" content="在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以.idx1-ubyte后缀，包含60000个训练图像。将这些图像展示出来，需要利用到struct模块。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170317/110144292.png">
+  
+    <link rel="alternate" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">李飞阳</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">PM、Coder、Data mining</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://feiyang.li"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python-mnist" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/17/python-mnist/index.html" class="article-date">
+  <time datetime="2017-03-17T08:25:27.000Z" itemprop="datePublished">2017-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python读取mnist
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以<code>.idx1-ubyte</code>后缀，包含60000个训练图像。将这些图像展示出来，需要利用到<a href="http://feiyang.li/2017/03/17/python-struct/">struct模块</a>。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="下载MNIST训练数据集"><a href="#下载MNIST训练数据集" class="headerlink" title="下载MNIST训练数据集"></a>下载MNIST训练数据集</h1><h2 id="手动下载"><a href="#手动下载" class="headerlink" title="手动下载"></a>手动下载</h2><p>下载链接为： <a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="external">http://yann.lecun.com/exdb/mnist/</a>  下载好之后解压就可以了，网站好像被墙了？</p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170317/110144292.png" alt="mark"></p>
+<h2 id="使用tensorflow自带下载"><a href="#使用tensorflow自带下载" class="headerlink" title="使用tensorflow自带下载"></a>使用tensorflow自带下载</h2><p>可以看到，这个地方是有监督学习   (有label这个东西嘛)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</div><div class="line"><span class="comment"># 下载mnist数据集</span></div><div class="line">mnist = input_data.read_data_sets(<span class="string">'/tmp/'</span>, one_hot=<span class="keyword">True</span>)</div><div class="line"><span class="comment"># 数字(label)只能是0-9，神经网络使用10个出口节点就可以编码表示0-9；</span></div><div class="line"><span class="comment">#  1 -&gt; [0,1.0,0,0,0,0,0,0,0]   one_hot表示只有一个出口节点是hot</span></div><div class="line"><span class="comment">#  2 -&gt; [0,0.1,0,0,0,0,0,0,0]</span></div><div class="line"><span class="comment">#  5 -&gt; [0,0,0,0,0,1.0,0,0,0]</span></div><div class="line"><span class="comment">#  /tmp是macOS的临时目录，重启系统数据丢失; Linux的临时目录也是/tmp</span></div></pre></td></tr></table></figure></p>
+<h1 id="详细步骤"><a href="#详细步骤" class="headerlink" title="详细步骤"></a>详细步骤</h1><h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(filename ,<span class="string">'rb'</span>) <span class="keyword">as</span> f1:</div><div class="line">    buf1 = f1.read()</div></pre></td></tr></table></figure>
+<p>还有另外一种常用的方法，两个方法目前来看没有什么区别。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">f1 = open(filename , <span class="string">'rb'</span>)</div><div class="line">buf = binfile.read() <span class="comment"># 先使用二进制方式把文件都读进来</span></div></pre></td></tr></table></figure></p>
+<h2 id="跨过头部区域"><a href="#跨过头部区域" class="headerlink" title="跨过头部区域"></a>跨过头部区域</h2><h3 id="train-images-idx3-ubyte"><a href="#train-images-idx3-ubyte" class="headerlink" title="train-images-idx3-ubyte"></a>train-images-idx3-ubyte</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">TRAINING SET IMAGE FILE (train-images-idx3-ubyte):</div><div class="line"></div><div class="line">[offset] [type]          [value]          [description] </div><div class="line">0000     32 bit integer  0x00000803(2051) magic number </div><div class="line">0004     32 bit integer  60000            number of images </div><div class="line">0008     32 bit integer  28               number of rows </div><div class="line">0012     32 bit integer  28               number of columns </div><div class="line">0016     unsigned byte   ??               pixel </div><div class="line">0017     unsigned byte   ??               pixel </div><div class="line">........ </div><div class="line">xxxx     unsigned byte   ??               pixel</div></pre></td></tr></table></figure>
+<p>可以看到头部有4个integer 类型，设置<code>image_index += struct.calcsize(&#39;&gt;IIII&#39;)</code>计算4个integer 值的位置，然后image_index 直接跳过去。至于为什么用<a href="http://feiyang.li/2017/03/17/python-struct/">IIII</a>，愿意的话可以点击了解。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">temp = struct.unpack_from(<span class="string">'&gt;784B'</span>, buf1, image_index) </div><div class="line"><span class="comment"># '&gt;784B'的意思就是用大端法读取784( 28*28 )个unsigned byte</span></div><div class="line">im = np.reshape(temp,(<span class="number">28</span>,<span class="number">28</span>))</div></pre></td></tr></table></figure>
+<p>最后那句<code>np.reshape(temp,(28,28))</code>是以下两句的缩写<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">im = np.array(im)</div><div class="line">im = im.reshape(<span class="number">28</span>,<span class="number">28</span>)</div></pre></td></tr></table></figure></p>
+<h3 id="train-labels-idx1-ubyte"><a href="#train-labels-idx1-ubyte" class="headerlink" title="train-labels-idx1-ubyte"></a>train-labels-idx1-ubyte</h3><p>可以看到头部有2个integer 类型，同理，label_index 直接跳过去。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">TRAINING SET LABEL FILE (train-labels-idx1-ubyte):</div><div class="line"></div><div class="line">[offset] [type]          [value]          [description] </div><div class="line">0000     32 bit integer  0x00000801(2049) magic number (MSB first) </div><div class="line">0004     32 bit integer  60000            number of items </div><div class="line">0008     unsigned byte   ??               label </div><div class="line">0009     unsigned byte   ??               label </div><div class="line">........ </div><div class="line">xxxx     unsigned byte   ??               label</div><div class="line">The labels values are 0 to 9.</div></pre></td></tr></table></figure></p>
+<h2 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plt.imshow(im , cmap=<span class="string">'gray'</span>)</div></pre></td></tr></table></figure>
+<p>应该就可以看到图片了，是一张5， 当然头部文件还是要有的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">%matplotlib inline</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> struct</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">path = <span class="string">'E:\\Machine Learning\\train-images.idx3-ubyte'</span></div><div class="line"><span class="keyword">with</span> open(path,<span class="string">'rb'</span>) <span class="keyword">as</span> f1:</div><div class="line">    buf1 = f1.read() </div><div class="line">image_index = <span class="number">0</span></div><div class="line">image_index += struct.calcsize(<span class="string">'&gt;IIII'</span>)</div><div class="line">temp = struct.unpack_from(<span class="string">'&gt;784B'</span>, buf1, image_index) </div><div class="line"><span class="comment"># '&gt;784B'的意思就是用大端法读取784( 28*28 )个unsigned byte</span></div><div class="line">im = np.reshape(temp,(<span class="number">28</span>,<span class="number">28</span>))</div><div class="line">plt.imshow(im , cmap=<span class="string">'gray'</span>)</div></pre></td></tr></table></figure></p>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170317/162019276.png" alt="give me 5"></p>
+<h1 id="多张图片读取"><a href="#多张图片读取" class="headerlink" title="多张图片读取"></a>多张图片读取</h1><p><img src="http://cdn.mmmxcc.cn/blog/20170317/162228549.png" alt="多张图片"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> struct</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">readfile</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">with</span> open(<span class="string">'E:\\Machine Learning\\train-images.idx3-ubyte'</span>,<span class="string">'rb'</span>) <span class="keyword">as</span> f1:</div><div class="line">        buf1 = f1.read()</div><div class="line">    <span class="keyword">with</span> open(<span class="string">'E:\\Machine Learning\\train-labels.idx1-ubyte'</span>,<span class="string">'rb'</span>) <span class="keyword">as</span> f2:</div><div class="line">        buf2 = f2.read()</div><div class="line">    <span class="keyword">return</span> buf1, buf2</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_image</span><span class="params">(buf1)</span>:</span></div><div class="line">    image_index = <span class="number">0</span></div><div class="line">    image_index += struct.calcsize(<span class="string">'&gt;IIII'</span>)</div><div class="line">    im = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</div><div class="line">        temp = struct.unpack_from(<span class="string">'&gt;784B'</span>, buf1, image_index) <span class="comment"># '&gt;784B'的意思就是用大端法读取784个unsigned byte</span></div><div class="line">        im.append(np.reshape(temp,(<span class="number">28</span>,<span class="number">28</span>)))</div><div class="line">        image_index += struct.calcsize(<span class="string">'&gt;784B'</span>)  <span class="comment"># 每次增加784B</span></div><div class="line">    <span class="keyword">return</span> im</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_label</span><span class="params">(buf2)</span>:</span> <span class="comment"># 得到标签数据</span></div><div class="line">    label_index = <span class="number">0</span></div><div class="line">    label_index += struct.calcsize(<span class="string">'&gt;II'</span>)</div><div class="line">    <span class="keyword">return</span> struct.unpack_from(<span class="string">'&gt;9B'</span>, buf2, label_index)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    image_data, label_data = readfile()</div><div class="line">    im = get_image(image_data)</div><div class="line">    label = get_label(label_data)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</div><div class="line">        plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i + <span class="number">1</span>)</div><div class="line">        title = <span class="string">u"标签对应为："</span>+ str(label[i])</div><div class="line">        plt.title(title, fontproperties=<span class="string">'SimHei'</span>)</div><div class="line">        plt.imshow(im[i], cmap=<span class="string">'gray'</span>)</div><div class="line">    plt.show()</div></pre></td></tr></table></figure>
+<hr>
+<p>遇到的一些坑：</p>
+<ul>
+<li><p>中文标题乱码的问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plt.title(title, fontproperties=<span class="string">'SimHei'</span>) <span class="comment"># 后边这个字体**SimHei**加上就好了</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>标题内部不能用<strong>+</strong><br>在外部加好之后，赋值给新变量，然后放进<code>title</code>即可</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://feiyang.li/2017/03/17/python-mnist/index.html" data-id="cj1iw7h0n002s2cjtfmm65giv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/24/dynamic-programming/index.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          算法导论 第15章 动态规划
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/17/python-struct/index.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">细究Python struct 模块</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GFW/">GFW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PM/">PM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pages/">Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pattern/">Pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm激活/">Pycharm激活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python-camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python_camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Running-man/">Running man</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSR/">SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPS/">VPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VelocityTracker/">VelocityTracker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xpath/">Xpath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love/">love</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugins/">plugins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/">resume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/urllib2/">urllib2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片处理/">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码处理/">密码处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/臭臭/">臭臭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithms/" style="font-size: 15px;">Algorithms</a> <a href="/tags/Android/" style="font-size: 11.25px;">Android</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/GFW/" style="font-size: 11.25px;">GFW</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jupyter/" style="font-size: 12.5px;">Jupyter</a> <a href="/tags/LaTex/" style="font-size: 10px;">LaTex</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 17.5px;">Machine Learning</a> <a href="/tags/Movie/" style="font-size: 10px;">Movie</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PM/" style="font-size: 10px;">PM</a> <a href="/tags/Pages/" style="font-size: 10px;">Pages</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/Pycharm激活/" style="font-size: 10px;">Pycharm激活</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Python-camp/" style="font-size: 10px;">Python-camp</a> <a href="/tags/Python-camp/" style="font-size: 18.75px;">Python_camp</a> <a href="/tags/Running-man/" style="font-size: 10px;">Running man</a> <a href="/tags/SSR/" style="font-size: 10px;">SSR</a> <a href="/tags/VPS/" style="font-size: 13.75px;">VPS</a> <a href="/tags/VelocityTracker/" style="font-size: 10px;">VelocityTracker</a> <a href="/tags/Xpath/" style="font-size: 11.25px;">Xpath</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/love/" style="font-size: 11.25px;">love</a> <a href="/tags/plugins/" style="font-size: 10px;">plugins</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/selenium/" style="font-size: 10px;">selenium</a> <a href="/tags/sort/" style="font-size: 11.25px;">sort</a> <a href="/tags/urllib2/" style="font-size: 10px;">urllib2</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/图片处理/" style="font-size: 11.25px;">图片处理</a> <a href="/tags/密码处理/" style="font-size: 10px;">密码处理</a> <a href="/tags/爬虫/" style="font-size: 12.5px;">爬虫</a> <a href="/tags/自然语言处理/" style="font-size: 12.5px;">自然语言处理</a> <a href="/tags/臭臭/" style="font-size: 12.5px;">臭臭</a> <a href="/tags/读书笔记/" style="font-size: 16.25px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/15/test/index.html">test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html">Coursera ML(5)-Logistic Regression and Regularization with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">Coursera ML(4)-Logistic Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">Coursera ML(3)-Multivariate Linear Regression python实现</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html">Coursera ML(2)-Model and Cost Function</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wing Lee<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

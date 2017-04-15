@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>部署在线IPyhton notebook(在线python编译器) | 李飞阳</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="jupyter notebook在数据分析时使用非常的方便，特别那优美的页面，简直让我着迷。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署在线IPyhton notebook(在线python编译器)">
+<meta property="og:url" content="http://feiyang.li/2016/12/31/IPyhton-notebook/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="jupyter notebook在数据分析时使用非常的方便，特别那优美的页面，简直让我着迷。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161231/212802868.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161231/213001998.png?imageMogr2/thumbnail/!100p">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161231/213247968.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161231/223937327.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161231/225106541.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161231/224810212.png?imageMogr2/thumbnail/!80p">
+<meta property="og:updated_time" content="2017-02-15T12:08:27.233Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="部署在线IPyhton notebook(在线python编译器)">
+<meta name="twitter:description" content="jupyter notebook在数据分析时使用非常的方便，特别那优美的页面，简直让我着迷。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20161231/212802868.png">
+  
+    <link rel="alternate" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">李飞阳</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">PM、Coder、Data mining</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://feiyang.li"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-IPyhton-notebook" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/31/IPyhton-notebook/index.html" class="article-date">
+  <time datetime="2016-12-31T14:52:39.000Z" itemprop="datePublished">2016-12-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      部署在线IPyhton notebook(在线python编译器)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>jupyter notebook在数据分析时使用非常的方便，特别那优美的页面，简直让我着迷。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>优点：</p>
+<ul>
+<li>支持的格式很多，Markdown，Latex等都支持，还有很方便的快捷键。</li>
+<li>可以将代码可视化分享给其他人，<a href="https://www.continuum.io/blog/developer/jupyter-and-conda-r" target="_blank" rel="external">From notebook to slides</a></li>
+<li>像一张草稿纸，可以一边通过它来进行你的思考探索过程，交互式的进行，每一步都能看到结果，也很方便查看之前的结果。<br>可以到<a href="https://stoic-pasteur-4603.arukascloud.io/tree" target="_blank" rel="external">IPython Notebook</a>看一下，密码是<em>Jupyter</em>，我把《利用Python进行数据挖掘》的所有数据集和代码都放到了服务器里边2333333 <h1 id="本地安装Jupyter"><a href="#本地安装Jupyter" class="headerlink" title="本地安装Jupyter"></a>本地安装Jupyter</h1>推荐先安装<a href="https://www.continuum.io/downloads" target="_blank" rel="external">python科学计算包ANACONDA</a>点击进入官网下载，按要求下载安装完成之后。期间会有一步提示是否加入Path，勾选加入环境变量。如果但是没有勾选，对于win事后可以手动添加环境变量。对于linux，使用<code>export PATH=~/anaconda2/bin:$PATH</code>进行添加。<br>anaconda安装完后，对于win10用户，可以看到已经成功安装Jupyter Notebook，点击即可打开食用~<br><img src="http://cdn.mmmxcc.cn/blog/20161231/212802868.png" alt=""><br>点击之后，默认直接打开浏览器localhost:8888<br><img src="http://cdn.mmmxcc.cn/blog/20161231/213001998.png?imageMogr2/thumbnail/!100p" alt=""><br>用命令行也可以打开此页面，并且在打开的页面会形成<strong>.ipynb</strong>文件<br><img src="http://cdn.mmmxcc.cn/blog/20161231/213247968.png" alt=""></li>
+</ul>
+<h1 id="线上部署-Jupyter-Notebook"><a href="#线上部署-Jupyter-Notebook" class="headerlink" title="线上部署 Jupyter Notebook"></a>线上部署 Jupyter Notebook</h1><p>在本地部署好了之后，其实给了我一些灵感，既然可以在浏览器运行。那么其实部署在服务器上也是可以的，大家如果看过我看过我之前的文章，就知道我对vps很感兴趣。其实在本地看到的那个localhost:8888，在外网也可以访问，只需要稍微加以设置即可。</p>
+<h2 id="首先要申请虚拟机"><a href="#首先要申请虚拟机" class="headerlink" title="首先要申请虚拟机"></a>首先要申请虚拟机</h2><p>这里推荐腾讯云或者<a href="https://m.do.co/c/990a117f5061" target="_blank" rel="external">DO</a>，通过本链接注册送$10。然后再加上github的学生优惠包，可以很便宜哦。设置好之后，使用SSH连接上服务器。</p>
+<h2 id="服务器下载Anaconda"><a href="#服务器下载Anaconda" class="headerlink" title="服务器下载Anaconda"></a>服务器下载Anaconda</h2><ul>
+<li>如果选择国内服务器，推荐<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="external">清华Anaconda 镜像</a>，点击进入，选择与自己服务器相符的版本。<code>wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda-2.3.0-Linux-x86_64.sh</code></li>
+<li>如果选择国外服务器，使用代码<code>wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh</code><br>本来想推荐科大源的，但是科大源实在是烂泥扶不上墙，目前清华源是国内比较好的了。</li>
+</ul>
+<h2 id="安装Anaconda"><a href="#安装Anaconda" class="headerlink" title="安装Anaconda"></a>安装Anaconda</h2><p><code>sudo bash Miniconda-latest-Linux-x86_64.sh</code><br><em>Miniconda-latest-Linux-x86_64.sh</em>这个地方，输入自己下载的文件名称，其实只要写前几个字母，然后敲Tab，就可以自动补全了。<br>安装好时候输入<code>conda --v</code>检查一下，如果输出为conda的版本则正常。<br>如果输出<strong>conda: command not found</strong>，出现这种情况的原因是conda没有在path添加，使用<code>export PATH=~/anaconda2/bin:$PATH</code> 添加即可。</p>
+<h2 id="打开Ipython-设置密码"><a href="#打开Ipython-设置密码" class="headerlink" title="打开Ipython ,设置密码"></a>打开Ipython ,设置密码</h2><p>设置过程中要设置用于远程登录的密码，把生成的密文‘sha:ce…’复制下来<br><img src="http://cdn.mmmxcc.cn/blog/20161231/223937327.png" alt="mark"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">In [1]: from IPython.lib import passwd</div><div class="line">In [2]: passwd()</div><div class="line">Enter password:</div><div class="line">Verify password: </div><div class="line">Out[2]: &apos;sha1:7467b73*************************3003b****&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="生成配置文件"><a href="#生成配置文件" class="headerlink" title="生成配置文件"></a>生成配置文件</h2><p>终端输入：<br><code>jupyter notebook --generate-config</code><br>这个时候在当前目录会生成一个<strong>.jupyter</strong>的隐藏文件夹，修改文件内的jupyter_notebook_config.py<br><code>vim ~/.jupyter/jupyter_notebook_config.py</code></p>
+<blockquote>
+<p>关于vim的常用功能：按a在光标所在位置插入内容（进入编辑模式），Esc退出编辑模式，连续按两下z，保存并退出。</p>
+</blockquote>
+<p>jupyter_notebook_config.py内包含以下内容，稍作修改即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">c.NotebookApp.ip=&apos;*&apos; # 就是设置所有ip皆可访问</div><div class="line">c.NotebookApp.password = u&apos;sha:ce...刚才复制的那个密文&apos;</div><div class="line">c.NotebookApp.open_browser = False # 禁止自动打开浏览器</div><div class="line">c.NotebookApp.port =8888 #随便指定一个端口</div></pre></td></tr></table></figure></p>
+<h2 id="启动jupyter-notebook"><a href="#启动jupyter-notebook" class="headerlink" title="启动jupyter notebook"></a>启动jupyter notebook</h2><p><code>jupyter notebook</code><br><img src="http://cdn.mmmxcc.cn/blog/20161231/225106541.png" alt=""></p>
+<p>此时应该可以直接从本地浏览器直接访问<em><a href="http://address_of_remote:8888" target="_blank" rel="external">http://address_of_remote:8888</a></em>就可以看到jupyter的登陆界面。<br><img src="http://cdn.mmmxcc.cn/blog/20161231/224810212.png?imageMogr2/thumbnail/!80p" alt=""></p>
+<p>如果希望不要在退出SSH命令行的时候，同时也停止jupyter notebook服务，推荐<strong>nohup </strong>，之前写过篇博客解释过<a href="https://feiyang.li/2016/10/19/%E6%97%A0%E5%85%AC%E7%BD%91IP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAWeb%E7%AB%99%E7%82%B9/">nohup的作用</a><br>在线python编译器就搭建好了，是不是很洋气~</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://feiyang.li/2016/12/31/IPyhton-notebook/index.html" data-id="cj1iw7gze000r2cjt03f2vyn6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/">VPS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/12/jupyter-notebook/index.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          jupyter notebook使用帮助
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/31/python_camp1/index.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第1.1题：Python图片添加水印</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GFW/">GFW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PM/">PM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pages/">Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pattern/">Pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm激活/">Pycharm激活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python-camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python_camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Running-man/">Running man</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSR/">SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPS/">VPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VelocityTracker/">VelocityTracker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xpath/">Xpath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love/">love</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugins/">plugins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/">resume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/urllib2/">urllib2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片处理/">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码处理/">密码处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/臭臭/">臭臭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithms/" style="font-size: 15px;">Algorithms</a> <a href="/tags/Android/" style="font-size: 11.25px;">Android</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/GFW/" style="font-size: 11.25px;">GFW</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jupyter/" style="font-size: 12.5px;">Jupyter</a> <a href="/tags/LaTex/" style="font-size: 10px;">LaTex</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 17.5px;">Machine Learning</a> <a href="/tags/Movie/" style="font-size: 10px;">Movie</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PM/" style="font-size: 10px;">PM</a> <a href="/tags/Pages/" style="font-size: 10px;">Pages</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/Pycharm激活/" style="font-size: 10px;">Pycharm激活</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Python-camp/" style="font-size: 10px;">Python-camp</a> <a href="/tags/Python-camp/" style="font-size: 18.75px;">Python_camp</a> <a href="/tags/Running-man/" style="font-size: 10px;">Running man</a> <a href="/tags/SSR/" style="font-size: 10px;">SSR</a> <a href="/tags/VPS/" style="font-size: 13.75px;">VPS</a> <a href="/tags/VelocityTracker/" style="font-size: 10px;">VelocityTracker</a> <a href="/tags/Xpath/" style="font-size: 11.25px;">Xpath</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/love/" style="font-size: 11.25px;">love</a> <a href="/tags/plugins/" style="font-size: 10px;">plugins</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/selenium/" style="font-size: 10px;">selenium</a> <a href="/tags/sort/" style="font-size: 11.25px;">sort</a> <a href="/tags/urllib2/" style="font-size: 10px;">urllib2</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/图片处理/" style="font-size: 11.25px;">图片处理</a> <a href="/tags/密码处理/" style="font-size: 10px;">密码处理</a> <a href="/tags/爬虫/" style="font-size: 12.5px;">爬虫</a> <a href="/tags/自然语言处理/" style="font-size: 12.5px;">自然语言处理</a> <a href="/tags/臭臭/" style="font-size: 12.5px;">臭臭</a> <a href="/tags/读书笔记/" style="font-size: 16.25px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/15/test/index.html">test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html">Coursera ML(5)-Logistic Regression and Regularization with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">Coursera ML(4)-Logistic Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">Coursera ML(3)-Multivariate Linear Regression python实现</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html">Coursera ML(2)-Model and Cost Function</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wing Lee<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

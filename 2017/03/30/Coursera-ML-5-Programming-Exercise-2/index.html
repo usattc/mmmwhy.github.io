@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Coursera ML(5)-Logistic Regression and Regularization with Python | 李飞阳</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="线性回归算法，可用于房屋价格的估计及股票市场分析。 Logistic Regression （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在这里">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coursera ML(5)-Logistic Regression and Regularization with Python">
+<meta property="og:url" content="http://feiyang.li/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="线性回归算法，可用于房屋价格的估计及股票市场分析。 Logistic Regression （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在这里">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170327/203532750.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170330/121908473.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170330/122914544.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170330/123134133.png">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170330/123236964.png">
+<meta property="og:updated_time" content="2017-04-14T10:48:11.363Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coursera ML(5)-Logistic Regression and Regularization with Python">
+<meta name="twitter:description" content="线性回归算法，可用于房屋价格的估计及股票市场分析。 Logistic Regression （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在这里">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170327/203532750.png">
+  
+    <link rel="alternate" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">李飞阳</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">PM、Coder、Data mining</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://feiyang.li"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Coursera-ML-5-Programming-Exercise-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html" class="article-date">
+  <time datetime="2017-03-30T04:46:11.000Z" itemprop="datePublished">2017-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Coursera-ML/">Coursera ML</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Coursera ML(5)-Logistic Regression and Regularization with Python
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p><a href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">线性回归算法</a>，可用于房屋价格的估计及股票市场分析。 <a href="https://www.coursera.org/learn/machine-learning/programming/ixFof/logistic-regression" target="_blank" rel="external">Logistic Regression</a> （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在<a href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">这里</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>Stanford coursera Andrew Ng 机器学习课程编程作业（Exercise 2），作业下载链接貌似被墙了，下载链接放这。<a href="http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex2.zip" target="_blank" rel="external">http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex2.zip</a></p>
+<h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a><a href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/">预备知识</a></h1><p>这里应该分为 正常、过拟合和欠拟合，三种情况。</p>
+<ul>
+<li>Cost Function $$J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))\large] + \frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2$$ </li>
+<li><p>Gradient Descent</p>
+ $$\begin{align*} & \text{Repeat}\ \lbrace \newline & \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline & \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline & \rbrace \end{align*}$$ 
+</li>
+<li><p>Grad</p>
+ $$Grad =  \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)}+ \frac{\lambda}{m}\theta_j$$ 
+</li>
+</ul>
+<p>后边有一个$\frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2$和$\frac{\lambda}{m}\theta_j$小尾巴，作用就是进行 Regularization，防止拟合过度。</p>
+<h1 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h1><h2 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h2><ul>
+<li>you will build a logistic regression model to predict whether a student gets admitted into a university.（根据各科目分数预测该学生是否能录取）</li>
+<li>For each training example, you have the applicant’s scores on two exams and the admissions decision.</li>
+<li>Your task is to build a <strong>classication model</strong> that estimates an <strong>applicant’s probability of admission based the scores from those two exams.</strong></li>
+</ul>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170327/203532750.png" alt="dataset"></p>
+<h2 id="python-code"><a href="#python-code" class="headerlink" title="python code"></a>python code</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> optimize</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">(path)</span>:</span></div><div class="line">    X,y = load_dataset(path) <span class="comment"># 调用底下那个东西</span></div><div class="line">    m, n = shape(X)</div><div class="line">    initial_theta = zeros(n + <span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> X,y,m,n,initial_theta</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_dataset</span><span class="params">(path)</span>:</span></div><div class="line">    data = loadtxt(path, delimiter=<span class="string">','</span>)</div><div class="line">    X = data[:,:<span class="number">2</span>]</div><div class="line">    y = data[:, <span class="number">2</span>]</div><div class="line">    <span class="keyword">return</span> X,y</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotData</span><span class="params">(X,y)</span>:</span></div><div class="line">    plt.plot(X[y==<span class="number">1</span>][:,<span class="number">0</span>],X[y==<span class="number">1</span>][:,<span class="number">1</span>],<span class="string">'k+'</span>,linewidth=<span class="number">2</span>,)</div><div class="line">    plt.plot(X[y==<span class="number">0</span>][:,<span class="number">0</span>],X[y==<span class="number">0</span>][:,<span class="number">1</span>],<span class="string">'ko'</span>,color=<span class="string">'y'</span>,linewidth=<span class="number">2</span>)</div><div class="line">    plt.xlabel(<span class="string">'科目一成绩'</span>, fontproperties=<span class="string">'SimHei'</span>)</div><div class="line">    plt.ylabel(<span class="string">'科目二成绩'</span>, fontproperties=<span class="string">'SimHei'</span>)</div><div class="line">    plt.title(<span class="string">'分数与录取的关系'</span>, fontproperties=<span class="string">'SimHei'</span>)</div><div class="line">    </div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X, theta)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + exp(-dot(X, theta)))</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cost</span><span class="params">(theta, X, y)</span>:</span></div><div class="line">    J = sum((-y*log(sigmoid(X,theta)) - (<span class="number">1</span>-y)*log(<span class="number">1</span>-sigmoid(X,theta))))/len(X)</div><div class="line">    <span class="keyword">return</span> J</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_grad</span><span class="params">(theta, X, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> (sigmoid(X,theta) - mat(y))*X*(<span class="number">1</span>/m)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotDecisionBoundary</span><span class="params">(theta, X, y)</span>:</span></div><div class="line">    plotData(X[:, <span class="number">1</span>:<span class="number">3</span>], y)</div><div class="line">    <span class="keyword">if</span> X.shape[<span class="number">1</span>] &lt;= <span class="number">3</span>:</div><div class="line">        plot_x = r_[X[:,<span class="number">2</span>].min()<span class="number">-2</span>,  X[:,<span class="number">2</span>].max()+<span class="number">2</span>]</div><div class="line">        plot_y = - (theta[<span class="number">1</span>]*plot_x + theta[<span class="number">0</span>])/theta[<span class="number">2</span>]</div><div class="line">        plt.plot(plot_x, plot_y)</div><div class="line">        plt.axis([<span class="number">30</span>,<span class="number">100</span>,<span class="number">30</span>,<span class="number">100</span>])</div><div class="line">        plt.legend([<span class="string">'Accepted'</span>, <span class="string">'Not Accepted'</span>, <span class="string">'Decision Boundary'</span>])</div><div class="line">        plt.show()</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(theta, X)</span>:</span>  </div><div class="line">    prob = sigmoid([<span class="number">1</span>,<span class="number">45</span>,<span class="number">85</span>] , result[<span class="number">0</span>])</div><div class="line">    <span class="keyword">return</span> prob</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    path = <span class="string">'C:\\Users\\wing\\Desktop\\machine-learning-ex2\\ex2\\ex2data1.txt'</span></div><div class="line">    X,y,m,n,initial_theta = init(path)</div><div class="line">    X = column_stack((ones(m), X))</div><div class="line">    cost = get_cost(initial_theta, X, y)</div><div class="line">    grad = get_grad(initial_theta, X, y)</div><div class="line"></div><div class="line">    <span class="comment"># obtain the optimal theta</span></div><div class="line">    result = optimize.fmin_tnc(func=get_cost, x0=initial_theta, fprime=get_grad, args=(X, y))  </div><div class="line">    get_cost(result[<span class="number">0</span>], X, y)  </div><div class="line">    <span class="comment"># result = (array([-25.16131863,   0.20623159,   0.20147149]), 36, 0)</span></div><div class="line">    <span class="comment"># get_cost(result[0], X, y)  = 0.20349770158947464</span></div><div class="line">    plotDecisionBoundary(result[<span class="number">0</span>], X, y)</div><div class="line">    print(<span class="string">'For a student with scores 45 and 85, we predict an admission '</span> \</div><div class="line">         <span class="string">'probability of %f\n'</span>%predict(result[<span class="number">0</span>], X))</div><div class="line"></div><div class="line"><span class="comment"># For a student with scores 45 and 85, we predict an admission probability of 0.776291</span></div></pre></td></tr></table></figure>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170330/121908473.png" alt=""><br>最后进行了一个测试，如果一个学生两门考试成绩，一门45分，另外一门85分，那么他被录取的概率为77%。幸亏是在外国，在中国这分数，连大专都考不上。</p>
+<h1 id="Logistic-Regression-and-Regularization"><a href="#Logistic-Regression-and-Regularization" class="headerlink" title="Logistic Regression and Regularization"></a>Logistic Regression and Regularization</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><ul>
+<li>Suppose you are the product manager of the factory and you have the test results for some microchips on two dierent tests.</li>
+<li>对于一批产品，有两个检测环节，通过检测结果判断产品是否合格。比如，宜家会有三十年床垫保证，那么如果确保床垫合格（用30年），我们只能通过一些检测，来推测产品是否合格。</li>
+</ul>
+<h2 id="python-code-1"><a href="#python-code-1" class="headerlink" title="python code"></a>python code</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> optimize</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">(path)</span>:</span></div><div class="line">    X,y = load_dataset(path)</div><div class="line">    dataplot(X,y)</div><div class="line">    X = map_feature(X[:,<span class="number">0</span>], X[:,<span class="number">1</span>])</div><div class="line">    initial_theta = zeros(size(X[<span class="number">1</span>]))</div><div class="line">    lam = <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> X,y,initial_theta,lam</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_dataset</span><span class="params">(path)</span>:</span></div><div class="line">    data = loadtxt(path, delimiter=<span class="string">','</span>)</div><div class="line">    X = data[:,:<span class="number">2</span>]</div><div class="line">    y = data[:, <span class="number">2</span>]</div><div class="line">    <span class="keyword">return</span> X,y</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dataplot</span><span class="params">(X,y)</span>:</span></div><div class="line">    plt.plot(X[y==<span class="number">1</span>][:,<span class="number">0</span>],X[y==<span class="number">1</span>][:,<span class="number">1</span>],<span class="string">'k+'</span>,linewidth=<span class="number">2</span>)</div><div class="line">    plt.plot(X[y==<span class="number">0</span>][:,<span class="number">0</span>],X[y==<span class="number">0</span>][:,<span class="number">1</span>],<span class="string">'ko'</span>,color=<span class="string">'y'</span>,linewidth=<span class="number">2</span>)</div><div class="line">    plt.legend([ <span class="string">'y = 1'</span>,<span class="string">'y = 0'</span>])</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X, theta)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + exp(-dot(X, theta)))</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">map_feature</span><span class="params">(x1, x2)</span>:</span></div><div class="line">    <span class="comment">#X1, X2, X1 ** 2, X2 ** 2, X1*X2, X1*X2 ** 2, etc...</span></div><div class="line"></div><div class="line">    x1.shape = (x1.size, <span class="number">1</span>)</div><div class="line">    x2.shape = (x2.size, <span class="number">1</span>)</div><div class="line">    degree = <span class="number">6</span></div><div class="line">    out = ones(shape=(x1[:, <span class="number">0</span>].size, <span class="number">1</span>))</div><div class="line">    m, n = out.shape</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, degree + <span class="number">1</span>):</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>):</div><div class="line">            r = (x1 ** (i - j)) * (x2 ** j)</div><div class="line">            out = append(out, r, axis=<span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> out</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cost</span><span class="params">(theta, X, y,lam)</span>:</span></div><div class="line">    hx = sigmoid(X,theta)</div><div class="line">    thetaR = theta[<span class="number">1</span>:]</div><div class="line">    J = sum((-y*log(hx) - (<span class="number">1</span>-y)*log(<span class="number">1</span>-hx)))/len(X) \</div><div class="line">        + (lam / (<span class="number">2.0</span> * len(X))) * (thetaR.T.dot(thetaR))</div><div class="line">    <span class="keyword">return</span> J</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_grad</span><span class="params">(theta, X, y,lam)</span>:</span></div><div class="line">    reg = (lam/len(y))*theta</div><div class="line">    reg[<span class="number">0</span>] = <span class="number">0</span></div><div class="line">    grad = X.T.dot(sigmoid(X,theta)-y)/len(y)+reg</div><div class="line">    <span class="keyword">return</span> grad</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotDecisionBoundary</span><span class="params">(theta,lam)</span>:</span></div><div class="line">    u = linspace(<span class="number">-1</span>, <span class="number">1.5</span>, <span class="number">50</span>)</div><div class="line">    v = linspace(<span class="number">-1</span>, <span class="number">1.5</span>, <span class="number">50</span>)</div><div class="line">    z = zeros(shape=(len(u), len(v)))</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(u)):</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(v)):</div><div class="line">            z[i, j] = (map_feature(array(u[i]), array(v[j])).dot(array(theta)))</div><div class="line">    z = z.T</div><div class="line">    plt.contour(u, v, z)</div><div class="line">    plt.title(<span class="string">'lambda = %f'</span> % lam)</div><div class="line">    plt.xlabel(<span class="string">'Microchip Test 1'</span>)</div><div class="line">    plt.ylabel(<span class="string">'Microchip Test 2'</span>)</div><div class="line">    plt.axis([<span class="number">-0.85</span>,<span class="number">1.1</span>,<span class="number">-0.85</span>,<span class="number">1.1</span>])</div><div class="line">    plt.legend([<span class="string">'y = 1'</span>, <span class="string">'y = 0'</span>, <span class="string">'Decision boundary'</span>])</div><div class="line">    plt.show()</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    path = <span class="string">'C:\\Users\\wing\\Desktop\\machine-learning-ex2\\ex2\\ex2data2.txt'</span></div><div class="line">    X,y,initial_theta,lam = init(path)</div><div class="line">    result = optimize.fmin_tnc(func=get_cost, x0=initial_theta, fprime=get_grad, args=(X, y,lam))  </div><div class="line">    plotDecisionBoundary(result[<span class="number">0</span>],lam)</div></pre></td></tr></table></figure>
+<h2 id="运算结果"><a href="#运算结果" class="headerlink" title="运算结果"></a>运算结果</h2><ul>
+<li>过拟合<br>lambda=0。不考虑 $\frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2$和$\frac{\lambda}{m}\theta_j$ ，我们可以看到图像已经被拟合过度。这样的答案没有通用性<br><img src="http://cdn.mmmxcc.cn/blog/20170330/122914544.png" alt=""></li>
+<li>欠拟合<br>lambda=10，欠拟合会导致数据的很多细节被抛弃。<br><img src="http://cdn.mmmxcc.cn/blog/20170330/123134133.png" alt=""></li>
+<li>拟合较好<br>lambda=1，准确性到91%左右，这个准确率算低的了吧，还有很大上升空间。<br><img src="http://cdn.mmmxcc.cn/blog/20170330/123236964.png" alt=""></li>
+</ul>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p><a href="http://news.ustc.edu.cn/xwbl/201412/t20141205_206292.html" target="_blank" rel="external">熊辉</a>上课的时候，说机器学习需要调参数，参数很不好调，需要使用者对数据有极高的敏感度。</p>
+<p>参数lambda就是这种感觉，感觉真的是乱调一通，然后就发现，诶哟，好像还不错。</p>
+<p>参考链接：<br><a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html" target="_blank" rel="external">scipy.optimize.minimize</a><br><a href="https://en.wikipedia.org/wiki/Logistic_regression" target="_blank" rel="external">Logistic regression</a><br><a href="http://www.johnwittenauer.net/machine-learning-exercises-in-python-part-3/" target="_blank" rel="external">Machine Learning Exercises In Python, Part 3</a><br><a href="http://aimotion.blogspot.com/2011/11/machine-learning-with-python-logistic.html" target="_blank" rel="external">machine-learning-with-python-logistic</a></p>
+<hr>
+<p>以上</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=421091970&auto=0&height=66"></iframe>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://feiyang.li/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html" data-id="cj1iw7gyz00072cjth71cyrwz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/15/test/index.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          test
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Coursera ML(4)-Logistic Regression</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithms/">Algorithms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GFW/">GFW</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jupyter/">Jupyter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LaTex/">LaTex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Movie/">Movie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PM/">PM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pages/">Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pattern/">Pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pycharm激活/">Pycharm激活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python-camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python-camp/">Python_camp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Running-man/">Running man</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSR/">SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPS/">VPS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VelocityTracker/">VelocityTracker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xpath/">Xpath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/love/">love</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plugins/">plugins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/resume/">resume</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/urllib2/">urllib2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vpn/">vpn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片处理/">图片处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/密码处理/">密码处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/臭臭/">臭臭</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algorithms/" style="font-size: 15px;">Algorithms</a> <a href="/tags/Android/" style="font-size: 11.25px;">Android</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/CDN/" style="font-size: 10px;">CDN</a> <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/GFW/" style="font-size: 11.25px;">GFW</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Jupyter/" style="font-size: 12.5px;">Jupyter</a> <a href="/tags/LaTex/" style="font-size: 10px;">LaTex</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 17.5px;">Machine Learning</a> <a href="/tags/Movie/" style="font-size: 10px;">Movie</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/PM/" style="font-size: 10px;">PM</a> <a href="/tags/Pages/" style="font-size: 10px;">Pages</a> <a href="/tags/Pattern/" style="font-size: 10px;">Pattern</a> <a href="/tags/Pycharm激活/" style="font-size: 10px;">Pycharm激活</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Python-camp/" style="font-size: 10px;">Python-camp</a> <a href="/tags/Python-camp/" style="font-size: 18.75px;">Python_camp</a> <a href="/tags/Running-man/" style="font-size: 10px;">Running man</a> <a href="/tags/SSR/" style="font-size: 10px;">SSR</a> <a href="/tags/VPS/" style="font-size: 13.75px;">VPS</a> <a href="/tags/VelocityTracker/" style="font-size: 10px;">VelocityTracker</a> <a href="/tags/Xpath/" style="font-size: 11.25px;">Xpath</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/dynamic-programming/" style="font-size: 10px;">dynamic programming</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/love/" style="font-size: 11.25px;">love</a> <a href="/tags/plugins/" style="font-size: 10px;">plugins</a> <a href="/tags/resume/" style="font-size: 10px;">resume</a> <a href="/tags/selenium/" style="font-size: 10px;">selenium</a> <a href="/tags/sort/" style="font-size: 11.25px;">sort</a> <a href="/tags/urllib2/" style="font-size: 10px;">urllib2</a> <a href="/tags/vpn/" style="font-size: 10px;">vpn</a> <a href="/tags/图片处理/" style="font-size: 11.25px;">图片处理</a> <a href="/tags/密码处理/" style="font-size: 10px;">密码处理</a> <a href="/tags/爬虫/" style="font-size: 12.5px;">爬虫</a> <a href="/tags/自然语言处理/" style="font-size: 12.5px;">自然语言处理</a> <a href="/tags/臭臭/" style="font-size: 12.5px;">臭臭</a> <a href="/tags/读书笔记/" style="font-size: 16.25px;">读书笔记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/15/test/index.html">test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html">Coursera ML(5)-Logistic Regression and Regularization with Python</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">Coursera ML(4)-Logistic Regression</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">Coursera ML(3)-Multivariate Linear Regression python实现</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html">Coursera ML(2)-Model and Cost Function</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Wing Lee<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
