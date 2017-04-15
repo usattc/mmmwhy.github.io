@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-04-15T05:48:01.929Z</updated>
+  <updated>2017-04-14T10:48:11.363Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -14,26 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>test</title>
-    <link href="http://feiyang.li/2017/04/15/test/index.html"/>
-    <id>http://feiyang.li/2017/04/15/test/index.html</id>
-    <published>2017-04-15T05:18:52.000Z</published>
-    <updated>2017-04-15T05:48:01.929Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><p>165165156</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;script src=&quot;/assets/js/DPlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;165165156&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>Coursera ML(5)-Logistic Regression and Regularization with Python</title>
@@ -1436,6 +1416,58 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     
       &lt;blockquote&gt;
 &lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。&lt;strong&gt;题目1.8：&lt;/strong&gt; 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Python_camp" scheme="http://feiyang.li/categories/Python-camp/"/>
+    
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
+    
+      <category term="自然语言处理" scheme="http://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>第1.7题：Python敏感词检测</title>
+    <link href="http://feiyang.li/2017/02/15/python-camp7/index.html"/>
+    <id>http://feiyang.li/2017/02/15/python-camp7/index.html</id>
+    <published>2017-02-15T11:28:20.000Z</published>
+    <updated>2017-03-27T11:44:17.551Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.7：</strong>敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="Python-find-方法"><a href="#Python-find-方法" class="headerlink" title="Python find()方法"></a>Python find()方法</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>Python find() 方法检测字符串中是否包含子字符串 str ，如果指定 beg（开始） 和 end（结束） 范围，则检查是否包含在指定范围内，如果包含子字符串返回开始的索引值，否则返回-1。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>find()方法语法：<br>str.find(str, beg=0, end=len(string))</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>str – 指定检索的字符串<br>beg – 开始索引，默认为0。<br>end – 结束索引，默认为字符串的长度。</p>
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>如果包含子字符串返回开始的索引值，否则返回-1。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>以下实例展示了find()方法的实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">info = <span class="string">'abca'</span></div><div class="line"><span class="keyword">print</span> info.find(<span class="string">'a'</span>)<span class="comment">##从下标0开始，查找在字符串里第一个出现的子串，返回结果：0</span></div><div class="line"></div><div class="line">info = <span class="string">'abca'</span></div><div class="line"><span class="keyword">print</span> info.find(<span class="string">'a'</span>,<span class="number">1</span>)<span class="comment">##从下标1开始，查找在字符串里第一个出现的子串：返回结果3</span></div><div class="line"></div><div class="line">info = <span class="string">'abca'</span></div><div class="line"><span class="keyword">print</span> info.find(<span class="string">'333'</span>)<span class="comment">##返回-1,查找不到返回-1</span></div></pre></td></tr></table></figure></p>
+<h1 id="Python-strip-方法"><a href="#Python-strip-方法" class="headerlink" title="Python strip()方法"></a>Python strip()方法</h1><h2 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h2><p>Python strip() 方法用于移除字符串头尾指定的字符（默认为空格）。</p>
+<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><p>strip()方法语法：<br>str.strip([chars]);</p>
+<h2 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h2><p>chars – 移除字符串头尾指定的字符。</p>
+<h2 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h2><p>返回移除字符串头尾指定的字符生成的新字符串。</p>
+<h2 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h2><p>以下实例展示了strip()函数的使用方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">str = <span class="string">"0000000this is string example....wow!!!0000000"</span>;</div><div class="line"><span class="keyword">print</span> str.strip( <span class="string">'0'</span> );</div></pre></td></tr></table></figure></p>
+<p>以上实例输出结果如下：<br>this is string example….wow!!!</p>
+<h1 id="Python-map-方法"><a href="#Python-map-方法" class="headerlink" title="Python map()方法"></a>Python map()方法</h1><h2 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h2><p>很简单，第一个参数接收一个函数名，第二个参数接收一个可迭代对象。</p>
+<h2 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h2><p>map(f, iterable)<br>基本上等于：<br>[f(x) for x in iterable]</p>
+<h2 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">add100</span><span class="params">(x)</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> x+<span class="number">100</span></div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>hh = [<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>map(add100,hh)</div><div class="line">[<span class="number">111</span>, <span class="number">122</span>, <span class="number">133</span>]</div></pre></td></tr></table></figure>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p><a href="http://cdn.mmmxcc.cn//blog/filtered_words.txt" target="_blank" rel="external">filtered_words.txt</a><br>将文件下载到D盘内即可<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding: utf-8</span></div><div class="line"><span class="keyword">import</span> cmd</div><div class="line"><span class="comment"># 存放敏感词文件的路径</span></div><div class="line">filtered_words_filepath = <span class="string">'d:/filtered_words.txt'</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CLI</span><span class="params">(cmd.Cmd)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span> <span class="comment">#初始基础类方法  </span></div><div class="line">        cmd.Cmd.__init__(self)  <span class="comment"># 初始化，提取敏感词列表</span></div><div class="line">        self.intro = <span class="string">'Python敏感词检测:'</span> <span class="comment">#输出欢迎信息</span></div><div class="line">        f = open(filtered_words_filepath)</div><div class="line">        self.words = list(map(<span class="keyword">lambda</span> i: i.strip(<span class="string">'\n'</span>), f.readlines()))</div><div class="line">        self.prompt = <span class="string">"&gt;&gt;&gt; "</span>    <span class="comment"># 定义提示符</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">default</span><span class="params">(self, line)</span>:</span></div><div class="line">        <span class="keyword">if</span> any([i <span class="keyword">in</span> line <span class="keyword">for</span> i <span class="keyword">in</span> self.words]):</div><div class="line">            <span class="keyword">print</span> (<span class="string">'Freedom'</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">print</span> (<span class="string">'Human Rights'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_quit</span><span class="params">(self, arg)</span>:</span></div><div class="line">        exit()</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ ==<span class="string">"__main__"</span>:</div><div class="line">    cli = CLI()</div><div class="line">    cli.cmdloop()</div></pre></td></tr></table></figure></p>
+<hr>
+<p>其实这个地方出现过一个错误，map()形成的<strong>iterable</strong>是一次性的。</p>
+<p>也就是如果不保存，直接迭代之后，<code>self.words =map(lambda i: i.strip(&#39;\n&#39;), f.readlines())</code><br><strong>self.words </strong>里边的数据会丢失，因此这个地方加了一个list()函数，将<strong>iterable</strong>到处保存。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。&lt;strong&gt;题目1.7：&lt;/strong&gt;敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
     
