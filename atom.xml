@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-04-14T10:48:11.363Z</updated>
+  <updated>2017-04-15T06:52:12.839Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>Coursera ML(5)-Logistic Regression and Regularization with Python</title>
     <link href="http://feiyang.li/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html"/>
     <id>http://feiyang.li/2017/03/30/Coursera-ML-5-Programming-Exercise-2/index.html</id>
-    <published>2017-03-30T04:46:11.000Z</published>
-    <updated>2017-04-14T10:48:11.363Z</updated>
+    <published>2017-03-30T04:46:00.000Z</published>
+    <updated>2017-04-15T06:52:12.839Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p><a href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">线性回归算法</a>，可用于房屋价格的估计及股票市场分析。 <a href="https://www.coursera.org/learn/machine-learning/programming/ixFof/logistic-regression" target="_blank" rel="external">Logistic Regression</a> （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在<a href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">这里</a></p>
@@ -44,18 +44,50 @@
 <li>For each training example, you have the applicant’s scores on two exams and the admissions decision.</li>
 <li>Your task is to build a <strong>classication model</strong> that estimates an <strong>applicant’s probability of admission based the scores from those two exams.</strong></li>
 </ul>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170327/203532750.png" alt="dataset"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170327/203532750.png" alt="dataset" title="">
+                </div>
+                <div class="image-caption">dataset</div>
+            </figure>
 <h2 id="python-code"><a href="#python-code" class="headerlink" title="python code"></a>python code</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> optimize</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">(path)</span>:</span></div><div class="line">    X,y = load_dataset(path) <span class="comment"># 调用底下那个东西</span></div><div class="line">    m, n = shape(X)</div><div class="line">    initial_theta = zeros(n + <span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> X,y,m,n,initial_theta</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_dataset</span><span class="params">(path)</span>:</span></div><div class="line">    data = loadtxt(path, delimiter=<span class="string">','</span>)</div><div class="line">    X = data[:,:<span class="number">2</span>]</div><div class="line">    y = data[:, <span class="number">2</span>]</div><div class="line">    <span class="keyword">return</span> X,y</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotData</span><span class="params">(X,y)</span>:</span></div><div class="line">    plt.plot(X[y==<span class="number">1</span>][:,<span class="number">0</span>],X[y==<span class="number">1</span>][:,<span class="number">1</span>],<span class="string">'k+'</span>,linewidth=<span class="number">2</span>,)</div><div class="line">    plt.plot(X[y==<span class="number">0</span>][:,<span class="number">0</span>],X[y==<span class="number">0</span>][:,<span class="number">1</span>],<span class="string">'ko'</span>,color=<span class="string">'y'</span>,linewidth=<span class="number">2</span>)</div><div class="line">    plt.xlabel(<span class="string">'科目一成绩'</span>, fontproperties=<span class="string">'SimHei'</span>)</div><div class="line">    plt.ylabel(<span class="string">'科目二成绩'</span>, fontproperties=<span class="string">'SimHei'</span>)</div><div class="line">    plt.title(<span class="string">'分数与录取的关系'</span>, fontproperties=<span class="string">'SimHei'</span>)</div><div class="line">    </div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X, theta)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + exp(-dot(X, theta)))</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cost</span><span class="params">(theta, X, y)</span>:</span></div><div class="line">    J = sum((-y*log(sigmoid(X,theta)) - (<span class="number">1</span>-y)*log(<span class="number">1</span>-sigmoid(X,theta))))/len(X)</div><div class="line">    <span class="keyword">return</span> J</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_grad</span><span class="params">(theta, X, y)</span>:</span></div><div class="line">    <span class="keyword">return</span> (sigmoid(X,theta) - mat(y))*X*(<span class="number">1</span>/m)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotDecisionBoundary</span><span class="params">(theta, X, y)</span>:</span></div><div class="line">    plotData(X[:, <span class="number">1</span>:<span class="number">3</span>], y)</div><div class="line">    <span class="keyword">if</span> X.shape[<span class="number">1</span>] &lt;= <span class="number">3</span>:</div><div class="line">        plot_x = r_[X[:,<span class="number">2</span>].min()<span class="number">-2</span>,  X[:,<span class="number">2</span>].max()+<span class="number">2</span>]</div><div class="line">        plot_y = - (theta[<span class="number">1</span>]*plot_x + theta[<span class="number">0</span>])/theta[<span class="number">2</span>]</div><div class="line">        plt.plot(plot_x, plot_y)</div><div class="line">        plt.axis([<span class="number">30</span>,<span class="number">100</span>,<span class="number">30</span>,<span class="number">100</span>])</div><div class="line">        plt.legend([<span class="string">'Accepted'</span>, <span class="string">'Not Accepted'</span>, <span class="string">'Decision Boundary'</span>])</div><div class="line">        plt.show()</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(theta, X)</span>:</span>  </div><div class="line">    prob = sigmoid([<span class="number">1</span>,<span class="number">45</span>,<span class="number">85</span>] , result[<span class="number">0</span>])</div><div class="line">    <span class="keyword">return</span> prob</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    path = <span class="string">'C:\\Users\\wing\\Desktop\\machine-learning-ex2\\ex2\\ex2data1.txt'</span></div><div class="line">    X,y,m,n,initial_theta = init(path)</div><div class="line">    X = column_stack((ones(m), X))</div><div class="line">    cost = get_cost(initial_theta, X, y)</div><div class="line">    grad = get_grad(initial_theta, X, y)</div><div class="line"></div><div class="line">    <span class="comment"># obtain the optimal theta</span></div><div class="line">    result = optimize.fmin_tnc(func=get_cost, x0=initial_theta, fprime=get_grad, args=(X, y))  </div><div class="line">    get_cost(result[<span class="number">0</span>], X, y)  </div><div class="line">    <span class="comment"># result = (array([-25.16131863,   0.20623159,   0.20147149]), 36, 0)</span></div><div class="line">    <span class="comment"># get_cost(result[0], X, y)  = 0.20349770158947464</span></div><div class="line">    plotDecisionBoundary(result[<span class="number">0</span>], X, y)</div><div class="line">    print(<span class="string">'For a student with scores 45 and 85, we predict an admission '</span> \</div><div class="line">         <span class="string">'probability of %f\n'</span>%predict(result[<span class="number">0</span>], X))</div><div class="line"></div><div class="line"><span class="comment"># For a student with scores 45 and 85, we predict an admission probability of 0.776291</span></div></pre></td></tr></table></figure>
-<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170330/121908473.png" alt=""><br>最后进行了一个测试，如果一个学生两门考试成绩，一门45分，另外一门85分，那么他被录取的概率为77%。幸亏是在外国，在中国这分数，连大专都考不上。</p>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170330/121908473.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>最后进行了一个测试，如果一个学生两门考试成绩，一门45分，另外一门85分，那么他被录取的概率为77%。幸亏是在外国，在中国这分数，连大专都考不上。</p>
 <h1 id="Logistic-Regression-and-Regularization"><a href="#Logistic-Regression-and-Regularization" class="headerlink" title="Logistic Regression and Regularization"></a>Logistic Regression and Regularization</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><ul>
 <li>Suppose you are the product manager of the factory and you have the test results for some microchips on two dierent tests.</li>
 <li>对于一批产品，有两个检测环节，通过检测结果判断产品是否合格。比如，宜家会有三十年床垫保证，那么如果确保床垫合格（用30年），我们只能通过一些检测，来推测产品是否合格。</li>
 </ul>
 <h2 id="python-code-1"><a href="#python-code-1" class="headerlink" title="python code"></a>python code</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> optimize</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">(path)</span>:</span></div><div class="line">    X,y = load_dataset(path)</div><div class="line">    dataplot(X,y)</div><div class="line">    X = map_feature(X[:,<span class="number">0</span>], X[:,<span class="number">1</span>])</div><div class="line">    initial_theta = zeros(size(X[<span class="number">1</span>]))</div><div class="line">    lam = <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> X,y,initial_theta,lam</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_dataset</span><span class="params">(path)</span>:</span></div><div class="line">    data = loadtxt(path, delimiter=<span class="string">','</span>)</div><div class="line">    X = data[:,:<span class="number">2</span>]</div><div class="line">    y = data[:, <span class="number">2</span>]</div><div class="line">    <span class="keyword">return</span> X,y</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dataplot</span><span class="params">(X,y)</span>:</span></div><div class="line">    plt.plot(X[y==<span class="number">1</span>][:,<span class="number">0</span>],X[y==<span class="number">1</span>][:,<span class="number">1</span>],<span class="string">'k+'</span>,linewidth=<span class="number">2</span>)</div><div class="line">    plt.plot(X[y==<span class="number">0</span>][:,<span class="number">0</span>],X[y==<span class="number">0</span>][:,<span class="number">1</span>],<span class="string">'ko'</span>,color=<span class="string">'y'</span>,linewidth=<span class="number">2</span>)</div><div class="line">    plt.legend([ <span class="string">'y = 1'</span>,<span class="string">'y = 0'</span>])</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(X, theta)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + exp(-dot(X, theta)))</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">map_feature</span><span class="params">(x1, x2)</span>:</span></div><div class="line">    <span class="comment">#X1, X2, X1 ** 2, X2 ** 2, X1*X2, X1*X2 ** 2, etc...</span></div><div class="line"></div><div class="line">    x1.shape = (x1.size, <span class="number">1</span>)</div><div class="line">    x2.shape = (x2.size, <span class="number">1</span>)</div><div class="line">    degree = <span class="number">6</span></div><div class="line">    out = ones(shape=(x1[:, <span class="number">0</span>].size, <span class="number">1</span>))</div><div class="line">    m, n = out.shape</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, degree + <span class="number">1</span>):</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>):</div><div class="line">            r = (x1 ** (i - j)) * (x2 ** j)</div><div class="line">            out = append(out, r, axis=<span class="number">1</span>)</div><div class="line">    <span class="keyword">return</span> out</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cost</span><span class="params">(theta, X, y,lam)</span>:</span></div><div class="line">    hx = sigmoid(X,theta)</div><div class="line">    thetaR = theta[<span class="number">1</span>:]</div><div class="line">    J = sum((-y*log(hx) - (<span class="number">1</span>-y)*log(<span class="number">1</span>-hx)))/len(X) \</div><div class="line">        + (lam / (<span class="number">2.0</span> * len(X))) * (thetaR.T.dot(thetaR))</div><div class="line">    <span class="keyword">return</span> J</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_grad</span><span class="params">(theta, X, y,lam)</span>:</span></div><div class="line">    reg = (lam/len(y))*theta</div><div class="line">    reg[<span class="number">0</span>] = <span class="number">0</span></div><div class="line">    grad = X.T.dot(sigmoid(X,theta)-y)/len(y)+reg</div><div class="line">    <span class="keyword">return</span> grad</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">plotDecisionBoundary</span><span class="params">(theta,lam)</span>:</span></div><div class="line">    u = linspace(<span class="number">-1</span>, <span class="number">1.5</span>, <span class="number">50</span>)</div><div class="line">    v = linspace(<span class="number">-1</span>, <span class="number">1.5</span>, <span class="number">50</span>)</div><div class="line">    z = zeros(shape=(len(u), len(v)))</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(u)):</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(v)):</div><div class="line">            z[i, j] = (map_feature(array(u[i]), array(v[j])).dot(array(theta)))</div><div class="line">    z = z.T</div><div class="line">    plt.contour(u, v, z)</div><div class="line">    plt.title(<span class="string">'lambda = %f'</span> % lam)</div><div class="line">    plt.xlabel(<span class="string">'Microchip Test 1'</span>)</div><div class="line">    plt.ylabel(<span class="string">'Microchip Test 2'</span>)</div><div class="line">    plt.axis([<span class="number">-0.85</span>,<span class="number">1.1</span>,<span class="number">-0.85</span>,<span class="number">1.1</span>])</div><div class="line">    plt.legend([<span class="string">'y = 1'</span>, <span class="string">'y = 0'</span>, <span class="string">'Decision boundary'</span>])</div><div class="line">    plt.show()</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    path = <span class="string">'C:\\Users\\wing\\Desktop\\machine-learning-ex2\\ex2\\ex2data2.txt'</span></div><div class="line">    X,y,initial_theta,lam = init(path)</div><div class="line">    result = optimize.fmin_tnc(func=get_cost, x0=initial_theta, fprime=get_grad, args=(X, y,lam))  </div><div class="line">    plotDecisionBoundary(result[<span class="number">0</span>],lam)</div></pre></td></tr></table></figure>
 <h2 id="运算结果"><a href="#运算结果" class="headerlink" title="运算结果"></a>运算结果</h2><ul>
-<li>过拟合<br>lambda=0。不考虑 $\frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2$和$\frac{\lambda}{m}\theta_j$ ，我们可以看到图像已经被拟合过度。这样的答案没有通用性<br><img src="http://cdn.mmmxcc.cn/blog/20170330/122914544.png" alt=""></li>
-<li>欠拟合<br>lambda=10，欠拟合会导致数据的很多细节被抛弃。<br><img src="http://cdn.mmmxcc.cn/blog/20170330/123134133.png" alt=""></li>
-<li>拟合较好<br>lambda=1，准确性到91%左右，这个准确率算低的了吧，还有很大上升空间。<br><img src="http://cdn.mmmxcc.cn/blog/20170330/123236964.png" alt=""></li>
+<li>过拟合<br>lambda=0。不考虑 $\frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2$和$\frac{\lambda}{m}\theta_j$ ，我们可以看到图像已经被拟合过度。这样的答案没有通用性<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170330/122914544.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>欠拟合<br>lambda=10，欠拟合会导致数据的很多细节被抛弃。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170330/123134133.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>拟合较好<br>lambda=1，准确性到91%左右，这个准确率算低的了吧，还有很大上升空间。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170330/123236964.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
 </ul>
 <h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p><a href="http://news.ustc.edu.cn/xwbl/201412/t20141205_206292.html" target="_blank" rel="external">熊辉</a>上课的时候，说机器学习需要调参数，参数很不好调，需要使用者对数据有极高的敏感度。</p>
 <p>参数lambda就是这种感觉，感觉真的是乱调一通，然后就发现，诶哟，好像还不错。</p>
@@ -99,7 +131,14 @@
 <p><strong>Classification is not actually a linear function.</strong></p>
 <h1 id="Classification-and-Representation"><a href="#Classification-and-Representation" class="headerlink" title="Classification and Representation"></a>Classification and Representation</h1><h2 id="Hypothesis-Representation"><a href="#Hypothesis-Representation" class="headerlink" title="Hypothesis Representation"></a>Hypothesis Representation</h2><ul>
 <li>Sigmoid Function(or we called Logistic Function) $$\begin{align*}& h_\theta (x) = g ( \theta^T x ) \newline \newline& z = \theta^T x \newline& g(z) = \dfrac{1}{1 + e^{-z}}\end{align*}$$ 
-Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图为：<br><img src="http://cdn.mmmxcc.cn/blog/20170327/112711489.png" alt=""></li>
+Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图为：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170327/112711489.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
 </ul>
 <ul>
 <li>$h_\theta(x)$ will give us the <strong>probability</strong> that our output is 1.</li>
@@ -142,7 +181,14 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
 <h2 id="Multiclass-Classification-One-vs-all"><a href="#Multiclass-Classification-One-vs-all" class="headerlink" title="Multiclass Classification: One-vs-all"></a>Multiclass Classification: One-vs-all</h2><ul>
 <li>For more than 2 features of y, do logisitc regression for each feature separately</li>
 <li>Train a logistic regression classifier $h_\theta(x)$ for each class￼ to predict the probability that ￼ ￼y = i￼ ￼. </li>
-<li>To make a prediction on a new x, pick the class ￼that maximizes $ h_\theta (x) $<br><img src="http://cdn.mmmxcc.cn/blog/20170327/182954425.png" alt=""></li>
+<li>To make a prediction on a new x, pick the class ￼that maximizes $ h_\theta (x) $<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170327/182954425.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
 </ul>
 <h1 id="Solving-the-Problem-of-Overfitting"><a href="#Solving-the-Problem-of-Overfitting" class="headerlink" title="Solving the Problem of Overfitting"></a>Solving the Problem of Overfitting</h1><h2 id="The-Problem-of-Overfitting"><a href="#The-Problem-of-Overfitting" class="headerlink" title="The Problem of Overfitting"></a>The Problem of Overfitting</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170327/183239547.png" alt="mark"></p>
 <h2 id="address-the-issue-of-overfitting"><a href="#address-the-issue-of-overfitting" class="headerlink" title="address the issue of overfitting"></a>address the issue of overfitting</h2><ul>
@@ -157,7 +203,13 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
 </ul>
 </li>
 </ul>
-<h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170327/184128038.png" alt=""></p>
+<h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170327/184128038.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <ul>
 <li>in a single summation $$min_\theta\ \dfrac{1}{2m}\  \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2 + \lambda\ \sum_{j=1}^n \theta_j^2$$ 
 </li>
@@ -238,11 +290,32 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
 <h1 id="Gradient-Descent-for-Multiple-Variables"><a href="#Gradient-Descent-for-Multiple-Variables" class="headerlink" title="Gradient Descent for Multiple Variables"></a>Gradient Descent for Multiple Variables</h1><ul>
 <li>Suppose we have n variables, set hypothesis to be:</li>
 </ul>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170325/192353908.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/192353908.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <ul>
-<li><p>Cost Function<br><img src="http://cdn.mmmxcc.cn/blog/20170325/192415558.png" alt=""></p>
+<li><p>Cost Function</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/192415558.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 </li>
-<li><p>Gradient Descent  Algorithm<br><img src="http://cdn.mmmxcc.cn/blog/20170325/192709947.png" alt=""><br>Get every feature into approximately [-1, 1]. Just normalize all the parameters :)</p>
+<li><p>Gradient Descent  Algorithm</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/192709947.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>Get every feature into approximately [-1, 1]. Just normalize all the parameters :)</p>
 </li>
 <li><p>Learning Rate:Not too big(fail to converge), not too small(too slow)</p>
 </li>
@@ -265,7 +338,14 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 </ul>
 <h2 id="python拟合实现代码"><a href="#python拟合实现代码" class="headerlink" title="python拟合实现代码"></a>python拟合实现代码</h2><p>原本用的是matlab代码，我用python实现了一下，结果是一样的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">readfile</span><span class="params">(path)</span>:</span></div><div class="line">    X=[]</div><div class="line">    y=[]</div><div class="line">    <span class="keyword">with</span> open(path,<span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> f:</div><div class="line">            X.append([<span class="number">1</span>,float(line.split(<span class="string">','</span>)[<span class="number">0</span>])])</div><div class="line">            y.append(float(line.split(<span class="string">','</span>)[<span class="number">1</span>]))</div><div class="line">    <span class="keyword">return</span> X,y</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dataplot</span><span class="params">(x,theta,y)</span>:</span></div><div class="line">    plt.plot(x, y, <span class="string">'rx'</span>, markersize=<span class="number">10</span>)</div><div class="line">    plt.ylabel(<span class="string">'Profit in $10,000s'</span>)</div><div class="line">    plt.xlabel(<span class="string">'Population of City in 10,000s'</span>)</div><div class="line">    plt.plot(X[:,<span class="number">1</span>],X*theta,<span class="string">'-'</span>)</div><div class="line">    plt.show()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">computeCost</span><span class="params">(X,y,theta)</span>:</span></div><div class="line">    m = len(y)</div><div class="line">    J = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</div><div class="line">        J = J + float((X[i]*theta-y[i])**<span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> J/(<span class="number">2</span>*m)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(X, y, theta, alpha, num_iters)</span>:</span></div><div class="line">    m = len(y)</div><div class="line">    num_iters = <span class="number">1500</span></div><div class="line">    J_history = np.zeros(num_iters)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_iters):</div><div class="line">        S =X.T * (X * theta - np.mat(y).T) / m</div><div class="line">        theta = theta - alpha * S;</div><div class="line">        J_history[i] = computeCost(X,y,theta)</div><div class="line">    <span class="keyword">return</span> theta</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    theta = np.mat([[<span class="number">0</span>],[<span class="number">0</span>]])</div><div class="line">    iterations = <span class="number">1500</span></div><div class="line">    alpha = <span class="number">0.01</span></div><div class="line">    iterations = <span class="number">1500</span></div><div class="line">    path = <span class="string">"C:\Users\wing\Documents\MATLAB\ex1\ex1data1.txt"</span></div><div class="line">    </div><div class="line">    x,y = readfile(path)<span class="comment"># 小写的X不是矩阵，是list，大写的X是矩阵。</span></div><div class="line">    X = np.mat(x)</div><div class="line">    J = computeCost(X, y, theta)</div><div class="line">    theta = gradientDescent(X, y, theta, alpha, iterations)</div><div class="line">    dataplot(X[:,<span class="number">1</span>],theta,y)</div></pre></td></tr></table></figure>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170326/171141428.png" alt=""><br>输出的图有点小，就这样吧。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170326/171141428.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> 
+<p>输出的图有点小，就这样吧。</p>
 ]]></content>
     
     <summary type="html">
@@ -330,9 +410,27 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <li>Hypothesis:<br>$$h_{\theta}={\theta}_0+{\theta}_1x$$<br>${\theta}_0$和${\theta}_1$称为模型参数</li>
 </ul>
 <h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><p>We can measure the accuracy of our hypothesis function by using a <strong>cost function</strong>. his takes an average difference (actually a fancier version of an average) of all the results of the hypothesis with inputs from x’s and the actual output y’s. 如何尽可能的将直线与我们的数据相拟合</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170325/211048488.png" alt=""></p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170325/134518022.png" alt=""></p>
-<h1 id="Parameter-Learning"><a href="#Parameter-Learning" class="headerlink" title="Parameter Learning"></a>Parameter Learning</h1><h2 id="Gradient-descent-idea"><a href="#Gradient-descent-idea" class="headerlink" title="Gradient descent idea"></a>Gradient descent idea</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170325/152030096.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/211048488.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/134518022.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="Parameter-Learning"><a href="#Parameter-Learning" class="headerlink" title="Parameter Learning"></a>Parameter Learning</h1><h2 id="Gradient-descent-idea"><a href="#Gradient-descent-idea" class="headerlink" title="Gradient descent idea"></a>Gradient descent idea</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/152030096.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <blockquote>
 <p>Turns out, that if you’re standing at that point on the hill, you look all around and you find that the best direction is to take a little step downhill is roughly that direction. Okay, and now you’re at this new point on your hill. You’re gonna, again, look all around and say what direction should I step in order to take a little baby step downhill? And if you do that and take another step, you take a step in that direction. </p>
 </blockquote>
@@ -340,13 +438,26 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <ul>
 <li>use <strong>:=</strong> to denote assignment, so it’s the assignment operator.</li>
 <li>$\alpha$ called:learning rate.controls how big a step we take downhill with creating descent. </li>
-<li>$\theta_0,\theta_1 $should be updated simultaneously(using multiple temp var should work!)<br><img src="http://cdn.mmmxcc.cn/blog/20170325/154825347.png" alt=""></li>
+<li>$\theta_0,\theta_1 $should be updated simultaneously(using multiple temp var should work!)<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/154825347.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
 </ul>
 <h1 id="Gradient-Descent-For-Linear-Regression"><a href="#Gradient-Descent-For-Linear-Regression" class="headerlink" title="Gradient Descent For Linear Regression"></a>Gradient Descent For Linear Regression</h1>
  $$\begin{align*} \text{repeat until convergence: } \lbrace & \newline \theta_0 := & \theta_0 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m}(h_\theta(x_{i}) - y_{i}) \newline \theta_1 := & \theta_1 - \alpha \frac1m \sum\limits_{i=1}^m\left((h_\theta(x_i) - y_i) x_i\right) \newline \rbrace& \end{align*}$$
 
 <p> where m is the size of the training set, $\theta_0$ a constant that will be changing simultaneously with $\theta_1$  and $x_i y_i$are values of the given training set (data).</p>
-<center><img src="http://cdn.mmmxcc.cn/blog/20170325/182301586.png" alt=""></center>
+<center><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/182301586.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></center>
 
 <ul>
 <li><p>The $J(θ_0,θ_1)$ is a convex function, which means it has only one global minimun, which means gradient descent will always hit the best fit</p>
@@ -429,9 +540,21 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <p>动态规划算法总是充分利用重叠子问题，通过每个子问题只解一次，把解保存在一个需要时就可以查看的表中，每次查表的时间为常数。</p>
 <p>由计算出的结果反向构造一个最优解：把动态规划或者是递归过程中作出的每一次选择（记住：保存的是每次作出的选择）都保存下来，在最后就一定可以通过这些保存的选择来反向构造出最优解。</p>
 <p>做备忘录的递归方法：这种方法是动态规划的一个变形，它本质上与动态规划是一样的，但是比动态规划更好理解！<br>　　（1） 使用普通的递归结构，自上而下的解决问题。<br>　　（2） 当在递归算法的执行中每一次遇到一个子问题时，就计算它的解并填入一个表中。以后每次遇到该子问题时，只要查看并返回表中先前填入的值即可。</p>
-<h1 id="钢条切割问题"><a href="#钢条切割问题" class="headerlink" title="钢条切割问题"></a>钢条切割问题</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p> 给定一个长度为n的钢条，以及一个价格表p，p中列出了每英寸钢条的价格，将长度为n的钢条切割为若干短钢条出售，求一个钢条的切割方案，使得收益最大，切割工序没有成本。比如价格表p如下：<br><img src="http://cdn.mmmxcc.cn/blog/20170323/194427893.png" alt=""></p>
+<h1 id="钢条切割问题"><a href="#钢条切割问题" class="headerlink" title="钢条切割问题"></a>钢条切割问题</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p> 给定一个长度为n的钢条，以及一个价格表p，p中列出了每英寸钢条的价格，将长度为n的钢条切割为若干短钢条出售，求一个钢条的切割方案，使得收益最大，切割工序没有成本。比如价格表p如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170323/194427893.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <p>长度为n的钢条，一共有$2^{n-1}$种不同的切割方案，因为可以再距离钢条左边为i（i=1,2,…,n-1）处，我们总是可以选择切割或者不切割。比如下图表示了n=4的切割情况：</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170323/195029493.png" alt="mark"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170323/195029493.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
 <h2 id="理论依据"><a href="#理论依据" class="headerlink" title="理论依据"></a>理论依据</h2><p>我们称钢条切割问题满足<strong>最优子结构</strong>性质：问题的最优解由相关子问题的最优解组合而成，而这些子问题可以独立求解。</p>
 <p>我们可以这样理解钢条问题：将钢条从左边切下一段长度为i的一段，对剩下的n-i的部分继续进行切割（递归求解），而不对左边长度为i的一段在进行切割。</p>
 <p><img src="http://cdn.mmmxcc.cn/blog/20170324/172614530.png" alt=""></p>
@@ -445,9 +568,21 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <p>这两种算法具有相同的时间复杂度，BOTTOM-UP-CUT-ROD主要是双层嵌套循环，所以时间复杂度$Θ(n^2)$。MEMOIZED-CUT-ROD的时间复杂度也是$Θ(n^2)$。可以使用子问题图进行分析。</p>
 <h2 id="python实现切割钢条问题"><a href="#python实现切割钢条问题" class="headerlink" title="python实现切割钢条问题"></a>python实现切割钢条问题</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cut_rod</span><span class="params">()</span>:</span></div><div class="line">    p = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">17</span>,<span class="number">17</span>,<span class="number">20</span>,<span class="number">24</span>,<span class="number">30</span>]</div><div class="line">    n = len(p)</div><div class="line">    r = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</div><div class="line">    s = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</div><div class="line">        q = <span class="number">-10</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(j+<span class="number">1</span>):</div><div class="line">            <span class="keyword">if</span> q &lt; (p[i]+r[j-i]):</div><div class="line">                q = (p[i]+r[j-i])</div><div class="line">                s[j] = i</div><div class="line">            <span class="comment">#q = max(q,p[i]+r[j-i])</span></div><div class="line">        r[j] = q</div><div class="line">        </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_way</span><span class="params">(n)</span>:</span></div><div class="line">    cut_rod()</div><div class="line">    print(n,<span class="string">'---&gt;'</span>,r[n])</div><div class="line">    <span class="keyword">while</span> n &gt; <span class="number">0</span>:</div><div class="line">        print(s[n])</div><div class="line">        n = n - s[n]</div></pre></td></tr></table></figure>
 <p>调用<code>find_way(9)</code>输出</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170324/145547041.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170324/145547041.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h1 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>给定n 个矩阵的序列，希望求它们的乘积：$A_1A_2A_3…A_n$ 。因为矩阵的乘法满足结合律，所以可以对n个矩阵序列加括号，来改变乘积顺序。比如对于矩阵链&lt; $A_1$, $A_2$,$A_3$,$A_4$&gt;可以有下面的加括号方案：</p>
-<p><center><img src="http://cdn.mmmxcc.cn/blog/20170324/150009279.png" alt=""><center></center></center></p>
+<p><center><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170324/150009279.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><center></center></center></p>
 <p>不同的加括号的方案，对于乘积运算的代价影响很大.</p>
 <p>两个矩阵相乘，A为p <em> q矩阵，B为q </em> r矩阵。所以A 的乘法次数为p<em>q</em>r。</p>
 <p>如果A（10,100 ），B（100,5）， C（5,50 ）三个矩阵相乘。</p>
@@ -464,7 +599,13 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <p>伪代码就不写了，直接写python代码</p>
 <h2 id="python实现矩阵链乘法问题"><a href="#python实现矩阵链乘法问题" class="headerlink" title="python实现矩阵链乘法问题"></a>python实现矩阵链乘法问题</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">MATRIX_CHAIN_ORDER</span><span class="params">(p)</span>:</span>  </div><div class="line">    n = len(p)  </div><div class="line">    s = [[<span class="number">0</span> <span class="keyword">for</span> j <span class="keyword">in</span> range(n)] <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]  </div><div class="line">    m = [[<span class="number">0</span> <span class="keyword">for</span> j <span class="keyword">in</span> range(n)] <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]  </div><div class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">2</span>, n):           <span class="comment">#l is the chain length  </span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n-l+<span class="number">1</span>):  </div><div class="line">            j = i + l - <span class="number">1</span>  </div><div class="line">            m[i][j] = <span class="number">1e9</span>  </div><div class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> range(i, j):  </div><div class="line">                q = m[i][k] + m[k+<span class="number">1</span>][j] + p[i<span class="number">-1</span>]*p[k]*p[j]  </div><div class="line">                <span class="keyword">if</span> q &lt; m[i][j]:  </div><div class="line">                    m[i][j] = q  </div><div class="line">                    s[i][j] = k  </div><div class="line">    PRINT_OPTIMAL_PARENS(s, <span class="number">1</span>, n<span class="number">-1</span>)</div><div class="line">    <span class="keyword">return</span> m</div><div class="line">    </div><div class="line">      </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">PRINT_OPTIMAL_PARENS</span><span class="params">(s, i, j)</span>:</span>  </div><div class="line">    <span class="keyword">if</span> i == j:  </div><div class="line">        print(<span class="string">'A'</span>, end = <span class="string">''</span>)  </div><div class="line">        print(i, end = <span class="string">''</span>)  </div><div class="line">    <span class="keyword">else</span>:  </div><div class="line">        print(<span class="string">'('</span>, end = <span class="string">''</span>)  </div><div class="line">        PRINT_OPTIMAL_PARENS(s, i, s[i][j])  </div><div class="line">        PRINT_OPTIMAL_PARENS(s, s[i][j]+<span class="number">1</span>, j)  </div><div class="line">        print(<span class="string">')'</span>, end = <span class="string">''</span>)  </div><div class="line">   </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    A = [<span class="number">30</span>, <span class="number">35</span>, <span class="number">15</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span>,<span class="number">25</span>]</div><div class="line">    m = MATRIX_CHAIN_ORDER(A) </div><div class="line">    print(<span class="string">'\n'</span>,<span class="string">'共计需要'</span>,m[<span class="number">1</span>][n<span class="number">-1</span>],<span class="string">'次相乘'</span>)</div></pre></td></tr></table></figure>
 <p>需要注意的问题是，这个算法的复杂度在O(n∧3)。而且这个算法和算法导论等地方的伪码比有些细微的差异体现在数组从0开始还是1开始上。大体上还是一致的。这里的空间复杂度也到了O(n∧2)。大致的计算顺序就是通过这个函数中的l来控制。l=2的时候，依次计算矩阵A[0]<em>A[1], A[1]</em>A[2], A[2]<em>A[3]…的次数。l=3的时候就开始计算A[0]</em>A[1]<em>A[2], A[1]</em>A[2]*A[3]..的次数。用更形象的话来说就是倒三角的顺序。下面的这个图就是对上面流程的描述：</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170324/171007882.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170324/171007882.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <hr>
 <p>以上</p>
 ]]></content>
@@ -500,7 +641,13 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <hr>
 <a id="more"></a>
 <h1 id="下载MNIST训练数据集"><a href="#下载MNIST训练数据集" class="headerlink" title="下载MNIST训练数据集"></a>下载MNIST训练数据集</h1><h2 id="手动下载"><a href="#手动下载" class="headerlink" title="手动下载"></a>手动下载</h2><p>下载链接为： <a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="external">http://yann.lecun.com/exdb/mnist/</a>  下载好之后解压就可以了，网站好像被墙了？</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170317/110144292.png" alt="mark"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170317/110144292.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
 <h2 id="使用tensorflow自带下载"><a href="#使用tensorflow自带下载" class="headerlink" title="使用tensorflow自带下载"></a>使用tensorflow自带下载</h2><p>可以看到，这个地方是有监督学习   (有label这个东西嘛)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</div><div class="line"><span class="comment"># 下载mnist数据集</span></div><div class="line">mnist = input_data.read_data_sets(<span class="string">'/tmp/'</span>, one_hot=<span class="keyword">True</span>)</div><div class="line"><span class="comment"># 数字(label)只能是0-9，神经网络使用10个出口节点就可以编码表示0-9；</span></div><div class="line"><span class="comment">#  1 -&gt; [0,1.0,0,0,0,0,0,0,0]   one_hot表示只有一个出口节点是hot</span></div><div class="line"><span class="comment">#  2 -&gt; [0,0.1,0,0,0,0,0,0,0]</span></div><div class="line"><span class="comment">#  5 -&gt; [0,0,0,0,0,1.0,0,0,0]</span></div><div class="line"><span class="comment">#  /tmp是macOS的临时目录，重启系统数据丢失; Linux的临时目录也是/tmp</span></div></pre></td></tr></table></figure></p>
 <h1 id="详细步骤"><a href="#详细步骤" class="headerlink" title="详细步骤"></a>详细步骤</h1><h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(filename ,<span class="string">'rb'</span>) <span class="keyword">as</span> f1:</div><div class="line">    buf1 = f1.read()</div></pre></td></tr></table></figure>
 <p>还有另外一种常用的方法，两个方法目前来看没有什么区别。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">f1 = open(filename , <span class="string">'rb'</span>)</div><div class="line">buf = binfile.read() <span class="comment"># 先使用二进制方式把文件都读进来</span></div></pre></td></tr></table></figure></p>
@@ -511,8 +658,20 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <h3 id="train-labels-idx1-ubyte"><a href="#train-labels-idx1-ubyte" class="headerlink" title="train-labels-idx1-ubyte"></a>train-labels-idx1-ubyte</h3><p>可以看到头部有2个integer 类型，同理，label_index 直接跳过去。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">TRAINING SET LABEL FILE (train-labels-idx1-ubyte):</div><div class="line"></div><div class="line">[offset] [type]          [value]          [description] </div><div class="line">0000     32 bit integer  0x00000801(2049) magic number (MSB first) </div><div class="line">0004     32 bit integer  60000            number of items </div><div class="line">0008     unsigned byte   ??               label </div><div class="line">0009     unsigned byte   ??               label </div><div class="line">........ </div><div class="line">xxxx     unsigned byte   ??               label</div><div class="line">The labels values are 0 to 9.</div></pre></td></tr></table></figure></p>
 <h2 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plt.imshow(im , cmap=<span class="string">'gray'</span>)</div></pre></td></tr></table></figure>
 <p>应该就可以看到图片了，是一张5， 当然头部文件还是要有的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">%matplotlib inline</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> struct</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">path = <span class="string">'E:\\Machine Learning\\train-images.idx3-ubyte'</span></div><div class="line"><span class="keyword">with</span> open(path,<span class="string">'rb'</span>) <span class="keyword">as</span> f1:</div><div class="line">    buf1 = f1.read() </div><div class="line">image_index = <span class="number">0</span></div><div class="line">image_index += struct.calcsize(<span class="string">'&gt;IIII'</span>)</div><div class="line">temp = struct.unpack_from(<span class="string">'&gt;784B'</span>, buf1, image_index) </div><div class="line"><span class="comment"># '&gt;784B'的意思就是用大端法读取784( 28*28 )个unsigned byte</span></div><div class="line">im = np.reshape(temp,(<span class="number">28</span>,<span class="number">28</span>))</div><div class="line">plt.imshow(im , cmap=<span class="string">'gray'</span>)</div></pre></td></tr></table></figure></p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170317/162019276.png" alt="give me 5"></p>
-<h1 id="多张图片读取"><a href="#多张图片读取" class="headerlink" title="多张图片读取"></a>多张图片读取</h1><p><img src="http://cdn.mmmxcc.cn/blog/20170317/162228549.png" alt="多张图片"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170317/162019276.png" alt="give me 5" title="">
+                </div>
+                <div class="image-caption">give me 5</div>
+            </figure>
+<h1 id="多张图片读取"><a href="#多张图片读取" class="headerlink" title="多张图片读取"></a>多张图片读取</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170317/162228549.png" alt="多张图片" title="">
+                </div>
+                <div class="image-caption">多张图片</div>
+            </figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> struct</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">readfile</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">with</span> open(<span class="string">'E:\\Machine Learning\\train-images.idx3-ubyte'</span>,<span class="string">'rb'</span>) <span class="keyword">as</span> f1:</div><div class="line">        buf1 = f1.read()</div><div class="line">    <span class="keyword">with</span> open(<span class="string">'E:\\Machine Learning\\train-labels.idx1-ubyte'</span>,<span class="string">'rb'</span>) <span class="keyword">as</span> f2:</div><div class="line">        buf2 = f2.read()</div><div class="line">    <span class="keyword">return</span> buf1, buf2</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_image</span><span class="params">(buf1)</span>:</span></div><div class="line">    image_index = <span class="number">0</span></div><div class="line">    image_index += struct.calcsize(<span class="string">'&gt;IIII'</span>)</div><div class="line">    im = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</div><div class="line">        temp = struct.unpack_from(<span class="string">'&gt;784B'</span>, buf1, image_index) <span class="comment"># '&gt;784B'的意思就是用大端法读取784个unsigned byte</span></div><div class="line">        im.append(np.reshape(temp,(<span class="number">28</span>,<span class="number">28</span>)))</div><div class="line">        image_index += struct.calcsize(<span class="string">'&gt;784B'</span>)  <span class="comment"># 每次增加784B</span></div><div class="line">    <span class="keyword">return</span> im</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_label</span><span class="params">(buf2)</span>:</span> <span class="comment"># 得到标签数据</span></div><div class="line">    label_index = <span class="number">0</span></div><div class="line">    label_index += struct.calcsize(<span class="string">'&gt;II'</span>)</div><div class="line">    <span class="keyword">return</span> struct.unpack_from(<span class="string">'&gt;9B'</span>, buf2, label_index)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    image_data, label_data = readfile()</div><div class="line">    im = get_image(image_data)</div><div class="line">    label = get_label(label_data)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</div><div class="line">        plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i + <span class="number">1</span>)</div><div class="line">        title = <span class="string">u"标签对应为："</span>+ str(label[i])</div><div class="line">        plt.title(title, fontproperties=<span class="string">'SimHei'</span>)</div><div class="line">        plt.imshow(im[i], cmap=<span class="string">'gray'</span>)</div><div class="line">    plt.show()</div></pre></td></tr></table></figure>
 <hr>
 <p>遇到的一些坑：</p>
@@ -658,7 +817,13 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <h1 id="struct-pack-fmt-v1-v2-…"><a href="#struct-pack-fmt-v1-v2-…" class="headerlink" title="struct.pack(fmt, v1, v2, …)"></a>struct.pack(fmt, v1, v2, …)</h1><blockquote>
 <p>Return a string containing the values v1, v2, … packed according to the given format. The arguments must match the values required by the format exactly.</p>
 </blockquote>
-<p>struct.pack用于将Python的值根据格式符，转换为字符串,准确来说是Byte。这个地方我们之前有提过，<a href="http://feiyang.li/2017/02/16/python-camp9/#Python3内的unicode和bytes">Python3内的unicode和bytes</a>，在Py3内<strong>文本总是Unicode，由str类型表示，二进制数据则由bytes类型表示。</strong><br><img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png" alt=""><br>Py2是没有Byte这么个东西的。参数fmt是格式字符串，v1, v2, …表示要转换的python值。下面的例子将两个整数转换为字符串:</p>
+<p>struct.pack用于将Python的值根据格式符，转换为字符串,准确来说是Byte。这个地方我们之前有提过，<a href="http://feiyang.li/2017/02/16/python-camp9/#Python3内的unicode和bytes">Python3内的unicode和bytes</a>，在Py3内<strong>文本总是Unicode，由str类型表示，二进制数据则由bytes类型表示。</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>Py2是没有Byte这么个东西的。参数fmt是格式字符串，v1, v2, …表示要转换的python值。下面的例子将两个整数转换为字符串:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> struct  </div><div class="line"></div><div class="line">a = <span class="number">20</span>  </div><div class="line">b = <span class="number">400</span></div><div class="line"></div><div class="line">byte = struct.pack(<span class="string">"ii"</span>, a, b) <span class="comment">#转换后的str相当于其他语言中的字节流（字节数组），可以在网络上传输  </span></div><div class="line">big = struct.pack(<span class="string">"&gt;ii"</span>, a, b)  <span class="comment">#大端保存</span></div><div class="line">small = struct.pack(<span class="string">"&lt;ii"</span>, a, b) <span class="comment">#小端保存</span></div><div class="line">print(byte)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x14\x00\x00\x00\x90\x01\x00\x00'</span></div><div class="line">print(big)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x00\x00\x00\x14\x00\x00\x01\x90'</span></div><div class="line">print(small)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x14\x00\x00\x00\x90\x01\x00\x00'</span></div><div class="line"><span class="keyword">print</span> (byte[<span class="number">0</span>],byte[<span class="number">4</span>]) </div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x14\x00\x00\x00\x90\x01\x00\x00'</span></div></pre></td></tr></table></figure>
 <p>格式符”i”表示转换为int，’ii’表示有两个int变量。进行转换后的结果长度为8个字节（int类型占用4个字节，两个int为8个字节）<del>可以看到输出的结果是乱码，因为结果是二进制数据，所以显示为乱码。可以使用python的内置函数repr来获取可识别的字符串</del> ，以上问题在Python3中不会出现了其中十六进制的0x00000014, 0x00000190分别表示20和400。</p>
 <p>上一段代码<strong>最后那个很有意思诶，竟然是默认采用小端</strong>。</p>
@@ -733,7 +898,14 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <h2 id="安装anaconda，建议安装。"><a href="#安装anaconda，建议安装。" class="headerlink" title="安装anaconda，建议安装。"></a>安装anaconda，建议安装。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-4.3.1-Linux-x86_64.sh</div><div class="line">bash Anaconda3-4.3.1-Linux-x86_64.sh</div></pre></td></tr></table></figure>
 <p>安装过程中记得一直选择默认的就行，傻瓜式安装。是否在bashrc中添加路径，这里选择“yes”就可以。忘了的话，解决方法很麻烦，自己查查吧。</p>
 <h2 id="安装OpenCV2-4-这个经常失败，建议跳过，不影响使用"><a href="#安装OpenCV2-4-这个经常失败，建议跳过，不影响使用" class="headerlink" title="安装OpenCV2.4(这个经常失败，建议跳过，不影响使用)"></a>安装OpenCV2.4(这个经常失败，建议跳过，不影响使用)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/bearpaw/Install-OpenCV</div><div class="line">cd Install-OpenCV/Ubuntu/2.4</div><div class="line">sh ./opencv2_4_10.sh</div></pre></td></tr></table></figure>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170315/155549210.png" alt="jayrambhia/Install-OpenCV.git"><br>编译过程很慢，中间我还报过一次错，不得不重新来了一次。如果觉得难度不够的话，可以选择官网的安装包：<a href="http://opencv.org/" target="_blank" rel="external">http://opencv.org/</a>，我这里是根据大神编译过的版本进行安装的。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170315/155549210.png" alt="jayrambhia/Install-OpenCV.git" title="">
+                </div>
+                <div class="image-caption">jayrambhia/Install-OpenCV.git</div>
+            </figure>
+<p>编译过程很慢，中间我还报过一次错，不得不重新来了一次。如果觉得难度不够的话，可以选择官网的安装包：<a href="http://opencv.org/" target="_blank" rel="external">http://opencv.org/</a>，我这里是根据大神编译过的版本进行安装的。</p>
 <h2 id="安装atlas"><a href="#安装atlas" class="headerlink" title="安装atlas"></a>安装atlas</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libatlas-base-dev                #安装atlas简单易行。</div></pre></td></tr></table></figure>
 <h1 id="编译Caffe"><a href="#编译Caffe" class="headerlink" title="编译Caffe"></a>编译Caffe</h1><h2 id="下载caffe"><a href="#下载caffe" class="headerlink" title="下载caffe"></a>下载caffe</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~  </div><div class="line">git clone https://github.com/BVLC/caffe.git</div></pre></td></tr></table></figure>
 <h2 id="修改Makefile配置"><a href="#修改Makefile配置" class="headerlink" title="修改Makefile配置"></a>修改Makefile配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd caffe  </div><div class="line">cp Makefile.config.example Makefile.config </div><div class="line">gedit Makefile.config         #我个人比较喜欢gedit ，用起来方便。</div></pre></td></tr></table></figure>
@@ -798,10 +970,28 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <p>安装失败的话多试几次</p>
 <h2 id="加入jupyter-notebook的ipykernel内核"><a href="#加入jupyter-notebook的ipykernel内核" class="headerlink" title="加入jupyter notebook的ipykernel内核"></a>加入jupyter notebook的ipykernel内核</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">source activate tensorflow# On Windows, remove the word &apos;source&apos;</div><div class="line">install ipykernel</div><div class="line">python -m ipykernel install --user --name tensorflow--display-name &quot;Python (myenv)&quot;</div></pre></td></tr></table></figure>
 <p>在激活状态下，安装<code>ipykernel</code>，后边那个展示名称，自己可以随便填。进入jupyter notebook ，运行一下测试文件，看是否可以使用。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170315/130833100.png" alt=""></p>
-<p>如果不行，输入<code>jupyter --paths</code><br><img src="http://cdn.mmmxcc.cn/blog/20170315/130930707.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170315/130833100.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如果不行，输入<code>jupyter --paths</code><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170315/130930707.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <p>检查一下kernal是不是设置的有问题，比如我的就是<code>C:\Users\wing\AppData\Roaming\jupyter\kernels\tensorflow</code><br>一般来说是环境所在的地址有问题，修改一下就可以啦。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170315/131024268.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170315/131024268.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>通过这个方法，可以把自己手贱多加上去的kernel删掉。<strong>jupyter kernal 删除</strong><br>更多建议阅读<a href="http://ipython.readthedocs.io/en/stable/install/kernel_install.html" target="_blank" rel="external">官方文档</a></p>
 <p>我记得这个地方蛮复杂的，我当时往kernel里边加入R内核，费了大力气。当时还没写博客的习惯，现在又忘记怎么加的，真是日了狗。</p>
 <p><img src="http://cdn.mmmxcc.cn/blog/20170315/131835074.png" alt=""></p>
@@ -839,30 +1029,90 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 </blockquote>
 <hr>
 <a id="more"></a>
-<div align="center"><br><img src="http://cdn.mmmxcc.cn/blog/20170311/145041434.png" alt="你是我心脏跳动的力量"><br></div>
+<div align="center"><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145041434.png" alt="你是我心脏跳动的力量" title="">
+                </div>
+                <div class="image-caption">你是我心脏跳动的力量</div>
+            </figure><br></div>
 
 
 
 <p>没看过几部印度电影，算上三傻，这也仅仅是第二部而已。什么小萝莉的猴神大叔，印度电影命名水平还是一如既往的差。</p>
-<div align="center"><br><img src="http://cdn.mmmxcc.cn/blog/20170311/145415244.png" alt=""><br></div>
+<div align="center"><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145415244.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br></div>
 
 <p>刚开始看的时候呀，我一边哈哈哈一边和室友猜下边将发生啥，猜了好几次，竟然都猜对了。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170311/145514334.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145514334.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>后来不知道怎么了，就不想说话了，戴着耳机投入到猴神大叔的世界了。就算猜到了结尾，也丝毫不影响我看的时候哭的稀里哗啦的。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170311/145548062.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145548062.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>我其实不太懂印度巴基斯坦那边的渊源，也不太懂宗教信仰之类的，所以我觉得我应该错过了好多值得玩味的小细节。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170311/151454612.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170311/151454612.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>印度电影中的人物好像总是一言不合就唱歌跳舞，开心也跳，难过也跳，想跳就跳，一跳还跳很长时间，但我还挺喜欢看的。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170311/145814885.png" alt="童话里的巴士"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145814885.png" alt="童话里的巴士" title="">
+                </div>
+                <div class="image-caption">童话里的巴士</div>
+            </figure>
 <p>国家和国家之间，宗教和宗教之间也许有很多矛盾，但是爱和信仰是相通的。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170311/150129990.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170311/150129990.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>善良朴实虔诚的猴神大叔因为对小女孩的一个承诺，毅然决然的走上了送小女孩回家的路。这一路，太凶险，却也不乏各种各样善良的人的帮助。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170311/150007185.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170311/150007185.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>小女孩从小无法说话，后来又和家人走丢，这本是一件不幸的事，却因为遇到了猴神大叔，遇到正义的摄影师，遇到善良的伊斯兰教父，还有很多很多充满善意的人，才如此幸运的回到妈妈身边。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170311/150040056.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170311/150040056.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>感觉这个世界上，像猴神大叔这样的好人还是太少了。</p>
 <p>因为爱，扛起对一个陌生小姑娘的全部责任，从一个平庸的别人眼中的失败者，到无所不能面对重重困难都充满力量的人。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170311/151638605.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170311/151638605.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p><strong>但行好事，莫问前程。真正能做到的能有几个呢？</strong></p>
 <hr>
 <p>主题歌是这样唱的：</p>
@@ -913,7 +1163,13 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <h1 id="raw-input-和-input"><a href="#raw-input-和-input" class="headerlink" title="raw_input 和 input"></a>raw_input 和 input</h1><h2 id="python2中"><a href="#python2中" class="headerlink" title="python2中"></a>python2中</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">raw_input_A = raw_input(<span class="string">"raw_input: "</span>)</div><div class="line">type(raw_input_A)</div></pre></td></tr></table></figure>
 <p>可以看到输出的是 <code>str</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">input_A = input(<span class="string">"Input: "</span>) <span class="comment">#不能输入字母</span></div><div class="line">type(raw_input_A)</div></pre></td></tr></table></figure>
-<p>可以看到输出的是 <code>int</code>，并且我们发现，input根本不能输入字母，会直接报<code>NameError: name &#39;abc&#39; is not defined</code>，提示没有定义。<br><img src="http://cdn.mmmxcc.cn/blog/20170310/125930252.png" alt="Python2报错"></p>
+<p>可以看到输出的是 <code>int</code>，并且我们发现，input根本不能输入字母，会直接报<code>NameError: name &#39;abc&#39; is not defined</code>，提示没有定义。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170310/125930252.png" alt="Python2报错" title="">
+                </div>
+                <div class="image-caption">Python2报错</div>
+            </figure></p>
 <p>查看 <a href="http://docs.python.org/library/functions.html?highlight=input#built-in-functions" target="_blank" rel="external">Built-in Functions</a> ，得知：<br><code>input([prompt])
     Equivalent to eval(raw_input(prompt))</code></p>
 <p>input() 本质上还是使用 raw_input() 来实现的，只是调用完 raw_input() 之后再调用 eval() 函数，所以，你甚至可以将表达式作为 input() 的参数，并且它会计算表达式的值并返回它。<br>不过在 Built-in Functions 里有一句话是这样写的：Consider using the raw_input() function for general input from users.<br>除非对 input() 有特别需要，否则一般情况下我们都是推荐使用 raw_input() 来与用户交互。</p>
@@ -930,10 +1186,23 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <li>先声明<code>data</code>是一个list，将<code>input_A</code>一个个<code>+</code>进去。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">data = []</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        input_A = int(input(<span class="string">"Input: "</span>))</div><div class="line">        data +=[input_A]</div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">break</span></div><div class="line">data</div><div class="line">type(data)</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170310/132018132.png" alt="输入数组"><br>在以上的基础上，我们可以用python输入二维数组</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170310/132018132.png" alt="输入数组" title="">
+                </div>
+                <div class="image-caption">输入数组</div>
+            </figure>
+<p>在以上的基础上，我们可以用python输入二维数组</p>
 <h2 id="python输入二维数组"><a href="#python输入二维数组" class="headerlink" title="python输入二维数组"></a>python输入二维数组</h2><p>正则表达式会利用非数字的字符，进行切割，因此数字之间插入什么都无所谓。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">data2D = []</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    userInput = input(<span class="string">'Input:'</span>) <span class="comment"># 输入数组，用空格隔开即可</span></div><div class="line">    info = re.split(<span class="string">r'[\D]'</span>,userInput)<span class="comment">#正则表达式分割</span></div><div class="line">    data = []<span class="comment"># 定义一维数组</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">for</span> number <span class="keyword">in</span> info:</div><div class="line">            data+=[int(number)] <span class="comment"># 一维数组加入数字</span></div><div class="line">        data2D+=[data] <span class="comment">#一维数组加入到二维中去</span></div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">data2D</div></pre></td></tr></table></figure>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170310/135120083.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170310/135120083.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 ]]></content>
     
     <summary type="html">
@@ -974,7 +1243,13 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 </ul>
 <h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><p>对整个数组进行递归排序：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">QUICKSORT(A,p,r)</div><div class="line"><span class="keyword">if</span> p &lt; r:</div><div class="line">    q = PARTITION(A,p,r);</div><div class="line">    QUICKSORT(A,p,q<span class="number">-1</span>);</div><div class="line">    QUICKSORT(A,q+<span class="number">1</span>,r);</div></pre></td></tr></table></figure></p>
 <p>快速排序算法的关键是PARTITION过程，它对A[p..r]进行就地重排：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">PARTITION(A,p,r)</div><div class="line">x = A[r]</div><div class="line">i = p<span class="number">-1</span></div><div class="line"><span class="keyword">for</span> j = p to r<span class="number">-1</span><span class="comment">// A[j]是待比较的元素</span></div><div class="line">  <span class="keyword">if</span> A[j] ≤ r<span class="comment">// 若A[j]比主元小</span></div><div class="line">    i = i + <span class="number">1</span> <span class="comment">// i往后一位（符合，不用替换；不符合i就停在这个地方，等着j过来叫唤）</span></div><div class="line">    exchange A[i] with A[j]<span class="comment">//倘若A[j]比主元小，其实是不发生交换的。</span></div><div class="line">exchange A[i+<span class="number">1</span>] with A[r]</div><div class="line"><span class="keyword">return</span> i + <span class="number">1</span></div></pre></td></tr></table></figure></p>
-<p>借用一张《算法导论》的图<br><img src="http://cdn.mmmxcc.cn/blog/20170309/191837286.png" alt="Introduction to Algorithms"></p>
+<p>借用一张《算法导论》的图<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170309/191837286.png" alt="Introduction to Algorithms" title="">
+                </div>
+                <div class="image-caption">Introduction to Algorithms</div>
+            </figure></p>
 <h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><h2 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h2><p>基本和伪代码是一样的<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> temp = *b;</div><div class="line">    *b = *a;</div><div class="line">    *a = temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> *A, <span class="keyword">int</span> len)</span> </span>&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%4d"</span>, A[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">PARTITION</span><span class="params">(<span class="keyword">int</span> *A, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i = p - <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> x = A[r];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = p; j &lt; r; j++) &#123;</div><div class="line">        <span class="keyword">if</span> (A[j] &lt;= x) &#123;</div><div class="line">            i++;</div><div class="line">            swap(&amp;A[i], &amp;A[j]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    swap(&amp;A[i + <span class="number">1</span>], &amp;A[r]);</div><div class="line">    <span class="keyword">return</span> i + <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">QUICKSORT</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (p &lt; r) &#123;</div><div class="line">        <span class="keyword">int</span> q = PARTITION(A, p, r);</div><div class="line">        QUICKSORT(A, p, q - <span class="number">1</span>);</div><div class="line">        QUICKSORT(A, q + <span class="number">1</span>, r);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> A[] = &#123; <span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">4</span> &#125;;</div><div class="line">    print(A, <span class="number">11</span>);</div><div class="line">    QUICKSORT(A, <span class="number">0</span>, <span class="number">10</span>);</div><div class="line">    print(A,<span class="number">11</span>);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>期间出了一个错误，error C3861: 找不到标识符。后发现是因为把PARTITION放在了QUICKSORT后边，导致QUICKSORT找不到PARTITION。</p>
 <h2 id="python代码"><a href="#python代码" class="headerlink" title="python代码"></a>python代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">PARTITION</span><span class="params">(A,p,r)</span>:</span></div><div class="line">    x = A[r]</div><div class="line">    i = p - <span class="number">1</span></div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(p,r):</div><div class="line">        <span class="keyword">if</span> A[j]&lt;=x:</div><div class="line">            i = i + <span class="number">1</span></div><div class="line">            temp = A[i]</div><div class="line">            A[i] = A[j]</div><div class="line">            A[j] = temp <span class="comment">#python没有指针，这个地方稍微不一样</span></div><div class="line">    temp = A[i+<span class="number">1</span>]</div><div class="line">    A[i+<span class="number">1</span>] = A[r]</div><div class="line">    A[r] = temp</div><div class="line">    <span class="keyword">return</span> i+<span class="number">1</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">QUICKSORT</span><span class="params">(A,p,r)</span>:</span></div><div class="line">    <span class="keyword">if</span> p &gt;= r:</div><div class="line">        <span class="keyword">return</span></div><div class="line">    q = PARTITION(A,p,r)</div><div class="line">    QUICKSORT(A,p,q<span class="number">-1</span>)</div><div class="line">    QUICKSORT(A,q+<span class="number">1</span>,r)</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    l =  [<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">7</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">4</span>] ;</div><div class="line">    QUICKSORT(l,<span class="number">0</span>,len(l)<span class="number">-1</span>)</div><div class="line">    print(l)</div></pre></td></tr></table></figure>
@@ -1018,28 +1293,100 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <li>每月1000GB的流量</li>
 </ul>
 <h2 id="申请github学生优惠包"><a href="#申请github学生优惠包" class="headerlink" title="申请github学生优惠包"></a>申请github学生优惠包</h2><ul>
-<li>前往 <a href="https://education.github.com/pack/" target="_blank" rel="external">https://education.github.com/pack/</a> 申请学生优惠包<br><img src="http://cdn.mmmxcc.cn/blog/20170303/130655469.png" alt="mark"></li>
-<li>有账号就直接登录，没有账号选择注册账号：<br><img src="http://cdn.mmmxcc.cn/blog/20170303/133824667.png" alt="mark"></li>
-<li>申请的时候，会问你是不是学生，那我肯定说是学生啦，我又不是撒<br><img src="http://cdn.mmmxcc.cn/blog/20170303/133923463.png" alt="mark"></li>
-<li>然后会要求提供学校名称，所以那么骗人的edu邮箱基本是没有办法使用的。最后那句<code>How do you plan to use GitHub?</code> 你就说<code>I&#39;ll public my program at github.</code>或者什么<code>I love github</code>，开心就好，说什么无所谓。<br><img src="http://cdn.mmmxcc.cn/blog/20170303/134154441.png" alt="mark"></li>
+<li>前往 <a href="https://education.github.com/pack/" target="_blank" rel="external">https://education.github.com/pack/</a> 申请学生优惠包<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170303/130655469.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></li>
+<li>有账号就直接登录，没有账号选择注册账号：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170303/133824667.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></li>
+<li>申请的时候，会问你是不是学生，那我肯定说是学生啦，我又不是撒<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170303/133923463.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></li>
+<li>然后会要求提供学校名称，所以那么骗人的edu邮箱基本是没有办法使用的。最后那句<code>How do you plan to use GitHub?</code> 你就说<code>I&#39;ll public my program at github.</code>或者什么<code>I love github</code>，开心就好，说什么无所谓。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170303/134154441.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></li>
 <li>很快就会审核通过，会邮件通知。</li>
 </ul>
 <h2 id="领取-DigitalOcean-优惠包"><a href="#领取-DigitalOcean-优惠包" class="headerlink" title="领取 DigitalOcean 优惠包"></a>领取 <a href="https://www.digitalocean.com/company/contact/" target="_blank" rel="external">DigitalOcean</a> 优惠包</h2><ul>
-<li>看到这个码，50刀就到你手了。<br><img src="http://cdn.mmmxcc.cn/blog/20170303/134605243.png" alt="mark"></li>
+<li>看到这个码，50刀就到你手了。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170303/134605243.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></li>
 <li>注册DO账号，用我的邀请链接注册，多送10刀。<a href="https://m.do.co/c/990a117f5061" target="_blank" rel="external">https://m.do.co/c/990a117f5061</a> ，注册之后需要付款5刀，这个时候不要用paypel的汇率，用本地的汇率。</li>
 </ul>
-<h2 id="使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法"><a href="#使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法" class="headerlink" title="使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法"></a>使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法</h2><p>我看到很多人提到领取了这个10刀之后，那个50刀的github优惠包里边的码就不能用了。简直<strong>一派胡言，I’m angry</strong>。<br>可以通过<a href="https://cloud.digitalocean.com/support/tickets/new?i=f00e90" target="_blank" rel="external">提交ticket</a><br><img src="http://cdn.mmmxcc.cn/blog/20170303/135235188.png" alt="mark"><br>然后告诉他，我不知道github学生优惠包里边的码怎么用，让他给你处理。<br><img src="http://cdn.mmmxcc.cn/blog/20170303/135344548.png" alt="mark"><br>一般来说分分钟就会回复邮件，帮你加上50刀。<strong>如果使用我的推荐链接的话，我可以把我的回复内容复制给你。</strong></p>
+<h2 id="使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法"><a href="#使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法" class="headerlink" title="使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法"></a>使用DigitalOcean邀请注册之后就不能使用github学生包50刀的处理方法</h2><p>我看到很多人提到领取了这个10刀之后，那个50刀的github优惠包里边的码就不能用了。简直<strong>一派胡言，I’m angry</strong>。<br>可以通过<a href="https://cloud.digitalocean.com/support/tickets/new?i=f00e90" target="_blank" rel="external">提交ticket</a><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170303/135235188.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure><br>然后告诉他，我不知道github学生优惠包里边的码怎么用，让他给你处理。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170303/135344548.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure><br>一般来说分分钟就会回复邮件，帮你加上50刀。<strong>如果使用我的推荐链接的话，我可以把我的回复内容复制给你。</strong></p>
 <h1 id="安装vpn"><a href="#安装vpn" class="headerlink" title="安装vpn"></a>安装vpn</h1><p>这里使用一键安装脚本，基于centos。</p>
-<h2 id="新建vps"><a href="#新建vps" class="headerlink" title="新建vps"></a>新建vps</h2><p>选择顶栏第一个 <a href="https://cloud.digitalocean.com/droplets?i=f00e90" target="_blank" rel="external">Droplets</a>，点击<code>create droplet</code><br><img src="http://cdn.mmmxcc.cn/blog/20170303/135808655.png" alt="mark"><br>选择5刀，centos的这一款，地点选择<code>San Francisco</code>，这个新加坡，虽然离中国近，但是速度慢，旧金山还是比较合适的。<br><img src="http://cdn.mmmxcc.cn/blog/20170303/135912016.png" alt="mark"><br>选择确定之后，会发邮件告诉你IP地址以及账号密码。</p>
+<h2 id="新建vps"><a href="#新建vps" class="headerlink" title="新建vps"></a>新建vps</h2><p>选择顶栏第一个 <a href="https://cloud.digitalocean.com/droplets?i=f00e90" target="_blank" rel="external">Droplets</a>，点击<code>create droplet</code><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170303/135808655.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure><br>选择5刀，centos的这一款，地点选择<code>San Francisco</code>，这个新加坡，虽然离中国近，但是速度慢，旧金山还是比较合适的。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170303/135912016.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure><br>选择确定之后，会发邮件告诉你IP地址以及账号密码。</p>
 <h2 id="一键安装vpn"><a href="#一键安装vpn" class="headerlink" title="一键安装vpn"></a>一键安装vpn</h2><ul>
-<li>使用<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank" rel="external">putty</a> 连接vps，我在打马赛克那个地方输入ip地址。然后点open<br><img src="http://cdn.mmmxcc.cn/blog/20170303/140209424.png" alt="mark"></li>
+<li>使用<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank" rel="external">putty</a> 连接vps，我在打马赛克那个地方输入ip地址。然后点open<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170303/140209424.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></li>
 <li>第一次进行会有个提示，点击确定就好。之后会要求输入当前密码账号，按照邮箱里边给的密码写就可以了。</li>
 <li>成功登陆后，还会要求输入当前密码，然后自己设置<strong>新密码</strong></li>
 <li>一键安装vpn代码</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">wget https://raw.githubusercontent.com/mmmwhy/centos-setup-simple-pptp-vpn/master/setup.sh</div><div class="line"></div><div class="line">chmod +x ./setup.sh</div><div class="line"></div><div class="line">./setup.sh</div></pre></td></tr></table></figure>
-<p>全部复制，点两下确定，然后坐等片刻，vpn就搭好了。<br><img src="http://cdn.mmmxcc.cn/blog/20170303/140730763.png" alt="mark"></p>
-<p>搭建的是最常见的pptp协议类型的vpn，使用win自带拨号程序即可连接。<br><img src="http://cdn.mmmxcc.cn/blog/20170303/140844414.png" alt="mark"></p>
+<p>全部复制，点两下确定，然后坐等片刻，vpn就搭好了。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170303/140730763.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></p>
+<p>搭建的是最常见的pptp协议类型的vpn，使用win自带拨号程序即可连接。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170303/140844414.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></p>
 <h2 id="修改账户密码"><a href="#修改账户密码" class="headerlink" title="修改账户密码"></a>修改账户密码</h2><p><code>sudo vi /etc/ppp/chap-secrets</code><br>都有提示，按<code>i</code>之后修改就可以了。</p>
 <h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>之前一直懒得写这样一篇教程，但是发现好多人对这方面都不了解，我稍微解释了一下。</p>
 <ul>
@@ -1085,13 +1432,43 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <h1 id="jetbrains-激活服务器搭建"><a href="#jetbrains-激活服务器搭建" class="headerlink" title="jetbrains 激活服务器搭建"></a>jetbrains 激活服务器搭建</h1><h2 id="一台VPS"><a href="#一台VPS" class="headerlink" title="一台VPS"></a>一台VPS</h2><p>连vps都没有，小拳头你怕不怕(ง •̀_•́)ง 。 那你用我的吧，╮(╯▽╰)╭  。</p>
 <h2 id="一键脚本"><a href="#一键脚本" class="headerlink" title="一键脚本"></a>一键脚本</h2><p>建议在特权模式下运行，即<code>sudo -s</code>一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://home.ustc.edu.cn/~mmmwhy/jetbrain.sh &amp;&amp; sh ./jetbrain.sh</div></pre></td></tr></table></figure></p>
 <p>会出现两个空，用于输入端口号和默认用户名，建议直接回车，否则可能会出现莫名其妙的错误。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170227/131856881.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170227/131856881.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>将最后那个<strong>License sever地址</strong>记下，之后激活用。</p>
-<h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><p>选择<strong>License sever</strong>激活方式，输入激活地址<br><img src="http://cdn.mmmxcc.cn/blog/20170226/211949408.png" alt="License sever激活"></p>
-<p>分分钟应该就会弹出提示，一劳永逸解决激活问题。<br><img src="http://cdn.mmmxcc.cn/blog/20170226/212224250.png" alt="激活成功提示"></p>
-<h2 id="激活服务器分享"><a href="#激活服务器分享" class="headerlink" title="激活服务器分享"></a>激活服务器分享</h2><p>我搭建了一个激活服务器，直接公布会很容易被封，需要的请关注：<br><img src="http://cdn.mmmxcc.cn/blog/20170226/214429172.jpg" alt="小小臭臭"><br>回复“激活”即可获得地址。</p>
+<h2 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h2><p>选择<strong>License sever</strong>激活方式，输入激活地址<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170226/211949408.png" alt="License sever激活" title="">
+                </div>
+                <div class="image-caption">License sever激活</div>
+            </figure></p>
+<p>分分钟应该就会弹出提示，一劳永逸解决激活问题。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170226/212224250.png" alt="激活成功提示" title="">
+                </div>
+                <div class="image-caption">激活成功提示</div>
+            </figure></p>
+<h2 id="激活服务器分享"><a href="#激活服务器分享" class="headerlink" title="激活服务器分享"></a>激活服务器分享</h2><p>我搭建了一个激活服务器，直接公布会很容易被封，需要的请关注：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170226/214429172.jpg" alt="小小臭臭" title="">
+                </div>
+                <div class="image-caption">小小臭臭</div>
+            </figure><br>回复“激活”即可获得地址。</p>
 <h1 id="Pycharm激活码-IntelliJ-IDEA激活码"><a href="#Pycharm激活码-IntelliJ-IDEA激活码" class="headerlink" title="Pycharm激活码 / IntelliJ IDEA激活码"></a>Pycharm激活码 / IntelliJ IDEA激活码</h1><p>双击复制全部<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CNEKJPQZEX-eyJsaWNlbnNlSWQiOiJDTkVLSlBRWkVYIiwibGljZW5zZWVOYW1lIjoibGFuIHl1IiwiYXNzaWduZWVOYW1lIjoiIiwiYXNzaWduZWVFbWFpbCI6IiIsImxpY2Vuc2VSZXN0cmljdGlvbiI6IkZvciBlZHVjYXRpb25hbCB1c2Ugb25seSIsImNoZWNrQ29uY3VycmVudFVzZSI6ZmFsc2UsInByb2R1Y3RzIjpbeyJjb2RlIjoiQUMiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJETSIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9LHsiY29kZSI6IklJIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiUlMwIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiV1MiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJEUE4iLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJSQyIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9LHsiY29kZSI6IlBTIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiREMiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJEQiIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9LHsiY29kZSI6IlJNIiwicGFpZFVwVG8iOiIyMDE4LTAxLTMwIn0seyJjb2RlIjoiUEMiLCJwYWlkVXBUbyI6IjIwMTgtMDEtMzAifSx7ImNvZGUiOiJDTCIsInBhaWRVcFRvIjoiMjAxOC0wMS0zMCJ9XSwiaGFzaCI6IjUxOTU1OTMvMCIsImdyYWNlUGVyaW9kRGF5cyI6MCwiYXV0b1Byb2xvbmdhdGVkIjpmYWxzZSwiaXNBdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlfQ==-QOxwjWvRwJz6vo6J6adC3CJ4ukQHosbPYZ94URUVFna/Rbew8xK/M5gP3kAaPh6ZDveFdtMR1UBoumq3eCwXtXM3U3ls5noB4LIr+QplVlCj2pK5uNq7g/feyNyQcHpSXtvhIOnXDBLOecB05DOsxzm0p7ulGGJoAInmHeb9mc0eYjqc4RPpUQfh6HSYBnvEnKMlLF5bz4KEtzmsvvgA55CwzwQ3gRitm5Q/wUT7AQCBdjmBfNUjKVQL6TSjSDPp56FUdEs4Aab8LqstA2DIMbxocO64rvytmcUeIwu8Mi5uq87KQP5AQMSMYb59Inbd+dmVfx5cJo3fRS4/5s3/Hg==-MIIEPjCCAiagAwIBAgIBBTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE1MTEwMjA4MjE0OFoXDTE4MTEwMTA4MjE0OFowETEPMA0GA1UEAwwGcHJvZDN5MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxcQkq+zdxlR2mmRYBPzGbUNdMN6OaXiXzxIWtMEkrJMO/5oUfQJbLLuMSMK0QHFmaI37WShyxZcfRCidwXjot4zmNBKnlyHodDij/78TmVqFl8nOeD5+07B8VEaIu7c3E1N+e1doC6wht4I4+IEmtsPAdoaj5WCQVQbrI8KeT8M9VcBIWX7fD0fhexfg3ZRt0xqwMcXGNp3DdJHiO0rCdU+Itv7EmtnSVq9jBG1usMSFvMowR25mju2JcPFp1+I4ZI+FqgR8gyG8oiNDyNEoAbsR3lOpI7grUYSvkB/xVy/VoklPCK2h0f0GJxFjnye8NT1PAywoyl7RmiAVRE/EKwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQC9WZuYgQedSuOc5TOUSrRigMw4/+wuC5EtZBfvdl4HT/8vzMW/oUlIP4YCvA0XKyBaCJ2iX+ZCDKoPfiYXiaSiH+HxAPV6J79vvouxKrWg2XV6ShFtPLP+0gPdGq3x9R3+kJbmAm8w+FOdlWqAfJrLvpzMGNeDU14YGXiZ9bVzmIQbwrBA+c/F4tlK/DV07dsNExihqFoibnqDiVNTGombaU2dDup2gwKdL81ua8EIcGNExHe82kjF4zwfadHk3bQVvbfdAwxcDy4xBjs3L4raPLU3yenSzr/OEur1+jfOxnQSmEcMXKXgrAQ9U55gwjcOFKrgOxEdek/Sk1VfOjvS+nuM4eyEruFMfaZHzoQiuw4IqgGc45ohFH0UUyjYcuFxxDSU9lMCv8qdHKm+wnPRb0l9l5vXsCBDuhAGYD6ss+Ga+aDY6f/qXZuUCEUOH3QUNbbCUlviSz6+GiRnt1kA9N2Qachl+2yBfaqUqr8h7Z2gsx5LcIf5kYNsqJ0GavXTVyWh7PYiKX4bs354ZQLUwwa/cG++2+wNWP+HtBhVxMRNTdVhSm38AknZlD+PTAsWGu9GyLmhti2EnVwGybSD2Dxmhxk3IPCkhKAK+pl0eWYGZWG3tJ9mZ7SowcXLWDFAk0lRJnKGFMTggrWjV8GYpw5bq23VmIqqDLgkNzuoog==</div></pre></td></tr></table></figure></p>
-<p>在Activate code处粘贴进去即可<br><img src="http://cdn.mmmxcc.cn/blog/20170226/213942164.png" alt="Activate code"></p>
+<p>在Activate code处粘贴进去即可<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170226/213942164.png" alt="Activate code" title="">
+                </div>
+                <div class="image-caption">Activate code</div>
+            </figure></p>
 <hr>
 <p>衷心感谢博主：ilanyu， <a href="http://blog.lanyus.com/" target="_blank" rel="external">http://blog.lanyus.com/</a></p>
 ]]></content>
@@ -1122,7 +1499,13 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 </blockquote>
 <hr>
 <a id="more"></a>
-<h1 id="Markdown-通用的音乐视频插入方法"><a href="#Markdown-通用的音乐视频插入方法" class="headerlink" title="Markdown 通用的音乐视频插入方法"></a>Markdown 通用的音乐视频插入方法</h1><h2 id="iframe标签"><a href="#iframe标签" class="headerlink" title="iframe标签"></a>iframe标签</h2><p>代码从网易云音乐获得<br><img src="http://cdn.mmmxcc.cn/blog/20170224/221537233.png" alt="网易云音乐"></p>
+<h1 id="Markdown-通用的音乐视频插入方法"><a href="#Markdown-通用的音乐视频插入方法" class="headerlink" title="Markdown 通用的音乐视频插入方法"></a>Markdown 通用的音乐视频插入方法</h1><h2 id="iframe标签"><a href="#iframe标签" class="headerlink" title="iframe标签"></a>iframe标签</h2><p>代码从网易云音乐获得<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170224/221537233.png" alt="网易云音乐" title="">
+                </div>
+                <div class="image-caption">网易云音乐</div>
+            </figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=430 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=114389&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;</div></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="430" height="86" src="//music.163.com/outchain/player?type=2&id=114389&auto=0&height=66"></iframe>
@@ -1211,12 +1594,31 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 </ul>
 <h2 id="Pycharm使用虚拟环境"><a href="#Pycharm使用虚拟环境" class="headerlink" title="Pycharm使用虚拟环境"></a>Pycharm使用虚拟环境</h2><p>上边说的那种方法，完全没有实用性，太扯淡了。切换环境难于上青天，用Pycharm会简便很多。</p>
 <ul>
-<li>新建项目<br><img src="http://cdn.mmmxcc.cn/blog/20170218/191620497.png" alt=""></li>
-<li>用Pycharm建立虚拟环境<br><img src="http://cdn.mmmxcc.cn/blog/20170218/191841405.png" alt="mark"></li>
+<li>新建项目<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170218/191620497.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>用Pycharm建立虚拟环境<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170218/191841405.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
+</li>
 </ul>
 <p>新建之后，在第一个图片那个地方进行选择就可以了，建议新建conda-env，自动新建在envs环境下，方便管理</p>
 <p>至此，django环境搭建完毕，接下来学习django工程的创建，以及简单的在网页中显示出”Hello World”。</p>
-<h1 id="初识Django工程"><a href="#初识Django工程" class="headerlink" title="初识Django工程"></a>初识Django工程</h1><h2 id="点击Create创建工程"><a href="#点击Create创建工程" class="headerlink" title="点击Create创建工程"></a>点击Create创建工程</h2><p>见创建后的工程截图：<br><img src="http://cdn.mmmxcc.cn/blog/20170218/192837742.png" alt="Django"></p>
+<h1 id="初识Django工程"><a href="#初识Django工程" class="headerlink" title="初识Django工程"></a>初识Django工程</h1><h2 id="点击Create创建工程"><a href="#点击Create创建工程" class="headerlink" title="点击Create创建工程"></a>点击Create创建工程</h2><p>见创建后的工程截图：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170218/192837742.png" alt="Django" title="">
+                </div>
+                <div class="image-caption">Django</div>
+            </figure></p>
 <p>文件如下:</p>
 <ul>
 <li>my_site: 项目的容器。</li>
@@ -1230,10 +1632,29 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <p>0.0.0.0让其它电脑可连接到开发服务器，8000为端口号。如果不说明，那么端口号默认为8000。</p>
 <h2 id="Pycharm启动Django项目"><a href="#Pycharm启动Django项目" class="headerlink" title="Pycharm启动Django项目"></a>Pycharm启动Django项目</h2><ul>
 <li>打开manage.py文件</li>
-<li>在菜单栏中Run中选择Edit Configurations，见截图：<br>修改<strong>Script parameters:</strong> <code>runserver</code><br><img src="http://cdn.mmmxcc.cn/blog/20170218/193330168.png" alt="Script parameters"></li>
-<li>ctrl + shift+ F10 运行<br><img src="http://cdn.mmmxcc.cn/blog/20170218/193636035.png" alt="输出"></li>
+<li>在菜单栏中Run中选择Edit Configurations，见截图：<br>修改<strong>Script parameters:</strong> <code>runserver</code><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170218/193330168.png" alt="Script parameters" title="">
+                </div>
+                <div class="image-caption">Script parameters</div>
+            </figure></li>
+<li>ctrl + shift+ F10 运行<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170218/193636035.png" alt="输出" title="">
+                </div>
+                <div class="image-caption">输出</div>
+            </figure>
+</li>
 </ul>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170218/193700547.png" alt="页面"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170218/193700547.png" alt="页面" title="">
+                </div>
+                <div class="image-caption">页面</div>
+            </figure>
 <hr>
 <h1 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello world"></a>Hello world</h1><ul>
 <li><p>新建 view.py<br>在先前创建的 my_site 目录下的 my_site 目录新建一个 view.py 文件，并输入代码：</p>
@@ -1354,13 +1775,26 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <a id="more"></a>
 <p>思路：salt 加 hash 来单向转换密码明文</p>
 <h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>以下给出Py2和Py3两段代码，输出的内容是一样的。因为加密之后的内容不是unicode代码，所以存储可能不方便，可以使用<code>base64.b64encode(hashed)</code>转化为base64编码格式。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170216/194046518.png" alt="输出结果"><br>Python2代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os,base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>) <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, str)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> isinstance(password, unicode):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line">    </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170216/194046518.png" alt="输出结果" title="">
+                </div>
+                <div class="image-caption">输出结果</div>
+            </figure>
+<p>Python2代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os,base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>) <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, str)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> isinstance(password, unicode):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line">    </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
 <p>Python3代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os, base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>)  <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, bytes)</div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> isinstance(password, str):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, bytes)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
 <h1 id="Python编码问题"><a href="#Python编码问题" class="headerlink" title="Python编码问题"></a>Python编码问题</h1><p>一开始直接在Python3环境运行第一段代码的时候，总会报错<code>NameError: global name &#39;unicode&#39; is not defined</code>，百思不得其解。</p>
 <p>查了资料，才发现是因为Python更新的时候，Python 3 renamed the <strong>unicode</strong> type to <strong>str</strong>, the old <strong>str</strong> type has been replaced by <strong>bytes</strong>。在<a href="https://docs.python.org/dev/howto/pyporting.html" target="_blank" rel="external">Python升级文档</a>内可以查到相关内容，也就是<strong>unicode</strong>直接改名<strong>str</strong>，<strong>str</strong>改名成<strong>bytes</strong>。<br>Python2和Python3，在编码方面挖下太多的坑<br>举个简单的例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">isinstance(<span class="string">u'中文'</span>, unicode) <span class="comment">#python2内是正确的</span></div><div class="line">isinstance(<span class="string">u'中文'</span>, str) <span class="comment">#python3内是正确的</span></div></pre></td></tr></table></figure></p>
 <h1 id="Python3内的unicode和bytes"><a href="#Python3内的unicode和bytes" class="headerlink" title="Python3内的unicode和bytes"></a>Python3内的unicode和bytes</h1><p>Python 3最重要的新特性大概要算是<strong>对文本和二进制数据作了更为清晰的区分</strong>。文本总是Unicode，由str类型表示，二进制数据则由bytes类型表示。</p>
 <p>在将字符串存入磁盘和从磁盘读取字符串的过程中，Python 自动地帮你完成了编码和解码的工作，你不需要关心它的过程，例如你能把一个中文赋值给字符串。而使用 bytes 类型，实质上是告诉 Python，不需要它帮你自动地完成编码和解码的工作，而是用户自己手动进行，并指定编码格式。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <hr>
 <p>参考链接：<br><a href="http://zhuoqiang.me/password-storage-and-python-example.html" target="_blank" rel="external">http://zhuoqiang.me/password-storage-and-python-example.html</a><br><a href="http://www.ituring.com.cn/article/61192" target="_blank" rel="external">http://www.ituring.com.cn/article/61192</a></p>
 ]]></content>
@@ -1404,7 +1838,13 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     &quot;3&quot;:[&quot;王五&quot;,60,66,68]
 }
 </code></pre><p>请将上述内容写到 student.xls 文件中，如下图所示：</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170210/164341562.png" alt="student.xls"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164341562.png" alt="student.xls" title="">
+                </div>
+                <div class="image-caption">student.xls</div>
+            </figure>
 <p>这个题使用到<strong>文件读取</strong>，<strong>数据读取</strong>，<strong>Xls文件输出</strong>三部分内容。</p>
 <h1 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h1><p>使用<strong>open()</strong>函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'student.txt'</span>) <span class="keyword">as</span> f:</div><div class="line">    content = f.read()</div></pre></td></tr></table></figure></p>
 <h1 id="数据读取"><a href="#数据读取" class="headerlink" title="数据读取"></a>数据读取</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d = json.loads(content)</div></pre></td></tr></table></figure>

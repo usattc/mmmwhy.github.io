@@ -203,13 +203,25 @@
 <p>可以将上述代码看作两个步骤，我们指定一个域名并发送请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">request=urllib2.request(&apos;http://feiyang.li/&apos;)</div></pre></td></tr></table></figure></p>
 <p>接着服务端响应来自客户端的请求 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">response=urllib2.urlopen(request)</div></pre></td></tr></table></figure>
-<p><img src="http://cdn.mmmxcc.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p" alt="运行结果"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161215/162727432.png?imageMogr2/thumbnail/!80p" alt="运行结果" title="">
+                </div>
+                <div class="image-caption">运行结果</div>
+            </figure>
 <p>我们可以发现title这个地方本来应该是中文的，但因为编码的原因，导致出现乱码。通过将html页面重新用”utf-8”编码，可以解决这个问题。</p>
 <hr>
 <h1 id="将获得的response保存至本地"><a href="#将获得的response保存至本地" class="headerlink" title="将获得的response保存至本地"></a>将获得的response保存至本地</h1><h2 id="使用Xpath表达式提取图片链接"><a href="#使用Xpath表达式提取图片链接" class="headerlink" title="使用Xpath表达式提取图片链接"></a>使用Xpath表达式提取图片链接</h2><p>详见上一文章 <a href="http://feiyang.li/2016/12/13/get_html/">http://feiyang.li/2016/12/13/get_html/</a>   ，关于XPath和beautifulsoup，可以参考<a href="https://www.zhihu.com/question/26494302" target="_blank" rel="external">python中的beautifulsoup和xpath有什么异同点？</a></p>
 <p>这里需要导入lxml，代码格式如下。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line">html = requests.get(<span class="string">"http://jandan.net/ooxx"</span>)</div><div class="line">html.encoding = <span class="string">'utf-8'</span></div><div class="line">selector = etree.HTML(html.text)</div><div class="line">content = selector.xpath(<span class="string">'//ol[@class = "commentlist"]//@src'</span>)</div></pre></td></tr></table></figure>
-<p>单独运行 以上代码可以获得<br><img src="http://cdn.mmmxcc.cn/blog/20161215/182806800.png" alt="Xpath运行结果"></p>
+<p>单独运行 以上代码可以获得<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161215/182806800.png" alt="Xpath运行结果" title="">
+                </div>
+                <div class="image-caption">Xpath运行结果</div>
+            </figure></p>
 <h2 id="设置保存的位置"><a href="#设置保存的位置" class="headerlink" title="设置保存的位置"></a>设置保存的位置</h2><p>需要使用到os库中的 <em>os.chdir(r””)</em>函数，””中间插入地址。<strong>注意</strong>这个位置必须是<strong>存在</strong>的，如果位置不存在，函数会报错。因为该函数的意义是：将工作空间从python代码所在位置，改为指定的这个位置。</p>
 <h2 id="模拟正常浏览器下载图片（如果Python下载的图片不显示-）"><a href="#模拟正常浏览器下载图片（如果Python下载的图片不显示-）" class="headerlink" title="模拟正常浏览器下载图片（如果Python下载的图片不显示 ）"></a>模拟正常浏览器下载图片（如果Python下载的图片不显示 ）</h2><p>有时你会碰到，程序也对，但是服务器拒绝你的访问。这是为什么呢?</p>
 <p>问题出在请求中的头信息(header)。 有的服务端有洁癖，不喜欢程序来触摸它。</p>
@@ -229,7 +241,13 @@
 <li>设置保存的位置</li>
 <li>使用with f函数</li>
 </ul>
-<p><strong>效果如下：</strong><br><img src="http://cdn.mmmxcc.cn/blog/20161215/191015695.png" alt="抓取到的图片"></p>
+<p><strong>效果如下：</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161215/191015695.png" alt="抓取到的图片" title="">
+                </div>
+                <div class="image-caption">抓取到的图片</div>
+            </figure></p>
 <p><strong>完整代码</strong></p>
 <pre><code class="python"><span class="comment"># coding=utf-8</span>
 <span class="keyword">import</span> requests
@@ -255,7 +273,13 @@ content = selector.xpath(<span class="string">'//table//img/@src'</span>)
     f.close()
     print(imgurl)
 </code></pre>
-<p>代码重新修改了一下，上手运行会发现D盘有惊喜哦~<br>加入print(imgurl)，运行起来更洋气~<br><img src="http://cdn.mmmxcc.cn/blog/20161215/191141723.png" alt="输入下载来源"></p>
+<p>代码重新修改了一下，上手运行会发现D盘有惊喜哦~<br>加入print(imgurl)，运行起来更洋气~<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161215/191141723.png" alt="输入下载来源" title="">
+                </div>
+                <div class="image-caption">输入下载来源</div>
+            </figure></p>
 
         </div>
 

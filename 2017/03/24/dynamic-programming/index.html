@@ -240,9 +240,21 @@
 <p>动态规划算法总是充分利用重叠子问题，通过每个子问题只解一次，把解保存在一个需要时就可以查看的表中，每次查表的时间为常数。</p>
 <p>由计算出的结果反向构造一个最优解：把动态规划或者是递归过程中作出的每一次选择（记住：保存的是每次作出的选择）都保存下来，在最后就一定可以通过这些保存的选择来反向构造出最优解。</p>
 <p>做备忘录的递归方法：这种方法是动态规划的一个变形，它本质上与动态规划是一样的，但是比动态规划更好理解！<br>　　（1） 使用普通的递归结构，自上而下的解决问题。<br>　　（2） 当在递归算法的执行中每一次遇到一个子问题时，就计算它的解并填入一个表中。以后每次遇到该子问题时，只要查看并返回表中先前填入的值即可。</p>
-<h1 id="钢条切割问题"><a href="#钢条切割问题" class="headerlink" title="钢条切割问题"></a>钢条切割问题</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p> 给定一个长度为n的钢条，以及一个价格表p，p中列出了每英寸钢条的价格，将长度为n的钢条切割为若干短钢条出售，求一个钢条的切割方案，使得收益最大，切割工序没有成本。比如价格表p如下：<br><img src="http://cdn.mmmxcc.cn/blog/20170323/194427893.png" alt=""></p>
+<h1 id="钢条切割问题"><a href="#钢条切割问题" class="headerlink" title="钢条切割问题"></a>钢条切割问题</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p> 给定一个长度为n的钢条，以及一个价格表p，p中列出了每英寸钢条的价格，将长度为n的钢条切割为若干短钢条出售，求一个钢条的切割方案，使得收益最大，切割工序没有成本。比如价格表p如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170323/194427893.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <p>长度为n的钢条，一共有$2^{n-1}$种不同的切割方案，因为可以再距离钢条左边为i（i=1,2,…,n-1）处，我们总是可以选择切割或者不切割。比如下图表示了n=4的切割情况：</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170323/195029493.png" alt="mark"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170323/195029493.png" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
 <h2 id="理论依据"><a href="#理论依据" class="headerlink" title="理论依据"></a>理论依据</h2><p>我们称钢条切割问题满足<strong>最优子结构</strong>性质：问题的最优解由相关子问题的最优解组合而成，而这些子问题可以独立求解。</p>
 <p>我们可以这样理解钢条问题：将钢条从左边切下一段长度为i的一段，对剩下的n-i的部分继续进行切割（递归求解），而不对左边长度为i的一段在进行切割。</p>
 <p><img src="http://cdn.mmmxcc.cn/blog/20170324/172614530.png" alt=""></p>
@@ -256,9 +268,21 @@
 <p>这两种算法具有相同的时间复杂度，BOTTOM-UP-CUT-ROD主要是双层嵌套循环，所以时间复杂度$Θ(n^2)$。MEMOIZED-CUT-ROD的时间复杂度也是$Θ(n^2)$。可以使用子问题图进行分析。</p>
 <h2 id="python实现切割钢条问题"><a href="#python实现切割钢条问题" class="headerlink" title="python实现切割钢条问题"></a>python实现切割钢条问题</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cut_rod</span><span class="params">()</span>:</span></div><div class="line">    p = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">17</span>,<span class="number">17</span>,<span class="number">20</span>,<span class="number">24</span>,<span class="number">30</span>]</div><div class="line">    n = len(p)</div><div class="line">    r = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</div><div class="line">    s = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</div><div class="line">        q = <span class="number">-10</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(j+<span class="number">1</span>):</div><div class="line">            <span class="keyword">if</span> q &lt; (p[i]+r[j-i]):</div><div class="line">                q = (p[i]+r[j-i])</div><div class="line">                s[j] = i</div><div class="line">            <span class="comment">#q = max(q,p[i]+r[j-i])</span></div><div class="line">        r[j] = q</div><div class="line">        </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_way</span><span class="params">(n)</span>:</span></div><div class="line">    cut_rod()</div><div class="line">    print(n,<span class="string">'---&gt;'</span>,r[n])</div><div class="line">    <span class="keyword">while</span> n &gt; <span class="number">0</span>:</div><div class="line">        print(s[n])</div><div class="line">        n = n - s[n]</div></pre></td></tr></table></figure>
 <p>调用<code>find_way(9)</code>输出</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170324/145547041.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170324/145547041.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h1 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>给定n 个矩阵的序列，希望求它们的乘积：$A_1A_2A_3…A_n$ 。因为矩阵的乘法满足结合律，所以可以对n个矩阵序列加括号，来改变乘积顺序。比如对于矩阵链&lt; $A_1$, $A_2$,$A_3$,$A_4$&gt;可以有下面的加括号方案：</p>
-<p><center><img src="http://cdn.mmmxcc.cn/blog/20170324/150009279.png" alt=""><center></center></center></p>
+<p><center><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170324/150009279.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><center></center></center></p>
 <p>不同的加括号的方案，对于乘积运算的代价影响很大.</p>
 <p>两个矩阵相乘，A为p <em> q矩阵，B为q </em> r矩阵。所以A 的乘法次数为p<em>q</em>r。</p>
 <p>如果A（10,100 ），B（100,5）， C（5,50 ）三个矩阵相乘。</p>
@@ -275,7 +299,13 @@
 <p>伪代码就不写了，直接写python代码</p>
 <h2 id="python实现矩阵链乘法问题"><a href="#python实现矩阵链乘法问题" class="headerlink" title="python实现矩阵链乘法问题"></a>python实现矩阵链乘法问题</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">MATRIX_CHAIN_ORDER</span><span class="params">(p)</span>:</span>  </div><div class="line">    n = len(p)  </div><div class="line">    s = [[<span class="number">0</span> <span class="keyword">for</span> j <span class="keyword">in</span> range(n)] <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]  </div><div class="line">    m = [[<span class="number">0</span> <span class="keyword">for</span> j <span class="keyword">in</span> range(n)] <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]  </div><div class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">2</span>, n):           <span class="comment">#l is the chain length  </span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n-l+<span class="number">1</span>):  </div><div class="line">            j = i + l - <span class="number">1</span>  </div><div class="line">            m[i][j] = <span class="number">1e9</span>  </div><div class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> range(i, j):  </div><div class="line">                q = m[i][k] + m[k+<span class="number">1</span>][j] + p[i<span class="number">-1</span>]*p[k]*p[j]  </div><div class="line">                <span class="keyword">if</span> q &lt; m[i][j]:  </div><div class="line">                    m[i][j] = q  </div><div class="line">                    s[i][j] = k  </div><div class="line">    PRINT_OPTIMAL_PARENS(s, <span class="number">1</span>, n<span class="number">-1</span>)</div><div class="line">    <span class="keyword">return</span> m</div><div class="line">    </div><div class="line">      </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">PRINT_OPTIMAL_PARENS</span><span class="params">(s, i, j)</span>:</span>  </div><div class="line">    <span class="keyword">if</span> i == j:  </div><div class="line">        print(<span class="string">'A'</span>, end = <span class="string">''</span>)  </div><div class="line">        print(i, end = <span class="string">''</span>)  </div><div class="line">    <span class="keyword">else</span>:  </div><div class="line">        print(<span class="string">'('</span>, end = <span class="string">''</span>)  </div><div class="line">        PRINT_OPTIMAL_PARENS(s, i, s[i][j])  </div><div class="line">        PRINT_OPTIMAL_PARENS(s, s[i][j]+<span class="number">1</span>, j)  </div><div class="line">        print(<span class="string">')'</span>, end = <span class="string">''</span>)  </div><div class="line">   </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    A = [<span class="number">30</span>, <span class="number">35</span>, <span class="number">15</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span>,<span class="number">25</span>]</div><div class="line">    m = MATRIX_CHAIN_ORDER(A) </div><div class="line">    print(<span class="string">'\n'</span>,<span class="string">'共计需要'</span>,m[<span class="number">1</span>][n<span class="number">-1</span>],<span class="string">'次相乘'</span>)</div></pre></td></tr></table></figure>
 <p>需要注意的问题是，这个算法的复杂度在O(n∧3)。而且这个算法和算法导论等地方的伪码比有些细微的差异体现在数组从0开始还是1开始上。大体上还是一致的。这里的空间复杂度也到了O(n∧2)。大致的计算顺序就是通过这个函数中的l来控制。l=2的时候，依次计算矩阵A[0]<em>A[1], A[1]</em>A[2], A[2]<em>A[3]…的次数。l=3的时候就开始计算A[0]</em>A[1]<em>A[2], A[1]</em>A[2]*A[3]..的次数。用更形象的话来说就是倒三角的顺序。下面的这个图就是对上面流程的描述：</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170324/171007882.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170324/171007882.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <hr>
 <p>以上</p>
 

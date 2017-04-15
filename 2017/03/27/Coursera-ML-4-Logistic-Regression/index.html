@@ -201,7 +201,14 @@
 <p><strong>Classification is not actually a linear function.</strong></p>
 <h1 id="Classification-and-Representation"><a href="#Classification-and-Representation" class="headerlink" title="Classification and Representation"></a>Classification and Representation</h1><h2 id="Hypothesis-Representation"><a href="#Hypothesis-Representation" class="headerlink" title="Hypothesis Representation"></a>Hypothesis Representation</h2><ul>
 <li>Sigmoid Function(or we called Logistic Function) $$\begin{align*}& h_\theta (x) = g ( \theta^T x ) \newline \newline& z = \theta^T x \newline& g(z) = \dfrac{1}{1 + e^{-z}}\end{align*}$$ 
-Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图为：<br><img src="http://cdn.mmmxcc.cn/blog/20170327/112711489.png" alt=""></li>
+Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图为：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170327/112711489.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
 </ul>
 <ul>
 <li>$h_\theta(x)$ will give us the <strong>probability</strong> that our output is 1.</li>
@@ -244,7 +251,14 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
 <h2 id="Multiclass-Classification-One-vs-all"><a href="#Multiclass-Classification-One-vs-all" class="headerlink" title="Multiclass Classification: One-vs-all"></a>Multiclass Classification: One-vs-all</h2><ul>
 <li>For more than 2 features of y, do logisitc regression for each feature separately</li>
 <li>Train a logistic regression classifier $h_\theta(x)$ for each class￼ to predict the probability that ￼ ￼y = i￼ ￼. </li>
-<li>To make a prediction on a new x, pick the class ￼that maximizes $ h_\theta (x) $<br><img src="http://cdn.mmmxcc.cn/blog/20170327/182954425.png" alt=""></li>
+<li>To make a prediction on a new x, pick the class ￼that maximizes $ h_\theta (x) $<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170327/182954425.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
 </ul>
 <h1 id="Solving-the-Problem-of-Overfitting"><a href="#Solving-the-Problem-of-Overfitting" class="headerlink" title="Solving the Problem of Overfitting"></a>Solving the Problem of Overfitting</h1><h2 id="The-Problem-of-Overfitting"><a href="#The-Problem-of-Overfitting" class="headerlink" title="The Problem of Overfitting"></a>The Problem of Overfitting</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170327/183239547.png" alt="mark"></p>
 <h2 id="address-the-issue-of-overfitting"><a href="#address-the-issue-of-overfitting" class="headerlink" title="address the issue of overfitting"></a>address the issue of overfitting</h2><ul>
@@ -259,7 +273,13 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
 </ul>
 </li>
 </ul>
-<h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170327/184128038.png" alt=""></p>
+<h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170327/184128038.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <ul>
 <li>in a single summation $$min_\theta\ \dfrac{1}{2m}\  \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2 + \lambda\ \sum_{j=1}^n \theta_j^2$$ 
 </li>
