@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2016/10/08/return_suzhou/index.html</loc>
+    
+    <lastmod>2017-04-16T06:53:32.220Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2017/04/15/Coursera-ML-6-Neural-Networks-Representation/index.html</loc>
     
     <lastmod>2017-04-15T13:47:22.229Z</lastmod>
@@ -313,13 +320,6 @@
     <loc>http://feiyang.li/2016/10/19/SSR/index.html</loc>
     
     <lastmod>2017-02-11T13:29:08.195Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/10/08/return_suzhou/index.html</loc>
-    
-    <lastmod>2017-02-11T13:28:28.884Z</lastmod>
     
   </url>
   
