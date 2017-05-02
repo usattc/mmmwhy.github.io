@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2016/01/18/resume/index.html</loc>
+    
+    <lastmod>2017-05-02T03:30:33.790Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2017/02/13/jiewang/index.html</loc>
     
     <lastmod>2017-04-16T07:31:11.262Z</lastmod>
@@ -271,13 +278,6 @@
     <loc>http://feiyang.li/2017/03/24/dynamic-programming/index.html</loc>
     
     <lastmod>2017-03-24T09:26:24.294Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/01/18/resume/index.html</loc>
-    
-    <lastmod>2017-03-23T11:43:52.275Z</lastmod>
     
   </url>
   
