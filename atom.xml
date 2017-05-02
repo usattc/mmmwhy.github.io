@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-04-15T13:47:22.229Z</updated>
+  <updated>2017-05-02T10:02:28.772Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -16,13 +16,108 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Coursera ML(7)-Programming Exercise 3</title>
+    <link href="http://feiyang.li/2017/05/02/Coursera-ML-7-Programming-Exercise-3/index.html"/>
+    <id>http://feiyang.li/2017/05/02/Coursera-ML-7-Programming-Exercise-3/index.html</id>
+    <published>2017-05-02T10:01:38.000Z</published>
+    <updated>2017-05-02T10:02:28.772Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>machine-learning-ex3.zip <a href="http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex3.zip" target="_blank" rel="external">下载链接</a>，第四周的课程相对来说比较简单，大致介绍了神经网络相关内容。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>注意，官方用的是matlab，这里我用的全部是python，代码是不一样的，更不能当做作业提交。</p>
+<hr>
+<h1 id="Programming-Exercise-3-Multi-class-Classification-and-Neural-Networks"><a href="#Programming-Exercise-3-Multi-class-Classification-and-Neural-Networks" class="headerlink" title="Programming Exercise 3 - Multi-class Classification and Neural Networks"></a>Programming Exercise 3 - Multi-class Classification and Neural Networks</h1><h2 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h2><p>For this exercise, you will use logistic regression and neural networks to recognize handwritten digits (from 0 to 9). </p>
+<p><strong>ex3data1.mat</strong>提供了一个训练集，X包含5000个长度为400的向量，每个向量可以展示为一个20*20的图像。Y内为图像所对应的数字。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># %load ../../standard_import.txt</span></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="comment"># load MATLAB files</span></div><div class="line"><span class="keyword">from</span> scipy.io <span class="keyword">import</span> loadmat</div><div class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> minimize</div><div class="line"></div><div class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</div><div class="line"></div><div class="line">pd.set_option(<span class="string">'display.notebook_repr_html'</span>, <span class="keyword">False</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_columns'</span>, <span class="keyword">None</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_rows'</span>, <span class="number">150</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_seq_items'</span>, <span class="keyword">None</span>)</div><div class="line"> </div><div class="line"><span class="comment">#%config InlineBackend.figure_formats = &#123;'pdf',&#125;</span></div><div class="line">%matplotlib inline</div><div class="line"></div><div class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</div><div class="line">sns.set_context(<span class="string">'notebook'</span>)</div><div class="line">sns.set_style(<span class="string">'white'</span>)</div></pre></td></tr></table></figure>
+<h3 id="Load-MATLAB-datafiles"><a href="#Load-MATLAB-datafiles" class="headerlink" title="Load MATLAB datafiles"></a>Load MATLAB datafiles</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">data = loadmat(<span class="string">'data/ex3data1.mat'</span>)</div><div class="line">data.keys()</div></pre></td></tr></table></figure>
+<pre><code>dict_keys([&apos;__header__&apos;, &apos;__version__&apos;, &apos;__globals__&apos;, &apos;X&apos;, &apos;y&apos;])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">weights = loadmat(<span class="string">'data/ex3weights.mat'</span>)</div><div class="line">weights.keys()</div></pre></td></tr></table></figure>
+<pre><code>dict_keys([&apos;__header__&apos;, &apos;__version__&apos;, &apos;__globals__&apos;, &apos;Theta1&apos;, &apos;Theta2&apos;])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">y = data[<span class="string">'y'</span>]</div><div class="line"><span class="comment"># Add constant for intercept</span></div><div class="line">X = np.c_[np.ones((data[<span class="string">'X'</span>].shape[<span class="number">0</span>],<span class="number">1</span>)), data[<span class="string">'X'</span>]]</div><div class="line"></div><div class="line">print(<span class="string">'X: &#123;&#125; (with intercept)'</span>.format(X.shape))</div><div class="line">print(<span class="string">'y: &#123;&#125;'</span>.format(y.shape))</div></pre></td></tr></table></figure>
+<pre><code>X: (5000, 401) (with intercept)
+y: (5000, 1)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">theta1, theta2 = weights[<span class="string">'Theta1'</span>], weights[<span class="string">'Theta2'</span>]</div><div class="line"></div><div class="line">print(<span class="string">'theta1: &#123;&#125;'</span>.format(theta1.shape))</div><div class="line">print(<span class="string">'theta2: &#123;&#125;'</span>.format(theta2.shape))</div></pre></td></tr></table></figure>
+<pre><code>theta1: (25, 401)
+theta2: (10, 26)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sample = np.random.choice(X.shape[<span class="number">0</span>], <span class="number">20</span>)</div><div class="line">plt.imshow(X[sample,<span class="number">1</span>:].reshape(<span class="number">-1</span>,<span class="number">20</span>).T)</div><div class="line">plt.axis(<span class="string">'off'</span>);</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170502/171813517.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="Multiclass-Classification"><a href="#Multiclass-Classification" class="headerlink" title="Multiclass Classification"></a>Multiclass Classification</h2><h3 id="Logistic-regression-hypothesis"><a href="#Logistic-regression-hypothesis" class="headerlink" title="Logistic regression hypothesis"></a>Logistic regression hypothesis</h3><p>$$ h_{\theta}(x) = g(\theta^{T}x)$$<br>$$ g(z)=\frac{1}{1+e^{−z}} $$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(z)</span>:</span></div><div class="line">    <span class="keyword">return</span>(<span class="number">1</span> / (<span class="number">1</span> + np.exp(-z)))</div></pre></td></tr></table></figure>
+<h3 id="Regularized-Cost-Function"><a href="#Regularized-Cost-Function" class="headerlink" title="Regularized Cost Function"></a>Regularized Cost Function</h3><p>$$ J(\theta) = \frac{1}{m}\sum<em>{i=1}^{m}\big[-y^{(i)}\, log\,( h</em>\theta\,(x^{(i)}))-(1-y^{(i)})\,log\,(1-h<em>\theta(x^{(i)}))\big] + \frac{\lambda}{2m}\sum</em>{j=1}^{n}\theta_{j}^{2}$$</p>
+<h3 id="Vectorized-Cost-Function"><a href="#Vectorized-Cost-Function" class="headerlink" title="Vectorized Cost Function"></a>Vectorized Cost Function</h3><p>$$ J(\theta) = \frac{1}{m}\big((\,log\,(g(X\theta))^Ty+(\,log\,(1-g(X\theta))^T(1-y)\big) + \frac{\lambda}{2m}\sum<em>{j=1}^{n}\theta</em>{j}^{2}$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">lrcostFunctionReg</span><span class="params">(theta, reg, X, y)</span>:</span></div><div class="line">    m = y.size</div><div class="line">    h = sigmoid(X.dot(theta))</div><div class="line">    </div><div class="line">    J = <span class="number">-1</span>*(<span class="number">1</span>/m)*(np.log(h).T.dot(y)+np.log(<span class="number">1</span>-h).T.dot(<span class="number">1</span>-y)) + (reg/(<span class="number">2</span>*m))*np.sum(np.square(theta[<span class="number">1</span>:]))</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> np.isnan(J[<span class="number">0</span>]):</div><div class="line">        <span class="keyword">return</span>(np.inf)</div><div class="line">    <span class="keyword">return</span>(J[<span class="number">0</span>])</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">lrgradientReg</span><span class="params">(theta, reg, X,y)</span>:</span></div><div class="line">    m = y.size</div><div class="line">    h = sigmoid(X.dot(theta.reshape(<span class="number">-1</span>,<span class="number">1</span>)))</div><div class="line">      </div><div class="line">    grad = (<span class="number">1</span>/m)*X.T.dot(h-y) + (reg/m)*np.r_[[[<span class="number">0</span>]],theta[<span class="number">1</span>:].reshape(<span class="number">-1</span>,<span class="number">1</span>)]</div><div class="line">        </div><div class="line">    <span class="keyword">return</span>(grad.flatten())</div></pre></td></tr></table></figure>
+<h1 id="One-vs-all"><a href="#One-vs-all" class="headerlink" title="One-vs-all"></a>One-vs-all</h1><h2 id="One-vs-all-Classification"><a href="#One-vs-all-Classification" class="headerlink" title="One-vs-all Classification"></a>One-vs-all Classification</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">oneVsAll</span><span class="params">(features, classes, n_labels, reg)</span>:</span></div><div class="line">    initial_theta = np.zeros((X.shape[<span class="number">1</span>],<span class="number">1</span>))  <span class="comment"># 401x1</span></div><div class="line">    all_theta = np.zeros((n_labels, X.shape[<span class="number">1</span>])) <span class="comment">#10x401</span></div><div class="line"></div><div class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> np.arange(<span class="number">1</span>, n_labels+<span class="number">1</span>):</div><div class="line">        res = minimize(lrcostFunctionReg, initial_theta, args=(reg, features, (classes == c)*<span class="number">1</span>), method=<span class="keyword">None</span>,</div><div class="line">                       jac=lrgradientReg, options=&#123;<span class="string">'maxiter'</span>:<span class="number">50</span>&#125;)</div><div class="line">        all_theta[c<span class="number">-1</span>] = res.x</div><div class="line">    <span class="keyword">return</span>(all_theta)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theta = oneVsAll(X, y, <span class="number">10</span>, <span class="number">0.1</span>)</div></pre></td></tr></table></figure>
+<h2 id="One-vs-all-Prediction"><a href="#One-vs-all-Prediction" class="headerlink" title="One-vs-all Prediction"></a>One-vs-all Prediction</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">predictOneVsAll</span><span class="params">(all_theta, features)</span>:</span></div><div class="line">    probs = sigmoid(X.dot(all_theta.T))</div><div class="line">        </div><div class="line">    <span class="comment"># Adding one because Python uses zero based indexing for the 10 columns (0-9),</span></div><div class="line">    <span class="comment"># while the 10 classes are numbered from 1 to 10.</span></div><div class="line">    <span class="keyword">return</span>(np.argmax(probs, axis=<span class="number">1</span>)+<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pred = predictOneVsAll(theta, X)</div><div class="line">print(<span class="string">'Training set accuracy: &#123;&#125; %'</span>.format(np.mean(pred == y.ravel())*<span class="number">100</span>))</div></pre></td></tr></table></figure>
+<pre><code>Training set accuracy: 93.24 %
+</code></pre><h2 id="Multiclass-Logistic-Regression-with-scikit-learn"><a href="#Multiclass-Logistic-Regression-with-scikit-learn" class="headerlink" title="Multiclass Logistic Regression with scikit-learn"></a>Multiclass Logistic Regression with scikit-learn</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">clf = LogisticRegression(C=<span class="number">10</span>, penalty=<span class="string">'l2'</span>, solver=<span class="string">'liblinear'</span>)</div><div class="line"><span class="comment"># Scikit-learn fits intercept automatically, so we exclude first column with 'ones' from X when fitting.</span></div><div class="line">clf.fit(X[:,<span class="number">1</span>:],y.ravel())</div></pre></td></tr></table></figure>
+<pre><code>LogisticRegression(C=10, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class=&apos;ovr&apos;, n_jobs=1,
+          penalty=&apos;l2&apos;, random_state=None, solver=&apos;liblinear&apos;, tol=0.0001,
+          verbose=0, warm_start=False)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pred2 = clf.predict(X[:,<span class="number">1</span>:])</div><div class="line">print(<span class="string">'Training set accuracy: &#123;&#125; %'</span>.format(np.mean(pred2 == y.ravel())*<span class="number">100</span>))</div></pre></td></tr></table></figure>
+<pre><code>Training set accuracy: 96.5 %
+</code></pre><h1 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(theta_1, theta_2, features)</span>:</span></div><div class="line">    z2 = theta_1.dot(features.T)</div><div class="line">    a2 = np.c_[np.ones((data[<span class="string">'X'</span>].shape[<span class="number">0</span>],<span class="number">1</span>)), sigmoid(z2).T]</div><div class="line">    </div><div class="line">    z3 = a2.dot(theta_2.T)</div><div class="line">    a3 = sigmoid(z3)</div><div class="line">        </div><div class="line">    <span class="keyword">return</span>(np.argmax(a3, axis=<span class="number">1</span>)+<span class="number">1</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pred = predict(theta1, theta2, X)</div><div class="line">print(<span class="string">'Training set accuracy: &#123;&#125; %'</span>.format(np.mean(pred == y.ravel())*<span class="number">100</span>))</div></pre></td></tr></table></figure>
+<pre><code>Training set accuracy: 97.52 %
+</code></pre><h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><h2 id="展示图片"><a href="#展示图片" class="headerlink" title="展示图片"></a>展示图片</h2><p>因为给的数据是矩阵的形式，所以需要分为单个向量，重新设置形状。然后展示出来，跟<a href="http://feiyang.li/2017/03/17/python-mnist/index.html">手写字体识别</a>是很像。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">%matplotlib inline</div><div class="line"><span class="keyword">import</span> scipy.io <span class="keyword">as</span> sio </div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">matfn=<span class="string">'C:/Users/wing/Documents/MATLAB/ex3/ex3data1.mat'</span>  </div><div class="line">data=sio.loadmat(matfn)  </div><div class="line">im = data[<span class="string">'X'</span>][<span class="number">0</span>]</div><div class="line">im = im.reshape(<span class="number">20</span>,<span class="number">20</span>)</div><div class="line">plt.imshow(im , cmap=<span class="string">'gray'</span>)</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170416/135847233.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
+<p>如果想要一次展示多个图像呢，写个循环就可以了。不过太多的话，可能就看不清了。。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">im = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">500</span>):</div><div class="line">    plt.subplot(<span class="number">10</span>, <span class="number">50</span>, i + <span class="number">1</span>)</div><div class="line">    temp = data[<span class="string">'X'</span>][i]</div><div class="line">    im.append(temp.reshape(<span class="number">20</span>,<span class="number">20</span>))</div><div class="line">    plt.imshow(im[i], cmap=<span class="string">'gray'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure></p>
+<h2 id="reshape内-1的用法"><a href="#reshape内-1的用法" class="headerlink" title="reshape内-1的用法"></a><strong>reshape</strong>内-1的用法</h2><p>官方文档：numpy.reshape - NumPy v1.11 Manual</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>np.reshape(a, (<span class="number">3</span>,<span class="number">-1</span>))  <span class="comment"># the unspecified value is inferred to be 2</span></div><div class="line">array([[<span class="number">1</span>, <span class="number">2</span>],</div><div class="line">       [<span class="number">3</span>, <span class="number">4</span>],</div><div class="line">       [<span class="number">5</span>, <span class="number">6</span>]])</div></pre></td></tr></table></figure>
+<p>-1表示我懒得计算该填什么数字，由python通过a和其他的值推测出来。</p>
+<h2 id="LogisticRegression"><a href="#LogisticRegression" class="headerlink" title="LogisticRegression"></a>LogisticRegression</h2><p><code>from sklearn.linear_model import LogisticRegression</code></p>
+<p><a href="http://www.cnblogs.com/xupeizhi/archive/2013/07/05/3174703.html" target="_blank" rel="external">http://www.cnblogs.com/xupeizhi/archive/2013/07/05/3174703.html</a><br><a href="http://scikit-learn.org/stable/index.html" target="_blank" rel="external">http://scikit-learn.org/stable/index.html</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;machine-learning-ex3.zip &lt;a href=&quot;http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex3.zip&quot;&gt;下载链接&lt;/a&gt;，第四周的课程相对来说比较简单，大致介绍了神经网络相关内容。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
+    
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Coursera ML(6)-Neural Networks Representation</title>
     <link href="http://feiyang.li/2017/04/15/Coursera-ML-6-Neural-Networks-Representation/index.html"/>
     <id>http://feiyang.li/2017/04/15/Coursera-ML-6-Neural-Networks-Representation/index.html</id>
     <published>2017-04-15T13:42:33.000Z</published>
     <updated>2017-04-15T13:47:22.229Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>神经网络模型</p>
 </blockquote>
 <hr>
@@ -123,7 +218,7 @@
     <published>2017-03-30T04:46:00.000Z</published>
     <updated>2017-04-15T12:16:09.671Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p><a href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">线性回归算法</a>，可用于房屋价格的估计及股票市场分析。 <a href="https://www.coursera.org/learn/machine-learning/programming/ixFof/logistic-regression" target="_blank" rel="external">Logistic Regression</a> （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在<a href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">这里</a></p>
 </blockquote>
 <hr>
@@ -229,7 +324,7 @@
     <published>2017-03-27T11:13:38.000Z</published>
     <updated>2017-03-28T07:49:36.625Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/3" target="_blank" rel="external">第三周Coursera课程</a>  <strong>binary classification problem</strong></p>
 </blockquote>
 <hr>
@@ -391,7 +486,7 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
     <published>2017-03-26T11:00:29.000Z</published>
     <updated>2017-03-27T11:32:14.121Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Multivariate Linear Regression and Programming Exercise 1</p>
 </blockquote>
 <hr>
@@ -488,7 +583,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-25T10:49:36.000Z</published>
     <updated>2017-03-27T11:35:22.375Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression</p>
 </blockquote>
 <hr>
@@ -610,7 +705,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-24T09:05:47.000Z</published>
     <updated>2017-03-24T09:26:24.294Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>《算法导论》这门课的老师是<a href="http://cs.ustc.edu.cn/szdw/bdjs/201006/t20100614_22062.html" target="_blank" rel="external">黄刘生</a>和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。</p>
 </blockquote>
 <hr>
@@ -758,7 +853,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-17T08:25:27.000Z</published>
     <updated>2017-03-26T11:39:21.829Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以<code>.idx1-ubyte</code>后缀，包含60000个训练图像。将这些图像展示出来，需要利用到<a href="http://feiyang.li/2017/03/17/python-struct/">struct模块</a>。</p>
 </blockquote>
 <hr>
@@ -833,7 +928,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-17T06:08:07.000Z</published>
     <updated>2017-03-26T11:39:20.941Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p><a href="https://docs.python.org/3/library/struct.html#module-struct" target="_blank" rel="external">struct</a> — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具<strong>Python struct 模块</strong>。</p>
 </blockquote>
 <hr>
@@ -1014,7 +1109,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-16T02:52:28.000Z</published>
     <updated>2017-03-25T10:51:10.817Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式</p>
 </blockquote>
 <hr>
@@ -1082,7 +1177,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-15T05:22:44.000Z</published>
     <updated>2017-03-16T02:57:34.710Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。</p>
 </blockquote>
 <hr>
@@ -1155,7 +1250,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-11T07:06:14.000Z</published>
     <updated>2017-03-13T10:45:25.356Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>但行好事，莫问前程。真正能做到的能有几个呢？</p>
 </blockquote>
 <hr>
@@ -1296,7 +1391,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-10T05:52:53.000Z</published>
     <updated>2017-03-27T11:44:05.567Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本文介绍了<code>raw_input</code> 和 <code>input</code>在<code>python2</code>和<code>python3</code>上的区别，以及如何利用正则表达式和<code>input</code>键盘输入一维数组和二维数组。</p>
 </blockquote>
 <hr>
@@ -1374,7 +1469,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-09T14:22:16.000Z</published>
     <updated>2017-03-25T05:10:12.327Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>快速排序是一种非常优秀的排序方法 </p>
 </blockquote>
 <a id="more"></a>
@@ -1427,7 +1522,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-03T06:17:00.000Z</published>
     <updated>2017-03-06T14:07:04.569Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>使用github学生优惠内的digitalocean，一键搭建vpn。获得60刀，免费用一年~</p>
 </blockquote>
 <hr>
@@ -1663,7 +1758,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-24T12:57:01.000Z</published>
     <updated>2017-02-25T05:59:28.975Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง </p>
 </blockquote>
 <hr>
@@ -1743,7 +1838,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-18T11:37:59.000Z</published>
     <updated>2017-02-18T12:41:10.174Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>上手使用Python的Web框架– Django</p>
 </blockquote>
 <hr>
@@ -1897,7 +1992,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-17T09:04:55.000Z</published>
     <updated>2017-03-27T11:44:11.367Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目2.1</strong>： 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。</p>
 </blockquote>
 <hr>
@@ -1944,7 +2039,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-16T13:59:43.000Z</published>
     <updated>2017-03-27T11:44:14.250Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.9</strong>： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</p>
 </blockquote>
 <hr>
@@ -1994,60 +2089,6 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
       <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
     
       <category term="密码处理" scheme="http://feiyang.li/tags/%E5%AF%86%E7%A0%81%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第1.8题：文本读取转化</title>
-    <link href="http://feiyang.li/2017/02/15/python-camp8/index.html"/>
-    <id>http://feiyang.li/2017/02/15/python-camp8/index.html</id>
-    <published>2017-02-15T14:07:40.000Z</published>
-    <updated>2017-03-27T11:44:20.470Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
-<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.8：</strong> 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p><strong>题目1.8：</strong> 纯文本文件 student.txt为学生信息, 里面的内容（包括花括号）如下所示：</p>
-<pre><code>{
-    &quot;1&quot;:[&quot;张三&quot;,150,120,100],
-    &quot;2&quot;:[&quot;李四&quot;,90,99,95],
-    &quot;3&quot;:[&quot;王五&quot;,60,66,68]
-}
-</code></pre><p>请将上述内容写到 student.xls 文件中，如下图所示：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170210/164341562.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="student.xls" title="">
-                </div>
-                <div class="image-caption">student.xls</div>
-            </figure>
-<p>这个题使用到<strong>文件读取</strong>，<strong>数据读取</strong>，<strong>Xls文件输出</strong>三部分内容。</p>
-<h1 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h1><p>使用<strong>open()</strong>函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'student.txt'</span>) <span class="keyword">as</span> f:</div><div class="line">    content = f.read()</div></pre></td></tr></table></figure></p>
-<h1 id="数据读取"><a href="#数据读取" class="headerlink" title="数据读取"></a>数据读取</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d = json.loads(content)</div></pre></td></tr></table></figure>
-<h1 id="xls文件输出"><a href="#xls文件输出" class="headerlink" title="xls文件输出"></a>xls文件输出</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">file = xlwt.Workbook()</div><div class="line"><span class="comment"># 添加sheet</span></div><div class="line">table = file.add_sheet(<span class="string">'test'</span>)</div><div class="line"><span class="keyword">for</span> row, i <span class="keyword">in</span> enumerate(list(d)):</div><div class="line">    table.write(row, <span class="number">0</span>, i)</div><div class="line">    <span class="keyword">for</span> col, j <span class="keyword">in</span> enumerate(d[i]):</div><div class="line">        table.write(row, col + <span class="number">1</span>, j)</div><div class="line">file.save(<span class="string">'student.xls'</span>)</div></pre></td></tr></table></figure>
-<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>student.txt 可以在这里下载~  <a href="http://cdn.mmmxcc.cn/blog/student.txt" target="_blank" rel="external">http://cdn.mmmxcc.cn/blog/student.txt</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding: utf-8</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">import</span> xlwt</div><div class="line"></div><div class="line"><span class="comment"># 存放文件的目录</span></div><div class="line">filepath = <span class="string">'D:'</span></div><div class="line"></div><div class="line">os.chdir(filepath)</div><div class="line"><span class="comment"># 读取文件内容</span></div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">'student.txt'</span>) <span class="keyword">as</span> f:</div><div class="line">    content = f.read()</div><div class="line"><span class="comment"># 转为json</span></div><div class="line">d = json.loads(content)</div><div class="line">file = xlwt.Workbook()</div><div class="line"><span class="comment"># 添加sheet</span></div><div class="line">table = file.add_sheet(<span class="string">'test'</span>)</div><div class="line"><span class="keyword">for</span> row, i <span class="keyword">in</span> enumerate(list(d)):</div><div class="line">    table.write(row, <span class="number">0</span>, i)</div><div class="line">    <span class="keyword">for</span> col, j <span class="keyword">in</span> enumerate(d[i]):</div><div class="line">        table.write(row, col + <span class="number">1</span>, j)</div><div class="line">file.save(<span class="string">'student.xls'</span>)</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。&lt;strong&gt;题目1.8：&lt;/strong&gt; 将纯文本文件 student.txt为学生信息,，写到 student.xls 文件内。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="Python_camp" scheme="http://feiyang.li/categories/Python-camp/"/>
-    
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
-    
-      <category term="自然语言处理" scheme="http://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
