@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://feiyang.li/2017/02/16/python-camp9/">
+    
+    
+    <title>第1.9题：Python对密码加密 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="Python,Python_camp,密码处理">
+    <meta name="description" content="题目来自：Python 练习册。题目1.9： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第1.9题：Python对密码加密">
+<meta property="og:url" content="http://feiyang.li/2017/02/16/python-camp9/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="题目来自：Python 练习册。题目1.9： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170216/194046518.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170216/212835886.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-03-27T11:44:14.250Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第1.9题：Python对密码加密">
+<meta name="twitter:description" content="题目来自：Python 练习册。题目1.9： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170216/194046518.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+
+    <div id="myTime">
+ <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="180" height="80" id="honehoneclock" align="middle">
+ <param name="allowScriptAccess" value="always">
+ <param name="movie" value="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf">
+ <param name="quality" value="high">
+ <param name="bgcolor" value="#ffffff">
+ <param name="wmode" value="transparent">
+ <embed wmode="transparent" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf" quality="high" bgcolor="#ffffff" width="180" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+ </object>
+ </div>
+
+
+
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">第1.9题：Python对密码加密</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">第1.9题：Python对密码加密</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-16T13:59:43.000Z" itemprop="datePublished" class="page-time">
+  2017-02-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考代码"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考代码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Python编码问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">Python编码问题</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Python3内的unicode和bytes"><span class="post-toc-number">3.</span> <span class="post-toc-text">Python3内的unicode和bytes</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-python-camp9"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">第1.9题：Python对密码加密</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年02月16日 21:59" datetime="2017-02-16T13:59:43.000Z"  itemprop="datePublished">2017-02-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.9</strong>： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>思路：salt 加 hash 来单向转换密码明文</p>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>以下给出Py2和Py3两段代码，输出的内容是一样的。因为加密之后的内容不是unicode代码，所以存储可能不方便，可以使用<code>base64.b64encode(hashed)</code>转化为base64编码格式。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170216/194046518.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="输出结果" title="">
+                </div>
+                <div class="image-caption">输出结果</div>
+            </figure>
+<p>Python2代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os,base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>) <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, str)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> isinstance(password, unicode):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line">    </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
+<p>Python3代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os, base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>)  <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, bytes)</div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> isinstance(password, str):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, bytes)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
+<h1 id="Python编码问题"><a href="#Python编码问题" class="headerlink" title="Python编码问题"></a>Python编码问题</h1><p>一开始直接在Python3环境运行第一段代码的时候，总会报错<code>NameError: global name &#39;unicode&#39; is not defined</code>，百思不得其解。</p>
+<p>查了资料，才发现是因为Python更新的时候，Python 3 renamed the <strong>unicode</strong> type to <strong>str</strong>, the old <strong>str</strong> type has been replaced by <strong>bytes</strong>。在<a href="https://docs.python.org/dev/howto/pyporting.html" target="_blank" rel="external">Python升级文档</a>内可以查到相关内容，也就是<strong>unicode</strong>直接改名<strong>str</strong>，<strong>str</strong>改名成<strong>bytes</strong>。<br>Python2和Python3，在编码方面挖下太多的坑<br>举个简单的例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">isinstance(<span class="string">u'中文'</span>, unicode) <span class="comment">#python2内是正确的</span></div><div class="line">isinstance(<span class="string">u'中文'</span>, str) <span class="comment">#python3内是正确的</span></div></pre></td></tr></table></figure></p>
+<h1 id="Python3内的unicode和bytes"><a href="#Python3内的unicode和bytes" class="headerlink" title="Python3内的unicode和bytes"></a>Python3内的unicode和bytes</h1><p>Python 3最重要的新特性大概要算是<strong>对文本和二进制数据作了更为清晰的区分</strong>。文本总是Unicode，由str类型表示，二进制数据则由bytes类型表示。</p>
+<p>在将字符串存入磁盘和从磁盘读取字符串的过程中，Python 自动地帮你完成了编码和解码的工作，你不需要关心它的过程，例如你能把一个中文赋值给字符串。而使用 bytes 类型，实质上是告诉 Python，不需要它帮你自动地完成编码和解码的工作，而是用户自己手动进行，并指定编码格式。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<p>参考链接：<br><a href="http://zhuoqiang.me/password-storage-and-python-example.html" target="_blank" rel="external">http://zhuoqiang.me/password-storage-and-python-example.html</a><br><a href="http://www.ituring.com.cn/article/61192" target="_blank" rel="external">http://www.ituring.com.cn/article/61192</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-27T11:44:14.250Z" itemprop="dateUpdated">2017年3月27日 19:44</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2017/02/16/python-camp9/" target="_blank" rel="external">http://feiyang.li/2017/02/16/python-camp9/</a>
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python-camp/">Python_camp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/密码处理/">密码处理</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/02/16/python-camp9/&title=《第1.9题：Python对密码加密》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/02/16/python-camp9/&title=《第1.9题：Python对密码加密》 — 李飞阳&source=
+题目来自：Python 练习册。题目1.9： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python ..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/02/16/python-camp9/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第1.9题：Python对密码加密》 — 李飞阳&url=http://feiyang.li/2017/02/16/python-camp9/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/02/16/python-camp9/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/02/17/python-camp2-1/index.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">第2.1题：Python统计日记最重要的词</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/02/15/python-camp8/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">第1.8题：文本读取转化</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2008929"></script>
+<!-- UY END -->
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃辣条好不好 ಠ౪ಠ
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+ 
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/02/16/python-camp9/&title=《第1.9题：Python对密码加密》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/02/16/python-camp9/&title=《第1.9题：Python对密码加密》 — 李飞阳&source=
+题目来自：Python 练习册。题目1.9： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python ..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/02/16/python-camp9/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第1.9题：Python对密码加密》 — 李飞阳&url=http://feiyang.li/2017/02/16/python-camp9/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/02/16/python-camp9/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByklEQVR42u3aQU4DMRAEQP7/6SBxQgox3Z6NE1D5FG2Ct8RhNNP2x0e8bl/r/vP9b76v9W7r34wWLi7umHtbrkfE9Ssf/e16/7UBFxf3PDd5ZfLihNUWR1xc3Hfm5s3K+jkuLu5/4uZtzXpnXFzcv8JNhp/18/xJ8u+4YFbDxcUdcCeB6VWfD+W7uLi441OJeVFbj0P123FxcY9w26ElOSBJSmEeyNYb4eLijrnJsNEOJPk4lHcyuLi4r+JOxqH2akV7qeuHjgwXF/dp3L3mY+8Ito1Hi4tZuLi4l3KjwvGEaxl7DRYuLu4Z7l48kTc319JxcXFPcifXqnJcG8huzl64uLhjbhuV5nch2uPYZB9cXNyT3EkZamPQvUAEFxf3PHdyqaJtd/YyXVxc3JPcySHoqCTFk1l0ZwQXF/dSbht0tqFnW/h+Kaa4uLgHuVclr5u3P9pChouLe4Q7aVz2wtC28F3WZ+Hi4nYVoziCzRudvDgme+Li4p7k5sUrv0SVx6BtocTFxT3JfcZh6mSIqr/GxcV9EbeNU9t4NPoWFxf3Lbl569Oe90YBLi4u7kHuJCSdHK7UQQwuLu4RbhuYthHn5LIXLi7uce4n2zWVjM6TCCMAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.11"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.11" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
