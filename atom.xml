@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-05-02T10:04:58.026Z</updated>
+  <updated>2017-05-03T12:20:36.153Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -16,13 +16,94 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>可能是最简单的ss-panel安装教程</title>
+    <link href="http://feiyang.li/2017/05/03/ss-panel/index.html"/>
+    <id>http://feiyang.li/2017/05/03/ss-panel/index.html</id>
+    <published>2017-05-03T12:13:08.000Z</published>
+    <updated>2017-05-03T12:20:36.153Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>产品要求：fuck the wall、在可用范围内尽量简单一些（因此不考虑ssr，魔改panel也不考虑）</p>
+<h1 id="ss-panel前端"><a href="#ss-panel前端" class="headerlink" title="ss-panel前端"></a>ss-panel前端</h1><p>我看官方文档，按部就班的做了一个前端，最后才发现竟然有ss-panel一键脚本，真的是血都要吐出来了。好气哦。这里直接介绍一键脚本方式。</p>
+<h2 id="脚本下载以及运行"><a href="#脚本下载以及运行" class="headerlink" title="脚本下载以及运行"></a>脚本下载以及运行</h2><p>首先运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum -y install screen</div><div class="line">screen -S ssmanyuser</div></pre></td></tr></table></figure></p>
+<p>然后执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://cloud.echoteen.com/s/24bSM2Ba48JTHlQ/download -O ss-install.bin</div><div class="line">chmod a+x ss-install.bin</div><div class="line">bash ss-install.bin</div></pre></td></tr></table></figure></p>
+<h2 id="安装ss-panel"><a href="#安装ss-panel" class="headerlink" title="安装ss-panel"></a>安装ss-panel</h2><p>选择1，安装ss-panel前端，注意，首先要安装好前端！<br>所以输入1，然后回车！<br>安装好了以后，打开网站配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /etc/nginx/conf.d</div><div class="line">vim ss-panel.conf</div></pre></td></tr></table></figure>
+<p>打开配置文件<br>主要是检查<strong>server_name</strong>和<strong>root</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170503/202011192.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></p>
+<h2 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h2><p><code>mysql_secure_installation</code><br>首先输入上述代码进行数据库初始化<br>配置数据库密码等，这个自行设置！<br>然后就是创建数据库和导入数据库了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p</div><div class="line"># 输入自己的密码</div><div class="line">create database ss;</div><div class="line">use ss;</div><div class="line">source  /home/www/panel/db.sql</div></pre></td></tr></table></figure></p>
+<p>真的，有了这个脚本之后，解决了很多麻烦的问题。</p>
+<h2 id="配置配置文件"><a href="#配置配置文件" class="headerlink" title="配置配置文件"></a>配置配置文件</h2><p>配置网页文件（.env），就是站点信息，很简单的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim .env</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">//  ss-panel v3 配置</div><div class="line">//</div><div class="line">// !!! 修改此key为随机字符串确保网站安全 !!!</div><div class="line">key = &apos;randomKey&apos;</div><div class="line">env = &apos;prod&apos;  // 正式环境请保持env为prod确保安全</div><div class="line">debug =  &apos;false&apos;  //  正式环境请确保为false</div><div class="line">appName = &apos;ss-panel3&apos;             //站点名称</div><div class="line">baseUrl = &apos;https://www.google.com&apos;            // 站点地址</div><div class="line">timeZone = &apos;PRC&apos;        // RPC 天朝时间  UTC 格林时间</div><div class="line">pwdMethod = &apos;md5&apos;       // 密码加密   可选 md5,sha256</div><div class="line">salt = &apos;&apos;               // 密码加密用，从旧版升级请留空</div><div class="line">theme    = &apos;default&apos;   // 主题</div><div class="line">session = &apos;file&apos; //默认</div><div class="line">cache   = &apos;file&apos; //默认</div><div class="line">tokenDriver = &apos;db&apos; //默认</div><div class="line">// mu key 用于校验ss-go mu的请求,后边会用到</div><div class="line">muKey = &apos;&apos;</div><div class="line">// 邮件</div><div class="line">mailDriver = &apos;mailgun&apos;   // mailgun   #smtp不在支持,仅供测试</div><div class="line"> </div><div class="line">// 注册限制,每天每个ip能注册的次数</div><div class="line">ipDayLimit = &apos;10&apos;</div><div class="line"> </div><div class="line">// 邮箱验证设置</div><div class="line">emailVerifyEnabled = &apos;false&apos; // 是否开启注册时邮箱验证 (true:开启 false:关闭)</div><div class="line">emailVerifyCodeLength = &apos;8&apos;  // 邮箱验证代码长度</div><div class="line">emailVerifyTTL = &apos;30&apos;        // 验证代码有效时间 单位分钟</div><div class="line"> </div><div class="line">// 用户签到设置</div><div class="line">checkinTime = &apos;22&apos;      // 签到间隔时间 单位小时</div><div class="line">checkinMin = &apos;93&apos;       // 签到最少流量 单位MB</div><div class="line">checkinMax = &apos;97&apos;       // 签到最多流量</div><div class="line"> </div><div class="line">//</div><div class="line">defaultTraffic = &apos;1&apos;      // 用户初始流量 单位GB</div><div class="line">// 注册后获得的邀请码数量</div><div class="line">inviteNum = &apos;2&apos;</div><div class="line"> </div><div class="line">// 记录流量日志到dynamodb ,beta,请勿开启</div><div class="line">log_traffic_dynamodb = &apos;false&apos;</div><div class="line"> </div><div class="line"># database 数据库配置</div><div class="line">db_driver = &apos;mysql&apos;</div><div class="line">db_host = &apos;localhost&apos;</div><div class="line">db_port = &apos;3306&apos;</div><div class="line">db_database = &apos;ss&apos;</div><div class="line">db_username = &apos;root&apos;</div><div class="line">db_password = &apos;root&apos;</div><div class="line">db_charset = &apos;utf8&apos;</div><div class="line">db_collation = &apos;utf8_general_ci&apos;</div><div class="line">db_prefix = &apos;&apos;</div><div class="line"> </div><div class="line"># redis</div><div class="line">redis_scheme = &apos;tcp&apos;</div><div class="line">redis_host = &apos;127.0.0.1&apos;</div><div class="line">redis_port = &apos;6379&apos;</div><div class="line">redis_database = &apos;0&apos;</div><div class="line">redis_pass = &apos;&apos;</div><div class="line"> </div><div class="line"># mailgun</div><div class="line">mailgun_key = &apos;&apos;</div><div class="line">mailgun_domain = &apos;&apos;</div><div class="line">mailgun_sender = &apos;&apos;</div><div class="line"> </div><div class="line"># smtp</div><div class="line">smtp_host = &apos;&apos;</div><div class="line">smtp_username = &apos;&apos;</div><div class="line">smtp_port = &apos;&apos;</div><div class="line">smtp_name = &apos;&apos;</div><div class="line">smtp_sender = &apos;&apos;</div><div class="line">smtp_passsword = &apos;&apos;</div><div class="line">smtp_ssl = &apos;true&apos;</div><div class="line"> </div><div class="line"># aws</div><div class="line">aws_access_key_id = &apos;&apos;</div><div class="line">aws_secret_access_key = &apos;&apos;</div><div class="line">aws_region = &apos;ap-northeast-1&apos;</div><div class="line">aws_ses_region = &apos;us-east-1&apos;</div><div class="line">aws_ses_sender = &apos;&apos;</div></pre></td></tr></table></figure>
+<h2 id="添加管理员"><a href="#添加管理员" class="headerlink" title="添加管理员"></a>添加管理员</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">php xcat createAdmin</div><div class="line"></div><div class="line">add admin/创建管理员帐号.....  </div><div class="line">Enter your email/输入管理员邮箱: h@prinzeugen.net  </div><div class="line">Enter password for: h@prinzeugen.net /为 h@prinzeugen.net 添加密码 xxx  </div><div class="line">Email: h@prinzeugen.net, Password: xxx  </div><div class="line">Press [Y] to create admin..... 按下[Y]确认来确认创建管理员账户..... y  </div><div class="line">start create admin accountSuccessful/ 添加成功!</div></pre></td></tr></table></figure>
+<p>最后登录下网站<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170503/201708892.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<hr>
+<p>以上内容全部复制自：<a href="https://www.echoteen.com/yijian-sspanel-many-user.html/comment-page-1" target="_blank" rel="external">https://www.echoteen.com/yijian-sspanel-many-user.html/comment-page-1</a></p>
+<p>因为ss-panel前端是基于ss原版，而该一键脚本后端基于ssr，因此这里不建议采用该脚本。</p>
+<h1 id="部署并配置-shadowsocks-manyuser"><a href="#部署并配置-shadowsocks-manyuser" class="headerlink" title="部署并配置 shadowsocks-manyuser"></a>部署并配置 shadowsocks-manyuser</h1><p>这里使用的是 <a href="https://github.com/mengskysama/shadowsocks/tree/manyuser" target="_blank" rel="external">https://github.com/mengskysama/shadowsocks/tree/manyuser</a> 版ss</p>
+<h2 id="安装-shadowsocks-manyuser"><a href="#安装-shadowsocks-manyuser" class="headerlink" title="安装 shadowsocks-manyuser"></a>安装 shadowsocks-manyuser</h2><p>先将代码 clone 到本地：<br><code>git clone https://github.com/fsgmhoward/shadowsocks-py-mu.git</code><br>其中的 shadowsocks 子目录才是我们需要的，注意这个地方和其他版本的不一样，ssr里子文件表示单用户。本版根据server.py还是servers.py来判断是不是多用户版本。</p>
+<h2 id="配置-shadowsocks-manyuser"><a href="#配置-shadowsocks-manyuser" class="headerlink" title="配置 shadowsocks-manyuser"></a>配置 shadowsocks-manyuser</h2><p>进入 shadowsocks 目录，将 config_example.py 复制一份到 config.py：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp config_example.py config.py</div><div class="line">vi config.py</div></pre></td></tr></table></figure>
+<p>修改其中第 15 行和第 29~31 行的内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 启用 MultiUser API</div><div class="line">API_ENABLED = True</div><div class="line"></div><div class="line"># 就是在你的站点地址后面加个 /mu</div><div class="line">API_URL = &apos;http://ss.feiyang.li/mu&apos;  </div><div class="line"># 还记得上面在 .env 中填写的 muKey 吗？把它填在这里</div><div class="line">API_PASS = &apos;api_key_just_for_test&apos;</div></pre></td></tr></table></figure></p>
+<p>由于我们选择使用 Mu API 来与前端通信，所以我们不需要修改 config.py 中任何关于数据库的配置。</p>
+<p>好了，现在可以试着运行一下 $ python servers.py 了（注意，是 servers.py 而不是 server.py）。如果没错的话，应该可以看到这样的输出：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170503/201724918.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h1 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h1><h2 id="不能上网"><a href="#不能上网" class="headerlink" title="不能上网"></a>不能上网</h2><p>首先国际惯例查看连接：</p>
+<p><code>netstat -anp | grep 你的端口</code></p>
+<p>正常的话，应该是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Active Internet connections (servers and established)  </div><div class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name  </div><div class="line">tcp        0      0 0.0.0.0:62111            0.0.0.0:*               LISTEN      32083/python  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47177   TIME_WAIT   -  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47161   TIME_WAIT   -  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47160   TIME_WAIT   -  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47157   TIME_WAIT   -</div></pre></td></tr></table></figure></p>
+<p>所以如果你要开放注册，就要这样配置你的 iptables：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 注意是半角冒号，意为允许 12450 及以上的端口</div><div class="line"># 也可以指定 12450:15550 这样的范围</div><div class="line">iptables -I INPUT -p tcp -m tcp --dport 12450: -j ACCEPT</div><div class="line">iptables-save</div></pre></td></tr></table></figure></p>
+<h2 id="ss-panel-的多节点配置"><a href="#ss-panel-的多节点配置" class="headerlink" title="ss-panel 的多节点配置"></a>ss-panel 的多节点配置</h2><p>其实多节点也没咋玄乎，说白了就是多个后端共用一个前端而已。而且我们的后端是使用 Mu API 来与前端进行交互的，所以多节点的配置就更简单了：只要把所有后端的 config.py 中的 API_URL 和 API_PASS 都改成一样即可（记得 API_ENABLED = True）。</p>
+<h2 id="ss服务端安装libsodium支持chacha20"><a href="#ss服务端安装libsodium支持chacha20" class="headerlink" title="ss服务端安装libsodium支持chacha20"></a>ss服务端安装libsodium支持chacha20</h2><p>centos：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y groupinstall &quot;Development Tools&quot;</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
+<p>ubuntu/debian：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apt-get install build-essential</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
+<hr>
+<p>参考链接：<br><a href="https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/" target="_blank" rel="external">https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/</a><br><a href="https://www.echoteen.com/yijian-sspanel-many-user.html/comment-page-1/#comments" target="_blank" rel="external">https://www.echoteen.com/yijian-sspanel-many-user.html/comment-page-1/#comments</a><br><a href="https://github.com/sendya/shadowsocks-panel/wiki/Shadowsocks-Panel-%E9%9D%A2%E6%9D%BF%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B" target="_blank" rel="external">https://github.com/sendya/shadowsocks-panel/wiki/Shadowsocks-Panel-%E9%9D%A2%E6%9D%BF%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="GFW" scheme="http://feiyang.li/tags/GFW/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Coursera ML(7)-Programming Exercise 3</title>
     <link href="http://feiyang.li/2017/05/02/Coursera-ML-7-Programming-Exercise-3/index.html"/>
     <id>http://feiyang.li/2017/05/02/Coursera-ML-7-Programming-Exercise-3/index.html</id>
     <published>2017-05-02T10:01:38.000Z</published>
     <updated>2017-05-02T10:04:58.026Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>machine-learning-ex3.zip <a href="http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex3.zip" target="_blank" rel="external">下载链接</a>，第四周的课程相对来说比较简单，大致介绍了神经网络相关内容。</p>
 </blockquote>
 <hr>
@@ -103,11 +184,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -204,11 +285,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -310,11 +391,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -472,11 +553,11 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -569,11 +650,11 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -916,9 +997,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1097,9 +1178,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1165,9 +1246,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1236,9 +1317,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
       <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
     
@@ -2030,66 +2111,6 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
       <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
     
       <category term="自然语言处理" scheme="http://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第1.9题：Python对密码加密</title>
-    <link href="http://feiyang.li/2017/02/16/python-camp9/index.html"/>
-    <id>http://feiyang.li/2017/02/16/python-camp9/index.html</id>
-    <published>2017-02-16T13:59:43.000Z</published>
-    <updated>2017-03-27T11:44:14.250Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.9</strong>： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<p>思路：salt 加 hash 来单向转换密码明文</p>
-<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>以下给出Py2和Py3两段代码，输出的内容是一样的。因为加密之后的内容不是unicode代码，所以存储可能不方便，可以使用<code>base64.b64encode(hashed)</code>转化为base64编码格式。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170216/194046518.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="输出结果" title="">
-                </div>
-                <div class="image-caption">输出结果</div>
-            </figure>
-<p>Python2代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os,base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>) <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, str)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> isinstance(password, unicode):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line">    </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
-<p>Python3代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os, base64</div><div class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</div><div class="line"><span class="keyword">from</span> hmac <span class="keyword">import</span> HMAC</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt_password</span><span class="params">(password, salt=None)</span>:</span></div><div class="line">    <span class="string">"""Hash password on the fly."""</span></div><div class="line">    <span class="keyword">if</span> salt <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">        salt = os.urandom(<span class="number">8</span>)  <span class="comment"># 64 bits.</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span> <span class="number">8</span> == len(salt)</div><div class="line">    <span class="keyword">assert</span> isinstance(salt, bytes)</div><div class="line">    <span class="keyword">assert</span> isinstance(password, str)</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> isinstance(password, str):</div><div class="line">        password = password.encode(<span class="string">'UTF-8'</span>)</div><div class="line"></div><div class="line">    <span class="keyword">assert</span> isinstance(password, bytes)</div><div class="line"></div><div class="line">    result = password</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">        result = HMAC(result, salt, sha256).digest()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> salt + result</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">validate_password</span><span class="params">(hashed, input_password)</span>:</span></div><div class="line">    <span class="keyword">return</span> hashed == encrypt_password(input_password, salt=hashed[:<span class="number">8</span>])</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    hashed = encrypt_password(<span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">assert</span> validate_password(hashed, <span class="string">'secret password'</span>)</div><div class="line">    <span class="keyword">print</span> (hashed)</div><div class="line">    <span class="keyword">print</span> (base64.b64encode(hashed))</div><div class="line">    <span class="keyword">print</span> (base64.b64decode(base64.b64encode(hashed)))</div></pre></td></tr></table></figure></p>
-<h1 id="Python编码问题"><a href="#Python编码问题" class="headerlink" title="Python编码问题"></a>Python编码问题</h1><p>一开始直接在Python3环境运行第一段代码的时候，总会报错<code>NameError: global name &#39;unicode&#39; is not defined</code>，百思不得其解。</p>
-<p>查了资料，才发现是因为Python更新的时候，Python 3 renamed the <strong>unicode</strong> type to <strong>str</strong>, the old <strong>str</strong> type has been replaced by <strong>bytes</strong>。在<a href="https://docs.python.org/dev/howto/pyporting.html" target="_blank" rel="external">Python升级文档</a>内可以查到相关内容，也就是<strong>unicode</strong>直接改名<strong>str</strong>，<strong>str</strong>改名成<strong>bytes</strong>。<br>Python2和Python3，在编码方面挖下太多的坑<br>举个简单的例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">isinstance(<span class="string">u'中文'</span>, unicode) <span class="comment">#python2内是正确的</span></div><div class="line">isinstance(<span class="string">u'中文'</span>, str) <span class="comment">#python3内是正确的</span></div></pre></td></tr></table></figure></p>
-<h1 id="Python3内的unicode和bytes"><a href="#Python3内的unicode和bytes" class="headerlink" title="Python3内的unicode和bytes"></a>Python3内的unicode和bytes</h1><p>Python 3最重要的新特性大概要算是<strong>对文本和二进制数据作了更为清晰的区分</strong>。文本总是Unicode，由str类型表示，二进制数据则由bytes类型表示。</p>
-<p>在将字符串存入磁盘和从磁盘读取字符串的过程中，Python 自动地帮你完成了编码和解码的工作，你不需要关心它的过程，例如你能把一个中文赋值给字符串。而使用 bytes 类型，实质上是告诉 Python，不需要它帮你自动地完成编码和解码的工作，而是用户自己手动进行，并指定编码格式。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<hr>
-<p>参考链接：<br><a href="http://zhuoqiang.me/password-storage-and-python-example.html" target="_blank" rel="external">http://zhuoqiang.me/password-storage-and-python-example.html</a><br><a href="http://www.ituring.com.cn/article/61192" target="_blank" rel="external">http://www.ituring.com.cn/article/61192</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。&lt;strong&gt;题目1.9&lt;/strong&gt;： 通常，登陆某个网站或者 APP，需要使用用户名和密码。密码是如何加密后存储起来的呢？请使用 Python 对密码加密。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="Python_camp" scheme="http://feiyang.li/categories/Python-camp/"/>
-    
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
-    
-      <category term="密码处理" scheme="http://feiyang.li/tags/%E5%AF%86%E7%A0%81%E5%A4%84%E7%90%86/"/>
     
   </entry>
   

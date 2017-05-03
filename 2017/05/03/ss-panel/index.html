@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://feiyang.li/2017/05/03/ss-panel/">
+    
+    
+    <title>可能是最简单的ss-panel安装教程 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="GFW">
+    <meta name="description" content="因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="可能是最简单的ss-panel安装教程">
+<meta property="og:url" content="http://feiyang.li/2017/05/03/ss-panel/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170503/202011192.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170503/201708892.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170503/201724918.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-05-03T12:20:36.153Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="可能是最简单的ss-panel安装教程">
+<meta name="twitter:description" content="因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170503/202011192.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+
+    <div id="myTime">
+ <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="180" height="80" id="honehoneclock" align="middle">
+ <param name="allowScriptAccess" value="always">
+ <param name="movie" value="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf">
+ <param name="quality" value="high">
+ <param name="bgcolor" value="#ffffff">
+ <param name="wmode" value="transparent">
+ <embed wmode="transparent" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf" quality="high" bgcolor="#ffffff" width="180" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+ </object>
+ </div>
+
+
+
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">可能是最简单的ss-panel安装教程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">可能是最简单的ss-panel安装教程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-03T12:13:08.000Z" itemprop="datePublished" class="page-time">
+  2017-05-03
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ss-panel前端"><span class="post-toc-number">1.</span> <span class="post-toc-text">ss-panel前端</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#脚本下载以及运行"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">脚本下载以及运行</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装ss-panel"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装ss-panel</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库配置"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数据库配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置配置文件"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">配置配置文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加管理员"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">添加管理员</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#部署并配置-shadowsocks-manyuser"><span class="post-toc-number">2.</span> <span class="post-toc-text">部署并配置 shadowsocks-manyuser</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装-shadowsocks-manyuser"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">安装 shadowsocks-manyuser</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置-shadowsocks-manyuser"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">配置 shadowsocks-manyuser</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常见错误"><span class="post-toc-number">3.</span> <span class="post-toc-text">常见错误</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不能上网"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">不能上网</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ss-panel-的多节点配置"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">ss-panel 的多节点配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ss服务端安装libsodium支持chacha20"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">ss服务端安装libsodium支持chacha20</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-ss-panel"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">可能是最简单的ss-panel安装教程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年05月03日 20:13" datetime="2017-05-03T12:13:08.000Z"  itemprop="datePublished">2017-05-03</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>产品要求：fuck the wall、在可用范围内尽量简单一些（因此不考虑ssr，魔改panel也不考虑）</p>
+<h1 id="ss-panel前端"><a href="#ss-panel前端" class="headerlink" title="ss-panel前端"></a>ss-panel前端</h1><p>我看官方文档，按部就班的做了一个前端，最后才发现竟然有ss-panel一键脚本，真的是血都要吐出来了。好气哦。这里直接介绍一键脚本方式。</p>
+<h2 id="脚本下载以及运行"><a href="#脚本下载以及运行" class="headerlink" title="脚本下载以及运行"></a>脚本下载以及运行</h2><p>首先运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum -y install screen</div><div class="line">screen -S ssmanyuser</div></pre></td></tr></table></figure></p>
+<p>然后执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://cloud.echoteen.com/s/24bSM2Ba48JTHlQ/download -O ss-install.bin</div><div class="line">chmod a+x ss-install.bin</div><div class="line">bash ss-install.bin</div></pre></td></tr></table></figure></p>
+<h2 id="安装ss-panel"><a href="#安装ss-panel" class="headerlink" title="安装ss-panel"></a>安装ss-panel</h2><p>选择1，安装ss-panel前端，注意，首先要安装好前端！<br>所以输入1，然后回车！<br>安装好了以后，打开网站配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /etc/nginx/conf.d</div><div class="line">vim ss-panel.conf</div></pre></td></tr></table></figure>
+<p>打开配置文件<br>主要是检查<strong>server_name</strong>和<strong>root</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170503/202011192.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></p>
+<h2 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h2><p><code>mysql_secure_installation</code><br>首先输入上述代码进行数据库初始化<br>配置数据库密码等，这个自行设置！<br>然后就是创建数据库和导入数据库了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p</div><div class="line"># 输入自己的密码</div><div class="line">create database ss;</div><div class="line">use ss;</div><div class="line">source  /home/www/panel/db.sql</div></pre></td></tr></table></figure></p>
+<p>真的，有了这个脚本之后，解决了很多麻烦的问题。</p>
+<h2 id="配置配置文件"><a href="#配置配置文件" class="headerlink" title="配置配置文件"></a>配置配置文件</h2><p>配置网页文件（.env），就是站点信息，很简单的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim .env</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">//  ss-panel v3 配置</div><div class="line">//</div><div class="line">// !!! 修改此key为随机字符串确保网站安全 !!!</div><div class="line">key = &apos;randomKey&apos;</div><div class="line">env = &apos;prod&apos;  // 正式环境请保持env为prod确保安全</div><div class="line">debug =  &apos;false&apos;  //  正式环境请确保为false</div><div class="line">appName = &apos;ss-panel3&apos;             //站点名称</div><div class="line">baseUrl = &apos;https://www.google.com&apos;            // 站点地址</div><div class="line">timeZone = &apos;PRC&apos;        // RPC 天朝时间  UTC 格林时间</div><div class="line">pwdMethod = &apos;md5&apos;       // 密码加密   可选 md5,sha256</div><div class="line">salt = &apos;&apos;               // 密码加密用，从旧版升级请留空</div><div class="line">theme    = &apos;default&apos;   // 主题</div><div class="line">session = &apos;file&apos; //默认</div><div class="line">cache   = &apos;file&apos; //默认</div><div class="line">tokenDriver = &apos;db&apos; //默认</div><div class="line">// mu key 用于校验ss-go mu的请求,后边会用到</div><div class="line">muKey = &apos;&apos;</div><div class="line">// 邮件</div><div class="line">mailDriver = &apos;mailgun&apos;   // mailgun   #smtp不在支持,仅供测试</div><div class="line"> </div><div class="line">// 注册限制,每天每个ip能注册的次数</div><div class="line">ipDayLimit = &apos;10&apos;</div><div class="line"> </div><div class="line">// 邮箱验证设置</div><div class="line">emailVerifyEnabled = &apos;false&apos; // 是否开启注册时邮箱验证 (true:开启 false:关闭)</div><div class="line">emailVerifyCodeLength = &apos;8&apos;  // 邮箱验证代码长度</div><div class="line">emailVerifyTTL = &apos;30&apos;        // 验证代码有效时间 单位分钟</div><div class="line"> </div><div class="line">// 用户签到设置</div><div class="line">checkinTime = &apos;22&apos;      // 签到间隔时间 单位小时</div><div class="line">checkinMin = &apos;93&apos;       // 签到最少流量 单位MB</div><div class="line">checkinMax = &apos;97&apos;       // 签到最多流量</div><div class="line"> </div><div class="line">//</div><div class="line">defaultTraffic = &apos;1&apos;      // 用户初始流量 单位GB</div><div class="line">// 注册后获得的邀请码数量</div><div class="line">inviteNum = &apos;2&apos;</div><div class="line"> </div><div class="line">// 记录流量日志到dynamodb ,beta,请勿开启</div><div class="line">log_traffic_dynamodb = &apos;false&apos;</div><div class="line"> </div><div class="line"># database 数据库配置</div><div class="line">db_driver = &apos;mysql&apos;</div><div class="line">db_host = &apos;localhost&apos;</div><div class="line">db_port = &apos;3306&apos;</div><div class="line">db_database = &apos;ss&apos;</div><div class="line">db_username = &apos;root&apos;</div><div class="line">db_password = &apos;root&apos;</div><div class="line">db_charset = &apos;utf8&apos;</div><div class="line">db_collation = &apos;utf8_general_ci&apos;</div><div class="line">db_prefix = &apos;&apos;</div><div class="line"> </div><div class="line"># redis</div><div class="line">redis_scheme = &apos;tcp&apos;</div><div class="line">redis_host = &apos;127.0.0.1&apos;</div><div class="line">redis_port = &apos;6379&apos;</div><div class="line">redis_database = &apos;0&apos;</div><div class="line">redis_pass = &apos;&apos;</div><div class="line"> </div><div class="line"># mailgun</div><div class="line">mailgun_key = &apos;&apos;</div><div class="line">mailgun_domain = &apos;&apos;</div><div class="line">mailgun_sender = &apos;&apos;</div><div class="line"> </div><div class="line"># smtp</div><div class="line">smtp_host = &apos;&apos;</div><div class="line">smtp_username = &apos;&apos;</div><div class="line">smtp_port = &apos;&apos;</div><div class="line">smtp_name = &apos;&apos;</div><div class="line">smtp_sender = &apos;&apos;</div><div class="line">smtp_passsword = &apos;&apos;</div><div class="line">smtp_ssl = &apos;true&apos;</div><div class="line"> </div><div class="line"># aws</div><div class="line">aws_access_key_id = &apos;&apos;</div><div class="line">aws_secret_access_key = &apos;&apos;</div><div class="line">aws_region = &apos;ap-northeast-1&apos;</div><div class="line">aws_ses_region = &apos;us-east-1&apos;</div><div class="line">aws_ses_sender = &apos;&apos;</div></pre></td></tr></table></figure>
+<h2 id="添加管理员"><a href="#添加管理员" class="headerlink" title="添加管理员"></a>添加管理员</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">php xcat createAdmin</div><div class="line"></div><div class="line">add admin/创建管理员帐号.....  </div><div class="line">Enter your email/输入管理员邮箱: h@prinzeugen.net  </div><div class="line">Enter password for: h@prinzeugen.net /为 h@prinzeugen.net 添加密码 xxx  </div><div class="line">Email: h@prinzeugen.net, Password: xxx  </div><div class="line">Press [Y] to create admin..... 按下[Y]确认来确认创建管理员账户..... y  </div><div class="line">start create admin accountSuccessful/ 添加成功!</div></pre></td></tr></table></figure>
+<p>最后登录下网站<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170503/201708892.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<hr>
+<p>以上内容全部复制自：<a href="https://www.echoteen.com/yijian-sspanel-many-user.html/comment-page-1" target="_blank" rel="external">https://www.echoteen.com/yijian-sspanel-many-user.html/comment-page-1</a></p>
+<p>因为ss-panel前端是基于ss原版，而该一键脚本后端基于ssr，因此这里不建议采用该脚本。</p>
+<h1 id="部署并配置-shadowsocks-manyuser"><a href="#部署并配置-shadowsocks-manyuser" class="headerlink" title="部署并配置 shadowsocks-manyuser"></a>部署并配置 shadowsocks-manyuser</h1><p>这里使用的是 <a href="https://github.com/mengskysama/shadowsocks/tree/manyuser" target="_blank" rel="external">https://github.com/mengskysama/shadowsocks/tree/manyuser</a> 版ss</p>
+<h2 id="安装-shadowsocks-manyuser"><a href="#安装-shadowsocks-manyuser" class="headerlink" title="安装 shadowsocks-manyuser"></a>安装 shadowsocks-manyuser</h2><p>先将代码 clone 到本地：<br><code>git clone https://github.com/fsgmhoward/shadowsocks-py-mu.git</code><br>其中的 shadowsocks 子目录才是我们需要的，注意这个地方和其他版本的不一样，ssr里子文件表示单用户。本版根据server.py还是servers.py来判断是不是多用户版本。</p>
+<h2 id="配置-shadowsocks-manyuser"><a href="#配置-shadowsocks-manyuser" class="headerlink" title="配置 shadowsocks-manyuser"></a>配置 shadowsocks-manyuser</h2><p>进入 shadowsocks 目录，将 config_example.py 复制一份到 config.py：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp config_example.py config.py</div><div class="line">vi config.py</div></pre></td></tr></table></figure>
+<p>修改其中第 15 行和第 29~31 行的内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 启用 MultiUser API</div><div class="line">API_ENABLED = True</div><div class="line"></div><div class="line"># 就是在你的站点地址后面加个 /mu</div><div class="line">API_URL = &apos;http://ss.feiyang.li/mu&apos;  </div><div class="line"># 还记得上面在 .env 中填写的 muKey 吗？把它填在这里</div><div class="line">API_PASS = &apos;api_key_just_for_test&apos;</div></pre></td></tr></table></figure></p>
+<p>由于我们选择使用 Mu API 来与前端通信，所以我们不需要修改 config.py 中任何关于数据库的配置。</p>
+<p>好了，现在可以试着运行一下 $ python servers.py 了（注意，是 servers.py 而不是 server.py）。如果没错的话，应该可以看到这样的输出：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170503/201724918.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h1 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h1><h2 id="不能上网"><a href="#不能上网" class="headerlink" title="不能上网"></a>不能上网</h2><p>首先国际惯例查看连接：</p>
+<p><code>netstat -anp | grep 你的端口</code></p>
+<p>正常的话，应该是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Active Internet connections (servers and established)  </div><div class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name  </div><div class="line">tcp        0      0 0.0.0.0:62111            0.0.0.0:*               LISTEN      32083/python  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47177   TIME_WAIT   -  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47161   TIME_WAIT   -  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47160   TIME_WAIT   -  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47157   TIME_WAIT   -</div></pre></td></tr></table></figure></p>
+<p>所以如果你要开放注册，就要这样配置你的 iptables：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 注意是半角冒号，意为允许 12450 及以上的端口</div><div class="line"># 也可以指定 12450:15550 这样的范围</div><div class="line">iptables -I INPUT -p tcp -m tcp --dport 12450: -j ACCEPT</div><div class="line">iptables-save</div></pre></td></tr></table></figure></p>
+<h2 id="ss-panel-的多节点配置"><a href="#ss-panel-的多节点配置" class="headerlink" title="ss-panel 的多节点配置"></a>ss-panel 的多节点配置</h2><p>其实多节点也没咋玄乎，说白了就是多个后端共用一个前端而已。而且我们的后端是使用 Mu API 来与前端进行交互的，所以多节点的配置就更简单了：只要把所有后端的 config.py 中的 API_URL 和 API_PASS 都改成一样即可（记得 API_ENABLED = True）。</p>
+<h2 id="ss服务端安装libsodium支持chacha20"><a href="#ss服务端安装libsodium支持chacha20" class="headerlink" title="ss服务端安装libsodium支持chacha20"></a>ss服务端安装libsodium支持chacha20</h2><p>centos：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y groupinstall &quot;Development Tools&quot;</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
+<p>ubuntu/debian：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apt-get install build-essential</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
+<hr>
+<p>参考链接：<br><a href="https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/" target="_blank" rel="external">https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/</a><br><a href="https://www.echoteen.com/yijian-sspanel-many-user.html/comment-page-1/#comments" target="_blank" rel="external">https://www.echoteen.com/yijian-sspanel-many-user.html/comment-page-1/#comments</a><br><a href="https://github.com/sendya/shadowsocks-panel/wiki/Shadowsocks-Panel-%E9%9D%A2%E6%9D%BF%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B" target="_blank" rel="external">https://github.com/sendya/shadowsocks-panel/wiki/Shadowsocks-Panel-%E9%9D%A2%E6%9D%BF%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-03T12:20:36.153Z" itemprop="dateUpdated">2017年5月3日 20:20</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2017/05/03/ss-panel/" target="_blank" rel="external">http://feiyang.li/2017/05/03/ss-panel/</a>
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GFW/">GFW</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/03/ss-panel/&title=《可能是最简单的ss-panel安装教程》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/03/ss-panel/&title=《可能是最简单的ss-panel安装教程》 — 李飞阳&source=
+因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/03/ss-panel/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《可能是最简单的ss-panel安装教程》 — 李飞阳&url=http://feiyang.li/2017/05/03/ss-panel/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/03/ss-panel/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/02/Coursera-ML-7-Programming-Exercise-3/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Coursera ML(7)-Programming Exercise 3</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'mmmwhy';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃辣条好不好 ಠ౪ಠ
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+ 
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/03/ss-panel/&title=《可能是最简单的ss-panel安装教程》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/03/ss-panel/&title=《可能是最简单的ss-panel安装教程》 — 李飞阳&source=
+因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/03/ss-panel/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《可能是最简单的ss-panel安装教程》 — 李飞阳&url=http://feiyang.li/2017/05/03/ss-panel/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/03/ss-panel/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwUlEQVR42u3aS24jMQwFQN//0s52gEDuR9LNNAalVWAnUikLgh+9XvF6/1r/fn76zWS31x0LFxd3zH1/XKcDTtCceNr/ZMDFxd3nng7IA9bpgM+f5wZcXNznc5Nwln+Li4v7f3DzsNVLmHBxcZ/ATYqfalMj2efGWg0XF3fAzbuU9/18S38XFxe3xX0XV7VFUg1YF6fj4uKucPOAUh2dTpqkF+fi4uKucJOE5nMw6rVFqk89cHFxd7jfGoRMapZCQMTFxV3nzgPWpA0aBT5cXNxFbq8gya9Uvczxn4KLi7vOrRYzVXry4OMikcLFxV3k5s8m5gOVUbqDi4u7wq1C86ZJ8rd5uoOLi7vJzYuW3tAlSW7ya+Di4u5wezVFr4CZjGGiygkXF3eFW34gVWxz/PE7Mlxc3ICbtC2qrZAe62JPXFzcB3DzIqdaCPUGLbi4uHdz38U136E3lMXFxd3kVoPLdw9OCqHmZXBxccfceYqTD03zSzYTHVxc3K9ye4GmGsjyFklzyIqLi/tIbu965bdjuLi4j+TmrZNq1XWR7uDi4i5y80Jl0iqdPO3CxcXd5PYGn0n4S46/ZViLi4vb5/4AtCfDQkvsybsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.11"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.11" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
