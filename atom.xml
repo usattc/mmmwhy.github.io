@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-05-03T12:20:36.153Z</updated>
+  <updated>2017-05-05T06:33:58.316Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -16,18 +16,188 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>shadowsocks-Clients</title>
+    <link href="http://feiyang.li/2017/05/05/ss-client/index.html"/>
+    <id>http://feiyang.li/2017/05/05/ss-client/index.html</id>
+    <published>2017-05-05T06:23:13.000Z</published>
+    <updated>2017-05-05T06:33:58.316Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">本博客介绍上谷歌的方法，密码是我名字拼音。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="enter the password" id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">解密</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
+    
+    <summary type="html">
+    
+      本博客介绍上谷歌的方法，密码是我名字拼音。
+    
+    </summary>
+    
+    
+      <category term="GFW" scheme="http://feiyang.li/tags/GFW/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ss-panel + ss py mu安装教程</title>
+    <link href="http://feiyang.li/2017/05/05/ss-panel-full/index.html"/>
+    <id>http://feiyang.li/2017/05/05/ss-panel-full/index.html</id>
+    <published>2017-05-05T06:09:39.000Z</published>
+    <updated>2017-05-05T06:15:40.764Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>系统介绍： 1g内存，单核，也就是传说中的腾讯1元学生机。centos6.8 x32。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>读者建议：如果使用国外vps<a href="http://feiyang.li/2017/05/03/ss-panel/index.html">建议</a>会快速很多。国内vps建议本方法。</p>
+<h1 id="lnmp环境配置"><a href="#lnmp环境配置" class="headerlink" title="lnmp环境配置"></a>lnmp环境配置</h1><p>这里使用最新的<a href="https://lnmp.org/install.html" target="_blank" rel="external">lnmp1.4</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -c http://soft.vpser.net/lnmp/lnmp1.4beta.tar.gz &amp;&amp; tar zxf lnmp1.4beta.tar.gz &amp;&amp; cd lnmp1.4 &amp;&amp; ./install.sh lnmp</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170504/204651581.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="安装ss-panel前端"><a href="#安装ss-panel前端" class="headerlink" title="安装ss-panel前端"></a>安装ss-panel前端</h1><h2 id="下载-ss-panel-源码"><a href="#下载-ss-panel-源码" class="headerlink" title="下载 ss-panel 源码"></a>下载 ss-panel 源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /home/wwwroot/ </div><div class="line">git clone https://github.com/orvice/ss-panel.git</div></pre></td></tr></table></figure>
+<p>安装好之后，是这个样子的。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170504/205330510.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
+<h2 id="配置-ss-panel"><a href="#配置-ss-panel" class="headerlink" title="配置 ss-panel"></a>配置 ss-panel</h2><h3 id="env文件配置"><a href="#env文件配置" class="headerlink" title=".env文件配置"></a>.env文件配置</h3><p>安装依赖文件，并配置.env<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd /home/wwwroot/ss-panel/</div><div class="line">curl -sS https://install.phpcomposer.com/installer | php</div><div class="line">chmod +x composer.phar</div><div class="line">php composer.phar install</div></pre></td></tr></table></figure></p>
+<ul>
+<li>安装依赖那一步时间会久一些，因为一共有75个依赖，而且很多被墙了（因此如果直接用国外vps，真的会好很多），换了国内源会<strong>稍微</strong>好一些。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170504/215216082.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="漫长的等待" title="">
+                </div>
+                <div class="image-caption">漫长的等待</div>
+            </figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chmod -R 777 storage</div><div class="line">cp .env.example .env</div><div class="line">vi .env</div></pre></td></tr></table></figure>
+<ul>
+<li>这里主要是修改数据库的内容，还有<strong>muKey</strong>。</li>
+</ul>
+<h3 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">lnmp vhost add</div><div class="line"># 写入站点网址</div><div class="line">/home/wwwroot/ss-panel/public</div><div class="line"># 允许重写规则，其余一律是n</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170504/210029356.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>进入nginx配置文件再修改一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/nginx/conf/vhost/</div></pre></td></tr></table></figure></p>
+<p>完整配置文件应该是这个样子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line"> listen 80;</div><div class="line"> #listen [::]:80;</div><div class="line">server_name ss.feiyang.li n;</div><div class="line">index index.html index.htm index.php default.html default.htm default.php;</div><div class="line">root /home/wwwroot/ss.feiyang.li/public;</div><div class="line"> </div><div class="line">location / &#123;</div><div class="line">                        try_files $uri $uri/ /index.php$is_args$args;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">location ~ [^/]\.php(/|$) &#123;</div><div class="line"> # comment try_files $uri =404; to enable pathinfo</div><div class="line"> try_files $uri =404;</div><div class="line"> fastcgi_pass unix:/tmp/php-cgi.sock;</div><div class="line"> fastcgi_index index.php;</div><div class="line"> include fastcgi.conf;</div><div class="line"> #include pathinfo.conf;</div><div class="line">fastcgi_param PHP_ADMIN_VALUE &quot;open_basedir = /home/wwwroot/:/temp/:/proc&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"> </div><div class="line"> location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123;</div><div class="line"> expires 30d;</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"> location ~ .*\.(js|css)?$</div><div class="line"> &#123;</div><div class="line"> expires 12h;</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="新建ss数据库"><a href="#新建ss数据库" class="headerlink" title="新建ss数据库"></a>新建ss数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p</div><div class="line"># 输入自己的密码</div><div class="line">create database ss;</div><div class="line">use ss;</div><div class="line">source  /home/wwwroot/ss-panel/db.sql;</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170504/212157512.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>现在访问你的站点，就可以看到 ss-panel 啦：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170505/124252344.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="添加管理员账户"><a href="#添加管理员账户" class="headerlink" title="添加管理员账户"></a>添加管理员账户</h2><p>文字排序会让强迫症奔溃。。。。。<br><code>php xcat createAdmin</code></p>
+<h2 id="邮箱设置"><a href="#邮箱设置" class="headerlink" title="邮箱设置"></a>邮箱设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vi .env</div><div class="line">mailgun_key = &apos;key-0****c09&apos; //上面的KEY</div><div class="line">mailgun_domain = &apos;https://api.mailgun.net/v3/feiyang.li&apos; //你经过验证过的域名</div><div class="line">mailgun_sender = &apos;postmaster@****.net&apos; //postmaster@你经过验证过的域名</div></pre></td></tr></table></figure>
+<h2 id="https证书"><a href="#https证书" class="headerlink" title="https证书"></a>https证书</h2><p><code>lnmp ssl add</code><br>/home/wwwroot/ss-panel/1_ss.feiyang.li_bundle.crt<br>/home/wwwroot/ss-panel/2_ss.feiyang.li.key<br>获得绿色小锁~<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170505/124311675.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h1 id="安装-SS-PY-MU-服务端"><a href="#安装-SS-PY-MU-服务端" class="headerlink" title="安装 SS PY MU 服务端"></a>安装 SS PY MU 服务端</h1><h2 id="安装libsodium支持chacha20"><a href="#安装libsodium支持chacha20" class="headerlink" title="安装libsodium支持chacha20"></a>安装libsodium支持chacha20</h2><p>centos：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y groupinstall &quot;Development Tools&quot;</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
+<p>ubuntu/debian：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apt-get install build-essential</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
+<h2 id="将代码-clone-到本地："><a href="#将代码-clone-到本地：" class="headerlink" title="将代码 clone 到本地："></a>将代码 clone 到本地：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~/shadowsocks-py-mu/shadowsocks/</div><div class="line">git clone https://github.com/fsgmhoward/shadowsocks-py-mu.git</div></pre></td></tr></table></figure>
+<p>其中的 shadowsocks 子目录才是我们需要的，外面的是 setup.py 的相关文件。</p>
+<h2 id="配置-shadowsocks-manyuser"><a href="#配置-shadowsocks-manyuser" class="headerlink" title="配置 shadowsocks-manyuser"></a>配置 shadowsocks-manyuser</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp config_example.py config.py</div><div class="line">vi config.py</div></pre></td></tr></table></figure>
+<p>修改其中第 15 行和第 29~31 行的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 启用 MultiUser API</div><div class="line">API_ENABLED = True</div><div class="line"></div><div class="line"># 就是在你的站点地址后面加个 /mu</div><div class="line">API_URL = &apos;http://ss.feiyang.li/mu&apos;  </div><div class="line"># 还记得上面在 .env 中填写的 muKey 吗？把它填在这里</div><div class="line">API_PASS = &apos;api_key_just_for_test&apos;</div></pre></td></tr></table></figure>
+<p>由于我们选择使用 Mu API 来与前端通信，所以我们不需要修改 config.py 中任何关于数据库的配置。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170505/134246486.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>好了，现在可以试着运行一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python servers.py</div></pre></td></tr></table></figure></p>
+<p>（注意，是 <strong>servers.py</strong> 而不是 server.py）。如果没错的话，应该可以看到这样的输出：</p>
+<h2 id="配置-ss-manyuser-守护进程"><a href="#配置-ss-manyuser-守护进程" class="headerlink" title="配置 ss-manyuser 守护进程"></a>配置 ss-manyuser 守护进程</h2><ul>
+<li><p>安装 supervisor （用的是上面安装过的 pip）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install python-setuptools</div><div class="line">easy_install supervisor</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建 supervisor 配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo_supervisord_conf &gt; /etc/supervisord.conf</div></pre></td></tr></table></figure>
+</li>
+<li><p>运行 supervisor 服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">supervisord</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置 supervisor 以监控 ss-manyuser 运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim /etc/supervisord.conf</div></pre></td></tr></table></figure>
+</li>
+<li><p>在文件尾部添加如下内容并酌情修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[program:ss-manyuser]</div><div class="line">command = python /root/shadowsocks-py-mu/shadowsocks/servers.py  </div><div class="line">user = root  </div><div class="line">autostart = true  </div><div class="line">autorestart = true</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>其中 command 里的目录请自行修改为你的 servers.py所在的绝对路径。</p>
+<ul>
+<li><p>重启 supervisor 服务以加载配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">killall -HUP supervisord</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看 shadowsocks-manyuser 是否已经运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ps -ef | grep servers.py</div><div class="line">root 952 739 0 15:40 ? 00:00:00 python /root/shadowsocks-rm/shadowsocks/servers.py</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以通过以下命令管理 shadowsock-manyuser 的状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">supervisorctl &#123;start|stop|restart&#125; ss-manyuser</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>其余常见错误见：<br><a href="http://feiyang.li/2017/05/03/ss-panel/index.html#常见错误">http://feiyang.li/2017/05/03/ss-panel/index.html#常见错误</a></p>
+<p>与上文一样，本文参考了如下博主文章，在此致谢：<br><a href="https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/" target="_blank" rel="external">https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/</a><br><a href="http://bitzhi.com/2016/03/install-ss-go-mu-and-ss-panel-v3/" target="_blank" rel="external">http://bitzhi.com/2016/03/install-ss-go-mu-and-ss-panel-v3/</a><br><a href="https://levyhsu.com/?p=98" target="_blank" rel="external">https://levyhsu.com/?p=98</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;系统介绍： 1g内存，单核，也就是传说中的腾讯1元学生机。centos6.8 x32。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>可能是最简单的ss-panel安装教程</title>
     <link href="http://feiyang.li/2017/05/03/ss-panel/index.html"/>
     <id>http://feiyang.li/2017/05/03/ss-panel/index.html</id>
     <published>2017-05-03T12:13:08.000Z</published>
-    <updated>2017-05-03T12:20:36.153Z</updated>
+    <updated>2017-05-05T06:13:28.436Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
-<p>产品要求：fuck the wall、在可用范围内尽量简单一些（因此不考虑ssr，魔改panel也不考虑）</p>
+<p>产品要求：fuck the wall、在可用范围内尽量简单一些（因此不考虑ssr，魔改panel也不考虑）读者建议：如果使用国外vps，建议本方法。国内vps<a href="http://feiyang.li/2017/05/05/ss-panel-full/index.html">建议</a></p>
 <h1 id="ss-panel前端"><a href="#ss-panel前端" class="headerlink" title="ss-panel前端"></a>ss-panel前端</h1><p>我看官方文档，按部就班的做了一个前端，最后才发现竟然有ss-panel一键脚本，真的是血都要吐出来了。好气哦。这里直接介绍一键脚本方式。</p>
 <h2 id="脚本下载以及运行"><a href="#脚本下载以及运行" class="headerlink" title="脚本下载以及运行"></a>脚本下载以及运行</h2><p>首先运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum -y install screen</div><div class="line">screen -S ssmanyuser</div></pre></td></tr></table></figure></p>
 <p>然后执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://cloud.echoteen.com/s/24bSM2Ba48JTHlQ/download -O ss-install.bin</div><div class="line">chmod a+x ss-install.bin</div><div class="line">bash ss-install.bin</div></pre></td></tr></table></figure></p>
@@ -103,7 +273,7 @@
     <published>2017-05-02T10:01:38.000Z</published>
     <updated>2017-05-02T10:04:58.026Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>machine-learning-ex3.zip <a href="http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex3.zip" target="_blank" rel="external">下载链接</a>，第四周的课程相对来说比较简单，大致介绍了神经网络相关内容。</p>
 </blockquote>
 <hr>
@@ -199,7 +369,7 @@ theta2: (10, 26)
     <published>2017-04-15T13:42:33.000Z</published>
     <updated>2017-04-15T13:47:22.229Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>神经网络模型</p>
 </blockquote>
 <hr>
@@ -300,7 +470,7 @@ theta2: (10, 26)
     <published>2017-03-30T04:46:00.000Z</published>
     <updated>2017-04-15T12:16:09.671Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p><a href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">线性回归算法</a>，可用于房屋价格的估计及股票市场分析。 <a href="https://www.coursera.org/learn/machine-learning/programming/ixFof/logistic-regression" target="_blank" rel="external">Logistic Regression</a> （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在<a href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">这里</a></p>
 </blockquote>
 <hr>
@@ -406,7 +576,7 @@ theta2: (10, 26)
     <published>2017-03-27T11:13:38.000Z</published>
     <updated>2017-03-28T07:49:36.625Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/3" target="_blank" rel="external">第三周Coursera课程</a>  <strong>binary classification problem</strong></p>
 </blockquote>
 <hr>
@@ -568,7 +738,7 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
     <published>2017-03-26T11:00:29.000Z</published>
     <updated>2017-03-27T11:32:14.121Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Multivariate Linear Regression and Programming Exercise 1</p>
 </blockquote>
 <hr>
@@ -665,7 +835,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-25T10:49:36.000Z</published>
     <updated>2017-03-27T11:35:22.375Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression</p>
 </blockquote>
 <hr>
@@ -787,7 +957,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-24T09:05:47.000Z</published>
     <updated>2017-03-24T09:26:24.294Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>《算法导论》这门课的老师是<a href="http://cs.ustc.edu.cn/szdw/bdjs/201006/t20100614_22062.html" target="_blank" rel="external">黄刘生</a>和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。</p>
 </blockquote>
 <hr>
@@ -935,7 +1105,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-17T08:25:27.000Z</published>
     <updated>2017-03-26T11:39:21.829Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以<code>.idx1-ubyte</code>后缀，包含60000个训练图像。将这些图像展示出来，需要利用到<a href="http://feiyang.li/2017/03/17/python-struct/">struct模块</a>。</p>
 </blockquote>
 <hr>
@@ -1010,7 +1180,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-17T06:08:07.000Z</published>
     <updated>2017-03-26T11:39:20.941Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p><a href="https://docs.python.org/3/library/struct.html#module-struct" target="_blank" rel="external">struct</a> — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具<strong>Python struct 模块</strong>。</p>
 </blockquote>
 <hr>
@@ -1191,7 +1361,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-16T02:52:28.000Z</published>
     <updated>2017-03-25T10:51:10.817Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式</p>
 </blockquote>
 <hr>
@@ -1259,7 +1429,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-15T05:22:44.000Z</published>
     <updated>2017-03-16T02:57:34.710Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。</p>
 </blockquote>
 <hr>
@@ -1332,7 +1502,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-11T07:06:14.000Z</published>
     <updated>2017-03-13T10:45:25.356Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>但行好事，莫问前程。真正能做到的能有几个呢？</p>
 </blockquote>
 <hr>
@@ -1473,7 +1643,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-10T05:52:53.000Z</published>
     <updated>2017-03-27T11:44:05.567Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本文介绍了<code>raw_input</code> 和 <code>input</code>在<code>python2</code>和<code>python3</code>上的区别，以及如何利用正则表达式和<code>input</code>键盘输入一维数组和二维数组。</p>
 </blockquote>
 <hr>
@@ -1551,7 +1721,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-09T14:22:16.000Z</published>
     <updated>2017-03-25T05:10:12.327Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>快速排序是一种非常优秀的排序方法 </p>
 </blockquote>
 <a id="more"></a>
@@ -1604,7 +1774,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-03T06:17:00.000Z</published>
     <updated>2017-03-06T14:07:04.569Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>使用github学生优惠内的digitalocean，一键搭建vpn。获得60刀，免费用一年~</p>
 </blockquote>
 <hr>
@@ -1758,7 +1928,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-26T13:28:39.000Z</published>
     <updated>2017-05-02T07:15:03.603Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>jetbrains 家的东西都非常好看，但是价格贵的令人发指，所以我搭建了一个 Pycharm激活服务器，可以用来激活 Pycharm，IntelliJ IDEA，WebStorm。避免频繁更换激活码的问题。</p>
 </blockquote>
 <hr>
@@ -1840,7 +2010,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-24T12:57:01.000Z</published>
     <updated>2017-02-25T05:59:28.975Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง </p>
 </blockquote>
 <hr>
@@ -1910,207 +2080,6 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
       <category term="hexo" scheme="http://feiyang.li/tags/hexo/"/>
     
       <category term="plugins" scheme="http://feiyang.li/tags/plugins/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Django 创建第一个项目</title>
-    <link href="http://feiyang.li/2017/02/18/django-hello-world/index.html"/>
-    <id>http://feiyang.li/2017/02/18/django-hello-world/index.html</id>
-    <published>2017-02-18T11:37:59.000Z</published>
-    <updated>2017-02-18T12:41:10.174Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
-<p>上手使用Python的Web框架– Django</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<p>网上教程安装环境多是linux环境，所以我写一下windows系统下创建Django项目。基于Django 1.10 和Python3.5，作为学生狗的好处之一，就是有很多时间，慢慢琢磨新技术。</p>
-<h1 id="windows上virtualenv-安装及使用"><a href="#windows上virtualenv-安装及使用" class="headerlink" title="windows上virtualenv 安装及使用"></a>windows上virtualenv 安装及使用</h1><p>一开始我不太懂virtualenv 到底有什么意思，后来慢慢各种package装的多了后，发现还是很有必要的。举个例子：如果应用A需要jinja 2.7，而应用B需要jinja 2.6怎么办？</p>
-<p>这种情况下，每个应用可能需要各自拥有一套“独立”的Python运行环境。virtualenv就是用来为一个应用创建一套“隔离”的Python运行环境。</p>
-<h2 id="正常安装过程"><a href="#正常安装过程" class="headerlink" title="正常安装过程"></a>正常安装过程</h2><ul>
-<li><p>安装virtualenv</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install virtualenv</div></pre></td></tr></table></figure>
-</li>
-<li><p>为项目安装虚拟环境<br>为该<strong>虚拟环境</strong>起个名字，新建文件夹，<code>cd</code>进入。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">virtualenv env</div></pre></td></tr></table></figure>
-</li>
-<li><p>激活环境</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">your_env_dir\Scripts\activate</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Pycharm使用虚拟环境"><a href="#Pycharm使用虚拟环境" class="headerlink" title="Pycharm使用虚拟环境"></a>Pycharm使用虚拟环境</h2><p>上边说的那种方法，完全没有实用性，太扯淡了。切换环境难于上青天，用Pycharm会简便很多。</p>
-<ul>
-<li>新建项目<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170218/191620497.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></li>
-<li>用Pycharm建立虚拟环境<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170218/191841405.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure>
-</li>
-</ul>
-<p>新建之后，在第一个图片那个地方进行选择就可以了，建议新建conda-env，自动新建在envs环境下，方便管理</p>
-<p>至此，django环境搭建完毕，接下来学习django工程的创建，以及简单的在网页中显示出”Hello World”。</p>
-<h1 id="初识Django工程"><a href="#初识Django工程" class="headerlink" title="初识Django工程"></a>初识Django工程</h1><h2 id="点击Create创建工程"><a href="#点击Create创建工程" class="headerlink" title="点击Create创建工程"></a>点击Create创建工程</h2><p>见创建后的工程截图：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170218/192837742.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="Django" title="">
-                </div>
-                <div class="image-caption">Django</div>
-            </figure></p>
-<p>文件如下:</p>
-<ul>
-<li>my_site: 项目的容器。</li>
-<li>manage.py: 一个实用的命令行工具，可让你以各种方式与该 Django 项目进行交互。</li>
-<li>my_site/<strong>init</strong>.py: 一个空文件，告诉 Python 该目录是一个 Python 包。</li>
-<li>my_site/settings.py: 该 Django 项目的设置/配置。</li>
-<li>my_site/urls.py: 该 Django 项目的 URL 声明; 一份由 Django 驱动的网站”目录”。</li>
-<li>my_site/wsgi.py: 一个 WSGI 兼容的 Web 服务器的入口，以便运行你的项目。</li>
-</ul>
-<h2 id="直接启动Django项目"><a href="#直接启动Django项目" class="headerlink" title="直接启动Django项目"></a>直接启动Django项目</h2><p>来看执行的结果，启动的方式是：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py runserver <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">8000</span></div></pre></td></tr></table></figure></p>
-<p>0.0.0.0让其它电脑可连接到开发服务器，8000为端口号。如果不说明，那么端口号默认为8000。</p>
-<h2 id="Pycharm启动Django项目"><a href="#Pycharm启动Django项目" class="headerlink" title="Pycharm启动Django项目"></a>Pycharm启动Django项目</h2><ul>
-<li>打开manage.py文件</li>
-<li>在菜单栏中Run中选择Edit Configurations，见截图：<br>修改<strong>Script parameters:</strong> <code>runserver</code><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170218/193330168.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="Script parameters" title="">
-                </div>
-                <div class="image-caption">Script parameters</div>
-            </figure></li>
-<li>ctrl + shift+ F10 运行<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170218/193636035.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="输出" title="">
-                </div>
-                <div class="image-caption">输出</div>
-            </figure>
-</li>
-</ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170218/193700547.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="页面" title="">
-                </div>
-                <div class="image-caption">页面</div>
-            </figure>
-<hr>
-<h1 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello world"></a>Hello world</h1><ul>
-<li><p>新建 view.py<br>在先前创建的 my_site 目录下的 my_site 目录新建一个 view.py 文件，并输入代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"Hello world ! "</span>)</div></pre></td></tr></table></figure>
-<ul>
-<li><p>我们从 django.http 中导入了 HttpResponse 这个类。我们会在接下来用到这个类。</p>
-</li>
-<li><p>我们定义了一个叫做 hello 的视图函数(view function)。每个view function至少要有一个参数，通常被叫做 request 。这是一个对象，包含了触发这个 view function的Web请求的信息， 它是 django.http.HttpRequest 的一个实例(instance)。 在这个例子中，虽然我们不对这个 request 做任何处理，但是我们还必须要把它作为视图的第一个参数。</p>
-</li>
-<li><p>这个函数只有一行简单的代码：它仅仅返回一个 HttpResponse 对象，这个对象包含了文本“Hello world”。</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>记住，一个视图本身就是一个Python的函数，这个函数接受一个 HttpRequest 作为它的第一个参数，并返回 一个 HttpResponse 的实例。要想让一个Python函数成为一个Django的视图，你需要让它满足这两个条件。 </p>
-<ul>
-<li>修改urls.py<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> include, url</div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> my_site.view <span class="keyword">import</span> hello</div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^hello/$'</span>, hello)</div><div class="line">]</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><ul>
-<li><p>URLconf<br>在Django里，要关联view function到一个URL，需要用到 URLconf。URLconf 就像是你的Django站点的目录。本质上，它是一个URL和这个URL将调用的view function之间的映射关系。 通过这种方式，你就可以告诉Django：“对于这个URL，调用这段代码，对于那个URL，调用那段代码。”例如，当用户访问 /hello/ 时，调用view function hello() ， 这个view function在 views.py 中。因此需要在使用function前，进行声明：<code>from my_site.view import hello</code>。</p>
-</li>
-<li><p>URLpattern<br>首先，我们从模块mysite/views.py中导入了 hello 这个view function。Python的导入语法用mysite.views表示 mysite/views.py 。(这段代码假设了mysite/views.py在Python的搜索路径中) 接着，我们添加了url(r’^hello/$’, hello), 到 urlpatterns 中。这一行被叫做一个URLpattern。 url() 函数会告诉Django如何处理你配置的url。 url() 的第一个参数是一个模式匹配字符串( 正则表达式)，第二个参数处理这个URLpattern的view function。</p>
-</li>
-</ul>
-<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><ul>
-<li><p>正则表达式<br>我们在正则表达式字符串前面加了一个 r 。在Python中，这表示一个原始字符串(raw string)，Python不会去转义那些反斜杠()。在普通的Python字符串中，反斜杠会被用来转义特殊字符，比如字符串 ‘\n’ 会被解释成换行符。当你加上 r 之后，Python就不会转义那些字符了， r’\n’ 就是一个包括了一个反斜杠和一个小写字母“n”的字符串。正则表达式中反斜杠的用法和Python字符串中反斜杠的用法刚好冲突了。所以在Python中使用正则表达式的时候最好都加上 r 。本书中所有的URLpattern都会用这种形式。</p>
-</li>
-<li><p>URLpattern的语法</p>
-<ul>
-<li><p>Django在检查URL模式之前，会移除每个URL最开始的斜杠。这意味着URLpattern并不包括 /hello 开头那个斜杠。(一开始，这可能不太直观，但是这样做简化了很多事情。)</p>
-</li>
-<li><p>匹配模式里面包括了一个脱字符( ^ )和一个美元符( \$ )。这两个符号在正则表达式里面的有特别的意义： ^ 要求从字符串开头开始匹配， \$ 则是要求对字符串尾部进行匹配。</p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>这个URLconf中我们是把 hello 这个view function直接作为一个对象传递的，而不是去调用它。 这是Pyhton(作为动态语言)的一个重要特征，函数是一级对象(first-class objects)，你可以像 传递其它变量一样传递一个函数。很洋气吧？</p>
-<hr>
-<p>以上</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;上手使用Python的Web框架– Django&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="Django" scheme="http://feiyang.li/tags/Django/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第2.1题：Python统计日记最重要的词</title>
-    <link href="http://feiyang.li/2017/02/17/python-camp2-1/index.html"/>
-    <id>http://feiyang.li/2017/02/17/python-camp2-1/index.html</id>
-    <published>2017-02-17T09:04:55.000Z</published>
-    <updated>2017-03-27T11:44:11.367Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
-<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目2.1</strong>： 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding: utf-8</span></div><div class="line"><span class="keyword">import</span> re, os</div><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</div><div class="line"></div><div class="line"><span class="comment"># 目标文件所在目录</span></div><div class="line">PATH = <span class="string">'D:'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getCounter</span><span class="params">(source)</span>:</span></div><div class="line">    <span class="comment">#输入一个英文的纯文本文件，统计其中的单词出现的个数</span></div><div class="line">    <span class="keyword">with</span> open(source) <span class="keyword">as</span> f:</div><div class="line">        data = f.read()</div><div class="line">    data = data.lower()<span class="comment">#字母全部小写</span></div><div class="line">    datalist = re.split(<span class="string">r'[\s]+'</span>, data)<span class="comment">#根据空白字符，将data进行划分</span></div><div class="line">    <span class="keyword">return</span> Counter(datalist)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(PATH)</span>:</span></div><div class="line">    <span class="comment"># 切换到目标文件所在目录</span></div><div class="line">    os.chdir(PATH)</div><div class="line">    <span class="comment"># 遍历该目录下的txt文件</span></div><div class="line">    total_counter = Counter() <span class="comment"># 生成Counter()对象</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> os.listdir(os.getcwd()):</div><div class="line">        <span class="keyword">if</span> os.path.splitext(i)[<span class="number">1</span>] == <span class="string">'.txt'</span>:<span class="comment">#分离扩展名</span></div><div class="line">            total_counter += getCounter(i)<span class="comment"># 多个Counter()叠加</span></div><div class="line">    <span class="keyword">return</span> total_counter.most_common()<span class="comment">#Counter对象转化为list格式</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    dic = run(PATH)</div><div class="line">    <span class="keyword">for</span> i  <span class="keyword">in</span> range(len(dic)):</div><div class="line">        print(<span class="string">'%15s  ----&gt;   %3s'</span> % (dic[i][<span class="number">0</span>],dic[i][<span class="number">1</span>]))</div></pre></td></tr></table></figure>
-<h1 id="出现的错误"><a href="#出现的错误" class="headerlink" title="出现的错误"></a>出现的错误</h1><h2 id="编码问题"><a href="#编码问题" class="headerlink" title="编码问题"></a>编码问题</h2><p><strong>UnicodeDecodeError: ‘gbk’ codec can’t decode byte…</strong><br>两种解决方法：</p>
-<ul>
-<li><p>decode(‘utf-8’)重新编码一下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fp = open(filename,<span class="string">'rb'</span>)</div><div class="line"></div><div class="line">content = fp.read().decode(<span class="string">'utf-8'</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>open方法指定参数encoding=’UTF-8’:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">content= open(<span class="string">'filename'</span>, mode=<span class="string">'rb'</span>, encoding=<span class="string">'UTF-8'</span>)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>但是得注意一下，原文到底是不是UTF-8编码。反正Python编码这里是个大坑，多加小心。</p>
-<h2 id="文件名、目录名或卷标语法不正确"><a href="#文件名、目录名或卷标语法不正确" class="headerlink" title="文件名、目录名或卷标语法不正确"></a>文件名、目录名或卷标语法不正确</h2><p>Path里边的斜杠是 <strong>/</strong> 不是 \<br><code>PATH = &#39;E:/Python/pydata-book-master/ch02&#39;</code></p>
-<h1 id="AttributeError-‘list’-object-has-no-attribute-‘…"><a href="#AttributeError-‘list’-object-has-no-attribute-‘…" class="headerlink" title="AttributeError: ‘list’ object has no attribute ‘…"></a>AttributeError: ‘list’ object has no attribute ‘…</h1><p>看看那个object到底是什么，<code>print(type(name))</code> ，然后再查查其对应的函数。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;题目来自：&lt;a href=&quot;https://github.com/mmmwhy/python-camp&quot;&gt;Python 练习册&lt;/a&gt;。&lt;strong&gt;题目2.1&lt;/strong&gt;： 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="Python_camp" scheme="http://feiyang.li/categories/Python-camp/"/>
-    
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
-    
-      <category term="自然语言处理" scheme="http://feiyang.li/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
   </entry>
   

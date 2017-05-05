@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://feiyang.li/2017/05/05/ss-client/">
+    
+    
+    <title>shadowsocks-Clients | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="GFW">
+    <meta name="description" content="本博客介绍上谷歌的方法，密码是我名字拼音。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shadowsocks-Clients">
+<meta property="og:url" content="http://feiyang.li/2017/05/05/ss-client/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="本博客介绍上谷歌的方法，密码是我名字拼音。">
+<meta property="og:updated_time" content="2017-05-05T06:33:58.316Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shadowsocks-Clients">
+<meta name="twitter:description" content="本博客介绍上谷歌的方法，密码是我名字拼音。">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/auth/login"  >
+                <i class="icon icon-lg icon-bolt"></i>
+                肥羊免费SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+
+    <div id="myTime">
+ <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="180" height="80" id="honehoneclock" align="middle">
+ <param name="allowScriptAccess" value="always">
+ <param name="movie" value="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf">
+ <param name="quality" value="high">
+ <param name="bgcolor" value="#ffffff">
+ <param name="wmode" value="transparent">
+ <embed wmode="transparent" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf" quality="high" bgcolor="#ffffff" width="180" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+ </object>
+ </div>
+
+
+
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">shadowsocks-Clients</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">shadowsocks-Clients</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-05T06:23:13.000Z" itemprop="datePublished" class="page-time">
+  2017-05-05
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#encrypt-message"><span class="post-toc-number">1.</span> <span class="post-toc-text">本博客介绍上谷歌的方法，密码是我名字拼音。</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-ss-client"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">shadowsocks-Clients</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年05月05日 14:23" datetime="2017-05-05T06:23:13.000Z"  itemprop="datePublished">2017-05-05</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">本博客介绍上谷歌的方法，密码是我名字拼音。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="enter the password" id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">解密</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-05T06:33:58.316Z" itemprop="dateUpdated">2017年5月5日 14:33</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2017/05/05/ss-client/" target="_blank" rel="external">http://feiyang.li/2017/05/05/ss-client/</a>
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GFW/">GFW</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/05/ss-client/&title=《shadowsocks-Clients》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/05/ss-client/&title=《shadowsocks-Clients》 — 李飞阳&source=本博客介绍上谷歌的方法，密码是我名字拼音。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/05/ss-client/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《shadowsocks-Clients》 — 李飞阳&url=http://feiyang.li/2017/05/05/ss-client/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/05/ss-client/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/05/ss-panel-full/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ss-panel + ss py mu安装教程</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2008929"></script>
+<!-- UY END -->
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃辣条好不好 ಠ౪ಠ
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+ 
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/05/ss-client/&title=《shadowsocks-Clients》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/05/ss-client/&title=《shadowsocks-Clients》 — 李飞阳&source=本博客介绍上谷歌的方法，密码是我名字拼音。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/05/ss-client/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《shadowsocks-Clients》 — 李飞阳&url=http://feiyang.li/2017/05/05/ss-client/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/05/ss-client/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwklEQVR42u3asbKDMAwEwPz/T/Pa12B0EhiKdZVhElhSaKSzf7/yOv6t9fWzb1budtvCxcUdc4/lqrAqDz67Q92Ai4u7n3v2gPXnXrFL74mLi/t9btrKzP8CXFzc73PTwlRvmHBxcb/GrQw/lfGm1yo9Mqvh4uIOuPWU8rnPj+S7uLi4Le4RrnVU2otZg6fj4uJu4abtS4ruhaQX4QsuLu7D3HrYsb5+Vwhy8cK4uLgbuWkZqocXQeNS+BUuLu5+bqUA9TZcK9BS4cPFxd3ITR+Z5pkVVqnBwsXF3cKtl6f6lmf9xdJtG1xc3D3c+jbn5FhGOjidlldcXNyN3MoI1AtYe6FqPKvh4uLeyk2jjbStSa/UoxlcXNynub2DFPUxad4YBd0WLi7urdze6JKWsxR9cWYEFxd3C3d+ICNtj+LhBxcXdyM3bUrSaKO+Ln6Fi4v7MPcIVy8omQ9XuLi4O7lpcZmHJumpkObL4OLijrmTrdZecUzHqmaNxMXFHXPXQ0hz53YQkcT5Li4u7qvctAhORqPgjXFxcV/lpgHKvNjdVndxcXFD7jzcrL9SfYjCxcV9i5tufE6iz97dcHFxN3L/AFm8cbCR0RGsAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.11"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.11" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
