@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://feiyang.li/2017/03/17/python-struct/">
+    
+    
+    <title>细究Python struct 模块 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="Machine Learning,Python">
+    <meta name="description" content="struct — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具Python struct 模块。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="细究Python struct 模块">
+<meta property="og:url" content="http://feiyang.li/2017/03/17/python-struct/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="struct — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具Python struct 模块。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170216/212835886.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-03-26T11:39:20.941Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="细究Python struct 模块">
+<meta name="twitter:description" content="struct — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具Python struct 模块。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170216/212835886.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/auth/login"  >
+                <i class="icon icon-lg icon-bolt"></i>
+                肥羊免费SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+
+    <div id="myTime">
+ <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="180" height="80" id="honehoneclock" align="middle">
+ <param name="allowScriptAccess" value="always">
+ <param name="movie" value="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf">
+ <param name="quality" value="high">
+ <param name="bgcolor" value="#ffffff">
+ <param name="wmode" value="transparent">
+ <embed wmode="transparent" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf" quality="high" bgcolor="#ffffff" width="180" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+ </object>
+ </div>
+
+
+
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">细究Python struct 模块</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">细究Python struct 模块</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-17T06:08:07.000Z" itemprop="datePublished" class="page-time">
+  2017-03-17
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#关于格式字符串"><span class="post-toc-number">1.</span> <span class="post-toc-text">关于格式字符串</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#struct-pack-fmt-v1-v2-…"><span class="post-toc-number">2.</span> <span class="post-toc-text">struct.pack(fmt, v1, v2, …)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#大端存储和小端存储"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">大端存储和小端存储</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#struct-unpack-fmt-buffer"><span class="post-toc-number">3.</span> <span class="post-toc-text">struct.unpack(fmt, buffer)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#struct-calcsize-fmt"><span class="post-toc-number">4.</span> <span class="post-toc-text">struct.calcsize(fmt)</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-python-struct"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">细究Python struct 模块</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年03月17日 14:08" datetime="2017-03-17T06:08:07.000Z"  itemprop="datePublished">2017-03-17</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p><a href="https://docs.python.org/3/library/struct.html#module-struct" target="_blank" rel="external">struct</a> — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具<strong>Python struct 模块</strong>。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="关于格式字符串"><a href="#关于格式字符串" class="headerlink" title="关于格式字符串"></a>关于格式字符串</h1><p>在Python手册中，给出了C语言中常用类型与Python类型对应的格式符：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">格式符</th>
+<th style="text-align:left">C语言类型</th>
+<th style="text-align:left">Python类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">x</td>
+<td style="text-align:left">pad byte</td>
+<td style="text-align:left">no value</td>
+</tr>
+<tr>
+<td style="text-align:left">c</td>
+<td style="text-align:left">char</td>
+<td style="text-align:left">string of length 1</td>
+</tr>
+<tr>
+<td style="text-align:left">b</td>
+<td style="text-align:left">signed char</td>
+<td style="text-align:left">integer</td>
+</tr>
+<tr>
+<td style="text-align:left">B</td>
+<td style="text-align:left">unsigned char</td>
+<td style="text-align:left">integer</td>
+</tr>
+<tr>
+<td style="text-align:left">?</td>
+<td style="text-align:left">_Bool</td>
+<td style="text-align:left">bool</td>
+</tr>
+<tr>
+<td style="text-align:left">h</td>
+<td style="text-align:left">short</td>
+<td style="text-align:left">integer</td>
+</tr>
+<tr>
+<td style="text-align:left">H</td>
+<td style="text-align:left">unsigned short</td>
+<td style="text-align:left">integer</td>
+</tr>
+<tr>
+<td style="text-align:left">i</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">integer</td>
+</tr>
+<tr>
+<td style="text-align:left">I</td>
+<td style="text-align:left">unsigned int</td>
+<td style="text-align:left">integer or long</td>
+</tr>
+<tr>
+<td style="text-align:left">l</td>
+<td style="text-align:left">long</td>
+<td style="text-align:left">integer</td>
+</tr>
+<tr>
+<td style="text-align:left">L</td>
+<td style="text-align:left">unsigned long</td>
+<td style="text-align:left">long</td>
+</tr>
+<tr>
+<td style="text-align:left">q</td>
+<td style="text-align:left">long long</td>
+<td style="text-align:left">long</td>
+</tr>
+<tr>
+<td style="text-align:left">Q</td>
+<td style="text-align:left">unsigned long</td>
+<td style="text-align:left">long    long</td>
+</tr>
+<tr>
+<td style="text-align:left">f</td>
+<td style="text-align:left">float</td>
+<td style="text-align:left">float</td>
+</tr>
+<tr>
+<td style="text-align:left">d</td>
+<td style="text-align:left">double</td>
+<td style="text-align:left">float</td>
+</tr>
+<tr>
+<td style="text-align:left">s</td>
+<td style="text-align:left">char[]</td>
+<td style="text-align:left">string</td>
+</tr>
+<tr>
+<td style="text-align:left">p</td>
+<td style="text-align:left">char[]</td>
+<td style="text-align:left">string</td>
+</tr>
+<tr>
+<td style="text-align:left">P</td>
+<td style="text-align:left">void *</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h1 id="struct-pack-fmt-v1-v2-…"><a href="#struct-pack-fmt-v1-v2-…" class="headerlink" title="struct.pack(fmt, v1, v2, …)"></a>struct.pack(fmt, v1, v2, …)</h1><blockquote>
+<p>Return a string containing the values v1, v2, … packed according to the given format. The arguments must match the values required by the format exactly.</p>
+</blockquote>
+<p>struct.pack用于将Python的值根据格式符，转换为字符串,准确来说是Byte。这个地方我们之前有提过，<a href="http://feiyang.li/2017/02/16/python-camp9/#Python3内的unicode和bytes">Python3内的unicode和bytes</a>，在Py3内<strong>文本总是Unicode，由str类型表示，二进制数据则由bytes类型表示。</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>Py2是没有Byte这么个东西的。参数fmt是格式字符串，v1, v2, …表示要转换的python值。下面的例子将两个整数转换为字符串:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> struct  </div><div class="line"></div><div class="line">a = <span class="number">20</span>  </div><div class="line">b = <span class="number">400</span></div><div class="line"></div><div class="line">byte = struct.pack(<span class="string">"ii"</span>, a, b) <span class="comment">#转换后的str相当于其他语言中的字节流（字节数组），可以在网络上传输  </span></div><div class="line">big = struct.pack(<span class="string">"&gt;ii"</span>, a, b)  <span class="comment">#大端保存</span></div><div class="line">small = struct.pack(<span class="string">"&lt;ii"</span>, a, b) <span class="comment">#小端保存</span></div><div class="line">print(byte)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x14\x00\x00\x00\x90\x01\x00\x00'</span></div><div class="line">print(big)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x00\x00\x00\x14\x00\x00\x01\x90'</span></div><div class="line">print(small)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x14\x00\x00\x00\x90\x01\x00\x00'</span></div><div class="line"><span class="keyword">print</span> (byte[<span class="number">0</span>],byte[<span class="number">4</span>]) </div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x14\x00\x00\x00\x90\x01\x00\x00'</span></div></pre></td></tr></table></figure>
+<p>格式符”i”表示转换为int，’ii’表示有两个int变量。进行转换后的结果长度为8个字节（int类型占用4个字节，两个int为8个字节）<del>可以看到输出的结果是乱码，因为结果是二进制数据，所以显示为乱码。可以使用python的内置函数repr来获取可识别的字符串</del> ，以上问题在Python3中不会出现了其中十六进制的0x00000014, 0x00000190分别表示20和400。</p>
+<p>上一段代码<strong>最后那个很有意思诶，竟然是默认采用小端</strong>。</p>
+<h2 id="大端存储和小端存储"><a href="#大端存储和小端存储" class="headerlink" title="大端存储和小端存储"></a>大端存储和小端存储</h2><p>小端：<strong>较高</strong>的有效字节存放在<strong>较高</strong>的存储器地址，<strong>较低</strong>的有效字节存放在<strong>较低</strong>的存储器地址。<br>大端：<strong>较高</strong>的有效字节存放在<strong>较低</strong>的存储器地址，<strong>较低</strong>的有效字节存放在<strong>较高</strong>的存储器地址。</p>
+<p>如果将一个16位的整数0x1234存放到一个短整型变量（short）中。这个短整型变量在内存中的存储在大小端模式由下表所示。 </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">地址偏移</th>
+<th style="text-align:left">大端模式</th>
+<th style="text-align:left">小端模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0x00</td>
+<td style="text-align:left">12（OP0）</td>
+<td style="text-align:left">34（OP1）</td>
+</tr>
+<tr>
+<td style="text-align:left">0x01</td>
+<td style="text-align:left">34（OP1）</td>
+<td style="text-align:left">12（OP0）</td>
+</tr>
+</tbody>
+</table>
+<p>采用大端方式进行数据存放符合人类的正常思维，而采用小端方式进行数据存放利于计算机处理。</p>
+<h1 id="struct-unpack-fmt-buffer"><a href="#struct-unpack-fmt-buffer" class="headerlink" title="struct.unpack(fmt, buffer)"></a>struct.unpack(fmt, buffer)</h1><blockquote>
+<p>Unpack from the buffer <em>buffer</em> (presumably packed by pack(fmt, …)) according to the format string <em>fmt</em>. The result is a tuple even if it contains exactly one item. The buffer’s size in bytes must match the size required by the format, as reflected by <a href="https://docs.python.org/3/library/struct.html#struct.calcsize" target="_blank" rel="external">calcsize()</a>.</p>
+</blockquote>
+<p>struct.unpack做的工作刚好与struct.pack相反，用于将字节流转换成python数据类型。它的函数原型为：struct.unpack(fmt, string)，该函数返回一个tuple。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a1, a2 = struct.unpack(<span class="string">"ii"</span>, byte)  </div><div class="line">print(type(struct.unpack(<span class="string">"ii"</span>, byte)),a1,a2)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:&lt;class 'tuple'&gt; 20 400</span></div></pre></td></tr></table></figure>
+<h1 id="struct-calcsize-fmt"><a href="#struct-calcsize-fmt" class="headerlink" title="struct.calcsize(fmt)"></a>struct.calcsize(fmt)</h1><blockquote>
+<p>Return the size of the struct (and hence of the bytes object produced by pack(fmt, …)) corresponding to the format string fmt.</p>
+</blockquote>
+<p>struct.calcsize用于计算格式字符串所对应的结果的长度，如：struct.calcsize(‘ii’)，返回8。因为两个int类型所占用的长度是8个字节。</p>
+<hr>
+<p>参考链接：<br><a href="https://docs.python.org/3/library/struct.html" target="_blank" rel="external">https://docs.python.org/3/library/struct.html</a><br><a href="http://blog.csdn.net/occupy8/article/details/11052103" target="_blank" rel="external">http://blog.csdn.net/occupy8/article/details/11052103</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-26T11:39:20.941Z" itemprop="dateUpdated">2017年3月26日 19:39</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2017/03/17/python-struct/" target="_blank" rel="external">http://feiyang.li/2017/03/17/python-struct/</a>
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/03/17/python-struct/&title=《细究Python struct 模块》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/03/17/python-struct/&title=《细究Python struct 模块》 — 李飞阳&source=
+struct — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具Python struct..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/03/17/python-struct/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《细究Python struct 模块》 — 李飞阳&url=http://feiyang.li/2017/03/17/python-struct/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/03/17/python-struct/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/03/17/python-mnist/index.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Python读取mnist</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/16/Ubuntu-caffe/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Ubuntu14.04+CPU+Python的Caffe安装教程</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2008929"></script>
+<!-- UY END -->
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃辣条好不好 ಠ౪ಠ
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+ 
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/03/17/python-struct/&title=《细究Python struct 模块》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/03/17/python-struct/&title=《细究Python struct 模块》 — 李飞阳&source=
+struct — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具Python struct..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/03/17/python-struct/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《细究Python struct 模块》 — 李飞阳&url=http://feiyang.li/2017/03/17/python-struct/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/03/17/python-struct/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNUlEQVR42u3ay47CMBBE0fz/T4ctErJT1eUguX29QkDiHEbq6YevS1731xq9//3p7+v5p/Ndli0YMGBsy7inS/nO6Kr5Q+tIZRcYMGCcwBhFMOXW7vfnO87Zw/dhwIABQ0j13MA9D8EwYMCAkTBqwVEPtTBgwICRFLF5p0tpq71ei8OAAWNDht51///rV+YbMGDA2IpRa/frRaw7mLxLCwYMGL0ZeoBzE0fl0ZWRp3EtDBgwmjLeC6NJc03ZZfh3gAEDxjEM9yBFUmkmLb+HgAsDBoymDDeBc5PC2gjBTg1hwIDRlOEejMgTwdo9pSocBgwYTRluYZm34XTeQwiGAQPGAQz3djpSf6Ba2fwwiYUBA0YLRn4gLA+vyWAABgwYpzH0IlNJKN0fxS1rh9fCgAGjKaOW6rlHNPRU7+FohVuRw4ABY3OGO7bUAe7PVCuPhyNMGDBgtGMkzf1aMudeKx22gAEDRmuGUl66bTU9KLtBfzjfgAEDRlNGHiiVRljtbm4CCgMGjBMYysGLWuOs1gW0gzUMGDAOYOgDS3cAqbft3IHBpf82MGDAaMeoHQjTH92l2octYMCA0Yhxm2tVGre26IUBA0Zvhr7cQlc/nOEGemUvGDBg9GO4QdZtyekHy6IjGjBgwDiAkQe+pFmm/wdYXIvDgAGjKcMdHsyDtbI7DBgwYOQBNwmstcJ4OB6AAQNGa4ZSxNYSPjfIuneGAQPGCQy9dHTnDLXwuvaIBgwYMDZnfACh1/AuWbWYaAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.11"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.11" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
