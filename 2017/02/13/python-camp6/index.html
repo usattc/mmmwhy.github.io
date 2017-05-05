@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://feiyang.li/2017/02/13/python-camp6/">
+    
+    
+    <title>第1.6题：使用Python生成字母验证码图片 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="Python,Python_camp,图片处理">
+    <meta name="description" content="题目来自：Python 练习册。题目1.6：使用 Python 生成类似于下图中的字母验证码图片查看更多于本人博客：李飞阳">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第1.6题：使用Python生成字母验证码图片">
+<meta property="og:url" content="http://feiyang.li/2017/02/13/python-camp6/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="题目来自：Python 练习册。题目1.6：使用 Python 生成类似于下图中的字母验证码图片查看更多于本人博客：李飞阳">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170213/132814657.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170213/133458968.jpg?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170213/133523965.jpg?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-03-27T11:44:24.442Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第1.6题：使用Python生成字母验证码图片">
+<meta name="twitter:description" content="题目来自：Python 练习册。题目1.6：使用 Python 生成类似于下图中的字母验证码图片查看更多于本人博客：李飞阳">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170213/132814657.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/auth/login"  >
+                <i class="icon icon-lg icon-bolt"></i>
+                肥羊免费SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+
+    <div id="myTime">
+ <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="180" height="80" id="honehoneclock" align="middle">
+ <param name="allowScriptAccess" value="always">
+ <param name="movie" value="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf">
+ <param name="quality" value="high">
+ <param name="bgcolor" value="#ffffff">
+ <param name="wmode" value="transparent">
+ <embed wmode="transparent" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf" quality="high" bgcolor="#ffffff" width="180" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+ </object>
+ </div>
+
+
+
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">第1.6题：使用Python生成字母验证码图片</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">第1.6题：使用Python生成字母验证码图片</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-13T05:36:02.000Z" itemprop="datePublished" class="page-time">
+  2017-02-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考代码"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考代码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#小结"><span class="post-toc-number">2.</span> <span class="post-toc-text">小结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-python-camp6"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">第1.6题：使用Python生成字母验证码图片</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年02月13日 13:36" datetime="2017-02-13T05:36:02.000Z"  itemprop="datePublished">2017-02-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Python-camp/">Python_camp</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>题目来自：<a href="https://github.com/mmmwhy/python-camp" target="_blank" rel="external">Python 练习册</a>。<strong>题目1.6：</strong>使用 Python 生成类似于下图中的<strong>字母验证码图片</strong><br>查看更多于本人博客：<a href="https://feiyang.li/">李飞阳</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h1><p>我们用随机颜色填充背景，再画上文字，最后对图像进行模糊，得到验证码图片如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont, ImageFilter</div><div class="line"></div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"><span class="comment"># 随机字母:</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">rndChar</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> chr(random.randint(<span class="number">65</span>, <span class="number">90</span>))</div><div class="line"></div><div class="line"><span class="comment"># 随机颜色1:</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">rndColor</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> (random.randint(<span class="number">64</span>, <span class="number">255</span>), random.randint(<span class="number">64</span>, <span class="number">255</span>), random.randint(<span class="number">64</span>, <span class="number">255</span>))</div><div class="line"></div><div class="line"><span class="comment"># 随机颜色2:</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">rndColor2</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> (random.randint(<span class="number">32</span>, <span class="number">127</span>), random.randint(<span class="number">32</span>, <span class="number">127</span>), random.randint(<span class="number">32</span>, <span class="number">127</span>))</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">compose</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># 240 x 60:</span></div><div class="line">    width = <span class="number">240</span></div><div class="line">    height = <span class="number">60</span></div><div class="line">    image = Image.new(<span class="string">'RGB'</span>, (width, height), (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</div><div class="line">    <span class="comment"># 创建Font对象:</span></div><div class="line">    font = ImageFont.truetype(<span class="string">'C:/windows/fonts/Arial.ttf'</span>, <span class="number">36</span>)</div><div class="line">    <span class="comment"># 创建Draw对象:</span></div><div class="line">    draw = ImageDraw.Draw(image)</div><div class="line">    <span class="comment"># 填充每个像素:</span></div><div class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(width):</div><div class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> range(height):</div><div class="line">            draw.point((x, y), fill=rndColor())</div><div class="line">    <span class="comment"># 输出文字:</span></div><div class="line">    letter = [] </div><div class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">4</span>):</div><div class="line">        letter.append(rndChar())</div><div class="line">        draw.text((<span class="number">60</span> * t + <span class="number">10</span>, <span class="number">10</span>), letter[t], font=font, fill=rndColor2())</div><div class="line">    <span class="comment"># 模糊:</span></div><div class="line">    image.save(<span class="string">'code.jpg'</span>, <span class="string">'jpeg'</span>)</div><div class="line">    image = image.filter(ImageFilter.BLUR)</div><div class="line">    image.save(<span class="string">'filter.jpg'</span>, <span class="string">'jpeg'</span>)</div><div class="line">    <span class="keyword">print</span> (letter)</div><div class="line">compose()</div></pre></td></tr></table></figure></p>
+<p>输出验证码原本数字：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/132814657.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="运行结果" title="">
+                </div>
+                <div class="image-caption">运行结果</div>
+            </figure><br>模糊前：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/133458968.jpg?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
+<p><code>image = image.filter(ImageFilter.BLUR)    # 模糊:</code><br>模糊后：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170213/133523965.jpg?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure></p>
+<p>如果运行的时候报错：<br><code>IOError: cannot open resource</code></p>
+<p>这是因为PIL无法定位到字体文件的位置，可以根据操作系统提供绝对路径，比如：<br><code>&#39;/Library/Fonts/Arial.ttf&#39;</code></p>
+<p>要详细了解PIL的强大功能，请请参考Pillow官方文档：<a href="https://pillow.readthedocs.io/en/4.0.x/" target="_blank" rel="external">https://pillow.readthedocs.io/en/4.0.x/</a></p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>PIL提供了操作图像的强大功能，可以通过简单的代码完成复杂的图像处理。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-27T11:44:24.442Z" itemprop="dateUpdated">2017年3月27日 19:44</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2017/02/13/python-camp6/" target="_blank" rel="external">http://feiyang.li/2017/02/13/python-camp6/</a>
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python-camp/">Python_camp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图片处理/">图片处理</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/02/13/python-camp6/&title=《第1.6题：使用Python生成字母验证码图片》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/02/13/python-camp6/&title=《第1.6题：使用Python生成字母验证码图片》 — 李飞阳&source=
+题目来自：Python 练习册。题目1.6：使用 Python 生成类似于下图中的字母验证码图片查看更多于本人博客：李飞阳
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/02/13/python-camp6/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第1.6题：使用Python生成字母验证码图片》 — 李飞阳&url=http://feiyang.li/2017/02/13/python-camp6/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/02/13/python-camp6/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/02/13/jiewang/index.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">《结网》</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/02/13/python-camp5/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">第1.5题：使用Python处理图片</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'mmmwhy';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃辣条好不好 ಠ౪ಠ
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+ 
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/02/13/python-camp6/&title=《第1.6题：使用Python生成字母验证码图片》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/02/13/python-camp6/&title=《第1.6题：使用Python生成字母验证码图片》 — 李飞阳&source=
+题目来自：Python 练习册。题目1.6：使用 Python 生成类似于下图中的字母验证码图片查看更多于本人博客：李飞阳
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/02/13/python-camp6/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《第1.6题：使用Python生成字母验证码图片》 — 李飞阳&url=http://feiyang.li/2017/02/13/python-camp6/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/02/13/python-camp6/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABu0lEQVR42u3aS27DMAwFwNz/0u42QJr4kZQVBxitCjegxxuCHz0e8TmeTvLk+XkSbfHBxcUdc4+PJ6G8/jL/4NyAi4u7n/vuBUnoKrT6kbi4uL/LnRBxcXF/nVstUPLGCRcX927c5AWTlqmaHBf0ari4uANuPqW87u9L5ru4uLgt7lE8vRFJrxj6JzIuLu4Wbp5Qdg5JT+Lg4uJu5FZXqkmqqg5BooEsLi7uxdzqgiTpRHoJMYqMi4u7kZsnst7S9HNSy1MhLi7uHm6CmDQ5vdVsuVfDxcVdyp2PQavjkup/T5ofXFzcC7iTsUV1nJpfsDgpiXBxcS/m9gaja58X0iIuLu5G7ud2pbd2TZJUeQ2Di4u7hVu9Dzm/jFW9rPn2l7i4uBdz88VnvhrJL2qMLmbh4uJu4VaDNrc3xTi4uLh34FZbnXxNMqrCcHFxt3CP4qmORSYDFFxc3G9xq8llbeikkGq+ERcXd8zNh6TV0qQ3eB0VOri4uEu5k0TTG7yOejVcXNybcZsXJlalTlxc3Btz84+pdl0n5Q4uLu5Gbt6oTNqb6voWFxf3W9ze4rMaIr/e0Ut/uLi4i7h/0JtxsOlSQeUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.11"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.11" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

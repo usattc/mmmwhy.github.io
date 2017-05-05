@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://feiyang.li/2017/02/07/Github-Pages-CDN/">
+    
+    
+    <title>Github Pages + CDN全站加速 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="CDN,Pages">
+    <meta name="description" content="常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速度是一种不错的选择。以Coding Pages和腾讯CDN为例。
+
+本方法同样可以对虚拟主机进行CDN加速。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Github Pages + CDN全站加速">
+<meta property="og:url" content="http://feiyang.li/2017/02/07/Github-Pages-CDN/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速度是一种不错的选择。以Coding Pages和腾讯CDN为例。
+
+本方法同样可以对虚拟主机进行CDN加速。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/123752053.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/123341114.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/140625255.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/141205144.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/151918753.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/152322828.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/152658278.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/153033720.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170126/153601063.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-04-16T07:29:45.192Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Github Pages + CDN全站加速">
+<meta name="twitter:description" content="常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速度是一种不错的选择。以Coding Pages和腾讯CDN为例。
+
+本方法同样可以对虚拟主机进行CDN加速。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170126/123752053.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/auth/login"  >
+                <i class="icon icon-lg icon-bolt"></i>
+                肥羊免费SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+
+    <div id="myTime">
+ <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="180" height="80" id="honehoneclock" align="middle">
+ <param name="allowScriptAccess" value="always">
+ <param name="movie" value="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf">
+ <param name="quality" value="high">
+ <param name="bgcolor" value="#ffffff">
+ <param name="wmode" value="transparent">
+ <embed wmode="transparent" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf" quality="high" bgcolor="#ffffff" width="180" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+ </object>
+ </div>
+
+
+
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Github Pages + CDN全站加速</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Github Pages + CDN全站加速</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-02-07T05:38:38.000Z" itemprop="datePublished" class="page-time">
+  2017-02-07
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#加速效果展示"><span class="post-toc-number">1.</span> <span class="post-toc-text">加速效果展示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不使用CDN加速"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">不使用CDN加速</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用CDN加速"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">使用CDN加速</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#利用Pages搭建个人网站"><span class="post-toc-number">2.</span> <span class="post-toc-text">利用Pages搭建个人网站</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用CDN为Pages加速"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用CDN为Pages加速</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获得CNAME的IP地址"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">获得CNAME的IP地址</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置回源host"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">配置回源host</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置域名CNAME"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">配置域名CNAME</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#检查"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">检查</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#分地区DNS"><span class="post-toc-number">4.</span> <span class="post-toc-text">分地区DNS</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Github-Pages-CDN"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Github Pages + CDN全站加速</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年02月07日 13:38" datetime="2017-02-07T05:38:38.000Z"  itemprop="datePublished">2017-02-07</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速度是一种不错的选择。以Coding Pages和腾讯CDN为例。</p>
+</blockquote>
+<p>本方法同样可以对虚拟主机进行CDN加速。</p>
+<a id="more"></a>
+<hr>
+<p>本方法可解决以下问题：</p>
+<ul>
+<li>提高Pages的访问速度；</li>
+<li>利用 CDN 解决百度爬虫被 Github Pages 拒绝的问题；</li>
+</ul>
+<hr>
+<h1 id="加速效果展示"><a href="#加速效果展示" class="headerlink" title="加速效果展示"></a>加速效果展示</h1><h2 id="不使用CDN加速"><a href="#不使用CDN加速" class="headerlink" title="不使用CDN加速"></a>不使用CDN加速</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/123752053.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="不使用CDN" title="">
+                </div>
+                <div class="image-caption">不使用CDN</div>
+            </figure>
+<p>平均响应时间130ms，比我想象中要好。可能因为现在是上午11点上网的人少（?），之前我在学校测得时候动辄200ms。</p>
+<h2 id="使用CDN加速"><a href="#使用CDN加速" class="headerlink" title="使用CDN加速"></a>使用CDN加速</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/123341114.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="CDN加速后" title="">
+                </div>
+                <div class="image-caption">CDN加速后</div>
+            </figure>
+<p>可以看到平均响应时间大约24.2ms，祖国山河一片绿。多环保~</p>
+<h1 id="利用Pages搭建个人网站"><a href="#利用Pages搭建个人网站" class="headerlink" title="利用Pages搭建个人网站"></a>利用Pages搭建个人网站</h1><p>这一步在网上搜一下，有很多教程，在此不赘述。</p>
+<h1 id="使用CDN为Pages加速"><a href="#使用CDN为Pages加速" class="headerlink" title="使用CDN为Pages加速"></a>使用CDN为Pages加速</h1><p>推荐腾讯云CDN，<a href="https://www.qcloud.com/product/cdn" target="_blank" rel="external">https://www.qcloud.com/product/cdn</a> 目前可以免费送300G流量。<br>根据服务商的要求，如Coding要求为：</p>
+<blockquote>
+<p><strong>在您的域名管理面板中添加 CNAME 记录指向到 pages.coding.me</strong>。</p>
+</blockquote>
+<h2 id="获得CNAME的IP地址"><a href="#获得CNAME的IP地址" class="headerlink" title="获得CNAME的IP地址"></a>获得CNAME的IP地址</h2><p>ping 一下 <strong>pages.coding.me</strong>，获得IP地址： 23.248.162.138，源站设置为该IP。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/140625255.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="设置源站" title="">
+                </div>
+                <div class="image-caption">设置源站</div>
+            </figure></p>
+<p>接下来，加速服务配置，默认时长都是30天。明显这个时间忒长了，我们可以设置为1天或者几个小时。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/141205144.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="设置缓存逻辑" title="">
+                </div>
+                <div class="image-caption">设置缓存逻辑</div>
+            </figure><br><strong> 点击提交 </strong>，过约5分钟会返回提示成功。点击管理进一步设置；</p>
+<h2 id="配置回源host"><a href="#配置回源host" class="headerlink" title="配置回源host"></a>配置回源host</h2><p>我们可以把回源host理解为，访问<em>23.248.162.138</em>这个IP地址的服务器时，向服务器发出的url访问请求，服务器根据host头部里边的url地址，映射到内部相应访问空间去。<strong>回源host是用于CDN回源到源站时的访问域名，即http请求包包头的host字段内容。</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/151918753.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="回源host" title="">
+                </div>
+                <div class="image-caption">回源host</div>
+            </figure></p>
+<h2 id="配置域名CNAME"><a href="#配置域名CNAME" class="headerlink" title="配置域名CNAME"></a>配置域名CNAME</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/152322828.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="CNAME" title="">
+                </div>
+                <div class="image-caption">CNAME</div>
+            </figure>
+<p>为域名配置相应的CNAME，常见的是<strong>@</strong>和<strong>www</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/152658278.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><p>ping 一下自己的域名，如果PING到后缀为cdntip.com或后缀为tcdn.qq.com表示域名CNAME已生效。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/153033720.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>使用CDN为Pages加速，到这一步已经算结束了。但是由于使用国内CDN，使得网站在国外加载速度会慢的令人发指。</p>
+<h1 id="分地区DNS"><a href="#分地区DNS" class="headerlink" title="分地区DNS"></a>分地区DNS</h1><p>国内国外设置不同CANME，国外指向 <strong>mmmwhy.github.io</strong>或者<strong>pages.coding.me</strong>（设置自己的），国内的指向刚才CDN给出的地址。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170126/153601063.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<hr>
+<p>以上</p>
+<p>通过此方法可以将pages或者国外的免费空间，速度快到令人发指的地步~<br>祝新年快乐~</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-04-16T07:29:45.192Z" itemprop="dateUpdated">2017年4月16日 15:29</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2017/02/07/Github-Pages-CDN/" target="_blank" rel="external">http://feiyang.li/2017/02/07/Github-Pages-CDN/</a>
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDN/">CDN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pages/">Pages</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/02/07/Github-Pages-CDN/&title=《Github Pages + CDN全站加速》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/02/07/Github-Pages-CDN/&title=《Github Pages + CDN全站加速》 — 李飞阳&source=
+常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/02/07/Github-Pages-CDN/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Github Pages + CDN全站加速》 — 李飞阳&url=http://feiyang.li/2017/02/07/Github-Pages-CDN/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/02/07/Github-Pages-CDN/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/02/07/python_camp2/index.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">第1.2题：使用 Python 如何生成 200 个激活码</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/01/12/jupyter-notebook/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">jupyter notebook使用帮助</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'mmmwhy';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃辣条好不好 ಠ౪ಠ
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+ 
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/02/07/Github-Pages-CDN/&title=《Github Pages + CDN全站加速》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/02/07/Github-Pages-CDN/&title=《Github Pages + CDN全站加速》 — 李飞阳&source=
+常见的Pages服务有 Coding Pages和Github Pages，因为众所周知的原因，此类服务仅能放在国外，通过国内CDN加速Pages访问速..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/02/07/Github-Pages-CDN/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Github Pages + CDN全站加速》 — 李飞阳&url=http://feiyang.li/2017/02/07/Github-Pages-CDN/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/02/07/Github-Pages-CDN/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aS27DMAwFwNz/0u62QBDnkXSCWBqtDKewNF0Q4ufxiNfxb7369fn5/G+ev3m+ywULAwPjtozjdJ1vkG/56pvJ8/nZMDAw9mHkYbQHzjHV8I2BgYFRvdjNL4IYGBgYc8b5mySAVsM3BgYGRp7EVhPXH83FMTAwbsjID/H954/0NzAwMG7FOIqrd31MvnYMFgYGxtqMPMD1BiOSUlqeuL4Z/sDAwNiAkV/URmGx2CoopKwYGBhLM+bhstqSnLQQykNpGBgYN2f0wmKOTJqU5VblMxIDA2MDRjUqJ+zJm/LuGBgYSzN64XKSS1YHKcr7YmBgLMrI25P5lkkJL38TXRwxMDAWZfTGKeZHzJPhpDmBgYGxA6MZp4sjYr2Rsqj8h4GBsRkjGaroJb29RmaExMDA2IaRHG4egj84bIGBgbEBIymo5aMYeRsyb4g2k1gMDIybM6qf7qWsvSZoXv7DwMDYh5GX+KtXtzys5yW2N/8ODAyM5RjfueTl3+mV8DAwMHZgJBe7vNA2H/+qBncMDIwdGJODPuJVHcjIC3AYGBirMo7i6m2ZD2o0828MDIylGZNgVy2ZvRmYaA18lGEYGBi3ZSQH6qWd0c00bnliYGBgVBPO3vXuWuQF0xkYGBibMa6d+2iOrmJgYGAEm1VHN6pp8EsMBgbGBowkib1geKvVSIjCLgYGxtKM6pDEeasg2WbeIh31NzAwMO7E+AMnYtsZogSi0QAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.11"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.11" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

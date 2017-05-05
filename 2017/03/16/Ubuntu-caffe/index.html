@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://feiyang.li/2017/03/16/Ubuntu-caffe/">
+    
+    
+    <title>Ubuntu14.04+CPU+Python的Caffe安装教程 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="Machine Learning,Python">
+    <meta name="description" content="背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu14.04+CPU+Python的Caffe安装教程">
+<meta property="og:url" content="http://feiyang.li/2017/03/16/Ubuntu-caffe/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170315/155549210.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-03-25T10:51:10.817Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu14.04+CPU+Python的Caffe安装教程">
+<meta name="twitter:description" content="背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170315/155549210.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/auth/login"  >
+                <i class="icon icon-lg icon-bolt"></i>
+                肥羊免费SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+
+    <div id="myTime">
+ <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="180" height="80" id="honehoneclock" align="middle">
+ <param name="allowScriptAccess" value="always">
+ <param name="movie" value="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf">
+ <param name="quality" value="high">
+ <param name="bgcolor" value="#ffffff">
+ <param name="wmode" value="transparent">
+ <embed wmode="transparent" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf" quality="high" bgcolor="#ffffff" width="180" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+ </object>
+ </div>
+
+
+
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Ubuntu14.04+CPU+Python的Caffe安装教程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Ubuntu14.04+CPU+Python的Caffe安装教程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-03-16T02:52:28.000Z" itemprop="datePublished" class="page-time">
+  2017-03-16
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装开发所依赖的安装包"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装开发所依赖的安装包</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#升级g"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">升级g++</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装anaconda，建议安装。"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装anaconda，建议安装。</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装OpenCV2-4-这个经常失败，建议跳过，不影响使用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">安装OpenCV2.4(这个经常失败，建议跳过，不影响使用)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装atlas"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">安装atlas</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#编译Caffe"><span class="post-toc-number">2.</span> <span class="post-toc-text">编译Caffe</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载caffe"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">下载caffe</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改Makefile配置"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">修改Makefile配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编译caffe"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">编译caffe</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更新安装依赖。"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">更新安装依赖。</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#编译Python接口"><span class="post-toc-number">3.</span> <span class="post-toc-text">编译Python接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#确保pip已经安装"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">确保pip已经安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#再次回到caffe根目录我们可以执行："><span class="post-toc-number">3.2.</span> <span class="post-toc-text">再次回到caffe根目录我们可以执行：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编译python接口"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">编译python接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运行python"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">运行python</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#加入PythonPath"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">加入PythonPath</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Ubuntu-caffe"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Ubuntu14.04+CPU+Python的Caffe安装教程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年03月16日 10:52" datetime="2017-03-16T02:52:28.000Z"  itemprop="datePublished">2017-03-16</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="安装开发所依赖的安装包"><a href="#安装开发所依赖的安装包" class="headerlink" title="安装开发所依赖的安装包"></a>安装开发所依赖的安装包</h1><p> 打开Ubuntu的终端，输入命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler</div><div class="line">sudo apt-get install --no-install-recommends libboost-all-dev</div><div class="line">sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev</div><div class="line">sudo apt-get install libatlas-base-dev</div></pre></td></tr></table></figure></p>
+<h2 id="升级g"><a href="#升级g" class="headerlink" title="升级g++"></a>升级g++</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g++ --version&lt;/span&gt;</div></pre></td></tr></table></figure>
+<p>查看g++版本，由于编译需要至少4.8版本的g++，一般来说，自带版本应该时4.8。如果想要升级g++，这里也提供以下下载方式，并且设置默认编译的g++为最新版本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:ubuntu-toolchain-r/test #用来添加库信息的帮助脚本。  </div><div class="line">sudo apt-get update                                 #更新  </div><div class="line">sudo apt-get install gcc-4.9                        </div><div class="line">sudo apt-get install g++-4.9                        #更新g++，gcc  </div><div class="line">sudo ln -sf /usr/bin/gcc-4.9 /usr/bin/gcc           #在调用的gcc库上做一个与最新版本的软连接，更改g++的默认版本。  </div><div class="line">sudo ln -sf /usr/bin/gcc-ar-4.9 /usr/bin/gcc-ar  </div><div class="line">sudo ln -sf /usr/bin/gcc-ranlib-4.9 /usr/bin/gcc-ranlib</div></pre></td></tr></table></figure></p>
+<h2 id="安装anaconda，建议安装。"><a href="#安装anaconda，建议安装。" class="headerlink" title="安装anaconda，建议安装。"></a>安装anaconda，建议安装。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-4.3.1-Linux-x86_64.sh</div><div class="line">bash Anaconda3-4.3.1-Linux-x86_64.sh</div></pre></td></tr></table></figure>
+<p>安装过程中记得一直选择默认的就行，傻瓜式安装。是否在bashrc中添加路径，这里选择“yes”就可以。忘了的话，解决方法很麻烦，自己查查吧。</p>
+<h2 id="安装OpenCV2-4-这个经常失败，建议跳过，不影响使用"><a href="#安装OpenCV2-4-这个经常失败，建议跳过，不影响使用" class="headerlink" title="安装OpenCV2.4(这个经常失败，建议跳过，不影响使用)"></a>安装OpenCV2.4(这个经常失败，建议跳过，不影响使用)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/bearpaw/Install-OpenCV</div><div class="line">cd Install-OpenCV/Ubuntu/2.4</div><div class="line">sh ./opencv2_4_10.sh</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170315/155549210.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="jayrambhia/Install-OpenCV.git" title="">
+                </div>
+                <div class="image-caption">jayrambhia/Install-OpenCV.git</div>
+            </figure>
+<p>编译过程很慢，中间我还报过一次错，不得不重新来了一次。如果觉得难度不够的话，可以选择官网的安装包：<a href="http://opencv.org/" target="_blank" rel="external">http://opencv.org/</a>，我这里是根据大神编译过的版本进行安装的。</p>
+<h2 id="安装atlas"><a href="#安装atlas" class="headerlink" title="安装atlas"></a>安装atlas</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libatlas-base-dev                #安装atlas简单易行。</div></pre></td></tr></table></figure>
+<h1 id="编译Caffe"><a href="#编译Caffe" class="headerlink" title="编译Caffe"></a>编译Caffe</h1><h2 id="下载caffe"><a href="#下载caffe" class="headerlink" title="下载caffe"></a>下载caffe</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~  </div><div class="line">git clone https://github.com/BVLC/caffe.git</div></pre></td></tr></table></figure>
+<h2 id="修改Makefile配置"><a href="#修改Makefile配置" class="headerlink" title="修改Makefile配置"></a>修改Makefile配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd caffe  </div><div class="line">cp Makefile.config.example Makefile.config </div><div class="line">gedit Makefile.config         #我个人比较喜欢gedit ，用起来方便。</div></pre></td></tr></table></figure>
+<ul>
+<li>CPU_ONLY := 1</li>
+<li>配置一些引用文件（增加部分主要是解决新版本下，HDF5的路径问题）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">INCLUDE_DIRS := $(PYTHON_INCLUDE)  /usr/local/include  /usr/include/hdf5/serial</div><div class="line">LIBRARY_DIRS := $(PYTHON_LIB)  /usr/local/lib   /usr/lib /usr/lib/x86_64-linux-gnu/hdf5/serial</div><div class="line">BLAS := atlas</div></pre></td></tr></table></figure>
+<h2 id="编译caffe"><a href="#编译caffe" class="headerlink" title="编译caffe"></a>编译caffe</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">make all -j8</div><div class="line">make test -j8</div><div class="line">make runtest -j8</div></pre></td></tr></table></figure>
+<p>另外, 这个make默认是用CPU单核运算,如果想要快一点, 比如我想使用四核, 在make后面加上-j4标签。<br>如果上面4行某一行报错之后想要重试,建议先make clean再重新开始。</p>
+<h2 id="更新安装依赖。"><a href="#更新安装依赖。" class="headerlink" title="更新安装依赖。"></a>更新安装依赖。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd caffe  </div><div class="line">cat python/requirements.txt | xargs -L 1 sudo pip install</div></pre></td></tr></table></figure>
+<h1 id="编译Python接口"><a href="#编译Python接口" class="headerlink" title="编译Python接口"></a>编译Python接口</h1><p>打开新的终端, 用which Python和which pip<br>确定使用的是anaconda提供的python环境，然后进入<code>caffe/python,</code> 执行下列命令，</p>
+<h2 id="确保pip已经安装"><a href="#确保pip已经安装" class="headerlink" title="确保pip已经安装"></a>确保pip已经安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install python-pip</div><div class="line">for req in $(cat requirements.txt); do pip install $req; done  #python运行需要的库。</div></pre></td></tr></table></figure>
+<h2 id="再次回到caffe根目录我们可以执行："><a href="#再次回到caffe根目录我们可以执行：" class="headerlink" title="再次回到caffe根目录我们可以执行："></a>再次回到caffe根目录我们可以执行：</h2><p>在caffe根目录的python文件夹下，有一个requirements.txt的清单文件，上面列出了需要的依赖库，按照这个清单安装就可以了。<br>在安装scipy库的时候，需要fortran编译器（gfortran)，如果没有这个编译器就会报错，因此，我们可以先安装一下。</p>
+<p>回到caffe的根目录，然后执行安装代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd ~/caffe</div><div class="line">sudo apt-get install gfortran</div><div class="line">cd ./python</div><div class="line">for req in $(cat requirements.txt); do pip install $req; done</div></pre></td></tr></table></figure>
+<p>安装完成以后，再次回到caffe根目录我们可以执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install -r python/requirements.txt</div></pre></td></tr></table></figure></p>
+<p>就会看到，安装成功的，都会显示Requirement already satisfied, 没有安装成功的，会继续安装。</p>
+<h2 id="编译python接口"><a href="#编译python接口" class="headerlink" title="编译python接口"></a>编译python接口</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make pycaffe -j8</div></pre></td></tr></table></figure>
+<h2 id="运行python"><a href="#运行python" class="headerlink" title="运行python"></a>运行python</h2><p>进入<code>caffe/python</code> ，运行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ python2<span class="number">.7</span></div><div class="line">Python <span class="number">2.7</span><span class="number">.12</span> (default, Jul  <span class="number">1</span> <span class="number">2016</span>, <span class="number">15</span>:<span class="number">12</span>:<span class="number">24</span>) </div><div class="line">[GCC <span class="number">5.4</span><span class="number">.0</span> <span class="number">20160609</span>] on linux2</div><div class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> caffe</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="加入PythonPath"><a href="#加入PythonPath" class="headerlink" title="加入PythonPath"></a>加入PythonPath</h2><p><code>gedit ~/.bashrc</code><br>将<code>export PYTHONPATH=/home/wing/caffe/python:$PYTHONPATH</code>添加到文件最后。<br><code>source ~/.bashrc</code> 使更改生效。<br>这样，在其他地方打开python，也可以import caffe了。</p>
+<hr>
+<p>出现过一个问题：<br><strong>error ：No module named google.protobuf.internal</strong><br>解决方法是：<br><code>sudo chmod 777 -R  anaconda</code>（文件夹） 改变权限 然后<br><code>conda install protobuf</code><br>可以很方便的解决的问题</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-25T10:51:10.817Z" itemprop="dateUpdated">2017年3月25日 18:51</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2017/03/16/Ubuntu-caffe/" target="_blank" rel="external">http://feiyang.li/2017/03/16/Ubuntu-caffe/</a>
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/03/16/Ubuntu-caffe/&title=《Ubuntu14.04+CPU+Python的Caffe安装教程》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/03/16/Ubuntu-caffe/&title=《Ubuntu14.04+CPU+Python的Caffe安装教程》 — 李飞阳&source=
+背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/03/16/Ubuntu-caffe/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ubuntu14.04+CPU+Python的Caffe安装教程》 — 李飞阳&url=http://feiyang.li/2017/03/16/Ubuntu-caffe/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/03/16/Ubuntu-caffe/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/03/17/python-struct/index.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">细究Python struct 模块</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/03/15/win10-conda-tensorflow/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Win10 Anaconda中安装Tensorflow并配置到jupter kernel</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'mmmwhy';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃辣条好不好 ಠ౪ಠ
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+ 
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/03/16/Ubuntu-caffe/&title=《Ubuntu14.04+CPU+Python的Caffe安装教程》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/03/16/Ubuntu-caffe/&title=《Ubuntu14.04+CPU+Python的Caffe安装教程》 — 李飞阳&source=
+背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/03/16/Ubuntu-caffe/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ubuntu14.04+CPU+Python的Caffe安装教程》 — 李飞阳&url=http://feiyang.li/2017/03/16/Ubuntu-caffe/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/03/16/Ubuntu-caffe/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABw0lEQVR42u3aQQ7DIAwEwP7/0+0LQnYhoFQaTpUawcDBsg2fTzy+w3H1TTLbZ8fAxcVd5raU8cJXiPGXiQEXF/c892qB8dT5POPvEwMuLu6buW0ekh8BLi7u/3KTgNUmTLi4uO/kJguMJ1oJXltqNVxc3AVunrLs+72lv4uLizvF/ZZjvIE8VZobuLi4Z7h5QGkToDYgFu0VXFzcI9w2PI3LnpUmSPuMAxcXdwe3vficW7g9uZuMDBcX9wi3nXSuTFoppXBxcU9yx7i5p1Rt8ZNvFRcX9wz3qYZpW2Pl/96cKy4u7jbuXIskb3e2Dywu18XFxT3CnWt3jjeQN0zzdAcXF/ckd3cSk88ZbQwXF/cIN09H2pC3nh7dfImLi7uZW4SPsowZtzny8ukyI8PFxT3Cje5egmQlmaF92oWLi3uem5c9xeXH1LiZARcXdzP3qUvWthnaNllwcXFPctvg8lTZk4e/yc3g4uIucxNEsnAevPKiqz45XFzcR7ltozNHF3XYXK2Gi4v7Gm7+hGI9dOLi4v4vN7+abQPZzVUKLi7uNm7+6CpPaPJCqGip4OLiHuG2F59tSTPXZHmgv4uLizvD/QF+/gsJP6WcewAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.11"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.11" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

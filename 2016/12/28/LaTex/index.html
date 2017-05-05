@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://feiyang.li/2016/12/28/LaTex/">
+    
+    
+    <title>LaTex 编辑公式 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="LaTex">
+    <meta name="description" content="在计算机直接输入数学公式是一件棘手的事情，我一般是用一个专业的数学工具MathType，但最近在使用Markdown写作，遂产生念头用LaTex输入公式。发现目前网上的语法介绍往往不够全面，于是自己写了一份。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LaTex 编辑公式">
+<meta property="og:url" content="http://feiyang.li/2016/12/28/LaTex/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="在计算机直接输入数学公式是一件棘手的事情，我一般是用一个专业的数学工具MathType，但最近在使用Markdown写作，遂产生念头用LaTex输入公式。发现目前网上的语法介绍往往不够全面，于是自己写了一份。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161228/153631309.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20161228/153602468.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-02-11T13:23:33.245Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LaTex 编辑公式">
+<meta name="twitter:description" content="在计算机直接输入数学公式是一件棘手的事情，我一般是用一个专业的数学工具MathType，但最近在使用Markdown写作，遂产生念头用LaTex输入公式。发现目前网上的语法介绍往往不够全面，于是自己写了一份。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20161228/153631309.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/auth/login"  >
+                <i class="icon icon-lg icon-bolt"></i>
+                肥羊免费SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+
+    <div id="myTime">
+ <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="180" height="80" id="honehoneclock" align="middle">
+ <param name="allowScriptAccess" value="always">
+ <param name="movie" value="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf">
+ <param name="quality" value="high">
+ <param name="bgcolor" value="#ffffff">
+ <param name="wmode" value="transparent">
+ <embed wmode="transparent" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf" quality="high" bgcolor="#ffffff" width="180" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+ </object>
+ </div>
+
+
+
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">LaTex 编辑公式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">LaTex 编辑公式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-12-28T07:21:21.000Z" itemprop="datePublished" class="page-time">
+  2016-12-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#LaTex-公式"><span class="post-toc-number">1.</span> <span class="post-toc-text">LaTex 公式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#通用语法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">通用语法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#空格"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">空格</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#上下标"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">上下标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#希腊字母"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">希腊字母</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#值比较符"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">值比较符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#平方根"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">平方根</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#水平线"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">水平线</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#水平括号"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">水平括号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#重音号"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">重音号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#向量"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">向量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#圆点"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">圆点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数名"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">函数名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数学符"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">数学符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分数"><span class="post-toc-number">1.14.</span> <span class="post-toc-text">分数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二项系数"><span class="post-toc-number">1.15.</span> <span class="post-toc-text">二项系数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前缀符号"><span class="post-toc-number">1.16.</span> <span class="post-toc-text">前缀符号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#转义符号"><span class="post-toc-number">1.17.</span> <span class="post-toc-text">转义符号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#括号层次"><span class="post-toc-number">1.18.</span> <span class="post-toc-text">括号层次</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#垂直对齐"><span class="post-toc-number">1.19.</span> <span class="post-toc-text">垂直对齐</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-LaTex"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">LaTex 编辑公式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016年12月28日 15:21" datetime="2016-12-28T07:21:21.000Z"  itemprop="datePublished">2016-12-28</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p> 在计算机直接输入数学公式是一件棘手的事情，我一般是用一个专业的数学工具MathType，但最近在使用Markdown写作，遂产生念头用LaTex输入公式。发现目前网上的语法介绍往往不够全面，于是自己写了一份。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="LaTex-公式"><a href="#LaTex-公式" class="headerlink" title="LaTex 公式"></a>LaTex 公式</h1><h2 id="通用语法"><a href="#通用语法" class="headerlink" title="通用语法"></a>通用语法</h2><ul>
+<li>使用单 <strong>$</strong> 围住表达式，居左展示。</li>
+<li>使用双 <strong>$$</strong> 围住表达式，可以居中显示。</li>
+</ul>
+<h2 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h2><p>当前环境标准字体宽度为 M</p>
+<ul>
+<li>两个quad空格    <strong>a \qquad b</strong> 两个m的宽度<br><code>$$ C_1 \qquad C_2 $$</code><br>$$ C_1 \qquad C_2 $$</li>
+<li>quad空格    <strong>a \quad b</strong>    一个m的宽度<br><code>$$ C_1 \quad C_2 $$</code><br>$$ C_1 \quad C_2 $$</li>
+<li>大空格    <strong>a\ b</strong>        1/3m宽度<br><code>$$ C_1 \ C_2 $$</code><br>$$ C_1 \ C_2 $$</li>
+<li>中等空格    <strong>C_1\;C_2</strong> 2/7m宽度<br><code>$$C_1\;C_2$$</code><br>$$C_1\;C_2$$</li>
+<li>小空格    <strong>C_1\,C_2</strong> 1/6m宽度<br><code>$$C_1\,C_2$$</code><br>$$C_1\,C_2$$</li>
+<li>没有空格    <strong>C_1C_2</strong><br><code>$$C_1C_2$$</code><br>$$C_1C_2$$</li>
+<li>紧贴    <strong>C_1!C_2</strong>        缩进1/6m宽度<br><code>$$C_1\!C_2$$</code><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161228/153631309.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<h2 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h2><ul>
+<li>上标符号 <strong>^</strong><br><code>$$ c_{1}^{2}=a^{2}+b^{2} $$</code><br>$$ c_{1}^{2}=a^{2}+b^{2} $$</li>
+<li>下标符号<strong>_</strong><br><code>$$C_{m,n}$$</code><br>$$C_{m,n}$$</li>
+</ul>
+<h2 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h2><p><code>$$\lambda,\xi,\pi,\mu,\Phi,\Omega,\alpha, \beta, \gamma,\Gamma, \Delta $$</code><br>$$\lambda,\xi,\pi,\mu,\Phi,\Omega,\alpha, \beta, \gamma,\Gamma, \Delta $$</p>
+<h2 id="值比较符"><a href="#值比较符" class="headerlink" title="值比较符"></a>值比较符</h2><ul>
+<li>大于等于小于，使用正常<strong>&gt;,&lt;,=</strong>即可</li>
+<li>大于等于使用 <strong>\geq</strong><br><code>$$e^{x^2} \geq {e^x}^2$$</code><br>$$e^{x^2} \geq {e^x}^2$$</li>
+<li>小于等于使用<strong>\leq</strong><br><code>$$e^{x^2} \leq {e^x}^2$$</code><br>$$e^{x^2} \leq {e^x}^2$$</li>
+<li>不等于使用<strong>neq</strong><br><code>$$e^{x^2} \neq {e^x}^2$$</code><br>$$e^{x^2} \neq {e^x}^2$$</li>
+</ul>
+<h2 id="平方根"><a href="#平方根" class="headerlink" title="平方根"></a>平方根</h2><p>使用<strong>\sqrt</strong>或 <strong>\surd</strong><br><code>$$\sqrt{x+y}$$</code><br>$$\sqrt{x+y}$$</p>
+<h2 id="水平线"><a href="#水平线" class="headerlink" title="水平线"></a>水平线</h2><p>使用 <strong>\overline,\underline</strong><br><code>$$\overline{m+n} \quad \underline{m+n}$$</code><br>$$\overline{m+n} \quad \underline{m+n}$$</p>
+<h2 id="水平括号"><a href="#水平括号" class="headerlink" title="水平括号"></a>水平括号</h2><p>使用<strong>\overbrace 和 \underbrace</strong><br><code>$$ \underbrace{a+b+\cdots+z}_{26}$$</code><br>$$ \underbrace{a+b+\cdots+z}_{26}$$</p>
+<h2 id="重音号"><a href="#重音号" class="headerlink" title="重音号"></a>重音号</h2><p>使用<strong>\widetilde 和 \widehat</strong><br>$$y’=3\widetilde a+4\widehat b$$</p>
+<h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h2><p>使用<strong>\overrightarrow 和 \overleftarrow</strong><br><code>$$\overrightarrow {AC} = \overrightarrow {AB} +\overrightarrow {BC} $$</code><br>$$\overrightarrow {AC} = \overleftarrow {AB} +\overrightarrow {BC} $$ </p>
+<h2 id="圆点"><a href="#圆点" class="headerlink" title="圆点"></a>圆点</h2><p>使用<strong>\cdot, \cdots,\vdots,\ddot</strong><br><code>$$ a \vdots =b \cdot c \cdots d  \ddot  e$$</code><br>$$ a \vdots =b \cdot c \cdots d  \ddot  e$$ </p>
+<h2 id="函数名"><a href="#函数名" class="headerlink" title="函数名"></a>函数名</h2><p>\arccos \cos \csc \arcsin \cosh \deg \arctan \cot \det \arg \coth \dim \sinh \sup \tan</p>
+<p>[\lim_{x \rightarrow 0} \frac{\sin x}{x}=1]</p>
+<p>\exp \ker \limsup \min \gcd \lg \ln \Pr \hom \lim \log \sec \inf \liminf \max \sin </p>
+<p>\tanh</p>
+<p><code>$$lim_{x \rightarrow 0} \frac{\sin x}{x}=1$$</code><br>$$lim_{x \rightarrow 0} \frac{\sin x}{x}=1$$</p>
+<h2 id="数学符"><a href="#数学符" class="headerlink" title="数学符"></a>数学符</h2><p><strong>\mathbf</strong><br><code>$$ x^{2} \geq 0\qquad \textrm{for all }x\in\mathbf{R} $$</code><br>$$ x^{2} \geq 0\qquad \textrm{for all }x\in\mathbf{R} $$</p>
+<h2 id="分数"><a href="#分数" class="headerlink" title="分数"></a>分数</h2><p><strong>直接输入或者\frac{}{} </strong></p>
+<ul>
+<li><code>$$\sin \alpha = \frac{a}{c} $$</code><br>$$\sin \alpha = \frac{a}{c} $$</li>
+<li><code>$$x^{1/2} $$</code><br>$$x^{1/2} $$</li>
+</ul>
+<h2 id="二项系数"><a href="#二项系数" class="headerlink" title="二项系数"></a>二项系数</h2><p><strong>{… \choose …} 或 {… \atop …}。第二个命令与第一个命令的输出相同,只是没有括号。</strong><br><code>$${n\choose m} \qquad {x\atop y+2}$$</code><br>$${n\choose m} \qquad {x\atop y+2}$$</p>
+<h2 id="前缀符号"><a href="#前缀符号" class="headerlink" title="前缀符号"></a>前缀符号</h2><p><strong>\int,\sum,\prod</strong></p>
+<ul>
+<li><p><code>$$ {\int_{0}^{\frac{\pi}{2}}} $$</code><br>$$ {\int_{0}^{\frac{\pi}{2}}} $$</p>
+</li>
+<li><p><code>$$ \sum_{i=1}^{n}$$</code><br>$$ \sum_{i=1}^{n}$$</p>
+</li>
+<li><p><code>$$\prod_\epsilon$$</code><br>$$\prod_\epsilon$$</p>
+</li>
+</ul>
+<h2 id="转义符号"><a href="#转义符号" class="headerlink" title="转义符号"></a>转义符号</h2><p><strong>有时保留字需要加入\来进行转义</strong><br><code>$${a,b,c}\neq\{a,b,c\}$$</code><br>$${a,b,c}\neq{a,b,c}$$</p>
+<h2 id="括号层次"><a href="#括号层次" class="headerlink" title="括号层次"></a>括号层次</h2><ul>
+<li>正确的括号大小\left和\right。如果将命令 \left 放在开分隔符前,TEX会自动决定分隔符的正确大 小。注意必须用对应的右分隔符 \right 来关闭每一个左分隔符 \left,并 且只有当这两个分隔符排在同一行时大小才会被正确确定。<strong>我们可以看到右式没有采用\left形式，不能正确确定括号大小</strong><br><code>$$ 1+\left(\frac {1}{1-x^2}\right) ^3 \qquad 1+(\frac {1}{1-x^2}) ^3$$</code><br>$$ 1+\left(\frac {1}{1-x^2}\right) ^3 \qquad 1+(\frac {1}{1-x^2}) ^3$$ </li>
+</ul>
+<p>另外也可以手工指出括号大小，使用\big,\Big,\bigg,\Bigg。</p>
+<ul>
+<li><code>$$ \Big( (x+y) (x-y) \Big)^{2} $$</code><br>$$ \Big( (x+y) (x-y) \Big)^{2} $$</li>
+<li><code>$$\big(\Big(\bigg(\Bigg($$</code><br>$$\big(\Big(\bigg(\Bigg($$</li>
+<li><code>$$\big\}\Big\}\bigg\}\Bigg\} $$</code><br>$$\big}\Big}\bigg}\Bigg} $$</li>
+<li><code>$$\big\|\Big\|\bigg\|\Bigg\| $$</code><br>$$\big|\Big|\bigg|\Bigg| $$</li>
+</ul>
+<h2 id="垂直对齐"><a href="#垂直对齐" class="headerlink" title="垂直对齐"></a>垂直对齐</h2><p>使用array命令，并\命令来分行。注意转义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$$\mathbf&#123;X&#125; =</div><div class="line">	\left( \begin&#123;array&#125;&#123;ccc&#125;</div><div class="line">	x_&#123;11&#125; &amp; x_&#123;12&#125; &amp; \ldots \\\</div><div class="line">	x_&#123;21&#125; &amp; x_&#123;22&#125; &amp; \ldots \\\</div><div class="line">	\vdots &amp; \vdots &amp; \ddots</div><div class="line">	\end&#123;array&#125; \right) $$</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20161228/153602468.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-11T13:23:33.245Z" itemprop="dateUpdated">2017年2月11日 21:23</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2016/12/28/LaTex/" target="_blank" rel="external">http://feiyang.li/2016/12/28/LaTex/</a>
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LaTex/">LaTex</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2016/12/28/LaTex/&title=《LaTex 编辑公式》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2016/12/28/LaTex/&title=《LaTex 编辑公式》 — 李飞阳&source=
+ 在计算机直接输入数学公式是一件棘手的事情，我一般是用一个专业的数学工具MathType，但最近在使用Markdown写作，遂产生念头用LaTex输入公..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2016/12/28/LaTex/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LaTex 编辑公式》 — 李飞阳&url=http://feiyang.li/2016/12/28/LaTex/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2016/12/28/LaTex/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/12/28/Newton-Raphson_method-Java-Python/index.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">牛顿迭代法计算平方根(Java,Python实现)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/12/18/Nginx_HTTPS/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Nginx环境下配置HTTPS</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'mmmwhy';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃辣条好不好 ಠ౪ಠ
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+ 
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2016/12/28/LaTex/&title=《LaTex 编辑公式》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2016/12/28/LaTex/&title=《LaTex 编辑公式》 — 李飞阳&source=
+ 在计算机直接输入数学公式是一件棘手的事情，我一般是用一个专业的数学工具MathType，但最近在使用Markdown写作，遂产生念头用LaTex输入公..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2016/12/28/LaTex/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LaTex 编辑公式》 — 李飞阳&url=http://feiyang.li/2016/12/28/LaTex/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2016/12/28/LaTex/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwUlEQVR42u3aQXKDMAwFUO5/aXqABOfLwobpPK86gdqPjUaSdRzxOi/W5zuf74/3PFYsXFzcNvccruT45H+v3swNuLi4+7njQJMfM94hf3r5Oy4u7uu5cxkILi7u/+POQZPUBxcX923cua2TT0pKqSW1Gi4uboObdynX/b2kv4uLizvFPdurWia1zsLFxd3CHScc4yKketFS3QcXF/cpbh5oOmXMuBDKd8bFxd3PzYNR8rTV1LjaHxcXdws3DyVJ0nPX1SwuLu6z3M4laHXAYi7FOfIjcXFxl3GrIaZ665G3Qr6cjouLu4U7l4jkSUk+VFG4fMXFxd3I7QxIrXvzywfg4uI+xK0Gl2orpFpu4eLi7uRWhyryANf57B9zIri4uIu5hWZlo/Exd9alARcXdzE3b1JUy5U8hBVGN3Bxcbdwk2OSlKXaHk1C5I+rFFxc3GXcs7iq8SRPd6IECxcXdwv3rnGKftc2acfg4uLu5CbBqxqMOk9/nIuLi7uRW66ZGter1aCJi4v7Zm7S4szD4g2DWbi4uC/gdsatqr/fluLg4uIuLn7yS5TOlcltbRFcXNwG996tq8Nb1QQLFxd3MfcPU338M67nts8AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.11"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.11" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
