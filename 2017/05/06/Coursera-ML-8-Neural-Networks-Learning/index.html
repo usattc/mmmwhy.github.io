@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/">
+    
+    
+    <title>Coursera ML(8)-Neural Networks: Learning | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="Machine Learning,读书笔记,Python">
+    <meta name="description" content="本节笔记对应第五周Coursera课程 Neural Networks: Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coursera ML(8)-Neural Networks: Learning">
+<meta property="og:url" content="http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="本节笔记对应第五周Coursera课程 Neural Networks: Learning">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170504/221046501.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-05-06T13:53:12.187Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coursera ML(8)-Neural Networks: Learning">
+<meta name="twitter:description" content="本节笔记对应第五周Coursera课程 Neural Networks: Learning">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170504/221046501.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-rocket"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/auth/login"  >
+                <i class="icon icon-lg icon-bolt"></i>
+                肥羊免费SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+
+    <div id="myTime">
+ <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="180" height="80" id="honehoneclock" align="middle">
+ <param name="allowScriptAccess" value="always">
+ <param name="movie" value="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf">
+ <param name="quality" value="high">
+ <param name="bgcolor" value="#ffffff">
+ <param name="wmode" value="transparent">
+ <embed wmode="transparent" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf" quality="high" bgcolor="#ffffff" width="180" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+ </object>
+ </div>
+
+
+
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Coursera ML(8)-Neural Networks: Learning</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Coursera ML(8)-Neural Networks: Learning</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-06T13:52:23.000Z" itemprop="datePublished" class="page-time">
+  2017-05-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Cost-Fuction"><span class="post-toc-number">1.</span> <span class="post-toc-text">Cost Fuction</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Backpropagation-Algorithm"><span class="post-toc-number">2.</span> <span class="post-toc-text">Backpropagation Algorithm</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Coursera-ML-8-Neural-Networks-Learning"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Coursera ML(8)-Neural Networks: Learning</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年05月06日 21:52" datetime="2017-05-06T13:52:23.000Z"  itemprop="datePublished">2017-05-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>本节笔记对应第五周Coursera课程 <a href="https://www.coursera.org/learn/machine-learning/home/week/5" target="_blank" rel="external">Neural Networks: Learning</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="Cost-Fuction"><a href="#Cost-Fuction" class="headerlink" title="Cost Fuction"></a>Cost Fuction</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170504/221046501.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>cost function  $$\begin{gather*} J(\Theta) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \left[y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] \end{gather*}$$ 
+我们使用循环，对每一行特征都预测K个不同的结果，然后利用循环在K个预测中选择可能性最高的一个，将其与y中的实际数据进行对比。</li>
+</ul>
+<ul>
+<li>Similarly, the regularization term just sum up the square of all the parameters from all the layers: $$\frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2$$ 
+正则化的这一项，是在排除了每一层$\theta_0$后，每一层的$\Theta$矩阵的和。</li>
+<li>最里层的循环$j$循环所有的行(由$s_{l+1}$层的激活单元数决定)。</li>
+<li>循环$i$则循环所有的列，由该层(s_l层)的激活单元数决定。</li>
+</ul>
+<p>Note:<br>这个看起来很复杂的代价函数与之前代价函数思想是一样的，我们希望通过代价函数来观察算法预测的结果与真实情况的误差有多大。不同的是，对于每一行特征，我们都会给出<strong>K个预测</strong>。</p>
+<h1 id="Backpropagation-Algorithm"><a href="#Backpropagation-Algorithm" class="headerlink" title="Backpropagation Algorithm"></a>Backpropagation Algorithm</h1><p>这一块我也看的不是很懂，先不做笔记。之后如果有新的感悟，再记回来。</p>
+<p>没有就算了。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-06T13:53:12.187Z" itemprop="dateUpdated">2017年5月6日 21:53</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/" target="_blank" rel="external">http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/</a>
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/&title=《Coursera ML(8)-Neural Networks: Learning》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/&title=《Coursera ML(8)-Neural Networks: Learning》 — 李飞阳&source=
+本节笔记对应第五周Coursera课程 Neural Networks: Learning
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Coursera ML(8)-Neural Networks: Learning》 — 李飞阳&url=http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/05/ss-client/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">shadowsocks-Clients</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'mmmwhy';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃辣条好不好 ಠ౪ಠ
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+ 
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/&title=《Coursera ML(8)-Neural Networks: Learning》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/&title=《Coursera ML(8)-Neural Networks: Learning》 — 李飞阳&source=
+本节笔记对应第五周Coursera课程 Neural Networks: Learning
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Coursera ML(8)-Neural Networks: Learning》 — 李飞阳&url=http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aQYrjQAwF0L7/pXtgVg1D4v8ll9MDz6vgGFe9LEqKpK+v+Pr+e/38/O+d99/+vJPcT5687cLDw8Mbbf3V9eqZ92/IV2zv5HvGw8PDO83Lg8EMMIO9573fMx4eHt5v4O1T4WSLeVqPh4eH97/w2n/9OXi/Hzw8PLwneUkxIllmFgaSAsfxWgseHh5ezNuks5/6fLy/h4eHhzfqqicH7uzIno0d1LvFw8PDO8DLG07JoEByPx84mBV5o38MeHh4eGteWxidlQk2rbX25xjWqvHw8PCCd544jk+HlmRFPDw8vGd4m3bXfpRqVqq4aMLh4eHhPcLLG/z5YZ2XPNrCxMVPiYeHh3eAl7egknJA27u/awDrYm94eHh4t/LyVDhfcjYWsOcVxQg8PDy8Ba8dosrxF2WCuOiQN9tWlQ88PDy8eG9tMt2WWZP0N0/E29IwHh4e3mneLF1OQkKOzIPQcOgKDw8P7ybeqj1fJuXtEb/6A4CHh4d3gJdvtC2bzpB3DRbg4eHhPckbNpbieadkxVniHgUGPDw8vDWvHWbap92b0as65ODh4eEd4OWvng0H5IFnBhsGMDw8PLw1r23/z0ZU7ypA4OHh4X2Wl2xxtqEkjd7P2F6EKzw8PLwDvPygnx3u7bjqjHRRUsHDw8O7lZcnx/vmVh4S2mDz8p14eHh4H+LNlm+vpNhRN97w8PDwDvA2o06zFHwzYtWWJPDw8PBO8L7Lq23hbxpabdk3aoDh4eHhrXmbw3dTgEiKubM22zDFx8PDwyt5+2DQFinyxljbisPDw8N7krdPi9sRgT0jSqnx8PDwPsrLS7T5QNWmwZbsCg8PD+938qJlygCTJM1RiMLDw8M7xpsB2uJF++b9OAIeHh7eCV7bAGubYXkKPnuyxuDh4eHNeX8A2QIDJ93+vF0AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.11"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.11" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

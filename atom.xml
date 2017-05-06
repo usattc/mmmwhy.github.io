@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-05-06T12:30:20.814Z</updated>
+  <updated>2017-05-06T13:53:12.187Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -16,13 +16,68 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Coursera ML(8)-Neural Networks: Learning</title>
+    <link href="http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/index.html"/>
+    <id>http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/index.html</id>
+    <published>2017-05-06T13:52:23.000Z</published>
+    <updated>2017-05-06T13:53:12.187Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>本节笔记对应第五周Coursera课程 <a href="https://www.coursera.org/learn/machine-learning/home/week/5" target="_blank" rel="external">Neural Networks: Learning</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="Cost-Fuction"><a href="#Cost-Fuction" class="headerlink" title="Cost Fuction"></a>Cost Fuction</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170504/221046501.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>cost function  $$\begin{gather*} J(\Theta) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \left[y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] \end{gather*}$$ 
+我们使用循环，对每一行特征都预测K个不同的结果，然后利用循环在K个预测中选择可能性最高的一个，将其与y中的实际数据进行对比。</li>
+</ul>
+<ul>
+<li>Similarly, the regularization term just sum up the square of all the parameters from all the layers: $$\frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2$$ 
+正则化的这一项，是在排除了每一层$\theta_0$后，每一层的$\Theta$矩阵的和。</li>
+<li>最里层的循环$j$循环所有的行(由$s_{l+1}$层的激活单元数决定)。</li>
+<li>循环$i$则循环所有的列，由该层(s_l层)的激活单元数决定。</li>
+</ul>
+<p>Note:<br>这个看起来很复杂的代价函数与之前代价函数思想是一样的，我们希望通过代价函数来观察算法预测的结果与真实情况的误差有多大。不同的是，对于每一行特征，我们都会给出<strong>K个预测</strong>。</p>
+<h1 id="Backpropagation-Algorithm"><a href="#Backpropagation-Algorithm" class="headerlink" title="Backpropagation Algorithm"></a>Backpropagation Algorithm</h1><p>这一块我也看的不是很懂，先不做笔记。之后如果有新的感悟，再记回来。</p>
+<p>没有就算了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本节笔记对应第五周Coursera课程 &lt;a href=&quot;https://www.coursera.org/learn/machine-learning/home/week/5&quot;&gt;Neural Networks: Learning&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>shadowsocks-Clients</title>
     <link href="http://feiyang.li/2017/05/05/ss-client/index.html"/>
     <id>http://feiyang.li/2017/05/05/ss-client/index.html</id>
     <published>2017-05-05T06:23:13.000Z</published>
     <updated>2017-05-06T12:30:20.814Z</updated>
     
-    <content type="html"><![CDATA[<script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">本博客介绍上谷歌的方法，密码是我名字拼音。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="enter the password" id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">解密</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">本博客介绍上谷歌的方法，密码是我名字拼音。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="enter the password" id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">解密</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
     
     <summary type="html">
     
@@ -2018,86 +2073,6 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     
     
       <category term="Pycharm激活" scheme="http://feiyang.li/tags/Pycharm%E6%BF%80%E6%B4%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo博客中插入音乐/视频</title>
-    <link href="http://feiyang.li/2017/02/24/Hexo-music-video/index.html"/>
-    <id>http://feiyang.li/2017/02/24/Hexo-music-video/index.html</id>
-    <published>2017-02-24T12:57:01.000Z</published>
-    <updated>2017-02-25T05:59:28.975Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
-<p>Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง </p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="Markdown-通用的音乐视频插入方法"><a href="#Markdown-通用的音乐视频插入方法" class="headerlink" title="Markdown 通用的音乐视频插入方法"></a>Markdown 通用的音乐视频插入方法</h1><h2 id="iframe标签"><a href="#iframe标签" class="headerlink" title="iframe标签"></a>iframe标签</h2><p>代码从网易云音乐获得<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170224/221537233.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="网易云音乐" title="">
-                </div>
-                <div class="image-caption">网易云音乐</div>
-            </figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=430 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=114389&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;</div></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="430" height="86" src="//music.163.com/outchain/player?type=2&id=114389&auto=0&height=66"></iframe>
-
-
-
-<h2 id="embed标签"><a href="#embed标签" class="headerlink" title="embed标签"></a>embed标签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;embed height=&quot;415&quot; width=&quot;544&quot; quality=&quot;high&quot; allowfullscreen=&quot;true&quot; type=&quot;application/x-shockwave-flash&quot; src=&quot;//static.hdslb.com/miniloader.swf&quot; flashvars=&quot;aid=8506694&amp;page=1&quot; pluginspage=&quot;//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash&quot;&gt;&lt;/embed&gt;</div></pre></td></tr></table></figure>
-<p>效果如下：</p>
-<embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=8506694&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">
-
-
-<h2 id="javascript标签举例"><a href="#javascript标签举例" class="headerlink" title="javascript标签举例"></a>javascript标签举例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.xiami.com/widget/player-single?uid=32329501&amp;sid=1776238762&amp;mode=js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
-<script type="text/javascript" src="http://www.xiami.com/widget/player-single?uid=32329501&sid=1776238762&mode=js"></script>
-
-<h1 id="使用-Hexo-插件插入音乐-视频"><a href="#使用-Hexo-插件插入音乐-视频" class="headerlink" title="使用 Hexo 插件插入音乐/视频"></a>使用 Hexo 插件插入音乐/视频</h1><p>两个好用的hexo插件：</p>
-<p><strong>hexo-tag-aplayer：<a href="https://github.com/grzhan/hexo-tag-aplayer" target="_blank" rel="external">https://github.com/grzhan/hexo-tag-aplayer</a></strong></p>
-<p><strong>hexo-tag-dplayer： <a href="https://github.com/NextMoe/hexo-tag-dplayer" target="_blank" rel="external">https://github.com/NextMoe/hexo-tag-dplayer</a></strong></p>
-<h2 id="播放音乐的aplayer"><a href="#播放音乐的aplayer" class="headerlink" title="播放音乐的aplayer"></a>播放音乐的aplayer</h2><p>在cmd页面内，使用npm安装：<br><code>npm install hexo-tag-aplayer</code></p>
-<p>在markdown内添加以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% aplayer &quot;她的睫毛&quot; &quot;周杰伦&quot; &quot;http://home.ustc.edu.cn/~mmmwhy/%d6%dc%bd%dc%c2%d7%20-%20%cb%fd%b5%c4%bd%de%c3%ab.mp3&quot;  &quot;http://home.ustc.edu.cn/~mmmwhy/jay.jpg&quot; &quot;autoplay=false&quot; %&#125;</div></pre></td></tr></table></figure>
-<p>效果如下所示：<br><div id="aplayer0" class="aplayer" style="margin-bottom: 20px;"></div>
-		<script>
-			new APlayer({
-				element: document.getElementById("aplayer0"),
-				narrow: false,
-				autoplay: false,
-				showlrc: 0,
-				music: {
-					title: "她的睫毛",
-					author: "周杰伦",
-					url: "http://home.ustc.edu.cn/~mmmwhy/%d6%dc%bd%dc%c2%d7%20-%20%cb%fd%b5%c4%bd%de%c3%ab.mp3",
-					pic: "http://home.ustc.edu.cn/~mmmwhy/jay.jpg",
-				}
-			});
-		</script></p>
-<h2 id="播放视频的dplayer"><a href="#播放视频的dplayer" class="headerlink" title="播放视频的dplayer"></a>播放视频的dplayer</h2><p>在cmd页面内，使用npm安装：<br><code>npm install hexo-tag-dplayer</code></p>
-<p>在markdown内添加以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% dplayer &quot;url=http://home.ustc.edu.cn/~mmmwhy/GEM.mp4&quot;  &quot;pic=http://home.ustc.edu.cn/~mmmwhy/GEM.jpg&quot; &quot;loop=yes&quot; &quot;theme=#FADFA3&quot; &quot;autoplay=false&quot; &quot;token=tokendemo&quot; %&#125;</div></pre></td></tr></table></figure>
-<p>效果如下所示：</p>
-<div id="dplayer0" class="dplayer" style="margin-bottom: 20px;"></div><script>var dplayer0 = new DPlayer({"element":document.getElementById("dplayer0"),"autoplay":false,"theme":"#FADFA3","loop":true,"video":{"url":"http://home.ustc.edu.cn/~mmmwhy/GEM.mp4","pic":"http://home.ustc.edu.cn/~mmmwhy/GEM.jpg"}});</script>
-<hr>
-<p>以上</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="http://feiyang.li/tags/hexo/"/>
-    
-      <category term="plugins" scheme="http://feiyang.li/tags/plugins/"/>
     
   </entry>
   
