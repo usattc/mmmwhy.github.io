@@ -21,7 +21,7 @@
     <meta name="theme-color" content="#0288D1">
     
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="GFW,Linux,vps">
     <meta name="description" content="系统介绍： 1g内存，单核，也就是传说中的腾讯1元学生机。centos6.8 x32。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ss-panel + ss py mu安装教程">
@@ -44,7 +44,7 @@
 ">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170505/134246486.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
-<meta property="og:updated_time" content="2017-05-06T06:02:18.507Z">
+<meta property="og:updated_time" content="2017-05-06T12:30:21.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ss-panel + ss py mu安装教程">
 <meta name="twitter:description" content="系统介绍： 1g内存，单核，也就是传说中的腾讯1元学生机。centos6.8 x32。">
@@ -191,7 +191,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#lnmp环境配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">lnmp环境配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装ss-panel前端"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装ss-panel前端</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载-ss-panel-源码"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">下载 ss-panel 源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置-ss-panel"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">配置 ss-panel</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#env文件配置"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">.env文件配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx配置"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">nginx配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新建ss数据库"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">新建ss数据库</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加管理员账户"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">添加管理员账户</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#邮箱设置"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">邮箱设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#https证书"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">https证书</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装-SS-PY-MU-服务端"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装 SS PY MU 服务端</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装libsodium支持chacha20"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">安装libsodium支持chacha20</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#将代码-clone-到本地："><span class="post-toc-number">3.2.</span> <span class="post-toc-text">将代码 clone 到本地：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置-shadowsocks-manyuser"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">配置 shadowsocks-manyuser</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置-ss-manyuser-守护进程"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">配置 ss-manyuser 守护进程</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#lnmp环境配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">lnmp环境配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装ss-panel前端"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装ss-panel前端</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载-ss-panel-源码"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">下载 ss-panel 源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置-ss-panel"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">配置 ss-panel</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#env文件配置"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">.env文件配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nginx配置"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">nginx配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新建ss数据库"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">新建ss数据库</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加管理员账户"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">添加管理员账户</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#邮箱设置"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">邮箱设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#https证书"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">https证书</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#谷歌BBR加速"><span class="post-toc-number">3.</span> <span class="post-toc-text">谷歌BBR加速</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#OpenVZ-以外的（-KVM-、-Xen-、-VMware-等）"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">OpenVZ 以外的（ KVM 、 Xen 、 VMware 等）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#OpenVZ-小鸡"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">OpenVZ 小鸡</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装-SS-PY-MU-服务端"><span class="post-toc-number">4.</span> <span class="post-toc-text">安装 SS PY MU 服务端</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装libsodium支持chacha20"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">安装libsodium支持chacha20</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#将代码-clone-到本地："><span class="post-toc-number">4.2.</span> <span class="post-toc-text">将代码 clone 到本地：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置-shadowsocks-manyuser"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">配置 shadowsocks-manyuser</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置-ss-manyuser-守护进程"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">配置 ss-manyuser 守护进程</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -216,7 +216,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>系统介绍： 1g内存，单核，也就是传说中的腾讯1元学生机。centos6.8 x32。</p>
 </blockquote>
 <hr>
@@ -296,6 +296,9 @@
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
+<h1 id="谷歌BBR加速"><a href="#谷歌BBR加速" class="headerlink" title="谷歌BBR加速"></a>谷歌BBR加速</h1><h2 id="OpenVZ-以外的（-KVM-、-Xen-、-VMware-等）"><a href="#OpenVZ-以外的（-KVM-、-Xen-、-VMware-等）" class="headerlink" title="OpenVZ 以外的（ KVM 、 Xen 、 VMware 等）"></a>OpenVZ 以外的（ KVM 、 Xen 、 VMware 等）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</div><div class="line">chmod +x bbr.sh</div><div class="line">./bbr.sh</div></pre></td></tr></table></figure>
+<p>详细信息见： <a href="https://www.91yun.org/archives/5174" target="_blank" rel="external">https://www.91yun.org/archives/5174</a></p>
+<h2 id="OpenVZ-小鸡"><a href="#OpenVZ-小鸡" class="headerlink" title="OpenVZ 小鸡"></a>OpenVZ 小鸡</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://raw.githubusercontent.com/mmmwhy/LKL_BBR/master/lkl/install.sh &amp;&amp; bash install.sh</div></pre></td></tr></table></figure>
 <h1 id="安装-SS-PY-MU-服务端"><a href="#安装-SS-PY-MU-服务端" class="headerlink" title="安装 SS PY MU 服务端"></a>安装 SS PY MU 服务端</h1><h2 id="安装libsodium支持chacha20"><a href="#安装libsodium支持chacha20" class="headerlink" title="安装libsodium支持chacha20"></a>安装libsodium支持chacha20</h2><p>centos：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y groupinstall &quot;Development Tools&quot;</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
 <p>ubuntu/debian：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apt-get install build-essential</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
 <h2 id="将代码-clone-到本地："><a href="#将代码-clone-到本地：" class="headerlink" title="将代码 clone 到本地："></a>将代码 clone 到本地：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd ~</div><div class="line">git clone https://github.com/fsgmhoward/shadowsocks-py-mu.git</div><div class="line">cd ~/shadowsocks-py-mu/shadowsocks/</div></pre></td></tr></table></figure>
@@ -343,6 +346,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">supervisorctl &#123;start|stop|restart&#125; ss-manyuser</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<p>详细内容见：<a href="https://www.91yun.org/archives/6281" target="_blank" rel="external">https://www.91yun.org/archives/6281</a><br>我稍微修改了一下端口范围(9000-19999)，因为之前那个范围是在太奇葩了。</p>
 <p>其余常见错误见：<br><a href="http://feiyang.li/2017/05/03/ss-panel/index.html#常见错误">http://feiyang.li/2017/05/03/ss-panel/index.html#常见错误</a></p>
 <p>与上文一样，本文参考了如下博主文章，在此致谢：<br><a href="https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/" target="_blank" rel="external">https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/</a><br><a href="http://bitzhi.com/2016/03/install-ss-go-mu-and-ss-panel-v3/" target="_blank" rel="external">http://bitzhi.com/2016/03/install-ss-go-mu-and-ss-panel-v3/</a><br><a href="https://levyhsu.com/?p=98" target="_blank" rel="external">https://levyhsu.com/?p=98</a></p>
 
@@ -352,7 +356,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-05-06T06:02:18.507Z" itemprop="dateUpdated">2017年5月6日 14:02</time>
+    最后更新时间：<time datetime="2017-05-06T12:30:21.524Z" itemprop="dateUpdated">2017年5月6日 20:30</time>
 </span><br>
 
 
@@ -375,6 +379,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GFW/">GFW</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vps/">vps</a></li></ul>
+
 
             
 <div class="page-share-wrap">

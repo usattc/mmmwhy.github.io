@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-05-05T06:33:58.316Z</updated>
+  <updated>2017-05-06T12:30:20.814Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://feiyang.li/2017/05/05/ss-client/index.html"/>
     <id>http://feiyang.li/2017/05/05/ss-client/index.html</id>
     <published>2017-05-05T06:23:13.000Z</published>
-    <updated>2017-05-05T06:33:58.316Z</updated>
+    <updated>2017-05-06T12:30:20.814Z</updated>
     
-    <content type="html"><![CDATA[<script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">本博客介绍上谷歌的方法，密码是我名字拼音。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="enter the password" id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">解密</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
+    <content type="html"><![CDATA[<script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">本博客介绍上谷歌的方法，密码是我名字拼音。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="enter the password" id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">解密</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
     
     <summary type="html">
     
@@ -33,6 +33,10 @@
     
       <category term="GFW" scheme="http://feiyang.li/tags/GFW/"/>
     
+      <category term="Linux" scheme="http://feiyang.li/tags/Linux/"/>
+    
+      <category term="vps" scheme="http://feiyang.li/tags/vps/"/>
+    
   </entry>
   
   <entry>
@@ -40,9 +44,9 @@
     <link href="http://feiyang.li/2017/05/05/ss-panel-full/index.html"/>
     <id>http://feiyang.li/2017/05/05/ss-panel-full/index.html</id>
     <published>2017-05-05T06:09:39.000Z</published>
-    <updated>2017-05-06T06:02:18.507Z</updated>
+    <updated>2017-05-06T12:30:21.524Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>系统介绍： 1g内存，单核，也就是传说中的腾讯1元学生机。centos6.8 x32。</p>
 </blockquote>
 <hr>
@@ -122,6 +126,9 @@
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
+<h1 id="谷歌BBR加速"><a href="#谷歌BBR加速" class="headerlink" title="谷歌BBR加速"></a>谷歌BBR加速</h1><h2 id="OpenVZ-以外的（-KVM-、-Xen-、-VMware-等）"><a href="#OpenVZ-以外的（-KVM-、-Xen-、-VMware-等）" class="headerlink" title="OpenVZ 以外的（ KVM 、 Xen 、 VMware 等）"></a>OpenVZ 以外的（ KVM 、 Xen 、 VMware 等）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</div><div class="line">chmod +x bbr.sh</div><div class="line">./bbr.sh</div></pre></td></tr></table></figure>
+<p>详细信息见： <a href="https://www.91yun.org/archives/5174" target="_blank" rel="external">https://www.91yun.org/archives/5174</a></p>
+<h2 id="OpenVZ-小鸡"><a href="#OpenVZ-小鸡" class="headerlink" title="OpenVZ 小鸡"></a>OpenVZ 小鸡</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://raw.githubusercontent.com/mmmwhy/LKL_BBR/master/lkl/install.sh &amp;&amp; bash install.sh</div></pre></td></tr></table></figure>
 <h1 id="安装-SS-PY-MU-服务端"><a href="#安装-SS-PY-MU-服务端" class="headerlink" title="安装 SS PY MU 服务端"></a>安装 SS PY MU 服务端</h1><h2 id="安装libsodium支持chacha20"><a href="#安装libsodium支持chacha20" class="headerlink" title="安装libsodium支持chacha20"></a>安装libsodium支持chacha20</h2><p>centos：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y groupinstall &quot;Development Tools&quot;</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
 <p>ubuntu/debian：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apt-get install build-essential</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
 <h2 id="将代码-clone-到本地："><a href="#将代码-clone-到本地：" class="headerlink" title="将代码 clone 到本地："></a>将代码 clone 到本地：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd ~</div><div class="line">git clone https://github.com/fsgmhoward/shadowsocks-py-mu.git</div><div class="line">cd ~/shadowsocks-py-mu/shadowsocks/</div></pre></td></tr></table></figure>
@@ -169,6 +176,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">supervisorctl &#123;start|stop|restart&#125; ss-manyuser</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<p>详细内容见：<a href="https://www.91yun.org/archives/6281" target="_blank" rel="external">https://www.91yun.org/archives/6281</a><br>我稍微修改了一下端口范围(9000-19999)，因为之前那个范围是在太奇葩了。</p>
 <p>其余常见错误见：<br><a href="http://feiyang.li/2017/05/03/ss-panel/index.html#常见错误">http://feiyang.li/2017/05/03/ss-panel/index.html#常见错误</a></p>
 <p>与上文一样，本文参考了如下博主文章，在此致谢：<br><a href="https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/" target="_blank" rel="external">https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/</a><br><a href="http://bitzhi.com/2016/03/install-ss-go-mu-and-ss-panel-v3/" target="_blank" rel="external">http://bitzhi.com/2016/03/install-ss-go-mu-and-ss-panel-v3/</a><br><a href="https://levyhsu.com/?p=98" target="_blank" rel="external">https://levyhsu.com/?p=98</a></p>
 ]]></content>
@@ -183,6 +191,12 @@
     </summary>
     
     
+      <category term="GFW" scheme="http://feiyang.li/tags/GFW/"/>
+    
+      <category term="Linux" scheme="http://feiyang.li/tags/Linux/"/>
+    
+      <category term="vps" scheme="http://feiyang.li/tags/vps/"/>
+    
   </entry>
   
   <entry>
@@ -190,9 +204,9 @@
     <link href="http://feiyang.li/2017/05/03/ss-panel/index.html"/>
     <id>http://feiyang.li/2017/05/03/ss-panel/index.html</id>
     <published>2017-05-03T12:13:08.000Z</published>
-    <updated>2017-05-05T06:13:28.436Z</updated>
+    <updated>2017-05-06T12:30:19.646Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。</p>
 </blockquote>
 <hr>
@@ -264,6 +278,10 @@
     
       <category term="GFW" scheme="http://feiyang.li/tags/GFW/"/>
     
+      <category term="Linux" scheme="http://feiyang.li/tags/Linux/"/>
+    
+      <category term="vps" scheme="http://feiyang.li/tags/vps/"/>
+    
   </entry>
   
   <entry>
@@ -273,7 +291,7 @@
     <published>2017-05-02T10:01:38.000Z</published>
     <updated>2017-05-02T10:04:58.026Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>machine-learning-ex3.zip <a href="http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex3.zip" target="_blank" rel="external">下载链接</a>，第四周的课程相对来说比较简单，大致介绍了神经网络相关内容。</p>
 </blockquote>
 <hr>
@@ -369,7 +387,7 @@ theta2: (10, 26)
     <published>2017-04-15T13:42:33.000Z</published>
     <updated>2017-04-15T13:47:22.229Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>神经网络模型</p>
 </blockquote>
 <hr>
@@ -470,7 +488,7 @@ theta2: (10, 26)
     <published>2017-03-30T04:46:00.000Z</published>
     <updated>2017-04-15T12:16:09.671Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p><a href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">线性回归算法</a>，可用于房屋价格的估计及股票市场分析。 <a href="https://www.coursera.org/learn/machine-learning/programming/ixFof/logistic-regression" target="_blank" rel="external">Logistic Regression</a> （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在<a href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">这里</a></p>
 </blockquote>
 <hr>
@@ -576,7 +594,7 @@ theta2: (10, 26)
     <published>2017-03-27T11:13:38.000Z</published>
     <updated>2017-03-28T07:49:36.625Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/3" target="_blank" rel="external">第三周Coursera课程</a>  <strong>binary classification problem</strong></p>
 </blockquote>
 <hr>
@@ -738,7 +756,7 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
     <published>2017-03-26T11:00:29.000Z</published>
     <updated>2017-03-27T11:32:14.121Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Multivariate Linear Regression and Programming Exercise 1</p>
 </blockquote>
 <hr>
@@ -835,7 +853,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-25T10:49:36.000Z</published>
     <updated>2017-03-27T11:35:22.375Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression</p>
 </blockquote>
 <hr>
@@ -957,7 +975,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-24T09:05:47.000Z</published>
     <updated>2017-03-24T09:26:24.294Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>《算法导论》这门课的老师是<a href="http://cs.ustc.edu.cn/szdw/bdjs/201006/t20100614_22062.html" target="_blank" rel="external">黄刘生</a>和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。</p>
 </blockquote>
 <hr>
@@ -1105,7 +1123,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-17T08:25:27.000Z</published>
     <updated>2017-03-26T11:39:21.829Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以<code>.idx1-ubyte</code>后缀，包含60000个训练图像。将这些图像展示出来，需要利用到<a href="http://feiyang.li/2017/03/17/python-struct/">struct模块</a>。</p>
 </blockquote>
 <hr>
@@ -1180,7 +1198,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-17T06:08:07.000Z</published>
     <updated>2017-03-26T11:39:20.941Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p><a href="https://docs.python.org/3/library/struct.html#module-struct" target="_blank" rel="external">struct</a> — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具<strong>Python struct 模块</strong>。</p>
 </blockquote>
 <hr>
@@ -1361,7 +1379,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-16T02:52:28.000Z</published>
     <updated>2017-03-25T10:51:10.817Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式</p>
 </blockquote>
 <hr>
@@ -1429,7 +1447,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-15T05:22:44.000Z</published>
     <updated>2017-03-16T02:57:34.710Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。</p>
 </blockquote>
 <hr>
@@ -1502,7 +1520,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-11T07:06:14.000Z</published>
     <updated>2017-03-13T10:45:25.356Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>但行好事，莫问前程。真正能做到的能有几个呢？</p>
 </blockquote>
 <hr>
@@ -1643,7 +1661,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-10T05:52:53.000Z</published>
     <updated>2017-03-27T11:44:05.567Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>本文介绍了<code>raw_input</code> 和 <code>input</code>在<code>python2</code>和<code>python3</code>上的区别，以及如何利用正则表达式和<code>input</code>键盘输入一维数组和二维数组。</p>
 </blockquote>
 <hr>
@@ -1721,7 +1739,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-09T14:22:16.000Z</published>
     <updated>2017-03-25T05:10:12.327Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>快速排序是一种非常优秀的排序方法 </p>
 </blockquote>
 <a id="more"></a>
@@ -1774,7 +1792,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-03T06:17:00.000Z</published>
     <updated>2017-03-06T14:07:04.569Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>使用github学生优惠内的digitalocean，一键搭建vpn。获得60刀，免费用一年~</p>
 </blockquote>
 <hr>
@@ -1928,7 +1946,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-26T13:28:39.000Z</published>
     <updated>2017-05-02T07:15:03.603Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>jetbrains 家的东西都非常好看，但是价格贵的令人发指，所以我搭建了一个 Pycharm激活服务器，可以用来激活 Pycharm，IntelliJ IDEA，WebStorm。避免频繁更换激活码的问题。</p>
 </blockquote>
 <hr>
@@ -2010,7 +2028,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-24T12:57:01.000Z</published>
     <updated>2017-02-25T05:59:28.975Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Hexo插入音乐/视频/网易云音乐/bilibili视频，会让博客看起来很洋气  (ง •̀_•́)ง </p>
 </blockquote>
 <hr>
