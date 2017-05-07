@@ -22,7 +22,7 @@
     <published>2017-05-06T13:52:23.000Z</published>
     <updated>2017-05-06T13:53:12.187Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本节笔记对应第五周Coursera课程 <a href="https://www.coursera.org/learn/machine-learning/home/week/5" target="_blank" rel="external">Neural Networks: Learning</a></p>
 </blockquote>
 <hr>
@@ -62,11 +62,11 @@
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -77,7 +77,7 @@
     <published>2017-05-05T06:23:13.000Z</published>
     <updated>2017-05-06T12:30:20.814Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">本博客介绍上谷歌的方法，密码是我名字拼音。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="enter the password" id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">解密</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
+    <content type="html"><![CDATA[<script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">本博客介绍上谷歌的方法，密码是我名字拼音。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="enter the password" id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">解密</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
     
     <summary type="html">
     
@@ -99,29 +99,22 @@
     <link href="http://feiyang.li/2017/05/05/ss-panel-full/index.html"/>
     <id>http://feiyang.li/2017/05/05/ss-panel-full/index.html</id>
     <published>2017-05-05T06:09:39.000Z</published>
-    <updated>2017-05-06T12:59:25.074Z</updated>
+    <updated>2017-05-07T09:35:29.697Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>系统介绍： 1g内存，单核，也就是传说中的腾讯1元学生机。centos6.8 x32。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
 <p>读者建议：如果使用国外vps<a href="http://feiyang.li/2017/05/03/ss-panel/index.html">建议</a>会快速很多。国内vps建议本方法。</p>
 <h1 id="lnmp环境配置"><a href="#lnmp环境配置" class="headerlink" title="lnmp环境配置"></a>lnmp环境配置</h1><p>这里使用最新的<a href="https://lnmp.org/install.html" target="_blank" rel="external">lnmp1.4</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -c http://soft.vpser.net/lnmp/lnmp1.4beta.tar.gz &amp;&amp; tar zxf lnmp1.4beta.tar.gz &amp;&amp; cd lnmp1.4 &amp;&amp; ./install.sh lnmp</div></pre></td></tr></table></figure></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-386d2197beb13767.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170504/204651581.png" alt=""></p>
 <h1 id="安装ss-panel前端"><a href="#安装ss-panel前端" class="headerlink" title="安装ss-panel前端"></a>安装ss-panel前端</h1><h2 id="下载-ss-panel-源码"><a href="#下载-ss-panel-源码" class="headerlink" title="下载 ss-panel 源码"></a>下载 ss-panel 源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /home/wwwroot/ </div><div class="line">git clone https://github.com/orvice/ss-panel.git</div></pre></td></tr></table></figure>
 <p>安装好之后，是这个样子的。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-3e71112a9cdfccdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+                    <img src="http://cdn.mmmxcc.cn/blog/20170504/205330510.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 " alt="mark" title="">
                 </div>
                 <div class="image-caption">mark</div>
@@ -131,7 +124,7 @@
 <li>安装依赖那一步时间会久一些，因为一共有75个依赖，而且很多被墙了（因此如果直接用国外vps，真的会好很多），换了国内源会<strong>稍微</strong>好一些。<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-4173fded8c763653.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+                    <img src="http://cdn.mmmxcc.cn/blog/20170504/215216082.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 " alt="漫长的等待" title="">
                 </div>
                 <div class="image-caption">漫长的等待</div>
@@ -143,21 +136,14 @@
 <li>这里主要是修改数据库的内容，还有<strong>muKey</strong>。</li>
 </ul>
 <h3 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">lnmp vhost add</div><div class="line"># 写入站点网址</div><div class="line">/home/wwwroot/ss-panel/public</div><div class="line"># 允许重写规则，其余一律是n</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-9cc134f8f8f9c336.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170504/210029356.png" alt=""></p>
 <p>进入nginx配置文件再修改一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/nginx/conf/vhost/</div></pre></td></tr></table></figure></p>
 <p>完整配置文件应该是这个样子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line"> listen 80;</div><div class="line"> #listen [::]:80;</div><div class="line">server_name ss.feiyang.li n;</div><div class="line">index index.html index.htm index.php default.html default.htm default.php;</div><div class="line">root /home/wwwroot/ss.feiyang.li/public;</div><div class="line"> </div><div class="line">location / &#123;</div><div class="line">                        try_files $uri $uri/ /index.php$is_args$args;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">location ~ [^/]\.php(/|$) &#123;</div><div class="line"> # comment try_files $uri =404; to enable pathinfo</div><div class="line"> try_files $uri =404;</div><div class="line"> fastcgi_pass unix:/tmp/php-cgi.sock;</div><div class="line"> fastcgi_index index.php;</div><div class="line"> include fastcgi.conf;</div><div class="line"> #include pathinfo.conf;</div><div class="line">fastcgi_param PHP_ADMIN_VALUE &quot;open_basedir = /home/wwwroot/:/temp/:/proc&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"> </div><div class="line"> location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123;</div><div class="line"> expires 30d;</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"> location ~ .*\.(js|css)?$</div><div class="line"> &#123;</div><div class="line"> expires 12h;</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="新建ss数据库"><a href="#新建ss数据库" class="headerlink" title="新建ss数据库"></a>新建ss数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p</div><div class="line"># 输入自己的密码</div><div class="line">create database ss;</div><div class="line">use ss;</div><div class="line">source  /home/wwwroot/ss-panel/db.sql;</div></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-80792ea3b7bfa2c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+                    <img src="http://cdn.mmmxcc.cn/blog/20170504/212157512.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 " alt="" title="">
                 </div>
                 <div class="image-caption"></div>
@@ -166,37 +152,23 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-ef524b4d747eeaec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+                    <img src="http://cdn.mmmxcc.cn/blog/20170505/124252257.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 " alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <h2 id="添加管理员账户"><a href="#添加管理员账户" class="headerlink" title="添加管理员账户"></a>添加管理员账户</h2><p>文字排序会让强迫症奔溃。。。。。<br><code>php xcat createAdmin</code></p>
 <h2 id="邮箱设置"><a href="#邮箱设置" class="headerlink" title="邮箱设置"></a>邮箱设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vi .env</div><div class="line">mailgun_key = &apos;key-0****c09&apos; //上面的KEY</div><div class="line">mailgun_domain = &apos;https://api.mailgun.net/v3/feiyang.li&apos; //你经过验证过的域名</div><div class="line">mailgun_sender = &apos;postmaster@****.net&apos; //postmaster@你经过验证过的域名</div></pre></td></tr></table></figure>
-<h2 id="https证书"><a href="#https证书" class="headerlink" title="https证书"></a>https证书</h2><p><code>lnmp ssl add</code><br>/home/wwwroot/ss-panel/1_ss.feiyang.li_bundle.crt<br>/home/wwwroot/ss-panel/2_ss.feiyang.li.key<br>获得绿色小锁~<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-531eebc6ef00d2bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
+<h2 id="https证书"><a href="#https证书" class="headerlink" title="https证书"></a>https证书</h2><p><code>lnmp ssl add</code><br>/home/wwwroot/ss-panel/1_ss.feiyang.li_bundle.crt<br>/home/wwwroot/ss-panel/2_ss.feiyang.li.key<br>获得绿色小锁~<br><img src="http://cdn.mmmxcc.cn/blog/20170505/124311675.png" alt=""></p>
 <h1 id="安装-SS-PY-MU-服务端"><a href="#安装-SS-PY-MU-服务端" class="headerlink" title="安装 SS PY MU 服务端"></a>安装 SS PY MU 服务端</h1><h2 id="安装libsodium支持chacha20"><a href="#安装libsodium支持chacha20" class="headerlink" title="安装libsodium支持chacha20"></a>安装libsodium支持chacha20</h2><p>centos：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y groupinstall &quot;Development Tools&quot;</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
 <p>ubuntu/debian：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apt-get install build-essential</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
-<h2 id="将代码-clone-到本地："><a href="#将代码-clone-到本地：" class="headerlink" title="将代码 clone 到本地："></a>将代码 clone 到本地：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd ~</div><div class="line">git clone https://github.com/fsgmhoward/shadowsocks-py-mu.git</div><div class="line">cd ~/shadowsocks-py-mu/shadowsocks/</div></pre></td></tr></table></figure>
+<h2 id="将代码-clone-到本地："><a href="#将代码-clone-到本地：" class="headerlink" title="将代码 clone 到本地："></a>将代码 clone 到本地：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/fsgmhoward/shadowsocks-py-mu.git</div><div class="line">cd ~/shadowsocks-py-mu/shadowsocks/</div></pre></td></tr></table></figure>
 <p>其中的 shadowsocks 子目录才是我们需要的，外面的是 setup.py 的相关文件。</p>
-<h2 id="配置-shadowsocks-manyuser"><a href="#配置-shadowsocks-manyuser" class="headerlink" title="配置 shadowsocks-manyuser"></a>配置 shadowsocks-manyuser</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp config_example.py config.py</div><div class="line">vi config.py</div></pre></td></tr></table></figure>
+<h2 id="配置-shadowsocks-manyuser"><a href="#配置-shadowsocks-manyuser" class="headerlink" title="配置 shadowsocks-manyuser"></a>配置 shadowsocks-manyuser</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd ~</div><div class="line">git clone https://github.com/fsgmhoward/shadowsocks-py-mu.git</div><div class="line">cd ~/shadowsocks-py-mu/shadowsocks/</div></pre></td></tr></table></figure>
 <p>修改其中第 15 行和第 29~31 行的内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 启用 MultiUser API</div><div class="line">API_ENABLED = True</div><div class="line"></div><div class="line"># 就是在你的站点地址后面加个 /mu</div><div class="line">API_URL = &apos;http://ss.feiyang.li/mu&apos;  </div><div class="line"># 还记得上面在 .env 中填写的 muKey 吗？把它填在这里</div><div class="line">API_PASS = &apos;api_key_just_for_test&apos;</div></pre></td></tr></table></figure>
 <p>由于我们选择使用 Mu API 来与前端通信，所以我们不需要修改 config.py 中任何关于数据库的配置。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://upload-images.jianshu.io/upload_images/3326314-16089377aa275a7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="http://cdn.mmmxcc.cn/blog/20170505/134246486.png" alt=""></p>
 <p>好了，现在可以试着运行一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python servers.py</div></pre></td></tr></table></figure></p>
 <p>（注意，是 <strong>servers.py</strong> 而不是 server.py）。如果没错的话，应该可以看到这样的输出：</p>
 <h2 id="配置-ss-manyuser-守护进程"><a href="#配置-ss-manyuser-守护进程" class="headerlink" title="配置 ss-manyuser 守护进程"></a>配置 ss-manyuser 守护进程</h2><ul>
@@ -206,6 +178,8 @@
 <li><p>创建 supervisor 配置文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo_supervisord_conf &gt; /etc/supervisord.conf</div></pre></td></tr></table></figure>
 </li>
+</ul>
+<ul>
 <li><p>运行 supervisor 服务</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">supervisord</div></pre></td></tr></table></figure>
 </li>
@@ -225,9 +199,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ps -ef | grep servers.py</div><div class="line">root 952 739 0 15:40 ? 00:00:00 python /root/shadowsocks-rm/shadowsocks/servers.py</div></pre></td></tr></table></figure>
 </li>
 <li><p>可以通过以下命令管理 shadowsock-manyuser 的状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">supervisorctl &#123;start|stop|restart&#125; ss-manyuser</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">supervisorctl &#123;start|stop|restart&#125; ss-manyuser</div></pre></td></tr></table></figure>
 <h1 id="谷歌BBR加速"><a href="#谷歌BBR加速" class="headerlink" title="谷歌BBR加速"></a>谷歌BBR加速</h1><h2 id="OpenVZ-以外的（-KVM-、-Xen-、-VMware-等）"><a href="#OpenVZ-以外的（-KVM-、-Xen-、-VMware-等）" class="headerlink" title="OpenVZ 以外的（ KVM 、 Xen 、 VMware 等）"></a>OpenVZ 以外的（ KVM 、 Xen 、 VMware 等）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</div><div class="line">chmod +x bbr.sh</div><div class="line">./bbr.sh</div></pre></td></tr></table></figure>
 <p>详细信息见： <a href="https://www.91yun.org/archives/5174" target="_blank" rel="external">https://www.91yun.org/archives/5174</a></p>
 <h2 id="OpenVZ-小鸡"><a href="#OpenVZ-小鸡" class="headerlink" title="OpenVZ 小鸡"></a>OpenVZ 小鸡</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://raw.githubusercontent.com/mmmwhy/LKL_BBR/master/lkl/install.sh &amp;&amp; bash install.sh</div></pre></td></tr></table></figure>
@@ -261,7 +235,7 @@
     <published>2017-05-03T12:13:08.000Z</published>
     <updated>2017-05-06T12:30:19.646Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。</p>
 </blockquote>
 <hr>
@@ -346,7 +320,7 @@
     <published>2017-05-02T10:01:38.000Z</published>
     <updated>2017-05-02T10:04:58.026Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>machine-learning-ex3.zip <a href="http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex3.zip" target="_blank" rel="external">下载链接</a>，第四周的课程相对来说比较简单，大致介绍了神经网络相关内容。</p>
 </blockquote>
 <hr>
@@ -427,11 +401,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -442,7 +416,7 @@ theta2: (10, 26)
     <published>2017-04-15T13:42:33.000Z</published>
     <updated>2017-04-15T13:47:22.229Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>神经网络模型</p>
 </blockquote>
 <hr>
@@ -528,11 +502,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -543,7 +517,7 @@ theta2: (10, 26)
     <published>2017-03-30T04:46:00.000Z</published>
     <updated>2017-04-15T12:16:09.671Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p><a href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">线性回归算法</a>，可用于房屋价格的估计及股票市场分析。 <a href="https://www.coursera.org/learn/machine-learning/programming/ixFof/logistic-regression" target="_blank" rel="external">Logistic Regression</a> （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在<a href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">这里</a></p>
 </blockquote>
 <hr>
@@ -634,11 +608,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -649,7 +623,7 @@ theta2: (10, 26)
     <published>2017-03-27T11:13:38.000Z</published>
     <updated>2017-03-28T07:49:36.625Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/3" target="_blank" rel="external">第三周Coursera课程</a>  <strong>binary classification problem</strong></p>
 </blockquote>
 <hr>
@@ -796,11 +770,11 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -811,7 +785,7 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
     <published>2017-03-26T11:00:29.000Z</published>
     <updated>2017-03-27T11:32:14.121Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Multivariate Linear Regression and Programming Exercise 1</p>
 </blockquote>
 <hr>
@@ -893,11 +867,11 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -908,7 +882,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-25T10:49:36.000Z</published>
     <updated>2017-03-27T11:35:22.375Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression</p>
 </blockquote>
 <hr>
@@ -1030,7 +1004,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-24T09:05:47.000Z</published>
     <updated>2017-03-24T09:26:24.294Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>《算法导论》这门课的老师是<a href="http://cs.ustc.edu.cn/szdw/bdjs/201006/t20100614_22062.html" target="_blank" rel="external">黄刘生</a>和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。</p>
 </blockquote>
 <hr>
@@ -1178,7 +1152,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-17T08:25:27.000Z</published>
     <updated>2017-03-26T11:39:21.829Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以<code>.idx1-ubyte</code>后缀，包含60000个训练图像。将这些图像展示出来，需要利用到<a href="http://feiyang.li/2017/03/17/python-struct/">struct模块</a>。</p>
 </blockquote>
 <hr>
@@ -1240,9 +1214,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -1253,7 +1227,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-17T06:08:07.000Z</published>
     <updated>2017-03-26T11:39:20.941Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p><a href="https://docs.python.org/3/library/struct.html#module-struct" target="_blank" rel="external">struct</a> — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具<strong>Python struct 模块</strong>。</p>
 </blockquote>
 <hr>
@@ -1421,9 +1395,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -1434,7 +1408,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-16T02:52:28.000Z</published>
     <updated>2017-03-25T10:51:10.817Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式</p>
 </blockquote>
 <hr>
@@ -1489,9 +1463,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -1502,7 +1476,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-15T05:22:44.000Z</published>
     <updated>2017-03-16T02:57:34.710Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。</p>
 </blockquote>
 <hr>
@@ -1560,9 +1534,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
     
@@ -1575,7 +1549,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-11T07:06:14.000Z</published>
     <updated>2017-03-13T10:45:25.356Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>但行好事，莫问前程。真正能做到的能有几个呢？</p>
 </blockquote>
 <hr>
@@ -1716,7 +1690,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-10T05:52:53.000Z</published>
     <updated>2017-03-27T11:44:05.567Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本文介绍了<code>raw_input</code> 和 <code>input</code>在<code>python2</code>和<code>python3</code>上的区别，以及如何利用正则表达式和<code>input</code>键盘输入一维数组和二维数组。</p>
 </blockquote>
 <hr>
@@ -1794,7 +1768,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-09T14:22:16.000Z</published>
     <updated>2017-03-25T05:10:12.327Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>快速排序是一种非常优秀的排序方法 </p>
 </blockquote>
 <a id="more"></a>
@@ -1847,7 +1821,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-03-03T06:17:00.000Z</published>
     <updated>2017-03-06T14:07:04.569Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>使用github学生优惠内的digitalocean，一键搭建vpn。获得60刀，免费用一年~</p>
 </blockquote>
 <hr>
@@ -2001,7 +1975,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <published>2017-02-26T13:28:39.000Z</published>
     <updated>2017-05-02T07:15:03.603Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>jetbrains 家的东西都非常好看，但是价格贵的令人发指，所以我搭建了一个 Pycharm激活服务器，可以用来激活 Pycharm，IntelliJ IDEA，WebStorm。避免频繁更换激活码的问题。</p>
 </blockquote>
 <hr>
