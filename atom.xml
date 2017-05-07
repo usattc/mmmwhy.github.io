@@ -62,11 +62,11 @@
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -77,7 +77,7 @@
     <published>2017-05-05T06:23:13.000Z</published>
     <updated>2017-05-06T12:30:20.814Z</updated>
     
-    <content type="html"><![CDATA[<script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">本博客介绍上谷歌的方法，密码是我名字拼音。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="enter the password" id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">解密</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">本博客介绍上谷歌的方法，密码是我名字拼音。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="enter the password" id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">解密</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
     
     <summary type="html">
     
@@ -401,11 +401,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -502,11 +502,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -608,11 +608,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -770,11 +770,11 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -867,11 +867,11 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1214,9 +1214,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1395,9 +1395,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1463,9 +1463,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1534,9 +1534,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
       <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
     
@@ -1806,9 +1806,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
-      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
-    
       <category term="sort" scheme="http://feiyang.li/tags/sort/"/>
+    
+      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
     
       <category term="cpp" scheme="http://feiyang.li/tags/cpp/"/>
     
