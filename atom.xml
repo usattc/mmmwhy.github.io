@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-05-06T13:53:12.187Z</updated>
+  <updated>2017-05-08T08:48:03.206Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/index.html"/>
     <id>http://feiyang.li/2017/05/06/Coursera-ML-8-Neural-Networks-Learning/index.html</id>
     <published>2017-05-06T13:52:23.000Z</published>
-    <updated>2017-05-06T13:53:12.187Z</updated>
+    <updated>2017-05-08T08:48:03.206Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本节笔记对应第五周Coursera课程 <a href="https://www.coursera.org/learn/machine-learning/home/week/5" target="_blank" rel="external">Neural Networks: Learning</a></p>
@@ -36,18 +36,163 @@
                 <div class="image-caption"></div>
             </figure>
 <ul>
-<li>cost function  $$\begin{gather*} J(\Theta) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \left[y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] \end{gather*}$$ 
-我们使用循环，对每一行特征都预测K个不同的结果，然后利用循环在K个预测中选择可能性最高的一个，将其与y中的实际数据进行对比。</li>
+<li>cost function<br>$$\begin{gather<em>} J(\Theta) = - \frac{1}{m} \sum<em>{i=1}^m \sum</em>{k=1}^K \left[y^{(i)}<em>k \log ((h</em>\Theta (x^{(i)}))_k) + (1 - y^{(i)}<em>k)\log (1 - (h</em>\Theta(x^{(i)}))_k)\right] \end{gather</em>}$$<br>我们使用循环，对每一行特征都预测K个不同的结果，然后利用循环在K个预测中选择可能性最高的一个，将其与y中的实际数据进行对比。</li>
 </ul>
 <ul>
-<li>Similarly, the regularization term just sum up the square of all the parameters from all the layers: $$\frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2$$ 
-正则化的这一项，是在排除了每一层$\theta_0$后，每一层的$\Theta$矩阵的和。</li>
+<li>Similarly, the regularization term just sum up the square of all the parameters from all the layers:<br>$$\frac{\lambda}{2m}\sum<em>{l=1}^{L-1} \sum</em>{i=1}^{s<em>l} \sum</em>{j=1}^{s<em>{l+1}} ( \Theta</em>{j,i}^{(l)})^2$$<br>正则化的这一项，是在排除了每一层$\theta_0$后，每一层的$\Theta$矩阵的和。</li>
 <li>最里层的循环$j$循环所有的行(由$s_{l+1}$层的激活单元数决定)。</li>
 <li>循环$i$则循环所有的列，由该层(s_l层)的激活单元数决定。</li>
 </ul>
 <p>Note:<br>这个看起来很复杂的代价函数与之前代价函数思想是一样的，我们希望通过代价函数来观察算法预测的结果与真实情况的误差有多大。不同的是，对于每一行特征，我们都会给出<strong>K个预测</strong>。</p>
-<h1 id="Backpropagation-Algorithm"><a href="#Backpropagation-Algorithm" class="headerlink" title="Backpropagation Algorithm"></a>Backpropagation Algorithm</h1><p>这一块我也看的不是很懂，先不做笔记。之后如果有新的感悟，再记回来。</p>
-<p>没有就算了。</p>
+<h1 id="Backpropagation-Algorithm"><a href="#Backpropagation-Algorithm" class="headerlink" title="Backpropagation Algorithm"></a>Backpropagation Algorithm</h1><p><del>这一块我也看的不是很懂，先不做笔记。之后如果有新的感悟，再记回来。</del></p>
+<p><del>没有就算了。</del></p>
+<p>最终证明还是可以看懂的，csdn这个sb编辑器，害得我记得笔记丢失了一次，好气哦。又得抄大佬的笔记了。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/090514790.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>In order to use optimization algorithms like gradient descent, we must calculate the derivative of the cost function. </p>
+<ul>
+<li>First we should calculate $\delta$ for each layer using backpropagation algorithm. From layerl to $layer<em>l$ to $layer</em>{l+1}$, we have:<br>$$\delta^{(output)} = a^{(output)} - y\\delta^{(l)} = [\Theta^{(l)}]^T \delta^{(l+1)} .* g’(z^{(l)})$$</li>
+</ul>
+<p>误差$\delta$表示激活单元的预测值与实际值之间的误差。第二行式子，是在后一层偏差的基础上，增加了本层的偏差。</p>
+<p>注意：没有$\delta_1$</p>
+<h2 id="一点感悟"><a href="#一点感悟" class="headerlink" title="一点感悟"></a>一点感悟</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/104937137.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/104732466.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>将这两个图，联系在一起，好像对反向传播有了一些理解。其实就是在正向传播的基础上，因为最终的对比结果是在最外层，那么我们从最外层开始，重新纠正一遍计算过程，这样可以减少误差。</p>
+<ul>
+<li><p>For sigmoid function, $g’(z) = g(z)(1-g(z))$<br>这个比较简单，就不推导了。</p>
+</li>
+<li><p>Then we have the derivative:<br>$$\frac {\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta) = a_j^{(l)} \delta_i^{(l+1)} \\Delta^{(l)} = \delta^{(l+1)} (a^{(l)})^T$$<br>在Coursera教程中，这个地方被草草带过，相比之下<a href="http://www.ics.uci.edu/~dramanan/teaching/ics273a_winter08/lectures/lecture14.pdf" target="_blank" rel="external">uci</a>的这篇文章介绍的非常详细。</p>
+</li>
+</ul>
+<h2 id="一个推导过程"><a href="#一个推导过程" class="headerlink" title="一个推导过程"></a>一个推导过程</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/142800870.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/142813675.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/142827146.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/142832567.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="另外一个推导"><a href="#另外一个推导" class="headerlink" title="另外一个推导"></a>另外一个推导</h2><h3 id="BackPropagation算法"><a href="#BackPropagation算法" class="headerlink" title="BackPropagation算法"></a>BackPropagation算法</h3><p>BackPropagation算法是多层神经网络的训练中举足轻重的算法，简单的理解，它就是复合函数的链式法则。由于后面我的网络中会用到对数损失函数，所以在这里我们使用平方损失函数。对于单个样例，其平方损失函数为：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/144354206.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>对于给定一个包含m个样例的数据集，我们可以定义整体代价函数为：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/144400651.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>和直线的拟合类似，深度学习也有一个目标函数，通过这个目标函数我们可以知道参数为何值时对我们来说才是一组“好”的参数，这个函数就是前边提到的损失函数。训练的过程就是通过每一次迭代对网络中参数进行更新，来使损失函数的值达到最小(下图中α为学习率)。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/144431808.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h3 id="利用BackPropagation算法计算偏导数"><a href="#利用BackPropagation算法计算偏导数" class="headerlink" title="利用BackPropagation算法计算偏导数"></a>利用BackPropagation算法计算偏导数</h3><p>由上一节可知，我们只需求出每一层的 <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/144537773.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="](http://cdn.mmmxcc.cn/blog/20170508/144525573.png) 和![" title="">
+                </div>
+                <div class="image-caption">](http://cdn.mmmxcc.cn/blog/20170508/144525573.png) 和![</div>
+            </figure> 即可完成该层的权值和偏置的更新。<br>BP算法的整体思路如下：对于每个给定的训练样本，首先进行前向计算，计算出网络中每一层的激活值和网络的输出。对于最后一层(输出层)，我们可以直接计算出网络的输出值与已经给出的标签值(label)直接的差距，我们将这个值定义为残差δ。对于输出层之前的隐藏层L，我们将根据L+1层各节点的加权平均值来计算第L层的残差。</p>
+<p><strong>插入一些我个人对BP算法的一点比较容易理解的解释(如有错误请指出)：在反向传播过程中，若第x层的a节点通过权值W对x+1层的b节点有贡献，则在反向传播过程中，梯度通过权值W从b节点传播回a节点。不管下面的公式推导，还是后面的卷积神经网络，在反向传播的过程中，都是遵循这样的一个规律。</strong></p>
+<p>反向传播的具体步骤如下：</p>
+<ul>
+<li>根据输入，计算出每一层的激活值。</li>
+<li>对于输出层，我们使用如下公式计算每个单元的残差：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/145300526.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>对于输出层之前的每一层，按照如下公式计算每一层的残差：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/145319283.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>由残差计算每一层的偏导数：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170508/145334453.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>最后，使用偏导数更新权值和偏置。</li>
+</ul>
+<hr>
+<p>其实说到底，这两个推导方法其实是一回事，只不过换了几个字母而已。第二个推导更好一些</p>
+<ul>
+<li>Instead of calculate the $\Delta$  for all the training data, we could sum up all the inputs independantly, like:<br>From i = 1 to m, do:<br>$$\Delta^{(l)} += \delta^{(l+1)} (a^{(l)})^T $$<br>Then we have:<br>$$ \\frac {\partial}{\partial \Theta<em>{ij}^{(l)}} J(\Theta) = \frac {1}{m} \Delta</em>{ij}^{(l)}$$</li>
+</ul>
+<p>(This step is the main step for mapreduce, see Large Scale Machine Learning)</p>
+<ul>
+<li>Then add regularzation term for partial derivative, we have:</li>
+</ul>
+<p>$$\frac {\partial}{\partial \Theta<em>{ij}^{(l)}} J(\Theta) = \frac {1}{m} \Delta</em>{ij}^{(l)} + \frac {\lambda}{m} \Theta_{ij}^{(l)}$$</p>
+<ul>
+<li>Finally, using $J(\Theta)$ and $\frac {\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta)$, we could minimize the cost function using gradient descent as well as other optimization algorithms.</li>
+</ul>
+<h1 id="Optional-Section-How-Backpropagation-Works"><a href="#Optional-Section-How-Backpropagation-Works" class="headerlink" title="Optional Section: How Backpropagation Works"></a>Optional Section: How Backpropagation Works</h1><p>Using the same model as the last section:$$\begin{align}\frac {\partial J}{\partial \Theta_{ij}^{(1)}} =\frac {\partial J}{\partial a_i^{(2)}}\frac {\partial a_i^{(2)}}{\partial z_i^{(2)}}\frac {\partial z<em>i^{(2)}}{\partial \Theta</em>{ij}^{(1)}} \ =\frac {\partial J}{\partial a_i^{(2)}} g’(z_i^{(2)}) a_i^{(1)}\end{align}$$Then taking the total derivative with respect to $z^{(3)}$, a recursive expression for the derivative is obtained:$$\begin{align}\frac {\partial J}{\partial a<em>i^{(2)}} =\sum\limits</em>{m=1}^{s_3}\frac {\partial J}{\partial z_m^{(3)}}\frac {\partial z_m^{(3)}}{\partial a<em>i^{(2)}} \ =\sum\limits</em>{m=1}^{s_3}\frac {\partial J}{\partial a_m^{(3)}}\frac {\partial a_m^{(3)}}{\partial z_m^{(3)}}\frac {\partial z_m^{(3)}}{\partial a<em>i^{(2)}} \ =\sum\limits</em>{m=1}^{s_3}\frac {\partial J}{\partial a_m^{(3)}} g’(z<em>m^{(3)}) \Theta</em>{mi}^{(2)}\end{align}$$<br>Let $\delta_i^{(2)} =\frac {\partial J}{\partial a_i^{(2)}} g’(z<em>i^{(2)})$, then from the result of the first formula We have: $\frac {\partial J}{\partial \Theta</em>{ij}^{(1)}} =\delta_i^{(2)} a_i^{(1)}$, in which recursively, $\delta<em>i^{(2)} =(\sum\limits</em>{m=1}^{s_3}\delta<em>m^{(3)}\Theta</em>{mi}^{(2)}) g’(z_i^{(2)})$</p>
+<p>–</p>
+<p>Referance:<br><a href="http://www.wikiwand.com/en/Backpropagation#Derivation" target="_blank" rel="external">http://www.wikiwand.com/en/Backpropagation#Derivation</a><br>ttp://blog.csdn.net/l691899397/article/details/52223998<br><a href="http://xxuan.me/2016-02-20-Neural-Networks-Learning.html" target="_blank" rel="external">http://xxuan.me/2016-02-20-Neural-Networks-Learning.html</a></p>
 ]]></content>
     
     <summary type="html">
@@ -62,11 +207,11 @@
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -77,7 +222,7 @@
     <published>2017-05-05T06:23:13.000Z</published>
     <updated>2017-05-06T12:30:20.814Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">本博客介绍上谷歌的方法，密码是我名字拼音。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="enter the password" id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">解密</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">本博客介绍上谷歌的方法，密码是我名字拼音。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="enter the password" id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">解密</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
     
     <summary type="html">
     
@@ -99,7 +244,7 @@
     <link href="http://feiyang.li/2017/05/05/ss-panel-full/index.html"/>
     <id>http://feiyang.li/2017/05/05/ss-panel-full/index.html</id>
     <published>2017-05-05T06:09:39.000Z</published>
-    <updated>2017-05-08T04:40:07.766Z</updated>
+    <updated>2017-05-08T04:40:43.368Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>系统介绍： 1g内存，单核，也就是传说中的腾讯1元学生机。centos6.8 x32。</p>
@@ -401,11 +546,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -502,11 +647,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -608,11 +753,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -770,11 +915,11 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -867,11 +1012,11 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1214,9 +1359,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -1395,9 +1540,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -1463,9 +1608,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
   </entry>
   
@@ -1534,9 +1679,9 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     </summary>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
     
