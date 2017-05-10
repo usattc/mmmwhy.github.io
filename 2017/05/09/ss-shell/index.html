@@ -22,18 +22,12 @@
     
     
     <meta name="keywords" content="GFW,Linux,vps,shell">
-    <meta name="description" content="上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此搭建了本ss-panel一键安装脚本
-
-
-效果">
+    <meta name="description" content="上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此搭建了本ss-panel一键安装脚本">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ss-panel 一键安装脚本（前端后端全自动一键安装脚本）">
 <meta property="og:url" content="http://feiyang.li/2017/05/09/ss-shell/index.html">
 <meta property="og:site_name" content="李飞阳">
-<meta property="og:description" content="上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此搭建了本ss-panel一键安装脚本
-
-
-效果">
+<meta property="og:description" content="上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此搭建了本ss-panel一键安装脚本">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170509/191015542.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170509/191042466.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
@@ -44,13 +38,16 @@
 ">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170509/214909086.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
-<meta property="og:updated_time" content="2017-05-09T13:59:38.361Z">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170510/085511290.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170509/221038086.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170509/221216262.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-05-10T01:27:54.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ss-panel 一键安装脚本（前端后端全自动一键安装脚本）">
-<meta name="twitter:description" content="上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此搭建了本ss-panel一键安装脚本
-
-
-效果">
+<meta name="twitter:description" content="上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此搭建了本ss-panel一键安装脚本">
 <meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170509/191015542.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
     
@@ -194,7 +191,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#效果"><span class="post-toc-number">1.</span> <span class="post-toc-text">效果</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#特点"><span class="post-toc-number">2.</span> <span class="post-toc-text">特点</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#系统要求"><span class="post-toc-number">3.</span> <span class="post-toc-text">系统要求</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一键安装脚本"><span class="post-toc-number">4.</span> <span class="post-toc-text">一键安装脚本</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#其他补充内容"><span class="post-toc-number">5.</span> <span class="post-toc-text">其他补充内容</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#效果"><span class="post-toc-number">1.</span> <span class="post-toc-text">效果</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#特点"><span class="post-toc-number">2.</span> <span class="post-toc-text">特点</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#系统要求"><span class="post-toc-number">3.</span> <span class="post-toc-text">系统要求</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一键安装脚本"><span class="post-toc-number">4.</span> <span class="post-toc-text">一键安装脚本</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ss-panel和ss-node同时安装"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">ss-panel和ss-node同时安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#仅安装ss-panel"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">仅安装ss-panel</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#仅安装ss-node"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">仅安装ss-node</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#其他补充内容"><span class="post-toc-number">5.</span> <span class="post-toc-text">其他补充内容</span></a></li></ol>
         </nav>
     </aside>
     
@@ -223,6 +220,7 @@
 <p>上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此搭建了本ss-panel一键安装脚本</p>
 </blockquote>
 <hr>
+<a id="more"></a>
 <h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
@@ -262,28 +260,49 @@
 <li>被墙掉的资源都换成了墙内资源，不会出现被卡死的情况了。</li>
 </ul>
 <h1 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h1><p>理论上：CentOS 6+ / Debian 7+ / Ubuntu 14.04 +  都可以，建议CentOS7 X64，我用的是这个版本，通过测试。</p>
-<h1 id="一键安装脚本"><a href="#一键安装脚本" class="headerlink" title="一键安装脚本"></a>一键安装脚本</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/mmmwhy/ss-panel-and-ss-py-mu/master/ss-panel_node.sh &amp;&amp; chmod +x ss-panel_node.sh &amp;&amp; bash ss-panel_node.sh</div></pre></td></tr></table></figure>
-<p>运行脚本后会出现脚本操作菜单，</p>
-<ul>
-<li>选择并输入 1 就会安装ss-panel和ss-node在此vps上。</li>
-<li>选择并输入 2 就会单独安装ss-panel</li>
-<li>选择并输入 2 就会单独安装ss-node</li>
+<h1 id="一键安装脚本"><a href="#一键安装脚本" class="headerlink" title="一键安装脚本"></a>一键安装脚本</h1><ul>
+<li>登陆后运行：screen -S ss<br>如果提示screen: command not found 命令不存在可以执行：yum install screen 或 apt-get install screen安装（如果网络掉线，可以重新连接，再执行 screen -r ss 就会看到你的ss-panel安装进程。）</li>
+<li>安装脚本<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/mmmwhy/ss-panel-and-ss-py-mu/master/ss-panel_node.sh &amp;&amp; chmod +x ss-panel_node.sh &amp;&amp; bash ss-panel_node.sh</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="image-bubble">
+<p>运行脚本后会出现脚本操作菜单，</p>
+<h2 id="ss-panel和ss-node同时安装"><a href="#ss-panel和ss-node同时安装" class="headerlink" title="ss-panel和ss-node同时安装"></a>ss-panel和ss-node同时安装</h2><p>选择并输入 1<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="http://cdn.mmmxcc.cn/blog/20170509/214909086.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 " alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure>
-<p>直接输入1，之后提示时候再点一下回车，一键到底~</p>
-<p>安装结束后，登陆IP即可查看网站<br><strong>默认账户：ss@feiyang.li</strong><br><strong>默认密码：feiyang</strong></p>
+            </figure><br>安装结束后，登陆IP即可查看网站<br><strong>默认账户：ss@feiyang.li</strong><br><strong>默认密码：feiyang</strong><br>进入ss-panel页面后，记得在<strong>管理面包-&gt;节点管理-&gt;添加节点-&gt;输入节点信息</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170510/085511290.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>之后回到用户面板，就可以使用了。</p>
+<h2 id="仅安装ss-panel"><a href="#仅安装ss-panel" class="headerlink" title="仅安装ss-panel"></a>仅安装ss-panel</h2><p>选择并输入 2<br>出现的结果与1相同，只不过您vps上没有同时安装<a href="https://github.com/fsgmhoward/shadowsocks-py-mu" target="_blank" rel="external">ss-py-mu</a></p>
+<h2 id="仅安装ss-node"><a href="#仅安装ss-node" class="headerlink" title="仅安装ss-node"></a>仅安装ss-node</h2><p>选择并输入 3，用于新建节点。<br>先在网页增加节点信息，特别要记住这里的node_id，长这个样子的<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170509/221038086.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure><br>输入相关信息，ip地址和域名都是支持的，但是需要加上<strong><a href="http://或者https://" target="_blank" rel="external">http://或者https://</a></strong>，注意区分自己域名有没有ssl。否则可能出现用户使用记录无法推送的问题。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170509/221216262.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <h1 id="其他补充内容"><a href="#其他补充内容" class="headerlink" title="其他补充内容"></a>其他补充内容</h1><ul>
-<li>mailgun账号需要自己申请，我那个只是举个例子</li>
-<li>基于<a href="https://lnmp.org/" target="_blank" rel="external">lnmp1.3稳定版</a>制作，网络上相关资料很多。</li>
+<li>mailgun账号需要自己申请，我那个只是举个例子。</li>
+<li>基于<a href="https://lnmp.org/" target="_blank" rel="external">lnmp1.3稳定版</a>制作，兼容性非常好。</li>
 <li><a href="http://feiyang.li/2017/05/03/ss-panel/index.html#常见错误">常见错误</a>在这里查看</li>
 <li>如果想设置更多的信息，请查看<a href="http://feiyang.li/2017/05/05/ss-panel-full/index.html">安装教程全文</a>，本脚本和该教程内容完全一致。</li>
+<li>关于<a href="http://feiyang.li/2017/05/05/ss-panel-full/index.html#谷歌BBR加速">Google的bbr加速</a>，与本脚本可以通用，但是因为效果不明显(可能因为我们实验室网太烂了吧)，所以我没有加入。</li>
 </ul>
 <hr>
 <p>第一次写脚本，还请多多指教~</p>
@@ -294,7 +313,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-05-09T13:59:38.361Z" itemprop="dateUpdated">2017年5月9日 21:59</time>
+    最后更新时间：<time datetime="2017-05-10T01:27:54.957Z" itemprop="dateUpdated">2017年5月10日 9:27</time>
 </span><br>
 
 
@@ -337,7 +356,10 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/09/ss-shell/&title=《ss-panel 一键安装脚本（前端后端全自动一键安装脚本）》 — 李飞阳&source=Python ,Code,Data mining" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/09/ss-shell/&title=《ss-panel 一键安装脚本（前端后端全自动一键安装脚本）》 — 李飞阳&source=
+上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此搭建了本ss-panel一键安装脚本
+
+" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -463,7 +485,10 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/09/ss-shell/&title=《ss-panel 一键安装脚本（前端后端全自动一键安装脚本）》 — 李飞阳&source=Python ,Code,Data mining" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/09/ss-shell/&title=《ss-panel 一键安装脚本（前端后端全自动一键安装脚本）》 — 李飞阳&source=
+上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此搭建了本ss-panel一键安装脚本
+
+" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
