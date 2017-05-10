@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://feiyang.li/2017/05/10/Coursera-ML-9-Programming-Exercise-4/">
+    
+    
+    <title>Coursera ML(9)-Programming Exercise 8 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="Machine Learning,读书笔记,Python">
+    <meta name="description" content="对应反向传播算法内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coursera ML(9)-Programming Exercise 8">
+<meta property="og:url" content="http://feiyang.li/2017/05/10/Coursera-ML-9-Programming-Exercise-4/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="对应反向传播算法内容">
+<meta property="og:updated_time" content="2017-05-10T12:43:46.371Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coursera ML(9)-Programming Exercise 8">
+<meta name="twitter:description" content="对应反向传播算法内容">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-cog"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/auth/login" target="_blank" >
+                <i class="icon icon-lg icon-rocket"></i>
+                肥羊免费SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+
+    <div id="myTime">
+ <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="180" height="80" id="honehoneclock" align="middle">
+ <param name="allowScriptAccess" value="always">
+ <param name="movie" value="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf">
+ <param name="quality" value="high">
+ <param name="bgcolor" value="#ffffff">
+ <param name="wmode" value="transparent">
+ <embed wmode="transparent" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf" quality="high" bgcolor="#ffffff" width="180" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+ </object>
+ </div>
+
+
+
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Coursera ML(9)-Programming Exercise 8</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Coursera ML(9)-Programming Exercise 8</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-10T10:01:38.000Z" itemprop="datePublished" class="page-time">
+  2017-05-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Programming-Exercise-4-Neural-Networks-Learning"><span class="post-toc-number">1.</span> <span class="post-toc-text">Programming Exercise 4 - Neural Networks Learning</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Load-MATLAB-datafiles"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">Load MATLAB datafiles</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Neural-Network"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">Neural Network</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Neural-Networks-Feed-Forward-and-Cost-Function"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Neural Networks - Feed Forward and Cost Function</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Sigmoid-gradient"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">Sigmoid gradient</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#g’-z-g-z-1-g-z"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">$$ g’(z) = g(z)(1 - g(z))$$</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Cost-Function"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">Cost Function</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#J-theta-frac-1-m-sum-i-1-m-sum-k-1-K-big-y-i-k-log-h-theta-x-i-k-1-y-i-k-log-1-h-theta-x-i-k-big"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">$$ J(\theta) = \frac{1}{m}\sum{i=1}^{m}\sum{k=1}^{K}\big[-y^{(i)}{k}\, log\,(( h\theta\,(x^{(i)}))_k)-(1-y^{(i)}k)\,log\,(1-h\theta(x^{(i)}))_k)\big]$$</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Regularized-Cost-Function"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">Regularized Cost Function</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#J-theta-frac-1-m-sum-i-1-m-sum-k-1-K-bigg-y-i-k-log-h-theta-x-i-k-1-y-i-k-log-1-h-theta-x-i-k-bigg-frac-lambda-2m-bigg-sum-j-1-25-sum-k-1-400-Theta-j-k-1-2-sum-j-1-10-sum-k-1-25-Theta-j-k-2-2-bigg"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">$$ J(\theta) = \frac{1}{m}\sum{i=1}^{m}\sum{k=1}^{K}\bigg[-y^{(i)}{k}\, log\,(( h\theta\,(x^{(i)}))_k)-(1-y^{(i)}k)\,log\,(1-h\theta(x^{(i)}))k)\bigg] + \frac{\lambda}{2m}\bigg[\sum{j=1}^{25}\sum{k=1}^{400}(\Theta{j,k}^{(1)})^2+\sum{j=1}^{10}\sum{k=1}^{25}(\Theta_{j,k}^{(2)})^2\bigg]$$</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Coursera-ML-9-Programming-Exercise-4"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Coursera ML(9)-Programming Exercise 8</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年05月10日 18:01" datetime="2017-05-10T10:01:38.000Z"  itemprop="datePublished">2017-05-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>对应反向传播算法内容</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h2 id="Programming-Exercise-4-Neural-Networks-Learning"><a href="#Programming-Exercise-4-Neural-Networks-Learning" class="headerlink" title="Programming Exercise 4 - Neural Networks Learning"></a>Programming Exercise 4 - Neural Networks Learning</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># %load ../../../standard_import.txt</span></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="comment"># load MATLAB files</span></div><div class="line"><span class="keyword">from</span> scipy.io <span class="keyword">import</span> loadmat</div><div class="line"></div><div class="line">pd.set_option(<span class="string">'display.notebook_repr_html'</span>, <span class="keyword">False</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_columns'</span>, <span class="keyword">None</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_rows'</span>, <span class="number">150</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_seq_items'</span>, <span class="keyword">None</span>)</div><div class="line"> </div><div class="line"><span class="comment">#%config InlineBackend.figure_formats = &#123;'pdf',&#125;</span></div><div class="line">%matplotlib inline</div><div class="line"></div><div class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</div><div class="line">sns.set_context(<span class="string">'notebook'</span>)</div><div class="line">sns.set_style(<span class="string">'darkgrid'</span>)</div></pre></td></tr></table></figure>
+<h4 id="Load-MATLAB-datafiles"><a href="#Load-MATLAB-datafiles" class="headerlink" title="Load MATLAB datafiles"></a>Load MATLAB datafiles</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">data = loadmat(<span class="string">'data/ex4data1.mat'</span>)</div><div class="line">data.keys()</div></pre></td></tr></table></figure>
+<pre><code>dict_keys([&apos;__header__&apos;, &apos;__version__&apos;, &apos;__globals__&apos;, &apos;X&apos;, &apos;y&apos;])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">y = data[<span class="string">'y'</span>]</div><div class="line"><span class="comment"># Add intercept</span></div><div class="line">X = np.c_[np.ones((data[<span class="string">'X'</span>].shape[<span class="number">0</span>],<span class="number">1</span>)), data[<span class="string">'X'</span>]]</div><div class="line"></div><div class="line">print(<span class="string">'X:'</span>,X.shape, <span class="string">'(with intercept)'</span>)</div><div class="line">print(<span class="string">'y:'</span>,y.shape)</div></pre></td></tr></table></figure>
+<pre><code>X: (5000, 401) (with intercept)
+y: (5000, 1)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">weights = loadmat(<span class="string">'data/ex3weights.mat'</span>)</div><div class="line">weights.keys()</div></pre></td></tr></table></figure>
+<pre><code>dict_keys([&apos;__header__&apos;, &apos;__version__&apos;, &apos;__globals__&apos;, &apos;Theta1&apos;, &apos;Theta2&apos;])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">theta1, theta2 = weights[<span class="string">'Theta1'</span>], weights[<span class="string">'Theta2'</span>]</div><div class="line">print(<span class="string">'theta1 :'</span>, theta1.shape)</div><div class="line">print(<span class="string">'theta2 :'</span>, theta2.shape)</div><div class="line">params = np.r_[theta1.ravel(), theta2.ravel()]</div><div class="line">print(<span class="string">'params :'</span>, params.shape)</div></pre></td></tr></table></figure>
+<pre><code>theta1 : (25, 401)
+theta2 : (10, 26)
+params : (10285,)
+</code></pre><h4 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h4><p>Input layer size = 400 (20x20 pixels) <br><br>Hidden layer size = 25 <br><br>Number of labels = 10</p>
+<h3 id="Neural-Networks-Feed-Forward-and-Cost-Function"><a href="#Neural-Networks-Feed-Forward-and-Cost-Function" class="headerlink" title="Neural Networks - Feed Forward and Cost Function"></a>Neural Networks - Feed Forward and Cost Function</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(z)</span>:</span></div><div class="line">    <span class="keyword">return</span>(<span class="number">1</span> / (<span class="number">1</span> + np.exp(-z)))</div></pre></td></tr></table></figure>
+<h4 id="Sigmoid-gradient"><a href="#Sigmoid-gradient" class="headerlink" title="Sigmoid gradient"></a>Sigmoid gradient</h4><h4 id="g’-z-g-z-1-g-z"><a href="#g’-z-g-z-1-g-z" class="headerlink" title="$$ g’(z) = g(z)(1 - g(z))$$"></a>$$ g’(z) = g(z)(1 - g(z))$$</h4><p>where $$ g(z) = \frac{1}{1+e^{-z}}$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoidGradient</span><span class="params">(z)</span>:</span></div><div class="line">    <span class="keyword">return</span>(sigmoid(z)*(<span class="number">1</span>-sigmoid(z)))</div></pre></td></tr></table></figure>
+<h4 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h4><h4 id="J-theta-frac-1-m-sum-i-1-m-sum-k-1-K-big-y-i-k-log-h-theta-x-i-k-1-y-i-k-log-1-h-theta-x-i-k-big"><a href="#J-theta-frac-1-m-sum-i-1-m-sum-k-1-K-big-y-i-k-log-h-theta-x-i-k-1-y-i-k-log-1-h-theta-x-i-k-big" class="headerlink" title="$$ J(\theta) = \frac{1}{m}\sum{i=1}^{m}\sum{k=1}^{K}\big[-y^{(i)}{k}\, log\,(( h\theta\,(x^{(i)}))_k)-(1-y^{(i)}k)\,log\,(1-h\theta(x^{(i)}))_k)\big]$$"></a>$$ J(\theta) = \frac{1}{m}\sum<em>{i=1}^{m}\sum</em>{k=1}^{K}\big[-y^{(i)}<em>{k}\, log\,(( h</em>\theta\,(x^{(i)}))_k)-(1-y^{(i)}<em>k)\,log\,(1-h</em>\theta(x^{(i)}))_k)\big]$$</h4><h4 id="Regularized-Cost-Function"><a href="#Regularized-Cost-Function" class="headerlink" title="Regularized Cost Function"></a>Regularized Cost Function</h4><h4 id="J-theta-frac-1-m-sum-i-1-m-sum-k-1-K-bigg-y-i-k-log-h-theta-x-i-k-1-y-i-k-log-1-h-theta-x-i-k-bigg-frac-lambda-2m-bigg-sum-j-1-25-sum-k-1-400-Theta-j-k-1-2-sum-j-1-10-sum-k-1-25-Theta-j-k-2-2-bigg"><a href="#J-theta-frac-1-m-sum-i-1-m-sum-k-1-K-bigg-y-i-k-log-h-theta-x-i-k-1-y-i-k-log-1-h-theta-x-i-k-bigg-frac-lambda-2m-bigg-sum-j-1-25-sum-k-1-400-Theta-j-k-1-2-sum-j-1-10-sum-k-1-25-Theta-j-k-2-2-bigg" class="headerlink" title="$$ J(\theta) = \frac{1}{m}\sum{i=1}^{m}\sum{k=1}^{K}\bigg[-y^{(i)}{k}\, log\,(( h\theta\,(x^{(i)}))_k)-(1-y^{(i)}k)\,log\,(1-h\theta(x^{(i)}))k)\bigg] + \frac{\lambda}{2m}\bigg[\sum{j=1}^{25}\sum{k=1}^{400}(\Theta{j,k}^{(1)})^2+\sum{j=1}^{10}\sum{k=1}^{25}(\Theta_{j,k}^{(2)})^2\bigg]$$"></a>$$ J(\theta) = \frac{1}{m}\sum<em>{i=1}^{m}\sum</em>{k=1}^{K}\bigg[-y^{(i)}<em>{k}\, log\,(( h</em>\theta\,(x^{(i)}))_k)-(1-y^{(i)}<em>k)\,log\,(1-h</em>\theta(x^{(i)}))<em>k)\bigg] + \frac{\lambda}{2m}\bigg[\sum</em>{j=1}^{25}\sum<em>{k=1}^{400}(\Theta</em>{j,k}^{(1)})^2+\sum<em>{j=1}^{10}\sum</em>{k=1}^{25}(\Theta_{j,k}^{(2)})^2\bigg]$$</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">nnCostFunction</span><span class="params">(nn_params, input_layer_size, hidden_layer_size, num_labels, features, classes, reg)</span>:</span></div><div class="line">    </div><div class="line">    <span class="comment"># When comparing to Octave code note that Python uses zero-indexed arrays.</span></div><div class="line">    <span class="comment"># But because Numpy indexing does not include the right side, the code is the same anyway.</span></div><div class="line">    theta1 = nn_params[<span class="number">0</span>:(hidden_layer_size*(input_layer_size+<span class="number">1</span>))].reshape(hidden_layer_size,(input_layer_size+<span class="number">1</span>))</div><div class="line">    theta2 = nn_params[(hidden_layer_size*(input_layer_size+<span class="number">1</span>)):].reshape(num_labels,(hidden_layer_size+<span class="number">1</span>))</div><div class="line"></div><div class="line">    m = features.shape[<span class="number">0</span>]</div><div class="line">    y_matrix = pd.get_dummies(classes.ravel()).as_matrix() </div><div class="line">    </div><div class="line">    <span class="comment"># Cost</span></div><div class="line">    a1 = features <span class="comment"># 5000x401</span></div><div class="line">        </div><div class="line">    z2 = theta1.dot(a1.T) <span class="comment"># 25x401 * 401x5000 = 25x5000 </span></div><div class="line">    a2 = np.c_[np.ones((features.shape[<span class="number">0</span>],<span class="number">1</span>)),sigmoid(z2.T)] <span class="comment"># 5000x26 </span></div><div class="line">    </div><div class="line">    z3 = theta2.dot(a2.T) <span class="comment"># 10x26 * 26x5000 = 10x5000 </span></div><div class="line">    a3 = sigmoid(z3) <span class="comment"># 10x5000</span></div><div class="line">    </div><div class="line">    J = <span class="number">-1</span>*(<span class="number">1</span>/m)*np.sum((np.log(a3.T)*(y_matrix)+np.log(<span class="number">1</span>-a3).T*(<span class="number">1</span>-y_matrix))) + \</div><div class="line">        (reg/(<span class="number">2</span>*m))*(np.sum(np.square(theta1[:,<span class="number">1</span>:])) + np.sum(np.square(theta2[:,<span class="number">1</span>:])))</div><div class="line"></div><div class="line">    <span class="comment"># Gradients</span></div><div class="line">    d3 = a3.T - y_matrix <span class="comment"># 5000x10</span></div><div class="line">    d2 = theta2[:,<span class="number">1</span>:].T.dot(d3.T)*sigmoidGradient(z2) <span class="comment"># 25x10 *10x5000 * 25x5000 = 25x5000</span></div><div class="line">    </div><div class="line">    delta1 = d2.dot(a1) <span class="comment"># 25x5000 * 5000x401 = 25x401</span></div><div class="line">    delta2 = d3.T.dot(a2) <span class="comment"># 10x5000 *5000x26 = 10x26</span></div><div class="line">    </div><div class="line">    theta1_ = np.c_[np.ones((theta1.shape[<span class="number">0</span>],<span class="number">1</span>)),theta1[:,<span class="number">1</span>:]]</div><div class="line">    theta2_ = np.c_[np.ones((theta2.shape[<span class="number">0</span>],<span class="number">1</span>)),theta2[:,<span class="number">1</span>:]]</div><div class="line">    </div><div class="line">    theta1_grad = delta1/m + (theta1_*reg)/m</div><div class="line">    theta2_grad = delta2/m + (theta2_*reg)/m</div><div class="line">    </div><div class="line">    <span class="keyword">return</span>(J, theta1_grad, theta2_grad)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Regularization parameter = 0</span></div><div class="line">nnCostFunction(params, <span class="number">400</span>, <span class="number">25</span>, <span class="number">10</span>, X, y, <span class="number">0</span>)[<span class="number">0</span>]</div></pre></td></tr></table></figure>
+<pre><code>0.28762916516131892
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Regularization parameter = 1</span></div><div class="line">nnCostFunction(params, <span class="number">400</span>, <span class="number">25</span>, <span class="number">10</span>, X, y, <span class="number">1</span>)[<span class="number">0</span>]</div></pre></td></tr></table></figure>
+<pre><code>0.38376985909092365
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[sigmoidGradient(z) <span class="keyword">for</span> z <span class="keyword">in</span> [<span class="number">-1</span>, <span class="number">-0.5</span>, <span class="number">0</span>, <span class="number">0.5</span>, <span class="number">1</span>]]</div></pre></td></tr></table></figure>
+<pre><code>[0.19661193324148185,
+ 0.23500371220159449,
+ 0.25,
+ 0.23500371220159449,
+ 0.19661193324148185]
+</code></pre>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-10T12:43:46.371Z" itemprop="dateUpdated">2017年5月10日 20:43</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2017/05/10/Coursera-ML-9-Programming-Exercise-4/" target="_blank" rel="external">http://feiyang.li/2017/05/10/Coursera-ML-9-Programming-Exercise-4/</a>
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/10/Coursera-ML-9-Programming-Exercise-4/&title=《Coursera ML(9)-Programming Exercise 8》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/10/Coursera-ML-9-Programming-Exercise-4/&title=《Coursera ML(9)-Programming Exercise 8》 — 李飞阳&source=
+对应反向传播算法内容
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/10/Coursera-ML-9-Programming-Exercise-4/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Coursera ML(9)-Programming Exercise 8》 — 李飞阳&url=http://feiyang.li/2017/05/10/Coursera-ML-9-Programming-Exercise-4/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/10/Coursera-ML-9-Programming-Exercise-4/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/09/ss-shell/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ss-panel 一键安装脚本（前端后端全自动一键安装脚本）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'mmmwhy';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃辣条好不好 ಠ౪ಠ
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+ 
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/10/Coursera-ML-9-Programming-Exercise-4/&title=《Coursera ML(9)-Programming Exercise 8》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/10/Coursera-ML-9-Programming-Exercise-4/&title=《Coursera ML(9)-Programming Exercise 8》 — 李飞阳&source=
+对应反向传播算法内容
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/10/Coursera-ML-9-Programming-Exercise-4/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Coursera ML(9)-Programming Exercise 8》 — 李飞阳&url=http://feiyang.li/2017/05/10/Coursera-ML-9-Programming-Exercise-4/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/10/Coursera-ML-9-Programming-Exercise-4/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3a0U7DMAwF0P3/Tw+JJyRoubbjMaHTp2l0a06QEu86j0d8PT+v7+98ff95cV19w9VT7q/HxoWHh4fXGnoyuHzo+XTk9yTj+WEK8PDw8NZ495tB8pjq1nI10Pt78jHj4eHhvQMvgd1Te/fj4eHh/SdeNcioTgoeHh7eO/M2QthJUNv7Kx4eHt5reL3F/W9fL/b38PDw8Mat+t5SPok27svuwqjw8PDwFnhJSz6PBvLGf680z9+J5hUPDw9vwOstvpNqtnc4IJ9uPDw8vD1esgHkdyYbw2RZT/A/FNN4eHh4R3mT5n0eNxTa/IMjC9EmgYeHh3eU11ua9w4K5JtBtDHg4eHhHeXlC3FvcBsBbiEmxsPDw1vj5YPIP1stf6uMJOrFw8PD2+DlB6Emg662taphbrkZhoeHh9fi5eVvNQjohRrz9lvhMXh4eHgtXi8qnWwG1aMGky0EDw8Pb4NX/dmfFNOjyKAYJf+yPeDh4eEt8wofa20tvS0hn5pyGIGHh4fX7zqVg4leoTwJPnrbGB4eHt4er1cuV8OCY9lJMQrBw8PDO8ubN67y5bv32aQ0v/wGPDw8vAVetTg+Vf72kL0QGQ8PD++VvPuv6JW5k6W/FxDj4eHhneX1Htnry1eHW40zLv9veHh4eEd51Qi1es/8uFVvKvHw8PD2eNVgNF/KkxlNiu+kjI72PTw8PLxDvGo5O2Ekr6sNuUJQgoeHh3eI9yxevQW6ip9MQbTv4eHh4Q14+TU5bjVpkvUiXTw8PLxtXt6smg9rcsyr93Q8PDy8Pd6pYjdvdOXR8GjrwsPDw3sDXq9xdTZuKGwteHh4eH/K6x2T2mh3ldtgeHh4eAu8atyQF8GTpX8eDePh4eFt8Ko/9auxxSTySFb4SYSBh4eHV+R9AKmzK/BFY/0HAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.11"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.11" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
