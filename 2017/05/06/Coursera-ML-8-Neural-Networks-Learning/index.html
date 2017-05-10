@@ -21,7 +21,7 @@
     <meta name="theme-color" content="#0288D1">
     
     
-    <meta name="keywords" content="Python,Machine Learning,读书笔记">
+    <meta name="keywords" content="Machine Learning,读书笔记,Python">
     <meta name="description" content="本节笔记对应第五周Coursera课程 Neural Networks: Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Coursera ML(8)-Neural Networks: Learning">
@@ -58,7 +58,7 @@
 ">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170508/145334453.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
-<meta property="og:updated_time" content="2017-05-08T08:48:03.206Z">
+<meta property="og:updated_time" content="2017-05-10T11:56:05.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coursera ML(8)-Neural Networks: Learning">
 <meta name="twitter:description" content="本节笔记对应第五周Coursera课程 Neural Networks: Learning">
@@ -248,10 +248,12 @@
                 <div class="image-caption"></div>
             </figure>
 <ul>
-<li>cost function<br>$$\begin{gather<em>} J(\Theta) = - \frac{1}{m} \sum<em>{i=1}^m \sum</em>{k=1}^K \left[y^{(i)}<em>k \log ((h</em>\Theta (x^{(i)}))_k) + (1 - y^{(i)}<em>k)\log (1 - (h</em>\Theta(x^{(i)}))_k)\right] \end{gather</em>}$$<br>我们使用循环，对每一行特征都预测K个不同的结果，然后利用循环在K个预测中选择可能性最高的一个，将其与y中的实际数据进行对比。</li>
+<li>cost function  $$\begin{gather*} J(\Theta) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \left[y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] \end{gather*}$$ 
+我们使用循环，对每一行特征都预测K个不同的结果，然后利用循环在K个预测中选择可能性最高的一个，将其与y中的实际数据进行对比。</li>
 </ul>
 <ul>
-<li>Similarly, the regularization term just sum up the square of all the parameters from all the layers:<br>$$\frac{\lambda}{2m}\sum<em>{l=1}^{L-1} \sum</em>{i=1}^{s<em>l} \sum</em>{j=1}^{s<em>{l+1}} ( \Theta</em>{j,i}^{(l)})^2$$<br>正则化的这一项，是在排除了每一层$\theta_0$后，每一层的$\Theta$矩阵的和。</li>
+<li>Similarly, the regularization term just sum up the square of all the parameters from all the layers: $$\frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2$$ 
+正则化的这一项，是在排除了每一层$\theta_0$后，每一层的$\Theta$矩阵的和。</li>
 <li>最里层的循环$j$循环所有的行(由$s_{l+1}$层的激活单元数决定)。</li>
 <li>循环$i$则循环所有的列，由该层(s_l层)的激活单元数决定。</li>
 </ul>
@@ -269,7 +271,9 @@
             </figure>
 <p>In order to use optimization algorithms like gradient descent, we must calculate the derivative of the cost function. </p>
 <ul>
-<li>First we should calculate $\delta$ for each layer using backpropagation algorithm. From layerl to $layer<em>l$ to $layer</em>{l+1}$, we have:<br>$$\delta^{(output)} = a^{(output)} - y\\delta^{(l)} = [\Theta^{(l)}]^T \delta^{(l+1)} .* g’(z^{(l)})$$</li>
+<li>First we should calculate $\delta$ for each layer using backpropagation algorithm.  From $layer_l$ to $layer_{l+1}$ 
+we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T \delta^{(l+1)} .* g'(z^{(l)})$$  
+</li>
 </ul>
 <p>误差$\delta$表示激活单元的预测值与实际值之间的误差。第二行式子，是在后一层偏差的基础上，增加了本层的偏差。</p>
 <p>注意：没有$\delta_1$</p>
@@ -293,7 +297,9 @@
 <ul>
 <li><p>For sigmoid function, $g’(z) = g(z)(1-g(z))$<br>这个比较简单，就不推导了。</p>
 </li>
-<li><p>Then we have the derivative:<br>$$\frac {\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta) = a_j^{(l)} \delta_i^{(l+1)} \\Delta^{(l)} = \delta^{(l+1)} (a^{(l)})^T$$<br>在Coursera教程中，这个地方被草草带过，相比之下<a href="http://www.ics.uci.edu/~dramanan/teaching/ics273a_winter08/lectures/lecture14.pdf" target="_blank" rel="external">uci</a>的这篇文章介绍的非常详细。</p>
+<li><p>Then we have the derivative:</p>
+ $$\frac {\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta) = a_j^{(l)} \delta_i^{(l+1)} \\\Delta^{(l)} = \delta^{(l+1)} (a^{(l)})^T$$ 
+<p>在Coursera教程中，这个地方被草草带过，相比之下<a href="http://www.ics.uci.edu/~dramanan/teaching/ics273a_winter08/lectures/lecture14.pdf" target="_blank" rel="external">uci</a>的这篇文章介绍的非常详细。</p>
 </li>
 </ul>
 <h2 id="一个推导过程"><a href="#一个推导过程" class="headerlink" title="一个推导过程"></a>一个推导过程</h2><figure class="image-bubble">
@@ -392,17 +398,18 @@
 <hr>
 <p>其实说到底，这两个推导方法其实是一回事，只不过换了几个字母而已。第二个推导更好一些</p>
 <ul>
-<li>Instead of calculate the $\Delta$  for all the training data, we could sum up all the inputs independantly, like:<br>From i = 1 to m, do:<br>$$\Delta^{(l)} += \delta^{(l+1)} (a^{(l)})^T $$<br>Then we have:<br>$$ \\frac {\partial}{\partial \Theta<em>{ij}^{(l)}} J(\Theta) = \frac {1}{m} \Delta</em>{ij}^{(l)}$$</li>
+<li>Instead of calculate the $\Delta$  for all the training data, we could sum up all the inputs independantly, like:<br>From i = 1 to m, do:<br>$$\Delta^{(l)} += \delta^{(l+1)} (a^{(l)})^T $$<br>Then we have: $$ \\\frac {\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta) = \frac {1}{m} \Delta_{ij}^{(l)}$$ 
+</li>
 </ul>
 <p>(This step is the main step for mapreduce, see Large Scale Machine Learning)</p>
 <ul>
 <li>Then add regularzation term for partial derivative, we have:</li>
 </ul>
-<p>$$\frac {\partial}{\partial \Theta<em>{ij}^{(l)}} J(\Theta) = \frac {1}{m} \Delta</em>{ij}^{(l)} + \frac {\lambda}{m} \Theta_{ij}^{(l)}$$</p>
+<p>$ $\frac {\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta) = \frac {1}{m} \Delta_{ij}^{(l)} + \frac {\lambda}{m} \Theta_{ij}^{(l)}$$ </p>
 <ul>
 <li>Finally, using $J(\Theta)$ and $\frac {\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta)$, we could minimize the cost function using gradient descent as well as other optimization algorithms.</li>
 </ul>
-<h1 id="Optional-Section-How-Backpropagation-Works"><a href="#Optional-Section-How-Backpropagation-Works" class="headerlink" title="Optional Section: How Backpropagation Works"></a>Optional Section: How Backpropagation Works</h1><p>Using the same model as the last section:$$\begin{align}\frac {\partial J}{\partial \Theta_{ij}^{(1)}} =\frac {\partial J}{\partial a_i^{(2)}}\frac {\partial a_i^{(2)}}{\partial z_i^{(2)}}\frac {\partial z<em>i^{(2)}}{\partial \Theta</em>{ij}^{(1)}} \ =\frac {\partial J}{\partial a_i^{(2)}} g’(z_i^{(2)}) a_i^{(1)}\end{align}$$Then taking the total derivative with respect to $z^{(3)}$, a recursive expression for the derivative is obtained:$$\begin{align}\frac {\partial J}{\partial a<em>i^{(2)}} =\sum\limits</em>{m=1}^{s_3}\frac {\partial J}{\partial z_m^{(3)}}\frac {\partial z_m^{(3)}}{\partial a<em>i^{(2)}} \ =\sum\limits</em>{m=1}^{s_3}\frac {\partial J}{\partial a_m^{(3)}}\frac {\partial a_m^{(3)}}{\partial z_m^{(3)}}\frac {\partial z_m^{(3)}}{\partial a<em>i^{(2)}} \ =\sum\limits</em>{m=1}^{s_3}\frac {\partial J}{\partial a_m^{(3)}} g’(z<em>m^{(3)}) \Theta</em>{mi}^{(2)}\end{align}$$<br>Let $\delta_i^{(2)} =\frac {\partial J}{\partial a_i^{(2)}} g’(z<em>i^{(2)})$, then from the result of the first formula We have: $\frac {\partial J}{\partial \Theta</em>{ij}^{(1)}} =\delta_i^{(2)} a_i^{(1)}$, in which recursively, $\delta<em>i^{(2)} =(\sum\limits</em>{m=1}^{s_3}\delta<em>m^{(3)}\Theta</em>{mi}^{(2)}) g’(z_i^{(2)})$</p>
+<h1 id="Optional-Section-How-Backpropagation-Works"><a href="#Optional-Section-How-Backpropagation-Works" class="headerlink" title="Optional Section: How Backpropagation Works"></a>Optional Section: How Backpropagation Works</h1><p>Using the same model as the last section:<br> $$\begin{align}\frac {\partial J}{\partial \Theta_{ij}^{(1)}} =\frac {\partial J}{\partial a_i^{(2)}}\frac {\partial a_i^{(2)}}{\partial z_i^{(2)}}\frac {\partial z_i^{(2)}}{\partial \Theta_{ij}^{(1)}} \\ =\frac {\partial J}{\partial a_i^{(2)}} g’(z_i^{(2)}) a_i^{(1)}\end{align}$$Then taking the total derivative with respect to $z^{(3)}$, a recursive expression for the derivative is obtained:$$\begin{align}\frac {\partial J}{\partial a_i^{(2)}} =\sum\limits_{m=1}^{s_3}\frac {\partial J}{\partial z_m^{(3)}}\frac {\partial z_m^{(3)}}{\partial a_i^{(2)}} \\ =\sum\limits_{m=1}^{s_3}\frac {\partial J}{\partial a_m^{(3)}}\frac {\partial a_m^{(3)}}{\partial z_m^{(3)}}\frac {\partial z_m^{(3)}}{\partial a_i^{(2)}} \\ =\sum\limits_{m=1}^{s_3}\frac {\partial J}{\partial a_m^{(3)}} g’(z_m^{(3)}) \Theta_{mi}^{(2)}\end{align}$$<br>Let  $\delta_i^{(2)} =\frac {\partial J}{\partial a_i^{2}} g’(z_i^{(2)})$, then from the result of the first formula We have: $\frac {\partial J}{\partial \Theta_{ij}^{1}} =\delta_i^{(2)} a_i^{(1)}$, in which recursively, $\delta_i^{(2)} =(\sum\limits_{m=1}^{s_3}\delta_m^{(3)}\Theta_{mi}^{(2)}) g’(z_i^{(2)})$ </p>
 <p>–</p>
 <p>Referance:<br><a href="http://www.wikiwand.com/en/Backpropagation#Derivation" target="_blank" rel="external">http://www.wikiwand.com/en/Backpropagation#Derivation</a><br>ttp://blog.csdn.net/l691899397/article/details/52223998<br><a href="http://xxuan.me/2016-02-20-Neural-Networks-Learning.html" target="_blank" rel="external">http://xxuan.me/2016-02-20-Neural-Networks-Learning.html</a></p>
 
@@ -412,7 +419,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-05-08T08:48:03.206Z" itemprop="dateUpdated">2017年5月8日 16:48</time>
+    最后更新时间：<time datetime="2017-05-10T11:56:05.596Z" itemprop="dateUpdated">2017年5月10日 19:56</time>
 </span><br>
 
 
