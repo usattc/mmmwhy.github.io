@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    <link rel="canonical" href="http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/">
+    
+    
+    <title>Coursera ML(10)-机器学习诊断法 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="Machine Learning,读书笔记">
+    <meta name="description" content="假设你在开发一个机器学习系统，或者在改进一个机器学习系统的性能，应如何做？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coursera ML(10)-机器学习诊断法">
+<meta property="og:url" content="http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="假设你在开发一个机器学习系统，或者在改进一个机器学习系统的性能，应如何做？">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170511/101002408.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170511/101154504.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170511/103200427.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170511/110947313.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170511/111820389.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170511/113614575.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170511/113828788.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170511/103200427.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170511/111820389.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-05-11T04:34:51.020Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coursera ML(10)-机器学习诊断法">
+<meta name="twitter:description" content="假设你在开发一个机器学习系统，或者在改进一个机器学习系统的性能，应如何做？">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170511/101002408.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternative" href="/atom.xml" title="李飞阳" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.11">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-cog"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/auth/login" target="_blank" >
+                <i class="icon icon-lg icon-rocket"></i>
+                肥羊免费SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+
+    <div id="myTime">
+ <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="180" height="80" id="honehoneclock" align="middle">
+ <param name="allowScriptAccess" value="always">
+ <param name="movie" value="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf">
+ <param name="quality" value="high">
+ <param name="bgcolor" value="#ffffff">
+ <param name="wmode" value="transparent">
+ <embed wmode="transparent" src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.swf" quality="high" bgcolor="#ffffff" width="180" height="80" name="honehoneclock" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+ </object>
+ </div>
+
+
+
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Coursera ML(10)-机器学习诊断法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Coursera ML(10)-机器学习诊断法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-11T04:28:16.000Z" itemprop="datePublished" class="page-time">
+  2017-05-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#目前已有的方法："><span class="post-toc-number">1.</span> <span class="post-toc-text">目前已有的方法：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Evaluating-a-Hypothesis"><span class="post-toc-number">2.</span> <span class="post-toc-text">Evaluating a Hypothesis</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Model-Selection-and-Train-Validation-Test-Sets-交叉验证机"><span class="post-toc-number">3.</span> <span class="post-toc-text">Model Selection and Train/Validation/Test Sets(交叉验证机)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Diagnosing-Bias-vs-Variance"><span class="post-toc-number">4.</span> <span class="post-toc-text">Diagnosing Bias vs. Variance</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Decide-Bias-or-Variance"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Decide Bias or Variance</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Regularization-and-Bias-Variance"><span class="post-toc-number">5.</span> <span class="post-toc-text">Regularization and Bias/Variance</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Regularization-相关结论"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">Regularization 相关结论</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Learning-Curves"><span class="post-toc-number">6.</span> <span class="post-toc-text">Learning Curves</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Experiencing-high-bias"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">Experiencing high bias:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Experiencing-high-variance"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">Experiencing high variance:</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#决定下一步做什么"><span class="post-toc-number">7.</span> <span class="post-toc-text">决定下一步做什么</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Coursera-ML-10-Evaluating-a-Hypothesis"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Coursera ML(10)-机器学习诊断法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年05月11日 12:28" datetime="2017-05-11T04:28:16.000Z"  itemprop="datePublished">2017-05-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>假设你在开发一个机器学习系统，或者在改进一个机器学习系统的性能，应如何做？</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="目前已有的方法："><a href="#目前已有的方法：" class="headerlink" title="目前已有的方法："></a>目前已有的方法：</h1><ul>
+<li>Getting more training examples</li>
+<li>Trying smaller sets of features</li>
+<li>Trying additional features</li>
+<li>Trying polynomial features</li>
+<li>Increasing or decreasing λ</li>
+</ul>
+<p>每种方法都有自己不同的应用场景</p>
+<h1 id="Evaluating-a-Hypothesis"><a href="#Evaluating-a-Hypothesis" class="headerlink" title="Evaluating a Hypothesis"></a>Evaluating a Hypothesis</h1><p>根据测试集得到参数，对训练集运用模型。有两种误差计算方法</p>
+<ul>
+<li><p>For linear regression: </p>
+ $$J_{test}(\Theta) = \dfrac{1}{2m_{test}} \sum_{i=1}^{m_{test}}(h_\Theta(x^{(i)}_{test}) - y^{(i)}_{test})^2$$ 
+</li>
+<li><p>For classification :<br>误分类的比例，对于每一个测试实例，计算：</p>
+ $$err(h_\Theta(x),y) = \begin{matrix} 1 & \mbox{if } h_\Theta(x) \geq 0.5\ and\ y = 0\ or\ h_\Theta(x) < 0.5\ and\ y = 1\newline 0 & \mbox otherwise \end{matrix}$$
+然后急死俺平均
+$$\text{Test Error} = \dfrac{1}{m_{test}} \sum^{m_{test}}_{i=1} err(h_\Theta(x^{(i)}_{test}), y^{(i)}_{test})$$ 
+</li>
+</ul>
+<h1 id="Model-Selection-and-Train-Validation-Test-Sets-交叉验证机"><a href="#Model-Selection-and-Train-Validation-Test-Sets-交叉验证机" class="headerlink" title="Model Selection and Train/Validation/Test Sets(交叉验证机)"></a>Model Selection and Train/Validation/Test Sets(交叉验证机)</h1><p>使用60%的数据作为训练集，20%的数据作为交叉验证集，20%的数据作为测试集<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170511/101002408.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<ul>
+<li>Optimize the parameters in Θ using the training set for each polynomial degree.</li>
+<li>Find the polynomial degree d with the least error using the cross validation set.</li>
+<li>Estimate the generalization error using the test set with $J_{test}(\Theta^{(d)})$, (d = theta from polynomial with lower error);<br>简单来讲：<br>训练集训练出 10 个模型 -&gt;10 个模型分别对交叉验证集计算得出交叉验证误差（代价函数的值）-&gt;选取代价函数值最小的模型-&gt;用选出的模型对测试集计算得出推广误差（代价函数的值）<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170511/101154504.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<h1 id="Diagnosing-Bias-vs-Variance"><a href="#Diagnosing-Bias-vs-Variance" class="headerlink" title="Diagnosing Bias vs. Variance"></a>Diagnosing Bias vs. Variance</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170511/103200427.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="high biais and high variance" title="">
+                </div>
+                <div class="image-caption">high biais and high variance</div>
+            </figure>
+<ul>
+<li> High bias (underfitting): both $J_{train}(\Theta)$ and $J_{CV}(\Theta)$ will be high. Also, $J_{CV}(\Theta) \approx J_{train}(\Theta)$. </li>
+<li> High variance (overfitting): $J_{train}(\Theta)$ will be low and $J_{CV}(\Theta)$ will be much greater than $J_{train}(\Theta)$. 
+</li>
+</ul>
+<p>很多情况下，欠拟合会导致高误差，高方差意味着拟合过度。</p>
+<h2 id="Decide-Bias-or-Variance"><a href="#Decide-Bias-or-Variance" class="headerlink" title="Decide Bias or Variance"></a>Decide Bias or Variance</h2><ul>
+<li>训练集误差和交叉验证集误差近似时：偏差/欠拟合</li>
+<li>交叉训练集误差 &gt;&gt; 训练集误差时：方法/过拟合</li>
+</ul>
+<h1 id="Regularization-and-Bias-Variance"><a href="#Regularization-and-Bias-Variance" class="headerlink" title="Regularization and Bias/Variance"></a>Regularization and Bias/Variance</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170511/110947313.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
+<ul>
+<li>Create a list of lambdas (i.e. λ∈{0,0.01,0.02,0.04,0.08,0.16,0.32,0.64,1.28,2.56,5.12,10.24});</li>
+<li>Create a set of models with different degrees or any other variants.</li>
+<li>Iterate through the $\lambda$s and for each $\lambda$ go through all the models to learn some $\Theta$.</li>
+<li>Compute the cross validation error using the learned Θ (computed with λ) on the $J_{CV}(\Theta)$  <strong>without</strong>  regularization or λ = 0.</li>
+<li>Select the best combo that produces the lowest error on the cross validation set.</li>
+<li>Using the best combo Θ and λ, apply it on $J_{test}(\Theta)$ to see if it has a good generalization of the problem.<br>简单说：<br>训练12个不同归一化的模型-&gt;分别对应交叉验证集计算误差-&gt;选出最小的那个-&gt;使用在测试集上<h2 id="Regularization-相关结论"><a href="#Regularization-相关结论" class="headerlink" title="Regularization 相关结论"></a>Regularization 相关结论</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170511/111820389.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>当$\lambda$较小时，训练集误差较小（过拟合）而交叉验证集误差较大。</li>
+<li>随着$\lambda$增加，训练集误差不断增加（欠拟合），而交叉验证集误差则是先减小后增大。</li>
+</ul>
+<h1 id="Learning-Curves"><a href="#Learning-Curves" class="headerlink" title="Learning Curves"></a>Learning Curves</h1><ul>
+<li>学习曲线是一个很好的工具，我们会经常使用学习曲线来判断某一个学习算法是否处于偏差、方差问题。</li>
+<li>学习曲线试讲训练集误差和交叉验证集误差作为训练集<strong>实例数量（m）</strong>的函数绘制的图表。</li>
+</ul>
+<h2 id="Experiencing-high-bias"><a href="#Experiencing-high-bias" class="headerlink" title="Experiencing high bias:"></a>Experiencing high bias:</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170511/113614575.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li> **Low training set size**: causes $J_{train}(\Theta)$ to be low and $J_{CV}(\Theta)$ to be high. </li>
+<li> **Large training set size**: causes both $J_{train}(\Theta)$ and $J_{CV}(\Theta)$ to be high with $J_{train}(\Theta)$≈$J_{CV}(\Theta)$ 
+因此在高偏差（<strong>欠拟合</strong>）的情况下，增加训练集数量并不是一个好办法。此时，我们应当增加features。<h2 id="Experiencing-high-variance"><a href="#Experiencing-high-variance" class="headerlink" title="Experiencing high variance:"></a>Experiencing high variance:</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170511/113828788.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li> **Low training set size**: $J_{train}(\Theta)$ will be low and $J_{CV}(\Theta)$ will be high. </li>
+<li> **Large training set size**: $J_{train}(\Theta)$ increases with training set size and $J_{CV}(\Theta)$ continues to decrease without leveling off. Also, $J_{train}(\Theta)$ &lt; $J_{CV}(\Theta)$ but the difference between them remains significant. 
+对比之下，如果在高方差（<strong>过拟合</strong>）的情况下，增加训练集数量可以明显降低误差，提高算法效果。</li>
+</ul>
+<h1 id="决定下一步做什么"><a href="#决定下一步做什么" class="headerlink" title="决定下一步做什么"></a>决定下一步做什么</h1><ul>
+<li>获得更多的训练实例——解决高方差<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170511/103200427.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="high biais and high variance" title="">
+                </div>
+                <div class="image-caption">high biais and high variance</div>
+            </figure></li>
+<li>尝试减少特征的数量——解决高方差</li>
+<li>尝试获得更多的特征——解决高偏差</li>
+<li>尝试增加多项式特征——解决高偏差<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170511/111820389.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure> </li>
+<li>尝试减少归一化程度 λ—&gt;提高拟合准确度—&gt;解决高偏差</li>
+<li>尝试增加归一化程度 λ—&gt;防止过拟合—&gt;解决高方差</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-11T04:34:51.020Z" itemprop="dateUpdated">2017年5月11日 12:34</time>
+</span><br>
+
+
+        转载请注明出处：<a href="/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/" target="_blank" rel="external">http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/</a>
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/&title=《Coursera ML(10)-机器学习诊断法》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/&title=《Coursera ML(10)-机器学习诊断法》 — 李飞阳&source=
+假设你在开发一个机器学习系统，或者在改进一个机器学习系统的性能，应如何做？
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Coursera ML(10)-机器学习诊断法》 — 李飞阳&url=http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/10/Coursera-ML-9-Programming-Exercise-4/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Coursera ML(9)-Programming Exercise 4</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'mmmwhy';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃辣条好不好 ಠ౪ಠ
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+ 
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/&title=《Coursera ML(10)-机器学习诊断法》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/&title=《Coursera ML(10)-机器学习诊断法》 — 李飞阳&source=
+假设你在开发一个机器学习系统，或者在改进一个机器学习系统的性能，应如何做？
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Coursera ML(10)-机器学习诊断法》 — 李飞阳&url=http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3aQY7DIAwF0N7/0jPSbDtJvm1IWullVbUIeFlgavv1ip+fv+f98/uY8+dofP79a8eDh4eH19r6+YaSJY/GnK+YfJP/+s/qeHh4eNt4STA4XyA5vicbzYMTHh4e3ufwzrd4NFs+sroHPDw8vG/k5Zfg5NX09oOHh4f3FC/5858zqmEgTw1vzLXg4eHhxbxJAeypzzfV9/Dw8PBaxf5e6qGXvKgGgIvd4uHh4W3g9UpZeZtU3lyVv9C8tIaHh4e3gzdJKOSkakksT0BczImHh4e3gVdNy64tZVWLZHkIwcPDw7uH12t1GpWd4mBTwBwFBjw8PLxFvOq2JjmPalNCtQ2ruV08PDy8AS//k583PK1qjaquhYeHh3cPb99VOG8pWJvmwMPDw9vBS87PyTW3l+aYJG3x8PDw7uRVGwiai7XaDnoz4OHh4T3FSy64kzJVrwA2arrCw8PDG/CS9qZei0Ay57zwdrEKHh4e3gZeMlEeEvJDP0k95FftPFGCh4eHt5bX+/NfTWHkhbFq2uJiPB4eHt4i3nz55NDPX+KchIeHh7ebF92y40tznpiYt3mVR+Lh4eEt5VULS0k4mYSBSfoYDw8PbzcvDwZJCjUv/CdzTtLH5ViHh4eHF/PylGsSAPLUQLkvbF5Cw8PDw1vEW5VQSA70akoiDwwXBTA8PDy823n5BbeXqF3VsHWYjMDDw8NbyusdxJPyWBJU5i9oFGfw8PDwgtxm/kyO9WqYqYaHi7iHh4eHt4g3v/hWg031QlxtU8DDw8O7h9drC+gd2dUmg2SVi5nx8PDwtvF66YlCOap17V5QKsPDw8N7lDc5uCcvcdSuioeHh/cxvGowqKYnqg0NC67UeHh4eEVeNRmRpFlXXaarIQcPDw9vN69aAKsWonoNWPPggYeHh7eB9wvHJVS5biyzIAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.11"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.11" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
