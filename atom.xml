@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-05-20T01:45:56.909Z</updated>
+  <updated>2017-05-20T11:36:51.524Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -16,11 +16,104 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Django 教程之一 基本命令</title>
+    <title>Django 笔记之二 视图与网址</title>
+    <link href="http://feiyang.li/2017/05/20/django2/index.html"/>
+    <id>http://feiyang.li/2017/05/20/django2/index.html</id>
+    <published>2017-05-20T08:06:53.000Z</published>
+    <updated>2017-05-20T11:36:51.524Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p><a href="http://feiyang.li/2017/05/20/django1/index.html">上节</a>已经提到新建app，这节稍微深入一些</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="新建app"><a href="#新建app" class="headerlink" title="新建app"></a>新建app</h1><h2 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py startapp learn # learn 是一个app的名称</div></pre></td></tr></table></figure>
+<p>之后大概是这个样子，也许你们会发现我用的其实是<strong>世界上最好的python IDE</strong>~<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">E:.</div><div class="line">│  db.sqlite3</div><div class="line">│  manage.py</div><div class="line">│  Python</div><div class="line">│</div><div class="line">├─.idea</div><div class="line">│  │  blog.iml</div><div class="line">│  │  misc.xml</div><div class="line">│  │  modules.xml</div><div class="line">│  │  workspace.xml</div><div class="line">│  │</div><div class="line">│  └─inspectionProfiles</div><div class="line">│          profiles_settings.xml</div><div class="line">│</div><div class="line">├─blog</div><div class="line">│  │  settings.py</div><div class="line">│  │  settings.pyc</div><div class="line">│  │  urls.py</div><div class="line">│  │  urls.pyc</div><div class="line">│  │  wsgi.py</div><div class="line">│  │  wsgi.pyc</div><div class="line">│  │  __init__.py</div><div class="line">│  │  __init__.pyc</div><div class="line">│  │</div><div class="line">│  └─__pycache__</div><div class="line">│          settings.cpython-35.pyc</div><div class="line">│          urls.cpython-35.pyc</div><div class="line">│          wsgi.cpython-35.pyc</div><div class="line">│          __init__.cpython-35.pyc</div><div class="line">│</div><div class="line">└─my_blog</div><div class="line">    │  admin.py</div><div class="line">    │  admin.pyc</div><div class="line">    │  apps.py</div><div class="line">    │  models.py</div><div class="line">    │  models.pyc</div><div class="line">    │  tests.py</div><div class="line">    │  views.py</div><div class="line">    │  views.pyc</div><div class="line">    │  __init__.py</div><div class="line">    │  __init__.pyc</div><div class="line">    │</div><div class="line">    ├─migrations</div><div class="line">    │  │  __init__.py</div><div class="line">    │  │  __init__.pyc</div><div class="line">    │  │</div><div class="line">    │  └─__pycache__</div><div class="line">    │          __init__.cpython-35.pyc</div><div class="line">    │</div><div class="line">    └─__pycache__</div><div class="line">            admin.cpython-35.pyc</div><div class="line">            models.cpython-35.pyc</div><div class="line">            views.cpython-35.pyc</div><div class="line">            __init__.cpython-35.pyc</div></pre></td></tr></table></figure></p>
+<h2 id="声明my-blog"><a href="#声明my-blog" class="headerlink" title="声明my_blog"></a>声明<strong>my_blog</strong></h2><p>我们需要在<strong>settings.py</strong>中去声明一下<strong>my_blog</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">INSTALLED_APPS = [</div><div class="line">    <span class="string">'django.contrib.admin'</span>,</div><div class="line">    <span class="string">'django.contrib.auth'</span>,</div><div class="line">    <span class="string">'django.contrib.contenttypes'</span>,</div><div class="line">    <span class="string">'django.contrib.sessions'</span>,</div><div class="line">    <span class="string">'django.contrib.messages'</span>,</div><div class="line">    <span class="string">'django.contrib.staticfiles'</span>,</div><div class="line">    <span class="string">'my_blog'</span>,</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>新建的 app 如果不加到 INSTALL_APPS 中的话, django 就不能自动找到app中的模板文件(app-name/templates/下的文件)和静态文件(app-name/static/中的文件) 。</p>
+<h2 id="定义视图内容"><a href="#定义视图内容" class="headerlink" title="定义视图内容"></a>定义视图内容</h2><p>将views.py修改为我们希望展示的内容：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding: utf-8</span></div><div class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">u'你好哇，李肥羊，希望你可以瘦下来！'</span>)</div></pre></td></tr></table></figure></p>
+<p>使用<code>python manage.py runserver</code>，启动django服务</p>
+<ul>
+<li><p>第一行是声明编码为utf-8, 因为我们在代码中用到了中文,如果不声明就报错.</p>
+</li>
+<li><p>第二行引入HttpResponse，它是用来向网页返回内容的，就像Python中的 print 一样，只不过 HttpResponse 是把内容显示到网页上。</p>
+</li>
+</ul>
+<p>我们定义了一个index()函数，第一个参数必须是 request，与网页发来的请求有关，request 变量里面包含get或post的内容，用户浏览器，系统等信息在里面（后面会讲，先了解一下就可以）。</p>
+<p>函数返回了一个 HttpResponse 对象，可以经过一些处理，最终显示几个字到网页上。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170520/103039383.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>如果你前端技术非常好的话，可以直接把整个页面return回去。。。</p>
+<p>那问题来了，我们访问什么网址才能看到刚才写的这个函数呢？怎么让网址和函数关联起来呢？</p>
+<h2 id="定义视图函数相关的URL-网址"><a href="#定义视图函数相关的URL-网址" class="headerlink" title="定义视图函数相关的URL(网址)"></a>定义视图函数相关的URL(网址)</h2><p>即规定 访问什么网址对应什么内容，我们打开 urls.py 这个文件, 修改其中的代码:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.conf.urls <span class="keyword">import</span> url</div><div class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</div><div class="line"><span class="keyword">from</span> my_blog <span class="keyword">import</span> views <span class="keyword">as</span> my_blog_view</div><div class="line">urlpatterns = [</div><div class="line">    url(<span class="string">r'^admin/'</span>, admin.site.urls),</div><div class="line">    url(<span class="string">r'^$'</span>, my_blog_view.index),</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>先从<strong>my_blog</strong>导入<strong>views</strong>进入<strong>urls.py</strong>，然后用正则表达式，设定对应规则。如果忘了正则表达式怎么使用，也许这个<a href="http://feiyang.li/2017/02/10/Python_lambda/index.html">网页</a>会对你有帮助.</p>
+<h1 id="通过链接做加减法"><a href="#通过链接做加减法" class="headerlink" title="通过链接做加减法"></a>通过链接做加减法</h1><p>跟之前的步骤一样，先修改<strong>view.py</strong>文件</p>
+<h2 id="修改view-py"><a href="#修改view-py" class="headerlink" title="修改view.py"></a>修改view.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def add(request):</div><div class="line">    a = request.GET[&apos;a&apos;]</div><div class="line">    b = request.GET[&apos;b&apos;]</div><div class="line">    c = int(a)+int(b)</div><div class="line">    return HttpResponse(str(c))</div><div class="line"></div><div class="line">def sub(request):</div><div class="line">    a = request.GET[&apos;a&apos;]</div><div class="line">    b = request.GET[&apos;b&apos;]</div><div class="line">    c = int(a)-int(b)</div><div class="line">    return HttpResponse(str(c))</div><div class="line">def add2(request, a, b):</div><div class="line">    c = int(a) + int(b)</div><div class="line">    return HttpResponse(str(c))</div></pre></td></tr></table></figure>
+<h2 id="修改urls-py"><a href="#修改urls-py" class="headerlink" title="修改urls.py"></a>修改urls.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">url(r&apos;^add/$&apos;, my_blog_view.add, name=&apos;add&apos;),  # 注意修改了这一行</div><div class="line">url(r&apos;^sub/$&apos;, my_blog_view.add, name=&apos;sub&apos;),  # 注意修改了这一行</div><div class="line">url(r&apos;^add/(\d+)/(\d+)/$&apos;, my_blog_view.add2, name=&apos;add2&apos;),</div></pre></td></tr></table></figure>
+<h2 id="运行检查"><a href="#运行检查" class="headerlink" title="运行检查"></a>运行检查</h2><p>输入<a href="http://127.0.0.1:8000/add/?a=4&amp;b=5或者http://127.0.0.1:8000/add/?a=4&amp;b=5" target="_blank" rel="external">http://127.0.0.1:8000/add/?a=4&amp;b=5或者http://127.0.0.1:8000/add/?a=4&amp;b=5</a><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170520/151648247.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>就可以获得答案</p>
+<h1 id="URL-name返回整个页面"><a href="#URL-name返回整个页面" class="headerlink" title="URL name返回整个页面"></a>URL name返回整个页面</h1><h2 id="urls-py"><a href="#urls-py" class="headerlink" title="urls.py"></a>urls.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url(r&apos;^add/$&apos;, calc_views.add, name=&apos;add&apos;)</div></pre></td></tr></table></figure>
+<p> 这里的 name=’add’ 是用来干什么的呢，简单说，name 可以用于在 templates, models, views ……中得到对应的网址，相当于“给网址取了个名字”，只要这个名字不变，网址变了也能通过名字获取到。</p>
+<h2 id="views-py"><a href="#views-py" class="headerlink" title="views.py"></a>views.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">from django.http import HttpResponse</div><div class="line">from django.shortcuts import render</div><div class="line"> </div><div class="line"> </div><div class="line">def index(request):</div><div class="line">    return render(request, &apos;home.html&apos;)</div></pre></td></tr></table></figure>
+<h2 id="templates"><a href="#templates" class="headerlink" title="templates"></a>templates</h2><p>我们在 my_blog 这个 app 中新建一个 templates 文件夹，在templates中新建一个 home.html<br>文件 my_blog/templates/home.html 中写入以下内容（保存时用 utf8 编码）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;今天是个好天气&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;a href=&quot;/add/4/5/&quot;&gt;计算 4+5&lt;/a&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p>运行开发服务器，我们访问 <a href="http://127.0.0.1:8000/" target="_blank" rel="external">http://127.0.0.1:8000/</a> 可以看到<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170520/153435675.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>点击<strong>计算4+5</strong>，可以看到答案。</p>
+<h2 id="如何用-Python-代码获取对应的网址"><a href="#如何用-Python-代码获取对应的网址" class="headerlink" title="如何用 Python 代码获取对应的网址"></a>如何用 Python 代码获取对应的网址</h2><p>···<br><a href="/add/4/5/">计算 4+5</a><br>···<br>如果这样写“死网址”，之后上线后，如果想要改变链接结构，将会很麻烦。如果有些地方没有修改过来，就不能使用了、<br>使用<code>python manage.py shell</code>，进入<code>django shell</code>调试页面.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.core.urlresolvers <span class="keyword">import</span> reverse  <span class="comment"># django 1.4.x - django 1.10.x</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.urls <span class="keyword">import</span> reverse  <span class="comment"># django 1.10.x 新的，更加规范了</span></div><div class="line"> </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>reverse(<span class="string">'add2'</span>, args=(<span class="number">4</span>,<span class="number">5</span>))</div><div class="line"><span class="string">u'/add/4/5/'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>reverse(<span class="string">'add2'</span>, args=(<span class="number">444</span>,<span class="number">555</span>))</div><div class="line"><span class="string">u'/add/444/555/'</span></div></pre></td></tr></table></figure></p>
+<p><strong>reverse 接收 url 中的 name 作为第一个参数</strong>，我们在代码中就可以通过 reverse() 来获取对应的网址。也就是输入name返回<strong>对应网址</strong>。</p>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;&#123;% url &apos;add2&apos; 4 5 %&#125;&quot;&gt; 计算 4+5&lt;/a&gt;</div></pre></td></tr></table></figure></p>
+<p>上面的代码渲染成最终的页面是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;/add/4/5/&quot;&gt;计算 4+5&lt;/a&gt;</div></pre></td></tr></table></figure>
+ |这样就可以通过 {% url 'add2' 4 5 %} 获取到对应的网址 /add/4/5/ |<br><br>这样，即使我们在<strong>urls.py</strong>中修改了网址链接，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url(r&apos;^new_add/(\d+)/(\d+)/$&apos;, my_blog_view.add2, name=&apos;add2&apos;),</div></pre></td></tr></table></figure>
+<p>注意看重点 add 变成了 new_add，但是后面的 name=’add2’ 没改，这时  |`{% url 'add2' 4 5 %}` | 就会渲染对应的网址成<code>/new_add/4/5/</code></p>
+<p>用在 views.py 或 models.py 等地方的 reverse函数，同样会根据 name 对应的url获取到新的网址。</p>
+<p>想要改网址的时候，修改 urls.py 中的正则表达式部分（url 参数第一部分），name 不变的前提下，其它地方都不需要修改。</p>
+<h2 id="链接跳转"><a href="#链接跳转" class="headerlink" title="链接跳转"></a>链接跳转</h2><h3 id="views-py-写一个跳转的函数"><a href="#views-py-写一个跳转的函数" class="headerlink" title="views.py 写一个跳转的函数"></a>views.py 写一个跳转的函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">from django.http import HttpResponseRedirect</div><div class="line">from django.urls import reverse  # new in django 1.10.x</div><div class="line"> </div><div class="line">def old_add2_redirect(request, a, b):</div><div class="line">    return HttpResponseRedirect(</div><div class="line">        reverse(&apos;add2&apos;, args=(a, b))</div><div class="line">    )</div></pre></td></tr></table></figure>
+<h3 id="urls-py-1"><a href="#urls-py-1" class="headerlink" title="urls.py"></a>urls.py</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">url(r&apos;^add/(\d+)/(\d+)/$&apos;, my_blog_view.old_add2_redirect),</div><div class="line">url(r&apos;^new_add/(\d+)/(\d+)/$&apos;, my_blog_view.add2, name=&apos;add2&apos;),</div></pre></td></tr></table></figure>
+<p>即可完成跳转</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://feiyang.li/2017/05/20/django1/index.html&quot;&gt;上节&lt;/a&gt;已经提到新建app，这节稍微深入一些&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Django" scheme="http://feiyang.li/categories/Django/"/>
+    
+    
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="Django" scheme="http://feiyang.li/tags/Django/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Django 笔记之一 基本命令</title>
     <link href="http://feiyang.li/2017/05/20/django1/index.html"/>
     <id>http://feiyang.li/2017/05/20/django1/index.html</id>
     <published>2017-05-20T01:20:41.000Z</published>
-    <updated>2017-05-20T01:45:56.909Z</updated>
+    <updated>2017-05-20T11:36:45.507Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接在 终端中输入这些命令（不是 python 的 shell中）</p>
 <hr>
@@ -82,7 +175,7 @@
     <published>2017-05-19T10:53:03.000Z</published>
     <updated>2017-05-19T10:54:26.531Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>机器学习系统设计</p>
 </blockquote>
 <hr>
@@ -130,7 +223,7 @@
     <published>2017-05-18T02:14:53.000Z</published>
     <updated>2017-05-18T02:17:37.001Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>关于coursera无法播放，原因其实很简单，就是视频所在服务器被GFW墙了。</p>
 </blockquote>
 <hr>
@@ -221,7 +314,7 @@
     <published>2017-05-17T05:37:09.000Z</published>
     <updated>2017-05-17T06:22:10.492Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>对应 <a href="http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/index.html">机器学习诊断法</a></p>
 </blockquote>
 <hr>
@@ -349,11 +442,11 @@ hess_inv: array([[ 1.03142187,  0.00617881],
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -364,7 +457,7 @@ hess_inv: array([[ 1.03142187,  0.00617881],
     <published>2017-05-16T10:38:00.000Z</published>
     <updated>2017-05-16T10:38:57.468Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。</p>
 </blockquote>
 <hr>
@@ -446,7 +539,7 @@ hess_inv: array([[ 1.03142187,  0.00617881],
     <published>2017-05-15T12:13:05.000Z</published>
     <updated>2017-05-15T12:13:29.549Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>早就听说WisHosting 长期免费vps，码农买vps就像女人买衣服一样，虽然没什么用，但是会上瘾。</p>
 </blockquote>
 <hr>
@@ -503,7 +596,7 @@ hess_inv: array([[ 1.03142187,  0.00617881],
     <published>2017-05-14T03:58:57.000Z</published>
     <updated>2017-05-20T01:23:52.118Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>shadowsocks-manager是一个非常帅气的ss多用户管理程序，搭建起来稍微有点麻烦，因此写了本一键脚本。示例网站：<a href="http://gz.feiyang.li/" target="_blank" rel="external">http://gz.feiyang.li/</a></p>
 </blockquote>
 <hr>
@@ -637,7 +730,7 @@ hess_inv: array([[ 1.03142187,  0.00617881],
     <published>2017-05-11T04:28:16.000Z</published>
     <updated>2017-05-11T04:34:51.020Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>假设你在开发一个机器学习系统，或者在改进一个机器学习系统的性能，应如何做？</p>
 </blockquote>
 <hr>
@@ -801,7 +894,7 @@ $$\text{Test Error} = \dfrac{1}{m_{test}} \sum^{m_{test}}_{i=1} err(h_\Theta(x^{
     <published>2017-05-10T10:01:38.000Z</published>
     <updated>2017-05-11T01:21:35.719Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>对应反向传播算法内容</p>
 </blockquote>
 <hr>
@@ -850,11 +943,11 @@ params : (10285,)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -863,9 +956,9 @@ params : (10285,)
     <link href="http://feiyang.li/2017/05/09/ss-shell/index.html"/>
     <id>http://feiyang.li/2017/05/09/ss-shell/index.html</id>
     <published>2017-05-09T13:58:57.000Z</published>
-    <updated>2017-05-20T01:22:18.580Z</updated>
+    <updated>2017-05-20T06:36:01.641Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此搭建了本ss-panel一键安装脚本</p>
 </blockquote>
 <hr>
@@ -1004,6 +1097,11 @@ params : (10285,)
 <li><a href="http://feiyang.li/2017/05/03/ss-panel/index.html#常见错误">常见错误</a>在这里查看</li>
 <li>如果想设置更多的信息，请查看<a href="http://feiyang.li/2017/05/05/ss-panel-full/index.html">安装教程全文</a>，本脚本和该教程内容完全一致。</li>
 <li>关于<a href="http://feiyang.li/2017/05/05/ss-panel-full/index.html#谷歌BBR加速">Google的bbr加速</a>，与本脚本可以通用，但是因为效果不明显(可能因为我们实验室网太烂了吧)，所以我没有加入。</li>
+<li>有人问到，vps重启后，节点就不能连接了。有两个方法：<ul>
+<li>使用crontab</li>
+<li>开机之后，输入<code>supervisord</code>，打开守护进程就好了。</li>
+</ul>
+</li>
 </ul>
 <hr>
 <p>第一次写脚本，还请多多指教~</p>
@@ -1040,7 +1138,7 @@ params : (10285,)
     <published>2017-05-06T13:52:23.000Z</published>
     <updated>2017-05-10T11:56:05.596Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>本节笔记对应第五周Coursera课程 <a href="https://www.coursera.org/learn/machine-learning/home/week/5" target="_blank" rel="external">Neural Networks: Learning</a></p>
 </blockquote>
 <hr>
@@ -1232,11 +1330,11 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1247,7 +1345,7 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     <published>2017-05-05T06:23:13.000Z</published>
     <updated>2017-05-20T01:22:29.813Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p> shadowsocks是目前fq速度最快的工具之一，可以转发udp。可以使用ipv6，对于很多高校学生来说，可以通过此方法节省流量费用。</p>
 </blockquote>
 <hr>
@@ -1335,7 +1433,7 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     <published>2017-05-05T06:09:39.000Z</published>
     <updated>2017-05-20T01:22:24.348Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>系统介绍： 1g内存，单核，也就是传说中的腾讯1元学生机。centos6.8 x32。</p>
 </blockquote>
 <hr>
@@ -1471,13 +1569,14 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     <link href="http://feiyang.li/2017/05/03/ss-panel/index.html"/>
     <id>http://feiyang.li/2017/05/03/ss-panel/index.html</id>
     <published>2017-05-03T12:13:08.000Z</published>
-    <updated>2017-05-20T01:22:26.893Z</updated>
+    <updated>2017-05-20T02:54:31.807Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。</p>
 </blockquote>
 <hr>
 <a id="more"></a>
+<p><strong>好消息！！！ 我已经写好了<a href="http://feiyang.li/2017/05/09/ss-shell/index.html">ss-panel一键脚本</a>，对小白非常友好~</strong></p>
 <p>产品要求：fuck the wall、在可用范围内尽量简单一些（因此不考虑ssr，魔改panel也不考虑）读者建议：如果使用国外vps，建议本方法。国内vps<a href="http://feiyang.li/2017/05/05/ss-panel-full/index.html">建议</a></p>
 <h1 id="ss-panel前端"><a href="#ss-panel前端" class="headerlink" title="ss-panel前端"></a>ss-panel前端</h1><p>我看官方文档，按部就班的做了一个前端，最后才发现竟然有ss-panel一键脚本，真的是血都要吐出来了。好气哦。这里直接介绍一键脚本方式。</p>
 <h2 id="脚本下载以及运行"><a href="#脚本下载以及运行" class="headerlink" title="脚本下载以及运行"></a>脚本下载以及运行</h2><p>首先运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum -y install screen</div><div class="line">screen -S ssmanyuser</div></pre></td></tr></table></figure></p>
@@ -1562,7 +1661,7 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     <published>2017-05-02T10:01:38.000Z</published>
     <updated>2017-05-02T10:04:58.026Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>machine-learning-ex3.zip <a href="http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex3.zip" target="_blank" rel="external">下载链接</a>，第四周的课程相对来说比较简单，大致介绍了神经网络相关内容。</p>
 </blockquote>
 <hr>
@@ -1643,11 +1742,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1658,7 +1757,7 @@ theta2: (10, 26)
     <published>2017-04-15T13:42:33.000Z</published>
     <updated>2017-04-15T13:47:22.229Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>神经网络模型</p>
 </blockquote>
 <hr>
@@ -1744,11 +1843,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1759,7 +1858,7 @@ theta2: (10, 26)
     <published>2017-03-30T04:46:00.000Z</published>
     <updated>2017-04-15T12:16:09.671Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p><a href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">线性回归算法</a>，可用于房屋价格的估计及股票市场分析。 <a href="https://www.coursera.org/learn/machine-learning/programming/ixFof/logistic-regression" target="_blank" rel="external">Logistic Regression</a> （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在<a href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">这里</a></p>
 </blockquote>
 <hr>
@@ -1850,11 +1949,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1865,7 +1964,7 @@ theta2: (10, 26)
     <published>2017-03-27T11:13:38.000Z</published>
     <updated>2017-03-28T07:49:36.625Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/3" target="_blank" rel="external">第三周Coursera课程</a>  <strong>binary classification problem</strong></p>
 </blockquote>
 <hr>
@@ -2012,11 +2111,11 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -2027,7 +2126,7 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
     <published>2017-03-26T11:00:29.000Z</published>
     <updated>2017-03-27T11:32:14.121Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Multivariate Linear Regression and Programming Exercise 1</p>
 </blockquote>
 <hr>
@@ -2109,129 +2208,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
-      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Coursera ML(2)-Model and Cost Function</title>
-    <link href="http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html"/>
-    <id>http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html</id>
-    <published>2017-03-25T10:49:36.000Z</published>
-    <updated>2017-05-12T02:28:04.638Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="Model-and-Cost-Function"><a href="#Model-and-Cost-Function" class="headerlink" title="Model and Cost Function"></a>Model and Cost Function</h1><table>
-<thead>
-<tr>
-<th style="text-align:center">Tables</th>
-<th style="text-align:center">Are</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Hypothesis</td>
-<td style="text-align:center"> $$h_{\theta}={\theta}_0+{\theta}_1x$$ </td>
-</tr>
-<tr>
-<td style="text-align:center">Parameter</td>
-<td style="text-align:center"> ${\theta}_0$，${\theta}_1$</td>
-</tr>
-<tr>
-<td style="text-align:center">Cost Function</td>
-<td style="text-align:center"> $J(\theta_0,\theta_1)= \frac1{2m}\sum_{i=1}^m(h_{\theta}(x^i)-y^i)^w$ </td>
-</tr>
-<tr>
-<td style="text-align:center">Goal</td>
-<td style="text-align:center">$minimiseJ(\theta_0,\theta_1)$</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h2><ul>
-<li>Hypothesis:<br>$$h_{\theta}={\theta}_0+{\theta}_1x$$<br>${\theta}_0$和${\theta}_1$称为模型参数</li>
-</ul>
-<h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><p>We can measure the accuracy of our hypothesis function by using a <strong>cost function</strong>. his takes an average difference (actually a fancier version of an average) of all the results of the hypothesis with inputs from x’s and the actual output y’s. 如何尽可能的将直线与我们的数据相拟合</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170325/211048488.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170325/134518022.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h1 id="Parameter-Learning"><a href="#Parameter-Learning" class="headerlink" title="Parameter Learning"></a>Parameter Learning</h1><h2 id="Gradient-descent-idea"><a href="#Gradient-descent-idea" class="headerlink" title="Gradient descent idea"></a>Gradient descent idea</h2><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170325/152030096.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<blockquote>
-<p>Turns out, that if you’re standing at that point on the hill, you look all around and you find that the best direction is to take a little step downhill is roughly that direction. Okay, and now you’re at this new point on your hill. You’re gonna, again, look all around and say what direction should I step in order to take a little baby step downhill? And if you do that and take another step, you take a step in that direction. </p>
-</blockquote>
-<h2 id="Gradient-descent-algorithm"><a href="#Gradient-descent-algorithm" class="headerlink" title="Gradient descent algorithm"></a>Gradient descent algorithm</h2><p>repeat until convergence:{<br>    $\theta_j:=\theta_j-\alpha\frac\partial{\partial\theta_j}J(\theta_0,\theta_1)$<br>}</p>
-<ul>
-<li>use <strong>:=</strong> to denote assignment, so it’s the assignment operator.</li>
-<li>$\alpha$ called:learning rate.controls how big a step we take downhill with creating descent. </li>
-<li>$\theta_0,\theta_1 $should be updated simultaneously(using multiple temp var should work!)<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170325/154825347.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-</li>
-</ul>
-<h1 id="Gradient-Descent-For-Linear-Regression"><a href="#Gradient-Descent-For-Linear-Regression" class="headerlink" title="Gradient Descent For Linear Regression"></a>Gradient Descent For Linear Regression</h1>
- $$\begin{align*} \text{repeat until convergence: } \lbrace & \newline \theta_0 := & \theta_0 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m}(h_\theta(x_{i}) - y_{i}) \newline \theta_1 := & \theta_1 - \alpha \frac1m \sum\limits_{i=1}^m\left((h_\theta(x_i) - y_i) x_i\right) \newline \rbrace& \end{align*}$$
-
-<p> where m is the size of the training set, $\theta_0$ a constant that will be changing simultaneously with $\theta_1$  and $x_i y_i$are values of the given training set (data).</p>
-<center><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170325/182301586.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></center>
-
-<ul>
-<li><p>The $J(θ_0,θ_1)$ is a convex function, which means it has only one global minimun, which means gradient descent will always hit the best fit</p>
-</li>
-<li><p>“Batch” Gradient Descent: “Batch” means the algo is trained from all the samples every time</p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
-    
     
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
