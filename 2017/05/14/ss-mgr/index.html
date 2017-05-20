@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>shadowsocks-manager一键安装脚本 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="GFW,Linux,教程,vps,shell">
+    <meta name="description" content="shadowsocks-manager是一个非常帅气的ss多用户管理程序，搭建起来稍微有点麻烦，因此写了本一键脚本。示例网站：http://gz.feiyang.li/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shadowsocks-manager一键安装脚本">
+<meta property="og:url" content="http://feiyang.li/2017/05/14/ss-mgr/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="shadowsocks-manager是一个非常帅气的ss多用户管理程序，搭建起来稍微有点麻烦，因此写了本一键脚本。示例网站：http://gz.feiyang.li/">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170513/135344468.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170513/135349156.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170513/135357497.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170513/140400232.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170514/135830856.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170514/140131877.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170513/135239354.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-05-20T01:23:52.118Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shadowsocks-manager一键安装脚本">
+<meta name="twitter:description" content="shadowsocks-manager是一个非常帅气的ss多用户管理程序，搭建起来稍微有点麻烦，因此写了本一键脚本。示例网站：http://gz.feiyang.li/">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170513/135344468.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternate" type="application/atom+xml" title="李飞阳" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.6.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-cog"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/" target="_blank" >
+                <i class="icon icon-lg icon-rocket"></i>
+                肥羊SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">shadowsocks-manager一键安装脚本</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">shadowsocks-manager一键安装脚本</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-14T03:58:57.000Z" itemprop="datePublished" class="page-time">
+  2017-05-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/shadowsocks/">shadowsocks</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#效果"><span class="post-toc-number">1.</span> <span class="post-toc-text">效果</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#特点"><span class="post-toc-number">2.</span> <span class="post-toc-text">特点</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#要求"><span class="post-toc-number">3.</span> <span class="post-toc-text">要求</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装脚本"><span class="post-toc-number">4.</span> <span class="post-toc-text">安装脚本</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装ss-mgr"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">安装ss-mgr</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#增加节点"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">增加节点</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#docker方法"><span class="post-toc-number">5.</span> <span class="post-toc-text">docker方法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#备注"><span class="post-toc-number">6.</span> <span class="post-toc-text">备注</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#修改页面"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">修改页面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一键BBR脚本"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">一键BBR脚本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#增加虚拟内存"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">增加虚拟内存</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-ss-mgr"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">shadowsocks-manager一键安装脚本</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-14 11:58:57" datetime="2017-05-14T03:58:57.000Z"  itemprop="datePublished">2017-05-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/shadowsocks/">shadowsocks</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>shadowsocks-manager是一个非常帅气的ss多用户管理程序，搭建起来稍微有点麻烦，因此写了本一键脚本。示例网站：<a href="http://gz.feiyang.li/" target="_blank" rel="external">http://gz.feiyang.li/</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>我看了一下数据，大概70%的人会一次性安装成功，其余人大多卡在npm依赖安装不全的问题上；<br>请注意：<br>1、内存1g以下的vps，极有可能内存过小，导致依赖被kill掉。<br>2、网络问题，请多次安装npm。<br>如果实在解决不了，建议就不要用这个管理界面，这个管理界面的要求的确有点高，请理解。</p>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170513/135344468.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170513/135349156.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170513/135357497.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170513/140400232.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>github： <a href="https://github.com/mmmwhy/ss-mgr" target="_blank" rel="external">https://github.com/mmmwhy/ss-mgr</a></p>
+<h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><ul>
+<li>非常帅气，各种图表一上，是不是很牛逼的感觉。</li>
+<li>支持支付宝付款对账，站长们多出来的vps可以不用再继续吃灰了。</li>
+</ul>
+<h1 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h1><p>centos7 X64，在腾讯云，digitialocean,interserver,ethernetservers通过测试。<br>其他版本还没有测试，理论上可用。</p>
+<h1 id="安装脚本"><a href="#安装脚本" class="headerlink" title="安装脚本"></a>安装脚本</h1><h2 id="安装ss-mgr"><a href="#安装ss-mgr" class="headerlink" title="安装ss-mgr"></a>安装ss-mgr</h2><p>本脚本包括主控端和节点端，安装时，自动添加本vps作为一个节点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/mmmwhy/ss-mgr/master/sm.sh &amp;&amp; chmod +x sm.sh &amp;&amp; bash sm.sh</div></pre></td></tr></table></figure></p>
+<p>坐等就可以了，没有什么需要做的东西。<br>打开ip地址，就可以看到ss-mgr了。</p>
+<h2 id="增加节点"><a href="#增加节点" class="headerlink" title="增加节点"></a>增加节点</h2><p>本脚本为：已有<strong>vps安装好主控端</strong>，添加新节点时，在<strong>新节点</strong>使用的脚本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/mmmwhy/ss-mgr/master/sm_node.sh &amp;&amp; chmod +x sm_node.sh &amp;&amp; bash sm_node.sh</div></pre></td></tr></table></figure></p>
+<ul>
+<li>输入密码<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170514/135830856.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>前端页面填入，刚才的密码，选择加密方式。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170514/140131877.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<h1 id="docker方法"><a href="#docker方法" class="headerlink" title="docker方法"></a>docker方法</h1><h1 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h1><ul>
+<li>注册的第一个用户就是管理员.</li>
+<li>注册第二个账号，可以看到自己的剩余时间，一般来说是8个小时。可以点击续费，选择任意一个额度，支付后，可以看到时间会增长。</li>
+<li>默认使用hotmail邮箱，因为邮箱在国外，所以如果服务器在国内的话，可能会timeout。</li>
+<li>某些系统内核版本过老，因此可能会出现如下症状，按回车就可以了。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170513/135239354.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>被墙掉的资源都换成国内的了。</li>
+<li>三条重要命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">screen -dmS ss-manager ss-manager -m aes-256-cfb -u --manager-address 127.0.0.1:4000</div><div class="line">cd /root/shadowsocks-manager/</div><div class="line">screen -dmS ss node server.js -c /root/.ssmgr/ss.yml</div><div class="line">screen -dmS webgui node server.js -c /root/.ssmgr/webgui.yml</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="修改页面"><a href="#修改页面" class="headerlink" title="修改页面"></a>修改页面</h2><p>修改过文本后，使用<code>npm run build</code>重新生成页面。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">screen -dmS webgui node server.js -c /root/.ssmgr/webgui.yml</div></pre></td></tr></table></figure></p>
+<h2 id="一键BBR脚本"><a href="#一键BBR脚本" class="headerlink" title="一键BBR脚本"></a>一键BBR脚本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</div><div class="line">chmod +x bbr.sh</div><div class="line">./bbr.sh</div></pre></td></tr></table></figure>
+<h2 id="增加虚拟内存"><a href="#增加虚拟内存" class="headerlink" title="增加虚拟内存"></a>增加虚拟内存</h2><p><strong>增加swap交换文件</strong></p>
+<ul>
+<li>使用dd命令创建一个swap交换文件<br><code>dd if=/dev/zero of=/home/swap bs=1024 count=1024000</code><br>这样就建立一个/home/swap的分区文件，大小为1G。</li>
+<li>制作为swap格式文件：<br><code>mkswap /home/swap</code></li>
+<li>再用swapon命令把这个文件分区挂载swap分区<br><code>/sbin/swapon /home/swap</code><br>我们用free -m命令看一下，发现已经有交换分区了。但是重启系统后，swap分区又变成0了。</li>
+<li>为防止重启后swap分区变成0，要修改/etc/fstab文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/fstab</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在文件末尾（最后一行）加上<br><code>/home/swap swap swap default 0 0</code><br>这样就算重启系统，swap分区还是有值。</p>
+<ul>
+<li>查看空间：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">free -m</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>因为本工具较难配置，因此如果有问题的话，可以通过tg联系我。<a href="https://t.me/mmmwhy" target="_blank" rel="external">https://t.me/mmmwhy</a></p>
+<hr>
+<p>参考以下链接：<br><a href="http://blog.csdn.net/lengyue1084/article/details/51405640" target="_blank" rel="external">http://blog.csdn.net/lengyue1084/article/details/51405640</a><br><a href="https://code.momok.xyz/server/deploy-ss-manager.html" target="_blank" rel="external">https://code.momok.xyz/server/deploy-ss-manager.html</a><br><a href="https://github.com/shadowsocks/shadowsocks-manager" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks-manager</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-20T01:23:52.118Z" itemprop="dateUpdated">2017-05-20 09:23:52</time>
+</span><br>
+
+
+        
+        可以转载，请注明出处：<a href="/2017/05/14/ss-mgr/" target="_blank" rel="external">http://feiyang.li/2017/05/14/ss-mgr/</a>
+        
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GFW/">GFW</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/">shell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vps/">vps</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/14/ss-mgr/&title=《shadowsocks-manager一键安装脚本》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/14/ss-mgr/&title=《shadowsocks-manager一键安装脚本》 — 李飞阳&source=
+shadowsocks-manager是一个非常帅气的ss多用户管理程序，搭建起来稍微有点麻烦，因此写了本一键脚本。示例网站：http://gz.fei..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/14/ss-mgr/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《shadowsocks-manager一键安装脚本》 — 李飞阳&url=http://feiyang.li/2017/05/14/ss-mgr/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/14/ss-mgr/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/15/free-vps/index.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">免费vps get!</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Coursera ML(10)-机器学习诊断法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'http://feiyang.li/2017/05/14/ss-mgr/index.html',
+        sourceId: 'ss-mgr',
+        productKey: '9d56d2fd321c48c7a0b079b76f0795cf',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '/css/cloudTie/pc.css?v=1.6.7',
+            '/js/cloudTie/pc.min.js?v=1.6.7',
+        ],
+        mobileFiles: [
+            '/css/cloudTie/mobile.css?v=1.6.7',
+            '/js/cloudTie/mobile.min.js?v=1.6.7'
+        ]
+    };
+    </script>
+    <script src="/js/cloudTie/loader.min.js?v=1.6.7"></script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+    </main>
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="https://www.wishosting.com/" target="_blank">support by wishosting</a></span>
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/14/ss-mgr/&title=《shadowsocks-manager一键安装脚本》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/14/ss-mgr/&title=《shadowsocks-manager一键安装脚本》 — 李飞阳&source=
+shadowsocks-manager是一个非常帅气的ss多用户管理程序，搭建起来稍微有点麻烦，因此写了本一键脚本。示例网站：http://gz.fei..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/14/ss-mgr/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《shadowsocks-manager一键安装脚本》 — 李飞阳&url=http://feiyang.li/2017/05/14/ss-mgr/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/14/ss-mgr/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABvElEQVR42u3aQY6DMAwF0N7/0p1tN8C3TQIjvaxQhchLF5Zj+/OJ1/dn/f6SP59/7eaFi4s75n5P1zk33zI58LkBFxd3P/dog/yd6sF638fFxX0nN98+J+Li4v53bpKU9BImXFzct3GTDY7ez5ObrXc1XFzcATcvaqx7XlLfxcXFbXF7CUr1gpQHrIvdcXFxt3DzgDIphVSLpBf74uLiLubmoSdpn+THSI508b/i4uIu4/bGI1ZMUiXv4+Li7uH2Rq96YescGgU+XFzcLdzkipL/PjnY+RdwcXH3c+9qhebN0VHpBBcXdzG32v6sjlv1rkCH38TFxd3C7Q1e5AlNdWArL9ri4uLu4ebb31X+qJZUcHFxd3Lz0ateAWUSR6O7Gi4u7jJuXgDNyx+9akZUMMXFxX2I27vw9Lo3hcsPLi7uRm6elCSlz/kgVyG24eLi3sqdNE3nzddqqoSLi7uHWw0uk4MlB44uP7i4uFu4edDpNUXyVCk6DC4u7kbuvNCZlz96Ax+4uLjv5/aGtCahExcX9/3caiDrNWUfS3FwcXFbxc1JCTUPdri4uE9xe43PKiIPizc0a3FxcfvcPzYjmnkdtbdPAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.6.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.6.7" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Django 教程之一 基本命令 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="教程,Django">
+    <meta name="description" content="本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接在 终端中输入这些命令（不是 python 的 shell中）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django 教程之一 基本命令">
+<meta property="og:url" content="http://feiyang.li/2017/05/20/django1/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接在 终端中输入这些命令（不是 python 的 shell中）">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170520/085723517.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-05-20T01:45:56.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django 教程之一 基本命令">
+<meta name="twitter:description" content="本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接在 终端中输入这些命令（不是 python 的 shell中）">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170520/085723517.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternate" type="application/atom+xml" title="李飞阳" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.6.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-cog"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/" target="_blank" >
+                <i class="icon icon-lg icon-rocket"></i>
+                肥羊SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Django 教程之一 基本命令</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Django 教程之一 基本命令</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-20T01:20:41.000Z" itemprop="datePublished" class="page-time">
+  2017-05-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Django/">Django</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#新建一个-django-project"><span class="post-toc-number">1.</span> <span class="post-toc-text">新建一个 django project</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#新建-app"><span class="post-toc-number">2.</span> <span class="post-toc-text">新建 app</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#同步更改数据库表或字段"><span class="post-toc-number">3.</span> <span class="post-toc-text">同步更改数据库表或字段</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用开发服务器"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用开发服务器</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#清空数据库"><span class="post-toc-number">5.</span> <span class="post-toc-text">清空数据库</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#创建超级管理员"><span class="post-toc-number">6.</span> <span class="post-toc-text">创建超级管理员</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#导出数据-导入数据"><span class="post-toc-number">7.</span> <span class="post-toc-text">导出数据 导入数据</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Django-项目环境终端"><span class="post-toc-number">8.</span> <span class="post-toc-text">Django 项目环境终端</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据库命令行"><span class="post-toc-number">9.</span> <span class="post-toc-text">数据库命令行</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#更多命令"><span class="post-toc-number">10.</span> <span class="post-toc-text">更多命令</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-django1"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Django 教程之一 基本命令</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-20 09:20:41" datetime="2017-05-20T01:20:41.000Z"  itemprop="datePublished">2017-05-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Django/">Django</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接在 终端中输入这些命令（不是 python 的 shell中）</p>
+<hr>
+<a id="more"></a>
+<p>如果是 windows 用 cmd（开始 搜索 cmd 或者 快捷键 win + R，输入 cmd) 直接在 cmd 上操作。</p>
+<h1 id="新建一个-django-project"><a href="#新建一个-django-project" class="headerlink" title="新建一个 django project"></a>新建一个 django project</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin.py startproject my_blog</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170520/085723517.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>特别是在 windows 上，如果报错，尝试用 django-admin 代替 django-admin.py 试试<br>注意 project_name 是自己的项目名称，需要为合法的 Python 包名，如不能为 1a 或 a-b。</p>
+<h1 id="新建-app"><a href="#新建-app" class="headerlink" title="新建 app"></a>新建 app</h1><p>要先进入项目目录下，cd project_name 然后执行下面的命令（下同，已经在项目目录下则不需要 cd project_name）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py startapp blog</div></pre></td></tr></table></figure></p>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin.py startapp blog</div></pre></td></tr></table></figure></p>
+<p>效果太概是这个样子的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── my_blog</div><div class="line">│   ├── admin.py</div><div class="line">│   ├── __init__.py</div><div class="line">│   ├── migrations</div><div class="line">│   │   └── __init__.py</div><div class="line">│   ├── models.py</div><div class="line">│   ├── tests.py</div><div class="line">│   └── views.py</div><div class="line">├── blog</div><div class="line">│   ├── __init__.py</div><div class="line">│   ├── __pycache__</div><div class="line">│   │   ├── __init__.cpython-34.pyc</div><div class="line">│   │   └── settings.cpython-34.pyc</div><div class="line">│   ├── settings.py</div><div class="line">│   ├── urls.py</div><div class="line">│   └── wsgi.py</div><div class="line">└── manage.py</div></pre></td></tr></table></figure></p>
+<p>一般一个项目有多个app, 当然通用的app也可以在多个项目中使用。</p>
+<p>与项目名类似 app name 也需要为合法的 Python 包名，如 blog，news, aboutus 等都是合法的 app 名称。</p>
+<h1 id="同步更改数据库表或字段"><a href="#同步更改数据库表或字段" class="headerlink" title="同步更改数据库表或字段"></a>同步更改数据库表或字段</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Django 1.7.1及以上 用以下命令</div><div class="line"># 1. 创建更改的文件</div><div class="line">python manage.py makemigrations</div><div class="line"># 2. 将生成的py文件应用到数据库</div><div class="line">python manage.py migrate</div></pre></td></tr></table></figure>
+<p>这种方法可以在SQL等数据库中创建与models.py代码对应的表，不需要自己手动执行SQL。</p>
+<p>备注：对已有的 models 进行修改，Django 1.7之前的版本的Django都是无法自动更改表结构的，不过有第三方工具 south,详见 Django 数据库迁移 一节。</p>
+<h1 id="使用开发服务器"><a href="#使用开发服务器" class="headerlink" title="使用开发服务器"></a>使用开发服务器</h1><p>开发服务器，即开发时使用，一般修改代码后会自动重启，方便调试和开发，但是由于性能问题，建议只用来测试，不要用在生产环境。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">python manage.py runserver</div><div class="line"> </div><div class="line"># 当提示端口被占用的时候，可以用其它端口：</div><div class="line">python manage.py runserver 8001</div><div class="line">python manage.py runserver 9999</div><div class="line">（当然也可以kill掉占用端口的进程，具体后面有讲，此处想知道的同学可查下 lsof 命令用法）</div><div class="line"> </div><div class="line"># 监听机器所有可用 ip （电脑可能有多个内网ip或多个外网ip）</div><div class="line">python manage.py runserver 0.0.0.0:8000</div><div class="line"># 如果是外网或者局域网电脑上可以用其它电脑查看开发服务器</div><div class="line"># 访问对应的 ip加端口，比如 http://172.16.20.2:8000</div></pre></td></tr></table></figure>
+<h1 id="清空数据库"><a href="#清空数据库" class="headerlink" title="清空数据库"></a>清空数据库</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py flush</div></pre></td></tr></table></figure>
+<p>此命令会询问是 yes 还是 no, 选择 yes 会把数据全部清空掉，只留下空表。</p>
+<h1 id="创建超级管理员"><a href="#创建超级管理员" class="headerlink" title="创建超级管理员"></a>创建超级管理员</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">python manage.py createsuperuser</div><div class="line"># 按照提示输入用户名和对应的密码就好了邮箱可以留空，用户名和密码必填</div><div class="line"> </div><div class="line"># 修改 用户密码可以用：</div><div class="line">python manage.py changepassword username</div></pre></td></tr></table></figure>
+<h1 id="导出数据-导入数据"><a href="#导出数据-导入数据" class="headerlink" title="导出数据 导入数据"></a>导出数据 导入数据</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python manage.py dumpdata appname &gt; appname.json</div><div class="line">python manage.py loaddata appname.json</div></pre></td></tr></table></figure>
+<p>关于数据操作 详见：数据导入数据迁移，现在了解有这个用法就可以了。</p>
+<h1 id="Django-项目环境终端"><a href="#Django-项目环境终端" class="headerlink" title="Django 项目环境终端"></a>Django 项目环境终端</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python manage.py shell</div><div class="line">如果你安装了 bpython 或 ipython 会自动用它们的界面，推荐安装 bpython。</div></pre></td></tr></table></figure>
+<p>这个命令和 直接运行 python 或 bpython 进入 shell 的区别是：你可以在这个 shell 里面调用当前项目的 models.py 中的 API，对于操作数据，还有一些小测试非常方便。</p>
+<h1 id="数据库命令行"><a href="#数据库命令行" class="headerlink" title="数据库命令行"></a>数据库命令行</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py dbshell</div></pre></td></tr></table></figure>
+<p>Django 会自动进入在settings.py中设置的数据库，如果是 MySQL 或 postgreSQL,会要求输入数据库用户密码。</p>
+<p>在这个终端可以执行数据库的SQL语句。如果您对SQL比较熟悉，可能喜欢这种方式。</p>
+<h1 id="更多命令"><a href="#更多命令" class="headerlink" title="更多命令"></a>更多命令</h1><p>终端上输入 python manage.py 可以看到详细的列表，在忘记子名称的时候特别有用。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-20T01:45:56.909Z" itemprop="dateUpdated">2017-05-20 09:45:56</time>
+</span><br>
+
+
+        
+        可以转载，请注明出处：<a href="/2017/05/20/django1/" target="_blank" rel="external">http://feiyang.li/2017/05/20/django1/</a>
+        
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/20/django1/&title=《Django 教程之一 基本命令》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/20/django1/&title=《Django 教程之一 基本命令》 — 李飞阳&source=本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/20/django1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Django 教程之一 基本命令》 — 李飞阳&url=http://feiyang.li/2017/05/20/django1/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/20/django1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/19/Machine-Learning-System-Design/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Machine Learning System Design</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'http://feiyang.li/2017/05/20/django1/index.html',
+        sourceId: 'django1',
+        productKey: '9d56d2fd321c48c7a0b079b76f0795cf',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '/css/cloudTie/pc.css?v=1.6.7',
+            '/js/cloudTie/pc.min.js?v=1.6.7',
+        ],
+        mobileFiles: [
+            '/css/cloudTie/mobile.css?v=1.6.7',
+            '/js/cloudTie/mobile.min.js?v=1.6.7'
+        ]
+    };
+    </script>
+    <script src="/js/cloudTie/loader.min.js?v=1.6.7"></script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+    </main>
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="https://www.wishosting.com/" target="_blank">support by wishosting</a></span>
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/20/django1/&title=《Django 教程之一 基本命令》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/20/django1/&title=《Django 教程之一 基本命令》 — 李飞阳&source=本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/20/django1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Django 教程之一 基本命令》 — 李飞阳&url=http://feiyang.li/2017/05/20/django1/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/20/django1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzklEQVR42u3aS27DMAwFwNz/0u62QBH5kQoVFxitAtuJxlkQ4uf1itf1Z/2+njz57pnXxMLFxd3mXsuVbJBsvH7VxICLi3ueu0bk2+RBbR0Q317HxcV9JHcdmNZBLfkLcHFx/y93/WT1wISLi/tMbrJBr8DROyp9IFfDxcXd4OZVyrnPI/VdXFzcFvcqrnUitF8YvdkdFxf3CHe/EVJtvVQDGS4u7nluHnR6pZBqEeSmAYOLi3uE2xuhyJsrvZLH1hAGLi7uALdaskwSpOQ3y4EPFxd3jJsXO3ZSoN7B6G3yg4uLe5Cbg6qtl527N/UbXFzcAW411UmC3c7AVrU0g4uLO8ctNDiLLZbelZujEi4u7jA3P9BUQ1Ie+AovhouLe4Sb/0SvZdJrst4coXBxcY9z8/Zn9e7IHBkuLu4wNx+GyMNTXoNp5mq4uLgHuXkpM0+Z8nXzLVxc3GHuVVy9FksSCgu9HVxc3GFuNbh8IHUpJkLNl8HFxd3mVoPXp9KYZAgDFxf3u9w80OTPVwe5CoNZuLi4D+MmxZR8nKscOnFxcR/JTV6j2r7Nx0FwcXFPcqsjmL2hjTyhipqsuLi4Y9xq43On6dILhbi4uAe5Pxrd4jFILDX8AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.6.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.6.7" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

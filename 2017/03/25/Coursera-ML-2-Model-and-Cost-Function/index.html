@@ -36,7 +36,7 @@
 ">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170325/182301586.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
-<meta property="og:updated_time" content="2017-03-27T11:35:22.375Z">
+<meta property="og:updated_time" content="2017-05-12T02:28:04.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coursera ML(2)-Model and Cost Function">
 <meta name="twitter:description" content="Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression">
@@ -108,9 +108,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://ss.feiyang.li/auth/login" target="_blank" >
+              <a href="https://ss.feiyang.li/" target="_blank" >
                 <i class="icon icon-lg icon-rocket"></i>
-                肥羊免费SS
+                肥羊SS
               </a>
             </li>
         
@@ -214,11 +214,11 @@
 <tbody>
 <tr>
 <td style="text-align:center">Hypothesis</td>
-<td style="text-align:center">$$h_{\theta}={\theta}_0+{\theta}_1x$$</td>
+<td style="text-align:center"> $$h_{\theta}={\theta}_0+{\theta}_1x$$ </td>
 </tr>
 <tr>
 <td style="text-align:center">Parameter</td>
-<td style="text-align:center">${\theta}_0$，${\theta}_1$</td>
+<td style="text-align:center"> ${\theta}_0$，${\theta}_1$</td>
 </tr>
 <tr>
 <td style="text-align:center">Cost Function</td>
@@ -301,10 +301,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-03-27T11:35:22.375Z" itemprop="dateUpdated">2017-03-27 19:35:22</time>
+    最后更新时间：<time datetime="2017-05-12T02:28:04.638Z" itemprop="dateUpdated">2017-05-12 10:28:04</time>
 </span><br>
 
 
+        
+        可以转载，请注明出处：<a href="/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/" target="_blank" rel="external">http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/</a>
         
     </div>
     <footer>
@@ -473,7 +475,7 @@ Model and Cost Function / Parameter Learning / Gradient Descent For Linear R..."
     <div class="bottom">
         <p>
             <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
-            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+            <span><a href="https://www.wishosting.com/" target="_blank">support by wishosting</a></span>
         </p>
     </div>
 </footer>
@@ -560,6 +562,27 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 <script src="/js/search.min.js?v=1.6.7" async></script>
 
 
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 
 

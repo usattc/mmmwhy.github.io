@@ -19,7 +19,7 @@
     <meta name="theme-color" content="#0288D1">
     
     
-    <meta name="keywords" content="GFW,SSR,Linux">
+    <meta name="keywords" content="GFW,SSR,Linux,教程">
     <meta name="description" content="本文转自1024社区，讲了一下SSR的搭建流程，并分享自己的SSR服务器。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建个人SSR帐号及私人分享">
@@ -30,7 +30,7 @@
 ">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/ssr/2.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
-<meta property="og:updated_time" content="2017-05-11T06:03:55.745Z">
+<meta property="og:updated_time" content="2017-05-20T01:22:21.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建个人SSR帐号及私人分享">
 <meta name="twitter:description" content="本文转自1024社区，讲了一下SSR的搭建流程，并分享自己的SSR服务器。">
@@ -102,9 +102,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://ss.feiyang.li/auth/login" target="_blank" >
+              <a href="https://ss.feiyang.li/" target="_blank" >
                 <i class="icon icon-lg icon-rocket"></i>
-                肥羊免费SS
+                肥羊SS
               </a>
             </li>
         
@@ -239,10 +239,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-05-11T06:03:55.745Z" itemprop="dateUpdated">2017-05-11 14:03:55</time>
+    最后更新时间：<time datetime="2017-05-20T01:22:21.517Z" itemprop="dateUpdated">2017-05-20 09:22:21</time>
 </span><br>
 
 
+        
+        可以转载，请注明出处：<a href="/2016/10/19/SSR/" target="_blank" rel="external">http://feiyang.li/2016/10/19/SSR/</a>
         
     </div>
     <footer>
@@ -262,7 +264,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GFW/">GFW</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSR/">SSR</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GFW/">GFW</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSR/">SSR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
 
 
             
@@ -412,7 +414,7 @@
     <div class="bottom">
         <p>
             <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
-            <span><a href="http://feiyang.li/sitemap.xml" target="_blank">网站地图</a></span>
+            <span><a href="https://www.wishosting.com/" target="_blank">support by wishosting</a></span>
         </p>
     </div>
 </footer>
@@ -500,6 +502,27 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
 <script src="/js/search.min.js?v=1.6.7" async></script>
 
 
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 
 

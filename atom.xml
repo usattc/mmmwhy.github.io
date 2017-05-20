@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-05-11T04:34:51.020Z</updated>
+  <updated>2017-05-20T01:45:56.909Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -14,6 +14,621 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Django 教程之一 基本命令</title>
+    <link href="http://feiyang.li/2017/05/20/django1/index.html"/>
+    <id>http://feiyang.li/2017/05/20/django1/index.html</id>
+    <published>2017-05-20T01:20:41.000Z</published>
+    <updated>2017-05-20T01:45:56.909Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接在 终端中输入这些命令（不是 python 的 shell中）</p>
+<hr>
+<a id="more"></a>
+<p>如果是 windows 用 cmd（开始 搜索 cmd 或者 快捷键 win + R，输入 cmd) 直接在 cmd 上操作。</p>
+<h1 id="新建一个-django-project"><a href="#新建一个-django-project" class="headerlink" title="新建一个 django project"></a>新建一个 django project</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin.py startproject my_blog</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170520/085723517.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>特别是在 windows 上，如果报错，尝试用 django-admin 代替 django-admin.py 试试<br>注意 project_name 是自己的项目名称，需要为合法的 Python 包名，如不能为 1a 或 a-b。</p>
+<h1 id="新建-app"><a href="#新建-app" class="headerlink" title="新建 app"></a>新建 app</h1><p>要先进入项目目录下，cd project_name 然后执行下面的命令（下同，已经在项目目录下则不需要 cd project_name）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py startapp blog</div></pre></td></tr></table></figure></p>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin.py startapp blog</div></pre></td></tr></table></figure></p>
+<p>效果太概是这个样子的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── my_blog</div><div class="line">│   ├── admin.py</div><div class="line">│   ├── __init__.py</div><div class="line">│   ├── migrations</div><div class="line">│   │   └── __init__.py</div><div class="line">│   ├── models.py</div><div class="line">│   ├── tests.py</div><div class="line">│   └── views.py</div><div class="line">├── blog</div><div class="line">│   ├── __init__.py</div><div class="line">│   ├── __pycache__</div><div class="line">│   │   ├── __init__.cpython-34.pyc</div><div class="line">│   │   └── settings.cpython-34.pyc</div><div class="line">│   ├── settings.py</div><div class="line">│   ├── urls.py</div><div class="line">│   └── wsgi.py</div><div class="line">└── manage.py</div></pre></td></tr></table></figure></p>
+<p>一般一个项目有多个app, 当然通用的app也可以在多个项目中使用。</p>
+<p>与项目名类似 app name 也需要为合法的 Python 包名，如 blog，news, aboutus 等都是合法的 app 名称。</p>
+<h1 id="同步更改数据库表或字段"><a href="#同步更改数据库表或字段" class="headerlink" title="同步更改数据库表或字段"></a>同步更改数据库表或字段</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Django 1.7.1及以上 用以下命令</div><div class="line"># 1. 创建更改的文件</div><div class="line">python manage.py makemigrations</div><div class="line"># 2. 将生成的py文件应用到数据库</div><div class="line">python manage.py migrate</div></pre></td></tr></table></figure>
+<p>这种方法可以在SQL等数据库中创建与models.py代码对应的表，不需要自己手动执行SQL。</p>
+<p>备注：对已有的 models 进行修改，Django 1.7之前的版本的Django都是无法自动更改表结构的，不过有第三方工具 south,详见 Django 数据库迁移 一节。</p>
+<h1 id="使用开发服务器"><a href="#使用开发服务器" class="headerlink" title="使用开发服务器"></a>使用开发服务器</h1><p>开发服务器，即开发时使用，一般修改代码后会自动重启，方便调试和开发，但是由于性能问题，建议只用来测试，不要用在生产环境。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">python manage.py runserver</div><div class="line"> </div><div class="line"># 当提示端口被占用的时候，可以用其它端口：</div><div class="line">python manage.py runserver 8001</div><div class="line">python manage.py runserver 9999</div><div class="line">（当然也可以kill掉占用端口的进程，具体后面有讲，此处想知道的同学可查下 lsof 命令用法）</div><div class="line"> </div><div class="line"># 监听机器所有可用 ip （电脑可能有多个内网ip或多个外网ip）</div><div class="line">python manage.py runserver 0.0.0.0:8000</div><div class="line"># 如果是外网或者局域网电脑上可以用其它电脑查看开发服务器</div><div class="line"># 访问对应的 ip加端口，比如 http://172.16.20.2:8000</div></pre></td></tr></table></figure>
+<h1 id="清空数据库"><a href="#清空数据库" class="headerlink" title="清空数据库"></a>清空数据库</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py flush</div></pre></td></tr></table></figure>
+<p>此命令会询问是 yes 还是 no, 选择 yes 会把数据全部清空掉，只留下空表。</p>
+<h1 id="创建超级管理员"><a href="#创建超级管理员" class="headerlink" title="创建超级管理员"></a>创建超级管理员</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">python manage.py createsuperuser</div><div class="line"># 按照提示输入用户名和对应的密码就好了邮箱可以留空，用户名和密码必填</div><div class="line"> </div><div class="line"># 修改 用户密码可以用：</div><div class="line">python manage.py changepassword username</div></pre></td></tr></table></figure>
+<h1 id="导出数据-导入数据"><a href="#导出数据-导入数据" class="headerlink" title="导出数据 导入数据"></a>导出数据 导入数据</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python manage.py dumpdata appname &gt; appname.json</div><div class="line">python manage.py loaddata appname.json</div></pre></td></tr></table></figure>
+<p>关于数据操作 详见：数据导入数据迁移，现在了解有这个用法就可以了。</p>
+<h1 id="Django-项目环境终端"><a href="#Django-项目环境终端" class="headerlink" title="Django 项目环境终端"></a>Django 项目环境终端</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python manage.py shell</div><div class="line">如果你安装了 bpython 或 ipython 会自动用它们的界面，推荐安装 bpython。</div></pre></td></tr></table></figure>
+<p>这个命令和 直接运行 python 或 bpython 进入 shell 的区别是：你可以在这个 shell 里面调用当前项目的 models.py 中的 API，对于操作数据，还有一些小测试非常方便。</p>
+<h1 id="数据库命令行"><a href="#数据库命令行" class="headerlink" title="数据库命令行"></a>数据库命令行</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py dbshell</div></pre></td></tr></table></figure>
+<p>Django 会自动进入在settings.py中设置的数据库，如果是 MySQL 或 postgreSQL,会要求输入数据库用户密码。</p>
+<p>在这个终端可以执行数据库的SQL语句。如果您对SQL比较熟悉，可能喜欢这种方式。</p>
+<h1 id="更多命令"><a href="#更多命令" class="headerlink" title="更多命令"></a>更多命令</h1><p>终端上输入 python manage.py 可以看到详细的列表，在忘记子名称的时候特别有用。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接在 终端中输入这些命令（不是 python 的 shell中）&lt;/p&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Django" scheme="http://feiyang.li/categories/Django/"/>
+    
+    
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="Django" scheme="http://feiyang.li/tags/Django/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Machine Learning System Design</title>
+    <link href="http://feiyang.li/2017/05/19/Machine-Learning-System-Design/index.html"/>
+    <id>http://feiyang.li/2017/05/19/Machine-Learning-System-Design/index.html</id>
+    <published>2017-05-19T10:53:03.000Z</published>
+    <updated>2017-05-19T10:54:26.531Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>机器学习系统设计</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="查准率-Precision-和查全率-Recall"><a href="#查准率-Precision-和查全率-Recall" class="headerlink" title="查准率(Precision)和查全率(Recall)"></a>查准率(Precision)和查全率(Recall)</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170519/112809620.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>分为四种情况：</p>
+<ul>
+<li>正确肯定（True Positive<strong>TP</strong>）：预测为真，实际为真。</li>
+<li>正确否定（True Negative <strong>TN</strong>）：预测为假，实际为假。</li>
+<li>错误肯定（False Positive<strong>FP</strong>）：预测为真，实际为假。</li>
+<li>错误否定（False Negative<strong>FN</strong>）：预测为假，实际为真。<h2 id="查准率"><a href="#查准率" class="headerlink" title="查准率"></a>查准率</h2>$$Precison=\dfrac{TP}{TP+FP}$$<br>在所有我们<strong>预测有恶性肿瘤的病人</strong>中，实际上有恶性肿瘤的病人百分比，越高越好。<h2 id="查全率"><a href="#查全率" class="headerlink" title="查全率"></a>查全率</h2>$$Recall=\dfrac{TP}{TP+FN}$$<br>在所有我们<strong>实际上有病的病人</strong>中，预测成功有恶性肿瘤的病人百分比，越高越好。</li>
+</ul>
+<h1 id="F1值"><a href="#F1值" class="headerlink" title="F1值"></a>F1值</h1><p>$$F_1=\dfrac{PR}{P+R}$$</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;机器学习系统设计&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>coursera</title>
+    <link href="http://feiyang.li/2017/05/18/coursera/index.html"/>
+    <id>http://feiyang.li/2017/05/18/coursera/index.html</id>
+    <published>2017-05-18T02:14:53.000Z</published>
+    <updated>2017-05-18T02:17:37.001Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>关于coursera无法播放，原因其实很简单，就是视频所在服务器被GFW墙了。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>有的时候，我真的会觉得，墙是不是太密了，使得我们不得不选择越过它。</p>
+<p>常见的方法是，我们使用一个在墙外的服务器，他可以帮助我们将coursera的流量通过服务器重新转发，然后再原路返回，避过GFW。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170518/101006060.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
+<p>因此，首先要获得服务器端口以及相应的密码，这样服务器才可以帮你转发流量。我自己因为也在coursera看视频，所以自己搭建了一个服务器，分享给大家。<a href="https://ss.feiyang.li/" target="_blank" rel="external">https://ss.feiyang.li/</a></p>
+<p>这里我分别举例展示如何快速观看coursera视频。</p>
+<p>–</p>
+<h1 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h1><h2 id="ss"><a href="#ss" class="headerlink" title="ss"></a>ss</h2><p><a href="http://home.ustc.edu.cn/~mmmwhy/Shadowsocks.exe" target="_blank" rel="external">http://home.ustc.edu.cn/~mmmwhy/Shadowsocks.exe</a></p>
+<ul>
+<li>在任务栏找到 Shadowsocks 图标</li>
+<li>在 服务器 -&gt; 编辑服务器-&gt; 输入在网站内获得的服务器信息</li>
+<li>选择 启用系统代理 来启用系统代理。请禁用浏览器里的代理插件，或把它们设置为使用系统代理。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170515/104128278.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="ssr"><a href="#ssr" class="headerlink" title="ssr"></a>ssr</h2><a href="http://home.ustc.edu.cn/~mmmwhy/ShadowsocksR-dotnet4.0.exe" target="_blank" rel="external">http://home.ustc.edu.cn/~mmmwhy/ShadowsocksR-dotnet4.0.exe</a><br>右键 纸飞机 -&gt; 扫描二维码 -&gt;  开启系统代理选择 -&gt;pac模式或者全局模式<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170515/104039212.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<p>当然直接使用二维码扫描会更方便，如果遇到某个节点不能使用，可以换一个，因为本地运营商可能会把某些ip墙掉。</p>
+<h1 id="Mac-OS-X"><a href="#Mac-OS-X" class="headerlink" title="Mac OS X"></a>Mac OS X</h1><p><a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases" target="_blank" rel="external">https://github.com/shadowsocks/ShadowsocksX-NG/releases</a><br>OS X 下设置使用方法<br>Mac 下使用极其方便，因为 GUI 已经集成了系统 Pac，所以无需设置任何科学上网的姿势，直接运行 ShadowsocksX ，然后输入服务商提供给你的账号信息，保存运行后，即可在所有浏览器里直接科学上网，如图：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170515/105527529.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170515/105543198.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p><a href="https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation</a></p>
+<h1 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h1><p><a href="http://cdn.mmmxcc.cn/ssr_3.0.2.2.apk" target="_blank" rel="external">ssr</a><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170505/143305745.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>扫描二维码-&gt; 然后点小飞机就可以了</p>
+<h1 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h1><p><a href="https://itunes.apple.com/cn/app/ssrconnect-proxy-utility/id1161221960?mt=8" target="_blank" rel="external">SsrConnect - Proxy Utility</a> 免费<br><a href="https://itunes.apple.com/us/app/alice-network-proxy-utility/id1135320992?mt=8" target="_blank" rel="external">Network Proxy Utility</a> 免费<br><a href="https://itunes.apple.com/cn/app/shadowrocket/id932747118?mt=8" target="_blank" rel="external">Shadowrocket</a> 付费<br><a href="https://itunes.apple.com/app/apple-store/id1070901416?mt=8" target="_blank" rel="external">土豆丝</a> 付费</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;关于coursera无法播放，原因其实很简单，就是视频所在服务器被GFW墙了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="shadowsocks" scheme="http://feiyang.li/categories/shadowsocks/"/>
+    
+    
+      <category term="GFW" scheme="http://feiyang.li/tags/GFW/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Coursera ML(11)-Programming Exercise 5 机器学习诊断法</title>
+    <link href="http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/index.html"/>
+    <id>http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/index.html</id>
+    <published>2017-05-17T05:37:09.000Z</published>
+    <updated>2017-05-17T06:22:10.492Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>对应 <a href="http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/index.html">机器学习诊断法</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="复习内容"><a href="#复习内容" class="headerlink" title="复习内容"></a>复习内容</h1><h2 id="Regularized-linear-regression-cost-function"><a href="#Regularized-linear-regression-cost-function" class="headerlink" title="Regularized linear regression cost function"></a>Regularized linear regression cost function</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/104444345.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>对应matlab代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">J = 1/(2*m)*sum((X*theta - y).^2) ;</div><div class="line">regularize =  lambda /(2*m)* (sum(theta.^2)-theta(1).^2);</div><div class="line">J = J + regularize;</div></pre></td></tr></table></figure></p>
+<h2 id="Regularized-linear-regression-gradient"><a href="#Regularized-linear-regression-gradient" class="headerlink" title="Regularized linear regression gradient"></a>Regularized linear regression gradient</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/105630413.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如果对这里有疑惑，这个部分也有相应的推导过程：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/182301586.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>梯度对应代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">n = size(theta);</div><div class="line">for i=1:n</div><div class="line">    grad(i) = 1/m * sum((X*theta - y).*X(:,i)) + lambda/m *theta(i);</div><div class="line">end</div><div class="line">grad(1) = 1/m * sum((X*theta - y).^X(:,1));</div></pre></td></tr></table></figure></p>
+<h2 id="Learning-curves"><a href="#Learning-curves" class="headerlink" title="Learning curves"></a>Learning curves</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170511/101154504.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="Polynomial-regression"><a href="#Polynomial-regression" class="headerlink" title="Polynomial regression"></a>Polynomial regression</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/132450490.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="Programming-Exercise-5-Regularized-Linear-Regression-and-Bias-v-s-Variance"><a href="#Programming-Exercise-5-Regularized-Linear-Regression-and-Bias-v-s-Variance" class="headerlink" title="Programming Exercise 5 - Regularized Linear Regression and Bias v.s. Variance"></a>Programming Exercise 5 - Regularized Linear Regression and Bias v.s. Variance</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># %load ../../../standard_import.txt</span></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="keyword">from</span> scipy.io <span class="keyword">import</span> loadmat</div><div class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> minimize</div><div class="line"></div><div class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression, Ridge</div><div class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</div><div class="line"></div><div class="line">pd.set_option(<span class="string">'display.notebook_repr_html'</span>, <span class="keyword">False</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_columns'</span>, <span class="keyword">None</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_rows'</span>, <span class="number">150</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_seq_items'</span>, <span class="keyword">None</span>)</div><div class="line"> </div><div class="line"><span class="comment">#%config InlineBackend.figure_formats = &#123;'pdf',&#125;</span></div><div class="line">%matplotlib inline</div><div class="line"></div><div class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</div><div class="line">sns.set_context(<span class="string">'notebook'</span>)</div><div class="line">sns.set_style(<span class="string">'white'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">data = loadmat(<span class="string">'data/ex5data1.mat'</span>)</div><div class="line">data.keys()</div></pre></td></tr></table></figure>
+<pre><code>dict_keys([&apos;__header__&apos;, &apos;__version__&apos;, &apos;__globals__&apos;, &apos;X&apos;, &apos;y&apos;, &apos;Xtest&apos;, &apos;ytest&apos;, &apos;Xval&apos;, &apos;yval&apos;])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">y_train = data[<span class="string">'y'</span>]</div><div class="line">X_train = np.c_[np.ones_like(data[<span class="string">'X'</span>]), data[<span class="string">'X'</span>]]</div><div class="line"></div><div class="line">yval = data[<span class="string">'yval'</span>]</div><div class="line">Xval = np.c_[np.ones_like(data[<span class="string">'Xval'</span>]), data[<span class="string">'Xval'</span>]]</div><div class="line"></div><div class="line"></div><div class="line">print(<span class="string">'X_train:'</span>, X_train.shape)</div><div class="line">print(<span class="string">'y_train:'</span>, y_train.shape)</div><div class="line">print(<span class="string">'Xval:'</span>, Xval.shape)</div><div class="line">print(<span class="string">'yval:'</span>, yval.shape)</div></pre></td></tr></table></figure>
+<pre><code>X_train: (12, 2)
+y_train: (12, 1)
+Xval: (21, 2)
+yval: (21, 1)
+</code></pre><h2 id="Regularized-Linear-Regression"><a href="#Regularized-Linear-Regression" class="headerlink" title="Regularized Linear Regression"></a>Regularized Linear Regression</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">plt.scatter(X_train[:,<span class="number">1</span>], y_train, s=<span class="number">50</span>, c=<span class="string">'r'</span>, marker=<span class="string">'x'</span>, linewidths=<span class="number">1</span>)</div><div class="line">plt.xlabel(<span class="string">'Change in water level (x)'</span>)</div><div class="line">plt.ylabel(<span class="string">'Water flowing out of the dam (y)'</span>)</div><div class="line">plt.ylim(ymin=<span class="number">0</span>);</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/133552305.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>###Regularized Cost function</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">linearRegCostFunction</span><span class="params">(theta, X, y, reg)</span>:</span></div><div class="line">    m = y.size</div><div class="line">    </div><div class="line">    h = X.dot(theta)</div><div class="line">    </div><div class="line">    J = (<span class="number">1</span>/(<span class="number">2</span>*m))*np.sum(np.square(h-y)) + (reg/(<span class="number">2</span>*m))*np.sum(np.square(theta[<span class="number">1</span>:]))</div><div class="line">   </div><div class="line">    <span class="keyword">return</span>(J)</div></pre></td></tr></table></figure>
+<h3 id="Gradient"><a href="#Gradient" class="headerlink" title="Gradient"></a>Gradient</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">lrgradientReg</span><span class="params">(theta, X, y, reg)</span>:</span></div><div class="line">    m = y.size</div><div class="line">    </div><div class="line">    h = X.dot(theta.reshape(<span class="number">-1</span>,<span class="number">1</span>))</div><div class="line">        </div><div class="line">    grad = (<span class="number">1</span>/m)*(X.T.dot(h-y))+ (reg/m)*np.r_[[[<span class="number">0</span>]],theta[<span class="number">1</span>:].reshape(<span class="number">-1</span>,<span class="number">1</span>)]</div><div class="line">        </div><div class="line">    <span class="keyword">return</span>(grad.flatten())</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">initial_theta = np.ones((X_train.shape[<span class="number">1</span>],<span class="number">1</span>))</div><div class="line">cost = linearRegCostFunction(initial_theta, X_train, y_train, <span class="number">0</span>)</div><div class="line">gradient = lrgradientReg(initial_theta, X_train, y_train, <span class="number">0</span>)</div><div class="line">print(cost)</div><div class="line">print(gradient)</div></pre></td></tr></table></figure>
+<pre><code>303.951525554
+[ -15.30301567  598.16741084]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">trainLinearReg</span><span class="params">(X, y, reg)</span>:</span></div><div class="line">    <span class="comment">#initial_theta = np.zeros((X.shape[1],1))</span></div><div class="line">    initial_theta = np.array([[<span class="number">15</span>],[<span class="number">15</span>]])</div><div class="line">    <span class="comment"># For some reason the minimize() function does not converge when using</span></div><div class="line">    <span class="comment"># zeros as initial theta.</span></div><div class="line">        </div><div class="line">    res = minimize(linearRegCostFunction, initial_theta, args=(X,y,reg), method=<span class="keyword">None</span>, jac=lrgradientReg,</div><div class="line">                   options=&#123;<span class="string">'maxiter'</span>:<span class="number">5000</span>&#125;)</div><div class="line">    </div><div class="line">    <span class="keyword">return</span>(res)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">fit = trainLinearReg(X_train, y_train, <span class="number">0</span>)</div><div class="line">fit</div></pre></td></tr></table></figure>
+<pre><code>     fun: 1604.4002999186634
+hess_inv: array([[ 1.03142187,  0.00617881],
+      [ 0.00617881,  0.001215  ]])
+     jac: array([  3.42437190e-12,  -5.70371898e-10])
+ message: &apos;Optimization terminated successfully.&apos;
+    nfev: 6
+     nit: 4
+    njev: 6
+  status: 0
+ success: True
+       x: array([ 13.08790351,   0.36777923])
+</code></pre><h3 id="Comparison-coefficients-and-cost-obtained-with-LinearRegression-in-Scikit-learn"><a href="#Comparison-coefficients-and-cost-obtained-with-LinearRegression-in-Scikit-learn" class="headerlink" title="Comparison: coefficients and cost obtained with LinearRegression in Scikit-learn"></a>Comparison: coefficients and cost obtained with LinearRegression in Scikit-learn</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">regr = LinearRegression(fit_intercept=<span class="keyword">False</span>)</div><div class="line">regr.fit(X_train, y_train.ravel())</div><div class="line">print(regr.coef_)</div><div class="line">print(linearRegCostFunction(regr.coef_, X_train, y_train, <span class="number">0</span>))</div></pre></td></tr></table></figure>
+<pre><code>[ 13.08790351   0.36777923]
+1604.40029992
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">plt.plot(np.linspace(<span class="number">-50</span>,<span class="number">40</span>), (fit.x[<span class="number">0</span>]+ (fit.x[<span class="number">1</span>]*np.linspace(<span class="number">-50</span>,<span class="number">40</span>))), label=<span class="string">'Scipy optimize'</span>)</div><div class="line"><span class="comment">#plt.plot(np.linspace(-50,40), (regr.coef_[0]+ (regr.coef_[1]*np.linspace(-50,40))), label='Scikit-learn')</span></div><div class="line">plt.scatter(X_train[:,<span class="number">1</span>], y_train, s=<span class="number">50</span>, c=<span class="string">'r'</span>, marker=<span class="string">'x'</span>, linewidths=<span class="number">1</span>)</div><div class="line">plt.xlabel(<span class="string">'Change in water level (x)'</span>)</div><div class="line">plt.ylabel(<span class="string">'Water flowing out of the dam (y)'</span>)</div><div class="line">plt.ylim(ymin=<span class="number">-5</span>)</div><div class="line">plt.xlim(xmin=<span class="number">-50</span>)</div><div class="line">plt.legend(loc=<span class="number">4</span>);</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/133621870.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">learningCurve</span><span class="params">(X, y, Xval, yval, reg)</span>:</span></div><div class="line">    m = y.size</div><div class="line">    </div><div class="line">    error_train = np.zeros((m, <span class="number">1</span>))</div><div class="line">    error_val = np.zeros((m, <span class="number">1</span>))</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> np.arange(m):</div><div class="line">        res = trainLinearReg(X[:i+<span class="number">1</span>], y[:i+<span class="number">1</span>], reg)</div><div class="line">        error_train[i] = linearRegCostFunction(res.x, X[:i+<span class="number">1</span>], y[:i+<span class="number">1</span>], reg)</div><div class="line">        error_val[i] = linearRegCostFunction(res.x, Xval, yval, reg)</div><div class="line">    </div><div class="line">    <span class="keyword">return</span>(error_train, error_val)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">t_error, v_error = learningCurve(X_train, y_train, Xval, yval, <span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">plt.plot(np.arange(<span class="number">1</span>,<span class="number">13</span>), t_error, label=<span class="string">'Training error'</span>)</div><div class="line">plt.plot(np.arange(<span class="number">1</span>,<span class="number">13</span>), v_error, label=<span class="string">'Validation error'</span>)</div><div class="line">plt.title(<span class="string">'Learning curve for linear regression'</span>)</div><div class="line">plt.xlabel(<span class="string">'Number of training examples'</span>)</div><div class="line">plt.ylabel(<span class="string">'Error'</span>)</div><div class="line">plt.legend();</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/133630516.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="Polynomial-regression-Scikit-learn"><a href="#Polynomial-regression-Scikit-learn" class="headerlink" title="Polynomial regression (Scikit-learn)"></a>Polynomial regression (Scikit-learn)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">poly = PolynomialFeatures(degree=<span class="number">8</span>)</div><div class="line">X_train_poly = poly.fit_transform(X_train[:,<span class="number">1</span>].reshape(<span class="number">-1</span>,<span class="number">1</span>))</div><div class="line"></div><div class="line">regr2 = LinearRegression()</div><div class="line">regr2.fit(X_train_poly, y_train)</div><div class="line"></div><div class="line">regr3 = Ridge(alpha=<span class="number">20</span>)</div><div class="line">regr3.fit(X_train_poly, y_train)</div><div class="line"></div><div class="line"><span class="comment"># plot range for x</span></div><div class="line">plot_x = np.linspace(<span class="number">-60</span>,<span class="number">45</span>)</div><div class="line"><span class="comment"># using coefficients to calculate y</span></div><div class="line">plot_y = regr2.intercept_+ np.sum(regr2.coef_*poly.fit_transform(plot_x.reshape(<span class="number">-1</span>,<span class="number">1</span>)), axis=<span class="number">1</span>)</div><div class="line">plot_y2 = regr3.intercept_ + np.sum(regr3.coef_*poly.fit_transform(plot_x.reshape(<span class="number">-1</span>,<span class="number">1</span>)), axis=<span class="number">1</span>)</div><div class="line"></div><div class="line">plt.plot(plot_x, plot_y, label=<span class="string">'Scikit-learn LinearRegression'</span>)</div><div class="line">plt.plot(plot_x, plot_y2, label=<span class="string">'Scikit-learn Ridge (alpha=&#123;&#125;)'</span>.format(regr3.alpha))</div><div class="line">plt.scatter(X_train[:,<span class="number">1</span>], y_train, s=<span class="number">50</span>, c=<span class="string">'r'</span>, marker=<span class="string">'x'</span>, linewidths=<span class="number">1</span>)</div><div class="line">plt.xlabel(<span class="string">'Change in water level (x)'</span>)</div><div class="line">plt.ylabel(<span class="string">'Water flowing out of the dam (y)'</span>)</div><div class="line">plt.title(<span class="string">'Polynomial regression degree 8'</span>)</div><div class="line">plt.legend(loc=<span class="number">4</span>);</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/133642078.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;对应 &lt;a href=&quot;http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/index.html&quot;&gt;机器学习诊断法&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库操作</title>
+    <link href="http://feiyang.li/2017/05/16/databases/index.html"/>
+    <id>http://feiyang.li/2017/05/16/databases/index.html</id>
+    <published>2017-05-16T10:38:00.000Z</published>
+    <updated>2017-05-16T10:38:57.468Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<ul>
+<li><p>创建数据库：<code>create database books;</code></p>
+</li>
+<li><p>使用数据库：<code>use dbname;</code></p>
+</li>
+</ul>
+<ul>
+<li>新建数据库表<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">create table tablename(columns);</div><div class="line">create table demo(</div><div class="line">     userid int unsigned not null auto_increment primary key,</div><div class="line">     username char(50) not null,</div><div class="line">     password char(20) not null,</div><div class="line">     age int not null,</div><div class="line">     city char(20) not null     </div><div class="line">);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>显示数据库表：<code>show tables;</code></p>
+</li>
+<li><p>在数据库中插入数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INSERT INTO `jobcategory` VALUES(11,&quot;丸剂&quot;);</div><div class="line">INSERT INTO wan (JobCategoryID,JobCategoryName) SELECT ID,MingCheng FROM `zysjyj` WHERE MingCheng LIKE  &quot;%丸&quot;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT ID,MingCheng FROM `zysjyj` WHERE MingCheng LIKE  &quot;%丸&quot;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>更新数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UPDATE `zysjyj` SET ID=(1100000+ID) WHERE MingCheng LIKE &apos;%丸&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DELETE FROM `nzysys`.`jobintroduction`;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>表的删除：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP TABLE table;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>数据删除：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP DATABASE database;`</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过<strong>SELECT</strong>来<strong>INSERT</strong>：<br>先创建新表，然后插入</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE wan(JobCategoryID INT(20) NOT NULL AUTO_INCREMENT,PRIMARY KEY (JobCategoryID),parentID INT(20) NOT NULL DEFAULT &apos;10&apos; ,JobCategoryName VARCHAR(128)  NOT NULL);  </div><div class="line"></div><div class="line">INSERT INTO wan (JobCategoryID,JobCategoryName) SELECT ID,MingCheng FROM `zysjyj` WHERE MingCheng LIKE  &quot;%丸&quot;;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>跨数据库插入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT `nzysys`.`subjobcategory` SELECT * FROM `chinese-drug`.`wan`;</div></pre></td></tr></table></figure>
+</li>
+<li><p>用<code>select</code>来<code>create</code>，并指定默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT INTO `nzysys`.`subjobcategory`(JobCategoryID,parentID,JobCategoryName)SELECT ID,10,MingCheng FROM `chinese-drug`.`zysjyj` WHERE MingCheng LIKE &quot;%散&quot;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>叠加使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT ID,MingCheng FROM `chinese-drug`.`zysjyj` WHERE MingCheng LIKE &quot;%散&quot;;</div><div class="line">UPDATE `chinese-drug`.`zysjyj` SET ID=(1000000+ID) WHERE MingCheng LIKE &quot;%散&quot;;</div><div class="line">INSERT INTO `nzysys`.`subjobcategory`(JobCategoryID,parentID,JobCategoryName)SELECT ID,10,MingCheng FROM `chinese-drug`.`zysjyj` WHERE MingCheng LIKE &quot;%散&quot;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>自增ID归零 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">TRUNCATE TABLE `nzysys`.`jobintroduction`;</div></pre></td></tr></table></figure>
+</li>
+<li><p>交叉</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT INTO `nzysys`.`jobintroduction` (jobCategoryID,introductionValue,introductionkey,introductionID) SELECT b.jobCategoryID,a.ChuFang,&apos;组成&apos;,1 FROM `nzysys`.`subjobcategory` AS b,`chinese-drug`.`zysjyj` AS a WHERE a.`ID`=b.`JobCategoryID`;</div></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="databases" scheme="http://feiyang.li/tags/databases/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>免费vps get!</title>
+    <link href="http://feiyang.li/2017/05/15/free-vps/index.html"/>
+    <id>http://feiyang.li/2017/05/15/free-vps/index.html</id>
+    <published>2017-05-15T12:13:05.000Z</published>
+    <updated>2017-05-15T12:13:29.549Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>早就听说WisHosting 长期免费vps，码农买vps就像女人买衣服一样，虽然没什么用，但是会上瘾。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h1><p><a href="https://www.wishosting.com/plugin/support_manager/knowledgebase/view/14/how-to-get-openvz-mini-for-free/" target="_blank" rel="external">官网链接</a></p>
+<p>How to get OpenVZ Mini for free?<br>If you want to grab free VPS (OpenVZ Mini package) free of charge, here is the list of requirements you should meet:<br>1) The domain from <strong>non-free domain zone</strong> (for example .com)<br>2) The link to <a href="https://www.wishosting.com/" target="_blank" rel="external">https://www.wishosting.com/</a> on your domain index page.<br>3) Your website should have some real content (5+ pages) and it should be indexed by search engines.<br>4) The service will be active as long as you keep the backlink on your website.</p>
+<p>Please open a support ticket if you meet those requirements or send an e-mail to support@wishosting.com</p>
+<h1 id="动手"><a href="#动手" class="headerlink" title="动手"></a>动手</h1><ul>
+<li><p>注册并下单，不需要支付</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170515/195827250.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+<li><p>发工单询问商家，按照沟通步骤来即可</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170515/200957854.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<hr>
+<p>表示已经申请到了，所以，应该不是很难申请的，有兴趣可以去玩一下。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;早就听说WisHosting 长期免费vps，码农买vps就像女人买衣服一样，虽然没什么用，但是会上瘾。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="vps" scheme="http://feiyang.li/tags/vps/"/>
+    
+      <category term="free" scheme="http://feiyang.li/tags/free/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shadowsocks-manager一键安装脚本</title>
+    <link href="http://feiyang.li/2017/05/14/ss-mgr/index.html"/>
+    <id>http://feiyang.li/2017/05/14/ss-mgr/index.html</id>
+    <published>2017-05-14T03:58:57.000Z</published>
+    <updated>2017-05-20T01:23:52.118Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>shadowsocks-manager是一个非常帅气的ss多用户管理程序，搭建起来稍微有点麻烦，因此写了本一键脚本。示例网站：<a href="http://gz.feiyang.li/" target="_blank" rel="external">http://gz.feiyang.li/</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p>我看了一下数据，大概70%的人会一次性安装成功，其余人大多卡在npm依赖安装不全的问题上；<br>请注意：<br>1、内存1g以下的vps，极有可能内存过小，导致依赖被kill掉。<br>2、网络问题，请多次安装npm。<br>如果实在解决不了，建议就不要用这个管理界面，这个管理界面的要求的确有点高，请理解。</p>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170513/135344468.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170513/135349156.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170513/135357497.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170513/140400232.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>github： <a href="https://github.com/mmmwhy/ss-mgr" target="_blank" rel="external">https://github.com/mmmwhy/ss-mgr</a></p>
+<h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><ul>
+<li>非常帅气，各种图表一上，是不是很牛逼的感觉。</li>
+<li>支持支付宝付款对账，站长们多出来的vps可以不用再继续吃灰了。</li>
+</ul>
+<h1 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h1><p>centos7 X64，在腾讯云，digitialocean,interserver,ethernetservers通过测试。<br>其他版本还没有测试，理论上可用。</p>
+<h1 id="安装脚本"><a href="#安装脚本" class="headerlink" title="安装脚本"></a>安装脚本</h1><h2 id="安装ss-mgr"><a href="#安装ss-mgr" class="headerlink" title="安装ss-mgr"></a>安装ss-mgr</h2><p>本脚本包括主控端和节点端，安装时，自动添加本vps作为一个节点。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/mmmwhy/ss-mgr/master/sm.sh &amp;&amp; chmod +x sm.sh &amp;&amp; bash sm.sh</div></pre></td></tr></table></figure></p>
+<p>坐等就可以了，没有什么需要做的东西。<br>打开ip地址，就可以看到ss-mgr了。</p>
+<h2 id="增加节点"><a href="#增加节点" class="headerlink" title="增加节点"></a>增加节点</h2><p>本脚本为：已有<strong>vps安装好主控端</strong>，添加新节点时，在<strong>新节点</strong>使用的脚本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/mmmwhy/ss-mgr/master/sm_node.sh &amp;&amp; chmod +x sm_node.sh &amp;&amp; bash sm_node.sh</div></pre></td></tr></table></figure></p>
+<ul>
+<li>输入密码<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170514/135830856.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>前端页面填入，刚才的密码，选择加密方式。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170514/140131877.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<h1 id="docker方法"><a href="#docker方法" class="headerlink" title="docker方法"></a>docker方法</h1><h1 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h1><ul>
+<li>注册的第一个用户就是管理员.</li>
+<li>注册第二个账号，可以看到自己的剩余时间，一般来说是8个小时。可以点击续费，选择任意一个额度，支付后，可以看到时间会增长。</li>
+<li>默认使用hotmail邮箱，因为邮箱在国外，所以如果服务器在国内的话，可能会timeout。</li>
+<li>某些系统内核版本过老，因此可能会出现如下症状，按回车就可以了。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170513/135239354.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
+<li>被墙掉的资源都换成国内的了。</li>
+<li>三条重要命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">screen -dmS ss-manager ss-manager -m aes-256-cfb -u --manager-address 127.0.0.1:4000</div><div class="line">cd /root/shadowsocks-manager/</div><div class="line">screen -dmS ss node server.js -c /root/.ssmgr/ss.yml</div><div class="line">screen -dmS webgui node server.js -c /root/.ssmgr/webgui.yml</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="修改页面"><a href="#修改页面" class="headerlink" title="修改页面"></a>修改页面</h2><p>修改过文本后，使用<code>npm run build</code>重新生成页面。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">screen -dmS webgui node server.js -c /root/.ssmgr/webgui.yml</div></pre></td></tr></table></figure></p>
+<h2 id="一键BBR脚本"><a href="#一键BBR脚本" class="headerlink" title="一键BBR脚本"></a>一键BBR脚本</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</div><div class="line">chmod +x bbr.sh</div><div class="line">./bbr.sh</div></pre></td></tr></table></figure>
+<h2 id="增加虚拟内存"><a href="#增加虚拟内存" class="headerlink" title="增加虚拟内存"></a>增加虚拟内存</h2><p><strong>增加swap交换文件</strong></p>
+<ul>
+<li>使用dd命令创建一个swap交换文件<br><code>dd if=/dev/zero of=/home/swap bs=1024 count=1024000</code><br>这样就建立一个/home/swap的分区文件，大小为1G。</li>
+<li>制作为swap格式文件：<br><code>mkswap /home/swap</code></li>
+<li>再用swapon命令把这个文件分区挂载swap分区<br><code>/sbin/swapon /home/swap</code><br>我们用free -m命令看一下，发现已经有交换分区了。但是重启系统后，swap分区又变成0了。</li>
+<li>为防止重启后swap分区变成0，要修改/etc/fstab文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/fstab</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在文件末尾（最后一行）加上<br><code>/home/swap swap swap default 0 0</code><br>这样就算重启系统，swap分区还是有值。</p>
+<ul>
+<li>查看空间：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">free -m</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>因为本工具较难配置，因此如果有问题的话，可以通过tg联系我。<a href="https://t.me/mmmwhy" target="_blank" rel="external">https://t.me/mmmwhy</a></p>
+<hr>
+<p>参考以下链接：<br><a href="http://blog.csdn.net/lengyue1084/article/details/51405640" target="_blank" rel="external">http://blog.csdn.net/lengyue1084/article/details/51405640</a><br><a href="https://code.momok.xyz/server/deploy-ss-manager.html" target="_blank" rel="external">https://code.momok.xyz/server/deploy-ss-manager.html</a><br><a href="https://github.com/shadowsocks/shadowsocks-manager" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks-manager</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;shadowsocks-manager是一个非常帅气的ss多用户管理程序，搭建起来稍微有点麻烦，因此写了本一键脚本。示例网站：&lt;a href=&quot;http://gz.feiyang.li/&quot;&gt;http://gz.feiyang.li/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="shadowsocks" scheme="http://feiyang.li/categories/shadowsocks/"/>
+    
+    
+      <category term="GFW" scheme="http://feiyang.li/tags/GFW/"/>
+    
+      <category term="Linux" scheme="http://feiyang.li/tags/Linux/"/>
+    
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="vps" scheme="http://feiyang.li/tags/vps/"/>
+    
+      <category term="shell" scheme="http://feiyang.li/tags/shell/"/>
+    
+  </entry>
   
   <entry>
     <title>Coursera ML(10)-机器学习诊断法</title>
@@ -248,9 +863,9 @@ params : (10285,)
     <link href="http://feiyang.li/2017/05/09/ss-shell/index.html"/>
     <id>http://feiyang.li/2017/05/09/ss-shell/index.html</id>
     <published>2017-05-09T13:58:57.000Z</published>
-    <updated>2017-05-11T07:12:01.646Z</updated>
+    <updated>2017-05-20T01:22:18.580Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此搭建了本ss-panel一键安装脚本</p>
 </blockquote>
 <hr>
@@ -409,6 +1024,8 @@ params : (10285,)
       <category term="GFW" scheme="http://feiyang.li/tags/GFW/"/>
     
       <category term="Linux" scheme="http://feiyang.li/tags/Linux/"/>
+    
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
     
       <category term="vps" scheme="http://feiyang.li/tags/vps/"/>
     
@@ -628,13 +1245,73 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     <link href="http://feiyang.li/2017/05/05/ss-client/index.html"/>
     <id>http://feiyang.li/2017/05/05/ss-client/index.html</id>
     <published>2017-05-05T06:23:13.000Z</published>
-    <updated>2017-05-11T06:49:49.888Z</updated>
+    <updated>2017-05-20T01:22:29.813Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">本文提供多个平台版本下载，密码是本人名字拼音。</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="enter the password" id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">解密</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>]]></content>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p> shadowsocks是目前fq速度最快的工具之一，可以转发udp。可以使用ipv6，对于很多高校学生来说，可以通过此方法节省流量费用。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h1><h2 id="ss"><a href="#ss" class="headerlink" title="ss"></a>ss</h2><p><a href="http://home.ustc.edu.cn/~mmmwhy/Shadowsocks.exe" target="_blank" rel="external">http://home.ustc.edu.cn/~mmmwhy/Shadowsocks.exe</a></p>
+<ul>
+<li>在任务栏找到 Shadowsocks 图标</li>
+<li>在 服务器 菜单添加多个服务器</li>
+<li>选择 启用系统代理 来启用系统代理。请禁用浏览器里的代理插件，或把它们设置为使用系统代理。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170515/104128278.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="ssr"><a href="#ssr" class="headerlink" title="ssr"></a>ssr</h2><a href="http://home.ustc.edu.cn/~mmmwhy/ShadowsocksR-dotnet4.0.exe" target="_blank" rel="external">http://home.ustc.edu.cn/~mmmwhy/ShadowsocksR-dotnet4.0.exe</a><br>右键 纸飞机 -&gt; 扫描二维码 -&gt;  开启系统代理选择 -&gt;pac模式或者全局模式<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170515/104039212.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<p>如果遇到某个节点不能使用，可以换一个，因为本地运营商可能会把某些ip墙掉。</p>
+<h1 id="Mac-OS-X"><a href="#Mac-OS-X" class="headerlink" title="Mac OS X"></a>Mac OS X</h1><p><a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases" target="_blank" rel="external">https://github.com/shadowsocks/ShadowsocksX-NG/releases</a><br>OS X 下设置使用方法<br>Mac 下使用极其方便，因为 GUI 已经集成了系统 Pac，所以无需设置任何科学上网的姿势，直接运行 ShadowsocksX ，然后输入服务商提供给你的账号信息，保存运行后，即可在所有浏览器里直接科学上网，如图：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170515/105527529.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170515/105543198.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p><a href="https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation</a></p>
+<h1 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h1><p><a href="http://cdn.mmmxcc.cn/ssr_3.0.2.2.apk" target="_blank" rel="external">ssr</a><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170505/143305745.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>扫描二维码-&gt; 然后点小飞机就可以了</p>
+<h1 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h1><p><a href="https://itunes.apple.com/cn/app/ssrconnect-proxy-utility/id1161221960?mt=8" target="_blank" rel="external">SsrConnect - Proxy Utility</a> 免费<br><a href="https://itunes.apple.com/us/app/alice-network-proxy-utility/id1135320992?mt=8" target="_blank" rel="external">Network Proxy Utility</a> 免费<br><a href="https://itunes.apple.com/cn/app/shadowrocket/id932747118?mt=8" target="_blank" rel="external">Shadowrocket</a> 付费<br><a href="https://itunes.apple.com/app/apple-store/id1070901416?mt=8" target="_blank" rel="external">土豆丝</a> 付费</p>
+<h1 id="OpenWRT"><a href="#OpenWRT" class="headerlink" title="OpenWRT"></a>OpenWRT</h1><ul>
+<li>shadowsocks-libev<br><code>opkg install shadowsocks-libev</code></li>
+<li>shadowsocks-libev-polarssl<br><code>opkg install shadowsocks-libev-polarssl</code></li>
+</ul>
+]]></content>
     
     <summary type="html">
     
-      本文提供多个平台版本下载，密码是本人名字拼音。
+      &lt;blockquote&gt;
+&lt;p&gt; shadowsocks是目前fq速度最快的工具之一，可以转发udp。可以使用ipv6，对于很多高校学生来说，可以通过此方法节省流量费用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
     
     </summary>
     
@@ -645,6 +1322,8 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     
       <category term="Linux" scheme="http://feiyang.li/tags/Linux/"/>
     
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
+    
       <category term="vps" scheme="http://feiyang.li/tags/vps/"/>
     
   </entry>
@@ -654,7 +1333,7 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     <link href="http://feiyang.li/2017/05/05/ss-panel-full/index.html"/>
     <id>http://feiyang.li/2017/05/05/ss-panel-full/index.html</id>
     <published>2017-05-05T06:09:39.000Z</published>
-    <updated>2017-05-11T06:03:50.409Z</updated>
+    <updated>2017-05-20T01:22:24.348Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>系统介绍： 1g内存，单核，也就是传说中的腾讯1元学生机。centos6.8 x32。</p>
@@ -781,6 +1460,8 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     
       <category term="Linux" scheme="http://feiyang.li/tags/Linux/"/>
     
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
+    
       <category term="vps" scheme="http://feiyang.li/tags/vps/"/>
     
   </entry>
@@ -790,7 +1471,7 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     <link href="http://feiyang.li/2017/05/03/ss-panel/index.html"/>
     <id>http://feiyang.li/2017/05/03/ss-panel/index.html</id>
     <published>2017-05-03T12:13:08.000Z</published>
-    <updated>2017-05-11T05:59:40.802Z</updated>
+    <updated>2017-05-20T01:22:26.893Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。</p>
@@ -867,6 +1548,8 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
       <category term="GFW" scheme="http://feiyang.li/tags/GFW/"/>
     
       <category term="Linux" scheme="http://feiyang.li/tags/Linux/"/>
+    
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
     
       <category term="vps" scheme="http://feiyang.li/tags/vps/"/>
     
@@ -1439,7 +2122,7 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
     <link href="http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html"/>
     <id>http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html</id>
     <published>2017-03-25T10:49:36.000Z</published>
-    <updated>2017-03-27T11:35:22.375Z</updated>
+    <updated>2017-05-12T02:28:04.638Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>Model and Cost Function / Parameter Learning / Gradient Descent For Linear Regression</p>
@@ -1456,11 +2139,11 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
 <tbody>
 <tr>
 <td style="text-align:center">Hypothesis</td>
-<td style="text-align:center">$$h_{\theta}={\theta}_0+{\theta}_1x$$</td>
+<td style="text-align:center"> $$h_{\theta}={\theta}_0+{\theta}_1x$$ </td>
 </tr>
 <tr>
 <td style="text-align:center">Parameter</td>
-<td style="text-align:center">${\theta}_0$，${\theta}_1$</td>
+<td style="text-align:center"> ${\theta}_0$，${\theta}_1$</td>
 </tr>
 <tr>
 <td style="text-align:center">Cost Function</td>
@@ -1553,770 +2236,6 @@ $$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>算法导论 第15章 动态规划</title>
-    <link href="http://feiyang.li/2017/03/24/dynamic-programming/index.html"/>
-    <id>http://feiyang.li/2017/03/24/dynamic-programming/index.html</id>
-    <published>2017-03-24T09:05:47.000Z</published>
-    <updated>2017-03-24T09:26:24.294Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>《算法导论》这门课的老师是<a href="http://cs.ustc.edu.cn/szdw/bdjs/201006/t20100614_22062.html" target="_blank" rel="external">黄刘生</a>和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>书中列举四个常见问题，分析如何采用动态规划方法进行解决。<br>　　装配线调度问题<br>　　矩阵链乘问题：<br>　　最长公共子序列问题：<br>　　最优二叉查找树问题：</p>
-<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p><strong>动态规划</strong>通常应用于最优化问题，此类问题可能包含多个可行解。每个解有一个值，而我们期望找到<strong>最大</strong>或者<strong>最小</strong>的解。</p>
-<h2 id="动态规划算法的设计可以分为以下4个步骤："><a href="#动态规划算法的设计可以分为以下4个步骤：" class="headerlink" title="动态规划算法的设计可以分为以下4个步骤："></a>动态规划算法的设计可以分为以下4个步骤：</h2><ul>
-<li>描述最优解的结构。</li>
-<li>递归定义最优解的值。</li>
-<li>按自底向上的方式计算最优解的值。（其实还应该有自顶向下的求解）</li>
-<li>由计算出的结果构造一个最优解。</li>
-</ul>
-<p>动态规划算法效率会非常高的原因在于，其特殊的<strong>实现方法</strong>，也就是第三步。</p>
-<h2 id="两种等价的实现方法："><a href="#两种等价的实现方法：" class="headerlink" title="两种等价的实现方法："></a>两种等价的实现方法：</h2><ul>
-<li><strong>带备忘的自顶向下法</strong>，此方法按照正常的递归编写过程，但过程会保存每个子问题的解（通常保存在一个数组或散列表中）。当需要一个子问题的解时，程序首先检查是否已经保存过此解。如果是，直接返回；若不是，递归计算这个子问题。这种递归方式是<strong>带备忘的</strong>。</li>
-<li><strong>自底而上法</strong>，这种方法需要恰当的定义子问题的<strong>规模</strong>，因为任何一个子问题的求解的依赖着<strong>更小的</strong>子问题。因此需要将问题进行排序，从小的问题开始处理。这样可以确保，在处理到大的问题时，其所依赖的更小的子问题已经求解完毕，结果已经保存。</li>
-</ul>
-<p>因此，我们会说  动态规划算法属于典型的用<strong>空间换取时间</strong>。由于没有频繁的递归函数的开销，自底而上方法的时间复杂度会更好一些。</p>
-<h2 id="动态规划与分治法之间的区别："><a href="#动态规划与分治法之间的区别：" class="headerlink" title="动态规划与分治法之间的区别："></a>动态规划与分治法之间的区别：</h2><ul>
-<li>分治法是指将问题分成一些独立的子问题，递归的求解各子问题。</li>
-<li>动态规划适用于这些子问题不是独立的情况，也就是各子问题包含公共子问题。</li>
-</ul>
-<h1 id="动态规划基础"><a href="#动态规划基础" class="headerlink" title="动态规划基础"></a>动态规划基础</h1><p>什么时候可以使用动态规范方法解决问题呢？这个问题需要讨论一下，书中给出了采用动态规范方法的最优化问题中的两个要素：<strong>最优子结构</strong>和<strong>重叠子结构</strong>。</p>
-<h2 id="最优子结构（自下向上）"><a href="#最优子结构（自下向上）" class="headerlink" title="最优子结构（自下向上）"></a>最优子结构（自下向上）</h2><p>最优子结构是指问题的一个最优解中包含了其子问题的最优解。在动态规划中，每次采用子问题的最优解来构造问题的一个最优解。</p>
-<h3 id="寻找最优子结构，遵循的共同的模式："><a href="#寻找最优子结构，遵循的共同的模式：" class="headerlink" title="寻找最优子结构，遵循的共同的模式："></a>寻找最优子结构，遵循的共同的模式：</h3><ul>
-<li><p>问题的一个解可以是做一个选择，得到一个或者多个有待解决的子问题。</p>
-</li>
-<li><p>假设对一个给定的问题，已知的是一个可以导致最优解的选择，不必关心如何确定这个选择。</p>
-</li>
-<li><p>在已知这个选择后，要确定哪些子问题会随之发生，如何最好地描述所得到的子问题空间。</p>
-</li>
-<li><p>利用“剪贴”技术，来证明问题的一个最优解中，使用的子问题的解本身也是最优的。</p>
-</li>
-</ul>
-<h3 id="最优子结构在问题域中以两种方式变化："><a href="#最优子结构在问题域中以两种方式变化：" class="headerlink" title="最优子结构在问题域中以两种方式变化："></a>最优子结构在问题域中以两种方式变化：</h3><ul>
-<li>有多少个子问题被使用在原问题的一个最优解中。</li>
-<li>在决定一个最优解中使用哪些子问题时有多少个选择。</li>
-</ul>
-<p>动态规划按照自底向上的策略利用最优子结构，即：<strong>首先找到子问题的最优解，解决子问题，然后逐步向上找到问题的一个最优解</strong>。</p>
-<p>为了描述子问题空间，可以遵循这样一条有效的经验规则，就是尽量保持这个空间简单，然后在需要时再扩充它。</p>
-<p>注意：在不能应用最优子结构的时候，就一定不能假设它能够应用。 <strong>警惕使用动态规划去解决缺乏最优子结构的问题！</strong></p>
-<p>使用动态规划时，子问题之间必须是相互独立的！可以这样理解，N个子问题域互不相干，属于完全不同的空间。</p>
-<h2 id="重叠子问题（自上向下）"><a href="#重叠子问题（自上向下）" class="headerlink" title="重叠子问题（自上向下）"></a>重叠子问题（自上向下）</h2><p>用来解决原问题的递归算法可以反复地解同样的子问题，而不是总是产生新的子问题。</p>
-<p>重叠子问题是指当一个递归算法不断地调用同一个问题。</p>
-<p>动态规划算法总是充分利用重叠子问题，通过每个子问题只解一次，把解保存在一个需要时就可以查看的表中，每次查表的时间为常数。</p>
-<p>由计算出的结果反向构造一个最优解：把动态规划或者是递归过程中作出的每一次选择（记住：保存的是每次作出的选择）都保存下来，在最后就一定可以通过这些保存的选择来反向构造出最优解。</p>
-<p>做备忘录的递归方法：这种方法是动态规划的一个变形，它本质上与动态规划是一样的，但是比动态规划更好理解！<br>　　（1） 使用普通的递归结构，自上而下的解决问题。<br>　　（2） 当在递归算法的执行中每一次遇到一个子问题时，就计算它的解并填入一个表中。以后每次遇到该子问题时，只要查看并返回表中先前填入的值即可。</p>
-<h1 id="钢条切割问题"><a href="#钢条切割问题" class="headerlink" title="钢条切割问题"></a>钢条切割问题</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p> 给定一个长度为n的钢条，以及一个价格表p，p中列出了每英寸钢条的价格，将长度为n的钢条切割为若干短钢条出售，求一个钢条的切割方案，使得收益最大，切割工序没有成本。比如价格表p如下：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170323/194427893.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>长度为n的钢条，一共有$2^{n-1}$种不同的切割方案，因为可以再距离钢条左边为i（i=1,2,…,n-1）处，我们总是可以选择切割或者不切割。比如下图表示了n=4的切割情况：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170323/195029493.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure>
-<h2 id="理论依据"><a href="#理论依据" class="headerlink" title="理论依据"></a>理论依据</h2><p>我们称钢条切割问题满足<strong>最优子结构</strong>性质：问题的最优解由相关子问题的最优解组合而成，而这些子问题可以独立求解。</p>
-<p>我们可以这样理解钢条问题：将钢条从左边切下一段长度为i的一段，对剩下的n-i的部分继续进行切割（递归求解），而不对左边长度为i的一段在进行切割。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170324/172614530.png" alt=""></p>
-<p>这样问题的解就转化为最优解了。</p>
-<h2 id="自顶向下递归实现"><a href="#自顶向下递归实现" class="headerlink" title="自顶向下递归实现"></a>自顶向下递归实现</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">CUT-ROD(p,n)</div><div class="line"><span class="keyword">if</span>  n == <span class="number">0</span></div><div class="line">    <span class="keyword">return</span>  <span class="number">0</span></div><div class="line">q = -∞</div><div class="line"><span class="keyword">for</span>  i = <span class="number">1</span> to n</div><div class="line">   q = max(q,  p[i]+CUT-ROD(p, n-i))</div><div class="line"><span class="keyword">return</span>  q</div></pre></td></tr></table></figure>
-<p>  CUT-ROD的效率很差，这是因为CUT-ROD反复的求解一些相同的子问题，下图显示了当n==4时的调用情况：<br>  <img src="http://cdn.mmmxcc.cn/blog/20170323/200833676.png" alt="mark"></p>
-<h2 id="带备忘的自顶向下"><a href="#带备忘的自顶向下" class="headerlink" title="带备忘的自顶向下"></a>带备忘的自顶向下</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">MEMOIZED-CUT-ROD(p,n)</div><div class="line">let  r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></div><div class="line"><span class="keyword">for</span>  i = <span class="number">0</span> to n</div><div class="line">    r[i]= -∞</div><div class="line"><span class="keyword">return</span>  MEMOIZED-CUT-ROD-AUX(p, n, r)</div><div class="line"> </div><div class="line">MEMOIZED-CUT-ROD-AUX(p,n, r)</div><div class="line"><span class="keyword">if</span>  r[n] &gt;= <span class="number">0</span></div><div class="line">    <span class="keyword">return</span>  r[n]</div><div class="line"><span class="keyword">if</span>  n == <span class="number">0</span></div><div class="line">    q = <span class="number">0</span></div><div class="line"><span class="keyword">else</span>  q = -∞</div><div class="line">    <span class="keyword">for</span>  i = <span class="number">1</span> to n</div><div class="line">        q= max(q,  p[i]+MEMOIZED-CUT-ROD-AUX(p, n-i,r))</div><div class="line">r[n] = q</div><div class="line"><span class="keyword">return</span> q</div></pre></td></tr></table></figure>
-<p>该方法与之前的普通递归方法类似，只是会在过程中保存子问题的解，当需要一个子问题的解的时候，先查看是否已经保存过了，如果是，则直接使用即可。否则，按常规的递归方式计算子问题。所以称为带备忘的，因为它记住了之前已经计算出的结果。</p>
-<h2 id="自底向上的方法"><a href="#自底向上的方法" class="headerlink" title="自底向上的方法"></a>自底向上的方法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">BOTTOM-UP-CUT-ROD(p,n)</div><div class="line">let  r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></div><div class="line">r[<span class="number">0</span>]= <span class="number">0</span></div><div class="line"><span class="keyword">for</span>  j = <span class="number">1</span> to n</div><div class="line">    q= -∞</div><div class="line">    <span class="keyword">for</span>  i = <span class="number">1</span> to j</div><div class="line">        q = max(q, p[i]+r[j-i])</div><div class="line">    r[j]= q</div><div class="line"><span class="keyword">return</span>  r[n]</div></pre></td></tr></table></figure>
-<p>方法采用子问题的自然顺序，因此过程中依次求解规模为$j=0,1,2,3,4…,n$的问题。             </p>
-<p>这两种算法具有相同的时间复杂度，BOTTOM-UP-CUT-ROD主要是双层嵌套循环，所以时间复杂度$Θ(n^2)$。MEMOIZED-CUT-ROD的时间复杂度也是$Θ(n^2)$。可以使用子问题图进行分析。</p>
-<h2 id="python实现切割钢条问题"><a href="#python实现切割钢条问题" class="headerlink" title="python实现切割钢条问题"></a>python实现切割钢条问题</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cut_rod</span><span class="params">()</span>:</span></div><div class="line">    p = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">17</span>,<span class="number">17</span>,<span class="number">20</span>,<span class="number">24</span>,<span class="number">30</span>]</div><div class="line">    n = len(p)</div><div class="line">    r = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</div><div class="line">    s = [<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</div><div class="line">        q = <span class="number">-10</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(j+<span class="number">1</span>):</div><div class="line">            <span class="keyword">if</span> q &lt; (p[i]+r[j-i]):</div><div class="line">                q = (p[i]+r[j-i])</div><div class="line">                s[j] = i</div><div class="line">            <span class="comment">#q = max(q,p[i]+r[j-i])</span></div><div class="line">        r[j] = q</div><div class="line">        </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_way</span><span class="params">(n)</span>:</span></div><div class="line">    cut_rod()</div><div class="line">    print(n,<span class="string">'---&gt;'</span>,r[n])</div><div class="line">    <span class="keyword">while</span> n &gt; <span class="number">0</span>:</div><div class="line">        print(s[n])</div><div class="line">        n = n - s[n]</div></pre></td></tr></table></figure>
-<p>调用<code>find_way(9)</code>输出</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170324/145547041.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h1 id="矩阵链乘法"><a href="#矩阵链乘法" class="headerlink" title="矩阵链乘法"></a>矩阵链乘法</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>给定n 个矩阵的序列，希望求它们的乘积：$A_1A_2A_3…A_n$ 。因为矩阵的乘法满足结合律，所以可以对n个矩阵序列加括号，来改变乘积顺序。比如对于矩阵链&lt; $A_1$, $A_2$,$A_3$,$A_4$&gt;可以有下面的加括号方案：</p>
-<p><center><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170324/150009279.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><center></center></center></p>
-<p>不同的加括号的方案，对于乘积运算的代价影响很大.</p>
-<p>两个矩阵相乘，A为p <em> q矩阵，B为q </em> r矩阵。所以A 的乘法次数为p<em>q</em>r。</p>
-<p>如果A（10,100 ），B（100,5）， C（5,50 ）三个矩阵相乘。</p>
-<p>如果按照((AB)C)的顺序，则需要10<em>100</em>5  + 10<em>5</em>50  = 7500次乘法运算，如果按照(A(BC))的顺序，则需要100<em>5</em>50  + 10<em>100</em>50  = 75000次乘法运算。所以，不同的加括号方案，对于矩阵链乘法的代价影响很大。</p>
-<h2 id="刻画最优解的结构特征"><a href="#刻画最优解的结构特征" class="headerlink" title="刻画最优解的结构特征"></a>刻画最优解的结构特征</h2><p>通过寻找最优子结构，利用最优子结构从子问题的最优解中构造出原问题的最优解。<br>假设$A<em>iA</em>{i+1}…A_j$的最优括号花方案的分割点是在$A<em>k$和$A</em>{K+1}$之间，一个非平凡的矩阵链乘法任何时候都是需要划分链的，<strong>任何最优解都是有子问题的最优解构成的</strong>。</p>
-<h2 id="递归的定义最优解的值"><a href="#递归的定义最优解的值" class="headerlink" title="递归的定义最优解的值"></a>递归的定义最优解的值</h2><p>令 $m[i,j]$ 表示计算矩阵 $A<em>{i,j}$ 所需标量乘法的最小值，也即原问题的最优解，计算 $A</em>{1..n}$ 的最低代价就是 $m[1,n]$。</p>
-<ul>
-<li>对于i == j 的平凡问题，矩阵链只包含唯一的矩阵$A_{i,j}$。</li>
-<li>对于$A<em>iA</em>{i+1}…A_j$的最优括号化方案的切割点在$A<em>k$和$A</em>{k+1}$之间。那么$m[i,j]$的解相当于计算$A<em>{i..k}$和$A</em>{k+1..j}$的代价加上，合并这两个子答案所需要的代价$p_{i-1}p_k p_j$</li>
-</ul>
-<p>因此，我们得到</p>
-<p>$$m[i,j] = m[i,k]+m[k,j]+p_{i-1}p_k p_j$$</p>
-<h2 id="计算最优解的值"><a href="#计算最优解的值" class="headerlink" title="计算最优解的值"></a>计算最优解的值</h2><p>算法应当按照长度递增的顺序求解矩阵链括号化问题，并按照对应的顺序填写表m。对举证连$A_{i,j}$，其规模为链的长度j-i+1</p>
-<p>伪代码就不写了，直接写python代码</p>
-<h2 id="python实现矩阵链乘法问题"><a href="#python实现矩阵链乘法问题" class="headerlink" title="python实现矩阵链乘法问题"></a>python实现矩阵链乘法问题</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">MATRIX_CHAIN_ORDER</span><span class="params">(p)</span>:</span>  </div><div class="line">    n = len(p)  </div><div class="line">    s = [[<span class="number">0</span> <span class="keyword">for</span> j <span class="keyword">in</span> range(n)] <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]  </div><div class="line">    m = [[<span class="number">0</span> <span class="keyword">for</span> j <span class="keyword">in</span> range(n)] <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]  </div><div class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">2</span>, n):           <span class="comment">#l is the chain length  </span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n-l+<span class="number">1</span>):  </div><div class="line">            j = i + l - <span class="number">1</span>  </div><div class="line">            m[i][j] = <span class="number">1e9</span>  </div><div class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> range(i, j):  </div><div class="line">                q = m[i][k] + m[k+<span class="number">1</span>][j] + p[i<span class="number">-1</span>]*p[k]*p[j]  </div><div class="line">                <span class="keyword">if</span> q &lt; m[i][j]:  </div><div class="line">                    m[i][j] = q  </div><div class="line">                    s[i][j] = k  </div><div class="line">    PRINT_OPTIMAL_PARENS(s, <span class="number">1</span>, n<span class="number">-1</span>)</div><div class="line">    <span class="keyword">return</span> m</div><div class="line">    </div><div class="line">      </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">PRINT_OPTIMAL_PARENS</span><span class="params">(s, i, j)</span>:</span>  </div><div class="line">    <span class="keyword">if</span> i == j:  </div><div class="line">        print(<span class="string">'A'</span>, end = <span class="string">''</span>)  </div><div class="line">        print(i, end = <span class="string">''</span>)  </div><div class="line">    <span class="keyword">else</span>:  </div><div class="line">        print(<span class="string">'('</span>, end = <span class="string">''</span>)  </div><div class="line">        PRINT_OPTIMAL_PARENS(s, i, s[i][j])  </div><div class="line">        PRINT_OPTIMAL_PARENS(s, s[i][j]+<span class="number">1</span>, j)  </div><div class="line">        print(<span class="string">')'</span>, end = <span class="string">''</span>)  </div><div class="line">   </div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    A = [<span class="number">30</span>, <span class="number">35</span>, <span class="number">15</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span>,<span class="number">25</span>]</div><div class="line">    m = MATRIX_CHAIN_ORDER(A) </div><div class="line">    print(<span class="string">'\n'</span>,<span class="string">'共计需要'</span>,m[<span class="number">1</span>][n<span class="number">-1</span>],<span class="string">'次相乘'</span>)</div></pre></td></tr></table></figure>
-<p>需要注意的问题是，这个算法的复杂度在O(n∧3)。而且这个算法和算法导论等地方的伪码比有些细微的差异体现在数组从0开始还是1开始上。大体上还是一致的。这里的空间复杂度也到了O(n∧2)。大致的计算顺序就是通过这个函数中的l来控制。l=2的时候，依次计算矩阵A[0]<em>A[1], A[1]</em>A[2], A[2]<em>A[3]…的次数。l=3的时候就开始计算A[0]</em>A[1]<em>A[2], A[1]</em>A[2]*A[3]..的次数。用更形象的话来说就是倒三角的顺序。下面的这个图就是对上面流程的描述：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170324/171007882.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<hr>
-<p>以上</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;《算法导论》这门课的老师是&lt;a href=&quot;http://cs.ustc.edu.cn/szdw/bdjs/201006/t20100614_22062.html&quot;&gt;黄刘生&lt;/a&gt;和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
-    
-      <category term="dynamic programming" scheme="http://feiyang.li/tags/dynamic-programming/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python读取mnist</title>
-    <link href="http://feiyang.li/2017/03/17/python-mnist/index.html"/>
-    <id>http://feiyang.li/2017/03/17/python-mnist/index.html</id>
-    <published>2017-03-17T08:25:27.000Z</published>
-    <updated>2017-03-26T11:39:21.829Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以<code>.idx1-ubyte</code>后缀，包含60000个训练图像。将这些图像展示出来，需要利用到<a href="http://feiyang.li/2017/03/17/python-struct/">struct模块</a>。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="下载MNIST训练数据集"><a href="#下载MNIST训练数据集" class="headerlink" title="下载MNIST训练数据集"></a>下载MNIST训练数据集</h1><h2 id="手动下载"><a href="#手动下载" class="headerlink" title="手动下载"></a>手动下载</h2><p>下载链接为： <a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="external">http://yann.lecun.com/exdb/mnist/</a>  下载好之后解压就可以了，网站好像被墙了？</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170317/110144292.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure>
-<h2 id="使用tensorflow自带下载"><a href="#使用tensorflow自带下载" class="headerlink" title="使用tensorflow自带下载"></a>使用tensorflow自带下载</h2><p>可以看到，这个地方是有监督学习   (有label这个东西嘛)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</div><div class="line"><span class="comment"># 下载mnist数据集</span></div><div class="line">mnist = input_data.read_data_sets(<span class="string">'/tmp/'</span>, one_hot=<span class="keyword">True</span>)</div><div class="line"><span class="comment"># 数字(label)只能是0-9，神经网络使用10个出口节点就可以编码表示0-9；</span></div><div class="line"><span class="comment">#  1 -&gt; [0,1.0,0,0,0,0,0,0,0]   one_hot表示只有一个出口节点是hot</span></div><div class="line"><span class="comment">#  2 -&gt; [0,0.1,0,0,0,0,0,0,0]</span></div><div class="line"><span class="comment">#  5 -&gt; [0,0,0,0,0,1.0,0,0,0]</span></div><div class="line"><span class="comment">#  /tmp是macOS的临时目录，重启系统数据丢失; Linux的临时目录也是/tmp</span></div></pre></td></tr></table></figure></p>
-<h1 id="详细步骤"><a href="#详细步骤" class="headerlink" title="详细步骤"></a>详细步骤</h1><h2 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(filename ,<span class="string">'rb'</span>) <span class="keyword">as</span> f1:</div><div class="line">    buf1 = f1.read()</div></pre></td></tr></table></figure>
-<p>还有另外一种常用的方法，两个方法目前来看没有什么区别。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">f1 = open(filename , <span class="string">'rb'</span>)</div><div class="line">buf = binfile.read() <span class="comment"># 先使用二进制方式把文件都读进来</span></div></pre></td></tr></table></figure></p>
-<h2 id="跨过头部区域"><a href="#跨过头部区域" class="headerlink" title="跨过头部区域"></a>跨过头部区域</h2><h3 id="train-images-idx3-ubyte"><a href="#train-images-idx3-ubyte" class="headerlink" title="train-images-idx3-ubyte"></a>train-images-idx3-ubyte</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">TRAINING SET IMAGE FILE (train-images-idx3-ubyte):</div><div class="line"></div><div class="line">[offset] [type]          [value]          [description] </div><div class="line">0000     32 bit integer  0x00000803(2051) magic number </div><div class="line">0004     32 bit integer  60000            number of images </div><div class="line">0008     32 bit integer  28               number of rows </div><div class="line">0012     32 bit integer  28               number of columns </div><div class="line">0016     unsigned byte   ??               pixel </div><div class="line">0017     unsigned byte   ??               pixel </div><div class="line">........ </div><div class="line">xxxx     unsigned byte   ??               pixel</div></pre></td></tr></table></figure>
-<p>可以看到头部有4个integer 类型，设置<code>image_index += struct.calcsize(&#39;&gt;IIII&#39;)</code>计算4个integer 值的位置，然后image_index 直接跳过去。至于为什么用<a href="http://feiyang.li/2017/03/17/python-struct/">IIII</a>，愿意的话可以点击了解。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">temp = struct.unpack_from(<span class="string">'&gt;784B'</span>, buf1, image_index) </div><div class="line"><span class="comment"># '&gt;784B'的意思就是用大端法读取784( 28*28 )个unsigned byte</span></div><div class="line">im = np.reshape(temp,(<span class="number">28</span>,<span class="number">28</span>))</div></pre></td></tr></table></figure>
-<p>最后那句<code>np.reshape(temp,(28,28))</code>是以下两句的缩写<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">im = np.array(im)</div><div class="line">im = im.reshape(<span class="number">28</span>,<span class="number">28</span>)</div></pre></td></tr></table></figure></p>
-<h3 id="train-labels-idx1-ubyte"><a href="#train-labels-idx1-ubyte" class="headerlink" title="train-labels-idx1-ubyte"></a>train-labels-idx1-ubyte</h3><p>可以看到头部有2个integer 类型，同理，label_index 直接跳过去。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">TRAINING SET LABEL FILE (train-labels-idx1-ubyte):</div><div class="line"></div><div class="line">[offset] [type]          [value]          [description] </div><div class="line">0000     32 bit integer  0x00000801(2049) magic number (MSB first) </div><div class="line">0004     32 bit integer  60000            number of items </div><div class="line">0008     unsigned byte   ??               label </div><div class="line">0009     unsigned byte   ??               label </div><div class="line">........ </div><div class="line">xxxx     unsigned byte   ??               label</div><div class="line">The labels values are 0 to 9.</div></pre></td></tr></table></figure></p>
-<h2 id="显示图片"><a href="#显示图片" class="headerlink" title="显示图片"></a>显示图片</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plt.imshow(im , cmap=<span class="string">'gray'</span>)</div></pre></td></tr></table></figure>
-<p>应该就可以看到图片了，是一张5， 当然头部文件还是要有的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">%matplotlib inline</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> struct</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">path = <span class="string">'E:\\Machine Learning\\train-images.idx3-ubyte'</span></div><div class="line"><span class="keyword">with</span> open(path,<span class="string">'rb'</span>) <span class="keyword">as</span> f1:</div><div class="line">    buf1 = f1.read() </div><div class="line">image_index = <span class="number">0</span></div><div class="line">image_index += struct.calcsize(<span class="string">'&gt;IIII'</span>)</div><div class="line">temp = struct.unpack_from(<span class="string">'&gt;784B'</span>, buf1, image_index) </div><div class="line"><span class="comment"># '&gt;784B'的意思就是用大端法读取784( 28*28 )个unsigned byte</span></div><div class="line">im = np.reshape(temp,(<span class="number">28</span>,<span class="number">28</span>))</div><div class="line">plt.imshow(im , cmap=<span class="string">'gray'</span>)</div></pre></td></tr></table></figure></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170317/162019276.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="give me 5" title="">
-                </div>
-                <div class="image-caption">give me 5</div>
-            </figure>
-<h1 id="多张图片读取"><a href="#多张图片读取" class="headerlink" title="多张图片读取"></a>多张图片读取</h1><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170317/162228549.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="多张图片" title="">
-                </div>
-                <div class="image-caption">多张图片</div>
-            </figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> struct</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">readfile</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">with</span> open(<span class="string">'E:\\Machine Learning\\train-images.idx3-ubyte'</span>,<span class="string">'rb'</span>) <span class="keyword">as</span> f1:</div><div class="line">        buf1 = f1.read()</div><div class="line">    <span class="keyword">with</span> open(<span class="string">'E:\\Machine Learning\\train-labels.idx1-ubyte'</span>,<span class="string">'rb'</span>) <span class="keyword">as</span> f2:</div><div class="line">        buf2 = f2.read()</div><div class="line">    <span class="keyword">return</span> buf1, buf2</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_image</span><span class="params">(buf1)</span>:</span></div><div class="line">    image_index = <span class="number">0</span></div><div class="line">    image_index += struct.calcsize(<span class="string">'&gt;IIII'</span>)</div><div class="line">    im = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</div><div class="line">        temp = struct.unpack_from(<span class="string">'&gt;784B'</span>, buf1, image_index) <span class="comment"># '&gt;784B'的意思就是用大端法读取784个unsigned byte</span></div><div class="line">        im.append(np.reshape(temp,(<span class="number">28</span>,<span class="number">28</span>)))</div><div class="line">        image_index += struct.calcsize(<span class="string">'&gt;784B'</span>)  <span class="comment"># 每次增加784B</span></div><div class="line">    <span class="keyword">return</span> im</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_label</span><span class="params">(buf2)</span>:</span> <span class="comment"># 得到标签数据</span></div><div class="line">    label_index = <span class="number">0</span></div><div class="line">    label_index += struct.calcsize(<span class="string">'&gt;II'</span>)</div><div class="line">    <span class="keyword">return</span> struct.unpack_from(<span class="string">'&gt;9B'</span>, buf2, label_index)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    image_data, label_data = readfile()</div><div class="line">    im = get_image(image_data)</div><div class="line">    label = get_label(label_data)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</div><div class="line">        plt.subplot(<span class="number">3</span>, <span class="number">3</span>, i + <span class="number">1</span>)</div><div class="line">        title = <span class="string">u"标签对应为："</span>+ str(label[i])</div><div class="line">        plt.title(title, fontproperties=<span class="string">'SimHei'</span>)</div><div class="line">        plt.imshow(im[i], cmap=<span class="string">'gray'</span>)</div><div class="line">    plt.show()</div></pre></td></tr></table></figure>
-<hr>
-<p>遇到的一些坑：</p>
-<ul>
-<li><p>中文标题乱码的问题</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plt.title(title, fontproperties=<span class="string">'SimHei'</span>) <span class="comment"># 后边这个字体**SimHei**加上就好了</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>标题内部不能用<strong>+</strong><br>在外部加好之后，赋值给新变量，然后放进<code>title</code>即可</p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;在做 TensorFlow和Python实现神经网络的时候，需要利用到一个MNIST数据集，数据集的格式是以&lt;code&gt;.idx1-ubyte&lt;/code&gt;后缀，包含60000个训练图像。将这些图像展示出来，需要利用到&lt;a href=&quot;http://feiyang.li/2017/03/17/python-struct/&quot;&gt;struct模块&lt;/a&gt;。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>细究Python struct 模块</title>
-    <link href="http://feiyang.li/2017/03/17/python-struct/index.html"/>
-    <id>http://feiyang.li/2017/03/17/python-struct/index.html</id>
-    <published>2017-03-17T06:08:07.000Z</published>
-    <updated>2017-03-26T11:39:20.941Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p><a href="https://docs.python.org/3/library/struct.html#module-struct" target="_blank" rel="external">struct</a> — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具<strong>Python struct 模块</strong>。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="关于格式字符串"><a href="#关于格式字符串" class="headerlink" title="关于格式字符串"></a>关于格式字符串</h1><p>在Python手册中，给出了C语言中常用类型与Python类型对应的格式符：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">格式符</th>
-<th style="text-align:left">C语言类型</th>
-<th style="text-align:left">Python类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">x</td>
-<td style="text-align:left">pad byte</td>
-<td style="text-align:left">no value</td>
-</tr>
-<tr>
-<td style="text-align:left">c</td>
-<td style="text-align:left">char</td>
-<td style="text-align:left">string of length 1</td>
-</tr>
-<tr>
-<td style="text-align:left">b</td>
-<td style="text-align:left">signed char</td>
-<td style="text-align:left">integer</td>
-</tr>
-<tr>
-<td style="text-align:left">B</td>
-<td style="text-align:left">unsigned char</td>
-<td style="text-align:left">integer</td>
-</tr>
-<tr>
-<td style="text-align:left">?</td>
-<td style="text-align:left">_Bool</td>
-<td style="text-align:left">bool</td>
-</tr>
-<tr>
-<td style="text-align:left">h</td>
-<td style="text-align:left">short</td>
-<td style="text-align:left">integer</td>
-</tr>
-<tr>
-<td style="text-align:left">H</td>
-<td style="text-align:left">unsigned short</td>
-<td style="text-align:left">integer</td>
-</tr>
-<tr>
-<td style="text-align:left">i</td>
-<td style="text-align:left">int</td>
-<td style="text-align:left">integer</td>
-</tr>
-<tr>
-<td style="text-align:left">I</td>
-<td style="text-align:left">unsigned int</td>
-<td style="text-align:left">integer or long</td>
-</tr>
-<tr>
-<td style="text-align:left">l</td>
-<td style="text-align:left">long</td>
-<td style="text-align:left">integer</td>
-</tr>
-<tr>
-<td style="text-align:left">L</td>
-<td style="text-align:left">unsigned long</td>
-<td style="text-align:left">long</td>
-</tr>
-<tr>
-<td style="text-align:left">q</td>
-<td style="text-align:left">long long</td>
-<td style="text-align:left">long</td>
-</tr>
-<tr>
-<td style="text-align:left">Q</td>
-<td style="text-align:left">unsigned long</td>
-<td style="text-align:left">long    long</td>
-</tr>
-<tr>
-<td style="text-align:left">f</td>
-<td style="text-align:left">float</td>
-<td style="text-align:left">float</td>
-</tr>
-<tr>
-<td style="text-align:left">d</td>
-<td style="text-align:left">double</td>
-<td style="text-align:left">float</td>
-</tr>
-<tr>
-<td style="text-align:left">s</td>
-<td style="text-align:left">char[]</td>
-<td style="text-align:left">string</td>
-</tr>
-<tr>
-<td style="text-align:left">p</td>
-<td style="text-align:left">char[]</td>
-<td style="text-align:left">string</td>
-</tr>
-<tr>
-<td style="text-align:left">P</td>
-<td style="text-align:left">void *</td>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<h1 id="struct-pack-fmt-v1-v2-…"><a href="#struct-pack-fmt-v1-v2-…" class="headerlink" title="struct.pack(fmt, v1, v2, …)"></a>struct.pack(fmt, v1, v2, …)</h1><blockquote>
-<p>Return a string containing the values v1, v2, … packed according to the given format. The arguments must match the values required by the format exactly.</p>
-</blockquote>
-<p>struct.pack用于将Python的值根据格式符，转换为字符串,准确来说是Byte。这个地方我们之前有提过，<a href="http://feiyang.li/2017/02/16/python-camp9/#Python3内的unicode和bytes">Python3内的unicode和bytes</a>，在Py3内<strong>文本总是Unicode，由str类型表示，二进制数据则由bytes类型表示。</strong><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170216/212835886.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br>Py2是没有Byte这么个东西的。参数fmt是格式字符串，v1, v2, …表示要转换的python值。下面的例子将两个整数转换为字符串:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> struct  </div><div class="line"></div><div class="line">a = <span class="number">20</span>  </div><div class="line">b = <span class="number">400</span></div><div class="line"></div><div class="line">byte = struct.pack(<span class="string">"ii"</span>, a, b) <span class="comment">#转换后的str相当于其他语言中的字节流（字节数组），可以在网络上传输  </span></div><div class="line">big = struct.pack(<span class="string">"&gt;ii"</span>, a, b)  <span class="comment">#大端保存</span></div><div class="line">small = struct.pack(<span class="string">"&lt;ii"</span>, a, b) <span class="comment">#小端保存</span></div><div class="line">print(byte)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x14\x00\x00\x00\x90\x01\x00\x00'</span></div><div class="line">print(big)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x00\x00\x00\x14\x00\x00\x01\x90'</span></div><div class="line">print(small)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x14\x00\x00\x00\x90\x01\x00\x00'</span></div><div class="line"><span class="keyword">print</span> (byte[<span class="number">0</span>],byte[<span class="number">4</span>]) </div><div class="line"><span class="comment"># &gt;&gt;&gt;:b'\x14\x00\x00\x00\x90\x01\x00\x00'</span></div></pre></td></tr></table></figure>
-<p>格式符”i”表示转换为int，’ii’表示有两个int变量。进行转换后的结果长度为8个字节（int类型占用4个字节，两个int为8个字节）<del>可以看到输出的结果是乱码，因为结果是二进制数据，所以显示为乱码。可以使用python的内置函数repr来获取可识别的字符串</del> ，以上问题在Python3中不会出现了其中十六进制的0x00000014, 0x00000190分别表示20和400。</p>
-<p>上一段代码<strong>最后那个很有意思诶，竟然是默认采用小端</strong>。</p>
-<h2 id="大端存储和小端存储"><a href="#大端存储和小端存储" class="headerlink" title="大端存储和小端存储"></a>大端存储和小端存储</h2><p>小端：<strong>较高</strong>的有效字节存放在<strong>较高</strong>的存储器地址，<strong>较低</strong>的有效字节存放在<strong>较低</strong>的存储器地址。<br>大端：<strong>较高</strong>的有效字节存放在<strong>较低</strong>的存储器地址，<strong>较低</strong>的有效字节存放在<strong>较高</strong>的存储器地址。</p>
-<p>如果将一个16位的整数0x1234存放到一个短整型变量（short）中。这个短整型变量在内存中的存储在大小端模式由下表所示。 </p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">地址偏移</th>
-<th style="text-align:left">大端模式</th>
-<th style="text-align:left">小端模式</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">0x00</td>
-<td style="text-align:left">12（OP0）</td>
-<td style="text-align:left">34（OP1）</td>
-</tr>
-<tr>
-<td style="text-align:left">0x01</td>
-<td style="text-align:left">34（OP1）</td>
-<td style="text-align:left">12（OP0）</td>
-</tr>
-</tbody>
-</table>
-<p>采用大端方式进行数据存放符合人类的正常思维，而采用小端方式进行数据存放利于计算机处理。</p>
-<h1 id="struct-unpack-fmt-buffer"><a href="#struct-unpack-fmt-buffer" class="headerlink" title="struct.unpack(fmt, buffer)"></a>struct.unpack(fmt, buffer)</h1><blockquote>
-<p>Unpack from the buffer <em>buffer</em> (presumably packed by pack(fmt, …)) according to the format string <em>fmt</em>. The result is a tuple even if it contains exactly one item. The buffer’s size in bytes must match the size required by the format, as reflected by <a href="https://docs.python.org/3/library/struct.html#struct.calcsize" target="_blank" rel="external">calcsize()</a>.</p>
-</blockquote>
-<p>struct.unpack做的工作刚好与struct.pack相反，用于将字节流转换成python数据类型。它的函数原型为：struct.unpack(fmt, string)，该函数返回一个tuple。 </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a1, a2 = struct.unpack(<span class="string">"ii"</span>, byte)  </div><div class="line">print(type(struct.unpack(<span class="string">"ii"</span>, byte)),a1,a2)</div><div class="line"><span class="comment"># &gt;&gt;&gt;:&lt;class 'tuple'&gt; 20 400</span></div></pre></td></tr></table></figure>
-<h1 id="struct-calcsize-fmt"><a href="#struct-calcsize-fmt" class="headerlink" title="struct.calcsize(fmt)"></a>struct.calcsize(fmt)</h1><blockquote>
-<p>Return the size of the struct (and hence of the bytes object produced by pack(fmt, …)) corresponding to the format string fmt.</p>
-</blockquote>
-<p>struct.calcsize用于计算格式字符串所对应的结果的长度，如：struct.calcsize(‘ii’)，返回8。因为两个int类型所占用的长度是8个字节。</p>
-<hr>
-<p>参考链接：<br><a href="https://docs.python.org/3/library/struct.html" target="_blank" rel="external">https://docs.python.org/3/library/struct.html</a><br><a href="http://blog.csdn.net/occupy8/article/details/11052103" target="_blank" rel="external">http://blog.csdn.net/occupy8/article/details/11052103</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.python.org/3/library/struct.html#module-struct&quot;&gt;struct&lt;/a&gt; — Interpret bytes as packed binary data，将字节与二进制文件相互转化的工具&lt;strong&gt;Python struct 模块&lt;/strong&gt;。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu14.04+CPU+Python的Caffe安装教程</title>
-    <link href="http://feiyang.li/2017/03/16/Ubuntu-caffe/index.html"/>
-    <id>http://feiyang.li/2017/03/16/Ubuntu-caffe/index.html</id>
-    <published>2017-03-16T02:52:28.000Z</published>
-    <updated>2017-03-25T10:51:10.817Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="安装开发所依赖的安装包"><a href="#安装开发所依赖的安装包" class="headerlink" title="安装开发所依赖的安装包"></a>安装开发所依赖的安装包</h1><p> 打开Ubuntu的终端，输入命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler</div><div class="line">sudo apt-get install --no-install-recommends libboost-all-dev</div><div class="line">sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev</div><div class="line">sudo apt-get install libatlas-base-dev</div></pre></td></tr></table></figure></p>
-<h2 id="升级g"><a href="#升级g" class="headerlink" title="升级g++"></a>升级g++</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g++ --version&lt;/span&gt;</div></pre></td></tr></table></figure>
-<p>查看g++版本，由于编译需要至少4.8版本的g++，一般来说，自带版本应该时4.8。如果想要升级g++，这里也提供以下下载方式，并且设置默认编译的g++为最新版本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:ubuntu-toolchain-r/test #用来添加库信息的帮助脚本。  </div><div class="line">sudo apt-get update                                 #更新  </div><div class="line">sudo apt-get install gcc-4.9                        </div><div class="line">sudo apt-get install g++-4.9                        #更新g++，gcc  </div><div class="line">sudo ln -sf /usr/bin/gcc-4.9 /usr/bin/gcc           #在调用的gcc库上做一个与最新版本的软连接，更改g++的默认版本。  </div><div class="line">sudo ln -sf /usr/bin/gcc-ar-4.9 /usr/bin/gcc-ar  </div><div class="line">sudo ln -sf /usr/bin/gcc-ranlib-4.9 /usr/bin/gcc-ranlib</div></pre></td></tr></table></figure></p>
-<h2 id="安装anaconda，建议安装。"><a href="#安装anaconda，建议安装。" class="headerlink" title="安装anaconda，建议安装。"></a>安装anaconda，建议安装。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-4.3.1-Linux-x86_64.sh</div><div class="line">bash Anaconda3-4.3.1-Linux-x86_64.sh</div></pre></td></tr></table></figure>
-<p>安装过程中记得一直选择默认的就行，傻瓜式安装。是否在bashrc中添加路径，这里选择“yes”就可以。忘了的话，解决方法很麻烦，自己查查吧。</p>
-<h2 id="安装OpenCV2-4-这个经常失败，建议跳过，不影响使用"><a href="#安装OpenCV2-4-这个经常失败，建议跳过，不影响使用" class="headerlink" title="安装OpenCV2.4(这个经常失败，建议跳过，不影响使用)"></a>安装OpenCV2.4(这个经常失败，建议跳过，不影响使用)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/bearpaw/Install-OpenCV</div><div class="line">cd Install-OpenCV/Ubuntu/2.4</div><div class="line">sh ./opencv2_4_10.sh</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170315/155549210.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="jayrambhia/Install-OpenCV.git" title="">
-                </div>
-                <div class="image-caption">jayrambhia/Install-OpenCV.git</div>
-            </figure>
-<p>编译过程很慢，中间我还报过一次错，不得不重新来了一次。如果觉得难度不够的话，可以选择官网的安装包：<a href="http://opencv.org/" target="_blank" rel="external">http://opencv.org/</a>，我这里是根据大神编译过的版本进行安装的。</p>
-<h2 id="安装atlas"><a href="#安装atlas" class="headerlink" title="安装atlas"></a>安装atlas</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libatlas-base-dev                #安装atlas简单易行。</div></pre></td></tr></table></figure>
-<h1 id="编译Caffe"><a href="#编译Caffe" class="headerlink" title="编译Caffe"></a>编译Caffe</h1><h2 id="下载caffe"><a href="#下载caffe" class="headerlink" title="下载caffe"></a>下载caffe</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~  </div><div class="line">git clone https://github.com/BVLC/caffe.git</div></pre></td></tr></table></figure>
-<h2 id="修改Makefile配置"><a href="#修改Makefile配置" class="headerlink" title="修改Makefile配置"></a>修改Makefile配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd caffe  </div><div class="line">cp Makefile.config.example Makefile.config </div><div class="line">gedit Makefile.config         #我个人比较喜欢gedit ，用起来方便。</div></pre></td></tr></table></figure>
-<ul>
-<li>CPU_ONLY := 1</li>
-<li>配置一些引用文件（增加部分主要是解决新版本下，HDF5的路径问题）</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">INCLUDE_DIRS := $(PYTHON_INCLUDE)  /usr/local/include  /usr/include/hdf5/serial</div><div class="line">LIBRARY_DIRS := $(PYTHON_LIB)  /usr/local/lib   /usr/lib /usr/lib/x86_64-linux-gnu/hdf5/serial</div><div class="line">BLAS := atlas</div></pre></td></tr></table></figure>
-<h2 id="编译caffe"><a href="#编译caffe" class="headerlink" title="编译caffe"></a>编译caffe</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">make all -j8</div><div class="line">make test -j8</div><div class="line">make runtest -j8</div></pre></td></tr></table></figure>
-<p>另外, 这个make默认是用CPU单核运算,如果想要快一点, 比如我想使用四核, 在make后面加上-j4标签。<br>如果上面4行某一行报错之后想要重试,建议先make clean再重新开始。</p>
-<h2 id="更新安装依赖。"><a href="#更新安装依赖。" class="headerlink" title="更新安装依赖。"></a>更新安装依赖。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd caffe  </div><div class="line">cat python/requirements.txt | xargs -L 1 sudo pip install</div></pre></td></tr></table></figure>
-<h1 id="编译Python接口"><a href="#编译Python接口" class="headerlink" title="编译Python接口"></a>编译Python接口</h1><p>打开新的终端, 用which Python和which pip<br>确定使用的是anaconda提供的python环境，然后进入<code>caffe/python,</code> 执行下列命令，</p>
-<h2 id="确保pip已经安装"><a href="#确保pip已经安装" class="headerlink" title="确保pip已经安装"></a>确保pip已经安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install python-pip</div><div class="line">for req in $(cat requirements.txt); do pip install $req; done  #python运行需要的库。</div></pre></td></tr></table></figure>
-<h2 id="再次回到caffe根目录我们可以执行："><a href="#再次回到caffe根目录我们可以执行：" class="headerlink" title="再次回到caffe根目录我们可以执行："></a>再次回到caffe根目录我们可以执行：</h2><p>在caffe根目录的python文件夹下，有一个requirements.txt的清单文件，上面列出了需要的依赖库，按照这个清单安装就可以了。<br>在安装scipy库的时候，需要fortran编译器（gfortran)，如果没有这个编译器就会报错，因此，我们可以先安装一下。</p>
-<p>回到caffe的根目录，然后执行安装代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd ~/caffe</div><div class="line">sudo apt-get install gfortran</div><div class="line">cd ./python</div><div class="line">for req in $(cat requirements.txt); do pip install $req; done</div></pre></td></tr></table></figure>
-<p>安装完成以后，再次回到caffe根目录我们可以执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo pip install -r python/requirements.txt</div></pre></td></tr></table></figure></p>
-<p>就会看到，安装成功的，都会显示Requirement already satisfied, 没有安装成功的，会继续安装。</p>
-<h2 id="编译python接口"><a href="#编译python接口" class="headerlink" title="编译python接口"></a>编译python接口</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make pycaffe -j8</div></pre></td></tr></table></figure>
-<h2 id="运行python"><a href="#运行python" class="headerlink" title="运行python"></a>运行python</h2><p>进入<code>caffe/python</code> ，运行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ python2<span class="number">.7</span></div><div class="line">Python <span class="number">2.7</span><span class="number">.12</span> (default, Jul  <span class="number">1</span> <span class="number">2016</span>, <span class="number">15</span>:<span class="number">12</span>:<span class="number">24</span>) </div><div class="line">[GCC <span class="number">5.4</span><span class="number">.0</span> <span class="number">20160609</span>] on linux2</div><div class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> caffe</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure></p>
-<h2 id="加入PythonPath"><a href="#加入PythonPath" class="headerlink" title="加入PythonPath"></a>加入PythonPath</h2><p><code>gedit ~/.bashrc</code><br>将<code>export PYTHONPATH=/home/wing/caffe/python:$PYTHONPATH</code>添加到文件最后。<br><code>source ~/.bashrc</code> 使更改生效。<br>这样，在其他地方打开python，也可以import caffe了。</p>
-<hr>
-<p>出现过一个问题：<br><strong>error ：No module named google.protobuf.internal</strong><br>解决方法是：<br><code>sudo chmod 777 -R  anaconda</code>（文件夹） 改变权限 然后<br><code>conda install protobuf</code><br>可以很方便的解决的问题</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;背景：手头只有一个win主机，虚拟机版本：Ubuntu14.04，目标是安装后CAFFE能作为PYTHON MODULE来使用，只使用CPU模式&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Win10 Anaconda中安装Tensorflow并配置到jupter kernel</title>
-    <link href="http://feiyang.li/2017/03/15/win10-conda-tensorflow/index.html"/>
-    <id>http://feiyang.li/2017/03/15/win10-conda-tensorflow/index.html</id>
-    <published>2017-03-15T05:22:44.000Z</published>
-    <updated>2017-03-16T02:57:34.710Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="安装Anaconda"><a href="#安装Anaconda" class="headerlink" title="安装Anaconda"></a>安装Anaconda</h1><p>下载：<a href="https://www.continuum.io/downloads" target="_blank" rel="external">https://www.continuum.io/downloads</a>   ，我用的是Python 3.5<br>下载完以后，安装。</p>
-<h2 id="输入清华的仓库镜像，更新包更快："><a href="#输入清华的仓库镜像，更新包更快：" class="headerlink" title="输入清华的仓库镜像，更新包更快："></a>输入清华的仓库镜像，更新包更快：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</div><div class="line">conda config --set show_channel_urls yes</div></pre></td></tr></table></figure>
-<p>推荐第一行命令输入两次，以便把这个镜像地址放在首位。</p>
-<h2 id="安装TensorFlow"><a href="#安装TensorFlow" class="headerlink" title="安装TensorFlow"></a>安装TensorFlow</h2><p>一般来说，我们推荐新建一个新的virtualenv，这样可以预防同一个环境中的包太多，相互发生冲突。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conda create -n tensorflow python=3.5</div></pre></td></tr></table></figure></p>
-<p>既然是建议，那么<strong>忽视上边这一句话，也是可以的。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">activate tensorflow</div></pre></td></tr></table></figure>
-<p>激活后，我选择安装的是CPU版本，输入：</p>
-<p><code>pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/windows/cpu/tensorflow-0.12.0-cp35-cp35m-win_amd64.whl</code></p>
-<p>安装失败的话多试几次</p>
-<h2 id="加入jupyter-notebook的ipykernel内核"><a href="#加入jupyter-notebook的ipykernel内核" class="headerlink" title="加入jupyter notebook的ipykernel内核"></a>加入jupyter notebook的ipykernel内核</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">source activate tensorflow# On Windows, remove the word &apos;source&apos;</div><div class="line">install ipykernel</div><div class="line">python -m ipykernel install --user --name tensorflow--display-name &quot;Python (myenv)&quot;</div></pre></td></tr></table></figure>
-<p>在激活状态下，安装<code>ipykernel</code>，后边那个展示名称，自己可以随便填。进入jupyter notebook ，运行一下测试文件，看是否可以使用。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170315/130833100.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>如果不行，输入<code>jupyter --paths</code><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170315/130930707.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<p>检查一下kernal是不是设置的有问题，比如我的就是<code>C:\Users\wing\AppData\Roaming\jupyter\kernels\tensorflow</code><br>一般来说是环境所在的地址有问题，修改一下就可以啦。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170315/131024268.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>通过这个方法，可以把自己手贱多加上去的kernel删掉。<strong>jupyter kernal 删除</strong><br>更多建议阅读<a href="http://ipython.readthedocs.io/en/stable/install/kernel_install.html" target="_blank" rel="external">官方文档</a></p>
-<p>我记得这个地方蛮复杂的，我当时往kernel里边加入R内核，费了大力气。当时还没写博客的习惯，现在又忘记怎么加的，真是日了狗。</p>
-<p><img src="http://cdn.mmmxcc.cn/blog/20170315/131835074.png" alt=""></p>
-<h1 id="测试："><a href="#测试：" class="headerlink" title="测试："></a>测试：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line">tf.__version__</div><div class="line">&gt;&gt;&gt;:<span class="string">'1.0.1'</span></div><div class="line">sess = tf.InteractiveSession()</div><div class="line">x = tf.Variable([<span class="number">1.0</span>, <span class="number">2.0</span>])</div><div class="line">a = tf.constant([<span class="number">3.0</span>, <span class="number">3.0</span>])</div><div class="line">x.initializer.run()<span class="comment"># 使用初始化器 initializer op 的 run() 方法初始化 ‘x‘ </span></div><div class="line">sub = tf.sub(x, a)<span class="comment"># 增加一个减法 sub op, 从 ‘x‘ 减去 ‘a‘. 运行减法 op, 输出结果 </span></div><div class="line">sub.eval()</div><div class="line">&gt;&gt;&gt;:array([<span class="number">-2.</span>, <span class="number">-1.</span>], dtype=float32)</div></pre></td></tr></table></figure>
-<p>我碰到了一个<code>module &#39;tensorflow&#39; has no attribute &#39;sub&#39;</code>，原因是tensorflow升级了之后，这个<code>sub</code>函数被改成了<code>subtract</code>，代码改成<code>sub = tf.subtract(x, a)</code>即可。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Windows环境下 Anaconda中安装Tensorflow，并且将Tensorflow配置到jupyter notebook中去。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="Jupyter" scheme="http://feiyang.li/tags/Jupyter/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《小萝莉的猴神大叔》</title>
-    <link href="http://feiyang.li/2017/03/11/indian-movie/index.html"/>
-    <id>http://feiyang.li/2017/03/11/indian-movie/index.html</id>
-    <published>2017-03-11T07:06:14.000Z</published>
-    <updated>2017-03-13T10:45:25.356Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>但行好事，莫问前程。真正能做到的能有几个呢？</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<div align="center"><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145041434.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="你是我心脏跳动的力量" title="">
-                </div>
-                <div class="image-caption">你是我心脏跳动的力量</div>
-            </figure><br></div>
-
-
-
-<p>没看过几部印度电影，算上三傻，这也仅仅是第二部而已。什么小萝莉的猴神大叔，印度电影命名水平还是一如既往的差。</p>
-<div align="center"><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145415244.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure><br></div>
-
-<p>刚开始看的时候呀，我一边哈哈哈一边和室友猜下边将发生啥，猜了好几次，竟然都猜对了。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145514334.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>后来不知道怎么了，就不想说话了，戴着耳机投入到猴神大叔的世界了。就算猜到了结尾，也丝毫不影响我看的时候哭的稀里哗啦的。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145548062.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>我其实不太懂印度巴基斯坦那边的渊源，也不太懂宗教信仰之类的，所以我觉得我应该错过了好多值得玩味的小细节。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/151454612.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>印度电影中的人物好像总是一言不合就唱歌跳舞，开心也跳，难过也跳，想跳就跳，一跳还跳很长时间，但我还挺喜欢看的。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/145814885.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="童话里的巴士" title="">
-                </div>
-                <div class="image-caption">童话里的巴士</div>
-            </figure>
-<p>国家和国家之间，宗教和宗教之间也许有很多矛盾，但是爱和信仰是相通的。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/150129990.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>善良朴实虔诚的猴神大叔因为对小女孩的一个承诺，毅然决然的走上了送小女孩回家的路。这一路，太凶险，却也不乏各种各样善良的人的帮助。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/150007185.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>小女孩从小无法说话，后来又和家人走丢，这本是一件不幸的事，却因为遇到了猴神大叔，遇到正义的摄影师，遇到善良的伊斯兰教父，还有很多很多充满善意的人，才如此幸运的回到妈妈身边。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/150040056.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>感觉这个世界上，像猴神大叔这样的好人还是太少了。</p>
-<p>因为爱，扛起对一个陌生小姑娘的全部责任，从一个平庸的别人眼中的失败者，到无所不能面对重重困难都充满力量的人。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170311/151638605.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p><strong>但行好事，莫问前程。真正能做到的能有几个呢？</strong></p>
-<hr>
-<p>主题歌是这样唱的：</p>
-<ul>
-<li>你是我的道路，你与我为伴</li>
-<li>我找寻着你，也找到了自己</li>
-<li>我是你的声音，而你是我的语言</li>
-<li>我们相遇之后，我感觉充满了力量</li>
-<li>我们相遇之后，我变得无所不能</li>
-<li>尽管终点困难重重，但前方的路不再迷茫</li>
-<li>我是你的小路，你是我的小棉袄</li>
-<li>找到你的足迹，我也找到了自己</li>
-<li>因为你是我心脏跳动的力量。</li>
-</ul>
-<hr>
-<p>最后一幕永远定格在我的内心深处，人至善、水至柔、景至美、情至真！再铁骨铮铮的汉子也会为之动容。</p>
-<p>记得有人说过，<strong>好人会受伤，会流泪，会不知所措，但好人永远是这个世界的魂</strong>，向好人致敬！</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=35778201&auto=1&height=66"></iframe>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;但行好事，莫问前程。真正能做到的能有几个呢？&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-    
-      <category term="臭臭" scheme="http://feiyang.li/tags/%E8%87%AD%E8%87%AD/"/>
-    
-      <category term="Movie" scheme="http://feiyang.li/tags/Movie/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>细究Python键盘输入</title>
-    <link href="http://feiyang.li/2017/03/10/python-input/index.html"/>
-    <id>http://feiyang.li/2017/03/10/python-input/index.html</id>
-    <published>2017-03-10T05:52:53.000Z</published>
-    <updated>2017-03-27T11:44:05.567Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>本文介绍了<code>raw_input</code> 和 <code>input</code>在<code>python2</code>和<code>python3</code>上的区别，以及如何利用正则表达式和<code>input</code>键盘输入一维数组和二维数组。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="raw-input-和-input"><a href="#raw-input-和-input" class="headerlink" title="raw_input 和 input"></a>raw_input 和 input</h1><h2 id="python2中"><a href="#python2中" class="headerlink" title="python2中"></a>python2中</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">raw_input_A = raw_input(<span class="string">"raw_input: "</span>)</div><div class="line">type(raw_input_A)</div></pre></td></tr></table></figure>
-<p>可以看到输出的是 <code>str</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">input_A = input(<span class="string">"Input: "</span>) <span class="comment">#不能输入字母</span></div><div class="line">type(raw_input_A)</div></pre></td></tr></table></figure>
-<p>可以看到输出的是 <code>int</code>，并且我们发现，input根本不能输入字母，会直接报<code>NameError: name &#39;abc&#39; is not defined</code>，提示没有定义。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170310/125930252.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="Python2报错" title="">
-                </div>
-                <div class="image-caption">Python2报错</div>
-            </figure></p>
-<p>查看 <a href="http://docs.python.org/library/functions.html?highlight=input#built-in-functions" target="_blank" rel="external">Built-in Functions</a> ，得知：<br><code>input([prompt])
-    Equivalent to eval(raw_input(prompt))</code></p>
-<p>input() 本质上还是使用 raw_input() 来实现的，只是调用完 raw_input() 之后再调用 eval() 函数，所以，你甚至可以将表达式作为 input() 的参数，并且它会计算表达式的值并返回它。<br>不过在 Built-in Functions 里有一句话是这样写的：Consider using the raw_input() function for general input from users.<br>除非对 input() 有特别需要，否则一般情况下我们都是推荐使用 raw_input() 来与用户交互。</p>
-<h2 id="python3中"><a href="#python3中" class="headerlink" title="python3中"></a>python3中</h2><p>因为刚才说的那个原因，input其实没有什么必要，所以就被改进了。</p>
-<p>简单来说，<code>raw_input</code>没有了，只剩下<code>input</code>。现在这个input就是之前那个<code>raw_input</code>。</p>
-<p>查看 <a href="https://docs.python.org/3/library/functions.html#input" target="_blank" rel="external">Python官方文档input([prompt])</a> ，得知：</p>
-<p><code>If the prompt argument is present, it is written to standard output without a trailing newline. The function then reads a line from input, converts it to a string (stripping a trailing newline), and returns that. When EOF is read, EOFError is raised.</code></p>
-<p>简单说，返回的内容都是str，括号里边的<code>prompt</code>写什么，就会当做提示内容输出。比如底下的那个 <code>--&gt;</code><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; s = input('--&gt; ')  </div><div class="line">--&gt; Monty Python's Flying Circus</div><div class="line">&gt;&gt;&gt; s  </div><div class="line">"Monty Python's Flying Circus"</div></pre></td></tr></table></figure></p>
-<p>因为我一般都是用python3，接下来的内容都是以3为准。</p>
-<hr>
-<h1 id="Python输入数组"><a href="#Python输入数组" class="headerlink" title="Python输入数组"></a>Python输入数组</h1><h2 id="一维数组"><a href="#一维数组" class="headerlink" title="一维数组"></a>一维数组</h2><ul>
-<li>使用<code>int()</code>进行强制类型转型</li>
-<li>当输入内容不为数字时，不能转型，发生<code>except</code>跳出循环。</li>
-<li>先声明<code>data</code>是一个list，将<code>input_A</code>一个个<code>+</code>进去。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">data = []</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        input_A = int(input(<span class="string">"Input: "</span>))</div><div class="line">        data +=[input_A]</div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">break</span></div><div class="line">data</div><div class="line">type(data)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170310/132018132.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="输入数组" title="">
-                </div>
-                <div class="image-caption">输入数组</div>
-            </figure>
-<p>在以上的基础上，我们可以用python输入二维数组</p>
-<h2 id="python输入二维数组"><a href="#python输入二维数组" class="headerlink" title="python输入二维数组"></a>python输入二维数组</h2><p>正则表达式会利用非数字的字符，进行切割，因此数字之间插入什么都无所谓。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> re</div><div class="line">data2D = []</div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    userInput = input(<span class="string">'Input:'</span>) <span class="comment"># 输入数组，用空格隔开即可</span></div><div class="line">    info = re.split(<span class="string">r'[\D]'</span>,userInput)<span class="comment">#正则表达式分割</span></div><div class="line">    data = []<span class="comment"># 定义一维数组</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">for</span> number <span class="keyword">in</span> info:</div><div class="line">            data+=[int(number)] <span class="comment"># 一维数组加入数字</span></div><div class="line">        data2D+=[data] <span class="comment">#一维数组加入到二维中去</span></div><div class="line">    <span class="keyword">except</span>:</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">data2D</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170310/135120083.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;本文介绍了&lt;code&gt;raw_input&lt;/code&gt; 和 &lt;code&gt;input&lt;/code&gt;在&lt;code&gt;python2&lt;/code&gt;和&lt;code&gt;python3&lt;/code&gt;上的区别，以及如何利用正则表达式和&lt;code&gt;input&lt;/code&gt;键盘输入一维数组和二维数组。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="Python_camp" scheme="http://feiyang.li/categories/Python-camp/"/>
-    
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="Python_camp" scheme="http://feiyang.li/tags/Python-camp/"/>
     
   </entry>
   

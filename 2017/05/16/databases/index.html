@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>数据库操作 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="databases">
+    <meta name="description" content="其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库操作">
+<meta property="og:url" content="http://feiyang.li/2017/05/16/databases/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。">
+<meta property="og:updated_time" content="2017-05-16T10:38:57.468Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库操作">
+<meta name="twitter:description" content="其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。">
+    
+        <link rel="alternate" type="application/atom+xml" title="李飞阳" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.6.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-cog"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/" target="_blank" >
+                <i class="icon icon-lg icon-rocket"></i>
+                肥羊SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">数据库操作</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">数据库操作</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-16T10:38:00.000Z" itemprop="datePublished" class="page-time">
+  2017-05-16
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-databases"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">数据库操作</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-16 18:38:00" datetime="2017-05-16T10:38:00.000Z"  itemprop="datePublished">2017-05-16</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<ul>
+<li><p>创建数据库：<code>create database books;</code></p>
+</li>
+<li><p>使用数据库：<code>use dbname;</code></p>
+</li>
+</ul>
+<ul>
+<li>新建数据库表<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">create table tablename(columns);</div><div class="line">create table demo(</div><div class="line">     userid int unsigned not null auto_increment primary key,</div><div class="line">     username char(50) not null,</div><div class="line">     password char(20) not null,</div><div class="line">     age int not null,</div><div class="line">     city char(20) not null     </div><div class="line">);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>显示数据库表：<code>show tables;</code></p>
+</li>
+<li><p>在数据库中插入数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INSERT INTO `jobcategory` VALUES(11,&quot;丸剂&quot;);</div><div class="line">INSERT INTO wan (JobCategoryID,JobCategoryName) SELECT ID,MingCheng FROM `zysjyj` WHERE MingCheng LIKE  &quot;%丸&quot;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查询数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT ID,MingCheng FROM `zysjyj` WHERE MingCheng LIKE  &quot;%丸&quot;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>更新数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UPDATE `zysjyj` SET ID=(1100000+ID) WHERE MingCheng LIKE &apos;%丸&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DELETE FROM `nzysys`.`jobintroduction`;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>表的删除：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP TABLE table;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>数据删除：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP DATABASE database;`</div></pre></td></tr></table></figure>
+</li>
+<li><p>通过<strong>SELECT</strong>来<strong>INSERT</strong>：<br>先创建新表，然后插入</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE wan(JobCategoryID INT(20) NOT NULL AUTO_INCREMENT,PRIMARY KEY (JobCategoryID),parentID INT(20) NOT NULL DEFAULT &apos;10&apos; ,JobCategoryName VARCHAR(128)  NOT NULL);  </div><div class="line"></div><div class="line">INSERT INTO wan (JobCategoryID,JobCategoryName) SELECT ID,MingCheng FROM `zysjyj` WHERE MingCheng LIKE  &quot;%丸&quot;;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>跨数据库插入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT `nzysys`.`subjobcategory` SELECT * FROM `chinese-drug`.`wan`;</div></pre></td></tr></table></figure>
+</li>
+<li><p>用<code>select</code>来<code>create</code>，并指定默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT INTO `nzysys`.`subjobcategory`(JobCategoryID,parentID,JobCategoryName)SELECT ID,10,MingCheng FROM `chinese-drug`.`zysjyj` WHERE MingCheng LIKE &quot;%散&quot;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>叠加使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">SELECT ID,MingCheng FROM `chinese-drug`.`zysjyj` WHERE MingCheng LIKE &quot;%散&quot;;</div><div class="line">UPDATE `chinese-drug`.`zysjyj` SET ID=(1000000+ID) WHERE MingCheng LIKE &quot;%散&quot;;</div><div class="line">INSERT INTO `nzysys`.`subjobcategory`(JobCategoryID,parentID,JobCategoryName)SELECT ID,10,MingCheng FROM `chinese-drug`.`zysjyj` WHERE MingCheng LIKE &quot;%散&quot;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>自增ID归零 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">TRUNCATE TABLE `nzysys`.`jobintroduction`;</div></pre></td></tr></table></figure>
+</li>
+<li><p>交叉</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT INTO `nzysys`.`jobintroduction` (jobCategoryID,introductionValue,introductionkey,introductionID) SELECT b.jobCategoryID,a.ChuFang,&apos;组成&apos;,1 FROM `nzysys`.`subjobcategory` AS b,`chinese-drug`.`zysjyj` AS a WHERE a.`ID`=b.`JobCategoryID`;</div></pre></td></tr></table></figure></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-16T10:38:57.468Z" itemprop="dateUpdated">2017-05-16 18:38:57</time>
+</span><br>
+
+
+        
+        可以转载，请注明出处：<a href="/2017/05/16/databases/" target="_blank" rel="external">http://feiyang.li/2017/05/16/databases/</a>
+        
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/databases/">databases</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/16/databases/&title=《数据库操作》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/16/databases/&title=《数据库操作》 — 李飞阳&source=
+其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/16/databases/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《数据库操作》 — 李飞阳&url=http://feiyang.li/2017/05/16/databases/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/16/databases/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/17/Coursera-ML-11-Programming-Exercise-5/index.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Coursera ML(11)-Programming Exercise 5 机器学习诊断法</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/15/free-vps/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">免费vps get!</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'http://feiyang.li/2017/05/16/databases/index.html',
+        sourceId: 'databases',
+        productKey: '9d56d2fd321c48c7a0b079b76f0795cf',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '/css/cloudTie/pc.css?v=1.6.7',
+            '/js/cloudTie/pc.min.js?v=1.6.7',
+        ],
+        mobileFiles: [
+            '/css/cloudTie/mobile.css?v=1.6.7',
+            '/js/cloudTie/mobile.min.js?v=1.6.7'
+        ]
+    };
+    </script>
+    <script src="/js/cloudTie/loader.min.js?v=1.6.7"></script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+    </main>
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="https://www.wishosting.com/" target="_blank">support by wishosting</a></span>
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/16/databases/&title=《数据库操作》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/16/databases/&title=《数据库操作》 — 李飞阳&source=
+其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/16/databases/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《数据库操作》 — 李飞阳&url=http://feiyang.li/2017/05/16/databases/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/16/databases/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxklEQVR42u3aS27DMAwFwNz/0um2QGH7kZQVBx2tiqaRRl0I/L1e8Xr/Wuefnv9lstuChYuLO+a+T9fRAX8PqxKP9r+4Ni4u7kbu0QEJ7vx6Rwef73/4e1xc3K/i5vEJLi7uf+AmlGrAhIuL+wRukvxUL5k/Xrfkari4uAPuqtBk8vMt9V1cXNwW911c1dZIXi6JTsfFxd3CzR+UKn1VMQUXF3c/t5qWzNsq1Xbs4f8VFxd3C3dZq6OYreTfwsXF/RQ3GZ5YleRUn0JcXNw93F4Qs6oBk18DFxf3U9ykzJEXPqp7FkonuLi4N3Pzw84foHmHNAp3cHFxt3DXTjXkF8uTpYvkBxcX9zZu/oVeglQNmC4eMlxc3O3c3rhV79nKA6NCToaLi7uI2xuMmA9elAezcHFxt3OryU9vnKJaNFmWq+Hi4o651SZKr4Taa7Tg4uLezZ2USquN0uQpHHVjcHFxF3Grj8vaAkeyT/MyuLi4Y26e6kxCn2pgVO754OLi3sBNwpS1LdVqeISLi/tkblI27ZVHo+AJFxf3kdz80YlGrIppEi4u7k5udWQzIU5KKs2eMC4u7iLupPHZK6ZUiyy4uLgbuT8UscNCopzgKwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.6.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.6.7" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

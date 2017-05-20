@@ -2,37 +2,93 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://feiyang.li/2017/05/09/ss-shell/index.html</loc>
+    <loc>http://feiyang.li/2017/05/20/django1/index.html</loc>
     
-    <lastmod>2017-05-11T07:12:01.646Z</lastmod>
+    <lastmod>2017-05-20T01:45:56.909Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/05/14/ss-mgr/index.html</loc>
+    
+    <lastmod>2017-05-20T01:23:52.118Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://feiyang.li/2017/05/05/ss-client/index.html</loc>
     
-    <lastmod>2017-05-11T06:49:49.888Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2016/10/19/SSR/index.html</loc>
-    
-    <lastmod>2017-05-11T06:03:55.745Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/05/05/ss-panel-full/index.html</loc>
-    
-    <lastmod>2017-05-11T06:03:50.409Z</lastmod>
+    <lastmod>2017-05-20T01:22:29.813Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://feiyang.li/2017/05/03/ss-panel/index.html</loc>
     
-    <lastmod>2017-05-11T05:59:40.802Z</lastmod>
+    <lastmod>2017-05-20T01:22:26.893Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/05/05/ss-panel-full/index.html</loc>
+    
+    <lastmod>2017-05-20T01:22:24.348Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2016/10/19/SSR/index.html</loc>
+    
+    <lastmod>2017-05-20T01:22:21.517Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/05/09/ss-shell/index.html</loc>
+    
+    <lastmod>2017-05-20T01:22:18.580Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/05/19/Machine-Learning-System-Design/index.html</loc>
+    
+    <lastmod>2017-05-19T10:54:26.531Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/05/18/coursera/index.html</loc>
+    
+    <lastmod>2017-05-18T02:17:37.001Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/index.html</loc>
+    
+    <lastmod>2017-05-17T06:22:10.492Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/05/16/databases/index.html</loc>
+    
+    <lastmod>2017-05-16T10:38:57.468Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/05/15/free-vps/index.html</loc>
+    
+    <lastmod>2017-05-15T12:13:29.549Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html</loc>
+    
+    <lastmod>2017-05-12T02:28:04.638Z</lastmod>
     
   </url>
   
@@ -306,13 +362,6 @@
     <loc>http://feiyang.li/2017/02/14/Coursera-ML/index.html</loc>
     
     <lastmod>2017-03-27T11:41:09.516Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/03/25/Coursera-ML-2-Model-and-Cost-Function/index.html</loc>
-    
-    <lastmod>2017-03-27T11:35:22.375Z</lastmod>
     
   </url>
   

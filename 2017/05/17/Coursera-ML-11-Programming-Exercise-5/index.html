@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Coursera ML(11)-Programming Exercise 5 机器学习诊断法 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="Machine Learning,读书笔记,Python">
+    <meta name="description" content="对应 机器学习诊断法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coursera ML(11)-Programming Exercise 5 机器学习诊断法">
+<meta property="og:url" content="http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="对应 机器学习诊断法">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170517/104444345.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170517/105630413.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170325/182301586.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170511/101154504.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170517/132450490.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170517/133552305.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170517/133621870.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170517/133630516.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170517/133642078.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-05-17T06:22:10.492Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coursera ML(11)-Programming Exercise 5 机器学习诊断法">
+<meta name="twitter:description" content="对应 机器学习诊断法">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170517/104444345.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternate" type="application/atom+xml" title="李飞阳" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.6.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-cog"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/" target="_blank" >
+                <i class="icon icon-lg icon-rocket"></i>
+                肥羊SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Coursera ML(11)-Programming Exercise 5 机器学习诊断法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Coursera ML(11)-Programming Exercise 5 机器学习诊断法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-17T05:37:09.000Z" itemprop="datePublished" class="page-time">
+  2017-05-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#复习内容"><span class="post-toc-number">1.</span> <span class="post-toc-text">复习内容</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Regularized-linear-regression-cost-function"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Regularized linear regression cost function</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Regularized-linear-regression-gradient"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Regularized linear regression gradient</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Learning-curves"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Learning curves</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Polynomial-regression"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Polynomial regression</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Programming-Exercise-5-Regularized-Linear-Regression-and-Bias-v-s-Variance"><span class="post-toc-number">2.</span> <span class="post-toc-text">Programming Exercise 5 - Regularized Linear Regression and Bias v.s. Variance</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Regularized-Linear-Regression"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Regularized Linear Regression</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Gradient"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">Gradient</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Comparison-coefficients-and-cost-obtained-with-LinearRegression-in-Scikit-learn"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">Comparison: coefficients and cost obtained with LinearRegression in Scikit-learn</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Polynomial-regression-Scikit-learn"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">Polynomial regression (Scikit-learn)</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Coursera-ML-11-Programming-Exercise-5"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Coursera ML(11)-Programming Exercise 5 机器学习诊断法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-17 13:37:09" datetime="2017-05-17T05:37:09.000Z"  itemprop="datePublished">2017-05-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>对应 <a href="http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/index.html">机器学习诊断法</a></p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="复习内容"><a href="#复习内容" class="headerlink" title="复习内容"></a>复习内容</h1><h2 id="Regularized-linear-regression-cost-function"><a href="#Regularized-linear-regression-cost-function" class="headerlink" title="Regularized linear regression cost function"></a>Regularized linear regression cost function</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/104444345.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>对应matlab代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">J = 1/(2*m)*sum((X*theta - y).^2) ;</div><div class="line">regularize =  lambda /(2*m)* (sum(theta.^2)-theta(1).^2);</div><div class="line">J = J + regularize;</div></pre></td></tr></table></figure></p>
+<h2 id="Regularized-linear-regression-gradient"><a href="#Regularized-linear-regression-gradient" class="headerlink" title="Regularized linear regression gradient"></a>Regularized linear regression gradient</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/105630413.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>如果对这里有疑惑，这个部分也有相应的推导过程：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170325/182301586.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>梯度对应代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">n = size(theta);</div><div class="line">for i=1:n</div><div class="line">    grad(i) = 1/m * sum((X*theta - y).*X(:,i)) + lambda/m *theta(i);</div><div class="line">end</div><div class="line">grad(1) = 1/m * sum((X*theta - y).^X(:,1));</div></pre></td></tr></table></figure></p>
+<h2 id="Learning-curves"><a href="#Learning-curves" class="headerlink" title="Learning curves"></a>Learning curves</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170511/101154504.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="Polynomial-regression"><a href="#Polynomial-regression" class="headerlink" title="Polynomial regression"></a>Polynomial regression</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/132450490.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="Programming-Exercise-5-Regularized-Linear-Regression-and-Bias-v-s-Variance"><a href="#Programming-Exercise-5-Regularized-Linear-Regression-and-Bias-v-s-Variance" class="headerlink" title="Programming Exercise 5 - Regularized Linear Regression and Bias v.s. Variance"></a>Programming Exercise 5 - Regularized Linear Regression and Bias v.s. Variance</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># %load ../../../standard_import.txt</span></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="keyword">from</span> scipy.io <span class="keyword">import</span> loadmat</div><div class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> minimize</div><div class="line"></div><div class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression, Ridge</div><div class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</div><div class="line"></div><div class="line">pd.set_option(<span class="string">'display.notebook_repr_html'</span>, <span class="keyword">False</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_columns'</span>, <span class="keyword">None</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_rows'</span>, <span class="number">150</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_seq_items'</span>, <span class="keyword">None</span>)</div><div class="line"> </div><div class="line"><span class="comment">#%config InlineBackend.figure_formats = &#123;'pdf',&#125;</span></div><div class="line">%matplotlib inline</div><div class="line"></div><div class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</div><div class="line">sns.set_context(<span class="string">'notebook'</span>)</div><div class="line">sns.set_style(<span class="string">'white'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">data = loadmat(<span class="string">'data/ex5data1.mat'</span>)</div><div class="line">data.keys()</div></pre></td></tr></table></figure>
+<pre><code>dict_keys([&apos;__header__&apos;, &apos;__version__&apos;, &apos;__globals__&apos;, &apos;X&apos;, &apos;y&apos;, &apos;Xtest&apos;, &apos;ytest&apos;, &apos;Xval&apos;, &apos;yval&apos;])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">y_train = data[<span class="string">'y'</span>]</div><div class="line">X_train = np.c_[np.ones_like(data[<span class="string">'X'</span>]), data[<span class="string">'X'</span>]]</div><div class="line"></div><div class="line">yval = data[<span class="string">'yval'</span>]</div><div class="line">Xval = np.c_[np.ones_like(data[<span class="string">'Xval'</span>]), data[<span class="string">'Xval'</span>]]</div><div class="line"></div><div class="line"></div><div class="line">print(<span class="string">'X_train:'</span>, X_train.shape)</div><div class="line">print(<span class="string">'y_train:'</span>, y_train.shape)</div><div class="line">print(<span class="string">'Xval:'</span>, Xval.shape)</div><div class="line">print(<span class="string">'yval:'</span>, yval.shape)</div></pre></td></tr></table></figure>
+<pre><code>X_train: (12, 2)
+y_train: (12, 1)
+Xval: (21, 2)
+yval: (21, 1)
+</code></pre><h2 id="Regularized-Linear-Regression"><a href="#Regularized-Linear-Regression" class="headerlink" title="Regularized Linear Regression"></a>Regularized Linear Regression</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">plt.scatter(X_train[:,<span class="number">1</span>], y_train, s=<span class="number">50</span>, c=<span class="string">'r'</span>, marker=<span class="string">'x'</span>, linewidths=<span class="number">1</span>)</div><div class="line">plt.xlabel(<span class="string">'Change in water level (x)'</span>)</div><div class="line">plt.ylabel(<span class="string">'Water flowing out of the dam (y)'</span>)</div><div class="line">plt.ylim(ymin=<span class="number">0</span>);</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/133552305.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>###Regularized Cost function</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">linearRegCostFunction</span><span class="params">(theta, X, y, reg)</span>:</span></div><div class="line">    m = y.size</div><div class="line">    </div><div class="line">    h = X.dot(theta)</div><div class="line">    </div><div class="line">    J = (<span class="number">1</span>/(<span class="number">2</span>*m))*np.sum(np.square(h-y)) + (reg/(<span class="number">2</span>*m))*np.sum(np.square(theta[<span class="number">1</span>:]))</div><div class="line">   </div><div class="line">    <span class="keyword">return</span>(J)</div></pre></td></tr></table></figure>
+<h3 id="Gradient"><a href="#Gradient" class="headerlink" title="Gradient"></a>Gradient</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">lrgradientReg</span><span class="params">(theta, X, y, reg)</span>:</span></div><div class="line">    m = y.size</div><div class="line">    </div><div class="line">    h = X.dot(theta.reshape(<span class="number">-1</span>,<span class="number">1</span>))</div><div class="line">        </div><div class="line">    grad = (<span class="number">1</span>/m)*(X.T.dot(h-y))+ (reg/m)*np.r_[[[<span class="number">0</span>]],theta[<span class="number">1</span>:].reshape(<span class="number">-1</span>,<span class="number">1</span>)]</div><div class="line">        </div><div class="line">    <span class="keyword">return</span>(grad.flatten())</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">initial_theta = np.ones((X_train.shape[<span class="number">1</span>],<span class="number">1</span>))</div><div class="line">cost = linearRegCostFunction(initial_theta, X_train, y_train, <span class="number">0</span>)</div><div class="line">gradient = lrgradientReg(initial_theta, X_train, y_train, <span class="number">0</span>)</div><div class="line">print(cost)</div><div class="line">print(gradient)</div></pre></td></tr></table></figure>
+<pre><code>303.951525554
+[ -15.30301567  598.16741084]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">trainLinearReg</span><span class="params">(X, y, reg)</span>:</span></div><div class="line">    <span class="comment">#initial_theta = np.zeros((X.shape[1],1))</span></div><div class="line">    initial_theta = np.array([[<span class="number">15</span>],[<span class="number">15</span>]])</div><div class="line">    <span class="comment"># For some reason the minimize() function does not converge when using</span></div><div class="line">    <span class="comment"># zeros as initial theta.</span></div><div class="line">        </div><div class="line">    res = minimize(linearRegCostFunction, initial_theta, args=(X,y,reg), method=<span class="keyword">None</span>, jac=lrgradientReg,</div><div class="line">                   options=&#123;<span class="string">'maxiter'</span>:<span class="number">5000</span>&#125;)</div><div class="line">    </div><div class="line">    <span class="keyword">return</span>(res)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">fit = trainLinearReg(X_train, y_train, <span class="number">0</span>)</div><div class="line">fit</div></pre></td></tr></table></figure>
+<pre><code>     fun: 1604.4002999186634
+hess_inv: array([[ 1.03142187,  0.00617881],
+      [ 0.00617881,  0.001215  ]])
+     jac: array([  3.42437190e-12,  -5.70371898e-10])
+ message: &apos;Optimization terminated successfully.&apos;
+    nfev: 6
+     nit: 4
+    njev: 6
+  status: 0
+ success: True
+       x: array([ 13.08790351,   0.36777923])
+</code></pre><h3 id="Comparison-coefficients-and-cost-obtained-with-LinearRegression-in-Scikit-learn"><a href="#Comparison-coefficients-and-cost-obtained-with-LinearRegression-in-Scikit-learn" class="headerlink" title="Comparison: coefficients and cost obtained with LinearRegression in Scikit-learn"></a>Comparison: coefficients and cost obtained with LinearRegression in Scikit-learn</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">regr = LinearRegression(fit_intercept=<span class="keyword">False</span>)</div><div class="line">regr.fit(X_train, y_train.ravel())</div><div class="line">print(regr.coef_)</div><div class="line">print(linearRegCostFunction(regr.coef_, X_train, y_train, <span class="number">0</span>))</div></pre></td></tr></table></figure>
+<pre><code>[ 13.08790351   0.36777923]
+1604.40029992
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">plt.plot(np.linspace(<span class="number">-50</span>,<span class="number">40</span>), (fit.x[<span class="number">0</span>]+ (fit.x[<span class="number">1</span>]*np.linspace(<span class="number">-50</span>,<span class="number">40</span>))), label=<span class="string">'Scipy optimize'</span>)</div><div class="line"><span class="comment">#plt.plot(np.linspace(-50,40), (regr.coef_[0]+ (regr.coef_[1]*np.linspace(-50,40))), label='Scikit-learn')</span></div><div class="line">plt.scatter(X_train[:,<span class="number">1</span>], y_train, s=<span class="number">50</span>, c=<span class="string">'r'</span>, marker=<span class="string">'x'</span>, linewidths=<span class="number">1</span>)</div><div class="line">plt.xlabel(<span class="string">'Change in water level (x)'</span>)</div><div class="line">plt.ylabel(<span class="string">'Water flowing out of the dam (y)'</span>)</div><div class="line">plt.ylim(ymin=<span class="number">-5</span>)</div><div class="line">plt.xlim(xmin=<span class="number">-50</span>)</div><div class="line">plt.legend(loc=<span class="number">4</span>);</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/133621870.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">learningCurve</span><span class="params">(X, y, Xval, yval, reg)</span>:</span></div><div class="line">    m = y.size</div><div class="line">    </div><div class="line">    error_train = np.zeros((m, <span class="number">1</span>))</div><div class="line">    error_val = np.zeros((m, <span class="number">1</span>))</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> np.arange(m):</div><div class="line">        res = trainLinearReg(X[:i+<span class="number">1</span>], y[:i+<span class="number">1</span>], reg)</div><div class="line">        error_train[i] = linearRegCostFunction(res.x, X[:i+<span class="number">1</span>], y[:i+<span class="number">1</span>], reg)</div><div class="line">        error_val[i] = linearRegCostFunction(res.x, Xval, yval, reg)</div><div class="line">    </div><div class="line">    <span class="keyword">return</span>(error_train, error_val)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">t_error, v_error = learningCurve(X_train, y_train, Xval, yval, <span class="number">0</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">plt.plot(np.arange(<span class="number">1</span>,<span class="number">13</span>), t_error, label=<span class="string">'Training error'</span>)</div><div class="line">plt.plot(np.arange(<span class="number">1</span>,<span class="number">13</span>), v_error, label=<span class="string">'Validation error'</span>)</div><div class="line">plt.title(<span class="string">'Learning curve for linear regression'</span>)</div><div class="line">plt.xlabel(<span class="string">'Number of training examples'</span>)</div><div class="line">plt.ylabel(<span class="string">'Error'</span>)</div><div class="line">plt.legend();</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/133630516.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="Polynomial-regression-Scikit-learn"><a href="#Polynomial-regression-Scikit-learn" class="headerlink" title="Polynomial regression (Scikit-learn)"></a>Polynomial regression (Scikit-learn)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">poly = PolynomialFeatures(degree=<span class="number">8</span>)</div><div class="line">X_train_poly = poly.fit_transform(X_train[:,<span class="number">1</span>].reshape(<span class="number">-1</span>,<span class="number">1</span>))</div><div class="line"></div><div class="line">regr2 = LinearRegression()</div><div class="line">regr2.fit(X_train_poly, y_train)</div><div class="line"></div><div class="line">regr3 = Ridge(alpha=<span class="number">20</span>)</div><div class="line">regr3.fit(X_train_poly, y_train)</div><div class="line"></div><div class="line"><span class="comment"># plot range for x</span></div><div class="line">plot_x = np.linspace(<span class="number">-60</span>,<span class="number">45</span>)</div><div class="line"><span class="comment"># using coefficients to calculate y</span></div><div class="line">plot_y = regr2.intercept_+ np.sum(regr2.coef_*poly.fit_transform(plot_x.reshape(<span class="number">-1</span>,<span class="number">1</span>)), axis=<span class="number">1</span>)</div><div class="line">plot_y2 = regr3.intercept_ + np.sum(regr3.coef_*poly.fit_transform(plot_x.reshape(<span class="number">-1</span>,<span class="number">1</span>)), axis=<span class="number">1</span>)</div><div class="line"></div><div class="line">plt.plot(plot_x, plot_y, label=<span class="string">'Scikit-learn LinearRegression'</span>)</div><div class="line">plt.plot(plot_x, plot_y2, label=<span class="string">'Scikit-learn Ridge (alpha=&#123;&#125;)'</span>.format(regr3.alpha))</div><div class="line">plt.scatter(X_train[:,<span class="number">1</span>], y_train, s=<span class="number">50</span>, c=<span class="string">'r'</span>, marker=<span class="string">'x'</span>, linewidths=<span class="number">1</span>)</div><div class="line">plt.xlabel(<span class="string">'Change in water level (x)'</span>)</div><div class="line">plt.ylabel(<span class="string">'Water flowing out of the dam (y)'</span>)</div><div class="line">plt.title(<span class="string">'Polynomial regression degree 8'</span>)</div><div class="line">plt.legend(loc=<span class="number">4</span>);</div></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170517/133642078.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-17T06:22:10.492Z" itemprop="dateUpdated">2017-05-17 14:22:10</time>
+</span><br>
+
+
+        
+        可以转载，请注明出处：<a href="/2017/05/17/Coursera-ML-11-Programming-Exercise-5/" target="_blank" rel="external">http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/</a>
+        
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/&title=《Coursera ML(11)-Programming Exercise 5 机器学习诊断法》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/&title=《Coursera ML(11)-Programming Exercise 5 机器学习诊断法》 — 李飞阳&source=
+对应 机器学习诊断法
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Coursera ML(11)-Programming Exercise 5 机器学习诊断法》 — 李飞阳&url=http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/18/coursera/index.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">coursera</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/16/databases/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">数据库操作</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/index.html',
+        sourceId: 'Coursera-ML-11-Programming-Exercise-5',
+        productKey: '9d56d2fd321c48c7a0b079b76f0795cf',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '/css/cloudTie/pc.css?v=1.6.7',
+            '/js/cloudTie/pc.min.js?v=1.6.7',
+        ],
+        mobileFiles: [
+            '/css/cloudTie/mobile.css?v=1.6.7',
+            '/js/cloudTie/mobile.min.js?v=1.6.7'
+        ]
+    };
+    </script>
+    <script src="/js/cloudTie/loader.min.js?v=1.6.7"></script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+    </main>
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="https://www.wishosting.com/" target="_blank">support by wishosting</a></span>
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/&title=《Coursera ML(11)-Programming Exercise 5 机器学习诊断法》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/&title=《Coursera ML(11)-Programming Exercise 5 机器学习诊断法》 — 李飞阳&source=
+对应 机器学习诊断法
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Coursera ML(11)-Programming Exercise 5 机器学习诊断法》 — 李飞阳&url=http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACu0lEQVR42u3awU7DQAwE0P7/T4PECQmlnbGzFKSXU1VCs69Iu2bsxyO+Pr6u76+v3vn5/vNPy5/1/LdWFx4eHt5o6VdXTpot+uqnyRcXrQEPDw/vGC9Z0NX9+Tv5oZKv54UFDw8P7628tkROiuD8Hjw8PLz/zkuK4CQZSNaAh4eH9zd5SRjRhq15ZNAW3EeyFjw8PLyYN2uAvff18f4eHh4e3qir3l55Y2zWSKvXg4eHh3eA1w45tW2qWStr9lVGWQseHh7eAV7edspj3FkcnHxxUQyBh4eHd4yXDwe097ex75HRATw8PLzDU0ltkT0bQZhFt+2QAR4eHt4JXh43PC+O20GENuzInxW1xPDw8PBGvE05u2/2z0avioEGPDw8vAO8tjCNWvXxcvNjKf+c4tzDw8PDG/Ha8aZHfCXlcotsm3B4eHh4J3h5xLCPG2afOQsj8PDw8M7xku0+YSQPawvi/P7LPwkeHh7eYV7+QbNBgdnxMGu84eHh4f0Orx5g2lTxs1ghbpLVWQseHh7egpdv3PeCN9QipcbDw8Nb8zZt++FmHQcfeZstegoeHh7eTbz9cMBsyCBvm23KfTw8PLxzvHZY6oYCt1xDu8LiPwY8PDy8Rfcqb1zlW39SNLdB7Q2HBB4eHt6xqaS88N0PZs1K7Rfv4OHh4R3g3dXEuitQmA0Z1JEKHh4e3oK32eLbMjovlzfNtqh+x8PDw1vwZi38zRDVLDLO14yHh4d3mvdRXrPCd9O4ag8VPDw8vNO8zbabLzdf0GYcYYXEw8PDK3ntYdAeJPlowiaGuMTj4eHhHeO18eu9EfA+knhxMODh4eG9lZdEErORgjaSSJ6Lh4eH915esqB8IGB2eBQwPDw8vMO8e5teebiQrKQtxFdZCx4eHl68f+bb8Wxz38S77bjDqr+Hh4eH94z3CSbDu2DZUlc3AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.6.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.6.7" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
