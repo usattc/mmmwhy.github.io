@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-05-20T11:36:51.524Z</updated>
+  <updated>2017-05-21T08:43:14.437Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -16,11 +16,111 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Django 笔记之三 Django 模板</title>
+    <link href="http://feiyang.li/2017/05/21/django3/index.html"/>
+    <id>http://feiyang.li/2017/05/21/django3/index.html</id>
+    <published>2017-05-21T08:31:52.000Z</published>
+    <updated>2017-05-21T08:43:14.437Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>在前面的几节中我们都是用简单的 django.http.HttpResponse 来把内容显示到网页上，本节将讲解如何使用渲染模板的方法来显示内容。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><p>网站模板的设计，一般的，我们做网站有一些通用的部分，比如 导航，底部，访问统计代码等等.<br>比如<strong>nav.html, bottom.html, tongji.html</strong></p>
+<p>可以写一个 base.html 来包含这些通用文件（include)<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#123;% block title %&#125;默认标题&#123;% endblock %&#125; - 自强学堂<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"> </div><div class="line">&#123;% include 'nav.html' %&#125;</div><div class="line"> </div><div class="line">&#123;% block content %&#125;</div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>这里是默认内容，所有继承自这个模板的，如果不覆盖就显示这里的默认内容。<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">&#123;% endblock %&#125;</div><div class="line"> </div><div class="line">&#123;% include 'bottom.html' %&#125;</div><div class="line"> </div><div class="line">&#123;% include 'tongji.html' %&#125;</div><div class="line"> </div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>如果需要，写足够多的 <strong>block</strong> 以便继承的模板可以重写该部分，<strong>include</strong> 是包含其它文件的内容，就是把一些网页共用的部分拿出来，重复利用，改动的时候也方便一些，还可以把广告代码放在一个单独的<strong>html</strong>中，改动也方便一些，在用到的地方<strong>include</strong>进去。其它的页面继承自<strong> base.html </strong>就好了，继承后的模板也可以在<strong> block</strong> 块中<strong> include </strong>其它的模板文件。</p>
+<p>比如我们的首页 <strong>home.html</strong>，继承或者说扩展(extends)原来的 <strong>base.html</strong>，可以简单这样写，重写部分代码（默认值的那一部分不用改）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;% extends &apos;base.html&apos; %&#125;</div><div class="line"> </div><div class="line">&#123;% block title %&#125;欢迎光临首页&#123;% endblock %&#125;</div><div class="line"> </div><div class="line">&#123;% block content %&#125;</div><div class="line">&#123;% include &apos;ad.html&apos; %&#125;</div><div class="line">这里是首页，欢迎光临</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<p>注意：模板一般放在app下的templates中，Django会自动去这个文件夹中找。但 假如我们每个app的templates中都有一个 index.html，当我们在views.py中使用的时候，直接写一个<strong> render(request, ‘index.html’)</strong>，Django 能不能找到当前 app 的 templates 文件夹中的 index.html 文件夹呢?（<strong>答案是不一定能，有可能找错</strong>）</p>
+<p>##Django 模板查找机制<br> Django 查找模板的过程是在每个 app 的 templates 文件夹中找（而不只是当前 app 中的代码只在当前的 app 的 templates 文件夹中找）。各个 app 的 templates 形成一个文件夹列表，Django 遍历这个列表，一个个文件夹进行查找，当在某一个文件夹找到的时候就停止，所有的都遍历完了还找不到指定的模板的时候就是 Template Not Found （过程类似于Python找包）。这样设计有利当然也有弊，有利是的地方是一个app可以用另一个app的模板文件，弊是有可能会找错了。所以我们使用的时候在 templates 中建立一个 app 同名的文件夹，这样就好了。</p>
+<p>这样，使用的时候，模板就是 “blog/index.html” 和 “mmmwhy/index.html” 这样有app作为名称的一部分，就不会混淆。</p>
+<h1 id="Django-模板进阶"><a href="#Django-模板进阶" class="headerlink" title="Django 模板进阶"></a>Django 模板进阶</h1><p>本节主要讲 Django模板中的循环，条件判断，常用的标签，过滤器的使用。</p>
+<h2 id="显示一个基本的字符串在网页上"><a href="#显示一个基本的字符串在网页上" class="headerlink" title="显示一个基本的字符串在网页上"></a>显示一个基本的字符串在网页上</h2><ul>
+<li>views.py<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></div><div class="line">    string = <span class="string">u"我是一个小胖子"</span></div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'home.html'</span>, &#123;<span class="string">'string'</span>: string&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在视图中我们传递了一个字符串名称是 string 到模板 home.html，在模板中这样使用它：</p>
+<ul>
+<li>home.html<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; string &#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170521/113457331.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="基本的-for-循环-和-List内容的显示"><a href="#基本的-for-循环-和-List内容的显示" class="headerlink" title="基本的 for 循环 和 List内容的显示"></a>基本的 for 循环 和 List内容的显示</h2><ul>
+<li><p>views.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></div><div class="line">    TutorialList = [<span class="string">"HTML"</span>, <span class="string">"CSS"</span>, <span class="string">"jQuery"</span>, <span class="string">"Python"</span>, <span class="string">"Django"</span>]</div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'home.html'</span>, &#123;<span class="string">'TutorialList'</span>: TutorialList&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>home.html</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% <span class="keyword">for</span> i <span class="keyword">in</span> TutorialList %&#125;</div><div class="line">&#123;&#123; i &#125;&#125;</div><div class="line">&#123;% endfor %&#125; <span class="comment">#for 循环要有一个结束标记</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="显示字典中内容："><a href="#显示字典中内容：" class="headerlink" title="显示字典中内容："></a>显示字典中内容：</h2><ul>
+<li><p>views.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></div><div class="line">    info_dict = &#123;<span class="string">'site'</span>: <span class="string">u'肥羊'</span>, <span class="string">'content'</span>: <span class="string">u'小姿势'</span>&#125;</div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'home.html'</span>, &#123;<span class="string">'info_dict'</span>: info_dict&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>home.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">站点：&#123;&#123; info_dict.site &#125;&#125; 内容：&#123;&#123; info_dict.content &#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>或者可以遍历字典内容：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% for key, value in info_dict.items %&#125;</div><div class="line">    &#123;&#123; key &#125;&#125;: &#123;&#123; value &#125;&#125;</div><div class="line">&#123;% endfor %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="在模板进行-条件判断和-for-循环的详细操作："><a href="#在模板进行-条件判断和-for-循环的详细操作：" class="headerlink" title="在模板进行 条件判断和 for 循环的详细操作："></a>在模板进行 条件判断和 for 循环的详细操作：</h2><ul>
+<li><p>views.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></div><div class="line">    List = map(str, range(<span class="number">100</span>))<span class="comment"># 一个长度为100的 List</span></div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'home.html'</span>, &#123;<span class="string">'List'</span>: List&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>home.html</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% <span class="keyword">for</span> item <span class="keyword">in</span> List %&#125;</div><div class="line">    &#123;&#123; item &#125;&#125;&#123;% <span class="keyword">if</span> <span class="keyword">not</span> forloop.last %&#125;,&#123;% endif %&#125;</div><div class="line">&#123;% endfor %&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170521/134312852.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="模板中-获取当前网址，当前用户等"><a href="#模板中-获取当前网址，当前用户等" class="headerlink" title="模板中 获取当前网址，当前用户等"></a>模板中 获取当前网址，当前用户等</h2><ul>
+<li><p>获取当前用户</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;% <span class="keyword">if</span> request.user.is_authenticated %&#125;</div><div class="line">    &#123;&#123; request.user.username &#125;&#125;，您好！</div><div class="line">&#123;% <span class="keyword">else</span> %&#125;</div><div class="line">    请登陆，这里放登陆链接</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>获取当前网址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; request.path &#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>获取当前 GET 参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; request.GET.urlencode &#125;&#125;</div></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;在前面的几节中我们都是用简单的 django.http.HttpResponse 来把内容显示到网页上，本节将讲解如何使用渲染模板的方法来显示内容。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Django" scheme="http://feiyang.li/categories/Django/"/>
+    
+    
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="Django" scheme="http://feiyang.li/tags/Django/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Django 笔记之二 视图与网址</title>
     <link href="http://feiyang.li/2017/05/20/django2/index.html"/>
     <id>http://feiyang.li/2017/05/20/django2/index.html</id>
     <published>2017-05-20T08:06:53.000Z</published>
-    <updated>2017-05-20T11:36:51.524Z</updated>
+    <updated>2017-05-21T08:37:04.336Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p><a href="http://feiyang.li/2017/05/20/django1/index.html">上节</a>已经提到新建app，这节稍微深入一些</p>
@@ -113,24 +213,24 @@
     <link href="http://feiyang.li/2017/05/20/django1/index.html"/>
     <id>http://feiyang.li/2017/05/20/django1/index.html</id>
     <published>2017-05-20T01:20:41.000Z</published>
-    <updated>2017-05-20T11:36:45.507Z</updated>
+    <updated>2017-05-21T08:32:12.067Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接在 终端中输入这些命令（不是 python 的 shell中）</p>
 <hr>
 <a id="more"></a>
 <p>如果是 windows 用 cmd（开始 搜索 cmd 或者 快捷键 win + R，输入 cmd) 直接在 cmd 上操作。</p>
-<h1 id="新建一个-django-project"><a href="#新建一个-django-project" class="headerlink" title="新建一个 django project"></a>新建一个 django project</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin.py startproject my_blog</div></pre></td></tr></table></figure>
+<h1 id="新建一个-django-project"><a href="#新建一个-django-project" class="headerlink" title="新建一个 django project"></a>新建一个 django project</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin startproject blog</div></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170520/085723517.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+                    <img src="http://upload-images.jianshu.io/upload_images/3326314-20ef9944c7e2688d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 " alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <p>特别是在 windows 上，如果报错，尝试用 django-admin 代替 django-admin.py 试试<br>注意 project_name 是自己的项目名称，需要为合法的 Python 包名，如不能为 1a 或 a-b。</p>
-<h1 id="新建-app"><a href="#新建-app" class="headerlink" title="新建 app"></a>新建 app</h1><p>要先进入项目目录下，cd project_name 然后执行下面的命令（下同，已经在项目目录下则不需要 cd project_name）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py startapp blog</div></pre></td></tr></table></figure></p>
-<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin.py startapp blog</div></pre></td></tr></table></figure></p>
+<h1 id="新建-app"><a href="#新建-app" class="headerlink" title="新建 app"></a>新建 app</h1><p>要先进入项目目录下，cd project_name 然后执行下面的命令（下同，已经在项目目录下则不需要 cd project_name）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py startapp my_blog</div></pre></td></tr></table></figure></p>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin  startapp my_blog</div></pre></td></tr></table></figure></p>
 <p>效果太概是这个样子的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── my_blog</div><div class="line">│   ├── admin.py</div><div class="line">│   ├── __init__.py</div><div class="line">│   ├── migrations</div><div class="line">│   │   └── __init__.py</div><div class="line">│   ├── models.py</div><div class="line">│   ├── tests.py</div><div class="line">│   └── views.py</div><div class="line">├── blog</div><div class="line">│   ├── __init__.py</div><div class="line">│   ├── __pycache__</div><div class="line">│   │   ├── __init__.cpython-34.pyc</div><div class="line">│   │   └── settings.cpython-34.pyc</div><div class="line">│   ├── settings.py</div><div class="line">│   ├── urls.py</div><div class="line">│   └── wsgi.py</div><div class="line">└── manage.py</div></pre></td></tr></table></figure></p>
 <p>一般一个项目有多个app, 当然通用的app也可以在多个项目中使用。</p>
 <p>与项目名类似 app name 也需要为合法的 Python 包名，如 blog，news, aboutus 等都是合法的 app 名称。</p>
@@ -175,7 +275,7 @@
     <published>2017-05-19T10:53:03.000Z</published>
     <updated>2017-05-19T10:54:26.531Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>机器学习系统设计</p>
 </blockquote>
 <hr>
@@ -223,7 +323,7 @@
     <published>2017-05-18T02:14:53.000Z</published>
     <updated>2017-05-18T02:17:37.001Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>关于coursera无法播放，原因其实很简单，就是视频所在服务器被GFW墙了。</p>
 </blockquote>
 <hr>
@@ -314,7 +414,7 @@
     <published>2017-05-17T05:37:09.000Z</published>
     <updated>2017-05-17T06:22:10.492Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>对应 <a href="http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/index.html">机器学习诊断法</a></p>
 </blockquote>
 <hr>
@@ -457,7 +557,7 @@ hess_inv: array([[ 1.03142187,  0.00617881],
     <published>2017-05-16T10:38:00.000Z</published>
     <updated>2017-05-16T10:38:57.468Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。</p>
 </blockquote>
 <hr>
@@ -539,7 +639,7 @@ hess_inv: array([[ 1.03142187,  0.00617881],
     <published>2017-05-15T12:13:05.000Z</published>
     <updated>2017-05-15T12:13:29.549Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>早就听说WisHosting 长期免费vps，码农买vps就像女人买衣服一样，虽然没什么用，但是会上瘾。</p>
 </blockquote>
 <hr>
@@ -596,7 +696,7 @@ hess_inv: array([[ 1.03142187,  0.00617881],
     <published>2017-05-14T03:58:57.000Z</published>
     <updated>2017-05-20T01:23:52.118Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>shadowsocks-manager是一个非常帅气的ss多用户管理程序，搭建起来稍微有点麻烦，因此写了本一键脚本。示例网站：<a href="http://gz.feiyang.li/" target="_blank" rel="external">http://gz.feiyang.li/</a></p>
 </blockquote>
 <hr>
@@ -730,7 +830,7 @@ hess_inv: array([[ 1.03142187,  0.00617881],
     <published>2017-05-11T04:28:16.000Z</published>
     <updated>2017-05-11T04:34:51.020Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>假设你在开发一个机器学习系统，或者在改进一个机器学习系统的性能，应如何做？</p>
 </blockquote>
 <hr>
@@ -894,7 +994,7 @@ $$\text{Test Error} = \dfrac{1}{m_{test}} \sum^{m_{test}}_{i=1} err(h_\Theta(x^{
     <published>2017-05-10T10:01:38.000Z</published>
     <updated>2017-05-11T01:21:35.719Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>对应反向传播算法内容</p>
 </blockquote>
 <hr>
@@ -958,7 +1058,7 @@ params : (10285,)
     <published>2017-05-09T13:58:57.000Z</published>
     <updated>2017-05-20T06:36:01.641Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此搭建了本ss-panel一键安装脚本</p>
 </blockquote>
 <hr>
@@ -1138,7 +1238,7 @@ params : (10285,)
     <published>2017-05-06T13:52:23.000Z</published>
     <updated>2017-05-10T11:56:05.596Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本节笔记对应第五周Coursera课程 <a href="https://www.coursera.org/learn/machine-learning/home/week/5" target="_blank" rel="external">Neural Networks: Learning</a></p>
 </blockquote>
 <hr>
@@ -1345,7 +1445,7 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     <published>2017-05-05T06:23:13.000Z</published>
     <updated>2017-05-20T01:22:29.813Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p> shadowsocks是目前fq速度最快的工具之一，可以转发udp。可以使用ipv6，对于很多高校学生来说，可以通过此方法节省流量费用。</p>
 </blockquote>
 <hr>
@@ -1433,7 +1533,7 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     <published>2017-05-05T06:09:39.000Z</published>
     <updated>2017-05-20T01:22:24.348Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>系统介绍： 1g内存，单核，也就是传说中的腾讯1元学生机。centos6.8 x32。</p>
 </blockquote>
 <hr>
@@ -1571,7 +1671,7 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     <published>2017-05-03T12:13:08.000Z</published>
     <updated>2017-05-20T02:54:31.807Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。</p>
 </blockquote>
 <hr>
@@ -1661,7 +1761,7 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     <published>2017-05-02T10:01:38.000Z</published>
     <updated>2017-05-02T10:04:58.026Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>machine-learning-ex3.zip <a href="http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex3.zip" target="_blank" rel="external">下载链接</a>，第四周的课程相对来说比较简单，大致介绍了神经网络相关内容。</p>
 </blockquote>
 <hr>
@@ -1757,7 +1857,7 @@ theta2: (10, 26)
     <published>2017-04-15T13:42:33.000Z</published>
     <updated>2017-04-15T13:47:22.229Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>神经网络模型</p>
 </blockquote>
 <hr>
@@ -1858,7 +1958,7 @@ theta2: (10, 26)
     <published>2017-03-30T04:46:00.000Z</published>
     <updated>2017-04-15T12:16:09.671Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p><a href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html">线性回归算法</a>，可用于房屋价格的估计及股票市场分析。 <a href="https://www.coursera.org/learn/machine-learning/programming/ixFof/logistic-regression" target="_blank" rel="external">Logistic Regression</a> （逻辑回归）是当前业界比较常用的机器学习方法，用于估计某种事物的可能性。比如某用户购买某商品的可能性，某病人患有某种疾病的可能性，以及某广告被用户点击的可能性等。相关公式推导在<a href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html">这里</a></p>
 </blockquote>
 <hr>
@@ -1964,7 +2064,7 @@ theta2: (10, 26)
     <published>2017-03-27T11:13:38.000Z</published>
     <updated>2017-03-28T07:49:36.625Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/3" target="_blank" rel="external">第三周Coursera课程</a>  <strong>binary classification problem</strong></p>
 </blockquote>
 <hr>
@@ -2103,103 +2203,6 @@ Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图�
     
       &lt;blockquote&gt;
 &lt;p&gt;本节笔记对应&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/home/week/3&quot;&gt;第三周Coursera课程&lt;/a&gt;  &lt;strong&gt;binary classification problem&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
-    
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
-      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Coursera ML(3)-Multivariate Linear Regression python实现</title>
-    <link href="http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html"/>
-    <id>http://feiyang.li/2017/03/26/Coursera-ML-3-Multivariate-Linear-Regression-python/index.html</id>
-    <published>2017-03-26T11:00:29.000Z</published>
-    <updated>2017-03-27T11:32:14.121Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
-<p>Multivariate Linear Regression and Programming Exercise 1</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="Gradient-Descent-for-Multiple-Variables"><a href="#Gradient-Descent-for-Multiple-Variables" class="headerlink" title="Gradient Descent for Multiple Variables"></a>Gradient Descent for Multiple Variables</h1><ul>
-<li>Suppose we have n variables, set hypothesis to be:</li>
-</ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170325/192353908.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<ul>
-<li><p>Cost Function</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170325/192415558.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-</li>
-<li><p>Gradient Descent  Algorithm</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170325/192709947.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>Get every feature into approximately [-1, 1]. Just normalize all the parameters :)</p>
-</li>
-<li><p>Learning Rate:Not too big(fail to converge), not too small(too slow)</p>
-</li>
-<li>Polynormal Regression:Use feature scalling. (Somewhat like normalizing dimension)</li>
-</ul>
-<h1 id="Programming-Exercise-1"><a href="#Programming-Exercise-1" class="headerlink" title="Programming Exercise 1"></a>Programming Exercise 1</h1><h2 id="下载程序及相关数据"><a href="#下载程序及相关数据" class="headerlink" title="下载程序及相关数据"></a>下载程序及相关数据</h2><p>Stanford coursera Andrew Ng 机器学习课程编程作业（Exercise 1），作业下载链接貌似被墙了，下载链接放这。<br><a href="http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex1.zip" target="_blank" rel="external">http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex1.zip</a></p>
-<h2 id="重新推导一下："><a href="#重新推导一下：" class="headerlink" title="重新推导一下："></a>重新推导一下：</h2><p>其实这里一共就两个式子：</p>
-<ul>
-<li><p>computeCost</p>
- 
-$$h_\theta (x) = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_3 + \cdots + \theta_n x_n$$
-$$J(\theta_0,\theta_1 )=\frac1{wm} \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^w$$
- 
-</li>
-<li><p>gradientDescent</p>
- 
- $$\begin{align*} \text{repeat until convergence: } \lbrace & \newline \theta_0 := & \theta_0 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m}(h_\theta(x_{i}) - y_{i}) \newline \theta_1 := & \theta_1 - \alpha \frac1m \sum\limits_{i=1}^m\left((h_\theta(x_i) - y_i) x_i\right) \newline \rbrace& \end{align*}$$
- 
-</li>
-</ul>
-<h2 id="python拟合实现代码"><a href="#python拟合实现代码" class="headerlink" title="python拟合实现代码"></a>python拟合实现代码</h2><p>原本用的是matlab代码，我用python实现了一下，结果是一样的：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">readfile</span><span class="params">(path)</span>:</span></div><div class="line">    X=[]</div><div class="line">    y=[]</div><div class="line">    <span class="keyword">with</span> open(path,<span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> f:</div><div class="line">            X.append([<span class="number">1</span>,float(line.split(<span class="string">','</span>)[<span class="number">0</span>])])</div><div class="line">            y.append(float(line.split(<span class="string">','</span>)[<span class="number">1</span>]))</div><div class="line">    <span class="keyword">return</span> X,y</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">dataplot</span><span class="params">(x,theta,y)</span>:</span></div><div class="line">    plt.plot(x, y, <span class="string">'rx'</span>, markersize=<span class="number">10</span>)</div><div class="line">    plt.ylabel(<span class="string">'Profit in $10,000s'</span>)</div><div class="line">    plt.xlabel(<span class="string">'Population of City in 10,000s'</span>)</div><div class="line">    plt.plot(X[:,<span class="number">1</span>],X*theta,<span class="string">'-'</span>)</div><div class="line">    plt.show()</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">computeCost</span><span class="params">(X,y,theta)</span>:</span></div><div class="line">    m = len(y)</div><div class="line">    J = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</div><div class="line">        J = J + float((X[i]*theta-y[i])**<span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> J/(<span class="number">2</span>*m)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(X, y, theta, alpha, num_iters)</span>:</span></div><div class="line">    m = len(y)</div><div class="line">    num_iters = <span class="number">1500</span></div><div class="line">    J_history = np.zeros(num_iters)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_iters):</div><div class="line">        S =X.T * (X * theta - np.mat(y).T) / m</div><div class="line">        theta = theta - alpha * S;</div><div class="line">        J_history[i] = computeCost(X,y,theta)</div><div class="line">    <span class="keyword">return</span> theta</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    theta = np.mat([[<span class="number">0</span>],[<span class="number">0</span>]])</div><div class="line">    iterations = <span class="number">1500</span></div><div class="line">    alpha = <span class="number">0.01</span></div><div class="line">    iterations = <span class="number">1500</span></div><div class="line">    path = <span class="string">"C:\Users\wing\Documents\MATLAB\ex1\ex1data1.txt"</span></div><div class="line">    </div><div class="line">    x,y = readfile(path)<span class="comment"># 小写的X不是矩阵，是list，大写的X是矩阵。</span></div><div class="line">    X = np.mat(x)</div><div class="line">    J = computeCost(X, y, theta)</div><div class="line">    theta = gradientDescent(X, y, theta, alpha, iterations)</div><div class="line">    dataplot(X[:,<span class="number">1</span>],theta,y)</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170326/171141428.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure> 
-<p>输出的图有点小，就这样吧。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Multivariate Linear Regression and Programming Exercise 1&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
     

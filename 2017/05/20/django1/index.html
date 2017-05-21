@@ -26,13 +26,13 @@
 <meta property="og:url" content="http://feiyang.li/2017/05/20/django1/index.html">
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接在 终端中输入这些命令（不是 python 的 shell中）">
-<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170520/085723517.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3326314-20ef9944c7e2688d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
-<meta property="og:updated_time" content="2017-05-20T11:36:45.507Z">
+<meta property="og:updated_time" content="2017-05-21T08:32:12.067Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django 笔记之一 基本命令">
 <meta name="twitter:description" content="本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接在 终端中输入这些命令（不是 python 的 shell中）">
-<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170520/085723517.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3326314-20ef9944c7e2688d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
     
         <link rel="alternate" type="application/atom+xml" title="李飞阳" href="/atom.xml">
@@ -195,18 +195,18 @@
 <hr>
 <a id="more"></a>
 <p>如果是 windows 用 cmd（开始 搜索 cmd 或者 快捷键 win + R，输入 cmd) 直接在 cmd 上操作。</p>
-<h1 id="新建一个-django-project"><a href="#新建一个-django-project" class="headerlink" title="新建一个 django project"></a>新建一个 django project</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin.py startproject my_blog</div></pre></td></tr></table></figure>
+<h1 id="新建一个-django-project"><a href="#新建一个-django-project" class="headerlink" title="新建一个 django project"></a>新建一个 django project</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin startproject blog</div></pre></td></tr></table></figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170520/085723517.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+                    <img src="http://upload-images.jianshu.io/upload_images/3326314-20ef9944c7e2688d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 " alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <p>特别是在 windows 上，如果报错，尝试用 django-admin 代替 django-admin.py 试试<br>注意 project_name 是自己的项目名称，需要为合法的 Python 包名，如不能为 1a 或 a-b。</p>
-<h1 id="新建-app"><a href="#新建-app" class="headerlink" title="新建 app"></a>新建 app</h1><p>要先进入项目目录下，cd project_name 然后执行下面的命令（下同，已经在项目目录下则不需要 cd project_name）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py startapp blog</div></pre></td></tr></table></figure></p>
-<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin.py startapp blog</div></pre></td></tr></table></figure></p>
+<h1 id="新建-app"><a href="#新建-app" class="headerlink" title="新建 app"></a>新建 app</h1><p>要先进入项目目录下，cd project_name 然后执行下面的命令（下同，已经在项目目录下则不需要 cd project_name）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py startapp my_blog</div></pre></td></tr></table></figure></p>
+<p>或<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">django-admin  startapp my_blog</div></pre></td></tr></table></figure></p>
 <p>效果太概是这个样子的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── my_blog</div><div class="line">│   ├── admin.py</div><div class="line">│   ├── __init__.py</div><div class="line">│   ├── migrations</div><div class="line">│   │   └── __init__.py</div><div class="line">│   ├── models.py</div><div class="line">│   ├── tests.py</div><div class="line">│   └── views.py</div><div class="line">├── blog</div><div class="line">│   ├── __init__.py</div><div class="line">│   ├── __pycache__</div><div class="line">│   │   ├── __init__.cpython-34.pyc</div><div class="line">│   │   └── settings.cpython-34.pyc</div><div class="line">│   ├── settings.py</div><div class="line">│   ├── urls.py</div><div class="line">│   └── wsgi.py</div><div class="line">└── manage.py</div></pre></td></tr></table></figure></p>
 <p>一般一个项目有多个app, 当然通用的app也可以在多个项目中使用。</p>
 <p>与项目名类似 app name 也需要为合法的 Python 包名，如 blog，news, aboutus 等都是合法的 app 名称。</p>
@@ -233,7 +233,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-05-20T11:36:45.507Z" itemprop="dateUpdated">2017-05-20 19:36:45</time>
+    最后更新时间：<time datetime="2017-05-21T08:32:12.067Z" itemprop="dateUpdated">2017-05-21 16:32:12</time>
 </span><br>
 
 

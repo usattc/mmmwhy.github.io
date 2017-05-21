@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Django 笔记之三 Django 模板 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="教程,Django">
+    <meta name="description" content="在前面的几节中我们都是用简单的 django.http.HttpResponse 来把内容显示到网页上，本节将讲解如何使用渲染模板的方法来显示内容。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django 笔记之三 Django 模板">
+<meta property="og:url" content="http://feiyang.li/2017/05/21/django3/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="在前面的几节中我们都是用简单的 django.http.HttpResponse 来把内容显示到网页上，本节将讲解如何使用渲染模板的方法来显示内容。">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170521/113457331.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170521/134312852.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-05-21T08:43:14.437Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django 笔记之三 Django 模板">
+<meta name="twitter:description" content="在前面的几节中我们都是用简单的 django.http.HttpResponse 来把内容显示到网页上，本节将讲解如何使用渲染模板的方法来显示内容。">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170521/113457331.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternate" type="application/atom+xml" title="李飞阳" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.6.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-cog"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/" target="_blank" >
+                <i class="icon icon-lg icon-rocket"></i>
+                肥羊SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Django 笔记之三 Django 模板</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Django 笔记之三 Django 模板</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-21T08:31:52.000Z" itemprop="datePublished" class="page-time">
+  2017-05-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Django/">Django</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#模板"><span class="post-toc-number">1.</span> <span class="post-toc-text">模板</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Django-模板进阶"><span class="post-toc-number">2.</span> <span class="post-toc-text">Django 模板进阶</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#显示一个基本的字符串在网页上"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">显示一个基本的字符串在网页上</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本的-for-循环-和-List内容的显示"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">基本的 for 循环 和 List内容的显示</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#显示字典中内容："><span class="post-toc-number">2.3.</span> <span class="post-toc-text">显示字典中内容：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在模板进行-条件判断和-for-循环的详细操作："><span class="post-toc-number">2.4.</span> <span class="post-toc-text">在模板进行 条件判断和 for 循环的详细操作：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模板中-获取当前网址，当前用户等"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">模板中 获取当前网址，当前用户等</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-django3"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Django 笔记之三 Django 模板</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-21 16:31:52" datetime="2017-05-21T08:31:52.000Z"  itemprop="datePublished">2017-05-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Django/">Django</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>在前面的几节中我们都是用简单的 django.http.HttpResponse 来把内容显示到网页上，本节将讲解如何使用渲染模板的方法来显示内容。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><p>网站模板的设计，一般的，我们做网站有一些通用的部分，比如 导航，底部，访问统计代码等等.<br>比如<strong>nav.html, bottom.html, tongji.html</strong></p>
+<p>可以写一个 base.html 来包含这些通用文件（include)<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#123;% block title %&#125;默认标题&#123;% endblock %&#125; - 自强学堂<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"> </div><div class="line">&#123;% include 'nav.html' %&#125;</div><div class="line"> </div><div class="line">&#123;% block content %&#125;</div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>这里是默认内容，所有继承自这个模板的，如果不覆盖就显示这里的默认内容。<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">&#123;% endblock %&#125;</div><div class="line"> </div><div class="line">&#123;% include 'bottom.html' %&#125;</div><div class="line"> </div><div class="line">&#123;% include 'tongji.html' %&#125;</div><div class="line"> </div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>如果需要，写足够多的 <strong>block</strong> 以便继承的模板可以重写该部分，<strong>include</strong> 是包含其它文件的内容，就是把一些网页共用的部分拿出来，重复利用，改动的时候也方便一些，还可以把广告代码放在一个单独的<strong>html</strong>中，改动也方便一些，在用到的地方<strong>include</strong>进去。其它的页面继承自<strong> base.html </strong>就好了，继承后的模板也可以在<strong> block</strong> 块中<strong> include </strong>其它的模板文件。</p>
+<p>比如我们的首页 <strong>home.html</strong>，继承或者说扩展(extends)原来的 <strong>base.html</strong>，可以简单这样写，重写部分代码（默认值的那一部分不用改）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;% extends &apos;base.html&apos; %&#125;</div><div class="line"> </div><div class="line">&#123;% block title %&#125;欢迎光临首页&#123;% endblock %&#125;</div><div class="line"> </div><div class="line">&#123;% block content %&#125;</div><div class="line">&#123;% include &apos;ad.html&apos; %&#125;</div><div class="line">这里是首页，欢迎光临</div><div class="line">&#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<p>注意：模板一般放在app下的templates中，Django会自动去这个文件夹中找。但 假如我们每个app的templates中都有一个 index.html，当我们在views.py中使用的时候，直接写一个<strong> render(request, ‘index.html’)</strong>，Django 能不能找到当前 app 的 templates 文件夹中的 index.html 文件夹呢?（<strong>答案是不一定能，有可能找错</strong>）</p>
+<p>##Django 模板查找机制<br> Django 查找模板的过程是在每个 app 的 templates 文件夹中找（而不只是当前 app 中的代码只在当前的 app 的 templates 文件夹中找）。各个 app 的 templates 形成一个文件夹列表，Django 遍历这个列表，一个个文件夹进行查找，当在某一个文件夹找到的时候就停止，所有的都遍历完了还找不到指定的模板的时候就是 Template Not Found （过程类似于Python找包）。这样设计有利当然也有弊，有利是的地方是一个app可以用另一个app的模板文件，弊是有可能会找错了。所以我们使用的时候在 templates 中建立一个 app 同名的文件夹，这样就好了。</p>
+<p>这样，使用的时候，模板就是 “blog/index.html” 和 “mmmwhy/index.html” 这样有app作为名称的一部分，就不会混淆。</p>
+<h1 id="Django-模板进阶"><a href="#Django-模板进阶" class="headerlink" title="Django 模板进阶"></a>Django 模板进阶</h1><p>本节主要讲 Django模板中的循环，条件判断，常用的标签，过滤器的使用。</p>
+<h2 id="显示一个基本的字符串在网页上"><a href="#显示一个基本的字符串在网页上" class="headerlink" title="显示一个基本的字符串在网页上"></a>显示一个基本的字符串在网页上</h2><ul>
+<li>views.py<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></div><div class="line">    string = <span class="string">u"我是一个小胖子"</span></div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'home.html'</span>, &#123;<span class="string">'string'</span>: string&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在视图中我们传递了一个字符串名称是 string 到模板 home.html，在模板中这样使用它：</p>
+<ul>
+<li>home.html<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; string &#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170521/113457331.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="基本的-for-循环-和-List内容的显示"><a href="#基本的-for-循环-和-List内容的显示" class="headerlink" title="基本的 for 循环 和 List内容的显示"></a>基本的 for 循环 和 List内容的显示</h2><ul>
+<li><p>views.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></div><div class="line">    TutorialList = [<span class="string">"HTML"</span>, <span class="string">"CSS"</span>, <span class="string">"jQuery"</span>, <span class="string">"Python"</span>, <span class="string">"Django"</span>]</div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'home.html'</span>, &#123;<span class="string">'TutorialList'</span>: TutorialList&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>home.html</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% <span class="keyword">for</span> i <span class="keyword">in</span> TutorialList %&#125;</div><div class="line">&#123;&#123; i &#125;&#125;</div><div class="line">&#123;% endfor %&#125; <span class="comment">#for 循环要有一个结束标记</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="显示字典中内容："><a href="#显示字典中内容：" class="headerlink" title="显示字典中内容："></a>显示字典中内容：</h2><ul>
+<li><p>views.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></div><div class="line">    info_dict = &#123;<span class="string">'site'</span>: <span class="string">u'肥羊'</span>, <span class="string">'content'</span>: <span class="string">u'小姿势'</span>&#125;</div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'home.html'</span>, &#123;<span class="string">'info_dict'</span>: info_dict&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>home.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">站点：&#123;&#123; info_dict.site &#125;&#125; 内容：&#123;&#123; info_dict.content &#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>或者可以遍历字典内容：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% for key, value in info_dict.items %&#125;</div><div class="line">    &#123;&#123; key &#125;&#125;: &#123;&#123; value &#125;&#125;</div><div class="line">&#123;% endfor %&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="在模板进行-条件判断和-for-循环的详细操作："><a href="#在模板进行-条件判断和-for-循环的详细操作：" class="headerlink" title="在模板进行 条件判断和 for 循环的详细操作："></a>在模板进行 条件判断和 for 循环的详细操作：</h2><ul>
+<li><p>views.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></div><div class="line">    List = map(str, range(<span class="number">100</span>))<span class="comment"># 一个长度为100的 List</span></div><div class="line">    <span class="keyword">return</span> render(request, <span class="string">'home.html'</span>, &#123;<span class="string">'List'</span>: List&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>home.html</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% <span class="keyword">for</span> item <span class="keyword">in</span> List %&#125;</div><div class="line">    &#123;&#123; item &#125;&#125;&#123;% <span class="keyword">if</span> <span class="keyword">not</span> forloop.last %&#125;,&#123;% endif %&#125;</div><div class="line">&#123;% endfor %&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170521/134312852.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="模板中-获取当前网址，当前用户等"><a href="#模板中-获取当前网址，当前用户等" class="headerlink" title="模板中 获取当前网址，当前用户等"></a>模板中 获取当前网址，当前用户等</h2><ul>
+<li><p>获取当前用户</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;% <span class="keyword">if</span> request.user.is_authenticated %&#125;</div><div class="line">    &#123;&#123; request.user.username &#125;&#125;，您好！</div><div class="line">&#123;% <span class="keyword">else</span> %&#125;</div><div class="line">    请登陆，这里放登陆链接</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>获取当前网址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; request.path &#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>获取当前 GET 参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; request.GET.urlencode &#125;&#125;</div></pre></td></tr></table></figure></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-21T08:43:14.437Z" itemprop="dateUpdated">2017-05-21 16:43:14</time>
+</span><br>
+
+
+        
+        可以转载，请注明出处：<a href="/2017/05/21/django3/" target="_blank" rel="external">http://feiyang.li/2017/05/21/django3/</a>
+        
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/21/django3/&title=《Django 笔记之三 Django 模板》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/21/django3/&title=《Django 笔记之三 Django 模板》 — 李飞阳&source=
+在前面的几节中我们都是用简单的 django.http.HttpResponse 来把内容显示到网页上，本节将讲解如何使用渲染模板的方法来显示内容。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/21/django3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Django 笔记之三 Django 模板》 — 李飞阳&url=http://feiyang.li/2017/05/21/django3/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/21/django3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/20/django2/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Django 笔记之二 视图与网址</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'http://feiyang.li/2017/05/21/django3/index.html',
+        sourceId: 'django3',
+        productKey: '9d56d2fd321c48c7a0b079b76f0795cf',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '/css/cloudTie/pc.css?v=1.6.7',
+            '/js/cloudTie/pc.min.js?v=1.6.7',
+        ],
+        mobileFiles: [
+            '/css/cloudTie/mobile.css?v=1.6.7',
+            '/js/cloudTie/mobile.min.js?v=1.6.7'
+        ]
+    };
+    </script>
+    <script src="/js/cloudTie/loader.min.js?v=1.6.7"></script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+    </main>
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="https://www.wishosting.com/" target="_blank">support by wishosting</a></span>
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/21/django3/&title=《Django 笔记之三 Django 模板》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/21/django3/&title=《Django 笔记之三 Django 模板》 — 李飞阳&source=
+在前面的几节中我们都是用简单的 django.http.HttpResponse 来把内容显示到网页上，本节将讲解如何使用渲染模板的方法来显示内容。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/21/django3/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Django 笔记之三 Django 模板》 — 李飞阳&url=http://feiyang.li/2017/05/21/django3/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/21/django3/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABwklEQVR42u3aQZKEIAwFUO9/aecAFs4PEXSmHiurm5ZHL1KQ5DjicV7G9dtk5nXOsWLg4uK2ueftGC0wek5WSTY53BIuLu5G7miBZM799vLwd2/AxcX9MjcJRvfhDBcX9/9xk5mdAxMuLu53uMkCeeJjLiA+fFfDxcVtcPMs5brnJfldXFzcKe5ZHEk5pJMY/WV1XFzcLdx+IaSaIukXYHBxcXdyq6FnRRIkulzh4uJu5ObF1GqipJryKBxxcHFxF3CfKqJ0QmFyPMLFxd3PTQ4leVH2fqtz28DFxX2Lm780CXZ5u0YhjOLi4m7k5heYQvKi0WAxDKm4uLivcvPGi7zImn8S3dVwcXGXcTtJkOQAlAfEfGO4uLh7uIXWh4fo0fLVtk5cXNxHudUXVZOeC/vIcHFxX+LmYSj5bV6snbz84OLiLuD2CypzR5nCKQwXF3cx9yyOuSWTS1E58YGLi7uMW11+7qqTB8rqG3BxcddxE0refpEHxLxZExcX9y1uNdBUy6X9hCwuLu7f4lYbJuZCJy4u7ve51RJItawy/AQXF3cjd+6ikqRIyqHq/s/CxcXdwp0rfHbasKqHJ1xc3I3cH45F4jHTBQxuAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.6.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.6.7" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
