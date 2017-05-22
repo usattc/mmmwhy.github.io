@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Coursera ML(12)-Machine Learning System Design | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="Machine Learning,读书笔记">
+    <meta name="description" content="机器学习系统设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coursera ML(12)-Machine Learning System Design">
+<meta property="og:url" content="http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="机器学习系统设计">
+<meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170519/112809620.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+<meta property="og:updated_time" content="2017-05-22T06:24:40.702Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coursera ML(12)-Machine Learning System Design">
+<meta name="twitter:description" content="机器学习系统设计">
+<meta name="twitter:image" content="http://cdn.mmmxcc.cn/blog/20170519/112809620.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+">
+    
+        <link rel="alternate" type="application/atom+xml" title="李飞阳" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.6.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-cog"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.feiyang.li/" target="_blank" >
+                <i class="icon icon-lg icon-rocket"></i>
+                肥羊SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Coursera ML(12)-Machine Learning System Design</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Coursera ML(12)-Machine Learning System Design</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-19T10:53:03.000Z" itemprop="datePublished" class="page-time">
+  2017-05-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#查准率-Precision-和查全率-Recall"><span class="post-toc-number">1.</span> <span class="post-toc-text">查准率(Precision)和查全率(Recall)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查准率"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">查准率</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查全率"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">查全率</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#F1值"><span class="post-toc-number">2.</span> <span class="post-toc-text">F1值</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Coursera-ML-12-Machine-Learning-System-Design"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Coursera ML(12)-Machine Learning System Design</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-19 18:53:03" datetime="2017-05-19T10:53:03.000Z"  itemprop="datePublished">2017-05-19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coursera-ML/">Coursera ML</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>机器学习系统设计</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="查准率-Precision-和查全率-Recall"><a href="#查准率-Precision-和查全率-Recall" class="headerlink" title="查准率(Precision)和查全率(Recall)"></a>查准率(Precision)和查全率(Recall)</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170519/112809620.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>分为四种情况：</p>
+<ul>
+<li>正确肯定（True Positive<strong>TP</strong>）：预测为真，实际为真。</li>
+<li>正确否定（True Negative <strong>TN</strong>）：预测为假，实际为假。</li>
+<li>错误肯定（False Positive<strong>FP</strong>）：预测为真，实际为假。</li>
+<li>错误否定（False Negative<strong>FN</strong>）：预测为假，实际为真。<h2 id="查准率"><a href="#查准率" class="headerlink" title="查准率"></a>查准率</h2>$$Precison=\dfrac{TP}{TP+FP}$$<br>在所有我们<strong>预测有恶性肿瘤的病人</strong>中，实际上有恶性肿瘤的病人百分比，越高越好。<h2 id="查全率"><a href="#查全率" class="headerlink" title="查全率"></a>查全率</h2>$$Recall=\dfrac{TP}{TP+FN}$$<br>在所有我们<strong>实际上有病的病人</strong>中，预测成功有恶性肿瘤的病人百分比，越高越好。</li>
+</ul>
+<h1 id="F1值"><a href="#F1值" class="headerlink" title="F1值"></a>F1值</h1><p>$$F_1=\dfrac{PR}{P+R}$$</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-22T06:24:40.702Z" itemprop="dateUpdated">2017-05-22 14:24:40</time>
+</span><br>
+
+
+        
+        可以转载，请注明出处：<a href="/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/" target="_blank" rel="external">http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/</a>
+        
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/&title=《Coursera ML(12)-Machine Learning System Design》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/&title=《Coursera ML(12)-Machine Learning System Design》 — 李飞阳&source=
+机器学习系统设计
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Coursera ML(12)-Machine Learning System Design》 — 李飞阳&url=http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/20/django1/index.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Django 笔记之一 基本命令</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/18/coursera/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">coursera</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/index.html',
+        sourceId: 'Coursera-ML-12-Machine-Learning-System-Design',
+        productKey: '9d56d2fd321c48c7a0b079b76f0795cf',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '/css/cloudTie/pc.css?v=1.6.7',
+            '/js/cloudTie/pc.min.js?v=1.6.7',
+        ],
+        mobileFiles: [
+            '/css/cloudTie/mobile.css?v=1.6.7',
+            '/js/cloudTie/mobile.min.js?v=1.6.7'
+        ]
+    };
+    </script>
+    <script src="/js/cloudTie/loader.min.js?v=1.6.7"></script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+    </main>
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+            <span><a href="https://www.wishosting.com/" target="_blank">support by wishosting</a></span>
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/&title=《Coursera ML(12)-Machine Learning System Design》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/&title=《Coursera ML(12)-Machine Learning System Design》 — 李飞阳&source=
+机器学习系统设计
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Coursera ML(12)-Machine Learning System Design》 — 李飞阳&url=http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3aMXLDMAwEwPz/08kDPHbuCMKjYlVlYlnkshDgI39+4uv35Xp3z+v9n+9899183AsXHh4e3njqr4/7PPXk73cjfmbk7LdLgIeHh7fGS170+ZDtaz1Z3Hzh8PDw8J7Jy1/6bcFo2248PDy8J/OSqSfUs0/x8PDwnsbLm9o80j0LHc6ecyFrwcPDw+vmE+0iPefvlf09PDw8vPGu+tlxgTbezcOOerZ4eHh4C7z50YEkeM2n3obCUSSBh4eHt8BLotskIMhf30njnh8sKJpvPDw8vEu8s02mdiptsZmEvHXXj4eHh3fEaycxX478aEIeLhf7e3h4eHhjXh405Fv4bXvdLh8eHh7e93l5lJA003mz3haSs6KFh4eH9x1e/tptG+LJp22DjoeHh7fHy1/KeYTabo/lz/yZX3h4eHiXeG2zO2+I22ME7TmI6HcDHh4e3hEvueksRJgXgGTcf56Dh4eHt8Br44CzCbUNcRJbtD8A8PDw8G7x8vi1HaB9clJI6kXBw8PDW+NNNu/nLXJCOjx2gIeHh7fAywOFW4HsWUEaHVrFw8PDW+BNfvaf/Sc/iDDZeMPDw8Pb5iXt8mRC7YZWUmCi+AMPDw9vjTeJADa2ryZHEC705nh4eHhlADEpDMl/JktThyN4eHh4y7w2Kp1siU3uLBYODw8Pb413q81ti8fl0Pb1W3h4eHhf4eXDnEW3SSucjBix8fDw8K7yfssrj3cn0UNelv4ZHQ8PD2+Bd/bCzQPfPOrNG/prJDw8PLwBLy8GZ9FDGxznh6uiueHh4eGt8fJwIb//7vLlBQwPDw/vybz8kFY+4lkRevstPDw8vAfw8hA2X5q8bNQbZnh4eHhrvLblzYdvJ5eXh6gg4eHh4S3w2h/5SUPcHhTI2W2hwsPDw7vK+wOOVkXyOfcTgwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.6.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.6.7" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

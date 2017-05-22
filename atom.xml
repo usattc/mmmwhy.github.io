@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-05-21T08:43:14.437Z</updated>
+  <updated>2017-05-22T12:32:31.116Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -14,6 +14,185 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Coursera ML(13)-SVM(Support Vector Machines)</title>
+    <link href="http://feiyang.li/2017/05/22/Coursera-ML-13/index.html"/>
+    <id>http://feiyang.li/2017/05/22/Coursera-ML-13/index.html</id>
+    <published>2017-05-22T12:25:02.000Z</published>
+    <updated>2017-05-22T12:32:31.116Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/7" target="_blank" rel="external">第七周课程</a>和西瓜书<strong>第六章 支持向量机</strong>，主要讲解了支持向量机。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="SVM介绍"><a href="#SVM介绍" class="headerlink" title="SVM介绍"></a>SVM介绍</h1><p>这一部分Coursera上的内容我<strong>并没有听懂</strong>，一头雾水。</p>
+<h2 id="数学上的定义"><a href="#数学上的定义" class="headerlink" title="数学上的定义"></a>数学上的定义</h2><h3 id="逻辑回归模型"><a href="#逻辑回归模型" class="headerlink" title="逻辑回归模型"></a>逻辑回归模型</h3><p>从最简单的逻辑回国模型说起<br> $$\begin{align*}& h_\theta (x) = g ( \theta^T x ) \newline \newline& z = \theta^T x \newline& g(z) = \dfrac{1}{1 + e^{-z}}\end{align*}$$<br>简单点，也就是<br>$$h_\theta (x) = \dfrac{1}{1 + e^{-\theta^T x}} $$<br>其图像为：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170522/142916098.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>我们期望的的是底下那两行，而实际给我们的这个sigmoid函数，好像并没有那么完美，这是我们进行少许的处理。</p>
+<h3 id="将模型进行抽象"><a href="#将模型进行抽象" class="headerlink" title="将模型进行抽象"></a>将模型进行抽象</h3><p>原本的 $h_\theta (x) = log  \dfrac{1}{1 + e^{-\theta^T x}}$ 或者 $h_\theta (x) = log(1-\dfrac{1}{1 + e^{-\theta^T x}})$ 的图像应该是底下的黑线。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170522/143132931.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>这里，我们定义一个新的新的符号<strong>cost</strong>，就是上边那个紫色的两条直线组成的东西。<br><strong>为什幺这么做</strong>，食屎啦，我怎么知道为什么这么做，先留着这个问题。</p>
+<p>改造一番之后，我们得到了<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170522/145216127.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>这个就是支持向量机的数学定义，去他妈的，什么鬼东西，干什么了嘛，SVM就被定义出来了。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170522/121959778.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h2 id="直观化的定义"><a href="#直观化的定义" class="headerlink" title="直观化的定义"></a>直观化的定义</h2><p>给定这样一个样本集$D={X_1,y_1},{X_2,y_2},{X_3,y_3}……{X_m,y_m},y_i \in(-1,+1)$<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170522/150009680.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>我们可以找到很多条直线分割这两个区域<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170522/151700413.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure><br>那么我们应该努力去找到哪一个呢？直观上看，那个正中间的黑线看起来很不错。</p>
+<p><strong>因为该划分超平面对训练样本的局部扰动容忍度最好。</strong></p>
+<ul>
+<li>划分超平面可以定义为如下线性方程组：<br>$$w^Tx+b=0$$<br>其中$w=(w_1;w_2…;w_d;)$为法向量，决定平面的方向，$b$是位移量。<br>将其标记为：$(w,b)$，样本中任一点到超平面$(w,b)$的距离可以表示为：<br>$$r=    \dfrac{|w^T+b|}{||w||}$$</li>
+<li>假定成功分类，那： $$ \left\{
+\begin{aligned}
+w^T+b \geq1,   y_i=+1\\
+w^T+b \leq-1,   y_i=-1
+\end{aligned}
+\right.
+$$ </li>
+<li><p>两个异类支持向量到超平面的距离之和(间隔)为：<br>$$\gamma= \dfrac 2{||w||}$$<br>那么如果我们可以找到最大的间隔，是不是就可以使这个分割线处于最中间的位置。</p>
+</li>
+<li><p>使距离最小化<br>我们换一个表达方式</p>
+</li>
+</ul>
+<p>$$\begin{aligned}<br>\min \limits_{w,b} \dfrac   12||w||^2 \<br>s.t. y_i(w^Tx+b)  \geq 1<br>\end{aligned}<br>$$<br>这就是支持向量机的基本型</p>
+<p>#万能的拉格朗日－对偶问题</p>
+<p>又有周boss的“简单”的数学推导了：这一次是和拉格朗日一起。基本SVM的优化目标本身是一个凸二次规划问题，可以利用优化计算包求解，但是据说拉格朗日有更高效的解法：<br>对上一节最后式子使用拉格朗日乘子法就可以得到它的对偶问题 （dual problem），对偶问题出现在线性规划中，每一个求极小的线性规划问题都有一个求极大的线性规划问题互称对偶问题，解决了一个就对应解决了其对偶问题。具体到这里，对式子的每条约束添加非负拉格朗日乘子$\alpha_i$，拉格朗日函数是<br> $$L(\boldsymbol{w},b,\boldsymbol{\alpha})=\frac{1}{2}\|\boldsymbol{w}\|^2+\sum_{i=1}^m{\alpha_i(1-y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b))}$$<br>对其去$\boldsymbol{w}$和$b$的偏导为0可得到对偶问题：<br> $$max_\boldsymbol{\alpha}\ \sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_j\boldsymbol{x}_i^T\boldsymbol{x}_j$$$$s.t.\ \sum_{i=1}^m{\alpha_iy_i}=0,\ \alpha_i\geq0,\ i=1,2,…,m$$<br>这又是一个二次规划问题，但通用解法规模正比于样本数，在大规模数据上开销很大，可以考虑其它高效算法如SMO (Sequential Minimal Optimization)。SMO的简单描述是其不断重复以下两个步骤直至收敛：</p>
+<p>选取一对需更新的变量$\alpha_i$和$\alpha_j$<br>固定$\alpha_i$和$\alpha_j$以外的参数，求解对偶问题更新后的$\alpha_i$和$\alpha_j$。</p>
+<p>SMO算法在一时间也不能得到完整的理解，希望能作为学习二次规划问题的一个复杂例子在之后研究。</p>
+<h1 id="核函数－核函数"><a href="#核函数－核函数" class="headerlink" title="核函数－核函数"></a>核函数－核函数</h1><h2 id="为什么要使用核函数"><a href="#为什么要使用核函数" class="headerlink" title="为什么要使用核函数"></a>为什么要使用核函数</h2><p>原始样本空间也许并不存在一个可以正确划分两类样本的超平面，一个比较好的解决办法，试讲当前原始空间映射到一个高维空间去。根据<strong>某些大佬的研究</strong>，如果原始样本空间是有限的，那么总可以找到一个高维特性空间使样本可分。</p>
+<p>其实这个问题在西瓜书上说的非常清楚，但是笔记却无法做，主要是相关的图我找不出来，好气哦。</p>
+<h2 id="详细介绍"><a href="#详细介绍" class="headerlink" title="详细介绍"></a>详细介绍</h2><p>取映射函数$\phi$，特征空间划分超平面模型表示为：<br>$$f(x)=\boldsymbol{w}^T\phi(x)+b$$<br>类似的有问题变为了：<br> $$min_{\boldsymbol{w},b} \frac{1}{2}\|\boldsymbol{w}\|^2$$$$s.t.\ y_i(\boldsymbol{w}^T\phi(\boldsymbol{x}_i)+b)\geq1,\ i=1,2,…,m$$<br>其对偶问题是：<br> $$max_\boldsymbol{\alpha}\ \sum_{i=1}^m\alpha_i-\frac{1}{2}\sum_{i=1}^m\sum_{j=1}^m\alpha_i\alpha_jy_iy_j\phi(\boldsymbol{x}_i^T)\phi(\boldsymbol{x}_j)$$$$s.t.\ \sum_{i=1}^m{\alpha_iy_i}=0,\ \alpha_i\geq0,\ i=1,2,…,m$$ </p>
+<p>这中间涉及了$\phi(\boldsymbol{x}_i^T)\phi(\boldsymbol{x}_j)$，是样本映射到高维空间后的内积，由于维数可能很高甚至无穷，其计算很困难。此时我们就需要找一个函数，使得：<br>$$\kappa(\boldsymbol{x_i},\boldsymbol{x_j})=\phi(\boldsymbol{x}_i^T)\phi(\boldsymbol{x}_j)$$<br>称作核函数 (kernal function)。<br>有定理表明：只要一个对称函数对应的核矩阵半正定，它就能作为核函数使用。几种常用的核函数有：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:center">表达式</th>
+<th style="text-align:left">参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>线性核</td>
+<td style="text-align:center">$\kappa(\boldsymbol{x}_i,\boldsymbol{x}_j)=\boldsymbol{x}_i^T\boldsymbol{x}_j$</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>多项式核</td>
+<td style="text-align:center">$\kappa(\boldsymbol{x}_i,\boldsymbol{x}_j)=(\boldsymbol{x}_i^T\boldsymbol{x}_j)^d$</td>
+<td style="text-align:left">$d \geq 1$为多项式的次数</td>
+</tr>
+<tr>
+<td>高斯核</td>
+<td style="text-align:center">$\kappa(\boldsymbol{x}_i,\boldsymbol{x}_j)=\exp(-\frac{∥\boldsymbol{x}_i-\boldsymbol{x}_j∥^2}{2\sigma^2})$</td>
+<td style="text-align:left">$\sigma \geq 0$为高斯核的带宽</td>
+</tr>
+<tr>
+<td>拉普拉斯核</td>
+<td style="text-align:center">$\kappa(\boldsymbol{x}_i,\boldsymbol{x}_j)=\exp(-\frac{∥\boldsymbol{x}_i-\boldsymbol{x}_j∥}{\sigma})$</td>
+<td style="text-align:left">$\sigma \geq 0$</td>
+</tr>
+<tr>
+<td>Sigmoid核</td>
+<td style="text-align:center">$\kappa(\boldsymbol{x}_i,\boldsymbol{x}_j)=\tanh(\beta\boldsymbol{x}_i^T\boldsymbol{x}_j+\theta)$</td>
+<td style="text-align:left">$\tanh$为双曲正切函数，$\beta&gt;0,\theta&lt;0$</td>
+</tr>
+</tbody>
+</table>
+<p>多个核函数的线性组合，两个核函数的直积均为核函数，以及若$\kappa_1$为核函数，对于任意函数$g(\boldsymbol{x})$有：$\kappa(\boldsymbol{x},\boldsymbol{z})=g(\boldsymbol{x})\kappa_1(\boldsymbol{x},\boldsymbol{z})g(\boldsymbol{z})$也是核函数<br>如何选择核函数将样本映射到真正显示其分布规律的高维空间非常重要。</p>
+<h1 id="软间隔与正则化"><a href="#软间隔与正则化" class="headerlink" title="软间隔与正则化"></a>软间隔与正则化</h1><p>实际上很多问题并不能简单地归结为线性可分线性不可分，一些问题的样本空间看来是线性可分的，但总有几个样本跑到了敌对阵营，就为此强行升高维度显然得不偿失。于是引入了软间隔 (soft margin)：允许有若干个样本被线性空间划分错误。此时的优化目标变为：<br> $$min_{\boldsymbol{w},b}\ \frac{1}{2}\|\boldsymbol{w}\|^2+C\sum_{i=1}^m\ell_{0/1}(y_i(\boldsymbol{w}^T\boldsymbol{x}_i+b)-1)$$<br>其中$C$是一个常数，可以理解问允许多少个样本被分错，而$\ell_{0/1}$是0/1损失函数，当样本被分错时，它的取值为1，否则为0。这个函数直观，简单，然而非凸，非连续，常用一些替代函数：</p>
+<p>hinge损失：$\ell<em>{hinge}(z)=\max(0,1,1-z)$<br>指数损失 (exponential loss)：$\ell</em>{exp}(z)=\exp(-z)$<br>对率损失 (logistic loss)：$\ell_{log}(z)=\log(1+\exp(-z))$</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170522/200058441.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="三种常见的替代损失函数对应图像为" title="">
+                </div>
+                <div class="image-caption">三种常见的替代损失函数对应图像为</div>
+            </figure>
+<ul>
+<li>红色为：hinge损失</li>
+<li>蓝色为：指数损失</li>
+<li>黑色为：对率损失<br>这个地方跟最开始的时候提到的图像好像，只不过Andrew直接就把结果说出来了，并没有解释为什么罢了。</li>
+</ul>
+<p>代入优化目标后同样可以找到它们的对偶问题进行求解。实际上此时的优化目标可以看作两部分：第一项描述划分超平面的间隔大小，第二项描述数据集上的误差。对于误差还有更一般的形式： $$min_{f}\ \Omega(f)+C\sum_{i=1}^m\ell(f(\boldsymbol{x}_i),y_i)$$ 其中$\Omega(f)$称为结构风险，后一项称为经验风险，$C$用于对二者进行折中。结构风险方便引入领域知识和用户意图：用户希望得到何种性质的模型，同时它也有助于削减假设空间。这个式子称为正则化 (regularization)。</p>
+<h1 id="回归问题－支持向量回归"><a href="#回归问题－支持向量回归" class="headerlink" title="回归问题－支持向量回归"></a>回归问题－支持向量回归</h1><p>普通的回归问题计算损失为函数预测值与真实值的差，而使用支持向量回归 (Support Vector Regression, SVR)，我们容忍$\epsilon$的误差，那就相当于在预测函数两端建立了一个宽为$2\epsilon$的隔离带，在此间隔带种的样本被默认为预测正确，而在此间隔带外的样本计算它的真实值与预测函数得到值的差作为损失，就此SVR问题可形式化为：<br> $$min_{\boldsymbol{w},b}\ \frac{1}{2}\|\boldsymbol{w}\|^2+C\sum_{i=1}^m\ell_{\epsilon}(f(\boldsymbol{x}_i)-y_i)$$ </p>
+<p>其中$C&gt;0$是一个常数,$l_{0/1}$是”0/1”损失函数<br> $$\begin{equation}l_{0/1}=\left\{\begin{array}{ll}
+1,\,\text{if}\quad z<0\\ 0,otherwise="" \end{array}\right.\end{equation}$$="" <="" p="">
+<p>常见的损失函数有hinge损失,指数损失,对率损失(见P130).</p>
+<p>采用hinge损失,引入”松弛变量”(slack variables),上式可重写为<br> $$\begin{equation}\begin{split}
+\min_{\mathbf w,b,\xi}&\frac{1}{2}\|\mathbf w\|^2+C\sum_{i=1}^m\xi_i\\
+\text{s.t.}&\,y_i(\mathbf{w^Tx_i}+b)\ge1-\xi_i\\
+&\xi_i\ge0,\,i=1,2,\cdots,m.
+\end{split}\end{equation}$$ </p>
+<p>对偶问题推导以及解稀疏性证明见P132.</p>
+<p>支持向量引申到回归问题上即可得到支持向量回归(Support Vector Regression, SVR).SVR假设我们能容忍$f(\mathbf x)$与$y$之间最多有$\epsilon$的偏差,即仅当$f(\mathbf x)$与$y$之间的差别绝对值大于$\epsilon$时才计算损失.SVR问题可化为<br> $$\begin{equation}\begin{split}
+\min_{\mathbf w,b}\frac{1}{2}\|\mathbf w\|^2+C\sum_{i=1}^ml_\epsilon(f(\mathbf x_i)-y_i)
+\end{split}\end{equation}$$ </p>
+<p>其中 $ C $为正则化常数,$l_\epsilon$为$\epsilon$-不敏感损失函数</p>
+ $$\begin{equation}l_\epsilon=\left\{\begin{array}{ll}
+0,\quad\text{if}|z|\le\epsilon\\
+|z|-\epsilon,otherwise
+\end{array}\right.\end{equation}$$ 
+<p>对偶问题推导以及KKT条件证明见P135-137.</p>
+<h1 id="核-nuclear-方法"><a href="#核-nuclear-方法" class="headerlink" title="核(nuclear)方法"></a>核(nuclear)方法</h1><p>给定训练样本,不考虑偏移项$b$,则无论SVM还是SVR,学得的模型总能表示成核函数$\kappa(\mathbf{x_i,x_j})$的线性组合.因此有更一般的”表示定理”(representer theorem).P137。</p>
+<p>由此人们发展了一系列基于核函数的学习方法，统称为核方法 (kernel methods)。最常见的就是引入核函数来将线性学习器拓展为非线性学习器，从而得到核线性判别分析 (Kernelized Linear Discriminant Analysis)。</p>
+</0\\></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本节笔记对应&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/home/week/7&quot;&gt;第七周课程&lt;/a&gt;和西瓜书&lt;strong&gt;第六章 支持向量机&lt;/strong&gt;，主要讲解了支持向量机。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
+    
+      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Django 笔记之三 Django 模板</title>
@@ -120,7 +299,7 @@
     <link href="http://feiyang.li/2017/05/20/django2/index.html"/>
     <id>http://feiyang.li/2017/05/20/django2/index.html</id>
     <published>2017-05-20T08:06:53.000Z</published>
-    <updated>2017-05-21T08:37:04.336Z</updated>
+    <updated>2017-05-21T08:37:15.595Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p><a href="http://feiyang.li/2017/05/20/django1/index.html">上节</a>已经提到新建app，这节稍微深入一些</p>
@@ -270,8 +449,8 @@
   
   <entry>
     <title>Coursera ML(12)-Machine Learning System Design</title>
-    <link href="http://feiyang.li/2017/05/19/Machine-Learning-System-Design/index.html"/>
-    <id>http://feiyang.li/2017/05/19/Machine-Learning-System-Design/index.html</id>
+    <link href="http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/index.html"/>
+    <id>http://feiyang.li/2017/05/19/Coursera-ML-12-Machine-Learning-System-Design/index.html</id>
     <published>2017-05-19T10:53:03.000Z</published>
     <updated>2017-05-22T06:24:40.702Z</updated>
     
@@ -542,11 +721,11 @@ hess_inv: array([[ 1.03142187,  0.00617881],
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1043,11 +1222,11 @@ params : (10285,)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1058,7 +1237,7 @@ params : (10285,)
     <published>2017-05-09T13:58:57.000Z</published>
     <updated>2017-05-22T02:58:42.962Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此写了本ss-panel一键安装脚本 。示例站点：<a href="https://ss.feiyang.li/" target="_blank" rel="external">https://ss.feiyang.li/</a></p>
 </blockquote>
 <hr>
@@ -1436,11 +1615,11 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1848,11 +2027,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -1949,11 +2128,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   
@@ -2055,173 +2234,11 @@ theta2: (10, 26)
       <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
     
     
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
     
       <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Coursera ML(4)-Logistic Regression</title>
-    <link href="http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html"/>
-    <id>http://feiyang.li/2017/03/27/Coursera-ML-4-Logistic-Regression/index.html</id>
-    <published>2017-03-27T11:13:38.000Z</published>
-    <updated>2017-03-28T07:49:36.625Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/3" target="_blank" rel="external">第三周Coursera课程</a>  <strong>binary classification problem</strong></p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<p><strong>Classification is not actually a linear function.</strong></p>
-<h1 id="Classification-and-Representation"><a href="#Classification-and-Representation" class="headerlink" title="Classification and Representation"></a>Classification and Representation</h1><h2 id="Hypothesis-Representation"><a href="#Hypothesis-Representation" class="headerlink" title="Hypothesis Representation"></a>Hypothesis Representation</h2><ul>
-<li>Sigmoid Function(or we called Logistic Function) $$\begin{align*}& h_\theta (x) = g ( \theta^T x ) \newline \newline& z = \theta^T x \newline& g(z) = \dfrac{1}{1 + e^{-z}}\end{align*}$$ 
-Sigmoid Function 可以使输出值范围在$(0,1)$之间。$g(z)$对应的图为：<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170327/112711489.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-</li>
-</ul>
-<ul>
-<li>$h_\theta(x)$ will give us the <strong>probability</strong> that our output is 1.</li>
-<li>Some basic knowledge of discrete $$\begin{align*}& h_\theta(x) = P(y=1 | x ; \theta) = 1 - P(y=0 | x ; \theta) \newline& P(y = 0 | x;\theta) + P(y = 1 | x ; \theta) = 1\end{align*}$$ 
-</li>
-</ul>
-<h2 id="Decision-Boundary"><a href="#Decision-Boundary" class="headerlink" title="Decision Boundary"></a>Decision Boundary</h2><ul>
-<li>translate the output of the hypothesis function as follows: $$\begin{align*}& h_\theta(x) \geq 0.5 \rightarrow y = 1 \newline& h_\theta(x) < 0.5 \rightarrow y = 0 \newline\end{align*}$$ </li>
-<li>From these statements we can now say: $$\begin{align*}& \theta^T x \geq 0 \Rightarrow y = 1 \newline& \theta^T x < 0 \Rightarrow y = 0 \newline\end{align*}$$ 
-</li>
-</ul>
-<h1 id="Logistic-Regression-Model"><a href="#Logistic-Regression-Model" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h1><h2 id="Cost-function-for-one-variable-hypothesis"><a href="#Cost-function-for-one-variable-hypothesis" class="headerlink" title="Cost function for one variable hypothesis"></a>Cost function for one variable hypothesis</h2><ul>
-<li>To let the cost function be convex for gradient descent, it should be like this: $$J(\theta) = \dfrac{1}{m} \sum_{i=1}^m \mathrm{Cost}(h_\theta(x^{(i)}),y^{(i)})$$ 
-</li>
-</ul>
- $$Cost(h_\theta (x), y) =\begin{cases}-log(h_\theta (x)),  (y = 1) \\-log(1 - h_\theta (x)), (y = 0) \\\end{cases}$$ 
-<ul>
-<li>example $$\begin{align*}& \mathrm{Cost}(h_\theta(x),y) = 0 \text{ if } h_\theta(x) = y \newline & \mathrm{Cost}(h_\theta(x),y) \rightarrow \infty \text{ if } y = 0 \; \mathrm{and} \; h_\theta(x) \rightarrow 1 \newline & \mathrm{Cost}(h_\theta(x),y) \rightarrow \infty \text{ if } y = 1 \; \mathrm{and} \; h_\theta(x) \rightarrow 0 \newline \end{align*}$$ 
-</li>
-</ul>
-<h2 id="Simplified-Cost-Function-and-Gradient-Descent"><a href="#Simplified-Cost-Function-and-Gradient-Descent" class="headerlink" title="Simplified Cost Function and Gradient Descent"></a>Simplified Cost Function and Gradient Descent</h2><ul>
-<li><p>compress our cost function’s two conditional cases into one case:</p>
- $$\mathrm{Cost}(h_\theta(x),y) = - y \; \log(h_\theta(x)) - (1 - y) \log(1 - h_\theta(x))$$ 
-</li>
-<li><p>entire cost function</p>
- $$J(\theta) = - \frac{1}{m} \displaystyle \sum_{i=1}^m [y^{(i)}\log (h_\theta (x^{(i)})) + (1 - y^{(i)})\log (1 - h_\theta(x^{(i)}))]$$ 
-</li>
-</ul>
-<h2 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h2><ul>
-<li><p>the general form of gradient descent ，求偏导的得到$J(\theta)$的极值</p>
- $$\begin{align*}& Repeat \; \lbrace \newline & \; \theta_j := \theta_j - \alpha \dfrac{\partial}{\partial \theta_j}J(\theta) \newline & \rbrace\end{align*}$$ 
-</li>
-<li><p>using calculus </p>
- $$\frac{\partial}{\partial \theta_j} J(\theta) = \frac{1}{m}\sum\limits_{i=1}^{m}[(h_\theta (x^{(i)}) - y^{(i)})x_j^{(i)}]$$ 
-</li>
-<li><p>get</p>
- $$\begin{align*} & Repeat \; \lbrace \newline & \; \theta_j := \theta_j - \frac{\alpha}{m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} \newline & \rbrace \end{align*}$$  
-</li>
-</ul>
-<h2 id="Multiclass-Classification-One-vs-all"><a href="#Multiclass-Classification-One-vs-all" class="headerlink" title="Multiclass Classification: One-vs-all"></a>Multiclass Classification: One-vs-all</h2><ul>
-<li>For more than 2 features of y, do logisitc regression for each feature separately</li>
-<li>Train a logistic regression classifier $h_\theta(x)$ for each class￼ to predict the probability that ￼ ￼y = i￼ ￼. </li>
-<li>To make a prediction on a new x, pick the class ￼that maximizes $ h_\theta (x) $<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170327/182954425.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-</li>
-</ul>
-<h1 id="Solving-the-Problem-of-Overfitting"><a href="#Solving-the-Problem-of-Overfitting" class="headerlink" title="Solving the Problem of Overfitting"></a>Solving the Problem of Overfitting</h1><h2 id="The-Problem-of-Overfitting"><a href="#The-Problem-of-Overfitting" class="headerlink" title="The Problem of Overfitting"></a>The Problem of Overfitting</h2><p><img src="http://cdn.mmmxcc.cn/blog/20170327/183239547.png" alt="mark"></p>
-<h2 id="address-the-issue-of-overfitting"><a href="#address-the-issue-of-overfitting" class="headerlink" title="address the issue of overfitting"></a>address the issue of overfitting</h2><ul>
-<li>Reduce the number of features:<ul>
-<li>Manually select which features to keep.</li>
-<li>Use a model selection algorithm (studied later in the course).</li>
-</ul>
-</li>
-<li>Regularization:<ul>
-<li>Keep all the features, but reduce the magnitude of parameters $θ_j$. </li>
-<li>Regularization works well when we have a lot of slightly useful features.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170327/184128038.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<ul>
-<li>in a single summation $$min_\theta\ \dfrac{1}{2m}\  \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2 + \lambda\ \sum_{j=1}^n \theta_j^2$$ 
-</li>
-</ul>
-<p>The λ, or lambda, is the regularization parameter. It determines how much the costs of our theta parameters are inflated.</p>
-<h2 id="Regularized-Linear-Regression"><a href="#Regularized-Linear-Regression" class="headerlink" title="Regularized Linear Regression"></a>Regularized Linear Regression</h2><ul>
-<li><p>Gradient Descent</p>
- $$\begin{align*} & \text{Repeat}\ \lbrace \newline & \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline & \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline & \rbrace \end{align*}$$ 
-</li>
-<li><p>Normal Equation</p>
- $$\begin{align*}& \theta = \left( X^TX + \lambda \cdot L \right)^{-1} X^Ty \newline& \text{where}\ \ L = \begin{bmatrix} 0 & & & & \newline & 1 & & & \newline & & 1 & & \newline & & & \ddots & \newline & & & & 1 \newline\end{bmatrix}\end{align*}$$ 
-<ul>
-<li>L is a matrix with 0 at the top left and 1’s down the diagonal, with 0’s everywhere else. It should have dimension (n+1)×(n+1)</li>
-<li>Recall that if m ≤ n, then $X^TX$ is non-invertible. However, when we add the term λ⋅L, then $X^TX + λ⋅L $becomes invertible.</li>
-</ul>
-</li>
-</ul>
-<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>我在这里整理一下上述两个方法，补全课程上的相关推导。</p>
-<h2 id="Logistic-Regression-Model-1"><a href="#Logistic-Regression-Model-1" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h2><h3 id="h-theta-x-是假设函数"><a href="#h-theta-x-是假设函数" class="headerlink" title="$h_\theta(x)$是假设函数"></a>$h_\theta(x)$是假设函数</h3> $$h_\theta (x) = g ( \theta^T x ) = \dfrac{1}{1 + e^{- \theta^T x}} $$ 
-<p>注意假设函数和真实数据之间的区别</p>
-<h3 id="Cost-Function-1"><a href="#Cost-Function-1" class="headerlink" title="Cost Function"></a>Cost Function</h3> $$J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))\large]$$ 
-<p>回头看看上边的那个$h_\theta (x)$ ，cost function定义了训练集给出的结果 和 当前计算结果之间的差距。当然，该差距越小越好，那么需要求导一下。</p>
-<h3 id="Gradient-Descent-1"><a href="#Gradient-Descent-1" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h3><ul>
-<li>原始公式 $$\theta_j := \theta_j - \alpha \dfrac{\partial}{\partial \theta_j}J(\theta)$$ </li>
-<li>求导计算 $$\frac{\partial}{\partial \theta_j} J(\theta) = \frac{1}{m}\sum\limits_{i=1}^{m}[(h_\theta (x^{(i)}) - y^{(i)})x_j^{(i)}]$$ </li>
-<li>计算结果 $$\theta_j := \theta_j - \frac{\alpha}{m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} $$ 
-</li>
-</ul>
-<p>这里推导一下$\frac{\partial}{\partial \theta_j} J(\theta)$：</p>
-<ul>
-<li><p>计算$h_\theta’(x)$导数</p>
- $$\begin{align*} &h_\theta'(x) = ( \frac1{1+e^{- \theta x}})'\newline &\ \ \ \ \ \ \ \  =   \frac{e^{- \theta x}x}{1+e^{- \theta x}}\newline &\ \ \ \ \ \ \ \  =   \frac{1+e^{- \theta x}-1}{(1+e^{- \theta x})^2}x\newline &\ \ \ \ \ \ \ \  =  \large[\frac{1}{1+e^{- \theta x}}-\frac{1}{(1+e^{- \theta x})^2}\large]x\newline &\ \ \ \ \ \ \ \  = h_\theta(x)(1-h_\theta(x))x  \end{align*}$$ 
-</li>
-<li><p>推导$\frac{\partial}{\partial \theta_j} J(\theta)$</p>
-</li>
-</ul>
- $$\begin{align*} &\frac{\partial}{\partial \theta_j} J(\theta) = \frac{\partial}{\partial \theta_j}   \frac{1}{m} \sum_{i=1}^m \large[ -y^{(i)}\ \log (h_\theta (x^{(i)})) - (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))\large] \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \  =   \frac{1}{m} \sum_{i=1}^m \large[ -y^{(i)}\ \frac1{h_\theta(x^{(i)})}h_\theta'(x^{(i)}) - (1 - y^{(i)}) \frac{-1}{1-h_\theta(x^{(i)})}h_\theta'(x^{(i)})\large] \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \  =   \frac{1}{m} \sum_{i=1}^m \large[ -y^{(i)}\ \frac1{h_\theta(x^{(i)})}h_\theta(x^{(i)})(1-h_\theta(x^{(i)}))x^{(i)}  \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ - (1 - y^{(i)}) \frac{-1}{1-h_\theta(x^{(i)})}h_\theta(x^{(i)})(1-h_\theta(x^{(i)}))x^{(i)}\large] \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \  =   \frac{1}{m} \sum_{i=1}^m \large[ -y^{(i)}(1-h_\theta(x^{(i)}) x^{(i)})+(1- y)h_\theta(x^{(i)}) x^{(i)})\large]  \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \  =   \frac{1}{m} \sum_{i=1}^m \large[ -x^{(i)}y^{(i)}+x^{(i)}y^{(i)}h_\theta(x^{(i)}) \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +x^{(i)}h_\theta(x^{(i)}) - x^{(i)}y^{(i)}h_\theta(x^{(i)}) \large] \newline &\ \ \ \ \ \ \ \ \ \ \ \ \ \  = \frac{1}{m}\sum\limits_{i=1}^{m}[(h_\theta (x^{(i)}) - y^{(i)})x_j^{(i)}] \end{align*}$$ 
-<p>即：<br> $$\begin{align*} &\frac{\partial}{\partial \theta_j} J(\theta) = \frac{1}{m}\sum\limits_{i=1}^{m}[(h_\theta (x^{(i)}) - y^{(i)})x_j^{(i)}] \end{align*}$$ </p>
-<h2 id="Solving-the-Problem-of-Overfitting-1"><a href="#Solving-the-Problem-of-Overfitting-1" class="headerlink" title="Solving the Problem of Overfitting"></a>Solving the Problem of Overfitting</h2><p>其他地方都一样，稍作修改</p>
-<h3 id="Cost-Function-2"><a href="#Cost-Function-2" class="headerlink" title="Cost Function"></a>Cost Function</h3> $$J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))\large] + \frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2$$ 
-<h3 id="Gradient-Descent-2"><a href="#Gradient-Descent-2" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h3> $$\begin{align*} & \text{Repeat}\ \lbrace \newline & \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline & \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline & \rbrace \end{align*}$$ 
-<hr>
-<p>以上</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;本节笔记对应&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/home/week/3&quot;&gt;第三周Coursera课程&lt;/a&gt;  &lt;strong&gt;binary classification problem&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
-    
-    
       <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
-      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
