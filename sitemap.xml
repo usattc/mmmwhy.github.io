@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/link.html</loc>
+    
+    <lastmod>2017-05-23T04:45:19.188Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/03/24/dynamic-programming/index.html</loc>
+    
+    <lastmod>2017-05-23T04:43:54.931Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2017/05/22/Coursera-ML-13/index.html</loc>
     
     <lastmod>2017-05-22T12:32:31.116Z</lastmod>
@@ -422,13 +436,6 @@
   </url>
   
   <url>
-    <loc>http://feiyang.li/2017/03/24/dynamic-programming/index.html</loc>
-    
-    <lastmod>2017-03-24T09:26:24.294Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://feiyang.li/404.html</loc>
     
     <lastmod>2017-03-23T11:32:53.747Z</lastmod>
@@ -446,13 +453,6 @@
     <loc>http://feiyang.li/2017/03/11/indian-movie/index.html</loc>
     
     <lastmod>2017-03-13T10:45:25.356Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/link.html</loc>
-    
-    <lastmod>2017-03-13T08:55:05.648Z</lastmod>
     
   </url>
   

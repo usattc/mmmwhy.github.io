@@ -38,7 +38,7 @@
 ">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170324/171007882.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
-<meta property="og:updated_time" content="2017-03-24T09:26:24.294Z">
+<meta property="og:updated_time" content="2017-05-23T04:43:54.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法导论 第15章 动态规划">
 <meta name="twitter:description" content="《算法导论》这门课的老师是黄刘生和张曙，两位都是老人家了，代课很慢很没有激情，不过这一章非常有意思。">
@@ -105,7 +105,7 @@
             <li class="waves-block waves-effect">
               <a href="/link.html"  >
                 <i class="icon icon-lg icon-link"></i>
-                链接
+                膜拜大佬
               </a>
             </li>
         
@@ -297,10 +297,10 @@
 <p>如果A（10,100 ），B（100,5）， C（5,50 ）三个矩阵相乘。</p>
 <p>如果按照((AB)C)的顺序，则需要10<em>100</em>5  + 10<em>5</em>50  = 7500次乘法运算，如果按照(A(BC))的顺序，则需要100<em>5</em>50  + 10<em>100</em>50  = 75000次乘法运算。所以，不同的加括号方案，对于矩阵链乘法的代价影响很大。</p>
 <h2 id="刻画最优解的结构特征"><a href="#刻画最优解的结构特征" class="headerlink" title="刻画最优解的结构特征"></a>刻画最优解的结构特征</h2><p>通过寻找最优子结构，利用最优子结构从子问题的最优解中构造出原问题的最优解。<br>假设$A<em>iA</em>{i+1}…A_j$的最优括号花方案的分割点是在$A<em>k$和$A</em>{K+1}$之间，一个非平凡的矩阵链乘法任何时候都是需要划分链的，<strong>任何最优解都是有子问题的最优解构成的</strong>。</p>
-<h2 id="递归的定义最优解的值"><a href="#递归的定义最优解的值" class="headerlink" title="递归的定义最优解的值"></a>递归的定义最优解的值</h2><p>令 $m[i,j]$ 表示计算矩阵 $A<em>{i,j}$ 所需标量乘法的最小值，也即原问题的最优解，计算 $A</em>{1..n}$ 的最低代价就是 $m[1,n]$。</p>
+<h2 id="递归的定义最优解的值"><a href="#递归的定义最优解的值" class="headerlink" title="递归的定义最优解的值"></a>递归的定义最优解的值</h2> 令 $m[i,j] $表示计算矩阵  $A_{i,j} $所需标量乘法的最小值，也即原问题的最优解，计算$ A_{1..n} $的最低代价就是 $m[1,n]$ 
 <ul>
-<li>对于i == j 的平凡问题，矩阵链只包含唯一的矩阵$A_{i,j}$。</li>
-<li>对于$A<em>iA</em>{i+1}…A_j$的最优括号化方案的切割点在$A<em>k$和$A</em>{k+1}$之间。那么$m[i,j]$的解相当于计算$A<em>{i..k}$和$A</em>{k+1..j}$的代价加上，合并这两个子答案所需要的代价$p_{i-1}p_k p_j$</li>
+<li> 对于i == j 的平凡问题，矩阵链只包含唯一的矩阵$A_{i,j}$。 </li>
+<li>对于  $A_i A_{i+1}...A_j$ 的最优括号化方案的切割点在 $A_k$和$A_{k+1}$之间。那么$m[i,j]$的解相当于计算$A_{i..k}$和$A_{k+1..j}$的代价加上，合并这两个子答案所需要的代价$p_{i-1}p_k p_j$ </li>
 </ul>
 <p>因此，我们得到</p>
 <p>$$m[i,j] = m[i,k]+m[k,j]+p_{i-1}p_k p_j$$</p>
@@ -325,7 +325,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-03-24T09:26:24.294Z" itemprop="dateUpdated">2017-03-24 17:26:24</time>
+    最后更新时间：<time datetime="2017-05-23T04:43:54.931Z" itemprop="dateUpdated">2017-05-23 12:43:54</time>
 </span><br>
 
 
