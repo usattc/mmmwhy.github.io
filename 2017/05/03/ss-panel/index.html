@@ -32,7 +32,7 @@
 ">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170503/201724918.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
-<meta property="og:updated_time" content="2017-05-26T00:21:40.318Z">
+<meta property="og:updated_time" content="2017-05-26T00:45:03.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="可能是最简单的ss-panel安装教程">
 <meta name="twitter:description" content="因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。">
@@ -249,7 +249,7 @@
 <p><code>netstat -anp | grep 你的端口</code></p>
 <p>正常的话，应该是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Active Internet connections (servers and established)  </div><div class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name  </div><div class="line">tcp        0      0 0.0.0.0:62111            0.0.0.0:*               LISTEN      32083/python  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47177   TIME_WAIT   -  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47161   TIME_WAIT   -  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47160   TIME_WAIT   -  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47157   TIME_WAIT   -</div></pre></td></tr></table></figure></p>
 <p>所以如果你要开放注册，就要这样配置你的 iptables：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 注意是半角冒号，意为允许 12450 及以上的端口</div><div class="line"># 也可以指定 1024:65535 这样的范围</div><div class="line">iptables -I INPUT -p tcp -m tcp --dport 1024: -j ACCEPT</div><div class="line">iptables-save</div></pre></td></tr></table></figure></p>
-<h2 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h2><p>一劳永逸解决问题，对于CentOS 7:<br>···<br>systemctl start firewalld.service#启动firewall<br>systemctl stop firewalld.service#停止firewall<br>systemctl disable firewalld.service#禁止firewall开机启动<br>···</p>
+<h2 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h2><p>一劳永逸解决问题，对于CentOS 7:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl start firewalld.service#启动firewall</div><div class="line">systemctl stop firewalld.service#停止firewall</div><div class="line">systemctl disable firewalld.service#禁止firewall开机启动</div></pre></td></tr></table></figure></p>
 <h2 id="ss-panel-的多节点配置"><a href="#ss-panel-的多节点配置" class="headerlink" title="ss-panel 的多节点配置"></a>ss-panel 的多节点配置</h2><p>其实多节点也没咋玄乎，说白了就是多个后端共用一个前端而已。而且我们的后端是使用 Mu API 来与前端进行交互的，所以多节点的配置就更简单了：只要把所有后端的 config.py 中的 API_URL 和 API_PASS 都改成一样即可（记得 API_ENABLED = True）。</p>
 <h2 id="ss服务端安装libsodium支持chacha20"><a href="#ss服务端安装libsodium支持chacha20" class="headerlink" title="ss服务端安装libsodium支持chacha20"></a>ss服务端安装libsodium支持chacha20</h2><p>centos：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y groupinstall &quot;Development Tools&quot;</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
 <p>ubuntu/debian：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apt-get install build-essential</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
@@ -262,7 +262,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-05-26T00:21:40.318Z" itemprop="dateUpdated">2017-05-26 08:21:40</time>
+    最后更新时间：<time datetime="2017-05-26T00:45:03.502Z" itemprop="dateUpdated">2017-05-26 08:45:03</time>
 </span><br>
 
 
