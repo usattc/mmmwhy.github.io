@@ -38,7 +38,7 @@
 ">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170505/124311675.png">
 <meta property="og:image" content="http://cdn.mmmxcc.cn/blog/20170505/134246486.png">
-<meta property="og:updated_time" content="2017-05-20T01:22:24.348Z">
+<meta property="og:updated_time" content="2017-05-26T01:13:00.278Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ss-panel + ss py mu安装教程">
 <meta name="twitter:description" content="系统介绍： 1g内存，单核，也就是传说中的腾讯1元学生机。centos6.8 x32。">
@@ -304,7 +304,8 @@
 <h1 id="谷歌BBR加速"><a href="#谷歌BBR加速" class="headerlink" title="谷歌BBR加速"></a>谷歌BBR加速</h1><h2 id="OpenVZ-以外的（-KVM-、-Xen-、-VMware-等）"><a href="#OpenVZ-以外的（-KVM-、-Xen-、-VMware-等）" class="headerlink" title="OpenVZ 以外的（ KVM 、 Xen 、 VMware 等）"></a>OpenVZ 以外的（ KVM 、 Xen 、 VMware 等）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</div><div class="line">chmod +x bbr.sh</div><div class="line">./bbr.sh</div></pre></td></tr></table></figure>
 <p>详细信息见： <a href="https://www.91yun.org/archives/5174" target="_blank" rel="external">https://www.91yun.org/archives/5174</a></p>
 <h2 id="OpenVZ-小鸡"><a href="#OpenVZ-小鸡" class="headerlink" title="OpenVZ 小鸡"></a>OpenVZ 小鸡</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://raw.githubusercontent.com/mmmwhy/LKL_BBR/master/lkl/install.sh &amp;&amp; bash install.sh</div></pre></td></tr></table></figure>
-<p>详细内容见：<a href="https://www.91yun.org/archives/6281" target="_blank" rel="external">https://www.91yun.org/archives/6281</a><br>我稍微修改了一下端口范围(9000-19999)，因为之前那个范围是在太奇葩了。</p>
+<p>如果运行之后，发现不能连接服务器，可能因为防火墙设置问题。可以直接关闭node节点的防火墙<br>对于CentOS:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service iptables stop #关闭命令：  </div><div class="line">chkconfig iptables off# 永久关闭防火墙：</div></pre></td></tr></table></figure></p>
+<p>详细内容见：<a href="https://www.91yun.org/archives/6281" target="_blank" rel="external">https://www.91yun.org/archives/6281</a> </p>
 <h1 id="其余常见错误："><a href="#其余常见错误：" class="headerlink" title="其余常见错误："></a>其余常见错误：</h1><p><a href="http://feiyang.li/2017/05/03/ss-panel/index.html#常见错误">http://feiyang.li/2017/05/03/ss-panel/index.html#常见错误</a></p>
 <p>与上文一样，本文参考了如下博主文章，在此致谢：<br><a href="https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/" target="_blank" rel="external">https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/</a><br><a href="http://bitzhi.com/2016/03/install-ss-go-mu-and-ss-panel-v3/" target="_blank" rel="external">http://bitzhi.com/2016/03/install-ss-go-mu-and-ss-panel-v3/</a><br><a href="https://levyhsu.com/?p=98" target="_blank" rel="external">https://levyhsu.com/?p=98</a></p>
 
@@ -314,7 +315,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-05-20T01:22:24.348Z" itemprop="dateUpdated">2017-05-20 09:22:24</time>
+    最后更新时间：<time datetime="2017-05-26T01:13:00.278Z" itemprop="dateUpdated">2017-05-26 09:13:00</time>
 </span><br>
 
 
