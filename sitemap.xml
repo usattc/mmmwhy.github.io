@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2017/05/28/hadoop/index.html</loc>
+    
+    <lastmod>2017-05-28T12:03:20.830Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/05/09/ss-shell/index.html</loc>
+    
+    <lastmod>2017-05-28T08:21:36.246Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2017/05/03/ss-panel/index.html</loc>
     
     <lastmod>2017-05-26T01:13:17.621Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://feiyang.li/2017/05/05/ss-panel-full/index.html</loc>
     
     <lastmod>2017-05-26T01:13:00.278Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/05/09/ss-shell/index.html</loc>
-    
-    <lastmod>2017-05-26T00:47:15.863Z</lastmod>
     
   </url>
   

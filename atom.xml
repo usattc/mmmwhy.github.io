@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-05-24T10:50:56.516Z</updated>
+  <updated>2017-05-28T12:03:20.830Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -14,6 +14,240 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从零开始搭建Hadoop2.7.1的分布式集群</title>
+    <link href="http://feiyang.li/2017/05/28/hadoop/index.html"/>
+    <id>http://feiyang.li/2017/05/28/hadoop/index.html</id>
+    <published>2017-05-28T11:57:31.000Z</published>
+    <updated>2017-05-28T12:03:20.830Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>Hadoop2.7.1，Hadoop的环境配置不是特别的复杂，但是确实有很多细节需要注意，不然会造成许多配置错误的情况。尽量保证一次配置正确防止反复修改。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="操作环境说明"><a href="#操作环境说明" class="headerlink" title="操作环境说明"></a>操作环境说明</h1><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><ul>
+<li>操作系统： window10</li>
+<li>cpu： i7-6700k</li>
+<li>内存：16g<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/171515618.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+</ul>
+<h2 id="虚拟机版本：VMware12"><a href="#虚拟机版本：VMware12" class="headerlink" title="虚拟机版本：VMware12"></a>虚拟机版本：VMware12</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/171637610.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>ssh-keygen -t rsa -C “mmmwhy@qq.com”</p>
+<h1 id="材料准备"><a href="#材料准备" class="headerlink" title="材料准备"></a>材料准备</h1><ul>
+<li>ubuntu-14.10-desktop-amd64.iso (Ubuntu 光盘映像)</li>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz" target="_blank" rel="external">hadoop-2.7.1.tar.gz (Hadoop 环境包)</a><br>注意：<br>ubuntu14.04有自带的java，版本是1.7，输入<code>java -version</code>即可查看<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/172116248.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="mark" title="">
+                </div>
+                <div class="image-caption">mark</div>
+            </figure>
+如果没有安装java的话，网上找个安装java的文章即可，比如<a href="http://www.cnblogs.com/fnng/archive/2013/01/30/2883815.html" target="_blank" rel="external">这篇</a></li>
+</ul>
+<h1 id="搭建开始"><a href="#搭建开始" class="headerlink" title="搭建开始"></a>搭建开始</h1><h1 id="搭建开始-1"><a href="#搭建开始-1" class="headerlink" title="搭建开始"></a>搭建开始</h1><h2 id="Vmware-创建虚拟机"><a href="#Vmware-创建虚拟机" class="headerlink" title="Vmware 创建虚拟机"></a>Vmware 创建虚拟机</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/172412587.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>根据Hadoop的调度规则，我们将使用VMware 12 加载 ubuntu….iso来创建三个Ubuntu 虚拟机。创建用典型安装即可。安装位置请选一个足够大的硬盘，预估需要50g。<strong>记住这个位置</strong><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/173230345.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>这时我们先创建一个Ubuntu虚拟机，为什么这样稍后解释。</p>
+<h1 id="SSH-安装以及配置"><a href="#SSH-安装以及配置" class="headerlink" title="SSH 安装以及配置"></a>SSH 安装以及配置</h1><h2 id="先配置ubuntu镜像源"><a href="#先配置ubuntu镜像源" class="headerlink" title="先配置ubuntu镜像源"></a>先配置ubuntu镜像源</h2><h3 id="打开软件源文件"><a href="#打开软件源文件" class="headerlink" title="打开软件源文件"></a>打开软件源文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gedit /etc/apt/sources.list</div></pre></td></tr></table></figure>
+<h3 id="将以下内容替换到源文件（注意在清华大学网站上选择合适自己系统的版本）"><a href="#将以下内容替换到源文件（注意在清华大学网站上选择合适自己系统的版本）" class="headerlink" title="将以下内容替换到源文件（注意在清华大学网站上选择合适自己系统的版本）"></a>将以下内容替换到源文件（注意在清华大学网站上选择合适自己系统的版本）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</div><div class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ trusty main restricted universe multiverse</div><div class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ trusty main restricted universe multiverse</div><div class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ trusty-updates main restricted universe multiverse</div><div class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ trusty-backports main restricted universe multiverse</div><div class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ trusty-backports main restricted universe multiverse</div><div class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ trusty-security main restricted universe multiverse</div><div class="line"></div><div class="line"># 预发布软件源，不建议启用</div><div class="line"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ trusty-proposed main restricted universe multiverse</div><div class="line"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ trusty-proposed main restricted universe multiverse</div></pre></td></tr></table></figure>
+<h2 id="更新软件源"><a href="#更新软件源" class="headerlink" title="更新软件源"></a>更新软件源</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>
+<h2 id="安装ssh"><a href="#安装ssh" class="headerlink" title="安装ssh"></a>安装ssh</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install openssh-server</div></pre></td></tr></table></figure>
+<p>已有ssh或者安装成功了的输入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ps -e | grep ssh</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/172819756.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="验证SSH是否成功安装输入"><a href="#验证SSH是否成功安装输入" class="headerlink" title="验证SSH是否成功安装输入"></a>验证SSH是否成功安装输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh localhost</div></pre></td></tr></table></figure>
+<p>出现以下提示说明安装成功<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/172945211.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>注意，这个时候不是特权模式，特权模式反而会报错，因为我们设置的账户名其实不是<code>root</code></p>
+<h2 id="生成密钥Pair"><a href="#生成密钥Pair" class="headerlink" title="生成密钥Pair"></a>生成密钥Pair</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa</div></pre></td></tr></table></figure>
+<p>输入后一直回车选择默认即可<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/173055646.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>mater主机中输入命令复制一份公钥到home中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp .ssh/id_rsa.pub ~/id_rsa_master.pub</div></pre></td></tr></table></figure></p>
+<h1 id="复制出两个虚拟机"><a href="#复制出两个虚拟机" class="headerlink" title="复制出两个虚拟机"></a>复制出两个虚拟机</h1><p>到开始我们放置虚拟机的位置，复制两份放在旁边，然后用vm直接打开那两个文件夹。<br>这样可以生成三个一毛一样的虚拟机。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/173515432.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>顺便给他们把名字改成各自的角色。<br>这样做的好处是不需要将之前的步骤重复进行多次，不容易出错。</p>
+<h1 id="配置-Hadoop-以下配置将仅仅在master主机上进行"><a href="#配置-Hadoop-以下配置将仅仅在master主机上进行" class="headerlink" title="配置 Hadoop (以下配置将仅仅在master主机上进行 )"></a>配置 Hadoop (<strong>以下配置将仅仅在master主机上进行 </strong>)</h1><ul>
+<li>将解压缩好的hadoop-2.7.1文件夹拷贝到home根目录下面</li>
+<li><p>在hadoop-2.7.1文件夹下创建文件，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir hadoop-2.7.1/tmp</div><div class="line">mkdir hadoop-2.7.1/hdfs</div><div class="line">mkdir hadoop-2.7.1/hdfs/name</div><div class="line">mkdir hadoop-2.7.1/hdfs/data</div></pre></td></tr></table></figure>
+</li>
+<li><p>输入命令查看ip地址 ，三个都要看，找个小本本记下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ifconfig -a</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/174451086.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>eg. 我所使用的IP地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">192.168.232.36 master</div><div class="line">192.168.232.54 slave1</div><div class="line">192.168.232.79 slave2</div></pre></td></tr></table></figure></p>
+<ul>
+<li>修改hosts<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gedit /etc/hosts</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/174509453.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>三个ip地址和对应的角色写在hosts内</p>
+<ul>
+<li>修改hostname<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gedit /etc/hostname</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>master 的改为 master<br>slave1 的改为 slave1<br>slave2 的改为 slave2</p>
+<h2 id="修改环境变量"><a href="#修改环境变量" class="headerlink" title="修改环境变量"></a>修改环境变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd ~/hadoop-2.7.1/</div></pre></td></tr></table></figure>
+<h2 id="hadoop-env-sh"><a href="#hadoop-env-sh" class="headerlink" title="hadoop-env.sh"></a>hadoop-env.sh</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gedit etc/hadoop/hadoop-env.sh</div></pre></td></tr></table></figure>
+<p>找到JAVA_HOME=… 一行修改为Java HOME的路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64</div></pre></td></tr></table></figure></p>
+<h2 id="core-site-xml"><a href="#core-site-xml" class="headerlink" title="core-site.xml"></a>core-site.xml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gedit etc/hadoop/core-site.xml</div></pre></td></tr></table></figure>
+<p>在configuration标签中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;fs.defaultFS&lt;/name&gt;</div><div class="line">    &lt;value&gt;hdfs://master:9000&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line"></div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</div><div class="line">    &lt;value&gt;file:/home/mmmwhy/hadoop-2.7.1/tmp&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="mapred-site-xml"><a href="#mapred-site-xml" class="headerlink" title="mapred-site.xml"></a>mapred-site.xml</h2><p>创建并编辑<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp etc/hadoop/mapred-site.xml.template etc/hadoop/mapred-site.xml</div><div class="line">gedit etc/hadoop/mapred-site.xml</div></pre></td></tr></table></figure></p>
+<p>在configuration标签中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;fs.defaultFS&lt;/name&gt;</div><div class="line">    &lt;value&gt;hdfs://master:9000&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line"></div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</div><div class="line">    &lt;value&gt;file:/home/mmmwhy/hadoop-2.7.1/tmp&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="hdfs-site-xml"><a href="#hdfs-site-xml" class="headerlink" title="hdfs-site.xml"></a>hdfs-site.xml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gedit etc/hadoop/hdfs-site.xml</div></pre></td></tr></table></figure>
+<p>在configuration标签中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</div><div class="line">    &lt;value&gt;file:/home/mmmwhy/hadoop-2.7.1/hdfs/name&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</div><div class="line">    &lt;value&gt;file:/home/mmmwhy/hadoop-2.7.1/hdfs/data&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;dfs.replication&lt;/name&gt;</div><div class="line">    &lt;value&gt;2&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;</div><div class="line">    &lt;value&gt;master:9001&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="yarn-site-xml"><a href="#yarn-site-xml" class="headerlink" title="yarn-site.xml"></a>yarn-site.xml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gedit etc/hadoop/yarn-site.xml</div></pre></td></tr></table></figure>
+<p>在configuration标签中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</div><div class="line">    &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.nodemanager.auxservices.mapreduce.shuffle.class&lt;/name&gt;</div><div class="line">    &lt;value&gt;org.apache.hadoop.mapred.ShuffleHandler&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.resourcemanager.address&lt;/name&gt;</div><div class="line">    &lt;value&gt;master:8032&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.resourcemanager.scheduler.address&lt;/name&gt;</div><div class="line">    &lt;value&gt;master:8030&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.resourcemanager.resource-tracker.address&lt;/name&gt;</div><div class="line">    &lt;value&gt;master:8031&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.resourcemanager.admin.address&lt;/name&gt;</div><div class="line">    &lt;value&gt;master:8033&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div><div class="line">&lt;property&gt;</div><div class="line">    &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;</div><div class="line">    &lt;value&gt;master:8088&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="slaves文件"><a href="#slaves文件" class="headerlink" title="slaves文件"></a>slaves文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gedit etc/hadoop/slaves</div></pre></td></tr></table></figure>
+<p>删除原有内容，根据配置修改，此处为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">slave1</div><div class="line">slave2</div></pre></td></tr></table></figure></p>
+<ul>
+<li>分发配置好的hadoop文件夹到slave1, slave2<br>前提是设置好ssh<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scp -r hadoop-2.7.1 mmmwhy@slave1:~/ </div><div class="line">scp -r hadoop-2.7.1 mmmwhy@slave2:~/</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>应该出现一大堆看起来非常厉害的东西。</p>
+<ul>
+<li><p>格式化hdfs<br>进入hadoop home目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bin/hdfs namenode -format</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动集群</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sbin/start-all.sh</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>启动后分别在master, slave下输入jps查看进程<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/175313622.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>如上则说明启动成功</p>
+<h1 id="集群测试"><a href="#集群测试" class="headerlink" title="集群测试"></a>集群测试</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">echo hellecho hello world &gt;&gt; in1.txt hadoop &gt;&gt; in2.txt</div><div class="line">cd ~/mmmwhy/hadoop-2.7.1/</div><div class="line">bin/hadoop fs -mkdir /usr</div><div class="line">bin/hadoop fs -mkdir /usr/input</div><div class="line">bin/hadoop fs -put in1.txt /usr/input</div><div class="line">bin/hadoop fs -put in2.txt /usr/input</div><div class="line">#执行Hadoop内置example测试程序</div><div class="line">bin/hadoop jar ~/hadoop-2.7.1/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar wordcount /usr/input /usr/output</div></pre></td></tr></table></figure>
+<p>然后进入 <a href="http://localhost:50070/explorer.html#/usr/input" target="_blank" rel="external">http://localhost:50070/explorer.html#/usr/input</a><br>就可以看到<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/194607098.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h1 id="运行wordcount测试"><a href="#运行wordcount测试" class="headerlink" title="运行wordcount测试"></a>运行wordcount测试</h1><p>进入hadoop home目录<br>在hdfs（分布式文件系统）中创建一个名为input的文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bin/hadoop fs -mkdir /input</div></pre></td></tr></table></figure></p>
+<p>查看文件是否被创建<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bin/hadoop fs -ls /</div></pre></td></tr></table></figure></p>
+<p>hadoop home 下创建一个inputfile 文件夹，并在inputfile里创建两个文件<br><strong>in1.txt</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hello world hello hadoop</div></pre></td></tr></table></figure></p>
+<p><strong>in2.txt</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hello Hadoop hello whatever</div></pre></td></tr></table></figure></p>
+<p>上传两个文件进input<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bin/hadoop fs -put inputfile/*.txt /input</div></pre></td></tr></table></figure></p>
+<p>查看输入文件是否传入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bin/hadoop fs -ls /input</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/195114806.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>用hadoop jar命令运行Hadoop自带的wordcount<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar wordcount /input /output</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/195202978.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>程序开始运行，成功后查看输出文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">bin/hadoop fs -ls /output</div><div class="line">bin/hadoop fs -cat /output/part-r-00000</div></pre></td></tr></table></figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170528/195431835.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>至此hadoop分布式集群配置完成！本文主体内容转自<a href="http://blog.csdn.net/zl007700/article/details/50533675" target="_blank" rel="external">CSDN</a>，原作者写的非常好，但是有一些小问题，做到一半的时候花式报错，因此自己写了一份，修正了其中一些问题。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Hadoop2.7.1，Hadoop的环境配置不是特别的复杂，但是确实有很多细节需要注意，不然会造成许多配置错误的情况。尽量保证一次配置正确防止反复修改。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="linux" scheme="http://feiyang.li/tags/linux/"/>
+    
+      <category term="hadoop" scheme="http://feiyang.li/tags/hadoop/"/>
+    
+  </entry>
   
   <entry>
     <title>算法实验(一)</title>
@@ -440,9 +674,9 @@ $$ </li>
       <category term="Django" scheme="http://feiyang.li/categories/Django/"/>
     
     
-      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
-    
       <category term="Django" scheme="http://feiyang.li/tags/Django/"/>
+    
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
@@ -533,9 +767,9 @@ $$ </li>
       <category term="Django" scheme="http://feiyang.li/categories/Django/"/>
     
     
-      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
-    
       <category term="Django" scheme="http://feiyang.li/tags/Django/"/>
+    
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
@@ -593,9 +827,9 @@ $$ </li>
       <category term="Django" scheme="http://feiyang.li/categories/Django/"/>
     
     
-      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
-    
       <category term="Django" scheme="http://feiyang.li/tags/Django/"/>
+    
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
@@ -1387,13 +1621,14 @@ params : (10285,)
     <link href="http://feiyang.li/2017/05/09/ss-shell/index.html"/>
     <id>http://feiyang.li/2017/05/09/ss-shell/index.html</id>
     <published>2017-05-09T13:58:57.000Z</published>
-    <updated>2017-05-26T00:47:15.863Z</updated>
+    <updated>2017-05-28T08:21:36.246Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此写了本ss-panel一键安装脚本 。示例站点：<a href="https://ss.feiyang.li/" target="_blank" rel="external">https://ss.feiyang.li/</a></p>
 </blockquote>
 <hr>
 <a id="more"></a>
+<p>你们要的ss-panel v3 mod 脚本已经写好了，<a href="https://91vps.club/2017/05/27/ss-panel-v3-mod/" target="_blank" rel="external">点击查看</a></p>
 <h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><ul>
 <li>可以使用BBR加速：选择对应<a href="http://feiyang.li/2017/05/05/ss-panel-full/index.html#OpenVZ-以外的（-KVM-、-Xen-、-VMware-等）">一键代码</a>即可</li>
 <li>使用<code>supervisord</code>，守护运行。（重启后输入<code>supervisord</code>，即可启动守护程序）</li>
@@ -2172,107 +2407,6 @@ theta2: (10, 26)
     
       &lt;blockquote&gt;
 &lt;p&gt;machine-learning-ex3.zip &lt;a href=&quot;http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex3.zip&quot;&gt;下载链接&lt;/a&gt;，第四周的课程相对来说比较简单，大致介绍了神经网络相关内容。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
-    
-    
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
-      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Coursera ML(6)-Neural Networks Representation</title>
-    <link href="http://feiyang.li/2017/04/15/Coursera-ML-6-Neural-Networks-Representation/index.html"/>
-    <id>http://feiyang.li/2017/04/15/Coursera-ML-6-Neural-Networks-Representation/index.html</id>
-    <published>2017-04-15T13:42:33.000Z</published>
-    <updated>2017-04-15T13:47:22.229Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>神经网络模型</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<h1 id="Neural-Networks-Model"><a href="#Neural-Networks-Model" class="headerlink" title="Neural Networks Model"></a>Neural Networks Model</h1><h2 id="A-single-neuron-model-logistic-unit"><a href="#A-single-neuron-model-logistic-unit" class="headerlink" title="A single neuron model: logistic unit"></a>A single neuron model: logistic unit</h2> $$\begin{bmatrix}x_0 \newline x_1 \newline x_2 \newline \end{bmatrix}\rightarrow\begin{bmatrix}\ \ \ \newline \end{bmatrix}\rightarrow h_\theta(x)$$ 
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170415/171348080.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<ul>
-<li>Takes 3+1 inputs(the extra input called bias is just like $θ_0$ in logistic regression, not shown in picture).</li>
-<li>Both input and output could be represented as vectors, in which each unit has its own parameters $θ$</li>
-<li>All the units in the same layer take the same input $x$, as the pic shows.</li>
-<li>Each unit has only one output: $sigmoid(θ^Tx)$. Of course there’re other choices for sigmoid function.</li>
-</ul>
-<h2 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h2> $$\begin{bmatrix}x_0 \newline x_1 \newline x_2 \newline x_3\end{bmatrix}\rightarrow\begin{bmatrix}a_1^{(2)} \newline a_2^{(2)} \newline a_3^{(2)} \newline \end{bmatrix}\rightarrow h_\theta(x)$$ 
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170415/202821288.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>其中<br> $$\begin{align*}& a_i^{(j)} = \text{"activation" of unit $i$ in layer $j$} \newline& \Theta^{(j)} = \text{matrix of weights controlling function mapping from layer $j$ to layer $j+1$}\end{align*}$$ </p>
-<h1 id="Calculation-from-one-layer-to-the-next"><a href="#Calculation-from-one-layer-to-the-next" class="headerlink" title="Calculation from one layer to the next"></a>Calculation from one layer to the next</h1><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170415/212357016.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>In the picture above, we have the networks from layer j to layer j+1, in which layer j has 3(+1) units while layer j+1 has 3 layers. Let $s_j=3$, $s_j+1=3$</p>
-<ul>
-<li>$α^{(j)}$ : Output of the $j_{th}$ layer. $s_j+1$ dimension vector.</li>
-<li> $θ_i^{(j)}$  : Parameters in the $i<em>{th}$ unit of $(j+1)</em>{th}$ layer. $s_j+1$ dimension vector.</li>
-<li> ${\theta^{(j)}} = \begin{bmatrix} \theta_1^{(j)} & \theta_2^{(j)} & \cdots & \theta_{s_(j + 1)}^{(j)} \end{bmatrix}^T$  : All the network parameters from $j<em>{th}$ layer to ${(j+1)}</em>{th}$ layer.</li>
-<li>We have: $\alpha^{(j+1)} = sigmoid(\mathbf{\theta^{(j)}}\alpha^{(j)})$ add $\alpha_0^{(j+1)}$</li>
-</ul>
-<h1 id="Multiclass-Classification"><a href="#Multiclass-Classification" class="headerlink" title="Multiclass Classification"></a>Multiclass Classification</h1> <figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170415/212115423.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="分类器" title="">
-                </div>
-                <div class="image-caption">分类器</div>
-            </figure>
-<p>Each $y^{(i)}$ represents a different image corresponding to either a car, pedestrian, truck, or motorcycle. The inner layers, each provide us with some new information which leads to our final hypothesis function. The setup looks like:<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170415/212141965.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170415/203254413.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>Example: layer 1 has 2 input nodes and layer 2 has 4 activation nodes. Dimension of  $\Theta^{(1)}$ is going to be 4×3 where $s_j = 2$ and $s_{j+1} = 4$, so $s_{j+1} \times (s_j + 1) = 4 \times 3$$ </p>
-<hr>
-<p>今天苏州的天气真是闷热，实在是看不下去了。因此本小节笔记，有大段参考自 <a href="https://github.com/shawnau/shawnau.github.io/blob/master/2016-02-11-Neural-Networks-Representation.html" target="_blank" rel="external">shawnau.github.io</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;神经网络模型&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
     
