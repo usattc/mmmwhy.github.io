@@ -6,7 +6,29 @@
     
 
     
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?d543f9aed343f96406eb3cabc2637f47"></script>
+<!-- End Baidu Tongji -->
 
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
 
 
     <meta charset="utf-8">
@@ -20,12 +42,12 @@
     
     
     <meta name="keywords" content="Python,Algorithms">
-    <meta name="description" content="苏州分校大部分的课程都是垃圾，毁我青春，颓我精神， 败我钱财！少有一些譬如《算法导论》这样的好课，我现在回忆起自己在华科的时候，其实很多老师都是兢兢业业的讲课，但是全然不顾底下同学的接受能力，是不是也是垃圾课程呢？">
+    <meta name="description" content="快速排序与背包问题相关算法分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法实验(一)">
 <meta property="og:url" content="http://feiyang.li/2017/05/24/algorithm1/index.html">
 <meta property="og:site_name" content="李飞阳">
-<meta property="og:description" content="苏州分校大部分的课程都是垃圾，毁我青春，颓我精神， 败我钱财！少有一些譬如《算法导论》这样的好课，我现在回忆起自己在华科的时候，其实很多老师都是兢兢业业的讲课，但是全然不顾底下同学的接受能力，是不是也是垃圾课程呢？">
+<meta property="og:description" content="快速排序与背包问题相关算法分析">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201303/24/1364096225_6763.jpg?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201303/24/1364096448_8646.jpg?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
@@ -34,10 +56,10 @@
 ">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201303/24/1364126887_3091.jpg?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
-<meta property="og:updated_time" content="2017-05-24T10:50:56.516Z">
+<meta property="og:updated_time" content="2017-05-31T01:40:39.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法实验(一)">
-<meta name="twitter:description" content="苏州分校大部分的课程都是垃圾，毁我青春，颓我精神， 败我钱财！少有一些譬如《算法导论》这样的好课，我现在回忆起自己在华科的时候，其实很多老师都是兢兢业业的讲课，但是全然不顾底下同学的接受能力，是不是也是垃圾课程呢？">
+<meta name="twitter:description" content="快速排序与背包问题相关算法分析">
 <meta name="twitter:image" content="http://img.my.csdn.net/uploads/201303/24/1364096225_6763.jpg?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
 ">
     
@@ -194,7 +216,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>苏州分校大部分的课程都是垃圾，毁我青春，颓我精神， 败我钱财！少有一些譬如《算法导论》这样的好课，我现在回忆起自己在华科的时候，其实很多老师都是兢兢业业的讲课，但是全然不顾底下同学的接受能力，是不是也是垃圾课程呢？</p>
+<p>快速排序与背包问题相关算法分析</p>
 </blockquote>
 <hr>
 <a id="more"></a>
@@ -327,7 +349,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-05-24T10:50:56.516Z" itemprop="dateUpdated">2017-05-24 18:50:56</time>
+    最后更新时间：<time datetime="2017-05-31T01:40:39.589Z" itemprop="dateUpdated">2017-05-31 09:40:39</time>
 </span><br>
 
 
@@ -373,7 +395,9 @@
       </li>
       <li>
         <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/24/algorithm1/&title=《算法实验(一)》 — 李飞阳&source=
-苏州分校大部分的课程都是垃圾，毁我青春，颓我精神， 败我钱财！少有一些譬如《算法导论》这样的好课，我现在回忆起自己在华科的时候，其实很多老师都是兢兢业业..." data-title=" QQ">
+快速排序与背包问题相关算法分析
+
+" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -525,7 +549,9 @@
       </li>
       <li>
         <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/24/algorithm1/&title=《算法实验(一)》 — 李飞阳&source=
-苏州分校大部分的课程都是垃圾，毁我青春，颓我精神， 败我钱财！少有一些譬如《算法导论》这样的好课，我现在回忆起自己在华科的时候，其实很多老师都是兢兢业业..." data-title=" QQ">
+快速排序与背包问题相关算法分析
+
+" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
