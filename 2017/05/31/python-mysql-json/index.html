@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?d543f9aed343f96406eb3cabc2637f47"></script>
+<!-- End Baidu Tongji -->
+
+
+
+<!-- Baidu Push -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- End Baidu Push -->
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Python mysql表数据和json格式的相互转换 | 李飞阳 | PM、Coder、Data mining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#0288D1">
+    
+    
+    <meta name="keywords" content="databases,python">
+    <meta name="description" content="今天碰到了一个比较奇葩的需求，将mysql表数据转换成json格式。我顺便研究了一下，写了个python。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python mysql表数据和json格式的相互转换">
+<meta property="og:url" content="http://feiyang.li/2017/05/31/python-mysql-json/index.html">
+<meta property="og:site_name" content="李飞阳">
+<meta property="og:description" content="今天碰到了一个比较奇葩的需求，将mysql表数据转换成json格式。我顺便研究了一下，写了个python。">
+<meta property="og:updated_time" content="2017-05-31T13:02:02.907Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python mysql表数据和json格式的相互转换">
+<meta name="twitter:description" content="今天碰到了一个比较奇葩的需求，将mysql表数据转换成json格式。我顺便研究了一下，写了个python。">
+    
+        <link rel="alternate" type="application/atom+xml" title="李飞阳" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.6.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/logo.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Wing Lee</h5>
+          <a href="mailto:mmmwhy@qq.com" title="mmmwhy@qq.com" class="mail">mmmwhy@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/Coursera-ML"  >
+                <i class="icon icon-lg icon-paperclip"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/mmmwhy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/2016/01/18/resume/"  >
+                <i class="icon icon-lg icon-cog"></i>
+                关于
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/link.html"  >
+                <i class="icon icon-lg icon-link"></i>
+                膜拜大佬
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://ss.91vps.club/" target="_blank" >
+                <i class="icon icon-lg icon-rocket"></i>
+                91SS
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Python mysql表数据和json格式的相互转换</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Python mysql表数据和json格式的相互转换</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-31T13:01:18.000Z" itemprop="datePublished" class="page-time">
+  2017-05-31
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SQL数据—-gt-json数据"><span class="post-toc-number">1.</span> <span class="post-toc-text">SQL数据—>json数据</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#json格式—-gt-sql语句"><span class="post-toc-number">2.</span> <span class="post-toc-text">json格式—>sql语句</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-python-mysql-json"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Python mysql表数据和json格式的相互转换</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-31 21:01:18" datetime="2017-05-31T13:01:18.000Z"  itemprop="datePublished">2017-05-31</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>今天碰到了一个比较奇葩的需求，将mysql表数据转换成json格式。我顺便研究了一下，写了个python。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<ul>
+<li>数据库相关的<a href="http://feiyang.li/2017/05/16/databases/index.html">基本操作</a> </li>
+<li>如果使用<a href="http://feiyang.li/2017/02/10/python_camp3/index.html">python操作mysql</a></li>
+</ul>
+<p>要我说，数据库操作学会了之后，会节省很多很多时间。</p>
+<h1 id="SQL数据—-gt-json数据"><a href="#SQL数据—-gt-json数据" class="headerlink" title="SQL数据—&gt;json数据"></a>SQL数据—&gt;json数据</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#-*- coding: utf8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> MySQLdb</div><div class="line"><span class="keyword">import</span> json</div><div class="line"></div><div class="line"><span class="comment"># 定义查询SQL语句</span></div><div class="line">sql = <span class="string">"SELECT id,NAME,LOCAL,mobile,CreateTime FROM db1.s1;"</span></div><div class="line"></div><div class="line"><span class="comment"># 设置列的别名或者直接用表字段名:（下面的sql含有别名）</span></div><div class="line"></div><div class="line"><span class="comment"># sql="SELECT s.id AS 1_id,s.name AS 2_na,s.local AS 3_lo,s.mobile AS 4_mo,s.CreateTime AS 5_ct FROM db1.s1 s;"</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 定义连接MySQL的登录信息（此处以字典形式）</span></div><div class="line">Loginfo = &#123;<span class="string">'USER'</span>:<span class="string">'admin'</span>, <span class="string">'PSWD'</span>:<span class="string">'admin'</span>, <span class="string">'HOST'</span>:<span class="string">'10.10.60.108'</span>, <span class="string">'PORT'</span>:<span class="number">4001</span>&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Python 连接MySQL</span></div><div class="line">conn=MySQLdb.connect(host=Loginfo[<span class="string">'HOST'</span>],user=Loginfo[<span class="string">'USER'</span>],passwd=Loginfo[<span class="string">'PSWD'</span>],port=Loginfo[<span class="string">'PORT'</span>],charset=<span class="string">'utf8'</span>)</div><div class="line">cur=conn.cursor()</div><div class="line">cur.execute(sql)                        <span class="comment"># 执行SQL查询</span></div><div class="line">data = cur.fetchall()                   <span class="comment"># 查询结果给data。如果执行：print data 显示结果：（（第一行内容），（第二行内容），（第三行内容），（第四行内容））</span></div><div class="line">fields = cur.description               <span class="comment"># 获取查询结果中列的字段名，如果查询SQL中使用别名，此处显示别名。       </span></div><div class="line">cur.close()</div><div class="line">conn.close()</div><div class="line"></div><div class="line"><span class="comment"># Main </span></div><div class="line">column_list = []                        <span class="comment"># 定义字段名的列表</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> fields:</div><div class="line">    column_list.append(i[<span class="number">0</span>])　　  <span class="comment"># 提取字段名，追加到列表中</span></div><div class="line"><span class="comment">#print column_list　　　　　　　   # 列表显示结果：['id', 'NAME', 'LOCAL', 'mobile', 'CreateTime']</span></div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">'/data/scripts/logdb/json.txt'</span>,<span class="string">'w+'</span>) <span class="keyword">as</span> f:　　<span class="comment"># 打开输出结果文件</span></div><div class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> data:　　　　　　　　　　　　　　　　　　 <span class="comment"># 一次循环，row代表一行，row以元组的形式显示。</span></div><div class="line">        result = &#123;&#125;　　　　　　　　　　　　　　　　　　　<span class="comment"># 定义Python 字典</span></div><div class="line">        result[column_list[<span class="number">0</span>]] = row[<span class="number">0</span>]　　　  　　　　　<span class="comment"># 将row中的每个元素，追加到字典中。　</span></div><div class="line">        result[column_list[<span class="number">1</span>]] = str(row[<span class="number">1</span>])　　　　　　 <span class="comment"># Python字段格式 和json字段格式转换</span></div><div class="line">        result[column_list[<span class="number">2</span>]] = str(row[<span class="number">2</span>]) </div><div class="line">        result[column_list[<span class="number">3</span>]] = row[<span class="number">3</span>]</div><div class="line">        result[column_list[<span class="number">4</span>]] = str(row[<span class="number">4</span>])</div><div class="line">        jsondata=json.dumps(result,ensure_ascii=<span class="keyword">False</span>) <span class="comment"># Python的dict --转换成----&gt; json的object</span></div><div class="line">        f.write(jsondata + <span class="string">'\n'</span>)　　　　　　　　　　　　　<span class="comment"># 写入文件</span></div><div class="line">f.close()</div></pre></td></tr></table></figure>
+<p>注意：最后输出结果，列的顺序是随机的。</p>
+<p>　　如果想要顺序输出：1.字段起别名，比如：1_xx,2_xx,3_xx…..然后在在json.dumps中利用：sort_keys=True排序，结果就顺序输出。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print json.dumps(&#123;&quot;c&quot;: 0, &quot;b&quot;: 0, &quot;a&quot;: 0&#125;, sort_keys=True)</div></pre></td></tr></table></figure>
+<p>{“a”: 0, “b”: 0, “c”: 0}</p>
+<h1 id="json格式—-gt-sql语句"><a href="#json格式—-gt-sql语句" class="headerlink" title="json格式—&gt;sql语句"></a>json格式—&gt;sql语句</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#-*- coding: utf8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> MySQLdb</div><div class="line"><span class="keyword">import</span> json</div><div class="line"></div><div class="line">datalist = []  　　　　　　　　　　　　　　　　　　　　<span class="comment"># python 列表</span></div><div class="line"><span class="keyword">with</span> open(<span class="string">'/data/scripts/logdb/json.txt'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:　　　　　　　　　　　　　　　　　　　 <span class="comment"># 读取json文件中的行（也就是json的object）　　　</span></div><div class="line">        datalist.append(json.loads(line))　　　　　　　 <span class="comment"># 将json的object转成 Python的dict，追加到Python 列表中, 结果都是unicode格式：[&#123;&#125;,&#123;&#125;,&#123;&#125;,&#123;&#125;,&#123;&#125;] </span></div><div class="line"><span class="keyword">for</span> dict <span class="keyword">in</span> datalist:</div><div class="line">    <span class="keyword">print</span> dict　　　　　　　　　　　　　　　　　　　　 <span class="comment"># 打印显示 转换后的结果</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> dict <span class="keyword">in</span> datalist:</div><div class="line">    dict[<span class="string">u'LOCAL'</span>] = dict[<span class="string">u'LOCAL'</span>].replace(<span class="string">'\r\n'</span>,<span class="string">'\\r\\n'</span>).replace(<span class="string">"'s"</span>,<span class="string">"\\'s"</span>)  <span class="comment"># 将字段中的特殊：回车换行以及's 转换，方便形成sql语句</span></div><div class="line">    sql = <span class="string">"insert into db1.s1 (mobile,NAME,LOCAL,CreateTime,id) values('%s','%s','%s','%s','%s');"</span> % (dict[<span class="string">u'mobile'</span>],dict[<span class="string">u'NAME'</span>],dict[<span class="string">u'LOCAL'</span>],str(dict[<span class="string">u'CreateTime'</span>]),dict[<span class="string">u'id'</span>])</div><div class="line">    <span class="keyword">print</span> sql</div></pre></td></tr></table></figure>
+<p>本文转自：<a href="http://www.cnblogs.com/cuisi/p/6296224.html" target="_blank" rel="external">cnblogs</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-31T13:02:02.907Z" itemprop="dateUpdated">2017-05-31 21:02:02</time>
+</span><br>
+
+
+        
+        可以转载，请注明出处：<a href="/2017/05/31/python-mysql-json/" target="_blank" rel="external">http://feiyang.li/2017/05/31/python-mysql-json/</a>
+        
+    </div>
+    <footer>
+        <a href="http://feiyang.li">
+            <img src="/img/logo.jpg" alt="Wing Lee">
+            Wing Lee
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/databases/">databases</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/31/python-mysql-json/&title=《Python mysql表数据和json格式的相互转换》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/31/python-mysql-json/&title=《Python mysql表数据和json格式的相互转换》 — 李飞阳&source=
+今天碰到了一个比较奇葩的需求，将mysql表数据转换成json格式。我顺便研究了一下，写了个python。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/31/python-mysql-json/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python mysql表数据和json格式的相互转换》 — 李飞阳&url=http://feiyang.li/2017/05/31/python-mysql-json/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/31/python-mysql-json/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/06/08/algorithm2/index.html" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">算法实验(二)</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/28/hadoop/index.html" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">从零开始搭建Hadoop2.7.1的分布式集群</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    <div id="cloud-tie-wrapper" class="comments cloud-tie-wrapper"></div>
+    <script>
+    var cloudTieConfig = {
+        url: 'http://feiyang.li/2017/05/31/python-mysql-json/index.html',
+        sourceId: 'python-mysql-json',
+        productKey: '9d56d2fd321c48c7a0b079b76f0795cf',
+        target: 'cloud-tie-wrapper',
+        pcFiles: [
+            '/css/cloudTie/pc.css?v=1.6.7',
+            '/js/cloudTie/pc.min.js?v=1.6.7',
+        ],
+        mobileFiles: [
+            '/css/cloudTie/mobile.css?v=1.6.7',
+            '/js/cloudTie/mobile.min.js?v=1.6.7'
+        ]
+    };
+    </script>
+    <script src="/js/cloudTie/loader.min.js?v=1.6.7"></script>
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+    </main>
+    <footer class="footer">
+    <div class="bottom">
+        <p>
+            <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://feiyang.li/2017/05/31/python-mysql-json/&title=《Python mysql表数据和json格式的相互转换》 — 李飞阳&pic=http://feiyang.li/img/logo.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://feiyang.li/2017/05/31/python-mysql-json/&title=《Python mysql表数据和json格式的相互转换》 — 李飞阳&source=
+今天碰到了一个比较奇葩的需求，将mysql表数据转换成json格式。我顺便研究了一下，写了个python。
+
+" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://feiyang.li/2017/05/31/python-mysql-json/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python mysql表数据和json格式的相互转换》 — 李飞阳&url=http://feiyang.li/2017/05/31/python-mysql-json/&via=http://feiyang.li" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://feiyang.li/2017/05/31/python-mysql-json/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3aW46DMBAFUfa/aWYBIzN1u2Ekt8tfUQQxh0hWv64Lr/vXIt//vob/2vXFkiFDxraM+3E9b/B814qUfia7yJAh4wTG6gRLt+GP8nxm8meTIUOGjNU1JODjQSHfV4YMGTJSBv8dHjjKkCFDRieJ5Xd9UYB7LReXIUPGhgxedf//z5/0N2TIkLEV4w4X4fUbk/FTyZAhYzSDH3BpcJZekx64MmTIOIdRexQ+YJEW4NIhD/Q/yJAhY3NGmrimj8vxnZKfDBkyZjN4EZ+/g86IBmpVrkJDGTJkDGV8EfDVAsE0KFy+ShkyZAxl8Bt4ES0d0UgP6GLOLUOGjA0ZtRDw+UoezKXg5V0yZMg4gJG2B94am+jUApe5uAwZMsYx0uJ+J5XlR3N6BMuQIWM2g4df5FisldL6e8mQIWM2ozNa8Rbv5SBShgwZ4xidLXkLofZeSQAqQ4aMMxm1YSweVvLiXbCXDBkyRjNIWFZrWPJmZP8bGTJknMZIk1jetkwDwTitlSFDxgEMfnN/nKJzHF+8OypDhoxxDB7kpQ1LPk7RGfKQIUPGVMYdrrQQxtn8CL7SU1+GDBmbM/qHHZrjKLUESGkvhsmQIWNbRpqIvpBwlop6MmTIkNFJWXkJr5/Q/pHKypAhQ0ZYaOONSQ6TIUOGjFoyyY9IEgjWhjNkyJBxAqPWDOADExxTDBBlyJAxmsFva5XD2q/shaamDBky9mP8AEgYYL6SMoxkAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.6.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.6.7" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

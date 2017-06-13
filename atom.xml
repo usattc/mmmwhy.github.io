@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://feiyang.li/"/>
-  <updated>2017-05-28T12:03:20.830Z</updated>
+  <updated>2017-06-08T04:10:47.347Z</updated>
   <id>http://feiyang.li/</id>
   
   <author>
@@ -16,13 +16,105 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>算法实验(二)</title>
+    <link href="http://feiyang.li/2017/06/08/algorithm2/index.html"/>
+    <id>http://feiyang.li/2017/06/08/algorithm2/index.html</id>
+    <published>2017-06-08T04:09:41.000Z</published>
+    <updated>2017-06-08T04:10:47.347Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>任务调度问题：在单处理器上具有期限和惩罚的单位时间任务调度问题；平衡树问题：实现3种树中的两种：红黑树，AVL树，Treap树。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<h1 id="任务调度问题"><a href="#任务调度问题" class="headerlink" title="任务调度问题"></a>任务调度问题</h1><p>任务调度问题就是给定一个有穷单位时间任务的集合S，集合S中的每个任务都有一个截止期限di和超时惩罚wi，需要找出集合S的一个调度，使得因任务误期所导致的总惩罚最小，这个调度也称为S的一个最优调度。</p>
+<h2 id="问题描述："><a href="#问题描述：" class="headerlink" title="问题描述："></a>问题描述：</h2><p>在单处理器上具有期限和惩罚的单位时间任务调度问题（课本P239）<br>实验要求：<br>（1）实现这个问题的贪心算法<br>（2）将每个 wi 替换为max{m1,m2…mn}—wi，运行算法比较结果。 </p>
+<h2 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h2><p>1.先将任务按照时间惩罚递减顺序进行排序，<br>2.然后用贪心的思想，尽量把惩罚重的任务先放入待完成队列中。 </p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt;</div><div class="line">#include &lt;algorithm&gt;</div><div class="line">#include&lt;ctime&gt;</div><div class="line">#define n 6</div><div class="line">using namespace std;</div><div class="line">typedef struct &#123;</div><div class="line">    int id;//第几个任务</div><div class="line">    int d;//任务的期限</div><div class="line">    int w;//罚</div><div class="line">&#125;tesk;</div><div class="line"></div><div class="line">bool cmpW(tesk t1, tesk t2) &#123;</div><div class="line">    return t1.w&gt;t2.w;</div><div class="line">&#125;</div><div class="line">bool cmpD(tesk t1, tesk t2) &#123;</div><div class="line">    return t1.d&lt;t2.d;</div><div class="line">&#125;</div><div class="line">void InitNum(tesk t[]) &#123;</div><div class="line">    srand((unsigned)time(NULL));</div><div class="line">    for (int i = 0; i &lt; n; i++) &#123;</div><div class="line">        t[i].id = i + 1;</div><div class="line">        t[i].d = rand() % n + 1;</div><div class="line">        t[i].w = rand() % 30;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void copy(tesk &amp;t1, tesk &amp;t2) &#123;</div><div class="line">    t1.id = t2.id;</div><div class="line">    t1.d = t2.d;</div><div class="line">    t1.w = t2.w;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int greedy(tesk a[], tesk ta[], int &amp;ans) &#123;</div><div class="line">    int num = 0, i, j;//当前已经完成的任务数量</div><div class="line">    sort(ta, ta + n, cmpW);</div><div class="line">    int fla[9999];</div><div class="line">    memset(fla, 0, sizeof(fla));</div><div class="line">    for (i = 0; i&lt;n; i++) &#123;</div><div class="line">        for (j = ta[i].d; j&gt;0; j--) &#123;</div><div class="line">            if (fla[j] == 0) &#123;</div><div class="line">                fla[j] = 1;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (j&gt;0) &#123;</div><div class="line">            copy(a[num++], ta[i]);</div><div class="line">            ans -= ta[i].w;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return num;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">int main() &#123;</div><div class="line">    tesk ta[n], a[n], tb[n], b[n];</div><div class="line">    printf(&quot;%s&quot;, &quot;正在生成随机数据\n&quot;);</div><div class="line">    InitNum(ta);</div><div class="line">    for (int i = 0; i &lt; n; i++) &#123;</div><div class="line">        copy(tb[i], ta[i]);</div><div class="line">    &#125;</div><div class="line">    printf(&quot;%s&quot;, &quot;生成的数据为\n&quot;);</div><div class="line">    int max_w = -1, sum_w = 0;</div><div class="line">    for (int i = 0; i &lt; n; i++) &#123;</div><div class="line">        printf(&quot;ID: %d，任务的期限: %d，任务的惩罚：%d\n&quot;, ta[i].id, ta[i].d, ta[i].w);</div><div class="line">        sum_w += ta[i].w;</div><div class="line">        if (max_w &lt; ta[i].w) &#123;</div><div class="line">            max_w = ta[i].w;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    int k = greedy(a, ta, sum_w);</div><div class="line">    printf(&quot;任务惩罚为：%d\n&quot;, sum_w);</div><div class="line">    sort(a, a + k, cmpD);</div><div class="line">    printf(&quot;将完成执行的任务按照时间递增顺序排列输出：\n&quot;);</div><div class="line">    for (int i = 0; i&lt;k; i++) &#123;</div><div class="line">        printf(&quot;ID：%d，期限：%d，惩罚：%d\n&quot;, a[i].id, a[i].d, a[i].w);</div><div class="line">    &#125;</div><div class="line">    sort(a, a + k, cmpW);</div><div class="line">    printf(&quot;将完成的任务按惩罚排序；\n&quot;);</div><div class="line">    for (int i = 0; i&lt;k; i++) &#123;</div><div class="line">        printf(&quot;ID：%d，期限：%d，惩罚：%d\n&quot;, a[i].id, a[i].d, a[i].w);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    printf(&quot;若将每个wi替换为max&#123;m1,m2...mn&#125;—wi，新的数据为\n&quot;);</div><div class="line">    for (int i = 0; i&lt;n; i++) &#123;</div><div class="line">        tb[i].w = max_w - tb[i].w;</div><div class="line">        printf(&quot;ID：%d，期限：%d，惩罚：%d\n&quot;, tb[i].id, tb[i].d, tb[i].w);</div><div class="line">        sum_w += tb[i].w;</div><div class="line">    &#125;</div><div class="line">    k = greedy(b, tb, sum_w);</div><div class="line">    printf(&quot;任务惩罚为：%d\n&quot;, sum_w);</div><div class="line">    sort(b, b + k, cmpD);</div><div class="line">    printf(&quot;将完成执行的任务按照时间递增顺序排列输出：\n&quot;);</div><div class="line">    for (int i = 0; i&lt;k; i++) &#123;</div><div class="line">        printf(&quot;ID：%d，期限：%d，惩罚：%d\n&quot;, b[i].id, b[i].d, b[i].w);</div><div class="line">    &#125;</div><div class="line">    sort(b, b + k, cmpW);</div><div class="line">    printf(&quot;将完成的任务按惩罚排序；\n&quot;);</div><div class="line">    for (int i = 0; i&lt;k; i++) &#123;</div><div class="line">        printf(&quot;ID：%d，期限：%d，惩罚：%d\n&quot;, b[i].id, b[i].d, b[i].w);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="实验截图"><a href="#实验截图" class="headerlink" title="实验截图"></a>实验截图</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://cdn.mmmxcc.cn/blog/20170605/190729182.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
+" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="实现3种树"><a href="#实现3种树" class="headerlink" title="实现3种树"></a>实现3种树</h1><p>实现3种树中的两种：红黑树，AVL树(课本P177)，Treap树</p>
+<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ul>
+<li>根节点是黑色的</li>
+<li>每个节点或红或黑</li>
+<li>每个叶节点都是黑色的</li>
+<li>红节点的两个子节点都是黑色</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;任务调度问题：在单处理器上具有期限和惩罚的单位时间任务调度问题；平衡树问题：实现3种树中的两种：红黑树，AVL树，Treap树。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="Algorithms" scheme="http://feiyang.li/tags/Algorithms/"/>
+    
+      <category term="cpp" scheme="http://feiyang.li/tags/cpp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python mysql表数据和json格式的相互转换</title>
+    <link href="http://feiyang.li/2017/05/31/python-mysql-json/index.html"/>
+    <id>http://feiyang.li/2017/05/31/python-mysql-json/index.html</id>
+    <published>2017-05-31T13:01:18.000Z</published>
+    <updated>2017-05-31T13:02:02.907Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>今天碰到了一个比较奇葩的需求，将mysql表数据转换成json格式。我顺便研究了一下，写了个python。</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<ul>
+<li>数据库相关的<a href="http://feiyang.li/2017/05/16/databases/index.html">基本操作</a> </li>
+<li>如果使用<a href="http://feiyang.li/2017/02/10/python_camp3/index.html">python操作mysql</a></li>
+</ul>
+<p>要我说，数据库操作学会了之后，会节省很多很多时间。</p>
+<h1 id="SQL数据—-gt-json数据"><a href="#SQL数据—-gt-json数据" class="headerlink" title="SQL数据—&gt;json数据"></a>SQL数据—&gt;json数据</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#-*- coding: utf8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> MySQLdb</div><div class="line"><span class="keyword">import</span> json</div><div class="line"></div><div class="line"><span class="comment"># 定义查询SQL语句</span></div><div class="line">sql = <span class="string">"SELECT id,NAME,LOCAL,mobile,CreateTime FROM db1.s1;"</span></div><div class="line"></div><div class="line"><span class="comment"># 设置列的别名或者直接用表字段名:（下面的sql含有别名）</span></div><div class="line"></div><div class="line"><span class="comment"># sql="SELECT s.id AS 1_id,s.name AS 2_na,s.local AS 3_lo,s.mobile AS 4_mo,s.CreateTime AS 5_ct FROM db1.s1 s;"</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 定义连接MySQL的登录信息（此处以字典形式）</span></div><div class="line">Loginfo = &#123;<span class="string">'USER'</span>:<span class="string">'admin'</span>, <span class="string">'PSWD'</span>:<span class="string">'admin'</span>, <span class="string">'HOST'</span>:<span class="string">'10.10.60.108'</span>, <span class="string">'PORT'</span>:<span class="number">4001</span>&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Python 连接MySQL</span></div><div class="line">conn=MySQLdb.connect(host=Loginfo[<span class="string">'HOST'</span>],user=Loginfo[<span class="string">'USER'</span>],passwd=Loginfo[<span class="string">'PSWD'</span>],port=Loginfo[<span class="string">'PORT'</span>],charset=<span class="string">'utf8'</span>)</div><div class="line">cur=conn.cursor()</div><div class="line">cur.execute(sql)                        <span class="comment"># 执行SQL查询</span></div><div class="line">data = cur.fetchall()                   <span class="comment"># 查询结果给data。如果执行：print data 显示结果：（（第一行内容），（第二行内容），（第三行内容），（第四行内容））</span></div><div class="line">fields = cur.description               <span class="comment"># 获取查询结果中列的字段名，如果查询SQL中使用别名，此处显示别名。       </span></div><div class="line">cur.close()</div><div class="line">conn.close()</div><div class="line"></div><div class="line"><span class="comment"># Main </span></div><div class="line">column_list = []                        <span class="comment"># 定义字段名的列表</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> fields:</div><div class="line">    column_list.append(i[<span class="number">0</span>])　　  <span class="comment"># 提取字段名，追加到列表中</span></div><div class="line"><span class="comment">#print column_list　　　　　　　   # 列表显示结果：['id', 'NAME', 'LOCAL', 'mobile', 'CreateTime']</span></div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">'/data/scripts/logdb/json.txt'</span>,<span class="string">'w+'</span>) <span class="keyword">as</span> f:　　<span class="comment"># 打开输出结果文件</span></div><div class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> data:　　　　　　　　　　　　　　　　　　 <span class="comment"># 一次循环，row代表一行，row以元组的形式显示。</span></div><div class="line">        result = &#123;&#125;　　　　　　　　　　　　　　　　　　　<span class="comment"># 定义Python 字典</span></div><div class="line">        result[column_list[<span class="number">0</span>]] = row[<span class="number">0</span>]　　　  　　　　　<span class="comment"># 将row中的每个元素，追加到字典中。　</span></div><div class="line">        result[column_list[<span class="number">1</span>]] = str(row[<span class="number">1</span>])　　　　　　 <span class="comment"># Python字段格式 和json字段格式转换</span></div><div class="line">        result[column_list[<span class="number">2</span>]] = str(row[<span class="number">2</span>]) </div><div class="line">        result[column_list[<span class="number">3</span>]] = row[<span class="number">3</span>]</div><div class="line">        result[column_list[<span class="number">4</span>]] = str(row[<span class="number">4</span>])</div><div class="line">        jsondata=json.dumps(result,ensure_ascii=<span class="keyword">False</span>) <span class="comment"># Python的dict --转换成----&gt; json的object</span></div><div class="line">        f.write(jsondata + <span class="string">'\n'</span>)　　　　　　　　　　　　　<span class="comment"># 写入文件</span></div><div class="line">f.close()</div></pre></td></tr></table></figure>
+<p>注意：最后输出结果，列的顺序是随机的。</p>
+<p>　　如果想要顺序输出：1.字段起别名，比如：1_xx,2_xx,3_xx…..然后在在json.dumps中利用：sort_keys=True排序，结果就顺序输出。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print json.dumps(&#123;&quot;c&quot;: 0, &quot;b&quot;: 0, &quot;a&quot;: 0&#125;, sort_keys=True)</div></pre></td></tr></table></figure>
+<p>{“a”: 0, “b”: 0, “c”: 0}</p>
+<h1 id="json格式—-gt-sql语句"><a href="#json格式—-gt-sql语句" class="headerlink" title="json格式—&gt;sql语句"></a>json格式—&gt;sql语句</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment">#-*- coding: utf8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> MySQLdb</div><div class="line"><span class="keyword">import</span> json</div><div class="line"></div><div class="line">datalist = []  　　　　　　　　　　　　　　　　　　　　<span class="comment"># python 列表</span></div><div class="line"><span class="keyword">with</span> open(<span class="string">'/data/scripts/logdb/json.txt'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:　　　　　　　　　　　　　　　　　　　 <span class="comment"># 读取json文件中的行（也就是json的object）　　　</span></div><div class="line">        datalist.append(json.loads(line))　　　　　　　 <span class="comment"># 将json的object转成 Python的dict，追加到Python 列表中, 结果都是unicode格式：[&#123;&#125;,&#123;&#125;,&#123;&#125;,&#123;&#125;,&#123;&#125;] </span></div><div class="line"><span class="keyword">for</span> dict <span class="keyword">in</span> datalist:</div><div class="line">    <span class="keyword">print</span> dict　　　　　　　　　　　　　　　　　　　　 <span class="comment"># 打印显示 转换后的结果</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> dict <span class="keyword">in</span> datalist:</div><div class="line">    dict[<span class="string">u'LOCAL'</span>] = dict[<span class="string">u'LOCAL'</span>].replace(<span class="string">'\r\n'</span>,<span class="string">'\\r\\n'</span>).replace(<span class="string">"'s"</span>,<span class="string">"\\'s"</span>)  <span class="comment"># 将字段中的特殊：回车换行以及's 转换，方便形成sql语句</span></div><div class="line">    sql = <span class="string">"insert into db1.s1 (mobile,NAME,LOCAL,CreateTime,id) values('%s','%s','%s','%s','%s');"</span> % (dict[<span class="string">u'mobile'</span>],dict[<span class="string">u'NAME'</span>],dict[<span class="string">u'LOCAL'</span>],str(dict[<span class="string">u'CreateTime'</span>]),dict[<span class="string">u'id'</span>])</div><div class="line">    <span class="keyword">print</span> sql</div></pre></td></tr></table></figure>
+<p>本文转自：<a href="http://www.cnblogs.com/cuisi/p/6296224.html" target="_blank" rel="external">cnblogs</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;今天碰到了一个比较奇葩的需求，将mysql表数据转换成json格式。我顺便研究了一下，写了个python。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="databases" scheme="http://feiyang.li/tags/databases/"/>
+    
+      <category term="python" scheme="http://feiyang.li/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
     <title>从零开始搭建Hadoop2.7.1的分布式集群</title>
     <link href="http://feiyang.li/2017/05/28/hadoop/index.html"/>
     <id>http://feiyang.li/2017/05/28/hadoop/index.html</id>
     <published>2017-05-28T11:57:31.000Z</published>
     <updated>2017-05-28T12:03:20.830Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>Hadoop2.7.1，Hadoop的环境配置不是特别的复杂，但是确实有很多细节需要注意，不然会造成许多配置错误的情况。尽量保证一次配置正确防止反复修改。</p>
 </blockquote>
 <hr>
@@ -256,7 +348,7 @@
     <published>2017-05-24T10:48:48.000Z</published>
     <updated>2017-05-31T01:40:39.589Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>快速排序与背包问题相关算法分析</p>
 </blockquote>
 <hr>
@@ -408,7 +500,7 @@
     <published>2017-05-22T12:25:02.000Z</published>
     <updated>2017-05-22T12:32:31.116Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>本节笔记对应<a href="https://www.coursera.org/learn/machine-learning/home/week/7" target="_blank" rel="external">第七周课程</a>和西瓜书<strong>第六章 支持向量机</strong>，主要讲解了支持向量机。</p>
 </blockquote>
 <hr>
@@ -587,7 +679,7 @@ $$ </li>
     <published>2017-05-21T08:31:52.000Z</published>
     <updated>2017-05-21T08:43:14.437Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>在前面的几节中我们都是用简单的 django.http.HttpResponse 来把内容显示到网页上，本节将讲解如何使用渲染模板的方法来显示内容。</p>
 </blockquote>
 <hr>
@@ -674,9 +766,9 @@ $$ </li>
       <category term="Django" scheme="http://feiyang.li/categories/Django/"/>
     
     
-      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
-    
       <category term="Django" scheme="http://feiyang.li/tags/Django/"/>
+    
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
@@ -687,7 +779,7 @@ $$ </li>
     <published>2017-05-20T08:06:53.000Z</published>
     <updated>2017-05-21T08:37:15.595Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p><a href="http://feiyang.li/2017/05/20/django1/index.html">上节</a>已经提到新建app，这节稍微深入一些</p>
 </blockquote>
 <hr>
@@ -767,9 +859,9 @@ $$ </li>
       <category term="Django" scheme="http://feiyang.li/categories/Django/"/>
     
     
-      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
-    
       <category term="Django" scheme="http://feiyang.li/tags/Django/"/>
+    
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
@@ -780,7 +872,7 @@ $$ </li>
     <published>2017-05-20T01:20:41.000Z</published>
     <updated>2017-05-21T08:32:12.067Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><p>本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接在 终端中输入这些命令（不是 python 的 shell中）</p>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><p>本节主要是为了让您了解一些django最基本的命令，请尝试着记住它们，并且多多练习下，打开 Linux 或 MacOS 的 Terminal （终端）直接在 终端中输入这些命令（不是 python 的 shell中）</p>
 <hr>
 <a id="more"></a>
 <p>如果是 windows 用 cmd（开始 搜索 cmd 或者 快捷键 win + R，输入 cmd) 直接在 cmd 上操作。</p>
@@ -827,9 +919,9 @@ $$ </li>
       <category term="Django" scheme="http://feiyang.li/categories/Django/"/>
     
     
-      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
-    
       <category term="Django" scheme="http://feiyang.li/tags/Django/"/>
+    
+      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
@@ -840,7 +932,7 @@ $$ </li>
     <published>2017-05-19T10:53:03.000Z</published>
     <updated>2017-05-22T06:24:40.702Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>机器学习系统设计</p>
 </blockquote>
 <hr>
@@ -886,9 +978,9 @@ $$ </li>
     <link href="http://feiyang.li/2017/05/18/coursera/index.html"/>
     <id>http://feiyang.li/2017/05/18/coursera/index.html</id>
     <published>2017-05-18T02:14:53.000Z</published>
-    <updated>2017-05-18T02:17:37.001Z</updated>
+    <updated>2017-06-02T05:04:20.210Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>关于coursera无法播放，原因其实很简单，就是视频所在服务器被GFW墙了。</p>
 </blockquote>
 <hr>
@@ -903,7 +995,7 @@ $$ </li>
                 </div>
                 <div class="image-caption">mark</div>
             </figure>
-<p>因此，首先要获得服务器端口以及相应的密码，这样服务器才可以帮你转发流量。我自己因为也在coursera看视频，所以自己搭建了一个服务器，分享给大家。<a href="https://ss.feiyang.li/" target="_blank" rel="external">https://ss.feiyang.li/</a></p>
+<p>因此，首先要获得服务器端口以及相应的密码，这样服务器才可以帮你转发流量。我自己因为也在coursera看视频，所以自己搭建了一个服务器，分享给大家。<a href="https://ss.91vps.club/" target="_blank" rel="external">https://ss.91vps.club/</a></p>
 <p>这里我分别举例展示如何快速观看coursera视频。</p>
 <p>–</p>
 <h1 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h1><h2 id="ss"><a href="#ss" class="headerlink" title="ss"></a>ss</h2><p><a href="http://home.ustc.edu.cn/~mmmwhy/Shadowsocks.exe" target="_blank" rel="external">http://home.ustc.edu.cn/~mmmwhy/Shadowsocks.exe</a></p>
@@ -979,7 +1071,7 @@ $$ </li>
     <published>2017-05-17T05:37:09.000Z</published>
     <updated>2017-05-17T06:22:10.492Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>对应 <a href="http://feiyang.li/2017/05/11/Coursera-ML-10-Evaluating-a-Hypothesis/index.html">机器学习诊断法</a></p>
 </blockquote>
 <hr>
@@ -1120,9 +1212,9 @@ hess_inv: array([[ 1.03142187,  0.00617881],
     <link href="http://feiyang.li/2017/05/16/databases/index.html"/>
     <id>http://feiyang.li/2017/05/16/databases/index.html</id>
     <published>2017-05-16T10:38:00.000Z</published>
-    <updated>2017-05-16T10:38:57.468Z</updated>
+    <updated>2017-05-31T13:00:54.295Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。</p>
 </blockquote>
 <hr>
@@ -1179,7 +1271,15 @@ hess_inv: array([[ 1.03142187,  0.00617881],
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">TRUNCATE TABLE `nzysys`.`jobintroduction`;</div></pre></td></tr></table></figure>
 </li>
 <li><p>交叉</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT INTO `nzysys`.`jobintroduction` (jobCategoryID,introductionValue,introductionkey,introductionID) SELECT b.jobCategoryID,a.ChuFang,&apos;组成&apos;,1 FROM `nzysys`.`subjobcategory` AS b,`chinese-drug`.`zysjyj` AS a WHERE a.`ID`=b.`JobCategoryID`;</div></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT INTO `nzysys`.`jobintroduction` (jobCategoryID,introductionValue,introductionkey,introductionID) SELECT b.jobCategoryID,a.ChuFang,&apos;组成&apos;,1 FROM `nzysys`.`subjobcategory` AS b,`chinese-drug`.`zysjyj` AS a WHERE a.`ID`=b.`JobCategoryID`;</div></pre></td></tr></table></figure>
+</li>
+<li><p>字符串分割</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(o.NeiRong, &apos;【&apos;, 2),&apos;】&apos;,-1) FROM `nzysys`.`drug_history` AS o;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>之前都是一个字符串一个字符串分割，这个操作可以把整个mysql某个列全部分割，洋气</p>
+<ul>
+<li>分割后插入<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">INSERT INTO `nzysys`.`medical_history`(subMajorMLID,subMajorMLName,subMajorTitle,subMajorDetail) </div><div class="line">    SELECT ID,BiaoTi,</div><div class="line">    SUBSTRING_INDEX(SUBSTRING_INDEX(o.NeiRong, &apos;【&apos;, 2),&apos;】&apos;,-1),</div><div class="line">    SUBSTRING_INDEX(SUBSTRING_INDEX(o.NeiRong, &apos;【&apos;, 5),&apos;【病因】&apos;,-1)FROM `nzysys`.`drug_history` AS o;</div></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
     
@@ -1204,7 +1304,7 @@ hess_inv: array([[ 1.03142187,  0.00617881],
     <published>2017-05-15T12:13:05.000Z</published>
     <updated>2017-05-15T12:13:29.549Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>早就听说WisHosting 长期免费vps，码农买vps就像女人买衣服一样，虽然没什么用，但是会上瘾。</p>
 </blockquote>
 <hr>
@@ -1395,7 +1495,7 @@ hess_inv: array([[ 1.03142187,  0.00617881],
     <published>2017-05-11T04:28:16.000Z</published>
     <updated>2017-05-11T04:34:51.020Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>假设你在开发一个机器学习系统，或者在改进一个机器学习系统的性能，应如何做？</p>
 </blockquote>
 <hr>
@@ -1559,7 +1659,7 @@ $$\text{Test Error} = \dfrac{1}{m_{test}} \sum^{m_{test}}_{i=1} err(h_\Theta(x^{
     <published>2017-05-10T10:01:38.000Z</published>
     <updated>2017-05-11T01:21:35.719Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>对应反向传播算法内容</p>
 </blockquote>
 <hr>
@@ -1621,10 +1721,10 @@ params : (10285,)
     <link href="http://feiyang.li/2017/05/09/ss-shell/index.html"/>
     <id>http://feiyang.li/2017/05/09/ss-shell/index.html</id>
     <published>2017-05-09T13:58:57.000Z</published>
-    <updated>2017-05-28T08:21:36.246Z</updated>
+    <updated>2017-06-03T02:14:30.661Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此写了本ss-panel一键安装脚本 。示例站点：<a href="https://ss.feiyang.li/" target="_blank" rel="external">https://ss.feiyang.li/</a></p>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
+<p>上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此写了本ss-panel一键安装脚本 。示例站点：<a href="https://ss.91vps.club/" target="_blank" rel="external">https://ss.91vps.club/</a></p>
 </blockquote>
 <hr>
 <a id="more"></a>
@@ -1781,7 +1881,7 @@ params : (10285,)
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此写了本ss-panel一键安装脚本 。示例站点：&lt;a href=&quot;https://ss.feiyang.li/&quot;&gt;https://ss.feiyang.li/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;上周接触了ss-panel，发现搭建起来异常的麻烦，对新手来说，到处都是坑，因此写了本ss-panel一键安装脚本 。示例站点：&lt;a href=&quot;https://ss.91vps.club/&quot;&gt;https://ss.91vps.club/&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
     
@@ -1809,7 +1909,7 @@ params : (10285,)
     <published>2017-05-06T13:52:23.000Z</published>
     <updated>2017-05-10T11:56:05.596Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>本节笔记对应第五周Coursera课程 <a href="https://www.coursera.org/learn/machine-learning/home/week/5" target="_blank" rel="external">Neural Networks: Learning</a></p>
 </blockquote>
 <hr>
@@ -2016,7 +2116,7 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     <published>2017-05-05T06:23:13.000Z</published>
     <updated>2017-05-20T01:22:29.813Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p> shadowsocks是目前fq速度最快的工具之一，可以转发udp。可以使用ipv6，对于很多高校学生来说，可以通过此方法节省流量费用。</p>
 </blockquote>
 <hr>
@@ -2104,7 +2204,7 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
     <published>2017-05-05T06:09:39.000Z</published>
     <updated>2017-05-26T01:13:00.278Z</updated>
     
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>系统介绍： 1g内存，单核，也就是传说中的腾讯1元学生机。centos6.8 x32。</p>
 </blockquote>
 <hr>
@@ -2233,201 +2333,6 @@ we have: $$\delta^{(output)} = a^{(output)} - y\\\delta^{(l)} = [\Theta^{(l)}]^T
       <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
     
       <category term="vps" scheme="http://feiyang.li/tags/vps/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>可能是最简单的ss-panel安装教程</title>
-    <link href="http://feiyang.li/2017/05/03/ss-panel/index.html"/>
-    <id>http://feiyang.li/2017/05/03/ss-panel/index.html</id>
-    <published>2017-05-03T12:13:08.000Z</published>
-    <updated>2017-05-29T14:09:39.879Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<p><strong>好消息！！！ 我已经写好了<a href="http://feiyang.li/2017/05/09/ss-shell/index.html">ss-panel一键脚本</a>，对小白非常友好~</strong></p>
-<p>产品要求：fuck the wall、在可用范围内尽量简单一些（因此不考虑ssr，魔改panel也不考虑）读者建议：如果使用国外vps，建议本方法。国内vps<a href="http://feiyang.li/2017/05/05/ss-panel-full/index.html">建议</a></p>
-<h1 id="ss-panel前端"><a href="#ss-panel前端" class="headerlink" title="ss-panel前端"></a>ss-panel前端</h1><p>我看官方文档，按部就班的做了一个前端，最后才发现竟然有ss-panel一键脚本，真的是血都要吐出来了。好气哦。这里直接介绍一键脚本方式。</p>
-<h2 id="脚本下载以及运行"><a href="#脚本下载以及运行" class="headerlink" title="脚本下载以及运行"></a>脚本下载以及运行</h2><p>首先运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum -y install screen</div><div class="line">screen -S ssmanyuser</div></pre></td></tr></table></figure></p>
-<p>然后执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://cloud.echoteen.com/s/24bSM2Ba48JTHlQ/download -O ss-install.bin</div><div class="line">chmod a+x ss-install.bin</div><div class="line">bash ss-install.bin</div></pre></td></tr></table></figure></p>
-<h2 id="安装ss-panel"><a href="#安装ss-panel" class="headerlink" title="安装ss-panel"></a>安装ss-panel</h2><p>选择1，安装ss-panel前端，注意，首先要安装好前端！<br>所以输入1，然后回车！<br>安装好了以后，打开网站配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /etc/nginx/conf.d</div><div class="line">vim ss-panel.conf</div></pre></td></tr></table></figure>
-<p>打开配置文件<br>主要是检查<strong>server_name</strong>和<strong>root</strong><br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170503/202011192.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure></p>
-<h2 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h2><p><code>mysql_secure_installation</code><br>首先输入上述代码进行数据库初始化<br>配置数据库密码等，这个自行设置！<br>然后就是创建数据库和导入数据库了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -p</div><div class="line"># 输入自己的密码</div><div class="line">create database ss;</div><div class="line">use ss;</div><div class="line">source  /home/www/panel/db.sql</div></pre></td></tr></table></figure></p>
-<p>真的，有了这个脚本之后，解决了很多麻烦的问题。</p>
-<h2 id="配置配置文件"><a href="#配置配置文件" class="headerlink" title="配置配置文件"></a>配置配置文件</h2><p>配置网页文件（.env），就是站点信息，很简单的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim .env</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">//  ss-panel v3 配置</div><div class="line">//</div><div class="line">// !!! 修改此key为随机字符串确保网站安全 !!!</div><div class="line">key = &apos;randomKey&apos;</div><div class="line">env = &apos;prod&apos;  // 正式环境请保持env为prod确保安全</div><div class="line">debug =  &apos;false&apos;  //  正式环境请确保为false</div><div class="line">appName = &apos;ss-panel3&apos;             //站点名称</div><div class="line">baseUrl = &apos;https://www.google.com&apos;            // 站点地址</div><div class="line">timeZone = &apos;PRC&apos;        // RPC 天朝时间  UTC 格林时间</div><div class="line">pwdMethod = &apos;md5&apos;       // 密码加密   可选 md5,sha256</div><div class="line">salt = &apos;&apos;               // 密码加密用，从旧版升级请留空</div><div class="line">theme    = &apos;default&apos;   // 主题</div><div class="line">session = &apos;file&apos; //默认</div><div class="line">cache   = &apos;file&apos; //默认</div><div class="line">tokenDriver = &apos;db&apos; //默认</div><div class="line">// mu key 用于校验ss-go mu的请求,后边会用到</div><div class="line">muKey = &apos;&apos;</div><div class="line">// 邮件</div><div class="line">mailDriver = &apos;mailgun&apos;   // mailgun   #smtp不在支持,仅供测试</div><div class="line"> </div><div class="line">// 注册限制,每天每个ip能注册的次数</div><div class="line">ipDayLimit = &apos;10&apos;</div><div class="line"> </div><div class="line">// 邮箱验证设置</div><div class="line">emailVerifyEnabled = &apos;false&apos; // 是否开启注册时邮箱验证 (true:开启 false:关闭)</div><div class="line">emailVerifyCodeLength = &apos;8&apos;  // 邮箱验证代码长度</div><div class="line">emailVerifyTTL = &apos;30&apos;        // 验证代码有效时间 单位分钟</div><div class="line"> </div><div class="line">// 用户签到设置</div><div class="line">checkinTime = &apos;22&apos;      // 签到间隔时间 单位小时</div><div class="line">checkinMin = &apos;93&apos;       // 签到最少流量 单位MB</div><div class="line">checkinMax = &apos;97&apos;       // 签到最多流量</div><div class="line"> </div><div class="line">//</div><div class="line">defaultTraffic = &apos;1&apos;      // 用户初始流量 单位GB</div><div class="line">// 注册后获得的邀请码数量</div><div class="line">inviteNum = &apos;2&apos;</div><div class="line"> </div><div class="line">// 记录流量日志到dynamodb ,beta,请勿开启</div><div class="line">log_traffic_dynamodb = &apos;false&apos;</div><div class="line"> </div><div class="line"># database 数据库配置</div><div class="line">db_driver = &apos;mysql&apos;</div><div class="line">db_host = &apos;localhost&apos;</div><div class="line">db_port = &apos;3306&apos;</div><div class="line">db_database = &apos;ss&apos;</div><div class="line">db_username = &apos;root&apos;</div><div class="line">db_password = &apos;root&apos;</div><div class="line">db_charset = &apos;utf8&apos;</div><div class="line">db_collation = &apos;utf8_general_ci&apos;</div><div class="line">db_prefix = &apos;&apos;</div><div class="line"> </div><div class="line"># redis</div><div class="line">redis_scheme = &apos;tcp&apos;</div><div class="line">redis_host = &apos;127.0.0.1&apos;</div><div class="line">redis_port = &apos;6379&apos;</div><div class="line">redis_database = &apos;0&apos;</div><div class="line">redis_pass = &apos;&apos;</div><div class="line"> </div><div class="line"># mailgun</div><div class="line">mailgun_key = &apos;&apos;</div><div class="line">mailgun_domain = &apos;&apos;</div><div class="line">mailgun_sender = &apos;&apos;</div><div class="line"> </div><div class="line"># smtp</div><div class="line">smtp_host = &apos;&apos;</div><div class="line">smtp_username = &apos;&apos;</div><div class="line">smtp_port = &apos;&apos;</div><div class="line">smtp_name = &apos;&apos;</div><div class="line">smtp_sender = &apos;&apos;</div><div class="line">smtp_passsword = &apos;&apos;</div><div class="line">smtp_ssl = &apos;true&apos;</div><div class="line"> </div><div class="line"># aws</div><div class="line">aws_access_key_id = &apos;&apos;</div><div class="line">aws_secret_access_key = &apos;&apos;</div><div class="line">aws_region = &apos;ap-northeast-1&apos;</div><div class="line">aws_ses_region = &apos;us-east-1&apos;</div><div class="line">aws_ses_sender = &apos;&apos;</div></pre></td></tr></table></figure>
-<h2 id="添加管理员"><a href="#添加管理员" class="headerlink" title="添加管理员"></a>添加管理员</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">php xcat createAdmin</div><div class="line"></div><div class="line">add admin/创建管理员帐号.....  </div><div class="line">Enter your email/输入管理员邮箱: h@prinzeugen.net  </div><div class="line">Enter password for: h@prinzeugen.net /为 h@prinzeugen.net 添加密码 xxx  </div><div class="line">Email: h@prinzeugen.net, Password: xxx  </div><div class="line">Press [Y] to create admin..... 按下[Y]确认来确认创建管理员账户..... y  </div><div class="line">start create admin accountSuccessful/ 添加成功!</div></pre></td></tr></table></figure>
-<p>最后登录下网站<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170503/201708892.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<hr>
-<p>以上内容全部复制自：<a href="https://www.echoteen.com/yijian-sspanel-many-user.html/comment-page-1" target="_blank" rel="external">https://www.echoteen.com/yijian-sspanel-many-user.html/comment-page-1</a></p>
-<p>因为ss-panel前端是基于ss原版，而该一键脚本后端基于ssr，因此这里不建议采用该脚本。</p>
-<h1 id="部署并配置-shadowsocks-manyuser"><a href="#部署并配置-shadowsocks-manyuser" class="headerlink" title="部署并配置 shadowsocks-manyuser"></a>部署并配置 shadowsocks-manyuser</h1><p>这里使用的是 <a href="https://github.com/mengskysama/shadowsocks/tree/manyuser" target="_blank" rel="external">https://github.com/mengskysama/shadowsocks/tree/manyuser</a> 版ss</p>
-<h2 id="安装-shadowsocks-manyuser"><a href="#安装-shadowsocks-manyuser" class="headerlink" title="安装 shadowsocks-manyuser"></a>安装 shadowsocks-manyuser</h2><p>先将代码 clone 到本地：<br><code>git clone https://github.com/fsgmhoward/shadowsocks-py-mu.git</code><br>其中的 shadowsocks 子目录才是我们需要的，注意这个地方和其他版本的不一样，ssr里子文件表示单用户。本版根据server.py还是servers.py来判断是不是多用户版本。</p>
-<h2 id="配置-shadowsocks-manyuser"><a href="#配置-shadowsocks-manyuser" class="headerlink" title="配置 shadowsocks-manyuser"></a>配置 shadowsocks-manyuser</h2><p>进入 shadowsocks 目录，将 config_example.py 复制一份到 config.py：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp config_example.py config.py</div><div class="line">vi config.py</div></pre></td></tr></table></figure>
-<p>修改其中第 15 行和第 29~31 行的内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 启用 MultiUser API</div><div class="line">API_ENABLED = True</div><div class="line"></div><div class="line"># 就是在你的站点地址后面加个 /mu</div><div class="line">API_URL = &apos;http://ss.feiyang.li/mu&apos;  </div><div class="line"># 还记得上面在 .env 中填写的 muKey 吗？把它填在这里</div><div class="line">API_PASS = &apos;api_key_just_for_test&apos;</div></pre></td></tr></table></figure></p>
-<p>由于我们选择使用 Mu API 来与前端通信，所以我们不需要修改 config.py 中任何关于数据库的配置。</p>
-<p>好了，现在可以试着运行一下 $ python servers.py 了（注意，是 servers.py 而不是 server.py）。如果没错的话，应该可以看到这样的输出：<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170503/201724918.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure></p>
-<h1 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h1><h2 id="不能上网"><a href="#不能上网" class="headerlink" title="不能上网"></a>不能上网</h2><p>首先国际惯例查看连接：</p>
-<p><code>netstat -anp | grep 你的端口</code></p>
-<p>正常的话，应该是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Active Internet connections (servers and established)  </div><div class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name  </div><div class="line">tcp        0      0 0.0.0.0:62111            0.0.0.0:*               LISTEN      32083/python  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47177   TIME_WAIT   -  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47161   TIME_WAIT   -  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47160   TIME_WAIT   -  </div><div class="line">tcp        0      0 162.233.122.111:62111    115.233.233.140:47157   TIME_WAIT   -</div></pre></td></tr></table></figure></p>
-<p>所以如果你要开放注册，就要这样配置你的 iptables：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 注意是半角冒号，意为允许 12450 及以上的端口</div><div class="line"># 也可以指定 1024:65535 这样的范围</div><div class="line">iptables -I INPUT -p tcp -m tcp --dport 1024: -j ACCEPT</div><div class="line">iptables-save</div></pre></td></tr></table></figure></p>
-<h2 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h2><p>一劳永逸解决问题</p>
-<ul>
-<li><p>对于CentOS6:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service iptables stop #关闭命令：  </div><div class="line">chkconfig iptables off #永久关闭防火墙：</div></pre></td></tr></table></figure>
-</li>
-<li><p>对于CentOS7:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">systemctl start firewalld.service#启动firewall</div><div class="line">systemctl stop firewalld.service#停止firewall</div><div class="line">systemctl disable firewalld.service#禁止firewall开机启动</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="ss-panel-的多节点配置"><a href="#ss-panel-的多节点配置" class="headerlink" title="ss-panel 的多节点配置"></a>ss-panel 的多节点配置</h2><p>其实多节点也没咋玄乎，说白了就是多个后端共用一个前端而已。而且我们的后端是使用 Mu API 来与前端进行交互的，所以多节点的配置就更简单了：只要把所有后端的 config.py 中的 API_URL 和 API_PASS 都改成一样即可（记得 API_ENABLED = True）。</p>
-<h2 id="ss服务端安装libsodium支持chacha20"><a href="#ss服务端安装libsodium支持chacha20" class="headerlink" title="ss服务端安装libsodium支持chacha20"></a>ss服务端安装libsodium支持chacha20</h2><p>centos：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">yum -y groupinstall &quot;Development Tools&quot;</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">echo /usr/local/lib &gt; /etc/ld.so.conf.d/usr_local_lib.conf</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
-<p>ubuntu/debian：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apt-get install build-essential</div><div class="line">wget https://github.com/jedisct1/libsodium/releases/download/1.0.11/libsodium-1.0.11.tar.gz</div><div class="line">tar xf libsodium-1.0.11.tar.gz &amp;&amp; cd libsodium-1.0.11</div><div class="line">./configure &amp;&amp; make -j2 &amp;&amp; make install</div><div class="line">ldconfig</div></pre></td></tr></table></figure></p>
-<hr>
-<p>参考链接：<br><a href="https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/" target="_blank" rel="external">https://blessing.studio/build-shadowsocks-sharing-site-with-ss-panel/</a><br><a href="https://www.echoteen.com/yijian-sspanel-many-user.html/comment-page-1/#comments" target="_blank" rel="external">https://www.echoteen.com/yijian-sspanel-many-user.html/comment-page-1/#comments</a><br><a href="https://github.com/sendya/shadowsocks-panel/wiki/Shadowsocks-Panel-%E9%9D%A2%E6%9D%BF%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B" target="_blank" rel="external">https://github.com/sendya/shadowsocks-panel/wiki/Shadowsocks-Panel-%E9%9D%A2%E6%9D%BF%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;因为阿松同学找我要ss账号，因此我大概花了一天时间搞了搞ss-panel，顺便做个记录吧。网上那么多教程有些是写得笼统，有些还是瞎复制的。由此萌生了想要写一篇配置 ss-panel 和 ss-manyuser 的教程，希望能够帮到需要的人。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="shadowsocks" scheme="http://feiyang.li/categories/shadowsocks/"/>
-    
-    
-      <category term="GFW" scheme="http://feiyang.li/tags/GFW/"/>
-    
-      <category term="Linux" scheme="http://feiyang.li/tags/Linux/"/>
-    
-      <category term="教程" scheme="http://feiyang.li/tags/%E6%95%99%E7%A8%8B/"/>
-    
-      <category term="vps" scheme="http://feiyang.li/tags/vps/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Coursera ML(7)-Programming Exercise 3</title>
-    <link href="http://feiyang.li/2017/05/02/Coursera-ML-7-Programming-Exercise-3/index.html"/>
-    <id>http://feiyang.li/2017/05/02/Coursera-ML-7-Programming-Exercise-3/index.html</id>
-    <published>2017-05-02T10:01:38.000Z</published>
-    <updated>2017-05-02T10:04:58.026Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
-<p>machine-learning-ex3.zip <a href="http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex3.zip" target="_blank" rel="external">下载链接</a>，第四周的课程相对来说比较简单，大致介绍了神经网络相关内容。</p>
-</blockquote>
-<hr>
-<a id="more"></a>
-<p>注意，官方用的是matlab，这里我用的全部是python，代码是不一样的，更不能当做作业提交。</p>
-<hr>
-<h1 id="Programming-Exercise-3-Multi-class-Classification-and-Neural-Networks"><a href="#Programming-Exercise-3-Multi-class-Classification-and-Neural-Networks" class="headerlink" title="Programming Exercise 3 - Multi-class Classification and Neural Networks"></a>Programming Exercise 3 - Multi-class Classification and Neural Networks</h1><h2 id="题目介绍"><a href="#题目介绍" class="headerlink" title="题目介绍"></a>题目介绍</h2><p>For this exercise, you will use logistic regression and neural networks to recognize handwritten digits (from 0 to 9). </p>
-<p><strong>ex3data1.mat</strong>提供了一个训练集，X包含5000个长度为400的向量，每个向量可以展示为一个20*20的图像。Y内为图像所对应的数字。</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># %load ../../standard_import.txt</span></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib <span class="keyword">as</span> mpl</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="comment"># load MATLAB files</span></div><div class="line"><span class="keyword">from</span> scipy.io <span class="keyword">import</span> loadmat</div><div class="line"><span class="keyword">from</span> scipy.optimize <span class="keyword">import</span> minimize</div><div class="line"></div><div class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</div><div class="line"></div><div class="line">pd.set_option(<span class="string">'display.notebook_repr_html'</span>, <span class="keyword">False</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_columns'</span>, <span class="keyword">None</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_rows'</span>, <span class="number">150</span>)</div><div class="line">pd.set_option(<span class="string">'display.max_seq_items'</span>, <span class="keyword">None</span>)</div><div class="line"> </div><div class="line"><span class="comment">#%config InlineBackend.figure_formats = &#123;'pdf',&#125;</span></div><div class="line">%matplotlib inline</div><div class="line"></div><div class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</div><div class="line">sns.set_context(<span class="string">'notebook'</span>)</div><div class="line">sns.set_style(<span class="string">'white'</span>)</div></pre></td></tr></table></figure>
-<h3 id="Load-MATLAB-datafiles"><a href="#Load-MATLAB-datafiles" class="headerlink" title="Load MATLAB datafiles"></a>Load MATLAB datafiles</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">data = loadmat(<span class="string">'data/ex3data1.mat'</span>)</div><div class="line">data.keys()</div></pre></td></tr></table></figure>
-<pre><code>dict_keys([&apos;__header__&apos;, &apos;__version__&apos;, &apos;__globals__&apos;, &apos;X&apos;, &apos;y&apos;])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">weights = loadmat(<span class="string">'data/ex3weights.mat'</span>)</div><div class="line">weights.keys()</div></pre></td></tr></table></figure>
-<pre><code>dict_keys([&apos;__header__&apos;, &apos;__version__&apos;, &apos;__globals__&apos;, &apos;Theta1&apos;, &apos;Theta2&apos;])
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">y = data[<span class="string">'y'</span>]</div><div class="line"><span class="comment"># Add constant for intercept</span></div><div class="line">X = np.c_[np.ones((data[<span class="string">'X'</span>].shape[<span class="number">0</span>],<span class="number">1</span>)), data[<span class="string">'X'</span>]]</div><div class="line"></div><div class="line">print(<span class="string">'X: &#123;&#125; (with intercept)'</span>.format(X.shape))</div><div class="line">print(<span class="string">'y: &#123;&#125;'</span>.format(y.shape))</div></pre></td></tr></table></figure>
-<pre><code>X: (5000, 401) (with intercept)
-y: (5000, 1)
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">theta1, theta2 = weights[<span class="string">'Theta1'</span>], weights[<span class="string">'Theta2'</span>]</div><div class="line"></div><div class="line">print(<span class="string">'theta1: &#123;&#125;'</span>.format(theta1.shape))</div><div class="line">print(<span class="string">'theta2: &#123;&#125;'</span>.format(theta2.shape))</div></pre></td></tr></table></figure>
-<pre><code>theta1: (25, 401)
-theta2: (10, 26)
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sample = np.random.choice(X.shape[<span class="number">0</span>], <span class="number">20</span>)</div><div class="line">plt.imshow(X[sample,<span class="number">1</span>:].reshape(<span class="number">-1</span>,<span class="number">20</span>).T)</div><div class="line">plt.axis(<span class="string">'off'</span>);</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170502/171813517.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<h2 id="Multiclass-Classification"><a href="#Multiclass-Classification" class="headerlink" title="Multiclass Classification"></a>Multiclass Classification</h2><h3 id="Logistic-regression-hypothesis"><a href="#Logistic-regression-hypothesis" class="headerlink" title="Logistic regression hypothesis"></a>Logistic regression hypothesis</h3> $$ h_{\theta}(x) = g(\theta^{T}x)$$ 
- $$ g(z)=\frac{1}{1+e^{−z}} $$ 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(z)</span>:</span></div><div class="line">    <span class="keyword">return</span>(<span class="number">1</span> / (<span class="number">1</span> + np.exp(-z)))</div></pre></td></tr></table></figure>
-<h3 id="Regularized-Cost-Function"><a href="#Regularized-Cost-Function" class="headerlink" title="Regularized Cost Function"></a>Regularized Cost Function</h3> $$ J(\theta) = \frac{1}{m}\sum_{i=1}^{m}\big[-y^{(i)}\, log\,( h_\theta\,(x^{(i)}))-(1-y^{(i)})\,log\,(1-h_\theta(x^{(i)}))\big] + \frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}$$ 
-<h3 id="Vectorized-Cost-Function"><a href="#Vectorized-Cost-Function" class="headerlink" title="Vectorized Cost Function"></a>Vectorized Cost Function</h3> $$ J(\theta) = \frac{1}{m}\big((\,log\,(g(X\theta))^Ty+(\,log\,(1-g(X\theta))^T(1-y)\big) + \frac{\lambda}{2m}\sum_{j=1}^{n}\theta_{j}^{2}$$ 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">lrcostFunctionReg</span><span class="params">(theta, reg, X, y)</span>:</span></div><div class="line">    m = y.size</div><div class="line">    h = sigmoid(X.dot(theta))</div><div class="line">    </div><div class="line">    J = <span class="number">-1</span>*(<span class="number">1</span>/m)*(np.log(h).T.dot(y)+np.log(<span class="number">1</span>-h).T.dot(<span class="number">1</span>-y)) + (reg/(<span class="number">2</span>*m))*np.sum(np.square(theta[<span class="number">1</span>:]))</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> np.isnan(J[<span class="number">0</span>]):</div><div class="line">        <span class="keyword">return</span>(np.inf)</div><div class="line">    <span class="keyword">return</span>(J[<span class="number">0</span>])</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">lrgradientReg</span><span class="params">(theta, reg, X,y)</span>:</span></div><div class="line">    m = y.size</div><div class="line">    h = sigmoid(X.dot(theta.reshape(<span class="number">-1</span>,<span class="number">1</span>)))</div><div class="line">      </div><div class="line">    grad = (<span class="number">1</span>/m)*X.T.dot(h-y) + (reg/m)*np.r_[[[<span class="number">0</span>]],theta[<span class="number">1</span>:].reshape(<span class="number">-1</span>,<span class="number">1</span>)]</div><div class="line">        </div><div class="line">    <span class="keyword">return</span>(grad.flatten())</div></pre></td></tr></table></figure>
-<h1 id="One-vs-all"><a href="#One-vs-all" class="headerlink" title="One-vs-all"></a>One-vs-all</h1><h2 id="One-vs-all-Classification"><a href="#One-vs-all-Classification" class="headerlink" title="One-vs-all Classification"></a>One-vs-all Classification</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">oneVsAll</span><span class="params">(features, classes, n_labels, reg)</span>:</span></div><div class="line">    initial_theta = np.zeros((X.shape[<span class="number">1</span>],<span class="number">1</span>))  <span class="comment"># 401x1</span></div><div class="line">    all_theta = np.zeros((n_labels, X.shape[<span class="number">1</span>])) <span class="comment">#10x401</span></div><div class="line"></div><div class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> np.arange(<span class="number">1</span>, n_labels+<span class="number">1</span>):</div><div class="line">        res = minimize(lrcostFunctionReg, initial_theta, args=(reg, features, (classes == c)*<span class="number">1</span>), method=<span class="keyword">None</span>,</div><div class="line">                       jac=lrgradientReg, options=&#123;<span class="string">'maxiter'</span>:<span class="number">50</span>&#125;)</div><div class="line">        all_theta[c<span class="number">-1</span>] = res.x</div><div class="line">    <span class="keyword">return</span>(all_theta)</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theta = oneVsAll(X, y, <span class="number">10</span>, <span class="number">0.1</span>)</div></pre></td></tr></table></figure>
-<h2 id="One-vs-all-Prediction"><a href="#One-vs-all-Prediction" class="headerlink" title="One-vs-all Prediction"></a>One-vs-all Prediction</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">predictOneVsAll</span><span class="params">(all_theta, features)</span>:</span></div><div class="line">    probs = sigmoid(X.dot(all_theta.T))</div><div class="line">        </div><div class="line">    <span class="comment"># Adding one because Python uses zero based indexing for the 10 columns (0-9),</span></div><div class="line">    <span class="comment"># while the 10 classes are numbered from 1 to 10.</span></div><div class="line">    <span class="keyword">return</span>(np.argmax(probs, axis=<span class="number">1</span>)+<span class="number">1</span>)</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pred = predictOneVsAll(theta, X)</div><div class="line">print(<span class="string">'Training set accuracy: &#123;&#125; %'</span>.format(np.mean(pred == y.ravel())*<span class="number">100</span>))</div></pre></td></tr></table></figure>
-<pre><code>Training set accuracy: 93.24 %
-</code></pre><h2 id="Multiclass-Logistic-Regression-with-scikit-learn"><a href="#Multiclass-Logistic-Regression-with-scikit-learn" class="headerlink" title="Multiclass Logistic Regression with scikit-learn"></a>Multiclass Logistic Regression with scikit-learn</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">clf = LogisticRegression(C=<span class="number">10</span>, penalty=<span class="string">'l2'</span>, solver=<span class="string">'liblinear'</span>)</div><div class="line"><span class="comment"># Scikit-learn fits intercept automatically, so we exclude first column with 'ones' from X when fitting.</span></div><div class="line">clf.fit(X[:,<span class="number">1</span>:],y.ravel())</div></pre></td></tr></table></figure>
-<pre><code>LogisticRegression(C=10, class_weight=None, dual=False, fit_intercept=True,
-          intercept_scaling=1, max_iter=100, multi_class=&apos;ovr&apos;, n_jobs=1,
-          penalty=&apos;l2&apos;, random_state=None, solver=&apos;liblinear&apos;, tol=0.0001,
-          verbose=0, warm_start=False)
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pred2 = clf.predict(X[:,<span class="number">1</span>:])</div><div class="line">print(<span class="string">'Training set accuracy: &#123;&#125; %'</span>.format(np.mean(pred2 == y.ravel())*<span class="number">100</span>))</div></pre></td></tr></table></figure>
-<pre><code>Training set accuracy: 96.5 %
-</code></pre><h1 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(theta_1, theta_2, features)</span>:</span></div><div class="line">    z2 = theta_1.dot(features.T)</div><div class="line">    a2 = np.c_[np.ones((data[<span class="string">'X'</span>].shape[<span class="number">0</span>],<span class="number">1</span>)), sigmoid(z2).T]</div><div class="line">    </div><div class="line">    z3 = a2.dot(theta_2.T)</div><div class="line">    a3 = sigmoid(z3)</div><div class="line">        </div><div class="line">    <span class="keyword">return</span>(np.argmax(a3, axis=<span class="number">1</span>)+<span class="number">1</span>)</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pred = predict(theta1, theta2, X)</div><div class="line">print(<span class="string">'Training set accuracy: &#123;&#125; %'</span>.format(np.mean(pred == y.ravel())*<span class="number">100</span>))</div></pre></td></tr></table></figure>
-<pre><code>Training set accuracy: 97.52 %
-</code></pre><h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><h2 id="展示图片"><a href="#展示图片" class="headerlink" title="展示图片"></a>展示图片</h2><p>因为给的数据是矩阵的形式，所以需要分为单个向量，重新设置形状。然后展示出来，跟<a href="http://feiyang.li/2017/03/17/python-mnist/index.html">手写字体识别</a>是很像。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">%matplotlib inline</div><div class="line"><span class="keyword">import</span> scipy.io <span class="keyword">as</span> sio </div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">matfn=<span class="string">'C:/Users/wing/Documents/MATLAB/ex3/ex3data1.mat'</span>  </div><div class="line">data=sio.loadmat(matfn)  </div><div class="line">im = data[<span class="string">'X'</span>][<span class="number">0</span>]</div><div class="line">im = im.reshape(<span class="number">20</span>,<span class="number">20</span>)</div><div class="line">plt.imshow(im , cmap=<span class="string">'gray'</span>)</div></pre></td></tr></table></figure>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://cdn.mmmxcc.cn/blog/20170416/135847233.png?imageView2/0/format/webp/interlace/1/q/75|watermark/2/text/ZmVpeWFuZy5saQ==/font/Y29taWMgc2FucyBtcw==/fontsize/500/fill/IzAzQTlGNA==/dissolve/35/gravity/SouthEast/dx/10/dy/10|imageslim
-" alt="mark" title="">
-                </div>
-                <div class="image-caption">mark</div>
-            </figure>
-<p>如果想要一次展示多个图像呢，写个循环就可以了。不过太多的话，可能就看不清了。。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">im = []</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">500</span>):</div><div class="line">    plt.subplot(<span class="number">10</span>, <span class="number">50</span>, i + <span class="number">1</span>)</div><div class="line">    temp = data[<span class="string">'X'</span>][i]</div><div class="line">    im.append(temp.reshape(<span class="number">20</span>,<span class="number">20</span>))</div><div class="line">    plt.imshow(im[i], cmap=<span class="string">'gray'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure></p>
-<h2 id="reshape内-1的用法"><a href="#reshape内-1的用法" class="headerlink" title="reshape内-1的用法"></a><strong>reshape</strong>内-1的用法</h2><p>官方文档：numpy.reshape - NumPy v1.11 Manual</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>np.reshape(a, (<span class="number">3</span>,<span class="number">-1</span>))  <span class="comment"># the unspecified value is inferred to be 2</span></div><div class="line">array([[<span class="number">1</span>, <span class="number">2</span>],</div><div class="line">       [<span class="number">3</span>, <span class="number">4</span>],</div><div class="line">       [<span class="number">5</span>, <span class="number">6</span>]])</div></pre></td></tr></table></figure>
-<p>-1表示我懒得计算该填什么数字，由python通过a和其他的值推测出来。</p>
-<h2 id="LogisticRegression"><a href="#LogisticRegression" class="headerlink" title="LogisticRegression"></a>LogisticRegression</h2><p><code>from sklearn.linear_model import LogisticRegression</code></p>
-<p><a href="http://www.cnblogs.com/xupeizhi/archive/2013/07/05/3174703.html" target="_blank" rel="external">http://www.cnblogs.com/xupeizhi/archive/2013/07/05/3174703.html</a><br><a href="http://scikit-learn.org/stable/index.html" target="_blank" rel="external">http://scikit-learn.org/stable/index.html</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;machine-learning-ex3.zip &lt;a href=&quot;http://home.ustc.edu.cn/~mmmwhy/machine-learning-ex3.zip&quot;&gt;下载链接&lt;/a&gt;，第四周的课程相对来说比较简单，大致介绍了神经网络相关内容。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-    
-    </summary>
-    
-      <category term="Coursera ML" scheme="http://feiyang.li/categories/Coursera-ML/"/>
-    
-    
-      <category term="Machine Learning" scheme="http://feiyang.li/tags/Machine-Learning/"/>
-    
-      <category term="读书笔记" scheme="http://feiyang.li/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Python" scheme="http://feiyang.li/tags/Python/"/>
     
   </entry>
   

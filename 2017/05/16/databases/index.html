@@ -48,7 +48,7 @@
 <meta property="og:url" content="http://feiyang.li/2017/05/16/databases/index.html">
 <meta property="og:site_name" content="李飞阳">
 <meta property="og:description" content="其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。">
-<meta property="og:updated_time" content="2017-05-16T10:38:57.468Z">
+<meta property="og:updated_time" content="2017-05-31T13:00:54.295Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库操作">
 <meta name="twitter:description" content="其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。">
@@ -118,9 +118,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://ss.feiyang.li/" target="_blank" >
+              <a href="https://ss.91vps.club/" target="_blank" >
                 <i class="icon icon-lg icon-rocket"></i>
-                肥羊SS
+                91SS
               </a>
             </li>
         
@@ -198,7 +198,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <script src="/assets/js/DPlayer.min.js"> </script><script src="/assets/js/APlayer.min.js"> </script><blockquote>
+            <script src="/assets/js/APlayer.min.js"> </script><script src="/assets/js/DPlayer.min.js"> </script><blockquote>
 <p>其实之前学过数据库相关操作，只不过许久不用就忘了。真是年纪大了呀。</p>
 </blockquote>
 <hr>
@@ -255,7 +255,15 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">TRUNCATE TABLE `nzysys`.`jobintroduction`;</div></pre></td></tr></table></figure>
 </li>
 <li><p>交叉</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT INTO `nzysys`.`jobintroduction` (jobCategoryID,introductionValue,introductionkey,introductionID) SELECT b.jobCategoryID,a.ChuFang,&apos;组成&apos;,1 FROM `nzysys`.`subjobcategory` AS b,`chinese-drug`.`zysjyj` AS a WHERE a.`ID`=b.`JobCategoryID`;</div></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INSERT INTO `nzysys`.`jobintroduction` (jobCategoryID,introductionValue,introductionkey,introductionID) SELECT b.jobCategoryID,a.ChuFang,&apos;组成&apos;,1 FROM `nzysys`.`subjobcategory` AS b,`chinese-drug`.`zysjyj` AS a WHERE a.`ID`=b.`JobCategoryID`;</div></pre></td></tr></table></figure>
+</li>
+<li><p>字符串分割</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(o.NeiRong, &apos;【&apos;, 2),&apos;】&apos;,-1) FROM `nzysys`.`drug_history` AS o;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>之前都是一个字符串一个字符串分割，这个操作可以把整个mysql某个列全部分割，洋气</p>
+<ul>
+<li>分割后插入<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">INSERT INTO `nzysys`.`medical_history`(subMajorMLID,subMajorMLName,subMajorTitle,subMajorDetail) </div><div class="line">    SELECT ID,BiaoTi,</div><div class="line">    SUBSTRING_INDEX(SUBSTRING_INDEX(o.NeiRong, &apos;【&apos;, 2),&apos;】&apos;,-1),</div><div class="line">    SUBSTRING_INDEX(SUBSTRING_INDEX(o.NeiRong, &apos;【&apos;, 5),&apos;【病因】&apos;,-1)FROM `nzysys`.`drug_history` AS o;</div></pre></td></tr></table></figure></li>
 </ul>
 
         </div>
@@ -264,7 +272,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-05-16T10:38:57.468Z" itemprop="dateUpdated">2017-05-16 18:38:57</time>
+    最后更新时间：<time datetime="2017-05-31T13:00:54.295Z" itemprop="dateUpdated">2017-05-31 21:00:54</time>
 </span><br>
 
 
@@ -440,7 +448,6 @@
     <div class="bottom">
         <p>
             <span><a href="http://www.beian.gov.cn/" target="_blank">陕ICP备17001447号</a></span>
-            <span><a href="https://www.wishosting.com/" target="_blank">support by wishosting</a></span>
         </p>
     </div>
 </footer>

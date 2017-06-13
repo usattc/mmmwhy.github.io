@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://feiyang.li/2017/06/08/algorithm2/index.html</loc>
+    
+    <lastmod>2017-06-08T04:10:47.347Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/05/09/ss-shell/index.html</loc>
+    
+    <lastmod>2017-06-03T02:14:30.661Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/05/18/coursera/index.html</loc>
+    
+    <lastmod>2017-06-02T05:04:20.210Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/05/31/python-mysql-json/index.html</loc>
+    
+    <lastmod>2017-05-31T13:02:02.907Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://feiyang.li/2017/05/16/databases/index.html</loc>
+    
+    <lastmod>2017-05-31T13:00:54.295Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://feiyang.li/2017/05/24/algorithm1/index.html</loc>
     
     <lastmod>2017-05-31T01:40:39.589Z</lastmod>
@@ -33,13 +68,6 @@
     <loc>http://feiyang.li/2017/05/28/hadoop/index.html</loc>
     
     <lastmod>2017-05-28T12:03:20.830Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/05/09/ss-shell/index.html</loc>
-    
-    <lastmod>2017-05-28T08:21:36.246Z</lastmod>
     
   </url>
   
@@ -107,23 +135,9 @@
   </url>
   
   <url>
-    <loc>http://feiyang.li/2017/05/18/coursera/index.html</loc>
-    
-    <lastmod>2017-05-18T02:17:37.001Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://feiyang.li/2017/05/17/Coursera-ML-11-Programming-Exercise-5/index.html</loc>
     
     <lastmod>2017-05-17T06:22:10.492Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://feiyang.li/2017/05/16/databases/index.html</loc>
-    
-    <lastmod>2017-05-16T10:38:57.468Z</lastmod>
     
   </url>
   
